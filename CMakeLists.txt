@@ -6,6 +6,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(imgui_SOURCE_DIR libs/imgui)
 
+# Find sdformat14
+find_package(sdformat14 REQUIRED)
+
 # Add executable
 add_executable(sdformat-editor
     src/main.cpp
@@ -22,6 +25,11 @@ add_executable(sdformat-editor
 target_include_directories(sdformat-editor PRIVATE
     ${imgui_SOURCE_DIR}
     ${imgui_SOURCE_DIR}/backends
+)
+
+# Link against sdformat14
+target_link_libraries(sdformat-editor PRIVATE
+    sdformat14::sdformat14
 )
 
 # Compiler warnings
