@@ -1,0 +1,4 @@
+[submodule "sdformat"]
+	path = sdformat
+	url = https://github.com/gazebosim/sdformat.git
+	branch = sdf14
