@@ -1,4 +1,11 @@
 # sdformat-editor
+
+## Development Environment Setup (Ubuntu / WSL)
+
+```
+sudo apt install build-essential cmake libglfw3-dev libgl1-mesa-dev libx11-dev
+```
+
 *Written in the words of Zaid*
 
 I first suggested this idea as a space filler for our ECE 5010 cource project. Me, Evan, and Ean were pretty set on making an Inventory Tracker but we had to submit two ideas for the proposal. As I looked into this a little more, I realized that an SDF file editor may be kinda doable and, AFAIK RN, nobody has created one for the newest version of Gazebo. Also, the Gazebo Classic SDF file editor left a lot to be desired. 
