@@ -1,0 +1,958 @@
+<?xml version='1.0'?>
+<sdf version='1.7'>
+  <model name='Beaumont'>
+    <link name='rov_body'>
+      <pose>0 0 -0 0 -0 0</pose>
+      <inertial>
+        <mass>23</mass>
+        <pose>0 0.13 0.025 0 -0 0</pose>
+        <!-- Mass moments of inertia imported from the "Simplified ROV" model in Onshape. Material chosen was Aluminum-->
+        <inertia>
+          <ixx>0.34673407</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.2546457474</iyy>
+          <iyz>0.000011623</iyz>
+          <izz>0.3330063202</izz>
+        </inertia>
+      </inertial>
+      <self_collide>0</self_collide>
+      <enable_wind>0</enable_wind>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+      <visual name='assembly_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>beaumont.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+        <shader type='pixel'/>
+        <ambient>0.2 0.2 0.6 1</ambient>
+        <diffuse>0.2 0.2 0.6 1</diffuse>
+        <specular>0.2 0.2 0.6 1</specular>
+        <emissive>0.2 0.2 0.6 1</emissive>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>0</cast_shadows>
+      </visual>
+      <collision name='assembly_collision'>
+        <max_contacts>10</max_contacts>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>beaumont.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='electronics_enclosure'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <!-- The enclosure is positioned such that the center of volume is approximately above the center of mass. 
+            This required a bit of trial and error.-->
+        <pose>0 0.15 0.12 1.5708 0 0</pose>
+        <geometry>
+          <!-- Note that using Graded Buoyancy instead of Uniform Buoyancy will not work as only boxes and spheres collissions are
+              interperted for Graded Buoyancy. -->
+          <cylinder>
+            <radius>0.083</radius>
+            <length>0.3</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <sensor name="imu" type="imu">
+        <always_on>1</always_on>
+        <update_rate>100</update_rate>
+        <visualize>true</visualize>
+        <topic>imu</topic>
+        <enable_metrics>true</enable_metrics>
+      </sensor>
+    </link>
+    <!-- Left Claw -->
+    <link name='left_claw_link'>
+      <pose relative_to="__model__">0.02 -0.08 -0.12 0 -0 3.14159</pose>
+      <inertial>
+        <pose>-0.0325 0.025 0.01125 0 0 0</pose>
+        <mass>0.1</mass>
+      </inertial>
+      <pose>0 0 -0.1 0 7e-06 0.005444</pose>
+      <gravity>1</gravity>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <enable_wind>0</enable_wind>
+      <visual name='claw_hand_visual'>
+        <pose>0 0 0 0 3e-06 3e-06</pose>
+        <geometry>
+          <mesh>
+            <uri>claw.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+          </geometry>
+          <material>
+            <shader type='pixel'/>
+            <ambient>0.1 0.1 0.5 1</ambient>
+            <diffuse>0.1 0.1 0.5 1</diffuse>
+            <specular>0.1 0.1 0.5 1</specular>
+            <emissive>0 0 0.5 1</emissive>
+          </material>
+        <transparency>0</transparency>
+        <cast_shadows>0</cast_shadows>
+      </visual>
+      <collision name='collision_1'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+              <uri>claw.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>  
+    <joint name='left_claw_joint' type='revolute'>
+      <parent>rov_body</parent>
+      <child>left_claw_link</child>
+      <pose relative_to="__model__">0.044 -0.007 -0.10625 0 -0 3.14159</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <!-- <limit>
+          <lower>-0.4363</lower>
+          <upper>0.4363</upper>
+          <effort>-1</effort>
+          <velocity>-1</velocity>
+        </limit> -->
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+          <damping>0</damping>
+          <friction>0</friction>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+    <!-- Right Claw -->
+    <link name='right_claw_link'>
+      <pose relative_to="__model__">-0.02 -0.08 -0.0925 0 3.14159 3.14159</pose>
+      <inertial>
+        <pose>-0.0325 0.025 0.01125 0 0 0</pose>
+        <mass>0.1</mass>
+      </inertial>
+      <pose>0 0 -0.1 0 7e-06 0.005444</pose>
+      <gravity>1</gravity>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <enable_wind>0</enable_wind>
+      <visual name='claw_hand_visual'>
+        <pose>0 0 0 0 3e-06 3e-06</pose>
+        <geometry>
+          <mesh>
+            <uri>claw.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+          </geometry>
+          <material>
+            <shader type='pixel'/>
+            <ambient>0.1 0.1 0.5 1</ambient>
+            <diffuse>0.1 0.1 0.5 1</diffuse>
+            <specular>0.1 0.1 0.5 1</specular>
+            <emissive>0 0 0.5 1</emissive>
+          </material>
+        <transparency>0</transparency>
+        <cast_shadows>0</cast_shadows>
+      </visual>
+      <collision name='collision_1'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+              <uri>claw.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name='right_claw_joint' type='revolute'>
+      <parent>rov_body</parent>
+      <child>right_claw_link</child>
+      <pose relative_to="__model__">-0.044 -0.007 -0.10625 3.14159 3.14159 3.14159</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <!-- <limit>
+          <lower>-0.4363</lower>
+          <upper>0.4363</upper>
+          <effort>-1</effort>
+          <velocity>-1</velocity>
+        </limit> -->
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+          <damping>0</damping>
+          <friction>0</friction>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+    <!-- For Star Top Propeller -->
+    <link name="for_star_top_propeller">
+      <pose>-0.2 -0.07 0.0875 0.785398 0 0.785398</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.002</mass>
+        <inertia>
+          <ixx>0.00000001960685677</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.003</iyy>
+          <iyz>0</iyz>
+          <izz>0.003</izz>
+        </inertia>
+      </inertial>
+      <collision name='propeller_collision'>
+        <max_contacts>10</max_contacts>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>propeller.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='propeller_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>propeller.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+        <shader type='pixel'/>
+        <ambient>0 0.4 1 1</ambient>
+        <diffuse>0 0.4 1 1</diffuse>
+        <specular>0 0.4 1 1</specular>
+        <emissive>0 0.4 1 1</emissive>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>0</cast_shadows>
+      </visual>
+    </link>
+    <joint name='for_star_top_propeller_joint' type='revolute'>
+      <parent>rov_body</parent>
+      <child>for_star_top_propeller</child>
+      <pose relative_to="__model__">-0.2 -0.07 0.0875 0.785398 0 0.785398</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <!-- For Port Top Propeller -->
+    <link name="for_port_top_propeller">
+      <pose>0.2 -0.07 0.0875 5.49778 0 2.35619</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.002</mass>
+        <inertia>
+          <ixx>0.00000001960685677</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.003</iyy>
+          <iyz>0</iyz>
+          <izz>0.003</izz>
+        </inertia>
+      </inertial>
+      <collision name='propeller_collision'>
+        <max_contacts>10</max_contacts>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>propeller.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='propeller_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>propeller.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+        <shader type='pixel'/>
+        <ambient>0 0.4 1 1</ambient>
+        <diffuse>0 0.4 1 1</diffuse>
+        <specular>0 0.4 1 1</specular>
+        <emissive>0 0.4 1 1</emissive>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>0</cast_shadows>
+      </visual>
+    </link>
+    <joint name='for_port_top_propeller_joint' type='revolute'>
+      <parent>rov_body</parent>
+      <child>for_port_top_propeller</child>
+      <pose relative_to="__model__">0.2 -0.07 0.0875 5.49778 0 2.35619</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <!-- For Star Bot Propeller -->
+    <link name="for_star_bot_propeller">
+      <pose>-0.2 -0.07 -0.0875 2.356193 0 0.785398</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.002</mass>
+        <inertia>
+          <ixx>0.00000001960685677</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.003</iyy>
+          <iyz>0</iyz>
+          <izz>0.003</izz>
+        </inertia>
+      </inertial>
+      <collision name='propeller_collision'>
+        <max_contacts>10</max_contacts>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>propeller.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='propeller_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>propeller.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+        <shader type='pixel'/>
+        <ambient>0 0.4 1 1</ambient>
+        <diffuse>0 0.4 1 1</diffuse>
+        <specular>0 0.4 1 1</specular>
+        <emissive>0 0.4 1 1</emissive>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>0</cast_shadows>
+      </visual>
+    </link>
+    <joint name='for_star_bot_propeller_joint' type='revolute'>
+      <parent>rov_body</parent>
+      <child>for_star_bot_propeller</child>
+      <pose relative_to="__model__">-0.2 -0.07 -0.0875 2.356193 0 0.785398</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <!-- For Port Bot Propeller -->
+    <link name="for_port_bot_propeller">
+      <pose>0.2 -0.07 -0.0875 3.926985 0 2.35619</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.002</mass>
+        <inertia>
+          <ixx>0.00000001960685677</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.003</iyy>
+          <iyz>0</iyz>
+          <izz>0.003</izz>
+        </inertia>
+      </inertial>
+      <collision name='propeller_collision'>
+        <max_contacts>10</max_contacts>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>propeller.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='propeller_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>propeller.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+        <shader type='pixel'/>
+        <ambient>0 0.4 1 1</ambient>
+        <diffuse>0 0.4 1 1</diffuse>
+        <specular>0 0.4 1 1</specular>
+        <emissive>0 0.4 1 1</emissive>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>0</cast_shadows>
+      </visual>
+    </link>
+    <joint name='for_port_bot_propeller_joint' type='revolute'>
+      <parent>rov_body</parent>
+      <child>for_port_bot_propeller</child>
+      <pose relative_to="__model__">0.2 -0.07 -0.0875 3.926985 0 2.35619</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <!-- Aft Star Top Propeller -->
+    <link name="aft_star_top_propeller">
+      <pose>-0.2 0.365 0.0875 0.785398 0 2.356193</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.002</mass>
+        <inertia>
+          <ixx>0.00000001960685677</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.003</iyy>
+          <iyz>0</iyz>
+          <izz>0.003</izz>
+        </inertia>
+      </inertial>
+      <collision name='propeller_collision'>
+        <max_contacts>10</max_contacts>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>propeller.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='propeller_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>propeller.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+        <shader type='pixel'/>
+        <ambient>0 0.4 1 1</ambient>
+        <diffuse>0 0.4 1 1</diffuse>
+        <specular>0 0.4 1 1</specular>
+        <emissive>0 0.4 1 1</emissive>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>0</cast_shadows>
+      </visual>
+    </link>
+    <joint name='aft_star_top_propeller_joint' type='revolute'>
+      <parent>rov_body</parent>
+      <child>aft_star_top_propeller</child>
+      <pose relative_to="__model__">-0.2 0.365 0.0875 0.785398 0 2.356193</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <!-- Aft Port Top Propeller -->
+    <link name="aft_port_top_propeller">
+      <pose>0.2 0.365 0.0875 5.49778 0 0.785398</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.002</mass>
+        <inertia>
+          <ixx>0.00000001960685677</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.003</iyy>
+          <iyz>0</iyz>
+          <izz>0.003</izz>
+        </inertia>
+      </inertial>
+      <collision name='propeller_collision'>
+        <max_contacts>10</max_contacts>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>propeller.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='propeller_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>propeller.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+        <shader type='pixel'/>
+        <ambient>0 0.4 1 1</ambient>
+        <diffuse>0 0.4 1 1</diffuse>
+        <specular>0 0.4 1 1</specular>
+        <emissive>0 0.4 1 1</emissive>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>0</cast_shadows>
+      </visual>
+    </link>
+    <joint name='aft_port_top_propeller_joint' type='revolute'>
+      <parent>rov_body</parent>
+      <child>aft_port_top_propeller</child>
+      <pose relative_to="__model__">0.2 0.365 0.0875 5.49778 0 0.785398</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <!-- Aft Star Bot Propeller -->
+    <link name="aft_star_bot_propeller">
+      <pose>-0.2 0.365 -0.0875 2.356193 0 2.356193</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.002</mass>
+        <inertia>
+          <ixx>0.00000001960685677</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.003</iyy>
+          <iyz>0</iyz>
+          <izz>0.003</izz>
+        </inertia>
+      </inertial>
+      <collision name='propeller_collision'>
+        <max_contacts>10</max_contacts>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>propeller.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='propeller_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>propeller.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+        <shader type='pixel'/>
+        <ambient>0 0.4 1 1</ambient>
+        <diffuse>0 0.4 1 1</diffuse>
+        <specular>0 0.4 1 1</specular>
+        <emissive>0 0.4 1 1</emissive>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>0</cast_shadows>
+      </visual>
+    </link>
+    <joint name='aft_star_bot_propeller_joint' type='revolute'>
+      <parent>rov_body</parent>
+      <child>aft_star_bot_propeller</child>
+      <pose relative_to="__model__">-0.2 0.365 -0.0875 2.356193 0 2.356193</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <!-- Aft Port Bot Propeller -->
+    <link name="aft_port_bot_propeller">
+      <pose>0.2 0.365 -0.0875 3.926988 0 0.785398</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.002</mass>
+        <inertia>
+          <ixx>0.00000001960685677</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.003</iyy>
+          <iyz>0</iyz>
+          <izz>0.003</izz>
+        </inertia>
+      </inertial>
+      <collision name='propeller_collision'>
+        <max_contacts>10</max_contacts>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>propeller.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='propeller_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>propeller.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+        <shader type='pixel'/>
+        <ambient>0 0.4 1 1</ambient>
+        <diffuse>0 0.4 1 1</diffuse>
+        <specular>0 0.4 1 1</specular>
+        <emissive>0 0.4 1 1</emissive>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>0</cast_shadows>
+      </visual>
+    </link>
+    <joint name='aft_port_bot_propeller_joint' type='revolute'>
+      <parent>rov_body</parent>
+      <child>aft_port_bot_propeller</child>
+      <pose relative_to="__model__">0.2 0.365 -0.0875 3.926988 0 0.785398</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <!-- Front Camera -->
+    <link name="front_camera">
+      <pose>0 0 -0.05 0 0.0 -1.5708</pose>
+      <inertial>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>0.000166667</ixx>
+          <iyy>0.000166667</iyy>
+          <izz>0.000166667</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </collision>
+      <!-- Uncomment the visual element for debug -->
+      <!-- <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </visual> -->
+      <sensor name="front_camera_sensor" type="camera">
+        <camera>
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>320</width>
+            <height>240</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>true</visualize>
+        <topic>front_camera</topic>
+      </sensor>
+    </link>
+    <joint name='front_camera_joint' type='fixed'>
+      <parent>rov_body</parent>
+      <child>front_camera</child>
+      <pose relative_to="__model__">0 00 -0.05 0 0 0</pose>
+    </joint>
+    <!-- Tooling Camera -->
+    <link name="tooling_camera">
+      <pose>0 0.35 0 0 0.0 -1.5708</pose>
+      <inertial>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>0.000166667</ixx>
+          <iyy>0.000166667</iyy>
+          <izz>0.000166667</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </collision>
+      <!-- Uncomment the visual element for debug -->
+      <!-- <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </visual> -->
+      <sensor name="tooling_camera_sensor" type="camera">
+        <camera>
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>320</width>
+            <height>240</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>true</visualize>
+        <topic>tooling_camera</topic>
+      </sensor>
+    </link>
+    <joint name='tooling_camera_joint' type='fixed'>
+      <parent>rov_body</parent>
+      <child>tooling_camera</child>
+      <pose relative_to="__model__">0 0.35 00 0 0 0</pose>
+    </joint>    
+    <!-- Top Camera -->
+    <link name="top_camera">
+      <pose>0 0.175 0.05 0 -1.5708 -1.5708</pose>
+      <inertial>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>0.000166667</ixx>
+          <iyy>0.000166667</iyy>
+          <izz>0.000166667</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </collision>
+      <!-- Uncomment the visual element for debug -->
+      <!-- <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </visual> -->
+      <sensor name="top_camera_sensor" type="camera">
+        <camera>
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>320</width>
+            <height>240</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>true</visualize>
+        <topic>top_camera</topic>
+      </sensor>
+    </link>
+    <joint name='top_camera_joint' type='fixed'>
+      <parent>rov_body</parent>
+      <child>top_camera</child>
+      <pose relative_to="__model__">0 0.175 0.05 0 -1.5708 0</pose>
+    </joint>    
+    <!-- Top Camera -->
+    <link name="bottom_camera">      
+      <pose>0 0.15 -0.13 0 1.5708 -1.5708</pose>
+      <inertial>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>0.000166667</ixx>
+          <iyy>0.000166667</iyy>
+          <izz>0.000166667</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </collision>
+      <!-- Uncomment the visual element for debug -->
+      <!-- <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </visual> -->
+      <sensor name="bottom_camera_sensor" type="camera">
+        <camera>
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>320</width>
+            <height>240</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>true</visualize>
+        <topic>bottom_camera</topic>
+      </sensor>
+    </link>
+    <joint name='bottom_camera_joint' type='fixed'>
+      <parent>rov_body</parent>
+      <child>bottom_camera</child>
+      <pose relative_to="__model__">0 0.15 -0.13 0 1.5708 0</pose>
+    </joint>
+    <plugin
+        filename="plugins/libEER_Hydrodynamics.so"
+        name="gz::sim::systems::EER_Hydrodynamics">
+        <link_name>rov_body</link_name>
+        <water_density>1000</water_density>
+        <xDotU>1.26231244</xDotU>
+        <yDotV>1.22524088</yDotV>
+        <zDotW>10</zDotW> <!--Should be 27.12577546 but that makes it crash-->
+        <kDotP>0.08757268</kDotP>
+        <mDotQ>0.05547139</mDotQ>
+        <nDotR>0.07264728</nDotR>
+        <xUabsU>-150</xUabsU>
+        <xU>-30</xU>
+        <yVabsV>-200</yVabsV>
+        <yV>-25</yV>
+        <zWabsW>-425</zWabsW>
+        <zW>-300</zW>
+        <kPabsP>-150</kPabsP>
+        <kP>-100</kP>
+        <mQabsQ>-125</mQabsQ>
+        <mQ>-50</mQ>
+        <nRabsR>-100</nRabsR>
+        <nR>-45</nR>
+    </plugin>
+    <plugin
+        filename="plugins/libEER_Claws.so"
+        name="gz::sim::systems::Claws">
+        <right_claw>
+            <joint>right_claw_joint</joint>
+            <max_inward_rotation>0.2094395</max_inward_rotation>
+            <max_outward_rotation>0.523599</max_outward_rotation>
+        </right_claw>
+        <left_claw>
+            <joint>left_claw_joint</joint>
+            <max_inward_rotation>0.209439</max_inward_rotation>
+            <max_outward_rotation>0.523599</max_outward_rotation>
+        </left_claw>
+    </plugin>
+
+    <plugin
+        filename="plugins/libEER_Thruster.so"
+        name="gz::sim::systems::EER_Thruster">
+        <namespace>beaumont</namespace>
+        <joint_name>for_star_top_propeller_joint</joint_name>
+        <use_esc_cmd>true</use_esc_cmd>
+        <fluid_density>1000</fluid_density>
+        <topic>for_star_top</topic>
+        <propeller_diameter>0.076</propeller_diameter>
+    </plugin>
+
+    <plugin
+        filename="plugins/libEER_Thruster.so"
+        name="gz::sim::systems::EER_Thruster">
+        <namespace>beaumont</namespace>
+        <joint_name>for_port_top_propeller_joint</joint_name>
+        <use_esc_cmd>true</use_esc_cmd>
+        <fluid_density>1000</fluid_density>
+        <topic>for_port_top</topic>
+        <propeller_diameter>0.076</propeller_diameter>
+    </plugin>
+    <plugin
+        filename="plugins/libEER_Thruster.so"
+        name="gz::sim::systems::EER_Thruster">
+        <namespace>beaumont</namespace>
+        <joint_name>for_star_bot_propeller_joint</joint_name>
+        <use_esc_cmd>true</use_esc_cmd>
+        <fluid_density>1000</fluid_density>
+        <topic>for_star_bot</topic>
+        <propeller_diameter>0.076</propeller_diameter>
+    </plugin>
+    <plugin
+        filename="plugins/libEER_Thruster.so"
+        name="gz::sim::systems::EER_Thruster">
+        <namespace>beaumont</namespace>
+        <joint_name>for_port_bot_propeller_joint</joint_name>
+        <use_esc_cmd>true</use_esc_cmd>
+        <fluid_density>1000</fluid_density>
+        <topic>for_port_bot</topic>
+        <propeller_diameter>0.076</propeller_diameter>
+    </plugin>
+    <plugin
+        filename="plugins/libEER_Thruster.so"
+        name="gz::sim::systems::EER_Thruster">
+        <namespace>beaumont</namespace>
+        <joint_name>aft_star_top_propeller_joint</joint_name>
+        <use_esc_cmd>true</use_esc_cmd>
+        <fluid_density>1000</fluid_density>
+        <topic>aft_star_top</topic>
+        <propeller_diameter>0.076</propeller_diameter>
+    </plugin>
+    <plugin
+        filename="plugins/libEER_Thruster.so"
+        name="gz::sim::systems::EER_Thruster">
+        <namespace>beaumont</namespace>
+        <joint_name>aft_port_top_propeller_joint</joint_name>
+        <use_esc_cmd>true</use_esc_cmd>
+        <fluid_density>1000</fluid_density>
+        <topic>aft_port_top</topic>
+        <propeller_diameter>0.076</propeller_diameter>
+    </plugin>
+    <plugin
+        filename="plugins/libEER_Thruster.so"
+        name="gz::sim::systems::EER_Thruster">
+        <namespace>beaumont</namespace>
+        <joint_name>aft_star_bot_propeller_joint</joint_name>
+        <use_esc_cmd>true</use_esc_cmd>
+        <fluid_density>1000</fluid_density>
+        <topic>aft_star_bot</topic>
+        <propeller_diameter>0.076</propeller_diameter>
+    </plugin>
+    <plugin
+        filename="plugins/libEER_Thruster.so"
+        name="gz::sim::systems::EER_Thruster">
+        <namespace>beaumont</namespace>
+        <joint_name>aft_port_bot_propeller_joint</joint_name>
+        <use_esc_cmd>true</use_esc_cmd>
+        <fluid_density>1000</fluid_density>
+        <topic>aft_port_bot</topic>
+        <propeller_diameter>0.076</propeller_diameter>
+    </plugin>
+    <static>0</static>
+    <self_collide>0</self_collide>
+    <allow_auto_disable>1</allow_auto_disable>
+  </model>
+</sdf>
