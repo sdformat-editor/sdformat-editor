@@ -1,6 +1,3 @@
-[submodule "libs/sdformat"]
-	path = libs/sdformat
-	url = https://github.com/gazebosim/sdformat.git
 [submodule "libs/imgui"]
 	path = libs/imgui
 	url = https://github.com/ocornut/imgui.git

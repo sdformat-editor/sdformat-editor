@@ -42,6 +42,7 @@ target_compile_options(sdformat-editor PRIVATE
 # Find GLFW
 find_package(glfw3 REQUIRED)
 
+# Find OpenGL
 find_package(OpenGL REQUIRED)
 target_link_libraries(sdformat-editor PRIVATE
     OpenGL::GL

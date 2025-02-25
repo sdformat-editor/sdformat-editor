@@ -2,9 +2,14 @@
 
 ## Development Environment Setup (Ubuntu / WSL)
 
+Install [Gazebo Harmonic](https://gazebosim.org/docs/harmonic/install_ubuntu/)
+
+Other dependencies:
 ```
 sudo apt install build-essential cmake libglfw3-dev libgl1-mesa-dev libx11-dev
 ```
+
+## Project Info
 
 | Description            | A standalone visual SDF (simulation description format) file editor. The editor will focus on the SDF model feature and draw on the latest SDF [file specifications](http://sdformat.org/). It will include a 3D viewer for rendering models in real-time as they are being edited and a user interface that integrates the SDF file specifications and any user-specified custom simulation plugin and sensor attributes. Overall, the file editor will speed up workflow by allowing developers to visualize models quickly rather than having to relaunch full simulation instances. <br><br>Note: SDF files are used primarily in the Gazebo robotics simulator for defining worlds and robotic models. For robotic models, SDF format allows for defining links, joints, plugins, sensors, and more. |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15,9 +20,7 @@ sudo apt install build-essential cmake libglfw3-dev libgl1-mesa-dev libx11-dev
 
 The [GazeboSim Repos](https://github.com/orgs/gazebosim/repositories) include an SDFormat repo.
 
-Will definitely use the Gazebo Harmonic [SDFormat](https://github.com/gazebosim/sdformat/tree/sdf14/examples) repo. They have an example for parsing...
-
-Sick to SDF 14 since it is the latest stable version (associated with the latest stable version of Gazebo, which is Harmonic). 
+Will use SDFormat and other Gazebo dependencies that are packaged with Gazebo Harmonic for now. They also include TinyXML2. 
 
 [This Tutorial](http://sdformat.org/tutorials?tut=quickstart&cat=developers&) actually goes over file parsing which is pretty nifty. 
 
@@ -50,7 +53,7 @@ Finally, there should be a `rerender` button at the bottom of the editor to let 
 ## Verdict
 
 There remains two large roadblocks. 
-1. Being able to store the [SDFormat tree](http://sdformat.org/spec?ver=1.12&elem=sdf) as some sort of data structure. I need to find out how they generated it on their website
+1. Being able to store the [SDFormat tree](http://sdformat.org/spec?ver=1.12&elem=sdf) as some sort of data structure. 
 2. Finding out how hard it would be to render these 3D elements in the viewer. Note that through just parsing, we would have access to 1) position relative to model frame (including orientation) and 2) 3D model (.stl, .dae, whatever) or general shape (box, sphere, cylinder)
 
 ## SDFormat Tree
