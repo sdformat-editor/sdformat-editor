@@ -1,0 +1,92 @@
+\doxysection{GUII Class Reference}
+\hypertarget{classGUII}{}\label{classGUII}\index{GUII@{GUII}}
+
+
+Interface for the SDFormat Editor\textquotesingle{}s Graphical User Interface.  
+
+
+
+
+{\ttfamily \#include $<$gui\+\_\+interface.\+h$>$}
+
+
+
+Inheritance diagram for GUII\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=118pt]{classGUII__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classGUII_aa006d42a634f75b03fa9b45daddc9ae0}{Update}} ()=0
+\begin{DoxyCompactList}\small\item\em Updating the \doxylink{classGUI}{GUI}. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classGUII_a9ae3de58253702261056dc0981a046ac}{Should\+Close}} ()=0
+\begin{DoxyCompactList}\small\item\em Indicate if the \doxylink{classGUI}{GUI} should close. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classGUII_af231535d0182347f01927afb843205af}{Initialize}} (const std\+::string \&window\+Name, bool \&success)=0
+\begin{DoxyCompactList}\small\item\em Initialization of the \doxylink{classGUI}{GUI}. Should be wrapped in the constructor of the implementation. NOTE\+: (zaid) As more features are added, more things will be added to this initalize method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for the SDFormat Editor\textquotesingle{}s Graphical User Interface. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGUII_af231535d0182347f01927afb843205af}\label{classGUII_af231535d0182347f01927afb843205af} 
+\index{GUII@{GUII}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!GUII@{GUII}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily virtual void GUII\+::\+Initialize (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{window\+Name,  }\item[{bool \&}]{success }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Initialization of the \doxylink{classGUI}{GUI}. Should be wrapped in the constructor of the implementation. NOTE\+: (zaid) As more features are added, more things will be added to this initalize method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em window\+\_\+name} & The name to be given to the SDFormat\+Editor Window \\
+\hline
+\mbox{\texttt{ out}}  & {\em success} & true if window initalization is successful \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classGUI_a94804c4737bc4d7f1948850c7b65959c}{GUI}}.
+
+\Hypertarget{classGUII_a9ae3de58253702261056dc0981a046ac}\label{classGUII_a9ae3de58253702261056dc0981a046ac} 
+\index{GUII@{GUII}!ShouldClose@{ShouldClose}}
+\index{ShouldClose@{ShouldClose}!GUII@{GUII}}
+\doxysubsubsection{\texorpdfstring{ShouldClose()}{ShouldClose()}}
+{\footnotesize\ttfamily virtual bool GUII\+::\+Should\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Indicate if the \doxylink{classGUI}{GUI} should close. 
+
+
+
+Implemented in \mbox{\hyperlink{classGUI_a75a2aa8cff0e7601e0e8b97000213094}{GUI}}.
+
+\Hypertarget{classGUII_aa006d42a634f75b03fa9b45daddc9ae0}\label{classGUII_aa006d42a634f75b03fa9b45daddc9ae0} 
+\index{GUII@{GUII}!Update@{Update}}
+\index{Update@{Update}!GUII@{GUII}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily virtual void GUII\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Updating the \doxylink{classGUI}{GUI}. 
+
+
+
+Implemented in \mbox{\hyperlink{classGUI_ac15bbf5f9b91c676120fab474dbe1261}{GUI}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/gui\+\_\+interface.\+h\end{DoxyCompactItemize}

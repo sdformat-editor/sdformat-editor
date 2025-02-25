@@ -1,0 +1,156 @@
+\doxysection{GUI Class Reference}
+\hypertarget{classGUI}{}\label{classGUI}\index{GUI@{GUI}}
+
+
+Implementation of \doxylink{classGUII}{GUII}.  
+
+
+
+
+{\ttfamily \#include $<$gui.\+h$>$}
+
+
+
+Inheritance diagram for GUI\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=118pt]{classGUI__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for GUI\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=118pt]{classGUI__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGUI_a85087e9f2d25696e4fab2b6b4cd3e0e6}{GUI}} (const std\+::string \&window\+\_\+name, bool \&success)
+\begin{DoxyCompactList}\small\item\em Constructor that wraps the Initialize method. \end{DoxyCompactList}\item 
+\Hypertarget{classGUI_ac9cae2328dcb5d83bdfaeca49a2eb695}\label{classGUI_ac9cae2328dcb5d83bdfaeca49a2eb695} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+GUI} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classGUI_a94804c4737bc4d7f1948850c7b65959c}{Initialize}} (const std\+::string \&window\+\_\+name, bool \&success) override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGUI_a75a2aa8cff0e7601e0e8b97000213094}{Should\+Close}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGUI_ac15bbf5f9b91c676120fab474dbe1261}{Update}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of update method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classGUI_acf94b0cc09d0d9d08a545ea1dc5919d5}{glfw\+\_\+error\+\_\+callback}} (int error, const char \texorpdfstring{$\ast$}{*}description)
+\begin{DoxyCompactList}\small\item\em Function for handling GLFW Error (required to be static by GLFW) NOTE\+: (zaid) It may be good to integrate this with an error handler class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classGUI_a2955f39e8b9690cf35a43a8b0768f64f}\label{classGUI_a2955f39e8b9690cf35a43a8b0768f64f} 
+GLFWwindow \texorpdfstring{$\ast$}{*} {\bfseries window} = nullptr
+\begin{DoxyCompactList}\small\item\em Pointer to the GLFW window object, used to manage for rendering and handling window events. \end{DoxyCompactList}\item 
+\Hypertarget{classGUI_ac6297526aeb809b472c7952fae1d07f7}\label{classGUI_ac6297526aeb809b472c7952fae1d07f7} 
+Im\+Gui\+IO \texorpdfstring{$\ast$}{*} {\bfseries io} = nullptr
+\begin{DoxyCompactList}\small\item\em Reference to the Im\+Gui\+IO structure, which handles input/output operations for Im\+Gui. \end{DoxyCompactList}\item 
+\Hypertarget{classGUI_a34015969cf7c7eb56194a7a084778315}\label{classGUI_a34015969cf7c7eb56194a7a084778315} 
+Im\+Vec4 {\bfseries background\+\_\+colour}
+\begin{DoxyCompactList}\small\item\em The background color used in the \doxylink{classGUI}{GUI}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Implementation of \doxylink{classGUII}{GUII}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGUI_a85087e9f2d25696e4fab2b6b4cd3e0e6}\label{classGUI_a85087e9f2d25696e4fab2b6b4cd3e0e6} 
+\index{GUI@{GUI}!GUI@{GUI}}
+\index{GUI@{GUI}!GUI@{GUI}}
+\doxysubsubsection{\texorpdfstring{GUI()}{GUI()}}
+{\footnotesize\ttfamily GUI\+::\+GUI (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{window\+\_\+name,  }\item[{bool \&}]{success }\end{DoxyParamCaption})}
+
+
+
+Constructor that wraps the Initialize method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em window\+\_\+name} & The name to be given to the SDFormat\+Editor Window \\
+\hline
+\mbox{\texttt{ out}}  & {\em success} & true if window initalization is successful \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGUI_acf94b0cc09d0d9d08a545ea1dc5919d5}\label{classGUI_acf94b0cc09d0d9d08a545ea1dc5919d5} 
+\index{GUI@{GUI}!glfw\_error\_callback@{glfw\_error\_callback}}
+\index{glfw\_error\_callback@{glfw\_error\_callback}!GUI@{GUI}}
+\doxysubsubsection{\texorpdfstring{glfw\_error\_callback()}{glfw\_error\_callback()}}
+{\footnotesize\ttfamily void GUI\+::glfw\+\_\+error\+\_\+callback (\begin{DoxyParamCaption}\item[{int}]{error,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{description }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Function for handling GLFW Error (required to be static by GLFW) NOTE\+: (zaid) It may be good to integrate this with an error handler class. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em error} & Error code from GLFW \\
+\hline
+\mbox{\texttt{ in}}  & {\em description} & Description of the error from GLFW ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGUI_a94804c4737bc4d7f1948850c7b65959c}\label{classGUI_a94804c4737bc4d7f1948850c7b65959c} 
+\index{GUI@{GUI}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!GUI@{GUI}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void GUI\+::\+Initialize (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{window\+\_\+name,  }\item[{bool \&}]{success }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+
+
+Implements \mbox{\hyperlink{classGUII_af231535d0182347f01927afb843205af}{GUII}}.
+
+\Hypertarget{classGUI_a75a2aa8cff0e7601e0e8b97000213094}\label{classGUI_a75a2aa8cff0e7601e0e8b97000213094} 
+\index{GUI@{GUI}!ShouldClose@{ShouldClose}}
+\index{ShouldClose@{ShouldClose}!GUI@{GUI}}
+\doxysubsubsection{\texorpdfstring{ShouldClose()}{ShouldClose()}}
+{\footnotesize\ttfamily bool GUI\+::\+Should\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+
+
+Implements \mbox{\hyperlink{classGUII_a9ae3de58253702261056dc0981a046ac}{GUII}}.
+
+\Hypertarget{classGUI_ac15bbf5f9b91c676120fab474dbe1261}\label{classGUI_ac15bbf5f9b91c676120fab474dbe1261} 
+\index{GUI@{GUI}!Update@{Update}}
+\index{Update@{Update}!GUI@{GUI}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void GUI\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of update method. 
+
+
+
+Implements \mbox{\hyperlink{classGUII_aa006d42a634f75b03fa9b45daddc9ae0}{GUII}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/gui.\+h\item 
+src/gui.\+cpp\end{DoxyCompactItemize}

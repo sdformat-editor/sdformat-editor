@@ -1,0 +1,46 @@
+\doxysection{gui.\+h}
+\hypertarget{gui_8h_source}{}\label{gui_8h_source}\index{include/gui.h@{include/gui.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ IMGUI\ dependencies}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}imgui.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}imgui\_impl\_glfw.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}imgui\_impl\_opengl3.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <GLFW/glfw3.h>}\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Allows\ for\ unique\ pointers}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <gui\_interface.h>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifndef\ SDFORMAT\_EDITOR\_GUI\_HH\_}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ SDFORMAT\_EDITOR\_GUI\_HH\_}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGUI}{GUI}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classGUII}{GUII}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00024\ \ \ \textcolor{keyword}{public}:\ \mbox{\hyperlink{classGUI}{GUI}}(\textcolor{keyword}{const}\ std::string\ \&window\_name,\ \textcolor{keywordtype}{bool}\ \&success);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00027\ \ \ \textcolor{keyword}{public}:\ \mbox{\hyperlink{classGUI_ac9cae2328dcb5d83bdfaeca49a2eb695}{\string~GUI}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a94804c4737bc4d7f1948850c7b65959c}{Initialize}}(\textcolor{keyword}{const}\ std::string\ \&window\_name,\ \textcolor{keywordtype}{bool}\ \&success)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGUI_a75a2aa8cff0e7601e0e8b97000213094}{ShouldClose}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_ac15bbf5f9b91c676120fab474dbe1261}{Update}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00037\ \ \ }
+\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{private}:\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_acf94b0cc09d0d9d08a545ea1dc5919d5}{glfw\_error\_callback}}(\textcolor{keywordtype}{int}\ error,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *description);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keyword}{private}:\ GLFWwindow\ *\mbox{\hyperlink{classGUI_a2955f39e8b9690cf35a43a8b0768f64f}{window}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00048\ \ \ \textcolor{keyword}{private}:\ ImGuiIO\ *\mbox{\hyperlink{classGUI_ac6297526aeb809b472c7952fae1d07f7}{io}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00049\ \ }
+\DoxyCodeLine{00051\ \ \ \textcolor{keyword}{private}:\ ImVec4\ \mbox{\hyperlink{classGUI_a34015969cf7c7eb56194a7a084778315}{background\_colour}};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

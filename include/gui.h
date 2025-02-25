@@ -14,6 +14,7 @@
 #ifndef SDFORMAT_EDITOR_GUI_HH_
 #define SDFORMAT_EDITOR_GUI_HH_
 
+/// \brief Implementation of GUII
 class GUI : public GUII
 {
 
@@ -32,7 +33,7 @@ class GUI : public GUII
   private: bool ShouldClose() override;
 
   /// \brief Implementation of update method
-  public: void Update() override;
+  private: void Update() override;
   
   /// \brief Function for handling GLFW Error (required to be static by GLFW)
   ///         NOTE: (zaid) It may be good to integrate this with an error handler class

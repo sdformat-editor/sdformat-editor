@@ -1,0 +1,41 @@
+\doxysection{gui\+\_\+interface.\+h}
+\hypertarget{gui__interface_8h_source}{}\label{gui__interface_8h_source}\index{include/gui\_interface.h@{include/gui\_interface.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ sdformat-\/editor}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Copyright\ 2024\ sdformat-\/editor}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*\ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*\ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*\ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{*\ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00015\ \textcolor{comment}{*\ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{*}}
+\DoxyCodeLine{00017\ \textcolor{comment}{*\ Developer:\ Zaid\ Duraid,\ Ean\ Wheeler,\ Evan\ Vokey}}
+\DoxyCodeLine{00018\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#ifndef\ SDFORMAT\_EDITOR\_GUI\_INTERFACE\_HH\_}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ SDFORMAT\_EDITOR\_GUI\_INTERFACE\_HH\_}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGUII}{GUII}}}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{protected}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUII_af231535d0182347f01927afb843205af}{Initialize}}(\textcolor{keyword}{const}\ std::string\ \&windowName,\ \textcolor{keywordtype}{bool}\ \&success)\ =\ 0;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUII_aa006d42a634f75b03fa9b45daddc9ae0}{Update}}()\ =\ 0;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGUII_a9ae3de58253702261056dc0981a046ac}{ShouldClose}}()\ =\ 0;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

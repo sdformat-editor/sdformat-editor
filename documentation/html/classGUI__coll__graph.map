@@ -1,0 +1,5 @@
+<map id="GUI" name="GUI">
+<area shape="rect" id="Node000001" title="Implementation of GUII." alt="" coords="7,79,54,104"/>
+<area shape="rect" id="Node000002" href="$classGUII.html" title="Interface for the SDFormat Editor&#39;s Graphical User Interface." alt="" coords="5,5,56,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="33,44,33,79,28,79,28,44"/>
+</map>
