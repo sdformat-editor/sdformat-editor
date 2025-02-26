@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7egui_0',['~GUI',['../classGUI.html#ac9cae2328dcb5d83bdfaeca49a2eb695',1,'GUI']]]
+  ['window_0',['window',['../classGUI.html#a2955f39e8b9690cf35a43a8b0768f64f',1,'GUI']]]
 ];

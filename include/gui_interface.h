@@ -1,6 +1,6 @@
 /*
 * sdformat-editor
-* Copyright 2024 sdformat-editor
+* Copyright 2025 sdformat-editor
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 *
 * Developer: Zaid Duraid, Ean Wheeler, Evan Vokey
 */
+
 #ifndef SDFORMAT_EDITOR_GUI_INTERFACE_HH_
 #define SDFORMAT_EDITOR_GUI_INTERFACE_HH_
 

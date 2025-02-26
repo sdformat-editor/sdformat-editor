@@ -1,0 +1,7 @@
+<map id="GUITest" name="GUITest">
+<area shape="rect" id="Node000001" title="Unit test class for testing the GUI class." alt="" coords="69,93,141,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,107,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,41,101,91,96,94,67,44"/>
+<area shape="rect" id="Node000003" href="$classGUII.html" title="Interface for the SDFormat Editor&#39;s Graphical User Interface." alt="" coords="131,5,181,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="144,44,115,94,110,91,140,41"/>
+</map>

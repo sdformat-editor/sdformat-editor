@@ -57,3 +57,52 @@ target_link_libraries(sdformat-editor PRIVATE
     glfw
     dl  # Add dynamic loading library
 )
+
+############################################################
+######################## TESTING ###########################
+############################################################
+
+# Find Google Test
+set(gtest_SOURCE_DIR libs/googletest)
+
+# Add google test
+add_subdirectory(${gtest_SOURCE_DIR})
+
+# Add test files
+set(TEST_FILES
+    tests/test_gui.cpp
+)
+
+# Create test executable
+add_executable(sdformat-editor-tests
+    ${TEST_FILES}
+    ${GUI_FILES}
+    ${imgui_SOURCE_DIR}/imgui.cpp
+    ${imgui_SOURCE_DIR}/imgui_demo.cpp
+    ${imgui_SOURCE_DIR}/imgui_draw.cpp
+    ${imgui_SOURCE_DIR}/imgui_tables.cpp
+    ${imgui_SOURCE_DIR}/imgui_widgets.cpp
+    ${imgui_SOURCE_DIR}/backends/imgui_impl_glfw.cpp
+    ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
+)
+
+# Include directories for tests
+target_include_directories(sdformat-editor-tests PRIVATE
+    ${imgui_SOURCE_DIR}
+    ${imgui_SOURCE_DIR}/backends
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${gtest_SOURCE_DIR}/googletest/include
+)
+
+# Link against Google Test and other libraries
+target_link_libraries(sdformat-editor-tests PRIVATE
+    gtest
+    gtest_main
+    sdformat14::sdformat14
+    OpenGL::GL
+    glfw
+    dl
+)
+
+# Add test to CTest
+add_test(NAME sdformat-editor-tests COMMAND sdformat-editor-tests)

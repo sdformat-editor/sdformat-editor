@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['window_0',['window',['../classGUI.html#a2955f39e8b9690cf35a43a8b0768f64f',1,'GUI']]]
+  ['update_0',['update',['../classGUI.html#ac15bbf5f9b91c676120fab474dbe1261',1,'GUI::Update()'],['../classGUII.html#aa006d42a634f75b03fa9b45daddc9ae0',1,'GUII::Update()']]]
 ];
