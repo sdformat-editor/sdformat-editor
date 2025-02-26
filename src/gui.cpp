@@ -22,8 +22,7 @@
 
 GUI::GUI(const std::string &window_name, bool &success)
 {
-  std::cout << "Constructor otg" << std::endl;
-  Initialize(window_name, success);
+  this->Initialize(window_name, success);
 }
 
 void GUI::glfw_error_callback(int error, const char *description)
@@ -181,6 +180,12 @@ GUI::~GUI()
   {
     glfwDestroyWindow(this->window);
     this->window = nullptr;
+  }
+
+  if (this->io)
+  {
+    delete this->io;
+    this->io = nullptr;
   }
 
   glfwTerminate();

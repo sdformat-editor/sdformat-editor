@@ -9,16 +9,23 @@ set(imgui_SOURCE_DIR libs/imgui)
 # Find sdformat14
 find_package(sdformat14 REQUIRED)
 
+# message(STATUS "sdformat14_INCLUDE_DIRS: ${sdformat14_INCLUDE_DIRS}")
+
 # Add gui files
 set(GUI_FILES
     include/gui_interface.h
     include/gui.h
     src/gui.cpp
 )
+# Add gui files
+set(SDFORMAT_PARSER_FILES
+    include/sdformat_parser_interface.h
+    include/sdformat_parser.h
+    src/sdformat_parser.cpp
+)
 
-add_executable(sdformat-editor
-    src/main.cpp
-    ${GUI_FILES}
+# Add ImGui files
+set(IMGUI_FILES
     ${imgui_SOURCE_DIR}/imgui.cpp
     ${imgui_SOURCE_DIR}/imgui_demo.cpp
     ${imgui_SOURCE_DIR}/imgui_draw.cpp
@@ -28,11 +35,19 @@ add_executable(sdformat-editor
     ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
 )
 
+add_executable(sdformat-editor
+    src/main.cpp
+    ${GUI_FILES}
+    ${SDFORMAT_PARSER_FILES}
+    ${IMGUI_FILES}
+)
+
 # Include directories
 target_include_directories(sdformat-editor PRIVATE
     ${imgui_SOURCE_DIR}
     ${imgui_SOURCE_DIR}/backends
     ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${sdformat14_INCLUDE_DIRS}  # Add sdformat include directories
 )
 
 # Link against sdformat14
@@ -62,6 +77,9 @@ target_link_libraries(sdformat-editor PRIVATE
 ######################## TESTING ###########################
 ############################################################
 
+# Enable testing
+enable_testing()
+
 # Find Google Test
 set(gtest_SOURCE_DIR libs/googletest)
 
@@ -71,19 +89,15 @@ add_subdirectory(${gtest_SOURCE_DIR})
 # Add test files
 set(TEST_FILES
     tests/test_gui.cpp
+    tests/test_sdformat_parser.cpp
 )
 
 # Create test executable
 add_executable(sdformat-editor-tests
     ${TEST_FILES}
     ${GUI_FILES}
-    ${imgui_SOURCE_DIR}/imgui.cpp
-    ${imgui_SOURCE_DIR}/imgui_demo.cpp
-    ${imgui_SOURCE_DIR}/imgui_draw.cpp
-    ${imgui_SOURCE_DIR}/imgui_tables.cpp
-    ${imgui_SOURCE_DIR}/imgui_widgets.cpp
-    ${imgui_SOURCE_DIR}/backends/imgui_impl_glfw.cpp
-    ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
+    ${SDFORMAT_PARSER_FILES}
+    ${IMGUI_FILES}
 )
 
 # Include directories for tests
@@ -92,6 +106,7 @@ target_include_directories(sdformat-editor-tests PRIVATE
     ${imgui_SOURCE_DIR}/backends
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${gtest_SOURCE_DIR}/googletest/include
+    ${sdformat14_INCLUDE_DIRS}  # Add sdformat include directories
 )
 
 # Link against Google Test and other libraries

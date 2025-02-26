@@ -10,7 +10,7 @@
  class GUITest : public ::testing::Test {
  protected:
      GUII* gui;
-     bool gui_initialization_successful;
+     bool gui_initialization_successful = false;
     
      void SetUp() override {
          gui = new GUI("Test Window", gui_initialization_successful);
