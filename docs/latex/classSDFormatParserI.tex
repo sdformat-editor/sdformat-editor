@@ -1,0 +1,57 @@
+\doxysection{SDFormat\+ParserI Class Reference}
+\hypertarget{classSDFormatParserI}{}\label{classSDFormatParserI}\index{SDFormatParserI@{SDFormatParserI}}
+
+
+Interface for the SDFormat Editor\textquotesingle{}s Parser.  
+
+
+
+
+{\ttfamily \#include $<$sdformat\+\_\+parser\+\_\+interface.\+h$>$}
+
+
+
+Inheritance diagram for SDFormat\+ParserI\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classSDFormatParserI__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classSDFormatParserI_a404feccbe479eadff00da8ca881fbc85}{Initialize}} (const std\+::string file\+\_\+path, bool \&success)=0
+\begin{DoxyCompactList}\small\item\em Initialization of the Parser. Will re-\/initalize the parser if initalized already. NOTE\+: (zaid) As more features are added, more things will be added to this initalize method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for the SDFormat Editor\textquotesingle{}s Parser. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSDFormatParserI_a404feccbe479eadff00da8ca881fbc85}\label{classSDFormatParserI_a404feccbe479eadff00da8ca881fbc85} 
+\index{SDFormatParserI@{SDFormatParserI}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!SDFormatParserI@{SDFormatParserI}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily virtual void SDFormat\+Parser\+I\+::\+Initialize (\begin{DoxyParamCaption}\item[{const std\+::string}]{file\+\_\+path,  }\item[{bool \&}]{success }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Initialization of the Parser. Will re-\/initalize the parser if initalized already. NOTE\+: (zaid) As more features are added, more things will be added to this initalize method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em file\+\_\+path} & The relative or absolute filepath to the SDF model. If relative, a relative\+\_\+to path must be specified. \\
+\hline
+\mbox{\texttt{ out}}  & {\em success} & True if SDFParser initalization is successful \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classSDFormatParser_ada8d05784ae55ffebeb83f41ce1b70fa}{SDFormat\+Parser}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/sdformat\+\_\+parser\+\_\+interface.\+h\end{DoxyCompactItemize}

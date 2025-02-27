@@ -23,7 +23,9 @@
 // SDFormat dependencies
 #include <sdf/sdf.hh>
 
-// Allows for unique pointers
+#include <cstdlib>
+#include <cstring>
+#include <limits.h>
 #include <memory>
 
 #include <sdformat_parser_interface.h>
@@ -32,16 +34,10 @@
 class SDFormatParser : public SDFormatParserI
 {
 
-    /// \brief Constructor that wraps the Initialize method
-    /// NOTE: (zaid) As more features are added, more things will be added to this initalize method
-    /// \param[in] file_path The relative or absolute filepath to the SDF model. If relative, a relative_to path must be specified.
-    /// \param[out] success True if SDFParser initalization is successful
-    /// \param[in] is_relative Optional. If true, indicates the provided path is relative
-    /// \param[in] relative_to Optional. If is_relative is true, this must be an absolute path specifying what file_path is relative to.
-    public: SDFormatParser(const std::string file_path, bool &success, const bool is_relative = false, const std::string relative_to = "");
+    private: sdf::SDFPtr sdfElement;
 
     /// \brief Implementation of interface method
-    private: virtual void Initialize(const std::string file_path, bool &success, const bool is_relative = false, const std::string relative_to = "") override;
+    public: virtual void Initialize(const std::string file_path, bool &success) override;
 
 };
 

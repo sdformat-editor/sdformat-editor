@@ -26,13 +26,11 @@
 class SDFormatParserI
 {
 
-/// \brief Initialization of the Parser. Should be wrapped in the constructor of the implementation.
+/// \brief Initialization of the Parser. Will re-initalize the parser if initalized already.
 /// NOTE: (zaid) As more features are added, more things will be added to this initalize method
 /// \param[in] file_path The relative or absolute filepath to the SDF model. If relative, a relative_to path must be specified.
 /// \param[out] success True if SDFParser initalization is successful
-/// \param[in] is_relative Optional. If true, indicates the provided path is relative
-/// \param[in] relative_to Optional. If is_relative is true, this must be an absolute path specifying what file_path is relative to.
-protected: virtual void Initialize(const std::string file_path, bool &success, const bool is_relative = false, const std::string relative_to = "") = 0;
+public: virtual void Initialize(const std::string file_path, bool &success) = 0;
 
 };
 

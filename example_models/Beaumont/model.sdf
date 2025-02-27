@@ -7,14 +7,6 @@
         <mass>23</mass>
         <pose>0 0.13 0.025 0 -0 0</pose>
         <!-- Mass moments of inertia imported from the "Simplified ROV" model in Onshape. Material chosen was Aluminum-->
-        <inertia>
-          <ixx>0.34673407</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>0.2546457474</iyy>
-          <iyz>0.000011623</iyz>
-          <izz>0.3330063202</izz>
-        </inertia>
       </inertial>
       <self_collide>0</self_collide>
       <enable_wind>0</enable_wind>

@@ -37,7 +37,7 @@ bool GUI::ShouldClose()
 
 void GUI::Initialize(const std::string &window_name, bool &success)
 {
-  success = true; // Set success to be true by default
+  success = false; 
 
   // Specify the error handler for GLFW
   glfwSetErrorCallback(GUI::glfw_error_callback);
@@ -45,7 +45,6 @@ void GUI::Initialize(const std::string &window_name, bool &success)
   // Return false if GLFW initialization fails
   if (!glfwInit()) 
   {
-    success = false;
     return;
   }
 
@@ -86,7 +85,6 @@ void GUI::Initialize(const std::string &window_name, bool &success)
   // Return false if window initalization fails
   if (window == nullptr) 
   {
-    success = false;
     return;
   }
   glfwMakeContextCurrent(window);
@@ -108,6 +106,8 @@ void GUI::Initialize(const std::string &window_name, bool &success)
 
   // Set the background colour
   background_colour = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+
+  success = true;
 }
 
 void GUI::Update()
