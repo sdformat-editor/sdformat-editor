@@ -46,7 +46,7 @@ int main(int, char **)
     {
         // Poll the GUI for user input
         // Update will return nullptr if the user does nothing
-        std::unique_ptr<CommandI> user_command(gui->Update(sdformatParser));
+        std::unique_ptr<CommandI> user_command = gui->Update(sdformatParser);
 
         if (user_command)
         {
@@ -54,7 +54,7 @@ int main(int, char **)
             if (user_command->threaded())
             {
                 // Make a thread for executing this command
-                std::thread command_thread([&user_command, &undo_commands_stack, gui]() {
+                std::thread command_thread([user_command = std::move(user_command), &undo_commands_stack, gui]() mutable {
                 
                     // (zaid) I don't forsee there being a time where we really need to take user input
                     // while an external thread is doing some operation (ex. opening a file). To make things
@@ -68,10 +68,12 @@ int main(int, char **)
                     }
 
                     // Allow the GUI to take user commands
-                    gui->prevent_input_flag = false;   
+                    gui->prevent_input_flag = false; 
+                    
                 });             
 
-                // Detach this thread such that it will be automatically destroyed when finished
+                // Join this thread to ensure it completes execution before continuing
+
                 command_thread.detach();
             }
             else if (user_command->execute())

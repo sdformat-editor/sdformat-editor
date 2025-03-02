@@ -29,6 +29,7 @@ OpenFileCommand::OpenFileCommand(GUII* gui, SDFormatParserI* sdformatParser)
 
 bool OpenFileCommand::execute()
 {
+
   std::string filepath = this->gui->OpenFileDialog();
   
   if (file_path == "")
@@ -41,6 +42,7 @@ bool OpenFileCommand::execute()
   this->sdformatParser->Initialize(file_path, success);
 
   return success;
+  
 }
 
 bool OpenFileCommand::threaded() 
