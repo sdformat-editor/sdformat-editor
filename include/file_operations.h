@@ -23,6 +23,7 @@
 // SDFormat dependencies
 #include <sdf/sdf.hh>
 
+/// \brief Singleton class to handle file operations
 class FileOperations
 {
     /// \brief Opens a dialog for the user to open a file on their filesystem 
