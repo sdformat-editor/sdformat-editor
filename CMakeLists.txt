@@ -13,7 +13,7 @@ find_package(sdformat14 REQUIRED)
 
 # Add gui files
 set(GUI_FILES
-    include/gui_interface.h
+    include/interfaces/gui_interface.h
     include/gui.h
     src/gui.cpp
 
@@ -22,14 +22,14 @@ set(GUI_FILES
 )
 # Add gui files
 set(SDFORMAT_PARSER_FILES
-    include/sdformat_parser_interface.h
+    include/interfaces/sdformat_parser_interface.h
     include/sdformat_parser.h
     src/sdformat_parser.cpp
 )
 
 # Add gui files
 set(MODEL_VIEWER_FILES
-    include/model_viewer_interface.h
+    include/interfaces/model_viewer_interface.h
     include/model_viewer.h
     src/model_viewer.cpp
 )

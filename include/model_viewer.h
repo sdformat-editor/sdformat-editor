@@ -20,7 +20,7 @@
 #ifndef SDFORMAT_EDITOR_MODEL_VIEWER_HH_
 #define SDFORMAT_EDITOR_MODEL_VIEWER_HH_
 
-#include <model_viewer_interface.h>
+#include <interfaces/model_viewer_interface.h>
 
 /// \brief Implementation of SDFormatParserI
 class ModelViewer : public ModelViewerI

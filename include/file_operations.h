@@ -30,7 +30,6 @@
 #include <thread>
 #include <mutex>
 
-/// \brief Implementation of SDFormatParserI
 class FileOperations
 {
     private: bool operation_active;

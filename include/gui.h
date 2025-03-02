@@ -30,8 +30,8 @@
 // Allows for unique pointers
 #include <memory>
 
-#include <gui_interface.h>
 #include "file_operations.h"
+#include <interfaces/gui_interface.h>
 
 /// \brief Implementation of GUII
 class GUI : public GUII

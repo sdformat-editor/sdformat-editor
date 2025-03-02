@@ -28,7 +28,7 @@
 #include <limits.h>
 #include <memory>
 
-#include <sdformat_parser_interface.h>
+#include <interfaces/sdformat_parser_interface.h>
 
 /// \brief Implementation of SDFormatParserI
 class SDFormatParser : public SDFormatParserI
