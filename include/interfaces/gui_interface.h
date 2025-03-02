@@ -34,28 +34,33 @@
 class GUII : public std::enable_shared_from_this<GUII>
 {
 
-/// \brief Initialization of the GUI. Should be wrapped in the constructor of the implementation.
-/// NOTE: (zaid) As more features are added, more things will be added to this initalize method
-/// \param[in] window_name The name to be given to the SDFormatEditor Window
-/// \param[out] success true if window initalization is successful
-protected: virtual void Initialize(const std::string &windowName, bool &success) = 0;
+    /// \callgraph
+    /// \brief Initialization of the GUI. Should be wrapped in the constructor of the implementation.
+    /// NOTE: (zaid) As more features are added, more things will be added to this initalize method
+    /// \param[in] window_name The name to be given to the SDFormatEditor Window
+    /// \param[out] success true if window initalization is successful
+    protected: virtual void Initialize(const std::string &windowName, bool &success) = 0;
 
-/// \brief Updating the GUI
-/// \param[in] sdfParser Pointer to the SDF parser interface object
-/// \returns The a pointer to the command resulting from the user's action during this frame
-public: virtual std::unique_ptr<CommandI> Update(std::shared_ptr<SDFormatParserI> sdformat_parser) = 0;
+    /// \callgraph
+    /// \brief Updating the GUI
+    /// \param[in] sdfParser Pointer to the SDF parser interface object
+    /// \returns The a pointer to the command resulting from the user's action during this frame
+    public: virtual std::unique_ptr<CommandI> Update(std::shared_ptr<SDFormatParserI> sdformat_parser) = 0;
 
-/// \brief Indicate if the GUI should close 
-public: virtual bool ShouldClose() = 0;
+    /// \callgraph
+    /// \brief Indicate if the GUI should close 
+    public: virtual bool ShouldClose() = 0;
 
-/// \brief Open the file dialog
-/// \returns An file path or ""
-public: virtual std::string OpenFileDialog() = 0;
+    /// \callgraph
+    /// \brief Open the file dialog
+    /// \returns An file path or ""
+    public: virtual std::string OpenFileDialog() = 0;
 
-/// \brief A flag which can be set to prevent the GUI from taking user input.
-/// This can be used in instances where OpenFileDialog or another threadded method is running.
-/// NOTE: (zaid) Technically, this class is no longer an "interface" since this attribute is included...
-public: std::atomic<bool> prevent_input_flag = false;
+    /// \callgraph
+    /// \brief A flag which can be set to prevent the GUI from taking user input.
+    /// This can be used in instances where OpenFileDialog or another threadded method is running.
+    /// NOTE: (zaid) Technically, this class is no longer an "interface" since this attribute is included...
+    public: std::atomic<bool> prevent_input_flag = false;
 
 };
 

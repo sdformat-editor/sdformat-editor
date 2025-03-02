@@ -1,7 +1,7 @@
 <map id="ModelViewerTest" name="ModelViewerTest">
-<area shape="rect" id="Node000001" title="Unit test class for testing the Model Viewer class." alt="" coords="55,93,188,119"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,107,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,40,114,91,110,94,71,43"/>
-<area shape="rect" id="Node000003" href="$classModelViewerI.html" title="Interface for the SDFormat Editor&#39;s 3D Model Vewer." alt="" coords="131,5,242,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="172,43,133,94,128,91,167,40"/>
+<area shape="rect" id="Node000001" title="Unit test class for testing the Model Viewer class." alt="" coords="39,197,233,283"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,37,99,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,114,118,196,113,198,72,116"/>
+<area shape="rect" id="Node000003" href="$classModelViewerI.html" title="Interface for the SDFormat Editor&#39;s 3D Model Vewer." alt="" coords="123,5,319,135"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="191,136,167,183,162,181,186,134"/>
 </map>

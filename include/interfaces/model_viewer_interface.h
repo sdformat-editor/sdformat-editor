@@ -27,15 +27,17 @@
 class ModelViewerI
 {
 
-/// \brief Initialization of the Model Viewer. 
-/// NOTE: (zaid) This initalize method is not wrapped by the constructor because we can reinitalize it 
-//  multiple times (unlike the GUI), which should terminate the program if it closes.
-/// \param[in] cad_files The name to be given to the SDFormatEditor Window
-/// \param[out] success true if window initalization is successful
-public: virtual void Initialize(const std::vector<std::string> &cad_files, bool &success) = 0;
+    /// \callgraph
+    /// \brief Initialization of the Model Viewer. 
+    /// NOTE: (zaid) This initalize method is not wrapped by the constructor because we can reinitalize it 
+    //  multiple times (unlike the GUI), which should terminate the program if it closes.
+    /// \param[in] cad_files The name to be given to the SDFormatEditor Window
+    /// \param[out] success true if window initalization is successful
+    public: virtual void Initialize(const std::vector<std::string> &cad_files, bool &success) = 0;
 
-/// \brief Updating the Model Viewer
-public: virtual void Update() = 0;
+    /// \callgraph
+    /// \brief Updating the Model Viewer
+    public: virtual void Update() = 0;
 
 };
 

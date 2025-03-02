@@ -1,7 +1,7 @@
 <map id="SDFormatParserTest" name="SDFormatParserTest">
-<area shape="rect" id="Node000001" title="Unit test class for testing the SDFormatParser class." alt="" coords="49,93,201,119"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,107,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,40,118,91,114,94,72,43"/>
-<area shape="rect" id="Node000003" href="$classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="131,5,261,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="180,43,137,94,133,91,176,39"/>
+<area shape="rect" id="Node000001" title="Unit test class for testing the SDFormatParser class." alt="" coords="63,163,207,228"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,20,99,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,96,118,161,114,164,75,99"/>
+<area shape="rect" id="Node000003" href="$classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="123,5,312,100"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="192,102,164,150,159,147,188,99"/>
 </map>

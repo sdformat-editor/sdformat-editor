@@ -25,12 +25,12 @@
 /// \brief Interface for the SDFormat Editor's Parser 
 class SDFormatParserI
 {
-
-/// \brief Initialization of the Parser. Will re-initalize the parser if initalized already.
-/// NOTE: (zaid) As more features are added, more things will be added to this initalize method
-/// \param[in] file_path The relative or absolute filepath to the SDF model. If relative, a relative_to path must be specified.
-/// \param[out] success True if SDFParser initalization is successful
-public: virtual void Initialize(const std::string file_path, bool &success) = 0;
+    /// \callgraph
+    /// \brief Initialization of the Parser. Will re-initalize the parser if initalized already.
+    /// NOTE: (zaid) As more features are added, more things will be added to this initalize method
+    /// \param[in] file_path The relative or absolute filepath to the SDF model. If relative, a relative_to path must be specified.
+    /// \param[out] success True if SDFParser initalization is successful
+    public: virtual void Initialize(const std::string file_path, bool &success) = 0;
 
 };
 

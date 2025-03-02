@@ -30,6 +30,7 @@
 class OpenFileCommand : public CommandI
 {
 
+  /// \callgraph
   /// \brief Constructor for open model command objects.
   /// \param[in] gui Pointer to the GUII object 
   /// \param[in] sdformatParser Pointer to the SDFormatParserI object

@@ -28,18 +28,22 @@
 class CommandI
 {
 
+    /// \callgraph
     /// \brief Execution of the command. Must be implemented as applicable by the derived class.
     /// \returns True if the command has been executed
     public: virtual bool execute() = 0;
 
+    /// \callgraph
     /// \brief Undo functionality of the command.
     /// \returns True if the command can be and has been undone
     public: virtual bool undo() = 0;
 
+    /// \callgraph
     /// \brief Redo functionality of the command.
     /// \returns True if the command can be and has been redone
     public: virtual bool redo() = 0;
 
+    /// \callgraph
     /// \brief Indicates if this command should be run in a thread
     /// \returns True if this command should be run in a thread
     public: virtual bool threaded() = 0;
