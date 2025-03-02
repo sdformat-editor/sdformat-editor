@@ -29,15 +29,16 @@ class CommandI
 {
 
     /// \brief Execution of the command. Must be implemented as applicable by the derived class.
-    virtual void execute() = 0;
+    /// \returns True if the command has been executed
+    public: virtual bool execute() = 0;
 
     /// \brief Undo functionality of the command.
-    /// \param[out] success True if the command can be and has been undone
-    virtual void undo(bool &success) = 0;
+    /// \returns True if the command can be and has been undone
+    public: virtual bool undo() = 0;
 
     /// \brief Redo functionality of the command.
-    /// \param[out] success True if the command can be and has been redone
-    virtual void redo(bool &success) = 0;
+    /// \returns True if the command can be and has been redone
+    public: virtual bool redo() = 0;
 
 };
 

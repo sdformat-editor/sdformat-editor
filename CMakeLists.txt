@@ -20,6 +20,7 @@ set(GUI_FILES
     src/file_operations.cpp
     include/file_operations.h
 )
+
 # Add gui files
 set(SDFORMAT_PARSER_FILES
     include/interfaces/sdformat_parser_interface.h
@@ -32,6 +33,12 @@ set(MODEL_VIEWER_FILES
     include/interfaces/model_viewer_interface.h
     include/model_viewer.h
     src/model_viewer.cpp
+)
+
+# Add files relating to the command interface and its derived classes
+set(COMMAND_FILES
+    include/interfaces/command_interface.h
+    include/commands/OpenModelCommand.h
 )
 
 # Add ImGui files
@@ -51,6 +58,7 @@ add_executable(sdformat-editor
     ${SDFORMAT_PARSER_FILES}
     ${MODEL_VIEWER_FILES}
     ${IMGUI_FILES}
+    ${COMMAND_FILES}
 )
 
 # Include directories
@@ -111,6 +119,7 @@ add_executable(sdformat-editor-tests
     ${SDFORMAT_PARSER_FILES}
     ${MODEL_VIEWER_FILES}
     ${IMGUI_FILES}
+    ${COMMAND_FILES}
 )
 
 # Include directories for tests
