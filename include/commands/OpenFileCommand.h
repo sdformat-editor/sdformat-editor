@@ -27,32 +27,32 @@
 
 
 /// \brief Open model command implementation of CommandI
-class OpenModelCommand : public CommandI
+class OpenFileCommand : public CommandI
 {
 
   /// \brief Constructor for open model command objects.
   /// \param[in] gui Pointer to the GUII object 
   /// \param[in] sdformatParser Pointer to the SDFormatParserI object
-  /// \param[in] file_path File path the model
-  public: OpenModelCommand(GUII* gui, SDFormatParserI* sdformatParser, const std::string &file_path);
+  public: OpenFileCommand(GUII* gui, SDFormatParserI* sdformatParser);
 
-  /// \brief Opens the given file path using the sdformat parser and displays the result in the GUI 
+  /// \brief Implementation of interface method. 
   /// \returns True if the SDFormatParser has successfully parsed the file and it has been displayed in the GUI
   private: bool execute() override;
 
-  /// \brief The open model command should not be undoable
+  /// \brief Implementation of interface method.
   /// \returns Always False
   private: bool undo() override;
 
-  /// \brief The open model command should not be redoable
+  /// \brief Implementation of interface method.
   /// \returns Always False
   private: bool redo() override;
 
-  /// \brief Destructor 
-  public: ~OpenModelCommand();
+  /// \brief Implementation of interface method.
+  /// \returns Always True
+  private: bool threaded() override;
 
   /// \brief Filepath of the model
-  private: const std::string &file_path;
+  private: std::string file_path;
 
   /// @brief Pointer to the gui interface
   private: GUII* gui;

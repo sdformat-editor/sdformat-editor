@@ -17,17 +17,43 @@
 * Developer: Zaid Duraid, Ean Wheeler, Evan Vokey
 */
 
-#ifndef FILE_OPERATIONS_HH_
-#define FILE_OPERATIONS_HH_
+#include "commands/OpenFileCommand.h"
 
-// SDFormat dependencies
-#include <sdf/sdf.hh>
 
-class FileOperations
+OpenFileCommand::OpenFileCommand(GUII* gui, SDFormatParserI* sdformatParser)
 {
-    /// \brief Opens a dialog for the user to open a file on their filesystem 
-    /// \return An absolute file path or an empty string
-    public: static std::string OpenFileDialog();
-};
+  this->gui = gui;
+  this->sdformatParser = sdformatParser;
+  this->file_path = file_path;
+}
 
-#endif
+bool OpenFileCommand::execute()
+{
+  std::string filepath = this->gui->OpenFileDialog();
+  
+  if (file_path == "")
+  {
+    return false;
+  }
+  
+  bool success;
+
+  this->sdformatParser->Initialize(file_path, success);
+
+  return success;
+}
+
+bool OpenFileCommand::threaded() 
+{
+  return true;
+}
+
+bool OpenFileCommand::undo()
+{
+  return false;
+}
+
+bool OpenFileCommand::redo()
+{
+  return false;
+}

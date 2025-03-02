@@ -18,12 +18,11 @@
 */
 
 #include "gui.h"
-
+#include "commands/OpenFileCommand.h"
+#include "file_operations.h"
 
 GUI::GUI(const std::string &window_name, bool &success)
 {
-  file_ops = new FileOperations();
-
   this->Initialize(window_name, success);
 }
 
@@ -112,13 +111,22 @@ void GUI::Initialize(const std::string &window_name, bool &success)
   success = true;
 }
 
-void GUI::Update()
+std::string GUI::OpenFileDialog()
 {
+  return FileOperations::OpenFileDialog();
+}
+
+
+std::unique_ptr<CommandI> GUI::Update(SDFormatParserI* sdformat_parser)
+{
+
+  std::unique_ptr<CommandI> command = nullptr;
+
   glfwPollEvents();
   if (glfwGetWindowAttrib(this->window, GLFW_ICONIFIED) != 0)
   {
       ImGui_ImplGlfw_Sleep(10);
-      return;
+      return command;
   }
 
   // Start the Dear ImGui frame
@@ -136,7 +144,7 @@ void GUI::Update()
           }
           if (ImGui::MenuItem("Open", "Ctrl+O"))
           {
-            file_ops->OpenAndParse();
+            if (!prevent_input_flag) command = std::make_unique<OpenFileCommand>(this, sdformat_parser);
           }
           if (ImGui::MenuItem("Save", "Ctrl+S"))
           {
@@ -152,7 +160,8 @@ void GUI::Update()
   {
       ImGui::Begin("Hello, world!"); // Create a window called "Hello, world!" and append into it.
 
-      ImGui::Text("Active File is: %s", file_ops->getActiveFilePath().c_str()); // Display some text (you can use a format strings too)
+      // TODO: (zaid) Save the current working directory and/or current file as an attribute to the GUI object or the file operations singleton
+      // ImGui::Text("Active File is: %s", file_ops->getActiveFilePath().c_str()); // Display some text (you can use a format strings too)
 
       ImGui::ColorEdit3("clear color", (float *)&this->background_colour); // Edit 3 floats representing a color
 
@@ -170,6 +179,10 @@ void GUI::Update()
   ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
   glfwSwapBuffers(window);
+
+  // Unlock the mutex by ending the scope of lock_guard
+
+  return command;
 }
 
 GUI::~GUI()

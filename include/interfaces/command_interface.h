@@ -40,6 +40,10 @@ class CommandI
     /// \returns True if the command can be and has been redone
     public: virtual bool redo() = 0;
 
+    /// \brief Indicates if this command should be run in a thread
+    /// \returns True if this command should be run in a thread
+    public: virtual bool threaded() = 0;
+
 };
 
 #endif

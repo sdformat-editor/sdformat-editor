@@ -27,10 +27,6 @@
 #include "imgui_impl_opengl3.h"
 #include <GLFW/glfw3.h> 
 
-// Allows for unique pointers
-#include <memory>
-
-#include "file_operations.h"
 #include <interfaces/gui_interface.h>
 
 /// \brief Implementation of GUII
@@ -52,13 +48,17 @@ class GUI : public GUII
   private: bool ShouldClose() override;
 
   /// \brief Implementation of update method
-  private: void Update() override;
+  private: std::unique_ptr<CommandI> Update(SDFormatParserI* sdformat_parser) override;
   
   /// \brief Function for handling GLFW Error (required to be static by GLFW)
   ///         NOTE: (zaid) It may be good to integrate this with an error handler class
   /// \param[in] error Error code from GLFW 
   /// \param[in] description Description of the error from GLFW 
   private: static void glfw_error_callback(int error, const char *description);
+
+  /// \brief Implementation of interface method 
+  /// \returns An file path or ""
+  private: std::string OpenFileDialog() override;
 
   /// \brief Pointer to the GLFW window object, used to manage for rendering and handling window events
   private: GLFWwindow *window = nullptr;
@@ -67,7 +67,8 @@ class GUI : public GUII
   private: ImGuiIO *io = nullptr;
 
   /// @brief Reference to the file operations object
-  private: FileOperations* file_ops;
+  /// NOTE: (zaid) will use the opportunity to implement the singleton design pattern for the file ops class
+  // private: FileOperationsI* file_ops;
 
   /// @brief The background color used in the GUI
   private: ImVec4 background_colour;

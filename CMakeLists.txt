@@ -11,34 +11,14 @@ find_package(sdformat14 REQUIRED)
 
 # message(STATUS "sdformat14_INCLUDE_DIRS: ${sdformat14_INCLUDE_DIRS}")
 
-# Add gui files
-set(GUI_FILES
-    include/interfaces/gui_interface.h
-    include/gui.h
-    src/gui.cpp
-
-    src/file_operations.cpp
-    include/file_operations.h
+# Add header files
+file(GLOB_RECURSE HEADER_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/*
 )
 
-# Add gui files
-set(SDFORMAT_PARSER_FILES
-    include/interfaces/sdformat_parser_interface.h
-    include/sdformat_parser.h
-    src/sdformat_parser.cpp
-)
-
-# Add gui files
-set(MODEL_VIEWER_FILES
-    include/interfaces/model_viewer_interface.h
-    include/model_viewer.h
-    src/model_viewer.cpp
-)
-
-# Add files relating to the command interface and its derived classes
-set(COMMAND_FILES
-    include/interfaces/command_interface.h
-    include/commands/OpenModelCommand.h
+# Add source files
+file(GLOB_RECURSE _SOURCE_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*
 )
 
 # Add ImGui files
@@ -53,12 +33,9 @@ set(IMGUI_FILES
 )
 
 add_executable(sdformat-editor
-    src/main.cpp
-    ${GUI_FILES}
-    ${SDFORMAT_PARSER_FILES}
-    ${MODEL_VIEWER_FILES}
+    ${_SOURCE_FILES}
+    ${HEADER_FILES}
     ${IMGUI_FILES}
-    ${COMMAND_FILES}
 )
 
 # Include directories
@@ -115,11 +92,9 @@ set(TEST_FILES
 # Create test executable
 add_executable(sdformat-editor-tests
     ${TEST_FILES}
-    ${GUI_FILES}
-    ${SDFORMAT_PARSER_FILES}
-    ${MODEL_VIEWER_FILES}
+    ${_SOURCE_FILES}
+    ${HEADER_FILES}
     ${IMGUI_FILES}
-    ${COMMAND_FILES}
 )
 
 # Include directories for tests
