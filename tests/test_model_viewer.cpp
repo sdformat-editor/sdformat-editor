@@ -10,17 +10,28 @@
 class ModelViewerTest : public ::testing::Test {
     protected:
         ModelViewerI* model_viewer;
-        bool model_viewer_initialization_successful = false;
-       
+
         void SetUp() override {
-            model_viewer = new ModelViewer("Test Window", model_viewer_initialization_successful);
+            model_viewer = new ModelViewer;
         }
-    
+       
         void TearDown() override {
             delete model_viewer;
         }
 };
 
 TEST_F(ModelViewerTest, Initialization) {
-    ASSERT_TRUE(model_viewer_initialization_successful);
+    bool model_viewer_initialization_successful = false;
+
+    const std::vector<std::string> empty_vector;
+
+    this->model_viewer->Initialize(empty_vector, model_viewer_initialization_successful);
+
+    EXPECT_TRUE(model_viewer_initialization_successful);
+}
+
+TEST_F(ModelViewerTest, Updating) {
+
+    ASSERT_NO_THROW(this->model_viewer->Update());
+
 }

@@ -20,9 +20,14 @@
 #include "model_viewer.h"
 
 
-ModelViewer::ModelViewer(const std::string &window_name, bool &success)
+void ModelViewer::Initialize(const std::vector<std::string> &cad_files, bool &success)
 {
-  this->Initialize(window_name, success);
+  // TODO: Implementation
+}
+
+void ModelViewer::Update()
+{
+  // TODO: Implementation
 }
 
 

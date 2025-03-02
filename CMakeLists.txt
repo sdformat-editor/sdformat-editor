@@ -24,6 +24,13 @@ set(SDFORMAT_PARSER_FILES
     src/sdformat_parser.cpp
 )
 
+# Add gui files
+set(MODEL_VIEWER_FILES
+    include/model_viewer_interface.h
+    include/model_viewer.h
+    src/model_viewer.cpp
+)
+
 # Add ImGui files
 set(IMGUI_FILES
     ${imgui_SOURCE_DIR}/imgui.cpp
@@ -39,6 +46,7 @@ add_executable(sdformat-editor
     src/main.cpp
     ${GUI_FILES}
     ${SDFORMAT_PARSER_FILES}
+    ${MODEL_VIEWER_FILES}
     ${IMGUI_FILES}
 )
 
@@ -90,6 +98,7 @@ add_subdirectory(${gtest_SOURCE_DIR})
 set(TEST_FILES
     tests/test_gui.cpp
     tests/test_sdformat_parser.cpp
+    tests/test_model_viewer.cpp
 )
 
 # Create test executable
@@ -97,6 +106,7 @@ add_executable(sdformat-editor-tests
     ${TEST_FILES}
     ${GUI_FILES}
     ${SDFORMAT_PARSER_FILES}
+    ${MODEL_VIEWER_FILES}
     ${IMGUI_FILES}
 )
 

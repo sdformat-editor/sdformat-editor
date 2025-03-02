@@ -26,16 +26,11 @@
 class ModelViewer : public ModelViewerI
 {
 
-    /// \brief Constructor that wraps the Initialize method
-    /// \param[in] window_name The name to be given to the SDFormatEditor Window
-    /// \param[out] success true if window initalization is successful
-    public: ModelViewer(const std::string &window_name, bool &success);
-
     /// \brief Destructor 
     public: ~ModelViewer();
 
     /// \brief Implementation of interface method
-    private: void Initialize(const std::string &window_name, bool &success) override;
+    private: void Initialize(const std::vector<std::string> &cad_files, bool &success) override;
 
     /// \brief Implementation of update method
     private: void Update() override;

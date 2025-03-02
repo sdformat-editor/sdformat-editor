@@ -21,16 +21,18 @@
 #define SDFORMAT_EDITOR_MODEL_VIEWER_INTERFACE_HH_
 
 #include <iostream>
+#include <vector>
 
 /// \brief Interface for the SDFormat Editor's 3D Model Vewer 
 class ModelViewerI
 {
 
-/// \brief Initialization of the Model Viewer. Should be wrapped in the constructor of the implementation.
-/// NOTE: (zaid) As more features are added, more things will be added to this initalize method
-/// \param[in] window_name The name to be given to the SDFormatEditor Window
+/// \brief Initialization of the Model Viewer. 
+/// NOTE: (zaid) This initalize method is not wrapped by the constructor because we can reinitalize it 
+//  multiple times (unlike the GUI), which should terminate the program if it closes.
+/// \param[in] cad_files The name to be given to the SDFormatEditor Window
 /// \param[out] success true if window initalization is successful
-protected: virtual void Initialize(const std::string &windowName, bool &success) = 0;
+public: virtual void Initialize(const std::vector<std::string> &cad_files, bool &success) = 0;
 
 /// \brief Updating the Model Viewer
 public: virtual void Update() = 0;
