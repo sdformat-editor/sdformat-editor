@@ -20,17 +20,16 @@
 #include "commands/OpenFileCommand.h"
 
 
-OpenFileCommand::OpenFileCommand(GUII* gui, SDFormatParserI* sdformatParser)
+OpenFileCommand::OpenFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser) 
+  : gui(gui), sdformatParser(sdformatParser)
 {
-  this->gui = gui;
-  this->sdformatParser = sdformatParser;
-  this->file_path = file_path;
+  
 }
 
 bool OpenFileCommand::execute()
 {
 
-  std::string filepath = this->gui->OpenFileDialog();
+  std::string file_path = this->gui->OpenFileDialog();
   
   if (file_path == "")
   {
@@ -42,7 +41,7 @@ bool OpenFileCommand::execute()
   this->sdformatParser->Initialize(file_path, success);
 
   return success;
-  
+
 }
 
 bool OpenFileCommand::threaded() 

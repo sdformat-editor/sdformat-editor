@@ -79,7 +79,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Implementation of <a class="el" href="classGUII.html" title="Interface for the SDFormat Editor&#39;s Graphical User Interface.">GUII</a>.  
+<p>Implementation of <a class="el" href="classGUII.html" title="Interface for the SDFormat Editor&#39;s Graphical User Interface Note that this class also inherits from ...">GUII</a>.  
  <a href="classGUI.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="gui_8h_source.html">gui.h</a>&gt;</code></p>
@@ -88,9 +88,11 @@ Inheritance diagram for GUI:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGUI__inherit__graph.png" border="0" usemap="#aGUI_inherit__map" alt="Inheritance graph"/></div>
 <map name="aGUI_inherit__map" id="aGUI_inherit__map">
-<area shape="rect" title="Implementation of GUII." alt="" coords="7,79,54,104"/>
-<area shape="rect" href="classGUII.html" title="Interface for the SDFormat Editor&#39;s Graphical User Interface." alt="" coords="5,5,56,31"/>
-<area shape="poly" title=" " alt="" coords="33,44,33,79,28,79,28,44"/>
+<area shape="rect" title="Implementation of GUII." alt="" coords="57,167,103,192"/>
+<area shape="rect" href="classGUII.html" title="Interface for the SDFormat Editor&#39;s Graphical User Interface Note that this class also inherits from ..." alt="" coords="55,93,105,119"/>
+<area shape="poly" title=" " alt="" coords="83,132,83,167,77,167,77,132"/>
+<area shape="rect" title=" " alt="" coords="5,5,155,45"/>
+<area shape="poly" title=" " alt="" coords="83,59,83,93,77,93,77,59"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -98,9 +100,11 @@ Collaboration diagram for GUI:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGUI__coll__graph.png" border="0" usemap="#aGUI_coll__map" alt="Collaboration graph"/></div>
 <map name="aGUI_coll__map" id="aGUI_coll__map">
-<area shape="rect" title="Implementation of GUII." alt="" coords="7,79,54,104"/>
-<area shape="rect" href="classGUII.html" title="Interface for the SDFormat Editor&#39;s Graphical User Interface." alt="" coords="5,5,56,31"/>
-<area shape="poly" title=" " alt="" coords="33,44,33,79,28,79,28,44"/>
+<area shape="rect" title="Implementation of GUII." alt="" coords="57,167,103,192"/>
+<area shape="rect" href="classGUII.html" title="Interface for the SDFormat Editor&#39;s Graphical User Interface Note that this class also inherits from ..." alt="" coords="55,93,105,119"/>
+<area shape="poly" title=" " alt="" coords="83,132,83,167,77,167,77,132"/>
+<area shape="rect" title=" " alt="" coords="5,5,155,45"/>
+<area shape="poly" title=" " alt="" coords="83,59,83,93,77,93,77,59"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -122,9 +126,12 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a75a2aa8cff0e7601e0e8b97000213094" id="r_a75a2aa8cff0e7601e0e8b97000213094"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGUI.html#a75a2aa8cff0e7601e0e8b97000213094">ShouldClose</a> () override</td></tr>
 <tr class="memdesc:a75a2aa8cff0e7601e0e8b97000213094"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
 <tr class="separator:a75a2aa8cff0e7601e0e8b97000213094"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac15bbf5f9b91c676120fab474dbe1261" id="r_ac15bbf5f9b91c676120fab474dbe1261"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGUI.html#ac15bbf5f9b91c676120fab474dbe1261">Update</a> () override</td></tr>
-<tr class="memdesc:ac15bbf5f9b91c676120fab474dbe1261"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of update method.  <br /></td></tr>
-<tr class="separator:ac15bbf5f9b91c676120fab474dbe1261"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14375d8920104c20ddb51fc45901bc24" id="r_a14375d8920104c20ddb51fc45901bc24"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGUI.html#a14375d8920104c20ddb51fc45901bc24">Update</a> (std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParserI</a> &gt; sdformat_parser) override</td></tr>
+<tr class="memdesc:a14375d8920104c20ddb51fc45901bc24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of update method.  <br /></td></tr>
+<tr class="separator:a14375d8920104c20ddb51fc45901bc24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae03ac5fb89b2ba7be43c2aae029f3e95" id="r_ae03ac5fb89b2ba7be43c2aae029f3e95"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGUI.html#ae03ac5fb89b2ba7be43c2aae029f3e95">OpenFileDialog</a> () override</td></tr>
+<tr class="memdesc:ae03ac5fb89b2ba7be43c2aae029f3e95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
+<tr class="separator:ae03ac5fb89b2ba7be43c2aae029f3e95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
@@ -142,16 +149,20 @@ GLFWwindow *&#160;</td><td class="memItemRight" valign="bottom"><b>window</b> = 
 ImGuiIO *&#160;</td><td class="memItemRight" valign="bottom"><b>io</b> = nullptr</td></tr>
 <tr class="memdesc:ac6297526aeb809b472c7952fae1d07f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the ImGuiIO structure, which handles input/output operations for ImGui. <br /></td></tr>
 <tr class="separator:ac6297526aeb809b472c7952fae1d07f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34015969cf7c7eb56194a7a084778315" id="r_a34015969cf7c7eb56194a7a084778315"><td class="memItemLeft" align="right" valign="top"><a id="a34015969cf7c7eb56194a7a084778315" name="a34015969cf7c7eb56194a7a084778315"></a>
-ImVec4&#160;</td><td class="memItemRight" valign="bottom"><b>background_colour</b></td></tr>
-<tr class="memdesc:a34015969cf7c7eb56194a7a084778315"><td class="mdescLeft">&#160;</td><td class="mdescRight">The background color used in the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a>. <br /></td></tr>
+<tr class="memitem:a34015969cf7c7eb56194a7a084778315" id="r_a34015969cf7c7eb56194a7a084778315"><td class="memItemLeft" align="right" valign="top">ImVec4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGUI.html#a34015969cf7c7eb56194a7a084778315">background_colour</a></td></tr>
+<tr class="memdesc:a34015969cf7c7eb56194a7a084778315"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the file operations object NOTE: (zaid) will use the opportunity to implement the singleton design pattern for the file ops class.  <br /></td></tr>
 <tr class="separator:a34015969cf7c7eb56194a7a084778315"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_attribs_classGUII"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classGUII')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classGUII.html">GUII</a></td></tr>
+<tr class="memitem:a696206b73035d99215eb09577e817f04 inherit pub_attribs_classGUII" id="r_a696206b73035d99215eb09577e817f04"><td class="memItemLeft" align="right" valign="top">
+std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>prevent_input_flag</b> = false</td></tr>
+<tr class="memdesc:a696206b73035d99215eb09577e817f04 inherit pub_attribs_classGUII"><td class="mdescLeft">&#160;</td><td class="mdescRight">A flag which can be set to prevent the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> from taking user input. This can be used in instances where OpenFileDialog or another threadded method is running. NOTE: (zaid) Technically, this class is no longer an "interface" since this attribute is included... <br /></td></tr>
+<tr class="separator:a696206b73035d99215eb09577e817f04 inherit pub_attribs_classGUII"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implementation of <a class="el" href="classGUII.html" title="Interface for the SDFormat Editor&#39;s Graphical User Interface.">GUII</a>. </p>
+<div class="textblock"><p>Implementation of <a class="el" href="classGUII.html" title="Interface for the SDFormat Editor&#39;s Graphical User Interface Note that this class also inherits from ...">GUII</a>. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a85087e9f2d25696e4fab2b6b4cd3e0e6" name="a85087e9f2d25696e4fab2b6b4cd3e0e6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a85087e9f2d25696e4fab2b6b4cd3e0e6">&#9670;&#160;</a></span>GUI()</h2>
@@ -277,6 +288,36 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="ae03ac5fb89b2ba7be43c2aae029f3e95" name="ae03ac5fb89b2ba7be43c2aae029f3e95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae03ac5fb89b2ba7be43c2aae029f3e95">&#9670;&#160;</a></span>OpenFileDialog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string GUI::OpenFileDialog </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementation of interface method. </p>
+<dl class="section return"><dt>Returns</dt><dd>An file path or "" </dd></dl>
+
+<p>Implements <a class="el" href="classGUII.html#a4f80df3bf862a6da0cb37f17b59d3bf5">GUII</a>.</p>
+
+</div>
+</div>
 <a id="a75a2aa8cff0e7601e0e8b97000213094" name="a75a2aa8cff0e7601e0e8b97000213094"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a75a2aa8cff0e7601e0e8b97000213094">&#9670;&#160;</a></span>ShouldClose()</h2>
 
@@ -306,8 +347,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ac15bbf5f9b91c676120fab474dbe1261" name="ac15bbf5f9b91c676120fab474dbe1261"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac15bbf5f9b91c676120fab474dbe1261">&#9670;&#160;</a></span>Update()</h2>
+<a id="a14375d8920104c20ddb51fc45901bc24" name="a14375d8920104c20ddb51fc45901bc24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14375d8920104c20ddb51fc45901bc24">&#9670;&#160;</a></span>Update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -316,9 +357,10 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void GUI::Update </td>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt; GUI::Update </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParserI</a> &gt;&#160;</td>
+          <td class="paramname"><em>sdformat_parser</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -331,7 +373,33 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implementation of update method. </p>
 
-<p>Implements <a class="el" href="classGUII.html#aa006d42a634f75b03fa9b45daddc9ae0">GUII</a>.</p>
+<p>Implements <a class="el" href="classGUII.html#acc1aad3211b05d53cc26dc83efc4270a">GUII</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a34015969cf7c7eb56194a7a084778315" name="a34015969cf7c7eb56194a7a084778315"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34015969cf7c7eb56194a7a084778315">&#9670;&#160;</a></span>background_colour</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ImVec4 GUI::background_colour</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reference to the file operations object NOTE: (zaid) will use the opportunity to implement the singleton design pattern for the file ops class. </p>
+<p>The background color used in the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> </p>
 
 </div>
 </div>

@@ -27,14 +27,14 @@ int main(int, char **)
 {
     bool gui_initalization_successful;
 
-    GUII* gui = new GUI("SDFormat Editor", gui_initalization_successful);
+    std::shared_ptr<GUII> gui = std::make_shared<GUI>("SDFormat Editor", gui_initalization_successful);
 
     // Exit the program if the GUI cannot initalize
     // This may happen if there is no active display
     if (!gui_initalization_successful) return 1;
 
     // The sdformatParser will be null until the user opens a file
-    SDFormatParserI* sdformatParser = nullptr;
+    std::shared_ptr<SDFormatParserI> sdformatParser = std::make_shared<SDFormatParser>();
 
     // Stacks for undo/redo functionality
     // TODO: Actually do something with these stacks
@@ -71,9 +71,8 @@ int main(int, char **)
                     gui->prevent_input_flag = false; 
                     
                 });             
-
-                // Join this thread to ensure it completes execution before continuing
-
+                
+                // Detach the thread such that it runs in the background
                 command_thread.detach();
             }
             else if (user_command->execute())
@@ -82,9 +81,6 @@ int main(int, char **)
             }
         }
     }
-
-    // Call the destructor of gui
-    delete gui;
 
     return 0;
 }

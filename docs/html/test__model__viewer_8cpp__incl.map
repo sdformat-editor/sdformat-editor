@@ -1,0 +1,13 @@
+<map id="tests/test_model_viewer.cpp" name="tests/test_model_viewer.cpp">
+<area shape="rect" id="Node000001" title="Unit tests for the Model Viewer class." alt="" coords="23,5,231,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,109,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,33,80,71,76,67,113,29"/>
+<area shape="rect" id="Node000003" href="$model__viewer_8h_source.html" title=" " alt="" coords="133,79,259,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="140,29,177,67,173,71,136,33"/>
+<area shape="rect" id="Node000004" href="$model__viewer__interface_8h_source.html" title=" " alt="" coords="105,152,287,192"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="199,104,199,138,193,138,193,104"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="108,240,188,265"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="187,194,165,229,160,227,182,191"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="213,240,275,265"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="210,191,232,227,227,229,205,194"/>
+</map>

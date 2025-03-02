@@ -27,8 +27,6 @@ void SDFormatParser::Initialize(std::string file_path, bool &success)
 {
   success = false;
 
-  // TODO: (zaid) Handle the case of the path being relative (convert it to absolute)
-
   // This is a vector of objects of the `std::Error` class
   sdf::Errors errors; 
 

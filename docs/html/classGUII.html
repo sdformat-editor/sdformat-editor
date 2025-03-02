@@ -71,13 +71,14 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="classGUII-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">GUII Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Interface for the SDFormat Editor's Graphical User Interface.  
+<p>Interface for the SDFormat Editor's Graphical User Interface Note that this class also inherits from std::enable_shared_from_this&lt;GUII&gt;, as it may be required to pass a shared pointer of itself into the <a class="el" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor...">CommandI</a> object in the Update method.  
  <a href="classGUII.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="gui__interface_8h_source.html">gui_interface.h</a>&gt;</code></p>
@@ -86,20 +87,42 @@ Inheritance diagram for GUII:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGUII__inherit__graph.png" border="0" usemap="#aGUII_inherit__map" alt="Inheritance graph"/></div>
 <map name="aGUII_inherit__map" id="aGUII_inherit__map">
-<area shape="rect" title="Interface for the SDFormat Editor&#39;s Graphical User Interface." alt="" coords="5,5,56,31"/>
-<area shape="rect" href="classGUI.html" title="Implementation of GUII." alt="" coords="7,79,54,104"/>
-<area shape="poly" title=" " alt="" coords="33,44,33,79,28,79,28,44"/>
+<area shape="rect" title="Interface for the SDFormat Editor&#39;s Graphical User Interface Note that this class also inherits from ..." alt="" coords="55,93,105,119"/>
+<area shape="rect" href="classGUI.html" title="Implementation of GUII." alt="" coords="57,167,103,192"/>
+<area shape="poly" title=" " alt="" coords="83,132,83,167,77,167,77,132"/>
+<area shape="rect" title=" " alt="" coords="5,5,155,45"/>
+<area shape="poly" title=" " alt="" coords="83,59,83,93,77,93,77,59"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for GUII:</div>
+<div class="dyncontent">
+<div class="center"><img src="classGUII__coll__graph.png" border="0" usemap="#aGUII_coll__map" alt="Collaboration graph"/></div>
+<map name="aGUII_coll__map" id="aGUII_coll__map">
+<area shape="rect" title="Interface for the SDFormat Editor&#39;s Graphical User Interface Note that this class also inherits from ..." alt="" coords="55,93,105,119"/>
+<area shape="rect" title=" " alt="" coords="5,5,155,45"/>
+<area shape="poly" title=" " alt="" coords="83,59,83,93,77,93,77,59"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa006d42a634f75b03fa9b45daddc9ae0" id="r_aa006d42a634f75b03fa9b45daddc9ae0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGUII.html#aa006d42a634f75b03fa9b45daddc9ae0">Update</a> ()=0</td></tr>
-<tr class="memdesc:aa006d42a634f75b03fa9b45daddc9ae0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updating the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a>.  <br /></td></tr>
-<tr class="separator:aa006d42a634f75b03fa9b45daddc9ae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc1aad3211b05d53cc26dc83efc4270a" id="r_acc1aad3211b05d53cc26dc83efc4270a"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGUII.html#acc1aad3211b05d53cc26dc83efc4270a">Update</a> (std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParserI</a> &gt; sdformat_parser)=0</td></tr>
+<tr class="memdesc:acc1aad3211b05d53cc26dc83efc4270a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updating the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a>.  <br /></td></tr>
+<tr class="separator:acc1aad3211b05d53cc26dc83efc4270a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ae3de58253702261056dc0981a046ac" id="r_a9ae3de58253702261056dc0981a046ac"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGUII.html#a9ae3de58253702261056dc0981a046ac">ShouldClose</a> ()=0</td></tr>
 <tr class="memdesc:a9ae3de58253702261056dc0981a046ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicate if the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> should close.  <br /></td></tr>
 <tr class="separator:a9ae3de58253702261056dc0981a046ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f80df3bf862a6da0cb37f17b59d3bf5" id="r_a4f80df3bf862a6da0cb37f17b59d3bf5"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGUII.html#a4f80df3bf862a6da0cb37f17b59d3bf5">OpenFileDialog</a> ()=0</td></tr>
+<tr class="memdesc:a4f80df3bf862a6da0cb37f17b59d3bf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open the file dialog.  <br /></td></tr>
+<tr class="separator:a4f80df3bf862a6da0cb37f17b59d3bf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a696206b73035d99215eb09577e817f04" id="r_a696206b73035d99215eb09577e817f04"><td class="memItemLeft" align="right" valign="top"><a id="a696206b73035d99215eb09577e817f04" name="a696206b73035d99215eb09577e817f04"></a>
+std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>prevent_input_flag</b> = false</td></tr>
+<tr class="memdesc:a696206b73035d99215eb09577e817f04"><td class="mdescLeft">&#160;</td><td class="mdescRight">A flag which can be set to prevent the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> from taking user input. This can be used in instances where OpenFileDialog or another threadded method is running. NOTE: (zaid) Technically, this class is no longer an "interface" since this attribute is included... <br /></td></tr>
+<tr class="separator:a696206b73035d99215eb09577e817f04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -108,7 +131,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:af231535d0182347f01927afb843205af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Interface for the SDFormat Editor's Graphical User Interface. </p>
+<div class="textblock"><p>Interface for the SDFormat Editor's Graphical User Interface Note that this class also inherits from std::enable_shared_from_this&lt;GUII&gt;, as it may be required to pass a shared pointer of itself into the <a class="el" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor...">CommandI</a> object in the Update method. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="af231535d0182347f01927afb843205af" name="af231535d0182347f01927afb843205af"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af231535d0182347f01927afb843205af">&#9670;&#160;</a></span>Initialize()</h2>
@@ -157,6 +180,36 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a4f80df3bf862a6da0cb37f17b59d3bf5" name="a4f80df3bf862a6da0cb37f17b59d3bf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f80df3bf862a6da0cb37f17b59d3bf5">&#9670;&#160;</a></span>OpenFileDialog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::string GUII::OpenFileDialog </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Open the file dialog. </p>
+<dl class="section return"><dt>Returns</dt><dd>An file path or "" </dd></dl>
+
+<p>Implemented in <a class="el" href="classGUI.html#ae03ac5fb89b2ba7be43c2aae029f3e95">GUI</a>.</p>
+
+</div>
+</div>
 <a id="a9ae3de58253702261056dc0981a046ac" name="a9ae3de58253702261056dc0981a046ac"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9ae3de58253702261056dc0981a046ac">&#9670;&#160;</a></span>ShouldClose()</h2>
 
@@ -186,8 +239,8 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa006d42a634f75b03fa9b45daddc9ae0" name="aa006d42a634f75b03fa9b45daddc9ae0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa006d42a634f75b03fa9b45daddc9ae0">&#9670;&#160;</a></span>Update()</h2>
+<a id="acc1aad3211b05d53cc26dc83efc4270a" name="acc1aad3211b05d53cc26dc83efc4270a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc1aad3211b05d53cc26dc83efc4270a">&#9670;&#160;</a></span>Update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -196,9 +249,10 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void GUII::Update </td>
+          <td class="memname">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt; GUII::Update </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParserI</a> &gt;&#160;</td>
+          <td class="paramname"><em>sdformat_parser</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -210,13 +264,20 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Updating the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">sdfParser</td><td>Pointer to the SDF parser interface object </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The a pointer to the command resulting from the user's action during this frame </dd></dl>
 
-<p>Implemented in <a class="el" href="classGUI.html#ac15bbf5f9b91c676120fab474dbe1261">GUI</a>.</p>
+<p>Implemented in <a class="el" href="classGUI.html#a14375d8920104c20ddb51fc45901bc24">GUI</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/<a class="el" href="gui__interface_8h_source.html">gui_interface.h</a></li>
+<li>include/interfaces/<a class="el" href="gui__interface_8h_source.html">gui_interface.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

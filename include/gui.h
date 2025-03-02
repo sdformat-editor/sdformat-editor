@@ -29,7 +29,7 @@
 
 #include <interfaces/gui_interface.h>
 
-/// \brief Implementation of GUII
+/// \brief Implementation of GUII. 
 class GUI : public GUII
 {
 
@@ -48,7 +48,7 @@ class GUI : public GUII
   private: bool ShouldClose() override;
 
   /// \brief Implementation of update method
-  private: std::unique_ptr<CommandI> Update(SDFormatParserI* sdformat_parser) override;
+  private: std::unique_ptr<CommandI> Update(std::shared_ptr<SDFormatParserI> sdformat_parser) override;
   
   /// \brief Function for handling GLFW Error (required to be static by GLFW)
   ///         NOTE: (zaid) It may be good to integrate this with an error handler class

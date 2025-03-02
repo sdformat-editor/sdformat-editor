@@ -11,20 +11,22 @@ Implementation of \doxylink{classGUII}{GUII}.
 
 
 
-Inheritance diagram for GUI\+:\nopagebreak
+Inheritance diagram for GUI\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=118pt]{classGUI__inherit__graph}
+\includegraphics[width=192pt]{classGUI__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for GUI\+:\nopagebreak
+Collaboration diagram for GUI\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=118pt]{classGUI__coll__graph}
+\includegraphics[width=192pt]{classGUI__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -42,8 +44,10 @@ void \mbox{\hyperlink{classGUI_a94804c4737bc4d7f1948850c7b65959c}{Initialize}} (
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classGUI_a75a2aa8cff0e7601e0e8b97000213094}{Should\+Close}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classGUI_ac15bbf5f9b91c676120fab474dbe1261}{Update}} () override
-\begin{DoxyCompactList}\small\item\em Implementation of update method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classGUI_a14375d8920104c20ddb51fc45901bc24}{Update}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ sdformat\+\_\+parser) override
+\begin{DoxyCompactList}\small\item\em Implementation of update method. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classGUI_ae03ac5fb89b2ba7be43c2aae029f3e95}{Open\+File\+Dialog}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -58,10 +62,14 @@ GLFWwindow \texorpdfstring{$\ast$}{*} {\bfseries window} = nullptr
 \Hypertarget{classGUI_ac6297526aeb809b472c7952fae1d07f7}\label{classGUI_ac6297526aeb809b472c7952fae1d07f7} 
 Im\+Gui\+IO \texorpdfstring{$\ast$}{*} {\bfseries io} = nullptr
 \begin{DoxyCompactList}\small\item\em Reference to the Im\+Gui\+IO structure, which handles input/output operations for Im\+Gui. \end{DoxyCompactList}\item 
-\Hypertarget{classGUI_a34015969cf7c7eb56194a7a084778315}\label{classGUI_a34015969cf7c7eb56194a7a084778315} 
-Im\+Vec4 {\bfseries background\+\_\+colour}
-\begin{DoxyCompactList}\small\item\em The background color used in the \doxylink{classGUI}{GUI}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+Im\+Vec4 \mbox{\hyperlink{classGUI_a34015969cf7c7eb56194a7a084778315}{background\+\_\+colour}}
+\begin{DoxyCompactList}\small\item\em Reference to the file operations object NOTE\+: (zaid) will use the opportunity to implement the singleton design pattern for the file ops class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classGUII}{GUII}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::atomic$<$ bool $>$ {\bfseries prevent\+\_\+input\+\_\+flag} = false
+\begin{DoxyCompactList}\small\item\em A flag which can be set to prevent the \doxylink{classGUI}{GUI} from taking user input. This can be used in instances where Open\+File\+Dialog or another threadded method is running. NOTE\+: (zaid) Technically, this class is no longer an "{}interface"{} since this attribute is included... \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -120,6 +128,23 @@ Implementation of interface method.
 
 Implements \mbox{\hyperlink{classGUII_af231535d0182347f01927afb843205af}{GUII}}.
 
+\Hypertarget{classGUI_ae03ac5fb89b2ba7be43c2aae029f3e95}\label{classGUI_ae03ac5fb89b2ba7be43c2aae029f3e95} 
+\index{GUI@{GUI}!OpenFileDialog@{OpenFileDialog}}
+\index{OpenFileDialog@{OpenFileDialog}!GUI@{GUI}}
+\doxysubsubsection{\texorpdfstring{OpenFileDialog()}{OpenFileDialog()}}
+{\footnotesize\ttfamily std\+::string GUI\+::\+Open\+File\+Dialog (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+An file path or "{}"{} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classGUII_a4f80df3bf862a6da0cb37f17b59d3bf5}{GUII}}.
+
 \Hypertarget{classGUI_a75a2aa8cff0e7601e0e8b97000213094}\label{classGUI_a75a2aa8cff0e7601e0e8b97000213094} 
 \index{GUI@{GUI}!ShouldClose@{ShouldClose}}
 \index{ShouldClose@{ShouldClose}!GUI@{GUI}}
@@ -134,11 +159,11 @@ Implementation of interface method.
 
 Implements \mbox{\hyperlink{classGUII_a9ae3de58253702261056dc0981a046ac}{GUII}}.
 
-\Hypertarget{classGUI_ac15bbf5f9b91c676120fab474dbe1261}\label{classGUI_ac15bbf5f9b91c676120fab474dbe1261} 
+\Hypertarget{classGUI_a14375d8920104c20ddb51fc45901bc24}\label{classGUI_a14375d8920104c20ddb51fc45901bc24} 
 \index{GUI@{GUI}!Update@{Update}}
 \index{Update@{Update}!GUI@{GUI}}
 \doxysubsubsection{\texorpdfstring{Update()}{Update()}}
-{\footnotesize\ttfamily void GUI\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ GUI\+::\+Update (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+\_\+parser }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
@@ -146,9 +171,22 @@ Implementation of update method.
 
 
 
-Implements \mbox{\hyperlink{classGUII_aa006d42a634f75b03fa9b45daddc9ae0}{GUII}}.
+Implements \mbox{\hyperlink{classGUII_acc1aad3211b05d53cc26dc83efc4270a}{GUII}}.
 
 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGUI_a34015969cf7c7eb56194a7a084778315}\label{classGUI_a34015969cf7c7eb56194a7a084778315} 
+\index{GUI@{GUI}!background\_colour@{background\_colour}}
+\index{background\_colour@{background\_colour}!GUI@{GUI}}
+\doxysubsubsection{\texorpdfstring{background\_colour}{background\_colour}}
+{\footnotesize\ttfamily Im\+Vec4 GUI\+::background\+\_\+colour\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Reference to the file operations object NOTE\+: (zaid) will use the opportunity to implement the singleton design pattern for the file ops class. 
+
+The background color used in the \doxylink{classGUI}{GUI} 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

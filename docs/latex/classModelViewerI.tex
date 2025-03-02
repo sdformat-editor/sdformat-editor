@@ -1,0 +1,76 @@
+\doxysection{Model\+ViewerI Class Reference}
+\hypertarget{classModelViewerI}{}\label{classModelViewerI}\index{ModelViewerI@{ModelViewerI}}
+
+
+Interface for the SDFormat Editor\textquotesingle{}s 3D Model Vewer.  
+
+
+
+
+{\ttfamily \#include $<$model\+\_\+viewer\+\_\+interface.\+h$>$}
+
+
+
+Inheritance diagram for Model\+ViewerI\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{classModelViewerI__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classModelViewerI_ac6e6cc65e2be33a692061c2b4e02f773}{Initialize}} (const std\+::vector$<$ std\+::string $>$ \&cad\+\_\+files, bool \&success)=0
+\begin{DoxyCompactList}\small\item\em Initialization of the Model Viewer. NOTE\+: (zaid) This initalize method is not wrapped by the constructor because we can reinitalize it ~\newline
+ \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classModelViewerI_a6ee962a2e2820c6af9a6b58df7f37501}{Update}} ()=0
+\begin{DoxyCompactList}\small\item\em Updating the Model Viewer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for the SDFormat Editor\textquotesingle{}s 3D Model Vewer. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classModelViewerI_ac6e6cc65e2be33a692061c2b4e02f773}\label{classModelViewerI_ac6e6cc65e2be33a692061c2b4e02f773} 
+\index{ModelViewerI@{ModelViewerI}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!ModelViewerI@{ModelViewerI}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily virtual void Model\+Viewer\+I\+::\+Initialize (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{cad\+\_\+files,  }\item[{bool \&}]{success }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Initialization of the Model Viewer. NOTE\+: (zaid) This initalize method is not wrapped by the constructor because we can reinitalize it ~\newline
+ 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cad\+\_\+files} & The name to be given to the SDFormat\+Editor Window \\
+\hline
+\mbox{\texttt{ out}}  & {\em success} & true if window initalization is successful \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classModelViewer_ab4431564b45537fb462c289ebd4a6083}{Model\+Viewer}}.
+
+\Hypertarget{classModelViewerI_a6ee962a2e2820c6af9a6b58df7f37501}\label{classModelViewerI_a6ee962a2e2820c6af9a6b58df7f37501} 
+\index{ModelViewerI@{ModelViewerI}!Update@{Update}}
+\index{Update@{Update}!ModelViewerI@{ModelViewerI}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily virtual void Model\+Viewer\+I\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Updating the Model Viewer. 
+
+
+
+Implemented in \mbox{\hyperlink{classModelViewer_a70b591bc5b9a97ba8f3054b346329e0c}{Model\+Viewer}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/interfaces/model\+\_\+viewer\+\_\+interface.\+h\end{DoxyCompactItemize}

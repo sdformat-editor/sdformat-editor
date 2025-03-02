@@ -1,0 +1,159 @@
+\doxysection{Open\+File\+Command Class Reference}
+\hypertarget{classOpenFileCommand}{}\label{classOpenFileCommand}\index{OpenFileCommand@{OpenFileCommand}}
+
+
+Open model command implementation of \doxylink{classCommandI}{CommandI}.  
+
+
+
+
+{\ttfamily \#include $<$Open\+File\+Command.\+h$>$}
+
+
+
+Inheritance diagram for Open\+File\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classOpenFileCommand__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Open\+File\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classOpenFileCommand__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classOpenFileCommand_a56de8dcb25876eaf688c642a8f75c20b}{Open\+File\+Command}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ \mbox{\hyperlink{classOpenFileCommand_aa943bce2c555b7674da1765e6ecee706}{gui}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classOpenFileCommand_a3d87b192bd7874008f90c3e76b07d0a9}{sdformat\+Parser}})
+\begin{DoxyCompactList}\small\item\em Constructor for open model command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classOpenFileCommand_a9f2249eeea3c1f00f6da3ef8ff199adc}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenFileCommand_a86214f23a23dbb76040bde89c24ef726}{undo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenFileCommand_aebbaf527dbfbb97cb8d0232f735dcf13}{redo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenFileCommand_a9d101dff59daef197d4da811bae59965}{threaded}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classOpenFileCommand_a2f850965154a247d68797ae09e3a64bd}\label{classOpenFileCommand_a2f850965154a247d68797ae09e3a64bd} 
+std\+::string {\bfseries file\+\_\+path}
+\begin{DoxyCompactList}\small\item\em Filepath of the model. \end{DoxyCompactList}\item 
+\Hypertarget{classOpenFileCommand_aa943bce2c555b7674da1765e6ecee706}\label{classOpenFileCommand_aa943bce2c555b7674da1765e6ecee706} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ {\bfseries gui}
+\begin{DoxyCompactList}\small\item\em Pointer to the gui interface. \end{DoxyCompactList}\item 
+\Hypertarget{classOpenFileCommand_a3d87b192bd7874008f90c3e76b07d0a9}\label{classOpenFileCommand_a3d87b192bd7874008f90c3e76b07d0a9} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ {\bfseries sdformat\+Parser}
+\begin{DoxyCompactList}\small\item\em Pointer to the sdformat parser interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Open model command implementation of \doxylink{classCommandI}{CommandI}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classOpenFileCommand_a56de8dcb25876eaf688c642a8f75c20b}\label{classOpenFileCommand_a56de8dcb25876eaf688c642a8f75c20b} 
+\index{OpenFileCommand@{OpenFileCommand}!OpenFileCommand@{OpenFileCommand}}
+\index{OpenFileCommand@{OpenFileCommand}!OpenFileCommand@{OpenFileCommand}}
+\doxysubsubsection{\texorpdfstring{OpenFileCommand()}{OpenFileCommand()}}
+{\footnotesize\ttfamily Open\+File\+Command\+::\+Open\+File\+Command (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$}]{gui,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+Parser }\end{DoxyParamCaption})}
+
+
+
+Constructor for open model command objects. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em gui} & Pointer to the \doxylink{classGUII}{GUII} object \\
+\hline
+\mbox{\texttt{ in}}  & {\em sdformat\+Parser} & Pointer to the \doxylink{classSDFormatParserI}{SDFormat\+ParserI} object \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classOpenFileCommand_a9f2249eeea3c1f00f6da3ef8ff199adc}\label{classOpenFileCommand_a9f2249eeea3c1f00f6da3ef8ff199adc} 
+\index{OpenFileCommand@{OpenFileCommand}!execute@{execute}}
+\index{execute@{execute}!OpenFileCommand@{OpenFileCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily bool Open\+File\+Command\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+True if the \doxylink{classSDFormatParser}{SDFormat\+Parser} has successfully parsed the file and it has been displayed in the \doxylink{classGUI}{GUI} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a07ef0084dd68bd32719b5c1c4248df91}{CommandI}}.
+
+\Hypertarget{classOpenFileCommand_aebbaf527dbfbb97cb8d0232f735dcf13}\label{classOpenFileCommand_aebbaf527dbfbb97cb8d0232f735dcf13} 
+\index{OpenFileCommand@{OpenFileCommand}!redo@{redo}}
+\index{redo@{redo}!OpenFileCommand@{OpenFileCommand}}
+\doxysubsubsection{\texorpdfstring{redo()}{redo()}}
+{\footnotesize\ttfamily bool Open\+File\+Command\+::redo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always False 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a045529cc0219b14d416d14794ca0321a}{CommandI}}.
+
+\Hypertarget{classOpenFileCommand_a9d101dff59daef197d4da811bae59965}\label{classOpenFileCommand_a9d101dff59daef197d4da811bae59965} 
+\index{OpenFileCommand@{OpenFileCommand}!threaded@{threaded}}
+\index{threaded@{threaded}!OpenFileCommand@{OpenFileCommand}}
+\doxysubsubsection{\texorpdfstring{threaded()}{threaded()}}
+{\footnotesize\ttfamily bool Open\+File\+Command\+::threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always True 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a0da54a11aa067099da52f04d20c0859a}{CommandI}}.
+
+\Hypertarget{classOpenFileCommand_a86214f23a23dbb76040bde89c24ef726}\label{classOpenFileCommand_a86214f23a23dbb76040bde89c24ef726} 
+\index{OpenFileCommand@{OpenFileCommand}!undo@{undo}}
+\index{undo@{undo}!OpenFileCommand@{OpenFileCommand}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily bool Open\+File\+Command\+::undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always False 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_aa9d8718f12bcb260fdfa03ecd51076bf}{CommandI}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/commands/Open\+File\+Command.\+h\item 
+src/commands/Open\+File\+Command.\+cpp\end{DoxyCompactItemize}

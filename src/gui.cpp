@@ -117,9 +117,8 @@ std::string GUI::OpenFileDialog()
 }
 
 
-std::unique_ptr<CommandI> GUI::Update(SDFormatParserI* sdformat_parser)
+std::unique_ptr<CommandI> GUI::Update(std::shared_ptr<SDFormatParserI> sdformat_parser)
 {
-
   std::unique_ptr<CommandI> command = nullptr;
 
   glfwPollEvents();
@@ -134,7 +133,6 @@ std::unique_ptr<CommandI> GUI::Update(SDFormatParserI* sdformat_parser)
   ImGui_ImplGlfw_NewFrame();
   ImGui::NewFrame();
 
-
   if (ImGui::BeginMainMenuBar())
   {
       if (ImGui::BeginMenu("File"))
@@ -144,7 +142,7 @@ std::unique_ptr<CommandI> GUI::Update(SDFormatParserI* sdformat_parser)
           }
           if (ImGui::MenuItem("Open", "Ctrl+O"))
           {
-            if (!prevent_input_flag) command = std::make_unique<OpenFileCommand>(this, sdformat_parser);
+            if (!prevent_input_flag) command = std::make_unique<OpenFileCommand>(shared_from_this(), sdformat_parser);
           }
           if (ImGui::MenuItem("Save", "Ctrl+S"))
           {

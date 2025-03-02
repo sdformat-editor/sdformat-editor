@@ -28,7 +28,10 @@
 #include <interfaces/command_interface.h>
 
 /// \brief Interface for the SDFormat Editor's Graphical User Interface 
-class GUII
+/// Note that this class also inherits from std::enable_shared_from_this<GUII>, 
+/// as it may be required to pass a shared pointer of itself into the CommandI
+/// object in the Update method.
+class GUII : public std::enable_shared_from_this<GUII>
 {
 
 /// \brief Initialization of the GUI. Should be wrapped in the constructor of the implementation.
@@ -40,7 +43,7 @@ protected: virtual void Initialize(const std::string &windowName, bool &success)
 /// \brief Updating the GUI
 /// \param[in] sdfParser Pointer to the SDF parser interface object
 /// \returns The a pointer to the command resulting from the user's action during this frame
-public: virtual std::unique_ptr<CommandI> Update(SDFormatParserI* sdformat_parser) = 0;
+public: virtual std::unique_ptr<CommandI> Update(std::shared_ptr<SDFormatParserI> sdformat_parser) = 0;
 
 /// \brief Indicate if the GUI should close 
 public: virtual bool ShouldClose() = 0;

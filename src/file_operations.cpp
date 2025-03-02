@@ -38,13 +38,6 @@ std::string FileOperations::OpenFileDialog()
     }
 
     return result;
-    // active_file_path_mutex.lock();
-    // active_file_path = result;
-    // active_file_path_mutex.unlock();
     
-    // SDFormatParser* p = new SDFormatParser();
-    // bool b;
-
-    // p->Initialize(result, b);
 }
 
