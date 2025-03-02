@@ -31,6 +31,7 @@
 #include <memory>
 
 #include <gui_interface.h>
+#include "file_operations.h"
 
 /// \brief Implementation of GUII
 class GUI : public GUII
@@ -64,7 +65,10 @@ class GUI : public GUII
 
   /// @brief Reference to the ImGuiIO structure, which handles input/output operations for ImGui
   private: ImGuiIO *io = nullptr;
- 
+
+  /// @brief Reference to the file operations object
+  private: FileOperations* file_ops;
+
   /// @brief The background color used in the GUI
   private: ImVec4 background_colour;
 

@@ -22,6 +22,8 @@
 
 GUI::GUI(const std::string &window_name, bool &success)
 {
+  file_ops = new FileOperations();
+
   this->Initialize(window_name, success);
 }
 
@@ -134,6 +136,7 @@ void GUI::Update()
           }
           if (ImGui::MenuItem("Open", "Ctrl+O"))
           {
+            file_ops->OpenAndParse();
           }
           if (ImGui::MenuItem("Save", "Ctrl+S"))
           {
@@ -149,7 +152,7 @@ void GUI::Update()
   {
       ImGui::Begin("Hello, world!"); // Create a window called "Hello, world!" and append into it.
 
-      ImGui::Text("This is some useful text."); // Display some text (you can use a format strings too)
+      ImGui::Text("Active File is: %s", file_ops->getActiveFilePath().c_str()); // Display some text (you can use a format strings too)
 
       ImGui::ColorEdit3("clear color", (float *)&this->background_colour); // Edit 3 floats representing a color
 

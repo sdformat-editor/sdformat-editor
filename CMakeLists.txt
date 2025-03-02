@@ -16,6 +16,9 @@ set(GUI_FILES
     include/gui_interface.h
     include/gui.h
     src/gui.cpp
+
+    src/file_operations.cpp
+    include/file_operations.h
 )
 # Add gui files
 set(SDFORMAT_PARSER_FILES
