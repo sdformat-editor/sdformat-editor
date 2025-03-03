@@ -12,7 +12,7 @@
  /// \brief Unit test class for testing the SDFormatParser class.
  class SDFormatParserTest : public ::testing::Test {
  protected:
-     SDFormatParserI* sdformat_parser;
+ std::shared_ptr<SDFormatParserI> sdformatParser;
  };
  
  TEST_F(SDFormatParserTest, AbsolutePathInitialization) {
@@ -23,13 +23,13 @@
     char absolute_path[PATH_MAX];
     ASSERT_TRUE(realpath(relative_path, absolute_path) != nullptr);
 
-    sdformat_parser = new SDFormatParser;
+    sdformatParser = std::make_shared<SDFormatParser>();
 
-    sdformat_parser->Initialize(absolute_path, sdformat_parser_initialization_successful);
+    sdformatParser->Initialize(absolute_path, sdformat_parser_initialization_successful);
 
     EXPECT_TRUE(sdformat_parser_initialization_successful);
 
-    delete sdformat_parser;
+    sdformatParser.reset();
  }
 
  TEST_F(SDFormatParserTest, RelativePathInitialization) {
@@ -38,12 +38,12 @@
     // Provide an example relative filepath
     const char* relative_path = "../example_models/SuperSimpleModel/model.sdf";
 
-    sdformat_parser = new SDFormatParser;
+    sdformatParser = std::make_shared<SDFormatParser>();
 
-    sdformat_parser->Initialize(relative_path, sdformat_parser_initialization_successful);
+    sdformatParser->Initialize(relative_path, sdformat_parser_initialization_successful);
 
     EXPECT_TRUE(sdformat_parser_initialization_successful);
 
-    delete sdformat_parser;
+    sdformatParser.reset();
  }
  

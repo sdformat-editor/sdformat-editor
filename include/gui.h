@@ -36,25 +36,29 @@ class GUI : public GUII
   /// \brief Constructor that wraps the Initialize method
   /// \param[in] window_name The name to be given to the SDFormatEditor Window
   /// \param[out] success true if window initalization is successful
-  public: GUI(const std::string &window_name, bool &success);
+  public: GUI(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success);
 
   /// \brief Destructor 
   public: ~GUI();
 
   /// \brief Implementation of interface method
-  private: void Initialize(const std::string &window_name, bool &success) override;
+  private: void Initialize(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success) override;
 
   /// \brief Implementation of interface method
   private: bool ShouldClose() override;
 
   /// \brief Implementation of update method
-  private: std::unique_ptr<CommandI> Update(std::shared_ptr<SDFormatParserI> sdformat_parser) override;
+  private: std::unique_ptr<CommandI> Update() override;
   
   /// \brief Function for handling GLFW Error (required to be static by GLFW)
   ///         NOTE: (zaid) It may be good to integrate this with an error handler class
   /// \param[in] error Error code from GLFW 
   /// \param[in] description Description of the error from GLFW 
-  private: static void glfw_error_callback(int error, const char *description);
+  private: static void GLFWErrorCallback(int error, const char *description);
+
+  /// \brief Function to display the SDF root element in the GUI in a tree format 
+  /// \param[out] The a pointer to the command resulting from the user's action during this frame
+  private: void DisplaySDFRootElement(std::unique_ptr<CommandI> &command);
 
   /// \brief Implementation of interface method 
   /// \returns An file path or ""
@@ -66,9 +70,8 @@ class GUI : public GUII
   /// @brief Reference to the ImGuiIO structure, which handles input/output operations for ImGui
   private: ImGuiIO *io = nullptr;
 
-  /// @brief Reference to the file operations object
-  /// NOTE: (zaid) will use the opportunity to implement the singleton design pattern for the file ops class
-  // private: FileOperationsI* file_ops;
+  /// @brief Pointer to the sdformat_parser object
+  private: std::shared_ptr<SDFormatParserI> sdformat_parser;
 
   /// @brief The background color used in the GUI
   private: ImVec4 background_colour;

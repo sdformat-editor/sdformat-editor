@@ -27,14 +27,14 @@ int main(int, char **)
 {
     bool gui_initalization_successful;
 
-    std::shared_ptr<GUII> gui = std::make_shared<GUI>("SDFormat Editor", gui_initalization_successful);
+    // The sdformatParser will be null until the user opens a file
+    std::shared_ptr<SDFormatParserI> sdformatParser = std::make_shared<SDFormatParser>();
+
+    std::shared_ptr<GUII> gui = std::make_shared<GUI>("SDFormat Editor", sdformatParser, gui_initalization_successful);
 
     // Exit the program if the GUI cannot initalize
     // This may happen if there is no active display
     if (!gui_initalization_successful) return 1;
-
-    // The sdformatParser will be null until the user opens a file
-    std::shared_ptr<SDFormatParserI> sdformatParser = std::make_shared<SDFormatParser>();
 
     // Stacks for undo/redo functionality
     // TODO: Actually do something with these stacks
@@ -46,7 +46,7 @@ int main(int, char **)
     {
         // Poll the GUI for user input
         // Update will return nullptr if the user does nothing
-        std::unique_ptr<CommandI> user_command = gui->Update(sdformatParser);
+        std::unique_ptr<CommandI> user_command = gui->Update();
 
         if (user_command)
         {

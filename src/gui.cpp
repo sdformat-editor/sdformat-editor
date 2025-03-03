@@ -21,12 +21,12 @@
 #include "commands/OpenFileCommand.h"
 #include "file_operations.h"
 
-GUI::GUI(const std::string &window_name, bool &success)
+GUI::GUI(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success)
 {
-  this->Initialize(window_name, success);
+  this->Initialize(window_name, sdformat_parser, success);
 }
 
-void GUI::glfw_error_callback(int error, const char *description)
+void GUI::GLFWErrorCallback(int error, const char *description)
 {
   std::cerr << "GLFW Error " << error << ": " << description << std::endl;
 }
@@ -36,12 +36,15 @@ bool GUI::ShouldClose()
   return glfwWindowShouldClose(this->window);
 }
 
-void GUI::Initialize(const std::string &window_name, bool &success)
+void GUI::Initialize(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success)
 {
+
   success = false; 
 
+  this->sdformat_parser = sdformat_parser;
+
   // Specify the error handler for GLFW
-  glfwSetErrorCallback(GUI::glfw_error_callback);
+  glfwSetErrorCallback(GUI::GLFWErrorCallback);
 
   // Return false if GLFW initialization fails
   if (!glfwInit()) 
@@ -78,10 +81,13 @@ void GUI::Initialize(const std::string &window_name, bool &success)
     // glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // 3.0+ only
   #endif
 
+  // Get the primary monitor and its video mode to determine screen resolution dynamically
+  GLFWmonitor* primary_monitor = glfwGetPrimaryMonitor();
+  const GLFWvidmode* video_mode = glfwGetVideoMode(primary_monitor);
+
   // Initialize the window. The fourth and fifth arguments indicate that we are using windowed mode and 
   // not sharing resources with another window.
-  // NOTE: (zaid) Can maybe determine screen resolution dynamically? 
-  window = glfwCreateWindow(1280, 720, window_name.c_str(), nullptr, nullptr);
+  window = glfwCreateWindow(video_mode->width, video_mode->height, window_name.c_str(), nullptr, nullptr);
 
   // Return false if window initalization fails
   if (window == nullptr) 
@@ -117,7 +123,7 @@ std::string GUI::OpenFileDialog()
 }
 
 
-std::unique_ptr<CommandI> GUI::Update(std::shared_ptr<SDFormatParserI> sdformat_parser)
+std::unique_ptr<CommandI> GUI::Update()
 {
   std::unique_ptr<CommandI> command = nullptr;
 
@@ -133,6 +139,7 @@ std::unique_ptr<CommandI> GUI::Update(std::shared_ptr<SDFormatParserI> sdformat_
   ImGui_ImplGlfw_NewFrame();
   ImGui::NewFrame();
 
+  
   if (ImGui::BeginMainMenuBar())
   {
       if (ImGui::BeginMenu("File"))
@@ -142,7 +149,7 @@ std::unique_ptr<CommandI> GUI::Update(std::shared_ptr<SDFormatParserI> sdformat_
           }
           if (ImGui::MenuItem("Open", "Ctrl+O"))
           {
-            if (!prevent_input_flag) command = std::make_unique<OpenFileCommand>(shared_from_this(), sdformat_parser);
+            if (!prevent_input_flag) command = std::make_unique<OpenFileCommand>(shared_from_this(), this->sdformat_parser);
           }
           if (ImGui::MenuItem("Save", "Ctrl+S"))
           {
@@ -155,16 +162,31 @@ std::unique_ptr<CommandI> GUI::Update(std::shared_ptr<SDFormatParserI> sdformat_
       ImGui::EndMainMenuBar();
   }
 
+  // Get the current window size
+  int window_width, window_height;
+  glfwGetWindowSize(this->window, &window_width, &window_height);
+
+  // Set the position and size of the "SDFormat Editor" window
+  // The window will be fixed to the right of the screen. It will take up 25% of 
+  // the total width and the entire height (minus top menu bar)
+  ImGui::SetNextWindowPos(ImVec2(window_width * 0.75f, 20)); // Position the window below the main menu bar
+  ImGui::SetNextWindowSize(ImVec2(window_width * 0.25f, window_height - 20.0f)); // Set the dynamic size of the window
+
   {
-      ImGui::Begin("Hello, world!"); // Create a window called "Hello, world!" and append into it.
+    ImGui::Begin("SDFormat Editor",  nullptr, ImGuiWindowFlags_NoMove); 
 
-      // TODO: (zaid) Save the current working directory and/or current file as an attribute to the GUI object or the file operations singleton
-      // ImGui::Text("Active File is: %s", file_ops->getActiveFilePath().c_str()); // Display some text (you can use a format strings too)
+    // TODO: (zaid) Save the current working directory and/or current file as an attribute to the GUI object or the file operations singleton
+    // ImGui::Text("Active File is: %s", file_ops->getActiveFilePath().c_str()); // Display some text (you can use a format strings too)
 
-      ImGui::ColorEdit3("clear color", (float *)&this->background_colour); // Edit 3 floats representing a color
+    // If the user hasn't done anything so far, accept commands from the SDF element tree.
+    // Otherwise, display the tree but do not take commands.
+    this->DisplaySDFRootElement(command);
+    
 
-      ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / this->io->Framerate, this->io->Framerate);
-      ImGui::End();
+    ImGui::ColorEdit3("clear color", (float *)&this->background_colour); // Edit 3 floats representing a color
+
+    ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / this->io->Framerate, this->io->Framerate);
+    ImGui::End();
   }
 
   // Rendering
@@ -178,9 +200,90 @@ std::unique_ptr<CommandI> GUI::Update(std::shared_ptr<SDFormatParserI> sdformat_
 
   glfwSwapBuffers(window);
 
-  // Unlock the mutex by ending the scope of lock_guard
-
   return command;
+}
+
+void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command)
+{
+  // Lock the mutex since we will be reading from the SDFormatParser
+  std::lock_guard<std::mutex> lock(this->gui_mutex);
+
+  if (ImGui::TreeNode("Node 1"))
+  {
+    ImGui::Text("Child 1");
+    ImGui::SameLine();
+    if (ImGui::Button("Modify##Child1"))
+    {
+      // Handle modify action for Child 1
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Delete##Child1"))
+    {
+      // Handle delete action for Child 1
+    }
+
+    ImGui::Text("Child 2");
+    ImGui::SameLine();
+    if (ImGui::Button("Modify##Child2"))
+    {
+      // Handle modify action for Child 2
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Delete##Child2"))
+    {
+      // Handle delete action for Child 2
+    }
+
+    ImGui::TreePop();
+  }
+  if (ImGui::TreeNode("Node 2"))
+  {
+    ImGui::Text("Child 1");
+    ImGui::SameLine();
+    if (ImGui::Button("Modify##Child1_Node2"))
+    {
+      // Handle modify action for Child 1 in Node 2
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Delete##Child1_Node2"))
+    {
+      // Handle delete action for Child 1 in Node 2
+    }
+
+    if (ImGui::TreeNode("SubNode"))
+    {
+      if (ImGui::Button("Modify"))
+      {
+        
+      }
+      ImGui::Text("SubChild 1");
+      ImGui::SameLine();
+      if (ImGui::Button("Modify##SubChild1"))
+      {
+        // Handle modify action for SubChild 1
+      }
+      ImGui::SameLine();
+      if (ImGui::Button("Delete##SubChild1"))
+      {
+        // Handle delete action for SubChild 1
+      }
+
+      ImGui::Text("SubChild 2");
+      ImGui::SameLine();
+      if (ImGui::Button("Modify##SubChild2"))
+      {
+        // Handle modify action for SubChild 2
+      }
+      ImGui::SameLine();
+      if (ImGui::Button("Delete##SubChild2"))
+      {
+        // Handle delete action for SubChild 2
+      }
+
+      ImGui::TreePop();
+    }
+    ImGui::TreePop();
+  }
 }
 
 GUI::~GUI()
