@@ -84,40 +84,55 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;gtest/gtest.h&gt;</code><br />
 <code>#include &quot;gui.h&quot;</code><br />
+<code>#include &quot;sdformat_parser.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for test_gui.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="test__gui_8cpp__incl.png" border="0" usemap="#atests_2test__gui_8cpp" alt=""/></div>
 <map name="atests_2test__gui_8cpp" id="atests_2test__gui_8cpp">
-<area shape="rect" title="Unit tests for the GUI class." alt="" coords="229,5,366,31"/>
-<area shape="rect" title=" " alt="" coords="193,79,297,104"/>
-<area shape="poly" title=" " alt="" coords="291,33,264,69,260,66,287,29"/>
-<area shape="rect" href="gui_8h_source.html" title=" " alt="" coords="322,79,377,104"/>
-<area shape="poly" title=" " alt="" coords="308,29,335,66,331,69,304,33"/>
-<area shape="rect" title=" " alt="" coords="5,152,72,177"/>
-<area shape="poly" title=" " alt="" coords="323,103,310,107,200,131,86,154,85,149,199,126,309,101,321,98"/>
-<area shape="rect" title=" " alt="" coords="97,152,167,177"/>
-<area shape="poly" title=" " alt="" coords="323,104,181,150,179,145,321,99"/>
-<area shape="rect" title=" " alt="" coords="191,152,331,177"/>
-<area shape="poly" title=" " alt="" coords="337,106,288,145,285,141,334,102"/>
-<area shape="rect" title=" " alt="" coords="355,152,522,177"/>
-<area shape="poly" title=" " alt="" coords="365,102,415,141,412,145,362,106"/>
-<area shape="rect" title=" " alt="" coords="546,152,657,177"/>
-<area shape="poly" title=" " alt="" coords="378,98,548,146,547,151,376,103"/>
-<area shape="rect" href="gui__interface_8h_source.html" title=" " alt="" coords="681,152,869,177"/>
-<area shape="poly" title=" " alt="" coords="378,95,694,147,693,152,377,100"/>
-<area shape="rect" title=" " alt="" coords="873,313,953,339"/>
-<area shape="poly" title=" " alt="" coords="708,180,667,197,650,210,636,227,628,246,635,264,649,275,671,285,730,301,798,312,860,318,859,324,797,317,729,306,669,290,647,280,631,267,623,246,631,224,646,206,665,193,706,175"/>
-<area shape="rect" title=" " alt="" coords="645,233,712,258"/>
-<area shape="poly" title=" " alt="" coords="762,180,705,226,702,222,759,175"/>
-<area shape="rect" title=" " alt="" coords="736,233,813,258"/>
-<area shape="poly" title=" " alt="" coords="777,178,777,219,772,219,772,178"/>
-<area shape="rect" href="sdformat__parser__interface_8h_source.html" title=" " alt="" coords="838,225,989,265"/>
-<area shape="poly" title=" " alt="" coords="796,175,870,216,867,221,794,180"/>
-<area shape="rect" href="command__interface_8h_source.html" title=" " alt="" coords="1013,225,1169,265"/>
-<area shape="poly" title=" " alt="" coords="821,175,1002,219,1001,225,820,180"/>
-<area shape="poly" title=" " alt="" coords="916,266,916,299,911,299,911,266"/>
-<area shape="poly" title=" " alt="" coords="1049,268,953,310,951,305,1047,263"/>
+<area shape="rect" title="Unit tests for the GUI class." alt="" coords="508,5,645,31"/>
+<area shape="rect" title=" " alt="" coords="421,79,525,104"/>
+<area shape="poly" title=" " alt="" coords="561,33,503,73,500,68,558,28"/>
+<area shape="rect" href="gui_8h_source.html" title=" " alt="" coords="549,79,604,104"/>
+<area shape="poly" title=" " alt="" coords="579,31,579,65,574,65,574,31"/>
+<area shape="rect" href="sdformat__parser_8h_source.html" title=" " alt="" coords="893,152,1033,177"/>
+<area shape="poly" title=" " alt="" coords="609,28,921,145,919,150,607,33"/>
+<area shape="rect" title=" " alt="" coords="543,152,610,177"/>
+<area shape="poly" title=" " alt="" coords="579,104,579,138,574,138,574,104"/>
+<area shape="rect" title=" " alt="" coords="635,152,705,177"/>
+<area shape="poly" title=" " alt="" coords="593,102,646,141,642,146,590,106"/>
+<area shape="rect" title=" " alt="" coords="729,152,869,177"/>
+<area shape="poly" title=" " alt="" coords="605,99,751,145,749,150,604,104"/>
+<area shape="rect" title=" " alt="" coords="5,152,172,177"/>
+<area shape="poly" title=" " alt="" coords="550,104,537,107,186,154,185,149,536,101,549,98"/>
+<area shape="rect" title=" " alt="" coords="196,152,307,177"/>
+<area shape="poly" title=" " alt="" coords="550,103,537,107,321,153,320,148,536,101,549,98"/>
+<area shape="rect" href="gui__interface_8h_source.html" title=" " alt="" coords="331,152,519,177"/>
+<area shape="poly" title=" " alt="" coords="553,106,463,149,461,144,551,102"/>
+<area shape="rect" title=" " alt="" coords="390,313,470,339"/>
+<area shape="poly" title=" " alt="" coords="428,177,432,299,426,299,422,178"/>
+<area shape="rect" title=" " alt="" coords="467,233,534,258"/>
+<area shape="poly" title=" " alt="" coords="438,176,482,221,478,225,434,179"/>
+<area shape="rect" title=" " alt="" coords="558,233,635,258"/>
+<area shape="poly" title=" " alt="" coords="451,175,560,225,558,229,449,180"/>
+<area shape="rect" title=" " alt="" coords="147,233,211,258"/>
+<area shape="poly" title=" " alt="" coords="383,180,226,228,220,230,218,225,224,223,381,175"/>
+<area shape="rect" href="sdformat__parser__interface_8h_source.html" title=" " alt="" coords="660,225,811,265"/>
+<area shape="poly" title=" " alt="" coords="470,175,648,219,647,225,469,180"/>
+<area shape="rect" href="command__interface_8h_source.html" title=" " alt="" coords="236,225,392,265"/>
+<area shape="poly" title=" " alt="" coords="410,180,353,220,350,215,407,175"/>
+<area shape="poly" title=" " alt="" coords="663,268,484,314,483,308,662,263"/>
+<area shape="rect" title=" " alt="" coords="693,313,778,339"/>
+<area shape="poly" title=" " alt="" coords="738,266,738,299,733,299,733,266"/>
+<area shape="poly" title=" " alt="" coords="344,263,403,303,400,308,341,268"/>
+<area shape="poly" title=" " alt="" coords="894,179,778,199,649,228,640,231,638,226,648,223,777,193,893,173"/>
+<area shape="poly" title=" " alt="" coords="931,180,804,223,802,218,929,175"/>
+<area shape="rect" title=" " alt="" coords="840,233,905,258"/>
+<area shape="poly" title=" " alt="" coords="952,180,898,226,895,222,948,175"/>
+<area shape="rect" title=" " alt="" coords="930,233,997,258"/>
+<area shape="poly" title=" " alt="" coords="966,178,966,219,961,219,961,178"/>
+<area shape="rect" title=" " alt="" coords="1021,233,1092,258"/>
+<area shape="poly" title=" " alt="" coords="979,175,1034,222,1031,226,975,180"/>
 </map>
 </div>
 </div><table class="memberdecls">

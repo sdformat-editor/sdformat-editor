@@ -1,0 +1,52 @@
+\doxysection{file\+\_\+editor\+\_\+runner.\+h}
+\hypertarget{file__editor__runner_8h_source}{}\label{file__editor__runner_8h_source}\index{include/file\_editor\_runner.h@{include/file\_editor\_runner.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ sdformat-\/editor}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Copyright\ 2025\ sdformat-\/editor}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*\ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*\ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*\ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{*\ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00015\ \textcolor{comment}{*\ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{*}}
+\DoxyCodeLine{00017\ \textcolor{comment}{*\ Developer:\ Zaid\ Duraid,\ Ean\ Wheeler,\ Evan\ Vokey}}
+\DoxyCodeLine{00018\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ SDFORMAT\_EDITOR\_MAIN\_HH\_}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ SDFORMAT\_EDITOR\_MAIN\_HH\_}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}gui.h"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}sdformat\_parser.h"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}interfaces/command\_interface.h"{}}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classFileEditorRunner}{FileEditorRunner}}}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{public}:\ \mbox{\hyperlink{classFileEditorRunner_add1e32a44cc0639e422d2788592d5bba}{FileEditorRunner}}();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classFileEditorRunner_aefe9d65d30a5a528bd1769c2bbfd478c}{run\_program}}();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classFileEditorRunner_a727a0cc1d0a6b1c715b8669e5b29a9bd}{gui\_initalization\_successful}};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00042\ \ \ \ \ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classFileEditorRunner_a10a63970e169797160759b1cab2e5b80}{sdformatParser}};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00045\ \ \ \ \ std::shared\_ptr<GUII>\ \mbox{\hyperlink{classFileEditorRunner_a0a505fea2a1ac267449ba21a33f0d88d}{gui}};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00048\ \ \ \ \ std::vector<std::unique\_ptr<CommandI>>\ \mbox{\hyperlink{classFileEditorRunner_a887008b980538dfc40741566bd399939}{undo\_commands\_stack}};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00051\ \ \ \ \ std::vector<std::unique\_ptr<CommandI>>\ \mbox{\hyperlink{classFileEditorRunner_a245b6bf15d0b9dd4f9df037bc30445c7}{redo\_commands\_stack}};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

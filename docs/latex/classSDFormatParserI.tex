@@ -33,13 +33,32 @@ Collaboration diagram for SDFormat\+ParserI\+:
 \begin{DoxyCompactItemize}
 \item 
 virtual void \mbox{\hyperlink{classSDFormatParserI_a404feccbe479eadff00da8ca881fbc85}{Initialize}} (const std\+::string file\+\_\+path, bool \&success)=0
-\begin{DoxyCompactList}\small\item\em Initialization of the Parser. Will re-\/initalize the parser if initalized already. NOTE\+: (zaid) As more features are added, more things will be added to this initalize method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Initialization of the Parser. Will re-\/initalize the parser if initalized already. NOTE\+: (zaid) As more features are added, more things will be added to this initalize method. \end{DoxyCompactList}\item 
+virtual sdf\+::\+SDFPtr \mbox{\hyperlink{classSDFormatParserI_a9a5b36f28e49f669d0bd8685253be72e}{Get\+SDFElement}} ()=0
+\begin{DoxyCompactList}\small\item\em Returns the main sdf\+Element associated this this \doxylink{classSDFormatParser}{SDFormat\+Parser} instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Interface for the SDFormat Editor\textquotesingle{}s Parser. 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classSDFormatParserI_a9a5b36f28e49f669d0bd8685253be72e}\label{classSDFormatParserI_a9a5b36f28e49f669d0bd8685253be72e} 
+\index{SDFormatParserI@{SDFormatParserI}!GetSDFElement@{GetSDFElement}}
+\index{GetSDFElement@{GetSDFElement}!SDFormatParserI@{SDFormatParserI}}
+\doxysubsubsection{\texorpdfstring{GetSDFElement()}{GetSDFElement()}}
+{\footnotesize\ttfamily virtual sdf\+::\+SDFPtr SDFormat\+Parser\+I\+::\+Get\+SDFElement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the main sdf\+Element associated this this \doxylink{classSDFormatParser}{SDFormat\+Parser} instance. 
+
+\begin{DoxyReturn}{Returns}
+the main sdf\+Element associated this this \doxylink{classSDFormatParser}{SDFormat\+Parser} instance 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classSDFormatParser_a05c7ff0e224988a867849ebe85e67bb7}{SDFormat\+Parser}}.
+
 \Hypertarget{classSDFormatParserI_a404feccbe479eadff00da8ca881fbc85}\label{classSDFormatParserI_a404feccbe479eadff00da8ca881fbc85} 
 \index{SDFormatParserI@{SDFormatParserI}!Initialize@{Initialize}}
 \index{Initialize@{Initialize}!SDFormatParserI@{SDFormatParserI}}

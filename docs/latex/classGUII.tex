@@ -26,13 +26,13 @@ Collaboration diagram for GUII\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=267pt]{classGUII__coll__graph}
+\includegraphics[width=290pt]{classGUII__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classGUII_acc1aad3211b05d53cc26dc83efc4270a}{Update}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ sdformat\+\_\+parser)=0
+virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classGUII_a4e441601baac13f94796fde8d3d66400}{Update}} ()=0
 \begin{DoxyCompactList}\small\item\em Updating the \doxylink{classGUI}{GUI}. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{classGUII_a9ae3de58253702261056dc0981a046ac}{Should\+Close}} ()=0
 \begin{DoxyCompactList}\small\item\em Indicate if the \doxylink{classGUI}{GUI} should close ~\newline
@@ -44,11 +44,14 @@ virtual std\+::string \mbox{\hyperlink{classGUII_a4f80df3bf862a6da0cb37f17b59d3b
 \item 
 \Hypertarget{classGUII_a696206b73035d99215eb09577e817f04}\label{classGUII_a696206b73035d99215eb09577e817f04} 
 std\+::atomic$<$ bool $>$ {\bfseries prevent\+\_\+input\+\_\+flag} = false
-\begin{DoxyCompactList}\small\item\em A flag which can be set to prevent the \doxylink{classGUI}{GUI} from taking user input. This can be used in instances where Open\+File\+Dialog or another threadded method is running. NOTE\+: (zaid) Technically, this class is no longer an "{}interface"{} since this attribute is included... \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A flag which can be set to prevent the \doxylink{classGUI}{GUI} from taking user input. This can be used in instances where Open\+File\+Dialog or another threadded method is running. NOTE\+: (zaid) Technically, this class is no longer an "{}interface"{} since this attribute is included... \end{DoxyCompactList}\item 
+\Hypertarget{classGUII_ac4168b8b381d5270eb58e731ac5f6f9d}\label{classGUII_ac4168b8b381d5270eb58e731ac5f6f9d} 
+std\+::mutex {\bfseries gui\+\_\+mutex}
+\begin{DoxyCompactList}\small\item\em Mutex to protect shared resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-virtual void \mbox{\hyperlink{classGUII_af231535d0182347f01927afb843205af}{Initialize}} (const std\+::string \&window\+Name, bool \&success)=0
+virtual void \mbox{\hyperlink{classGUII_a235dc88af7208ecae673c042103b10c9}{Initialize}} (const std\+::string \&window\+Name, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ sdformat\+\_\+parser, bool \&success)=0
 \begin{DoxyCompactList}\small\item\em Initialization of the \doxylink{classGUI}{GUI}. Should be wrapped in the constructor of the implementation. NOTE\+: (zaid) As more features are added, more things will be added to this initalize method. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -56,11 +59,11 @@ virtual void \mbox{\hyperlink{classGUII_af231535d0182347f01927afb843205af}{Initi
 Interface for the SDFormat Editor\textquotesingle{}s Graphical User Interface Note that this class also inherits from std\+::enable\+\_\+shared\+\_\+from\+\_\+this$<$\+GUII$>$, as it may be required to pass a shared pointer of itself into the \doxylink{classCommandI}{CommandI} object in the Update method. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classGUII_af231535d0182347f01927afb843205af}\label{classGUII_af231535d0182347f01927afb843205af} 
+\Hypertarget{classGUII_a235dc88af7208ecae673c042103b10c9}\label{classGUII_a235dc88af7208ecae673c042103b10c9} 
 \index{GUII@{GUII}!Initialize@{Initialize}}
 \index{Initialize@{Initialize}!GUII@{GUII}}
 \doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
-{\footnotesize\ttfamily virtual void GUII\+::\+Initialize (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{window\+Name,  }\item[{bool \&}]{success }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual void GUII\+::\+Initialize (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{window\+Name,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+\_\+parser,  }\item[{bool \&}]{success }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
 
 
 
@@ -70,12 +73,14 @@ Initialization of the \doxylink{classGUI}{GUI}. Should be wrapped in the constru
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em window\+\_\+name} & The name to be given to the SDFormat\+Editor Window \\
 \hline
+\mbox{\texttt{ in}}  & {\em sdformat\+\_\+parser} & Pointer to the sdformat parser object \\
+\hline
 \mbox{\texttt{ out}}  & {\em success} & true if window initalization is successful \\
 \hline
 \end{DoxyParams}
 
 
-Implemented in \mbox{\hyperlink{classGUI_a94804c4737bc4d7f1948850c7b65959c}{GUI}}.
+Implemented in \mbox{\hyperlink{classGUI_a6297d2816b36e76ef65067988f4d18c2}{GUI}}.
 
 \Hypertarget{classGUII_a4f80df3bf862a6da0cb37f17b59d3bf5}\label{classGUII_a4f80df3bf862a6da0cb37f17b59d3bf5} 
 \index{GUII@{GUII}!OpenFileDialog@{OpenFileDialog}}
@@ -109,27 +114,22 @@ Indicate if the \doxylink{classGUI}{GUI} should close ~\newline
 
 Implemented in \mbox{\hyperlink{classGUI_a75a2aa8cff0e7601e0e8b97000213094}{GUI}}.
 
-\Hypertarget{classGUII_acc1aad3211b05d53cc26dc83efc4270a}\label{classGUII_acc1aad3211b05d53cc26dc83efc4270a} 
+\Hypertarget{classGUII_a4e441601baac13f94796fde8d3d66400}\label{classGUII_a4e441601baac13f94796fde8d3d66400} 
 \index{GUII@{GUII}!Update@{Update}}
 \index{Update@{Update}!GUII@{GUII}}
 \doxysubsubsection{\texorpdfstring{Update()}{Update()}}
-{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ GUII\+::\+Update (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+\_\+parser }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ GUII\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
 Updating the \doxylink{classGUI}{GUI}. 
 
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em sdf\+Parser} & Pointer to the SDF parser interface object \\
-\hline
-\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The a pointer to the command resulting from the user\textquotesingle{}s action during this frame 
 \end{DoxyReturn}
 
 
-Implemented in \mbox{\hyperlink{classGUI_a14375d8920104c20ddb51fc45901bc24}{GUI}}.
+Implemented in \mbox{\hyperlink{classGUI_a9105e79c17af7d6e3cf021aa7008eb34}{GUI}}.
 
 
 

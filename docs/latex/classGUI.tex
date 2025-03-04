@@ -32,7 +32,7 @@ Collaboration diagram for GUI\+:
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classGUI_a85087e9f2d25696e4fab2b6b4cd3e0e6}{GUI}} (const std\+::string \&window\+\_\+name, bool \&success)
+\mbox{\hyperlink{classGUI_ae06550e6936a0070ff1d8dc2772f3d53}{GUI}} (const std\+::string \&window\+\_\+name, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\+\_\+parser}}, bool \&success)
 \begin{DoxyCompactList}\small\item\em Constructor that wraps the Initialize method. \end{DoxyCompactList}\item 
 \Hypertarget{classGUI_ac9cae2328dcb5d83bdfaeca49a2eb695}\label{classGUI_ac9cae2328dcb5d83bdfaeca49a2eb695} 
 {\bfseries \texorpdfstring{$\sim$}{\string~}\+GUI} ()
@@ -40,18 +40,20 @@ Collaboration diagram for GUI\+:
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classGUI_a94804c4737bc4d7f1948850c7b65959c}{Initialize}} (const std\+::string \&window\+\_\+name, bool \&success) override
+void \mbox{\hyperlink{classGUI_a6297d2816b36e76ef65067988f4d18c2}{Initialize}} (const std\+::string \&window\+\_\+name, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\+\_\+parser}}, bool \&success) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classGUI_a75a2aa8cff0e7601e0e8b97000213094}{Should\+Close}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
-std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classGUI_a14375d8920104c20ddb51fc45901bc24}{Update}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ sdformat\+\_\+parser) override
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classGUI_a9105e79c17af7d6e3cf021aa7008eb34}{Update}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of update method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGUI_a38936ef1fe8f17e0211034161730f056}{Display\+SDFRoot\+Element}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \&command, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\+\_\+parser}})
+\begin{DoxyCompactList}\small\item\em Function to display the SDF root element in the \doxylink{classGUI}{GUI} in a tree format. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{classGUI_ae03ac5fb89b2ba7be43c2aae029f3e95}{Open\+File\+Dialog}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static void \mbox{\hyperlink{classGUI_acf94b0cc09d0d9d08a545ea1dc5919d5}{glfw\+\_\+error\+\_\+callback}} (int error, const char \texorpdfstring{$\ast$}{*}description)
+static void \mbox{\hyperlink{classGUI_ad0fd69fc7f512cacf6bfec7d67d6141a}{GLFWError\+Callback}} (int error, const char \texorpdfstring{$\ast$}{*}description)
 \begin{DoxyCompactList}\small\item\em Function for handling GLFW Error (required to be static by GLFW) NOTE\+: (zaid) It may be good to integrate this with an error handler class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -62,25 +64,31 @@ GLFWwindow \texorpdfstring{$\ast$}{*} {\bfseries window} = nullptr
 \Hypertarget{classGUI_ac6297526aeb809b472c7952fae1d07f7}\label{classGUI_ac6297526aeb809b472c7952fae1d07f7} 
 Im\+Gui\+IO \texorpdfstring{$\ast$}{*} {\bfseries io} = nullptr
 \begin{DoxyCompactList}\small\item\em Reference to the Im\+Gui\+IO structure, which handles input/output operations for Im\+Gui. \end{DoxyCompactList}\item 
-Im\+Vec4 \mbox{\hyperlink{classGUI_a34015969cf7c7eb56194a7a084778315}{background\+\_\+colour}}
-\begin{DoxyCompactList}\small\item\em Reference to the file operations object NOTE\+: (zaid) will use the opportunity to implement the singleton design pattern for the file ops class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\Hypertarget{classGUI_ac4c318d3b227ae03cea3447780465d90}\label{classGUI_ac4c318d3b227ae03cea3447780465d90} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ {\bfseries sdformat\+\_\+parser}
+\begin{DoxyCompactList}\small\item\em Pointer to the sdformat\+\_\+parser object. \end{DoxyCompactList}\item 
+\Hypertarget{classGUI_a34015969cf7c7eb56194a7a084778315}\label{classGUI_a34015969cf7c7eb56194a7a084778315} 
+Im\+Vec4 {\bfseries background\+\_\+colour}
+\begin{DoxyCompactList}\small\item\em The background color used in the \doxylink{classGUI}{GUI}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classGUII}{GUII}}}
 \begin{DoxyCompactItemize}
 \item 
 std\+::atomic$<$ bool $>$ {\bfseries prevent\+\_\+input\+\_\+flag} = false
-\begin{DoxyCompactList}\small\item\em A flag which can be set to prevent the \doxylink{classGUI}{GUI} from taking user input. This can be used in instances where Open\+File\+Dialog or another threadded method is running. NOTE\+: (zaid) Technically, this class is no longer an "{}interface"{} since this attribute is included... \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A flag which can be set to prevent the \doxylink{classGUI}{GUI} from taking user input. This can be used in instances where Open\+File\+Dialog or another threadded method is running. NOTE\+: (zaid) Technically, this class is no longer an "{}interface"{} since this attribute is included... \end{DoxyCompactList}\item 
+std\+::mutex {\bfseries gui\+\_\+mutex}
+\begin{DoxyCompactList}\small\item\em Mutex to protect shared resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Implementation of \doxylink{classGUII}{GUII}. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classGUI_a85087e9f2d25696e4fab2b6b4cd3e0e6}\label{classGUI_a85087e9f2d25696e4fab2b6b4cd3e0e6} 
+\Hypertarget{classGUI_ae06550e6936a0070ff1d8dc2772f3d53}\label{classGUI_ae06550e6936a0070ff1d8dc2772f3d53} 
 \index{GUI@{GUI}!GUI@{GUI}}
 \index{GUI@{GUI}!GUI@{GUI}}
 \doxysubsubsection{\texorpdfstring{GUI()}{GUI()}}
-{\footnotesize\ttfamily GUI\+::\+GUI (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{window\+\_\+name,  }\item[{bool \&}]{success }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily GUI\+::\+GUI (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{window\+\_\+name,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+\_\+parser,  }\item[{bool \&}]{success }\end{DoxyParamCaption})}
 
 
 
@@ -96,11 +104,26 @@ Constructor that wraps the Initialize method.
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classGUI_acf94b0cc09d0d9d08a545ea1dc5919d5}\label{classGUI_acf94b0cc09d0d9d08a545ea1dc5919d5} 
-\index{GUI@{GUI}!glfw\_error\_callback@{glfw\_error\_callback}}
-\index{glfw\_error\_callback@{glfw\_error\_callback}!GUI@{GUI}}
-\doxysubsubsection{\texorpdfstring{glfw\_error\_callback()}{glfw\_error\_callback()}}
-{\footnotesize\ttfamily void GUI\+::glfw\+\_\+error\+\_\+callback (\begin{DoxyParamCaption}\item[{int}]{error,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{description }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+\Hypertarget{classGUI_a38936ef1fe8f17e0211034161730f056}\label{classGUI_a38936ef1fe8f17e0211034161730f056} 
+\index{GUI@{GUI}!DisplaySDFRootElement@{DisplaySDFRootElement}}
+\index{DisplaySDFRootElement@{DisplaySDFRootElement}!GUI@{GUI}}
+\doxysubsubsection{\texorpdfstring{DisplaySDFRootElement()}{DisplaySDFRootElement()}}
+{\footnotesize\ttfamily void GUI\+::\+Display\+SDFRoot\+Element (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \&}]{command,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+\_\+parser }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Function to display the SDF root element in the \doxylink{classGUI}{GUI} in a tree format. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em The} & a pointer to the command resulting from the user\textquotesingle{}s action during this frame \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGUI_ad0fd69fc7f512cacf6bfec7d67d6141a}\label{classGUI_ad0fd69fc7f512cacf6bfec7d67d6141a} 
+\index{GUI@{GUI}!GLFWErrorCallback@{GLFWErrorCallback}}
+\index{GLFWErrorCallback@{GLFWErrorCallback}!GUI@{GUI}}
+\doxysubsubsection{\texorpdfstring{GLFWErrorCallback()}{GLFWErrorCallback()}}
+{\footnotesize\ttfamily void GUI\+::\+GLFWError\+Callback (\begin{DoxyParamCaption}\item[{int}]{error,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{description }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
 
 
@@ -114,11 +137,11 @@ Function for handling GLFW Error (required to be static by GLFW) NOTE\+: (zaid) 
  \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classGUI_a94804c4737bc4d7f1948850c7b65959c}\label{classGUI_a94804c4737bc4d7f1948850c7b65959c} 
+\Hypertarget{classGUI_a6297d2816b36e76ef65067988f4d18c2}\label{classGUI_a6297d2816b36e76ef65067988f4d18c2} 
 \index{GUI@{GUI}!Initialize@{Initialize}}
 \index{Initialize@{Initialize}!GUI@{GUI}}
 \doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
-{\footnotesize\ttfamily void GUI\+::\+Initialize (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{window\+\_\+name,  }\item[{bool \&}]{success }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily void GUI\+::\+Initialize (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{window\+\_\+name,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+\_\+parser,  }\item[{bool \&}]{success }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
@@ -126,7 +149,7 @@ Implementation of interface method.
 
 
 
-Implements \mbox{\hyperlink{classGUII_af231535d0182347f01927afb843205af}{GUII}}.
+Implements \mbox{\hyperlink{classGUII_a235dc88af7208ecae673c042103b10c9}{GUII}}.
 
 \Hypertarget{classGUI_ae03ac5fb89b2ba7be43c2aae029f3e95}\label{classGUI_ae03ac5fb89b2ba7be43c2aae029f3e95} 
 \index{GUI@{GUI}!OpenFileDialog@{OpenFileDialog}}
@@ -159,11 +182,11 @@ Implementation of interface method.
 
 Implements \mbox{\hyperlink{classGUII_a9ae3de58253702261056dc0981a046ac}{GUII}}.
 
-\Hypertarget{classGUI_a14375d8920104c20ddb51fc45901bc24}\label{classGUI_a14375d8920104c20ddb51fc45901bc24} 
+\Hypertarget{classGUI_a9105e79c17af7d6e3cf021aa7008eb34}\label{classGUI_a9105e79c17af7d6e3cf021aa7008eb34} 
 \index{GUI@{GUI}!Update@{Update}}
 \index{Update@{Update}!GUI@{GUI}}
 \doxysubsubsection{\texorpdfstring{Update()}{Update()}}
-{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ GUI\+::\+Update (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+\_\+parser }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ GUI\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
@@ -171,22 +194,9 @@ Implementation of update method.
 
 
 
-Implements \mbox{\hyperlink{classGUII_acc1aad3211b05d53cc26dc83efc4270a}{GUII}}.
+Implements \mbox{\hyperlink{classGUII_a4e441601baac13f94796fde8d3d66400}{GUII}}.
 
 
-
-\doxysubsection{Member Data Documentation}
-\Hypertarget{classGUI_a34015969cf7c7eb56194a7a084778315}\label{classGUI_a34015969cf7c7eb56194a7a084778315} 
-\index{GUI@{GUI}!background\_colour@{background\_colour}}
-\index{background\_colour@{background\_colour}!GUI@{GUI}}
-\doxysubsubsection{\texorpdfstring{background\_colour}{background\_colour}}
-{\footnotesize\ttfamily Im\+Vec4 GUI\+::background\+\_\+colour\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-Reference to the file operations object NOTE\+: (zaid) will use the opportunity to implement the singleton design pattern for the file ops class. 
-
-The background color used in the \doxylink{classGUI}{GUI} 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

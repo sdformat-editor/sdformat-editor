@@ -85,9 +85,9 @@ Inheritance diagram for SDFormatParserI:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSDFormatParserI__inherit__graph.png" border="0" usemap="#aSDFormatParserI_inherit__map" alt="Inheritance graph"/></div>
 <map name="aSDFormatParserI_inherit__map" id="aSDFormatParserI_inherit__map">
-<area shape="rect" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="25,5,215,100"/>
-<area shape="rect" href="classSDFormatParser.html" title="Implementation of SDFormatParserI." alt="" coords="5,148,235,243"/>
-<area shape="poly" title=" " alt="" coords="123,114,123,148,117,148,117,114"/>
+<area shape="rect" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="25,5,215,135"/>
+<area shape="rect" href="classSDFormatParser.html" title="Implementation of SDFormatParserI." alt="" coords="5,183,235,312"/>
+<area shape="poly" title=" " alt="" coords="123,148,123,182,117,182,117,148"/>
 </map>
 </div>
 <div class="dynheader">
@@ -95,7 +95,7 @@ Collaboration diagram for SDFormatParserI:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSDFormatParserI__coll__graph.png" border="0" usemap="#aSDFormatParserI_coll__map" alt="Collaboration graph"/></div>
 <map name="aSDFormatParserI_coll__map" id="aSDFormatParserI_coll__map">
-<area shape="rect" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,195,100"/>
+<area shape="rect" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,195,135"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -104,10 +104,43 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a404feccbe479eadff00da8ca881fbc85" id="r_a404feccbe479eadff00da8ca881fbc85"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a404feccbe479eadff00da8ca881fbc85">Initialize</a> (const std::string file_path, bool &amp;success)=0</td></tr>
 <tr class="memdesc:a404feccbe479eadff00da8ca881fbc85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization of the Parser. Will re-initalize the parser if initalized already. NOTE: (zaid) As more features are added, more things will be added to this initalize method.  <br /></td></tr>
 <tr class="separator:a404feccbe479eadff00da8ca881fbc85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a5b36f28e49f669d0bd8685253be72e" id="r_a9a5b36f28e49f669d0bd8685253be72e"><td class="memItemLeft" align="right" valign="top">virtual sdf::SDFPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a9a5b36f28e49f669d0bd8685253be72e">GetSDFElement</a> ()=0</td></tr>
+<tr class="memdesc:a9a5b36f28e49f669d0bd8685253be72e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the main sdfElement associated this this <a class="el" href="classSDFormatParser.html" title="Implementation of SDFormatParserI.">SDFormatParser</a> instance.  <br /></td></tr>
+<tr class="separator:a9a5b36f28e49f669d0bd8685253be72e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for the SDFormat Editor's Parser. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9a5b36f28e49f669d0bd8685253be72e" name="a9a5b36f28e49f669d0bd8685253be72e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a5b36f28e49f669d0bd8685253be72e">&#9670;&#160;</a></span>GetSDFElement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual sdf::SDFPtr SDFormatParserI::GetSDFElement </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the main sdfElement associated this this <a class="el" href="classSDFormatParser.html" title="Implementation of SDFormatParserI.">SDFormatParser</a> instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>the main sdfElement associated this this <a class="el" href="classSDFormatParser.html" title="Implementation of SDFormatParserI.">SDFormatParser</a> instance </dd></dl>
+
+<p>Implemented in <a class="el" href="classSDFormatParser.html#a05c7ff0e224988a867849ebe85e67bb7">SDFormatParser</a>.</p>
+
+</div>
+</div>
 <a id="a404feccbe479eadff00da8ca881fbc85" name="a404feccbe479eadff00da8ca881fbc85"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a404feccbe479eadff00da8ca881fbc85">&#9670;&#160;</a></span>Initialize()</h2>
 

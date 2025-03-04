@@ -24,25 +24,25 @@
 \DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ SDFORMAT\_EDITOR\_PARSER\_HH\_}}
 \DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ SDFORMAT\_EDITOR\_PARSER\_HH\_}}
 \DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \textcolor{comment}{//\ SDFormat\ dependencies}}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <sdf/sdf.hh>}}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
-\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <cstring>}}
-\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <limits.h>}}
-\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <memory>}}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <interfaces/sdformat\_parser\_interface.h>}}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00034\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSDFormatParser}{SDFormatParser}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classSDFormatParserI}{SDFormatParserI}}}
-\DoxyCodeLine{00035\ \{}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <limits.h>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <interfaces/sdformat\_parser\_interface.h>}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSDFormatParser}{SDFormatParser}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classSDFormatParserI}{SDFormatParserI}}}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{private}:\ sdf::SDFPtr\ \mbox{\hyperlink{classSDFormatParser_a2fc0ef9b53d30ff08378f9b7194517b9}{sdfElement}};}
 \DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{private}:\ sdf::SDFPtr\ sdfElement;}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSDFormatParser_ada8d05784ae55ffebeb83f41ce1b70fa}{Initialize}}(\textcolor{keyword}{const}\ std::string\ file\_path,\ \textcolor{keywordtype}{bool}\ \&success)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSDFormatParser_ada8d05784ae55ffebeb83f41ce1b70fa}{Initialize}}(\textcolor{keyword}{const}\ std::string\ file\_path,\ \textcolor{keywordtype}{bool}\ \&success)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{public}:\ sdf::SDFPtr\ \mbox{\hyperlink{classSDFormatParser_a05c7ff0e224988a867849ebe85e67bb7}{GetSDFElement}}()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00044\ \ \ \ \ }
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

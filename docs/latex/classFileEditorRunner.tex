@@ -1,0 +1,72 @@
+\doxysection{File\+Editor\+Runner Class Reference}
+\hypertarget{classFileEditorRunner}{}\label{classFileEditorRunner}\index{FileEditorRunner@{FileEditorRunner}}
+
+
+Implementation of program start up to be called by main.  
+
+
+
+
+{\ttfamily \#include $<$file\+\_\+editor\+\_\+runner.\+h$>$}
+
+
+
+Collaboration diagram for File\+Editor\+Runner\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{classFileEditorRunner__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classFileEditorRunner_add1e32a44cc0639e422d2788592d5bba}\label{classFileEditorRunner_add1e32a44cc0639e422d2788592d5bba} 
+{\bfseries File\+Editor\+Runner} ()
+\begin{DoxyCompactList}\small\item\em Constructor that calls the top level method. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classFileEditorRunner_aefe9d65d30a5a528bd1769c2bbfd478c}{run\+\_\+program}} ()
+\begin{DoxyCompactList}\small\item\em Top level method that starts the program. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classFileEditorRunner_a727a0cc1d0a6b1c715b8669e5b29a9bd}\label{classFileEditorRunner_a727a0cc1d0a6b1c715b8669e5b29a9bd} 
+bool {\bfseries gui\+\_\+initalization\+\_\+successful}
+\begin{DoxyCompactList}\small\item\em Variable for checking if the gui was initilized successfully. \end{DoxyCompactList}\item 
+\Hypertarget{classFileEditorRunner_a10a63970e169797160759b1cab2e5b80}\label{classFileEditorRunner_a10a63970e169797160759b1cab2e5b80} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ {\bfseries sdformat\+Parser}
+\begin{DoxyCompactList}\small\item\em Pointer to \doxylink{classSDFormatParser}{SDFormat\+Parser} which will be null until the user opens a file. \end{DoxyCompactList}\item 
+\Hypertarget{classFileEditorRunner_a0a505fea2a1ac267449ba21a33f0d88d}\label{classFileEditorRunner_a0a505fea2a1ac267449ba21a33f0d88d} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ {\bfseries gui}
+\begin{DoxyCompactList}\small\item\em Pointer to the \doxylink{classGUI}{GUI} class. \end{DoxyCompactList}\item 
+\Hypertarget{classFileEditorRunner_a887008b980538dfc40741566bd399939}\label{classFileEditorRunner_a887008b980538dfc40741566bd399939} 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ $>$ {\bfseries undo\+\_\+commands\+\_\+stack}
+\begin{DoxyCompactList}\small\item\em Stack for undo functionality. \end{DoxyCompactList}\item 
+\Hypertarget{classFileEditorRunner_a245b6bf15d0b9dd4f9df037bc30445c7}\label{classFileEditorRunner_a245b6bf15d0b9dd4f9df037bc30445c7} 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ $>$ {\bfseries redo\+\_\+commands\+\_\+stack}
+\begin{DoxyCompactList}\small\item\em Stack for redo functionality. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of program start up to be called by main. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classFileEditorRunner_aefe9d65d30a5a528bd1769c2bbfd478c}\label{classFileEditorRunner_aefe9d65d30a5a528bd1769c2bbfd478c} 
+\index{FileEditorRunner@{FileEditorRunner}!run\_program@{run\_program}}
+\index{run\_program@{run\_program}!FileEditorRunner@{FileEditorRunner}}
+\doxysubsubsection{\texorpdfstring{run\_program()}{run\_program()}}
+{\footnotesize\ttfamily int File\+Editor\+Runner\+::run\+\_\+program (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Top level method that starts the program. 
+
+\begin{DoxyReturn}{Returns}
+Exit state for main function 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/file\+\_\+editor\+\_\+runner.\+h\item 
+src/main.\+cpp\end{DoxyCompactItemize}

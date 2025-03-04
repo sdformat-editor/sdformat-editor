@@ -86,9 +86,9 @@ Inheritance diagram for SDFormatParser:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSDFormatParser__inherit__graph.png" border="0" usemap="#aSDFormatParser_inherit__map" alt="Inheritance graph"/></div>
 <map name="aSDFormatParser_inherit__map" id="aSDFormatParser_inherit__map">
-<area shape="rect" title="Implementation of SDFormatParserI." alt="" coords="5,148,235,243"/>
-<area shape="rect" href="classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="25,5,215,100"/>
-<area shape="poly" title=" " alt="" coords="123,114,123,148,117,148,117,114"/>
+<area shape="rect" title="Implementation of SDFormatParserI." alt="" coords="5,183,235,312"/>
+<area shape="rect" href="classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="25,5,215,135"/>
+<area shape="poly" title=" " alt="" coords="123,148,123,182,117,182,117,148"/>
 </map>
 </div>
 <div class="dynheader">
@@ -96,9 +96,9 @@ Collaboration diagram for SDFormatParser:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSDFormatParser__coll__graph.png" border="0" usemap="#aSDFormatParser_coll__map" alt="Collaboration graph"/></div>
 <map name="aSDFormatParser_coll__map" id="aSDFormatParser_coll__map">
-<area shape="rect" title="Implementation of SDFormatParserI." alt="" coords="5,148,235,243"/>
-<area shape="rect" href="classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="25,5,215,100"/>
-<area shape="poly" title=" " alt="" coords="123,114,123,148,117,148,117,114"/>
+<area shape="rect" title="Implementation of SDFormatParserI." alt="" coords="5,183,235,312"/>
+<area shape="rect" href="classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="25,5,215,135"/>
+<area shape="poly" title=" " alt="" coords="123,148,123,182,117,182,117,148"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -107,16 +107,50 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ada8d05784ae55ffebeb83f41ce1b70fa" id="r_ada8d05784ae55ffebeb83f41ce1b70fa"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParser.html#ada8d05784ae55ffebeb83f41ce1b70fa">Initialize</a> (const std::string file_path, bool &amp;success) override</td></tr>
 <tr class="memdesc:ada8d05784ae55ffebeb83f41ce1b70fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
 <tr class="separator:ada8d05784ae55ffebeb83f41ce1b70fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05c7ff0e224988a867849ebe85e67bb7" id="r_a05c7ff0e224988a867849ebe85e67bb7"><td class="memItemLeft" align="right" valign="top">sdf::SDFPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParser.html#a05c7ff0e224988a867849ebe85e67bb7">GetSDFElement</a> () override</td></tr>
+<tr class="memdesc:a05c7ff0e224988a867849ebe85e67bb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
+<tr class="separator:a05c7ff0e224988a867849ebe85e67bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a2fc0ef9b53d30ff08378f9b7194517b9" id="r_a2fc0ef9b53d30ff08378f9b7194517b9"><td class="memItemLeft" align="right" valign="top"><a id="a2fc0ef9b53d30ff08378f9b7194517b9" name="a2fc0ef9b53d30ff08378f9b7194517b9"></a>
 sdf::SDFPtr&#160;</td><td class="memItemRight" valign="bottom"><b>sdfElement</b></td></tr>
+<tr class="memdesc:a2fc0ef9b53d30ff08378f9b7194517b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The main sdfElement associated this this <a class="el" href="classSDFormatParser.html" title="Implementation of SDFormatParserI.">SDFormatParser</a> instance. <br /></td></tr>
 <tr class="separator:a2fc0ef9b53d30ff08378f9b7194517b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of <a class="el" href="classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser.">SDFormatParserI</a>. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a05c7ff0e224988a867849ebe85e67bb7" name="a05c7ff0e224988a867849ebe85e67bb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05c7ff0e224988a867849ebe85e67bb7">&#9670;&#160;</a></span>GetSDFElement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sdf::SDFPtr SDFormatParser::GetSDFElement </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementation of interface method. </p>
+<dl class="section return"><dt>Returns</dt><dd>The main sdfElement associated this this <a class="el" href="classSDFormatParser.html" title="Implementation of SDFormatParserI.">SDFormatParser</a> instance </dd></dl>
+
+<p>Implements <a class="el" href="classSDFormatParserI.html#a9a5b36f28e49f669d0bd8685253be72e">SDFormatParserI</a>.</p>
+
+</div>
+</div>
 <a id="ada8d05784ae55ffebeb83f41ce1b70fa" name="ada8d05784ae55ffebeb83f41ce1b70fa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ada8d05784ae55ffebeb83f41ce1b70fa">&#9670;&#160;</a></span>Initialize()</h2>
 
