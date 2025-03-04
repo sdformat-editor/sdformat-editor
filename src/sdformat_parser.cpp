@@ -69,66 +69,6 @@ void SDFormatParser::Initialize(std::string file_path, bool &success)
   // In the future, it's possible to allow the user to define custom elements that are not specified by the spec.
   // All that needs to be done is store somewhere the configuration for these custom elements and corresponding parent elements.
   
-  // TEMPLATE CODE:
-
-  // start parsing model
-  const sdf::ElementPtr rootElement = sdfElement->Root();
-  if (!rootElement->HasElement("model"))
-  {
-    std::cerr << file_path << " is not a model SDF file!" << std::endl;
-    return;
-  }
-
-  const sdf::ElementPtr modelElement = rootElement->GetElement("model");
-  const std::string modelName = modelElement->Get<std::string>("name");
-  std::cout << "Found " << modelName << " model!" << std::endl;
-
-  sdf::ElementPtr element = modelElement->GetFirstElement();
-  while (element)
-  {
-    if (element->GetValue())
-    {
-      std::cout << "Found element " << element->GetName() << " with value "
-                << element->GetValue()->GetAsString() << std::endl;
-    }
-    else
-    {
-      std::cout << "Found element " << element->GetName() << std::endl;
-    }
-    element = element->GetNextElement("");
-  }
-
-
-
-  // // parse model links
-  // sdf::ElementPtr linkElement = modelElement->GetElement("link");
-  // while (linkElement)
-  // {
-  //   const std::string linkName = linkElement->Get<std::string>("name");
-  //   std::cout << "Found " << linkName << " link in "
-  //             << modelName << " model with value" << linkElement->GetValue() << std::endl;
-  //   linkElement = linkElement->GetNextElement("link");
-  // }
-
-  // // parse model joints
-  // sdf::ElementPtr jointElement = modelElement->GetElement("joint");
-  // while (jointElement)
-  // {
-  //   const std::string jointName = jointElement->Get<std::string>("name");
-  //   std::cout << "Found " << jointName << " joint in "
-  //             << modelName << " model!" << std::endl;
-
-  //   const sdf::ElementPtr parentElement = jointElement->GetElement("parent");
-  //   const std::string parentLinkName = parentElement->Get<std::string>();
-
-  //   const sdf::ElementPtr childElement = jointElement->GetElement("child");
-  //   const std::string childLinkName = childElement->Get<std::string>();
-
-  //   std::cout << "Joint " << jointName << " connects " << parentLinkName
-  //             << " link to " << childLinkName << " link" << std::endl;
-
-  //   jointElement = jointElement->GetNextElement("joint");
-  // }
   success = true;
 }
 

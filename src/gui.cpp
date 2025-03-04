@@ -170,8 +170,8 @@ std::unique_ptr<CommandI> GUI::Update()
   // Set the position and size of the "SDFormat Editor" window
   // The window will be fixed to the right of the screen. It will take up 25% of 
   // the total width and the entire height (minus top menu bar)
-  ImGui::SetNextWindowPos(ImVec2(window_width * 0.6f, 20)); // Position the window below the main menu bar
-  ImGui::SetNextWindowSize(ImVec2(window_width * 0.4f, window_height - 20.0f)); // Set the dynamic size of the window
+  ImGui::SetNextWindowPos(ImVec2(window_width * 0.3f, 20)); // Position the window below the main menu bar
+  ImGui::SetNextWindowSize(ImVec2(window_width * 0.7f, window_height - 20.0f)); // Set the dynamic size of the window
 
   {
     ImGui::Begin("SDFormat Editor",  nullptr, ImGuiWindowFlags_NoMove); 
@@ -230,43 +230,48 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
 
   while (!sdf_tree_stack.empty())
   {
-    std::cout << "Loop Iteration" << std::endl;
     // If this node has already been visited and we are returning to it, 
     // it means we have accounted it and for all of it's child nodes.
     // In that case, pop the node from the stack and end the node in the GUI
     if (sdf_tree_stack.top().second)
     {
-      std::cout << "Tree node (parent element) destroyed" << std::endl;
-      
       sdf_tree_stack.pop();
       ImGui::TreePop();
       continue;
     }
 
-    // If we are here, it means that we are exploring a new node
-    // Mark the current node as visited
-    sdf_tree_stack.top().second = true;
-
     // Get a pointer to the current node
     sdf::ElementPtr current_element_ptr = sdf_tree_stack.top().first;
 
-    // Create a unique identifier for the tree node
-    std::cout << "Node Label: " << current_element_ptr->GetName() + "##" + std::to_string(unique_id++) << std::endl;
-    
-    if (ImGui::TreeNode((current_element_ptr->GetName() + "##" + std::to_string(unique_id++)).c_str()))
+    std::string node_name;
+
+    if (current_element_ptr->GetAttribute("name"))
     {
-      std::cout << "Tree node created" << std::endl;
+      node_name = current_element_ptr->GetName() + ": " + current_element_ptr->GetAttribute("name")->GetAsString() + "##" + std::to_string(unique_id++);
+    }
+    else
+    {
+      node_name = current_element_ptr->GetName() + "##" + std::to_string(unique_id++);
+    }
+    
+    // Create a unique identifier for the tree node
+    if (ImGui::TreeNode(node_name.c_str()))
+    {
+
+      // If we are here, it means that we are exploring a new node
+      // Mark the current node as visited
+      sdf_tree_stack.top().second = true;
 
       // Delete and append buttons for this node
       if (ImGui::Button(("Delete element##" + std::to_string(unique_id++)).c_str()))
       {
-        // Handle delete action for a tree node
+        // Create a DeleteElement command
         std::cout << "Delete called for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName();
       }
       ImGui::SameLine();
       if (ImGui::Button(("Append element##" + std::to_string(unique_id++)).c_str()))
       {
-        // Handle append action for a tree node
+        // Create an AppendElement command
         std::cout << "Append called for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName();
       }
 
@@ -277,30 +282,30 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
         ImGui::TextUnformatted(current_element_ptr->GetValue()->GetAsString().c_str());
         static char value_buffer[128] = "";
         
-        ImGui::InputText(("New value##" + std::to_string(unique_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
+        ImGui::InputText(("##" + std::to_string(unique_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
         ImGui::SameLine();
 
         if (ImGui::Button(("Set new value##" + std::to_string(unique_id++)).c_str()))
         {
-          
+          // Create a SetElementValue command
           std::cout << "New value for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName()
           << ": " << value_buffer << std::endl;
-          }
+        }
       }
       
       // Go through each attribute of this element
       for (const auto &attribute_ptr : current_element_ptr->GetAttributes())
       {
-        ImGui::TextUnformatted((attribute_ptr->GetTypeName() + ": " + attribute_ptr->GetAsString()).c_str());
+        ImGui::TextUnformatted((attribute_ptr->GetKey() + ": " +  attribute_ptr->GetAsString() + " ("  + attribute_ptr->GetTypeName()+ ")").c_str());
 
         static char value_buffer[128] = "";
         ImGui::SameLine();
-        ImGui::InputText(("New value##" + std::to_string(unique_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
+        ImGui::InputText(("##" + std::to_string(unique_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
         ImGui::SameLine();
 
         if (ImGui::Button(("Set new value##" + std::to_string(unique_id++)).c_str()))
         {
-          
+          // Create a SetAttributeValue
           std::cout << "New value for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName()
           << ": " << value_buffer << std::endl;
         }
@@ -320,11 +325,17 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
       else
       {
         // If this element has no children (leaf node), then it may be removed from the stack
-        std::cout << "Tree node (leaf) destroyed" << std::endl;
         sdf_tree_stack.pop();
         ImGui::TreePop();
         continue;
       }
+    }
+    else
+    {
+      // This element's tree node is not open, so its contents
+      // should not be rendered
+      sdf_tree_stack.pop();
+      continue;
     }
   }
 }
