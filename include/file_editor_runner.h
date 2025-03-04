@@ -20,6 +20,11 @@
 #ifndef SDFORMAT_EDITOR_MAIN_HH_
 #define SDFORMAT_EDITOR_MAIN_HH_
 
+#include <stdio.h>
+#include "gui.h"
+#include "sdformat_parser.h"
+#include "interfaces/command_interface.h"
+
 /// \brief Implementation of program start up to be called by main.
 class FileEditorRunner
 {
@@ -27,8 +32,23 @@ class FileEditorRunner
     public: FileEditorRunner();
 
     /// \brief Top level method that starts the program
-    /// \return exit state for main function
+    /// \return Exit state for main function
     public: int run_program();
+
+    /// @brief Variable for checking if the gui was initilized successfully
+    bool gui_initalization_successful;
+
+    /// @brief Pointer to SDFormatParser which will be null until the user opens a file
+    std::shared_ptr<SDFormatParserI> sdformatParser;
+
+    /// @brief Pointer to the GUI class
+    std::shared_ptr<GUII> gui;
+
+    /// @brief Stack for undo functionality
+    std::vector<std::unique_ptr<CommandI>> undo_commands_stack;
+
+    /// @brief Stack for redo functionality
+    std::vector<std::unique_ptr<CommandI>> redo_commands_stack;
 
 };
 
