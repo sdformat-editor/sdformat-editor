@@ -21,6 +21,7 @@
 #include "sdformat_parser.h"
 #include "interfaces/command_interface.h"
 #include <thread>
+#include <stack>
 
 // Main code
 int main(int, char **)
@@ -38,8 +39,8 @@ int main(int, char **)
 
     // Stacks for undo/redo functionality
     // TODO: Actually do something with these stacks
-    std::vector<std::unique_ptr<CommandI>> undo_commands_stack;
-    std::vector<std::unique_ptr<CommandI>> redo_commands_stack;
+    std::stack<std::unique_ptr<CommandI>> undo_commands_stack;
+    std::stack<std::unique_ptr<CommandI>> redo_commands_stack;
 
     // gui->ShouldClose() will become true when the window is closed by the user
     while (!gui->ShouldClose())
@@ -64,7 +65,7 @@ int main(int, char **)
                     if (user_command->execute())
                     {
                         // Add the command to the undo stack if it executes successfully
-                        undo_commands_stack.push_back(std::move(user_command));
+                        undo_commands_stack.push(std::move(user_command));
                     }
 
                     // Allow the GUI to take user commands
@@ -77,7 +78,7 @@ int main(int, char **)
             }
             else if (user_command->execute())
             {
-                undo_commands_stack.push_back(std::move(user_command));
+                undo_commands_stack.push(std::move(user_command));
             }
         }
     }

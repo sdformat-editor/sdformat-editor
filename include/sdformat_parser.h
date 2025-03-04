@@ -20,9 +20,6 @@
 #ifndef SDFORMAT_EDITOR_PARSER_HH_
 #define SDFORMAT_EDITOR_PARSER_HH_
 
-// SDFormat dependencies
-#include <sdf/sdf.hh>
-
 #include <cstdlib>
 #include <cstring>
 #include <limits.h>
@@ -34,11 +31,17 @@
 class SDFormatParser : public SDFormatParserI
 {
 
+    /// \brief The main sdfElement associated this this SDFormatParser instance
     private: sdf::SDFPtr sdfElement;
 
     /// \brief Implementation of interface method
     public: virtual void Initialize(const std::string file_path, bool &success) override;
 
+    /// \brief Implementation of interface method
+    /// \returns The main sdfElement associated this this SDFormatParser instance
+    public: sdf::SDFPtr GetSDFElement() override;
+
+    
 };
 
 #endif

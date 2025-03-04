@@ -22,6 +22,10 @@
 
 #include <iostream>
 
+// SDFormat dependencies
+// This interface depends on the SDFormat Library
+#include <sdf/sdf.hh>
+
 /// \brief Interface for the SDFormat Editor's Parser 
 class SDFormatParserI
 {
@@ -32,6 +36,10 @@ class SDFormatParserI
     /// \param[out] success True if SDFParser initalization is successful
     public: virtual void Initialize(const std::string file_path, bool &success) = 0;
 
+    /// \callgraph
+    /// \brief Returns the main sdfElement associated this this SDFormatParser instance
+    /// \returns the main sdfElement associated this this SDFormatParser instance
+    public: virtual sdf::SDFPtr GetSDFElement() = 0;
 };
 
 #endif

@@ -20,6 +20,7 @@
 #include "gui.h"
 #include "commands/OpenFileCommand.h"
 #include "file_operations.h"
+#include <stack>
 
 GUI::GUI(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success)
 {
@@ -169,18 +170,18 @@ std::unique_ptr<CommandI> GUI::Update()
   // Set the position and size of the "SDFormat Editor" window
   // The window will be fixed to the right of the screen. It will take up 25% of 
   // the total width and the entire height (minus top menu bar)
-  ImGui::SetNextWindowPos(ImVec2(window_width * 0.75f, 20)); // Position the window below the main menu bar
-  ImGui::SetNextWindowSize(ImVec2(window_width * 0.25f, window_height - 20.0f)); // Set the dynamic size of the window
+  ImGui::SetNextWindowPos(ImVec2(window_width * 0.6f, 20)); // Position the window below the main menu bar
+  ImGui::SetNextWindowSize(ImVec2(window_width * 0.4f, window_height - 20.0f)); // Set the dynamic size of the window
 
   {
     ImGui::Begin("SDFormat Editor",  nullptr, ImGuiWindowFlags_NoMove); 
 
     // TODO: (zaid) Save the current working directory and/or current file as an attribute to the GUI object or the file operations singleton
-    // ImGui::Text("Active File is: %s", file_ops->getActiveFilePath().c_str()); // Display some text (you can use a format strings too)
+    // ImGui::TextUnformatted("Active File is: %s", file_ops->getActiveFilePath().c_str()); // Display some text (you can use a format strings too)
 
     // If the user hasn't done anything so far, accept commands from the SDF element tree.
     // Otherwise, display the tree but do not take commands.
-    this->DisplaySDFRootElement(command);
+    this->DisplaySDFRootElement(command, sdformat_parser);
     
 
     ImGui::ColorEdit3("clear color", (float *)&this->background_colour); // Edit 3 floats representing a color
@@ -203,86 +204,128 @@ std::unique_ptr<CommandI> GUI::Update()
   return command;
 }
 
-void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command)
+void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_ptr<SDFormatParserI> sdformat_parser)
 {
+
+  // Return if there is no SDF element tree to show
+  if (!sdformat_parser->GetSDFElement()) 
+  {
+    ImGui::TextUnformatted("SDF tree will be displayed here when a model is opened.");
+    return;
+  }
+
   // Lock the mutex since we will be reading from the SDFormatParser
   std::lock_guard<std::mutex> lock(this->gui_mutex);
+  
+  // Create a stack to hold the element instances to display
+  // The boolean indicates whether or not this tree node was visited
+  std::stack<std::pair<sdf::ElementPtr,bool>> sdf_tree_stack;
 
-  if (ImGui::TreeNode("Node 1"))
+  // Append the root model element to the stack
+  sdf_tree_stack.emplace(sdformat_parser->GetSDFElement()->Root()->GetFirstElement(), false);
+
+  // To ensure that there are no issue with repeat elements for ImGui,
+  // every button will be given a unique id.
+  int unique_id = 0;
+
+  while (!sdf_tree_stack.empty())
   {
-    ImGui::Text("Child 1");
-    ImGui::SameLine();
-    if (ImGui::Button("Modify##Child1"))
+    std::cout << "Loop Iteration" << std::endl;
+    // If this node has already been visited and we are returning to it, 
+    // it means we have accounted it and for all of it's child nodes.
+    // In that case, pop the node from the stack and end the node in the GUI
+    if (sdf_tree_stack.top().second)
     {
-      // Handle modify action for Child 1
-    }
-    ImGui::SameLine();
-    if (ImGui::Button("Delete##Child1"))
-    {
-      // Handle delete action for Child 1
-    }
-
-    ImGui::Text("Child 2");
-    ImGui::SameLine();
-    if (ImGui::Button("Modify##Child2"))
-    {
-      // Handle modify action for Child 2
-    }
-    ImGui::SameLine();
-    if (ImGui::Button("Delete##Child2"))
-    {
-      // Handle delete action for Child 2
-    }
-
-    ImGui::TreePop();
-  }
-  if (ImGui::TreeNode("Node 2"))
-  {
-    ImGui::Text("Child 1");
-    ImGui::SameLine();
-    if (ImGui::Button("Modify##Child1_Node2"))
-    {
-      // Handle modify action for Child 1 in Node 2
-    }
-    ImGui::SameLine();
-    if (ImGui::Button("Delete##Child1_Node2"))
-    {
-      // Handle delete action for Child 1 in Node 2
-    }
-
-    if (ImGui::TreeNode("SubNode"))
-    {
-      if (ImGui::Button("Modify"))
-      {
-        
-      }
-      ImGui::Text("SubChild 1");
-      ImGui::SameLine();
-      if (ImGui::Button("Modify##SubChild1"))
-      {
-        // Handle modify action for SubChild 1
-      }
-      ImGui::SameLine();
-      if (ImGui::Button("Delete##SubChild1"))
-      {
-        // Handle delete action for SubChild 1
-      }
-
-      ImGui::Text("SubChild 2");
-      ImGui::SameLine();
-      if (ImGui::Button("Modify##SubChild2"))
-      {
-        // Handle modify action for SubChild 2
-      }
-      ImGui::SameLine();
-      if (ImGui::Button("Delete##SubChild2"))
-      {
-        // Handle delete action for SubChild 2
-      }
-
+      std::cout << "Tree node (parent element) destroyed" << std::endl;
+      
+      sdf_tree_stack.pop();
       ImGui::TreePop();
+      continue;
     }
-    ImGui::TreePop();
+
+    // If we are here, it means that we are exploring a new node
+    // Mark the current node as visited
+    sdf_tree_stack.top().second = true;
+
+    // Get a pointer to the current node
+    sdf::ElementPtr current_element_ptr = sdf_tree_stack.top().first;
+
+    // Create a unique identifier for the tree node
+    std::cout << "Node Label: " << current_element_ptr->GetName() + "##" + std::to_string(unique_id++) << std::endl;
+    
+    if (ImGui::TreeNode((current_element_ptr->GetName() + "##" + std::to_string(unique_id++)).c_str()))
+    {
+      std::cout << "Tree node created" << std::endl;
+
+      // Delete and append buttons for this node
+      if (ImGui::Button(("Delete element##" + std::to_string(unique_id++)).c_str()))
+      {
+        // Handle delete action for a tree node
+        std::cout << "Delete called for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName();
+      }
+      ImGui::SameLine();
+      if (ImGui::Button(("Append element##" + std::to_string(unique_id++)).c_str()))
+      {
+        // Handle append action for a tree node
+        std::cout << "Append called for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName();
+      }
+
+      // Check if this element has as associated value (i.e. it is a type element)
+      if (current_element_ptr->GetValue())
+      {
+        // Display the value and provide a textbox and button for modification
+        ImGui::TextUnformatted(current_element_ptr->GetValue()->GetAsString().c_str());
+        static char value_buffer[128] = "";
+        
+        ImGui::InputText(("New value##" + std::to_string(unique_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
+        ImGui::SameLine();
+
+        if (ImGui::Button(("Set new value##" + std::to_string(unique_id++)).c_str()))
+        {
+          
+          std::cout << "New value for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName()
+          << ": " << value_buffer << std::endl;
+          }
+      }
+      
+      // Go through each attribute of this element
+      for (const auto &attribute_ptr : current_element_ptr->GetAttributes())
+      {
+        ImGui::TextUnformatted((attribute_ptr->GetTypeName() + ": " + attribute_ptr->GetAsString()).c_str());
+
+        static char value_buffer[128] = "";
+        ImGui::SameLine();
+        ImGui::InputText(("New value##" + std::to_string(unique_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
+        ImGui::SameLine();
+
+        if (ImGui::Button(("Set new value##" + std::to_string(unique_id++)).c_str()))
+        {
+          
+          std::cout << "New value for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName()
+          << ": " << value_buffer << std::endl;
+        }
+      }
+
+      if (current_element_ptr->GetFirstElement())
+      {
+        // Go through each element 
+        sdf::ElementPtr child_element_ptr = current_element_ptr->GetFirstElement();
+        while (child_element_ptr)
+        {
+          // Add this child element to the stack
+          sdf_tree_stack.emplace(child_element_ptr, false);
+          child_element_ptr = child_element_ptr->GetNextElement("");
+        }
+      }
+      else
+      {
+        // If this element has no children (leaf node), then it may be removed from the stack
+        std::cout << "Tree node (leaf) destroyed" << std::endl;
+        sdf_tree_stack.pop();
+        ImGui::TreePop();
+        continue;
+      }
+    }
   }
 }
 
