@@ -6,7 +6,7 @@ Install [Gazebo Harmonic](https://gazebosim.org/docs/harmonic/install_ubuntu/)
 
 Other dependencies:
 ```
-sudo apt install build-essential cmake libglfw3-dev libgl1-mesa-dev libx11-dev
+sudo apt install build-essential cmake libglfw3-dev libgl1-mesa-dev libx11-dev zenity
 ```
 
 ## Project Info
