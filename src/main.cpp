@@ -17,13 +17,15 @@
 * Developer: Zaid Duraid, Ean Wheeler, Evan Vokey
 */
 
+#include "file_editor_runner.h"
 #include "gui.h"
 #include "sdformat_parser.h"
 #include "interfaces/command_interface.h"
 #include <thread>
 
-// Main code
-int main(int, char **)
+FileEditorRunner::FileEditorRunner(){}
+
+int FileEditorRunner::run_program()
 {
     bool gui_initalization_successful;
 
@@ -83,4 +85,19 @@ int main(int, char **)
     }
 
     return 0;
+}
+
+// Entry point
+int main(int, char **)
+{
+    // Create instance of main program
+    FileEditorRunner program;
+
+    // Status of termination
+    int status;
+
+    status = program.run_program();
+
+    return status;
+
 }
