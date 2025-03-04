@@ -21,6 +21,9 @@ file(GLOB_RECURSE _SOURCE_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/*
 )
 
+# Remove any file that ends with "main.cpp"
+list(FILTER _SOURCE_FILES EXCLUDE REGEX ".*main\\.cpp$")
+
 # Add ImGui files
 set(IMGUI_FILES
     ${imgui_SOURCE_DIR}/imgui.cpp
@@ -36,6 +39,7 @@ add_executable(sdformat-editor
     ${_SOURCE_FILES}
     ${HEADER_FILES}
     ${IMGUI_FILES}
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
 )
 
 # Include directories
