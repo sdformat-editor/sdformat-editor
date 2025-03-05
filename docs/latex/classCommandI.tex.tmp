@@ -1,0 +1,109 @@
+\doxysection{CommandI Class Reference}
+\hypertarget{classCommandI}{}\label{classCommandI}\index{CommandI@{CommandI}}
+
+
+The command class encapsulates the interactions between the various interfaces of the SDFormat Editor, providing undo/redo functionality when applicable.  
+
+
+
+
+{\ttfamily \#include $<$command\+\_\+interface.\+h$>$}
+
+
+
+Inheritance diagram for CommandI\+:
+% FIG 0
+
+
+Collaboration diagram for CommandI\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{classCommandI_a07ef0084dd68bd32719b5c1c4248df91}{execute}} ()=0
+\begin{DoxyCompactList}\small\item\em Execution of the command. Must be implemented as applicable by the derived class. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classCommandI_aa9d8718f12bcb260fdfa03ecd51076bf}{undo}} ()=0
+\begin{DoxyCompactList}\small\item\em Undo functionality of the command. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classCommandI_a045529cc0219b14d416d14794ca0321a}{redo}} ()=0
+\begin{DoxyCompactList}\small\item\em Redo functionality of the command. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classCommandI_a0da54a11aa067099da52f04d20c0859a}{threaded}} ()=0
+\begin{DoxyCompactList}\small\item\em Indicates if this command should be run in a thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The command class encapsulates the interactions between the various interfaces of the SDFormat Editor, providing undo/redo functionality when applicable. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCommandI_a07ef0084dd68bd32719b5c1c4248df91}\label{classCommandI_a07ef0084dd68bd32719b5c1c4248df91} 
+\index{CommandI@{CommandI}!execute@{execute}}
+\index{execute@{execute}!CommandI@{CommandI}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily virtual bool Command\+I\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Execution of the command. Must be implemented as applicable by the derived class. 
+
+\begin{DoxyReturn}{Returns}
+True if the command has been executed 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classOpenFileCommand_a9f2249eeea3c1f00f6da3ef8ff199adc}{Open\+File\+Command}}.
+
+\Hypertarget{classCommandI_a045529cc0219b14d416d14794ca0321a}\label{classCommandI_a045529cc0219b14d416d14794ca0321a} 
+\index{CommandI@{CommandI}!redo@{redo}}
+\index{redo@{redo}!CommandI@{CommandI}}
+\doxysubsubsection{\texorpdfstring{redo()}{redo()}}
+{\footnotesize\ttfamily virtual bool Command\+I\+::redo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Redo functionality of the command. 
+
+\begin{DoxyReturn}{Returns}
+True if the command can be and has been redone 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classOpenFileCommand_aebbaf527dbfbb97cb8d0232f735dcf13}{Open\+File\+Command}}.
+
+\Hypertarget{classCommandI_a0da54a11aa067099da52f04d20c0859a}\label{classCommandI_a0da54a11aa067099da52f04d20c0859a} 
+\index{CommandI@{CommandI}!threaded@{threaded}}
+\index{threaded@{threaded}!CommandI@{CommandI}}
+\doxysubsubsection{\texorpdfstring{threaded()}{threaded()}}
+{\footnotesize\ttfamily virtual bool Command\+I\+::threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Indicates if this command should be run in a thread. 
+
+\begin{DoxyReturn}{Returns}
+True if this command should be run in a thread 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classOpenFileCommand_a9d101dff59daef197d4da811bae59965}{Open\+File\+Command}}.
+
+\Hypertarget{classCommandI_aa9d8718f12bcb260fdfa03ecd51076bf}\label{classCommandI_aa9d8718f12bcb260fdfa03ecd51076bf} 
+\index{CommandI@{CommandI}!undo@{undo}}
+\index{undo@{undo}!CommandI@{CommandI}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily virtual bool Command\+I\+::undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Undo functionality of the command. 
+
+\begin{DoxyReturn}{Returns}
+True if the command can be and has been undone 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classOpenFileCommand_a86214f23a23dbb76040bde89c24ef726}{Open\+File\+Command}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/interfaces/command\+\_\+interface.\+h\end{DoxyCompactItemize}
