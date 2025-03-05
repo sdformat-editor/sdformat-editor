@@ -71,7 +71,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="classGUII-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">GUII Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
@@ -117,17 +116,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4f80df3bf862a6da0cb37f17b59d3bf5" id="r_a4f80df3bf862a6da0cb37f17b59d3bf5"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGUII.html#a4f80df3bf862a6da0cb37f17b59d3bf5">OpenFileDialog</a> ()=0</td></tr>
 <tr class="memdesc:a4f80df3bf862a6da0cb37f17b59d3bf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open the file dialog.  <br /></td></tr>
 <tr class="separator:a4f80df3bf862a6da0cb37f17b59d3bf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a696206b73035d99215eb09577e817f04" id="r_a696206b73035d99215eb09577e817f04"><td class="memItemLeft" align="right" valign="top"><a id="a696206b73035d99215eb09577e817f04" name="a696206b73035d99215eb09577e817f04"></a>
-std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>prevent_input_flag</b> = false</td></tr>
-<tr class="memdesc:a696206b73035d99215eb09577e817f04"><td class="mdescLeft">&#160;</td><td class="mdescRight">A flag which can be set to prevent the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> from taking user input. This can be used in instances where OpenFileDialog or another threadded method is running. NOTE: (zaid) Technically, this class is no longer an "interface" since this attribute is included... <br /></td></tr>
-<tr class="separator:a696206b73035d99215eb09577e817f04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4168b8b381d5270eb58e731ac5f6f9d" id="r_ac4168b8b381d5270eb58e731ac5f6f9d"><td class="memItemLeft" align="right" valign="top"><a id="ac4168b8b381d5270eb58e731ac5f6f9d" name="ac4168b8b381d5270eb58e731ac5f6f9d"></a>
-std::mutex&#160;</td><td class="memItemRight" valign="bottom"><b>gui_mutex</b></td></tr>
-<tr class="memdesc:ac4168b8b381d5270eb58e731ac5f6f9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex to protect shared resources. <br /></td></tr>
-<tr class="separator:ac4168b8b381d5270eb58e731ac5f6f9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad37748b4d362758dc84b8a90e7130a78" id="r_ad37748b4d362758dc84b8a90e7130a78"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGUII.html#ad37748b4d362758dc84b8a90e7130a78">set_prevent_input_flag</a> (bool set)=0</td></tr>
+<tr class="memdesc:ad37748b4d362758dc84b8a90e7130a78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to change the flag which can be set to prevent the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> from taking user input. This can be used in instances where OpenFileDialog or another threadded method is running.  <br /></td></tr>
+<tr class="separator:ad37748b4d362758dc84b8a90e7130a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1ccbf49fca88af0a4cb9c65b2423b5e" id="r_af1ccbf49fca88af0a4cb9c65b2423b5e"><td class="memItemLeft" align="right" valign="top">virtual std::unique_lock&lt; std::mutex &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGUII.html#af1ccbf49fca88af0a4cb9c65b2423b5e">lock_mutex</a> ()=0</td></tr>
+<tr class="memdesc:af1ccbf49fca88af0a4cb9c65b2423b5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to lock mutex.  <br /></td></tr>
+<tr class="separator:af1ccbf49fca88af0a4cb9c65b2423b5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -192,6 +186,35 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="af1ccbf49fca88af0a4cb9c65b2423b5e" name="af1ccbf49fca88af0a4cb9c65b2423b5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1ccbf49fca88af0a4cb9c65b2423b5e">&#9670;&#160;</a></span>lock_mutex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::unique_lock&lt; std::mutex &gt; GUII::lock_mutex </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Method to lock mutex. </p>
+
+<p>Implemented in <a class="el" href="classGUI.html#a010a7967bf27388e17947933270cac99">GUI</a>.</p>
+
+</div>
+</div>
 <a id="a4f80df3bf862a6da0cb37f17b59d3bf5" name="a4f80df3bf862a6da0cb37f17b59d3bf5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4f80df3bf862a6da0cb37f17b59d3bf5">&#9670;&#160;</a></span>OpenFileDialog()</h2>
 
@@ -219,6 +242,42 @@ Protected Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>An file path or "" </dd></dl>
 
 <p>Implemented in <a class="el" href="classGUI.html#ae03ac5fb89b2ba7be43c2aae029f3e95">GUI</a>.</p>
+
+</div>
+</div>
+<a id="ad37748b4d362758dc84b8a90e7130a78" name="ad37748b4d362758dc84b8a90e7130a78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad37748b4d362758dc84b8a90e7130a78">&#9670;&#160;</a></span>set_prevent_input_flag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void GUII::set_prevent_input_flag </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>set</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Method to change the flag which can be set to prevent the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> from taking user input. This can be used in instances where OpenFileDialog or another threadded method is running. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">set</td><td>value to set the flag </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classGUI.html#a61fc0808de95295ac5ed429e2c0d0dcf">GUI</a>.</p>
 
 </div>
 </div>

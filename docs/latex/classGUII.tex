@@ -38,16 +38,11 @@ virtual bool \mbox{\hyperlink{classGUII_a9ae3de58253702261056dc0981a046ac}{Shoul
 \begin{DoxyCompactList}\small\item\em Indicate if the \doxylink{classGUI}{GUI} should close ~\newline
  \end{DoxyCompactList}\item 
 virtual std\+::string \mbox{\hyperlink{classGUII_a4f80df3bf862a6da0cb37f17b59d3bf5}{Open\+File\+Dialog}} ()=0
-\begin{DoxyCompactList}\small\item\em Open the file dialog. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\Hypertarget{classGUII_a696206b73035d99215eb09577e817f04}\label{classGUII_a696206b73035d99215eb09577e817f04} 
-std\+::atomic$<$ bool $>$ {\bfseries prevent\+\_\+input\+\_\+flag} = false
-\begin{DoxyCompactList}\small\item\em A flag which can be set to prevent the \doxylink{classGUI}{GUI} from taking user input. This can be used in instances where Open\+File\+Dialog or another threadded method is running. NOTE\+: (zaid) Technically, this class is no longer an "{}interface"{} since this attribute is included... \end{DoxyCompactList}\item 
-\Hypertarget{classGUII_ac4168b8b381d5270eb58e731ac5f6f9d}\label{classGUII_ac4168b8b381d5270eb58e731ac5f6f9d} 
-std\+::mutex {\bfseries gui\+\_\+mutex}
-\begin{DoxyCompactList}\small\item\em Mutex to protect shared resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Open the file dialog. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classGUII_ad37748b4d362758dc84b8a90e7130a78}{set\+\_\+prevent\+\_\+input\+\_\+flag}} (bool set)=0
+\begin{DoxyCompactList}\small\item\em Method to change the flag which can be set to prevent the \doxylink{classGUI}{GUI} from taking user input. This can be used in instances where Open\+File\+Dialog or another threadded method is running. \end{DoxyCompactList}\item 
+virtual std\+::unique\+\_\+lock$<$ std\+::mutex $>$ \mbox{\hyperlink{classGUII_af1ccbf49fca88af0a4cb9c65b2423b5e}{lock\+\_\+mutex}} ()=0
+\begin{DoxyCompactList}\small\item\em Method to lock mutex. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -82,6 +77,20 @@ Initialization of the \doxylink{classGUI}{GUI}. Should be wrapped in the constru
 
 Implemented in \mbox{\hyperlink{classGUI_a6297d2816b36e76ef65067988f4d18c2}{GUI}}.
 
+\Hypertarget{classGUII_af1ccbf49fca88af0a4cb9c65b2423b5e}\label{classGUII_af1ccbf49fca88af0a4cb9c65b2423b5e} 
+\index{GUII@{GUII}!lock\_mutex@{lock\_mutex}}
+\index{lock\_mutex@{lock\_mutex}!GUII@{GUII}}
+\doxysubsubsection{\texorpdfstring{lock\_mutex()}{lock\_mutex()}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+lock$<$ std\+::mutex $>$ GUII\+::lock\+\_\+mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Method to lock mutex. 
+
+
+
+Implemented in \mbox{\hyperlink{classGUI_a010a7967bf27388e17947933270cac99}{GUI}}.
+
 \Hypertarget{classGUII_a4f80df3bf862a6da0cb37f17b59d3bf5}\label{classGUII_a4f80df3bf862a6da0cb37f17b59d3bf5} 
 \index{GUII@{GUII}!OpenFileDialog@{OpenFileDialog}}
 \index{OpenFileDialog@{OpenFileDialog}!GUII@{GUII}}
@@ -98,6 +107,25 @@ An file path or "{}"{}
 
 
 Implemented in \mbox{\hyperlink{classGUI_ae03ac5fb89b2ba7be43c2aae029f3e95}{GUI}}.
+
+\Hypertarget{classGUII_ad37748b4d362758dc84b8a90e7130a78}\label{classGUII_ad37748b4d362758dc84b8a90e7130a78} 
+\index{GUII@{GUII}!set\_prevent\_input\_flag@{set\_prevent\_input\_flag}}
+\index{set\_prevent\_input\_flag@{set\_prevent\_input\_flag}!GUII@{GUII}}
+\doxysubsubsection{\texorpdfstring{set\_prevent\_input\_flag()}{set\_prevent\_input\_flag()}}
+{\footnotesize\ttfamily virtual void GUII\+::set\+\_\+prevent\+\_\+input\+\_\+flag (\begin{DoxyParamCaption}\item[{bool}]{set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Method to change the flag which can be set to prevent the \doxylink{classGUI}{GUI} from taking user input. This can be used in instances where Open\+File\+Dialog or another threadded method is running. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em set} & value to set the flag \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classGUI_a61fc0808de95295ac5ed429e2c0d0dcf}{GUI}}.
 
 \Hypertarget{classGUII_a9ae3de58253702261056dc0981a046ac}\label{classGUII_a9ae3de58253702261056dc0981a046ac} 
 \index{GUII@{GUII}!ShouldClose@{ShouldClose}}

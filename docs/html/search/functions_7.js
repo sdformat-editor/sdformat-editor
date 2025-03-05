@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['shouldclose_0',['shouldclose',['../classGUI.html#a75a2aa8cff0e7601e0e8b97000213094',1,'GUI::ShouldClose()'],['../classGUII.html#a9ae3de58253702261056dc0981a046ac',1,'GUII::ShouldClose()']]]
+  ['redo_0',['redo',['../classOpenFileCommand.html#aebbaf527dbfbb97cb8d0232f735dcf13',1,'OpenFileCommand::redo()'],['../classCommandI.html#a045529cc0219b14d416d14794ca0321a',1,'CommandI::redo()']]],
+  ['run_5fprogram_1',['run_program',['../classFileEditorRunner.html#aefe9d65d30a5a528bd1769c2bbfd478c',1,'FileEditorRunner']]]
 ];

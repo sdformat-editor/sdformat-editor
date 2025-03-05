@@ -42,11 +42,12 @@
 \DoxyCodeLine{00053\ }
 \DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{classGUII_a4f80df3bf862a6da0cb37f17b59d3bf5}{OpenFileDialog}}()\ =\ 0;}
 \DoxyCodeLine{00058\ }
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{public}:\ std::atomic<bool>\ \mbox{\hyperlink{classGUII_a696206b73035d99215eb09577e817f04}{prevent\_input\_flag}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUII_ad37748b4d362758dc84b8a90e7130a78}{set\_prevent\_input\_flag}}(\textcolor{keywordtype}{bool}\ set)\ =\ 0;}
 \DoxyCodeLine{00064\ }
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{public}:\ std::mutex\ \mbox{\hyperlink{classGUII_ac4168b8b381d5270eb58e731ac5f6f9d}{gui\_mutex}};}
-\DoxyCodeLine{00068\ \};;}
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ std::unique\_lock<std::mutex>\ \mbox{\hyperlink{classGUII_af1ccbf49fca88af0a4cb9c65b2423b5e}{lock\_mutex}}()\ =\ 0;}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \};;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}
