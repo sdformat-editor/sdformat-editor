@@ -365,7 +365,6 @@ GUI::~GUI()
 
   if (this->io)
   {
-    delete this->io;
     this->io = nullptr;
   }
 
