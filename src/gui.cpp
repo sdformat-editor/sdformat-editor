@@ -37,6 +37,16 @@ bool GUI::ShouldClose()
   return glfwWindowShouldClose(this->window);
 }
 
+void GUI::set_prevent_input_flag(bool set)
+{
+  this->prevent_input_flag = set;
+}
+
+std::unique_lock<std::mutex> GUI::lock_mutex()
+{
+  return std::unique_lock<std::mutex>(this->gui_mutex);
+}
+
 void GUI::Initialize(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success)
 {
 
@@ -215,7 +225,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
   }
 
   // Lock the mutex since we will be reading from the SDFormatParser
-  std::lock_guard<std::mutex> lock(this->gui_mutex);
+  std::unique_lock<std::mutex> lock_var = this->lock_mutex();
   
   // Create a stack to hold the element instances to display
   // The boolean indicates whether or not this tree node was visited

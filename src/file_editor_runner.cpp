@@ -55,7 +55,7 @@ int FileEditorRunner::run_program()
                     // (zaid) I don't forsee there being a time where we really need to take user input
                     // while an external thread is doing some operation (ex. opening a file). To make things
                     // simpler for now, the gui will not create any more commands while an external thread is running.
-                    this->gui->prevent_input_flag = true;   
+                    this->gui->set_prevent_input_flag(true);   
 
                     if (user_command->execute())
                     {
@@ -64,7 +64,7 @@ int FileEditorRunner::run_program()
                     }
 
                     // Allow the GUI to take user commands
-                    this->gui->prevent_input_flag = false; 
+                    this->gui->set_prevent_input_flag(false); 
                     
                 });             
                 

@@ -57,14 +57,15 @@ class GUII : public std::enable_shared_from_this<GUII>
     public: virtual std::string OpenFileDialog() = 0;
 
     /// \callgraph
-    /// \brief A flag which can be set to prevent the GUI from taking user input.
+    /// \brief Method to change the flag which can be set to prevent the GUI from taking user input.
     /// This can be used in instances where OpenFileDialog or another threadded method is running.
-    /// NOTE: (zaid) Technically, this class is no longer an "interface" since this attribute is included...
-    public: std::atomic<bool> prevent_input_flag = false;
+    /// \param[in] set value to set the flag
+    public: virtual void set_prevent_input_flag(bool set) = 0;
 
     /// \callgraph
-    /// \brief Mutex to protect shared resources
-    public: std::mutex gui_mutex;
+    /// \brief Method to lock mutex
+    public: virtual std::unique_lock<std::mutex> lock_mutex() = 0;
+
 };;
 
 #endif

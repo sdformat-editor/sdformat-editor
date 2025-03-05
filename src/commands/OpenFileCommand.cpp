@@ -38,7 +38,7 @@ bool OpenFileCommand::execute()
   
   bool success;
 
-  std::lock_guard<std::mutex> lock(gui->gui_mutex);
+  std::unique_lock<std::mutex> lock_var = gui->lock_mutex();
   this->sdformatParser->Initialize(file_path, success);
 
   return success;

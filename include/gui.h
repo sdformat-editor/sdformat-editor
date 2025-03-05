@@ -49,6 +49,10 @@ class GUI : public GUII
 
   /// \brief Implementation of update method
   private: std::unique_ptr<CommandI> Update() override;
+
+  /// \brief Implementation of flag setting method
+  /// \param[in] set value to set the flag
+  private: void set_prevent_input_flag(bool set) override;
   
   /// \brief Function for handling GLFW Error (required to be static by GLFW)
   ///         NOTE: (zaid) It may be good to integrate this with an error handler class
@@ -64,6 +68,12 @@ class GUI : public GUII
   /// \returns An file path or ""
   private: std::string OpenFileDialog() override;
 
+  /// \brief Implementation of lock method
+  private: std::unique_lock<std::mutex> lock_mutex() override;
+
+  /// \brief Flag which can be set to prevent the GUI from taking user input.
+  private: std::atomic<bool> prevent_input_flag = false;
+  
   /// \brief Pointer to the GLFW window object, used to manage for rendering and handling window events
   private: GLFWwindow *window = nullptr;
 
@@ -75,6 +85,9 @@ class GUI : public GUII
 
   /// @brief The background color used in the GUI
   private: ImVec4 background_colour;
+
+  /// @brief Mutex to protect shared resources
+  private: std::mutex gui_mutex;
 
 };
 
