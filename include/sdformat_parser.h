@@ -39,7 +39,7 @@ class SDFormatParser : public SDFormatParserI
 
     /// \brief Implementation of interface method
     /// \returns The main sdfElement associated this this SDFormatParser instance
-    public: sdf::SDFPtr GetSDFElement() override;
+    private: sdf::SDFPtr GetSDFElement() override;
 
     
 };
