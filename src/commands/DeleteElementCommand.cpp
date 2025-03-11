@@ -27,12 +27,12 @@ DeleteElementCommand::DeleteElementCommand(std::shared_ptr<GUII> gui,
     this->sdformatParser = sdformatParser;
     this->element_to_delete = element_to_delete;
 
-    this->element_to_deletes_parent = element_to_delete->GetParent();
-
+    
 }
 
 bool DeleteElementCommand::execute()
 {
+    this->element_to_deletes_parent = element_to_delete->GetParent();
     element_to_delete->RemoveFromParent();
 
     return true;
@@ -40,30 +40,29 @@ bool DeleteElementCommand::execute()
 
 bool DeleteElementCommand::executeUndo()
 {
-    // Stub implementation
+    element_to_deletes_parent->InsertElement(element_to_delete);
     return true;
 }
 
 bool DeleteElementCommand::executeRedo()
 {
-    // Stub implementation
-    return true;
+    return execute();
 }
 
 bool DeleteElementCommand::undo()
 {
     // Stub implementation
-    return false;
+    return true;
 }
 
 bool DeleteElementCommand::redo()
 {
     // Stub implementation
-    return false;
+    return true;
 }
 
 bool DeleteElementCommand::threaded()
 {
     // Stub implementation
-    return true;
+    return false;
 }
