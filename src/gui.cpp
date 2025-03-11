@@ -160,7 +160,7 @@ std::unique_ptr<CommandI> GUI::Update(std::shared_ptr<CommandFactoryI> command_f
           }
           if (ImGui::MenuItem("Open", "Ctrl+O"))
           {
-            if (!prevent_input_flag) command = std::make_unique<OpenFileCommand>(shared_from_this(), this->sdformat_parser);
+            if (!prevent_input_flag) command = command_factory->MakeOpenFileCommand();
           }
           if (ImGui::MenuItem("Save", "Ctrl+S"))
           {
