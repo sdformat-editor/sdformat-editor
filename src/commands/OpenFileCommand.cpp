@@ -45,6 +45,16 @@ bool OpenFileCommand::execute()
 
 }
 
+bool OpenFileCommand::executeUndo()
+{
+  return false;
+}
+
+bool OpenFileCommand::executeRedo()
+{
+  return false;
+}
+
 bool OpenFileCommand::threaded() 
 {
   return true;

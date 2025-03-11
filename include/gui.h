@@ -28,6 +28,7 @@
 #include <GLFW/glfw3.h> 
 
 #include <interfaces/gui_interface.h>
+#include "command_factory.h"
 
 /// \brief Implementation of GUII. 
 class GUI : public GUII
@@ -48,7 +49,7 @@ class GUI : public GUII
   private: bool ShouldClose() override;
 
   /// \brief Implementation of update method
-  private: std::unique_ptr<CommandI> Update() override;
+  private: std::unique_ptr<CommandI> Update(std::shared_ptr<CommandFactoryI> command_factory) override;
 
   /// \brief Implementation of flag setting method
   /// \param[in] set value to set the flag
@@ -70,6 +71,8 @@ class GUI : public GUII
 
   /// \brief Implementation of lock method
   private: std::unique_lock<std::mutex> lock_mutex() override;
+
+  private: std::shared_ptr<CommandFactory> command_factory;
 
   /// \brief Flag which can be set to prevent the GUI from taking user input.
   private: std::atomic<bool> prevent_input_flag = false;

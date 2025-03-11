@@ -17,8 +17,8 @@
 * Developer: Zaid Duraid, Ean Wheeler, Evan Vokey
 */
 
-#ifndef SDFORMAT_EDITOR_ADD_MODEL_COMMAND_HH_
-#define SDFORMAT_EDITOR_ADD_MODEL_COMMAND_HH_
+#ifndef SDFORMAT_EDITOR_DELETE_ELEMENT_COMMAND_HH_
+#define SDFORMAT_EDITOR_DELETE_ELEMENT_COMMAND_HH_
 
 
 #include <interfaces/command_interface.h>
@@ -27,20 +27,25 @@
 
 
 /// \brief Open model command implementation of CommandI
-class OpenFileCommand : public CommandI
+class DeleteElementCommand : public CommandI
 {
 
   /// \callgraph
   /// \brief Constructor for open model command objects.
   /// \param[in] gui Pointer to the GUII object 
   /// \param[in] sdformatParser Pointer to the SDFormatParserI object
-  public: OpenFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser);
+  public: DeleteElementCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ElementPtr element_to_delete);
 
   /// \brief Implementation of interface method. 
   /// \returns True if the SDFormatParser has successfully parsed the file and it has been displayed in the GUI
   private: bool execute() override;
 
+  /// \brief Implementation of interface method. 
+  /// \returns True if the SDFormatParser has successfully parsed the file and it has been displayed in the GUI
   private: bool executeUndo() override;
+
+  /// \brief Implementation of interface method. 
+  /// \returns True if the SDFormatParser has successfully parsed the file and it has been displayed in the GUI
   private: bool executeRedo() override;
 
   /// \brief Implementation of interface method.

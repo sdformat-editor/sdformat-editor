@@ -44,6 +44,9 @@ class FileEditorRunner
     /// @brief Pointer to the GUI class
     std::shared_ptr<GUII> gui;
 
+    /// @brief Pointer to the CommandFactory class
+    std::shared_ptr<CommandFactory> command_factory;
+
     /// @brief Stack for undo functionality
     std::vector<std::unique_ptr<CommandI>> undo_commands_stack;
 

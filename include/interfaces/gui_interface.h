@@ -27,6 +27,7 @@
 
 #include <interfaces/sdformat_parser_interface.h>
 #include <interfaces/command_interface.h>
+#include <interfaces/command_factory_interface.h>
 
 /// \brief Interface for the SDFormat Editor's Graphical User Interface 
 /// Note that this class also inherits from std::enable_shared_from_this<GUII>, 
@@ -45,7 +46,7 @@ class GUII : public std::enable_shared_from_this<GUII>
     /// \callgraph
     /// \brief Updating the GUI
     /// \returns The a pointer to the command resulting from the user's action during this frame
-    public: virtual std::unique_ptr<CommandI> Update() = 0;
+    public: virtual std::unique_ptr<CommandI> Update(std::shared_ptr<CommandFactoryI> command_factory) = 0;
 
     /// \callgraph
     /// \brief Indicate if the GUI should close 
@@ -65,7 +66,6 @@ class GUII : public std::enable_shared_from_this<GUII>
     /// \callgraph
     /// \brief Method to lock mutex
     public: virtual std::unique_lock<std::mutex> lock_mutex() = 0;
-
 };;
 
 #endif

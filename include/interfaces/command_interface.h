@@ -34,6 +34,16 @@ class CommandI
     public: virtual bool execute() = 0;
 
     /// \callgraph
+    /// \brief Execution of the undo command. Must be implemented as applicable by the derived class.
+    /// \returns True if the command has been executed
+    public: virtual bool executeUndo() = 0;
+
+    /// \callgraph
+    /// \brief Execution of the redo command. Must be implemented as applicable by the derived class.
+    /// \returns True if the command has been executed
+    public: virtual bool executeRedo() = 0;
+
+    /// \callgraph
     /// \brief Undo functionality of the command.
     /// \returns True if the command can be and has been undone
     public: virtual bool undo() = 0;

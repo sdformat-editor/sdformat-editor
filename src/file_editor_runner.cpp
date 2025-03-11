@@ -26,9 +26,9 @@ FileEditorRunner::FileEditorRunner()
     this->sdformatParser = std::make_shared<SDFormatParser>();
 
     this->gui = std::make_shared<GUI>("SDFormat Editor", this->sdformatParser, this->gui_initalization_successful);
-
     // TODO: Actually do something with the stacks
-    
+
+    this->command_factory = std::make_shared<CommandFactory>(this->gui, this->sdformatParser);    
 }
 
 int FileEditorRunner::run_program()
@@ -42,7 +42,7 @@ int FileEditorRunner::run_program()
     {
         // Poll the GUI for user input
         // Update will return nullptr if the user does nothing
-        std::unique_ptr<CommandI> user_command = this->gui->Update();
+        std::unique_ptr<CommandI> user_command = this->gui->Update(this->command_factory);
 
         if (user_command)
         {

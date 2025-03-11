@@ -134,7 +134,7 @@ std::string GUI::OpenFileDialog()
 }
 
 
-std::unique_ptr<CommandI> GUI::Update()
+std::unique_ptr<CommandI> GUI::Update(std::shared_ptr<CommandFactoryI> command_factory)
 {
   std::unique_ptr<CommandI> command = nullptr;
 
