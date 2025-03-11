@@ -17,8 +17,8 @@
 * Developer: Zaid Duraid, Ean Wheeler, Evan Vokey
 */
 
-#ifndef SDFORMAT_EDITOR_ADD_MODEL_COMMAND_HH_
-#define SDFORMAT_EDITOR_ADD_MODEL_COMMAND_HH_
+#ifndef SDFORMAT_EDITOR_OPEN_FILE_COMMAND_HH_
+#define SDFORMAT_EDITOR_OPEN_FILE_COMMAND_HH_
 
 
 #include <interfaces/command_interface.h>
