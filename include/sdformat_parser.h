@@ -35,11 +35,11 @@ class SDFormatParser : public SDFormatParserI
     private: sdf::SDFPtr sdfElement;
 
     /// \brief Implementation of interface method
-    public: virtual void Initialize(const std::string file_path, bool &success) override;
+    private: void Initialize(const std::string file_path, bool &success) override;
 
     /// \brief Implementation of interface method
     /// \returns The main sdfElement associated this this SDFormatParser instance
-    public: sdf::SDFPtr GetSDFElement() override;
+    private: sdf::SDFPtr GetSDFElement() override;
 
     
 };

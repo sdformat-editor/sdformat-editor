@@ -296,14 +296,21 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
         std::cout << "Append called for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName();
       }
 
+      // Get the current window size
+      int window_width, _;
+      glfwGetWindowSize(this->window, &window_width, &_);
+
       // Check if this element has as associated value (i.e. it is a type element)
       if (current_element_ptr->GetValue())
       {
         // Display the value and provide a textbox and button for modification
         ImGui::TextUnformatted(current_element_ptr->GetValue()->GetAsString().c_str());
         static char value_buffer[128] = "";
-        
+
+        ImGui::SameLine();
+        ImGui::PushItemWidth(window_width*0.1f); 
         ImGui::InputText(("##" + std::to_string(unique_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
+        ImGui::PopItemWidth();
         ImGui::SameLine();
 
         if (ImGui::Button(("Set new value##" + std::to_string(unique_id++)).c_str()))
@@ -321,7 +328,9 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
 
         static char value_buffer[128] = "";
         ImGui::SameLine();
+        ImGui::PushItemWidth(window_width*0.1f); 
         ImGui::InputText(("##" + std::to_string(unique_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
+        ImGui::PopItemWidth();
         ImGui::SameLine();
 
         if (ImGui::Button(("Set new value##" + std::to_string(unique_id++)).c_str()))
