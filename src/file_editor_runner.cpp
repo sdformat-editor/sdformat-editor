@@ -47,7 +47,7 @@ int FileEditorRunner::run_program()
         if (user_command)
         {
             // Some commands require a different thread (ex. OpenFileCommand)
-            if (user_command->threaded())
+            if (user_command->is_threaded())
             {
                 // Make a thread for executing this command
                 std::thread command_thread([user_command = std::move(user_command), this]() mutable {

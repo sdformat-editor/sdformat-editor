@@ -45,27 +45,27 @@ bool OpenFileCommand::execute()
 
 }
 
-bool OpenFileCommand::executeUndo()
+bool OpenFileCommand::execute_undo()
 {
-  return false;
+  return this->is_undoable();
 }
 
-bool OpenFileCommand::executeRedo()
+bool OpenFileCommand::execute_redo()
 {
-  return false;
+  return this->is_redoable();
 }
 
-bool OpenFileCommand::threaded() 
+bool OpenFileCommand::is_threaded() 
 {
   return true;
 }
 
-bool OpenFileCommand::undo()
+bool OpenFileCommand::is_undoable()
 {
   return false;
 }
 
-bool OpenFileCommand::redo()
+bool OpenFileCommand::is_redoable()
 {
   return false;
 }

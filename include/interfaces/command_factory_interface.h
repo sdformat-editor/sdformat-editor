@@ -25,7 +25,7 @@
 #include <memory>
 #include "interfaces/command_interface.h"
 
-/// \brief Abstract interface for command factory
+/// \brief Interface for the SDFormat Editor's Command Factory
 class CommandFactoryI
 {
   public: virtual ~CommandFactoryI() = default;

@@ -28,7 +28,7 @@
 #include "commands/OpenFileCommand.h"
 #include "interfaces/command_factory_interface.h"
 
-/// \brief CommandFactory
+/// \brief Implementation of CommandFactoryI
 class CommandFactory : public CommandFactoryI
 {
     public: CommandFactory(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser);

@@ -26,42 +26,42 @@ DeleteElementCommand::DeleteElementCommand(std::shared_ptr<GUII> gui,
     this->gui = gui;
     this->sdformatParser = sdformatParser;
     this->element_to_delete = element_to_delete;
-
-    
 }
 
 bool DeleteElementCommand::execute()
 {
+    // Store the parent
     this->element_to_deletes_parent = element_to_delete->GetParent();
+    
+    // Remove the element to delete from it's parent
     element_to_delete->RemoveFromParent();
-
     return true;
 }
 
-bool DeleteElementCommand::executeUndo()
+bool DeleteElementCommand::execute_undo()
 {
     element_to_deletes_parent->InsertElement(element_to_delete);
     return true;
 }
 
-bool DeleteElementCommand::executeRedo()
+bool DeleteElementCommand::execute_redo()
 {
     return execute();
 }
 
-bool DeleteElementCommand::undo()
+bool DeleteElementCommand::is_undoable()
 {
     // Stub implementation
     return true;
 }
 
-bool DeleteElementCommand::redo()
+bool DeleteElementCommand::is_redoable()
 {
     // Stub implementation
     return true;
 }
 
-bool DeleteElementCommand::threaded()
+bool DeleteElementCommand::is_threaded()
 {
     // Stub implementation
     return false;

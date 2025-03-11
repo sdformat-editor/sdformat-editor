@@ -37,28 +37,28 @@ class DeleteElementCommand : public CommandI
   public: DeleteElementCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ElementPtr element_to_delete);
 
   /// \brief Implementation of interface method. 
-  /// \returns True if the SDFormatParser has successfully parsed the file and it has been displayed in the GUI
+  /// \returns Always true. Removes the element to delete from it's parent
   private: bool execute() override;
 
   /// \brief Implementation of interface method. 
-  /// \returns True if the SDFormatParser has successfully parsed the file and it has been displayed in the GUI
-  private: bool executeUndo() override;
+  /// \returns Returns true if the element to delete was already deleted and now restored to its parent
+  private: bool execute_undo() override;
 
   /// \brief Implementation of interface method. 
-  /// \returns True if the SDFormatParser has successfully parsed the file and it has been displayed in the GUI
-  private: bool executeRedo() override;
+  /// \returns Returns true if the element to delete was removed from its parent again
+  private: bool execute_redo() override;
 
   /// \brief Implementation of interface method.
-  /// \returns Always False
-  private: bool undo() override;
+  /// \returns Returns true if the command as been executed or redone
+  private: bool is_undoable() override;
 
   /// \brief Implementation of interface method.
-  /// \returns Always False
-  private: bool redo() override;
+  /// \returns Returns true if the command has been undone
+  private: bool is_redoable() override;
 
   /// \brief Implementation of interface method.
-  /// \returns Always True
-  private: bool threaded() override;
+  /// \returns Always false
+  private: bool is_threaded() override;
 
   /// \brief Filepath of the model
   private: std::string file_path;
@@ -72,8 +72,14 @@ class DeleteElementCommand : public CommandI
   /// @brief Pointer to the element to delete
   private: sdf::ElementPtr element_to_delete;
 
-  /// @brief Pointer to the element to delete
+  /// @brief Pointer to the parent of the element to delete
   private: sdf::ElementPtr element_to_deletes_parent;
+
+  /// @brief Store if the command is currently undo-able
+  private: bool is_currently_undoable = false;
+
+  /// @brief Store if the command is currently redo-able
+  private: bool is_currently_redoable = false;
 };
 
 #endif
