@@ -170,6 +170,16 @@ std::unique_ptr<CommandI> GUI::Update(std::shared_ptr<CommandFactoryI> command_f
           }
           ImGui::EndMenu();
       }
+      if (ImGui::BeginMenu("Edit"))
+      {
+          if (ImGui::MenuItem("Undo", "Ctrl+Z"))
+          {
+          }
+          if (ImGui::MenuItem("Redo", "Ctrl+Y"))
+          {
+          }
+          ImGui::EndMenu();
+      }
       ImGui::EndMainMenuBar();
   }
 
@@ -276,7 +286,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
       if (ImGui::Button(("Delete element##" + std::to_string(unique_id++)).c_str()))
       {
         // Create a DeleteElement command
-        command = command_factory->MakeDeleteElementCommand(current_element_ptr);
+        if (!prevent_input_flag) command = command_factory->MakeDeleteElementCommand(current_element_ptr);
         std::cout << "Delete called for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName();
       }
       ImGui::SameLine();
