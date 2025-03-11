@@ -63,7 +63,7 @@ class GUI : public GUII
 
   /// \brief Function to display the SDF root element in the GUI in a tree format 
   /// \param[out] The a pointer to the command resulting from the user's action during this frame
-  private: void DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_ptr<SDFormatParserI> sdformat_parser);
+  private: void DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_ptr<SDFormatParserI> sdformat_parser, std::shared_ptr<CommandFactoryI> command_factory);
 
   /// \brief Implementation of interface method 
   /// \returns An file path or ""

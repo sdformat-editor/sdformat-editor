@@ -22,14 +22,19 @@
 DeleteElementCommand::DeleteElementCommand(std::shared_ptr<GUII> gui, 
                                         std::shared_ptr<SDFormatParserI> sdformatParser,
                                         sdf::ElementPtr element_to_delete)
-    : gui(gui), sdformatParser(sdformatParser)
 {
-    // Initialize any needed members
+    this->gui = gui;
+    this->sdformatParser = sdformatParser;
+    this->element_to_delete = element_to_delete;
+
+    this->element_to_deletes_parent = element_to_delete->GetParent();
+
 }
 
 bool DeleteElementCommand::execute()
 {
-    // Stub implementation
+    element_to_delete->RemoveFromParent();
+
     return true;
 }
 

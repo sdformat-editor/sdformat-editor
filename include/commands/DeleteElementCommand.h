@@ -69,6 +69,11 @@ class DeleteElementCommand : public CommandI
   /// @brief Pointer to the sdformat parser interface
   private: std::shared_ptr<SDFormatParserI> sdformatParser;
 
+  /// @brief Pointer to the element to delete
+  private: sdf::ElementPtr element_to_delete;
+
+  /// @brief Pointer to the element to delete
+  private: sdf::ElementPtr element_to_deletes_parent;
 };
 
 #endif

@@ -191,7 +191,7 @@ std::unique_ptr<CommandI> GUI::Update(std::shared_ptr<CommandFactoryI> command_f
 
     // If the user hasn't done anything so far, accept commands from the SDF element tree.
     // Otherwise, display the tree but do not take commands.
-    this->DisplaySDFRootElement(command, sdformat_parser);
+    this->DisplaySDFRootElement(command, sdformat_parser, command_factory);
     
 
     ImGui::ColorEdit3("clear color", (float *)&this->background_colour); // Edit 3 floats representing a color
@@ -214,7 +214,7 @@ std::unique_ptr<CommandI> GUI::Update(std::shared_ptr<CommandFactoryI> command_f
   return command;
 }
 
-void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_ptr<SDFormatParserI> sdformat_parser)
+void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_ptr<SDFormatParserI> sdformat_parser, std::shared_ptr<CommandFactoryI> command_factory)
 {
 
   // Return if there is no SDF element tree to show
@@ -276,6 +276,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
       if (ImGui::Button(("Delete element##" + std::to_string(unique_id++)).c_str()))
       {
         // Create a DeleteElement command
+        command = command_factory->MakeDeleteElementCommand(current_element_ptr);
         std::cout << "Delete called for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName();
       }
       ImGui::SameLine();
