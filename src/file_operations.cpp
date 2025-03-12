@@ -1,19 +1,11 @@
 #include "file_operations.h"
 
-
-// FileOperations::FileOperations()
-// {
-//     operation_active = false;
-// }
-
-// void FileOperations::OpenAndParse()
-// {
-//     if (open_dialog_thread.joinable()) {
-//         open_dialog_thread.join();
-//     }
-
-//     open_dialog_thread = std::thread(&FileOperations::SyncOpenDialog, this);
-// }
+FileOperations& FileOperations::GetSoleInstance()
+{
+    static FileOperations instance;
+    
+    return instance;
+}
 
 std::string FileOperations::OpenFileDialog()
 {

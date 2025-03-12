@@ -130,7 +130,7 @@ void GUI::Initialize(const std::string &window_name, std::shared_ptr<SDFormatPar
 
 std::string GUI::OpenFileDialog()
 {
-  return FileOperations::OpenFileDialog();
+  return FileOperations::GetSoleInstance().OpenFileDialog();
 }
 
 

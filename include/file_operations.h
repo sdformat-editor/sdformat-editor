@@ -20,15 +20,45 @@
 #ifndef FILE_OPERATIONS_HH_
 #define FILE_OPERATIONS_HH_
 
-// SDFormat dependencies
-#include <sdf/sdf.hh>
+#include <string>
+#include <array>
 
 /// \brief Singleton class to handle file operations
 class FileOperations
 {
+
+    /// \callgraph
+    /// \brief The only method by which a FileOperations instance can be returned.
+    // NOTE: Singleton Implementation based on Mayers Singleton for C++11 and beyond
+    // See https://www.modernescpp.com/index.php/thread-safe-initialization-of-a-singleton/ 
+    /// \returns The sole instance of FileOperationsI 
+    public: static FileOperations& GetSoleInstance();
+
+    /// \callgraph
     /// \brief Opens a dialog for the user to open a file on their filesystem 
     /// \return An absolute file path or an empty string
-    public: static std::string OpenFileDialog();
+    public: std::string OpenFileDialog();
+
+    /// \callgraph
+    /// \brief Prevent access to the constructor of this class
+    private: FileOperations() = default;
+
+    /// \callgraph
+    /// \brief Prevent access to the destructor of this class
+    private: ~FileOperations() = default;
+
+    /// \callgraph
+    /// \brief Prevent the assignment of one instance of FileOperations to another, 
+    /// ensuring there can only be one instance
+    private: FileOperations& operator = (const FileOperations&) = delete;
+
+    /// \callgraph
+    /// @brief Delete the copy constructor of FileOperations, preventing copies 
+    /// of the reference the the sole instance from being made  
+    private: FileOperations(const FileOperations&) = delete;
+
+
+
 };
 
 #endif
