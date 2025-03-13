@@ -36,12 +36,12 @@ bool GUI::ShouldClose()
   return glfwWindowShouldClose(this->window);
 }
 
-void GUI::set_prevent_input_flag(bool set)
+void GUI::SetPreventInputFlag(bool set)
 {
   this->prevent_input_flag = set;
 }
 
-std::unique_lock<std::mutex> GUI::lock_mutex()
+std::unique_lock<std::mutex> GUI::LockMutex()
 {
   return std::unique_lock<std::mutex>(this->gui_mutex);
 }
@@ -127,24 +127,25 @@ void GUI::Initialize(const std::string &window_name, std::shared_ptr<SDFormatPar
   success = true;
 }
 
-
-std::unique_ptr<CommandI> GUI::Update(std::shared_ptr<CommandFactoryI> command_factory)
+bool GUI::SetupNewFrame()
 {
-  std::unique_ptr<CommandI> command = nullptr;
-
   glfwPollEvents();
   if (glfwGetWindowAttrib(this->window, GLFW_ICONIFIED) != 0)
   {
       ImGui_ImplGlfw_Sleep(10);
-      return command;
+      return false;
   }
 
   // Start the Dear ImGui frame
   ImGui_ImplOpenGL3_NewFrame();
   ImGui_ImplGlfw_NewFrame();
   ImGui::NewFrame();
-
   
+  return true;
+}
+
+void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<CommandFactoryI> command_factory)
+{  
   if (ImGui::BeginMainMenuBar())
   {
       if (ImGui::BeginMenu("File"))
@@ -214,6 +215,19 @@ std::unique_ptr<CommandI> GUI::Update(std::shared_ptr<CommandFactoryI> command_f
   ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
   glfwSwapBuffers(window);
+}
+
+std::unique_ptr<CommandI> GUI::Update(std::shared_ptr<CommandFactoryI> command_factory)
+{
+
+  std::unique_ptr<CommandI> command = nullptr;
+
+  if (!this->SetupNewFrame())
+  {
+      return command;
+  }
+
+  this->DrawCoreFrame(command, command_factory);
 
   return command;
 }
@@ -229,7 +243,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
   }
 
   // Lock the mutex since we will be reading from the SDFormatParser
-  std::unique_lock<std::mutex> lock_var = this->lock_mutex();
+  std::unique_lock<std::mutex> lock_var = this->LockMutex();
   
   // Create a stack to hold the element instances to display
   // The boolean indicates whether or not this tree node was visited
@@ -362,6 +376,65 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
       continue;
     }
   }
+}
+
+bool GUI::OpenYesNoDialog(DialogMessage dialogMessage)
+{
+  this->SetPreventInputFlag(true);
+
+  bool user_responded = false;
+  bool user_response = false;
+  
+  while (!(this->ShouldClose() || user_responded))
+  {
+
+    if (!this->SetupNewFrame())
+    {
+        continue;
+    }
+
+    ImGui::OpenPopup("Yes/No Dialog");
+
+    if (ImGui::BeginPopupModal("Yes/No Dialog", NULL, ImGuiWindowFlags_AlwaysAutoResize))
+    {
+      ImGui::SetWindowFontScale(1.5f); 
+      ImGui::Text("%s", dialogMessage.header.c_str());
+
+      ImGui::SetWindowFontScale(1.0f); 
+      ImGui::Text("%s", dialogMessage.body.c_str());
+
+      ImGui::SetWindowFontScale(1.5f); 
+      ImGui::Text("%s", dialogMessage.footer.c_str());
+
+      ImGui::SetWindowFontScale(1.0f); 
+      ImGui::Separator();
+
+      if (ImGui::Button("Yes", ImVec2(120, 0)))
+      {
+        user_response = true;
+        user_responded = true;
+        ImGui::CloseCurrentPopup();
+      }
+      ImGui::SameLine();
+      if (ImGui::Button("No", ImVec2(120, 0)))
+      {
+        user_responded = true;
+        ImGui::CloseCurrentPopup();
+      }
+
+      ImGui::EndPopup();
+    }
+    std::unique_ptr<CommandI> dummy_command = nullptr;
+
+    // Passing in nullptr for the command factory won't cause an issue since prevent_input_flag is true. 
+    // However, it should be strictly enforced that the command_factory argument is only used when
+    // the prevent_input_flag is false.
+    this->DrawCoreFrame(dummy_command, nullptr);
+  }
+  
+  this->SetPreventInputFlag(false);
+
+  return user_response;
 }
 
 GUI::~GUI()

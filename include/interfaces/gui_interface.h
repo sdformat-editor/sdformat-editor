@@ -45,6 +45,7 @@ class GUII : public std::enable_shared_from_this<GUII>
 
     /// \callgraph
     /// \brief Updating the GUI
+    /// \param[in] command_factory used for creating command objects
     /// \returns The a pointer to the command resulting from the user's action during this frame
     public: virtual std::unique_ptr<CommandI> Update(std::shared_ptr<CommandFactoryI> command_factory) = 0;
 
@@ -61,7 +62,7 @@ class GUII : public std::enable_shared_from_this<GUII>
 
     /// \callgraph
     /// \brief Enables a "yes/no" dialog message in the GUI that will be override everything else displayed by the GUI
-    /// \param[in] The dialog message
+    /// \param[in] dialogMessage struct containing the strings to display
     /// \returns The user's reponse
     public: virtual bool OpenYesNoDialog(DialogMessage dialogMessage) = 0;
 
@@ -69,11 +70,11 @@ class GUII : public std::enable_shared_from_this<GUII>
     /// \brief Method to change the flag which can be set to prevent the GUI from taking user input.
     /// This can be used in instances where OpenFileDialog or another threadded method is running.
     /// \param[in] set value to set the flag
-    public: virtual void set_prevent_input_flag(bool set) = 0;
+    public: virtual void SetPreventInputFlag(bool set) = 0;
 
     /// \callgraph
     /// \brief Method to lock mutex
-    public: virtual std::unique_lock<std::mutex> lock_mutex() = 0;
+    public: virtual std::unique_lock<std::mutex> LockMutex() = 0;
 
 
 };;

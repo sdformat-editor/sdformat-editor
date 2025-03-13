@@ -49,12 +49,31 @@ class SDFormatParserI
     };
 
     /// \brief Determines the locations of potential references to the element to delete
-    /// \param[in] The key string to search for
+    /// \param[in] key the string to search for
     /// \returns The elements and attributes that mention this given key
     public: virtual Mentions FindMentions(std::string key) = 0;
 
+    /// \brief Determines the locations of potential references to the element to delete
+    /// \param[in] key the string to search for
+    /// \param[in] element_to_exclude the element to exclude in the search
+    /// \returns The elements and attributes that mention this given key
+    public: virtual Mentions FindMentions(std::string key, sdf::ElementPtr element_to_exclude) = 0;
+
+    /// \brief Determines the locations of potential references to the element to delete
+    /// \param[in] key the string to search for
+    /// \param[in] attribute_to_exclude the attribute to exclude in the search
+    /// \returns The elements and attributes that mention this given key
+    public: virtual Mentions FindMentions(std::string key, sdf::ParamPtr attribute_to_exclude) = 0;
+
+    /// \brief Determines the locations of potential references to the element to delete
+    /// \param[in] key the string to search for
+    /// \param[in] element_to_exclude the element to exclude in the search
+    /// \param[in] attribute_to_exclude the attribute to exclude in the search
+    /// \returns The elements and attributes that mention this given key
+    public: virtual Mentions FindMentions(std::string key, sdf::ElementPtr element_to_exclude, sdf::ParamPtr attribute_to_exclude) = 0;
+
     /// \brief Get the tree path to this element
-    /// \param[in] The element that we want a tree path for
+    /// \param[in] element element that we want a tree path for
     /// \return Tree path as a string
     public: virtual std::string GetSDFTreePathToElement(sdf::ElementPtr element) = 0; 
     

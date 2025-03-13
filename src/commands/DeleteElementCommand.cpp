@@ -33,16 +33,17 @@ bool DeleteElementCommand::execute()
 
     SDFormatParserI::Mentions mentions;
 
-    // Can determine if the element is required with this->element_to_delete->GetRequired() 
+    // Find mentions of the element to deleting, excluding the element itself 
     if (auto name_attribute = this->element_to_delete->GetAttribute("name"))
     {
-        mentions = this->sdformatParser->FindMentions(name_attribute->GetAsString());
+        mentions = this->sdformatParser->FindMentions(name_attribute->GetAsString(), this->element_to_delete);
     }
 
     // If this element has mentions anywhere else OR it is a required attributes, 
     // display an "are you sure?" message to the user
     if (!mentions.attributes.empty() || !mentions.elements.empty() || this->element_to_delete->GetRequired() == "1" || this->element_to_delete->GetRequired() == "+")
     {
+
         const std::string dialog_message_header = "Warning";
         const std::string dialog_message_footer = "Are you sure you want to continue?";
         std::string dialog_message_body;
@@ -69,19 +70,27 @@ bool DeleteElementCommand::execute()
                 dialog_message_body += "- Attribute " + attribute_mention->GetKey() + " of " + this->sdformatParser->GetSDFTreePathToElement(attribute_mention->GetParentElement()) + "\n";
             }
         }
+
+        GUII::DialogMessage dialog_message{dialog_message_header, dialog_message_body, dialog_message_footer};
+
+        // Display the "Are you sure?" dialog
+        if (!this->gui->OpenYesNoDialog(dialog_message))
+        {
+            // User decides to not proceed. 
+            // The command does not need to do anything and can finish executing.
+            return true;
+        }
     }
-
-    // TODO (zaid): finish the OpenYesNoDialog implementation in the GUI and pass in the paramters that are initalized above
-    // Then look into the "undo/redo" functionality of this command in case the user says yes
-    // I gotta go to class
-
-    // Everything below is based on the "delete instantly" implemenation
 
     // Store the parent
     this->element_to_deletes_parent = element_to_delete->GetParent();
     
     // Remove the element to delete from it's parent
     element_to_delete->RemoveFromParent();
+
+    // Flag the command as "undo-able"    
+    this->is_currently_undoable = true;
+
     return true;
 }
 

@@ -79,6 +79,22 @@ sdf::SDFPtr SDFormatParser::GetSDFElement()
 
 SDFormatParser::Mentions SDFormatParser::FindMentions(std::string key)
 {
+  return this->FindMentions(key, nullptr, nullptr);
+}
+
+SDFormatParser::Mentions SDFormatParser::FindMentions(std::string key, sdf::ElementPtr element_to_exclude)
+{
+  // Exclude the element_to_exclude's obvious name attribute as well
+  return this->FindMentions(key, element_to_exclude, element_to_exclude->GetAttribute("name"));
+}
+
+SDFormatParser::Mentions SDFormatParser::FindMentions(std::string key, sdf::ParamPtr attribute_to_exclude)
+{
+  return this->FindMentions(key, nullptr, attribute_to_exclude);
+}
+
+SDFormatParser::Mentions SDFormatParser::FindMentions(std::string key, sdf::ElementPtr element_to_exclude, sdf::ParamPtr attribute_to_exclude)
+{
   
   // Define a Mentions object
   SDFormatParser::Mentions mentions;
@@ -86,7 +102,7 @@ SDFormatParser::Mentions SDFormatParser::FindMentions(std::string key)
   // Exit if we don't have a root sdf element
   if (!this->sdfElement) return mentions;
 
-  // Create a stack to hold the element to earch
+  // Create a stack to hold the element to search for
   // The boolean indicates whether or not this tree node was visited
   std::stack<std::pair<sdf::ElementPtr,bool>> sdf_tree_stack;
 
@@ -107,32 +123,40 @@ SDFormatParser::Mentions SDFormatParser::FindMentions(std::string key)
     sdf_tree_stack.top().second = true;
 
     // Get a pointer to the current node
-    sdf::ElementPtr current_element_ptr = sdf_tree_stack.top().first;
-    
-    // Check if this element has an associated value (i.e. it is a type element)
-    if (auto value = current_element_ptr->GetValue())
+    sdf::ElementPtr current_element = sdf_tree_stack.top().first;
+
+    // Check for reference equality between the current element and the element to exclude
+    if (!(current_element.get() == element_to_exclude.get()))
     {
-      // Check if this element references the key
-      if (value->GetTypeName() == "string" && value->GetAsString() == key)
+      // Check if this element has an associated value (i.e. it is a type element)
+      if (auto value = current_element->GetValue())
       {
-        mentions.elements.push_back(current_element_ptr);
+        // Check if this element references the key
+        if (value->GetTypeName() == "string" && value->GetAsString() == key)
+        {
+          mentions.elements.push_back(current_element);
+        }
       }
     }
     
     // Go through each attribute of this element...
-    for (const auto &attribute_ptr : current_element_ptr->GetAttributes())
+    for (const auto &current_attribute : current_element->GetAttributes())
     {
-      // Check if this attribute references the key
-      if (attribute_ptr->GetTypeName() == "string" && attribute_ptr->GetAsString() == key)
+      // Check for reference equality between the current attribute and the attribute to exclude
+      if (!(current_attribute.get() == attribute_to_exclude.get()))
       {
-        mentions.attributes.push_back(attribute_ptr);
+        // Check if this attribute references the key
+        if (current_attribute->GetTypeName() == "string" && current_attribute->GetAsString() == key)
+        {
+          mentions.attributes.push_back(current_attribute);
+        }
       }
     }
 
-    if (current_element_ptr->GetFirstElement())
+    if (current_element->GetFirstElement())
     {
       // Go through each element 
-      sdf::ElementPtr child_element_ptr = current_element_ptr->GetFirstElement();
+      sdf::ElementPtr child_element_ptr = current_element->GetFirstElement();
       while (child_element_ptr)
       {
         // Add this child element to the stack
@@ -150,12 +174,38 @@ SDFormatParser::Mentions SDFormatParser::FindMentions(std::string key)
   return mentions;
 }
 
-std::string SDFormatParser::GetSDFTreePathToElement(sdf::ElementPtr element)
+std::string SDFormatParser::GetSDFTreePathToElement(sdf::ElementPtr current_element)
 {
-  std::string sdf_tree_path = element->GetName();
-  while (sdf::ElementPtr parent = element->GetParent())
+
+  std::string sdf_tree_path_to_element;
+
+  while (current_element)
   {
-    sdf_tree_path = parent->GetName() + "::" + sdf_tree_path;
+    std::string name;
+
+    // The name of the element is what the "name" attribute is set to.
+    // However, if there is no name attribute, then the name of the 
+    // element is considered to be the element type (i.e. return value of GetName())
+    if (current_element->GetAttribute("name"))
+    {
+      name = current_element->GetAttribute("name")->GetAsString();
+    }
+    else
+    {
+      name = current_element->GetName();
+    }
+
+    if (!sdf_tree_path_to_element.empty())
+    {
+      sdf_tree_path_to_element = name + "::" + sdf_tree_path_to_element;
+    }
+    else
+    {
+      sdf_tree_path_to_element = name;
+    }
+
+    current_element = current_element->GetParent();
   }
-  return sdf_tree_path;
+
+  return sdf_tree_path_to_element;
 } 

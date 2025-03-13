@@ -48,12 +48,19 @@ class GUI : public GUII
   /// \brief Implementation of interface method
   private: bool ShouldClose() override;
 
-  /// \brief Implementation of update method
+  /// \brief Implementation of interface method
+  /// \param[in] command_factory used for creating command objects
+  /// \returns The a pointer to the command resulting from the user's action during this frame
   private: std::unique_ptr<CommandI> Update(std::shared_ptr<CommandFactoryI> command_factory) override;
 
   /// \brief Implementation of flag setting method
   /// \param[in] set value to set the flag
-  private: void set_prevent_input_flag(bool set) override;
+  private: void SetPreventInputFlag(bool set) override;
+
+  /// \brief Implementation of interface method 
+  /// \param[in] dialogMessage struct containing the strings to display
+  /// \returns The user's reponse
+  public: bool OpenYesNoDialog(DialogMessage dialogMessage) override;
   
   /// \brief Function for handling GLFW Error (required to be static by GLFW)
   ///         NOTE: (zaid) It may be good to integrate this with an error handler class
@@ -62,16 +69,21 @@ class GUI : public GUII
   private: static void GLFWErrorCallback(int error, const char *description);
 
   /// \brief Function to display the SDF root element in the GUI in a tree format 
-  /// \param[out] The a pointer to the command resulting from the user's action during this frame
+  /// \param[out] command a pointer to the command resulting from the user's action during this frame
+  /// \param[in] sdformat_parser an SDFormatParserI instance containing an sdf element
   private: void DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_ptr<SDFormatParserI> sdformat_parser, std::shared_ptr<CommandFactoryI> command_factory);
 
-  /// \brief Implementation of interface method (TODO)
-  /// \param[in] The dialog message
-  /// \returns The user's reponse
-  public: virtual bool OpenYesNoDialog(DialogMessage dialogMessage) = 0;
+  /// \brief Sets up a new ImGUI frame
+  /// \returns false if the window is minimized
+  private: bool SetupNewFrame();
+
+  /// \brief Draw the core part of the ImGUI frame
+  /// \param[in] command_factory used for creating command objects
+  /// \returns The a pointer to the command resulting from the user's action during this frame
+  private: void DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<CommandFactoryI> command_factory);
 
   /// \brief Implementation of lock method
-  private: std::unique_lock<std::mutex> lock_mutex() override;
+  private: std::unique_lock<std::mutex> LockMutex() override;
 
   private: std::shared_ptr<CommandFactory> command_factory;
 
