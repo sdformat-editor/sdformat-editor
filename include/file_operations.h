@@ -40,6 +40,12 @@ class FileOperations
     public: std::string OpenFileDialog();
 
     /// \callgraph
+    /// \brief writes contents to a file 
+    /// \return write successful
+    public: void WriteFile(std::string file_path, std::string contents);
+    public: void WriteFile(std::string contents);
+
+    /// \callgraph
     /// \brief Prevent access to the constructor of this class
     private: FileOperations() = default;
 
@@ -56,6 +62,8 @@ class FileOperations
     /// @brief Delete the copy constructor of FileOperations, preventing copies 
     /// of the reference the the sole instance from being made  
     private: FileOperations(const FileOperations&) = delete;
+
+    private: std::string active_file_path;
 
 
 

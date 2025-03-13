@@ -39,6 +39,8 @@ class CommandFactoryI
   /// \return Unique pointer to a command interface
   public: virtual std::unique_ptr<CommandI> MakeDeleteElementCommand(
       sdf::ElementPtr element_to_delete) = 0;
+
+  public: virtual std::unique_ptr<CommandI> MakeSaveFileCommand(bool force_save_as_not_save) = 0;
 };
 
 #endif // COMMAND_FACTORY_INTERFACE_HH_

@@ -26,6 +26,7 @@
 
 #include "commands/DeleteElementCommand.h"
 #include "commands/OpenFileCommand.h"
+#include "commands/SaveFileCommand.h"
 #include "interfaces/command_factory_interface.h"
 
 /// \brief Implementation of CommandFactoryI
@@ -35,6 +36,8 @@ class CommandFactory : public CommandFactoryI
 
     public: std::unique_ptr<CommandI> MakeOpenFileCommand();
     public: std::unique_ptr<CommandI> MakeDeleteElementCommand(sdf::ElementPtr element_to_delete);
+    public: std::unique_ptr<CommandI> MakeSaveFileCommand(bool force_save_as_not_save);
+
 
     private: std::shared_ptr<GUII> gui;
     private: std::shared_ptr<SDFormatParserI> sdformatParser;

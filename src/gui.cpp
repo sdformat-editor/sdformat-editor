@@ -164,6 +164,7 @@ std::unique_ptr<CommandI> GUI::Update(std::shared_ptr<CommandFactoryI> command_f
           }
           if (ImGui::MenuItem("Save", "Ctrl+S"))
           {
+            if (!prevent_input_flag) command = command_factory->MakeSaveFileCommand(false);
           }
           if (ImGui::MenuItem("Save as.."))
           {

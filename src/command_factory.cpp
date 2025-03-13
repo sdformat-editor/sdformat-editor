@@ -16,3 +16,8 @@ std::unique_ptr<CommandI> CommandFactory::MakeDeleteElementCommand(sdf::ElementP
 {
     return std::make_unique<DeleteElementCommand>(this->gui, this->sdformatParser, element_to_delete);
 }
+
+std::unique_ptr<CommandI> CommandFactory::MakeSaveFileCommand(bool force_save_as_not_save)
+{
+    return std::make_unique<SaveFileCommand>(this->gui, this->sdformatParser, force_save_as_not_save);
+}
