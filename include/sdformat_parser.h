@@ -41,7 +41,16 @@ class SDFormatParser : public SDFormatParserI
     /// \returns The main sdfElement associated this this SDFormatParser instance
     private: sdf::SDFPtr GetSDFElement() override;
 
+    /// \brief Implementation of interface method
+    /// \param[in] The key string to search for
+    /// \returns The elements and attributes that mention this given key
+    private: Mentions FindMentions(std::string key) override;
+
     
+    /// \brief Implementation of interface method
+    /// \param[in] The element that we want a tree path for
+    /// \return Tree path as a string
+    private: std::string GetSDFTreePathToElement(sdf::ElementPtr element) override; 
 };
 
 #endif

@@ -25,6 +25,7 @@
 #include <interfaces/sdformat_parser_interface.h>
 #include <interfaces/gui_interface.h>
 
+#include <vector>
 
 /// \brief Open model command implementation of CommandI
 class DeleteElementCommand : public CommandI

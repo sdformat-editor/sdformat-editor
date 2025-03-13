@@ -40,6 +40,24 @@ class SDFormatParserI
     /// \brief Returns the main sdfElement associated this this SDFormatParser instance
     /// \returns the main sdfElement associated this this SDFormatParser instance
     public: virtual sdf::SDFPtr GetSDFElement() = 0;
+
+    /// @brief Struct to define a "mentions" object type
+    public: struct Mentions
+    {
+        std::vector<sdf::ElementPtr> elements;
+        std::vector<sdf::ParamPtr> attributes;
+    };
+
+    /// \brief Determines the locations of potential references to the element to delete
+    /// \param[in] The key string to search for
+    /// \returns The elements and attributes that mention this given key
+    public: virtual Mentions FindMentions(std::string key) = 0;
+
+    /// \brief Get the tree path to this element
+    /// \param[in] The element that we want a tree path for
+    /// \return Tree path as a string
+    public: virtual std::string GetSDFTreePathToElement(sdf::ElementPtr element) = 0; 
+    
 };
 
 #endif

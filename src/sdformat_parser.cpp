@@ -21,7 +21,7 @@
 // https://osrf-distributions.s3.amazonaws.com/sdformat/api/14.0.0/namespacesdf_1_1SDF__VERSION__NAMESPACE.html#adfb477b41b7b8f4018b6ba90cc587995
 
 #include "sdformat_parser.h"
-
+#include <stack>
 
 void SDFormatParser::Initialize(std::string file_path, bool &success)
 {
@@ -76,3 +76,86 @@ sdf::SDFPtr SDFormatParser::GetSDFElement()
 {
   return this->sdfElement;
 }
+
+SDFormatParser::Mentions SDFormatParser::FindMentions(std::string key)
+{
+  
+  // Define a Mentions object
+  SDFormatParser::Mentions mentions;
+
+  // Exit if we don't have a root sdf element
+  if (!this->sdfElement) return mentions;
+
+  // Create a stack to hold the element to earch
+  // The boolean indicates whether or not this tree node was visited
+  std::stack<std::pair<sdf::ElementPtr,bool>> sdf_tree_stack;
+
+  // Append the root model element to the stack
+  sdf_tree_stack.emplace(this->sdfElement->Root()->GetFirstElement(), false);
+
+  while (!sdf_tree_stack.empty())
+  {
+    // If this node has already been visited and we are returning to it, 
+    // it means we have accounted it and for all of it's child nodes.
+    // In that case, pop the node from the stack
+    if (sdf_tree_stack.top().second)
+    {
+      sdf_tree_stack.pop();
+      continue;
+    }
+
+    sdf_tree_stack.top().second = true;
+
+    // Get a pointer to the current node
+    sdf::ElementPtr current_element_ptr = sdf_tree_stack.top().first;
+    
+    // Check if this element has an associated value (i.e. it is a type element)
+    if (auto value = current_element_ptr->GetValue())
+    {
+      // Check if this element references the key
+      if (value->GetTypeName() == "string" && value->GetAsString() == key)
+      {
+        mentions.elements.push_back(current_element_ptr);
+      }
+    }
+    
+    // Go through each attribute of this element...
+    for (const auto &attribute_ptr : current_element_ptr->GetAttributes())
+    {
+      // Check if this attribute references the key
+      if (attribute_ptr->GetTypeName() == "string" && attribute_ptr->GetAsString() == key)
+      {
+        mentions.attributes.push_back(attribute_ptr);
+      }
+    }
+
+    if (current_element_ptr->GetFirstElement())
+    {
+      // Go through each element 
+      sdf::ElementPtr child_element_ptr = current_element_ptr->GetFirstElement();
+      while (child_element_ptr)
+      {
+        // Add this child element to the stack
+        sdf_tree_stack.emplace(child_element_ptr, false);
+        child_element_ptr = child_element_ptr->GetNextElement("");
+      }
+    } else
+    {
+      // If this element has no children (leaf node), then it may be removed from the stack
+      sdf_tree_stack.pop();
+      continue;
+    }
+  }
+
+  return mentions;
+}
+
+std::string SDFormatParser::GetSDFTreePathToElement(sdf::ElementPtr element)
+{
+  std::string sdf_tree_path = element->GetName();
+  while (sdf::ElementPtr parent = element->GetParent())
+  {
+    sdf_tree_path = parent->GetName() + "::" + sdf_tree_path;
+  }
+  return sdf_tree_path;
+} 

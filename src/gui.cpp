@@ -19,7 +19,6 @@
 
 #include "gui.h"
 #include "commands/OpenFileCommand.h"
-#include "file_operations.h"
 #include <stack>
 
 GUI::GUI(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success)
@@ -126,11 +125,6 @@ void GUI::Initialize(const std::string &window_name, std::shared_ptr<SDFormatPar
   background_colour = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
   success = true;
-}
-
-std::string GUI::OpenFileDialog()
-{
-  return FileOperations::GetSoleInstance().OpenFileDialog();
 }
 
 

@@ -52,10 +52,18 @@ class GUII : public std::enable_shared_from_this<GUII>
     /// \brief Indicate if the GUI should close 
     public: virtual bool ShouldClose() = 0;
 
+    public: struct DialogMessage
+    {  
+        const std::string header;
+        const std::string body;
+        const std::string footer;
+    };
+
     /// \callgraph
-    /// \brief Open the file dialog
-    /// \returns An file path or ""
-    public: virtual std::string OpenFileDialog() = 0;
+    /// \brief Enables a "yes/no" dialog message in the GUI that will be override everything else displayed by the GUI
+    /// \param[in] The dialog message
+    /// \returns The user's reponse
+    public: virtual bool OpenYesNoDialog(DialogMessage dialogMessage) = 0;
 
     /// \callgraph
     /// \brief Method to change the flag which can be set to prevent the GUI from taking user input.
@@ -66,6 +74,8 @@ class GUII : public std::enable_shared_from_this<GUII>
     /// \callgraph
     /// \brief Method to lock mutex
     public: virtual std::unique_lock<std::mutex> lock_mutex() = 0;
+
+
 };;
 
 #endif

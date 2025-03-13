@@ -65,9 +65,10 @@ class GUI : public GUII
   /// \param[out] The a pointer to the command resulting from the user's action during this frame
   private: void DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_ptr<SDFormatParserI> sdformat_parser, std::shared_ptr<CommandFactoryI> command_factory);
 
-  /// \brief Implementation of interface method 
-  /// \returns An file path or ""
-  private: std::string OpenFileDialog() override;
+  /// \brief Implementation of interface method (TODO)
+  /// \param[in] The dialog message
+  /// \returns The user's reponse
+  public: virtual bool OpenYesNoDialog(DialogMessage dialogMessage) = 0;
 
   /// \brief Implementation of lock method
   private: std::unique_lock<std::mutex> lock_mutex() override;

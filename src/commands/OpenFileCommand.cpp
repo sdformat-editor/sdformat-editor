@@ -18,6 +18,7 @@
 */
 
 #include "commands/OpenFileCommand.h"
+#include "file_operations.h"
 
 
 OpenFileCommand::OpenFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser) 
@@ -29,7 +30,7 @@ OpenFileCommand::OpenFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFo
 bool OpenFileCommand::execute()
 {
 
-  std::string file_path = this->gui->OpenFileDialog();
+  std::string file_path = FileOperations::GetSoleInstance().OpenFileDialog();
   
   if (file_path == "")
   {
