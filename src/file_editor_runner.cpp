@@ -26,9 +26,41 @@ FileEditorRunner::FileEditorRunner()
     this->sdformatParser = std::make_shared<SDFormatParser>();
 
     this->gui = std::make_shared<GUI>("SDFormat Editor", this->sdformatParser, this->gui_initalization_successful);
-    // TODO: Actually do something with the stacks
 
-    this->command_factory = std::make_shared<CommandFactory>(this->gui, this->sdformatParser);    
+    this->command_factory = std::make_shared<CommandFactory>(this->gui, this->sdformatParser);
+
+    // grab the previous file that was opened
+    FILE *cache_file = fopen("last_file_opened.txt", "r");
+    char buffer[100];
+    size_t bytesRead;
+    if (cache_file != NULL)
+    {
+        std::unique_ptr<CommandI> command;
+        while ((bytesRead = fread(buffer, 1, sizeof(buffer) - 1, cache_file)) > 0){
+      
+            // Null-terminate the buffer
+            buffer[bytesRead] = '\0'; 
+            
+            // Print the read data
+            std::string previous_file_path = std::string(buffer);
+            command = this->command_factory->MakeOpenFileCommand(previous_file_path);
+        };
+        fclose(cache_file);
+        if (command != NULL)
+        {
+            std::thread command_thread([command = std::move(command), this]() mutable {
+                
+                this->gui->SetPreventInputFlag(true);   
+
+                command->Execute();
+
+                // Allow the GUI to take user commands
+                this->gui->SetPreventInputFlag(false); 
+            });
+            // Detach the thread such that it runs in the background
+            command_thread.detach();
+        }
+    };
 }
 
 int FileEditorRunner::RunProgram()

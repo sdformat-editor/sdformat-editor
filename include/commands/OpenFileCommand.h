@@ -34,7 +34,7 @@ class OpenFileCommand : public CommandI
   /// \brief Constructor for open model command objects.
   /// \param[in] gui Pointer to the GUII object 
   /// \param[in] sdformatParser Pointer to the SDFormatParserI object
-  public: OpenFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser);
+  public: OpenFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, std::string file_path);
 
   /// \brief Implementation of interface method. 
   /// \returns True if the SDFormatParser has successfully parsed the file and it has been displayed in the GUI

@@ -21,8 +21,8 @@
 #include "file_operations.h"
 
 
-OpenFileCommand::OpenFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser) 
-  : gui(gui), sdformatParser(sdformatParser)
+OpenFileCommand::OpenFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, std::string file_path) 
+  : gui(gui), sdformatParser(sdformatParser), file_path(file_path)
 {
   
 }
@@ -30,8 +30,13 @@ OpenFileCommand::OpenFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFo
 bool OpenFileCommand::Execute()
 {
 
-  std::string file_path = FileOperations::GetSoleInstance().OpenFileDialog();
-  
+  // If the parameter is blank, open the file dialog 
+  if (file_path == "")
+  {
+    file_path = FileOperations::GetSoleInstance().OpenFileDialog();
+  }
+
+  // If the file path is still blank, then there was no file specified
   if (file_path == "")
   {
     return false;
@@ -41,6 +46,14 @@ bool OpenFileCommand::Execute()
 
   std::unique_lock<std::mutex> lock_var = gui->LockMutex();
   this->sdformatParser->Initialize(file_path, success);
+
+  if (success)
+  {
+    FILE *cache_file = fopen("last_file_opened.txt", "w");
+    const char *c = file_path.c_str();
+    fwrite(c, sizeof(char), strlen(c), cache_file);
+    fclose(cache_file);
+  }
 
   return success;
 

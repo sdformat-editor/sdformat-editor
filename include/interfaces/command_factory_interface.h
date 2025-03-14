@@ -42,7 +42,7 @@ class CommandFactoryI
 
   /// \brief Create an open file command
   /// \return Unique pointer to a command interface 
-  public: virtual std::unique_ptr<CommandI> MakeOpenFileCommand() = 0;
+  public: virtual std::unique_ptr<CommandI> MakeOpenFileCommand(std::string file_path) = 0;
 
   /// \brief Create a delete element command
   /// \param[in] element_to_delete The SDF element to delete

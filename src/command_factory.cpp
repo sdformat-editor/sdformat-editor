@@ -14,9 +14,9 @@ void CommandFactory::Initialize(std::shared_ptr<GUII> gui, std::shared_ptr<SDFor
     this->sdformatParser = sdformatParser;
 }
 
-std::unique_ptr<CommandI> CommandFactory::MakeOpenFileCommand()
+std::unique_ptr<CommandI> CommandFactory::MakeOpenFileCommand(std::string file_path)
 {
-    return std::make_unique<OpenFileCommand>(this->gui, this->sdformatParser);
+    return std::make_unique<OpenFileCommand>(this->gui, this->sdformatParser, file_path);
 }
 
 std::unique_ptr<CommandI> CommandFactory::MakeUndoCommand()

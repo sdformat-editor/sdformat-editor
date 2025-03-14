@@ -42,7 +42,7 @@ class CommandFactory : public CommandFactoryI
 
     /// \brief Implementation of interface method
     /// \return Unique pointer to a command interface 
-    private: std::unique_ptr<CommandI> MakeOpenFileCommand() override;
+    private: std::unique_ptr<CommandI> MakeOpenFileCommand(std::string file_path) override;
 
     /// \brief Implementation of interface method
     /// \param[in] element_to_delete The SDF element to delete
