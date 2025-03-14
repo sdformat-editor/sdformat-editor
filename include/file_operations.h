@@ -40,10 +40,15 @@ class FileOperations
     public: std::string OpenFileDialog();
 
     /// \callgraph
-    /// \brief writes contents to a file 
-    /// \return write successful
-    public: void WriteFile(std::string file_path, std::string contents);
-    public: void WriteFile(std::string contents);
+    /// \brief writes a string to a file
+    /// \param[in] file_path the filepath of the file to write to
+    /// \param[in] contents the contents to write to the given file
+    public: void WriteFile(const std::string& file_path, const std::string& contents);
+
+    /// \callgraph
+    /// \brief writes a string to a file
+    /// \param[in] contents the contents to write to the given file
+    public: void WriteFile(const std::string& contents);
 
     /// \callgraph
     /// \brief Prevent access to the constructor of this class
