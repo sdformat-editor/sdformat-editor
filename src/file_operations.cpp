@@ -1,5 +1,8 @@
 #include "file_operations.h"
 
+#include <fstream>
+#include <iostream>
+
 FileOperations& FileOperations::GetSoleInstance()
 {
     static FileOperations instance;
@@ -29,7 +32,21 @@ std::string FileOperations::OpenFileDialog()
         result.pop_back();
     }
 
+    this->active_file_path = result;
+
     return result;
-    
 }
 
+void FileOperations::WriteFile(std::string contents) {
+    std::ofstream file;
+    file.open(this->active_file_path);
+    file << contents;
+    file.close();
+}
+
+void FileOperations::WriteFile(std::string file_path, std::string contents) {
+    std::ofstream file;
+    file.open(file_path);
+    file << contents;
+    file.close();
+}

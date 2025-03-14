@@ -170,6 +170,7 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
           }
           if (ImGui::MenuItem("Save", "Ctrl+S"))
           {
+            if (!prevent_input_flag) command = command_factory->MakeSaveFileCommand(false);
           }
           if (ImGui::MenuItem("Save as.."))
           {

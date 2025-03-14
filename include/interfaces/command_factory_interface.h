@@ -58,6 +58,11 @@ class CommandFactoryI
   /// \return Unique pointer to a command interface
   public: virtual std::unique_ptr<CommandI> MakeRedoCommand() = 0;
 
+  /// \brief Create a save file command
+  /// \param force_save_as_not_save TODO: description (evan)
+  /// \return Unique pointer to a command interface
+  public: virtual std::unique_ptr<CommandI> MakeSaveFileCommand(bool force_save_as_not_save) = 0;
+
   /// \brief Pushes to the undo commands stack
   /// \param[in] command commandI object to push
   /// \param[in] new_change indicates if we are pushing a new change, and thus should clear the redo stack

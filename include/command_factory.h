@@ -23,6 +23,9 @@
 // SDFormat dependencies
 #include <sdf/sdf.hh>
 
+#include "commands/DeleteElementCommand.h"
+#include "commands/OpenFileCommand.h"
+#include "commands/SaveFileCommand.h"
 #include "interfaces/command_factory_interface.h"
 
 /// \brief Implementation of CommandFactoryI
@@ -45,6 +48,11 @@ class CommandFactory : public CommandFactoryI
     /// \param[in] element_to_delete The SDF element to delete
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeDeleteElementCommand(sdf::ElementPtr element_to_delete) override;
+
+    /// \brief Implementation of interface method
+    /// \param force_save_as_not_save TODO: description (evan)
+    /// \return Unique pointer to a command interface
+    private: std::unique_ptr<CommandI> MakeSaveFileCommand(bool force_save_as_not_save);
 
     /// \brief Implementation of interface method
     /// \return Unique pointer to a command interface
