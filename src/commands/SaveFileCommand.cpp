@@ -29,8 +29,7 @@ SaveFileCommand::SaveFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFo
 
 bool SaveFileCommand::Execute()
 {
-
-  std::cout << "Tryina save" << std::endl;
+  
   std::unique_lock<std::mutex> lock_var = gui->LockMutex();
 
   
