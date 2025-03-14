@@ -60,7 +60,8 @@ class CommandFactoryI
 
   /// \brief Pushes to the undo commands stack
   /// \param[in] command commandI object to push
-  public: virtual void PushToUndoCommandsStack(std::unique_ptr<CommandI> command) = 0;
+  /// \param[in] new_change indicates if we are pushing a new change, and thus should clear the redo stack
+  public: virtual void PushToUndoCommandsStack(std::unique_ptr<CommandI> command, const bool new_change = true) = 0;
 
   /// \brief Pushes to the redo commands stack
   /// \param[in] command commandI object to push

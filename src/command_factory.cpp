@@ -34,8 +34,12 @@ std::unique_ptr<CommandI> CommandFactory::MakeDeleteElementCommand(sdf::ElementP
     return std::make_unique<DeleteElementCommand>(this->gui, this->sdformatParser, element_to_delete);
 }
 
-void CommandFactory::PushToUndoCommandsStack(std::unique_ptr<CommandI> command)
+void CommandFactory::PushToUndoCommandsStack(std::unique_ptr<CommandI> command, const bool new_change)
 {
+    if (new_change)
+    {
+        this->ClearStack(this->redo_commands_stack);
+    }
     this->undo_commands_stack.emplace(std::move(command));
 }
 
@@ -64,7 +68,8 @@ void CommandFactory::PopFromRedoCommandsStack()
         this->redo_commands_stack.top()->ExecuteRedo();
         if (this->redo_commands_stack.top()->IsUndoable())
         {
-            this->PushToUndoCommandsStack(std::move(this->redo_commands_stack.top()));
+            // Set the new_change parameter to false so as to not clear the redo stack 
+            this->PushToUndoCommandsStack(std::move(this->redo_commands_stack.top()), false);
         }
         this->redo_commands_stack.pop();
     }
@@ -72,12 +77,14 @@ void CommandFactory::PopFromRedoCommandsStack()
 
 void CommandFactory::ClearUndoRedoStacks()
 {
-    while (!this->undo_commands_stack.empty())
+    this->ClearStack(this->undo_commands_stack);
+    this->ClearStack(this->redo_commands_stack);
+}
+
+void CommandFactory::ClearStack(std::stack<std::unique_ptr<CommandI>>& stack)
+{
+    while (!stack.empty())
     {
-        this->undo_commands_stack.pop();
-    }
-    while (!this->redo_commands_stack.empty())
-    {
-        this->redo_commands_stack.pop();
+        stack.pop();
     }
 }

@@ -54,12 +54,16 @@ class CommandFactory : public CommandFactoryI
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeRedoCommand() override;
 
+    /// \brief Clears the undo stack
+    private: void ClearStack(std::stack<std::unique_ptr<CommandI>>& stack);
+
     /// \brief Implementation of interface method
     private: void ClearUndoRedoStacks() override;
 
     /// \brief Pushes to the undo commands stack
     /// \param[in] command commandI object to push
-    private: void PushToUndoCommandsStack(std::unique_ptr<CommandI> command) override;
+    /// \param[in] new_change indicates if we are pushing a new change, and thus should clear the redo stack
+    private: void PushToUndoCommandsStack(std::unique_ptr<CommandI> command, const bool new_change = true) override;
   
     /// \brief Pushes to the redo commands stack
     /// \param[in] command commandI object to push
