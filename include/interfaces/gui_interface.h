@@ -26,8 +26,10 @@
 #include <mutex>
 
 #include <interfaces/sdformat_parser_interface.h>
-#include <interfaces/command_interface.h>
 #include <interfaces/command_factory_interface.h>
+
+// Predeclare CommandFactoryI to avoid circular dependencies
+class CommandFactoryI;
 
 /// \brief Interface for the SDFormat Editor's Graphical User Interface 
 /// Note that this class also inherits from std::enable_shared_from_this<GUII>, 

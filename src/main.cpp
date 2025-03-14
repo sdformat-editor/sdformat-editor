@@ -28,7 +28,7 @@ int main(int, char **)
     // Status of termination
     int status;
 
-    status = program.run_program();
+    status = program.RunProgram();
 
     return status;
 

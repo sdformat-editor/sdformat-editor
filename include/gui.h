@@ -42,7 +42,7 @@ class GUI : public GUII
   /// \brief Destructor 
   public: ~GUI();
 
-  /// \brief Implementation of interface method
+  /// \brief Implementation of interface method, wrapped by constructor
   private: void Initialize(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success) override;
 
   /// \brief Implementation of interface method

@@ -27,7 +27,7 @@ OpenFileCommand::OpenFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFo
   
 }
 
-bool OpenFileCommand::execute()
+bool OpenFileCommand::Execute()
 {
 
   std::string file_path = FileOperations::GetSoleInstance().OpenFileDialog();
@@ -46,27 +46,33 @@ bool OpenFileCommand::execute()
 
 }
 
-bool OpenFileCommand::execute_undo()
+bool OpenFileCommand::ExecuteUndo()
 {
-  return this->is_undoable();
+  return this->IsUndoable();
 }
 
-bool OpenFileCommand::execute_redo()
+bool OpenFileCommand::ExecuteRedo()
 {
-  return this->is_redoable();
+  return this->IsRedoable();
 }
 
-bool OpenFileCommand::is_threaded() 
+bool OpenFileCommand::IsThreaded() 
 {
   return true;
 }
 
-bool OpenFileCommand::is_undoable()
+bool OpenFileCommand::IsUndoable()
 {
   return false;
 }
 
-bool OpenFileCommand::is_redoable()
+bool OpenFileCommand::IsRedoable()
 {
   return false;
+}
+
+bool OpenFileCommand::ChangesProgramStateIrreversibly()
+{
+    // Stub implementation
+    return true;
 }

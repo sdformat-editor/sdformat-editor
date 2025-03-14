@@ -27,37 +27,40 @@
 /// providing undo/redo functionality when applicable
 class CommandI
 {
-
     /// \callgraph
     /// \brief Execution of the command. Must be implemented as applicable by the derived class.
     /// \returns True if the command has been executed
-    public: virtual bool execute() = 0;
+    public: virtual bool Execute() = 0;
 
     /// \callgraph
     /// \brief Execution of the undo command. Must be implemented as applicable by the derived class.
     /// \returns True if the command undo-able and has been undone
-    public: virtual bool execute_undo() = 0;
+    public: virtual bool ExecuteUndo() = 0;
 
     /// \callgraph
     /// \brief Execution of the redo command. Must be implemented as applicable by the derived class.
     /// \returns True if the command is redo-able and has been redone
-    public: virtual bool execute_redo() = 0;
+    public: virtual bool ExecuteRedo() = 0;
 
     /// \callgraph
     /// \brief Undo functionality of the command.
     /// \returns True if the command can be undone
-    public: virtual bool is_undoable() = 0;
+    public: virtual bool IsUndoable() = 0;
 
     /// \callgraph
     /// \brief Redo functionality of the command.
     /// \returns True if the command can be redone
-    public: virtual bool is_redoable() = 0;
+    public: virtual bool IsRedoable() = 0;
 
     /// \callgraph
     /// \brief Indicates if this command should be run in a thread
     /// \returns True if this command should be run in a thread
-    public: virtual bool is_threaded() = 0;
+    public: virtual bool IsThreaded() = 0;
 
-};
+    /// \callgraph
+    /// \brief Indicates if this command is an irreversible state-changing command.
+    /// \returns True if this command changes the state of the program irreversibly
+    public: virtual bool ChangesProgramStateIrreversibly() = 0;
+};;
 
 #endif

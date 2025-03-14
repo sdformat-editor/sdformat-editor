@@ -31,7 +31,7 @@ FileEditorRunner::FileEditorRunner()
     this->command_factory = std::make_shared<CommandFactory>(this->gui, this->sdformatParser);    
 }
 
-int FileEditorRunner::run_program()
+int FileEditorRunner::RunProgram()
 {
     // Exit the program if the GUI cannot initalize
     // This may happen if there is no active display
@@ -47,7 +47,7 @@ int FileEditorRunner::run_program()
         if (user_command)
         {
             // Some commands require a different thread (ex. OpenFileCommand)
-            if (user_command->is_threaded())
+            if (user_command->IsThreaded())
             {
                 // Make a thread for executing this command
                 std::thread command_thread([user_command = std::move(user_command), this]() mutable {
@@ -57,10 +57,17 @@ int FileEditorRunner::run_program()
                     // simpler for now, the gui will not create any more commands while an external thread is running.
                     this->gui->SetPreventInputFlag(true);   
 
-                    if (user_command->execute())
+                    if (user_command->Execute())
                     {
-                        // Add the command to the undo stack if it executes successfully
-                        this->undo_commands_stack.push_back(std::move(user_command));
+                        if (user_command->ChangesProgramStateIrreversibly())
+                        {
+                            this->command_factory->ClearUndoRedoStacks();
+                        }
+                        if (user_command->IsUndoable())
+                        {
+                            // Add the command to the undo stack if it executes successfully
+                            this->command_factory->PushToUndoCommandsStack(std::move(user_command));
+                        }
                     }
 
                     // Allow the GUI to take user commands
@@ -71,9 +78,17 @@ int FileEditorRunner::run_program()
                 // Detach the thread such that it runs in the background
                 command_thread.detach();
             }
-            else if (user_command->execute())
+            else if (user_command->Execute())
             {
-                this->undo_commands_stack.push_back(std::move(user_command));
+                if (user_command->ChangesProgramStateIrreversibly())
+                {
+                    this->command_factory->ClearUndoRedoStacks();
+                }
+                if (user_command->IsUndoable())
+                {
+                    // Add the command to the undo stack if it executes successfully
+                    this->command_factory->PushToUndoCommandsStack(std::move(user_command));
+                }
             }
         }
     }

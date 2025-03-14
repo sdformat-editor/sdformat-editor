@@ -38,27 +38,31 @@ class OpenFileCommand : public CommandI
 
   /// \brief Implementation of interface method. 
   /// \returns True if the SDFormatParser has successfully parsed the file and it has been displayed in the GUI
-  private: bool execute() override;
+  private: bool Execute() override;
 
   /// @brief Implementation of interface method.
   /// @return Always false
-  private: bool execute_undo() override;
+  private: bool ExecuteUndo() override;
 
   /// @brief Implementation of interface method.
   /// @return Always false
-  private: bool execute_redo() override;
+  private: bool ExecuteRedo() override;
 
   /// \brief Implementation of interface method.
   /// \returns Always False
-  private: bool is_undoable() override;
+  private: bool IsUndoable() override;
 
   /// \brief Implementation of interface method.
   /// \returns Always false
-  private: bool is_redoable() override;
+  private: bool IsRedoable() override;
 
   /// \brief Implementation of interface method.
   /// \returns Always true
-  private: bool is_threaded() override;
+  private: bool IsThreaded() override;
+
+  /// \brief Implementation of interface method.
+  /// \returns Always true
+  private: bool ChangesProgramStateIrreversibly() override;
 
   /// \brief Filepath of the model
   private: std::string file_path;

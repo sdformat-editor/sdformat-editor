@@ -146,6 +146,17 @@ bool GUI::SetupNewFrame()
 
 void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<CommandFactoryI> command_factory)
 {  
+
+  // Check for keyboard shortcut inputs
+  if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl) && ImGui::IsKeyPressed(ImGuiKey_Z))
+  {
+    if (!(this->prevent_input_flag)) command = command_factory->MakeUndoCommand();
+  }
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)) && ImGui::IsKeyPressed(ImGuiKey_Y))
+  {
+    if (!(this->prevent_input_flag)) command = command_factory->MakeRedoCommand();
+  }
+
   if (ImGui::BeginMainMenuBar())
   {
       if (ImGui::BeginMenu("File"))
@@ -169,9 +180,11 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
       {
           if (ImGui::MenuItem("Undo", "Ctrl+Z"))
           {
+            if (!(this->prevent_input_flag)) command = command_factory->MakeUndoCommand();
           }
           if (ImGui::MenuItem("Redo", "Ctrl+Y"))
           {
+            if (!(this->prevent_input_flag)) command = command_factory->MakeRedoCommand();
           }
           ImGui::EndMenu();
       }

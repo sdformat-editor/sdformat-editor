@@ -22,22 +22,66 @@
 
 // SDFormat dependencies
 #include <sdf/sdf.hh>
-#include "interfaces/command_interface.h"
 
-#include "commands/DeleteElementCommand.h"
-#include "commands/OpenFileCommand.h"
 #include "interfaces/command_factory_interface.h"
 
 /// \brief Implementation of CommandFactoryI
 class CommandFactory : public CommandFactoryI
 {
+
+    /// \brief Constructor that wraps the Initialize method
+    /// \param[in] gui A pointer to the GUI object
+    /// \param[in] sdformat_parser A pointer to the sdformat parser object
     public: CommandFactory(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser);
 
-    public: std::unique_ptr<CommandI> MakeOpenFileCommand();
-    public: std::unique_ptr<CommandI> MakeDeleteElementCommand(sdf::ElementPtr element_to_delete);
+    /// \brief Implementation of interface method, wrapped by constructor
+    private: void Initialize(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser);
 
+    /// \brief Implementation of interface method
+    /// \return Unique pointer to a command interface 
+    private: std::unique_ptr<CommandI> MakeOpenFileCommand() override;
+
+    /// \brief Implementation of interface method
+    /// \param[in] element_to_delete The SDF element to delete
+    /// \return Unique pointer to a command interface
+    private: std::unique_ptr<CommandI> MakeDeleteElementCommand(sdf::ElementPtr element_to_delete) override;
+
+    /// \brief Implementation of interface method
+    /// \return Unique pointer to a command interface
+    private: std::unique_ptr<CommandI> MakeUndoCommand() override;
+
+    /// \brief Implementation of interface method
+    /// \return Unique pointer to a command interface
+    private: std::unique_ptr<CommandI> MakeRedoCommand() override;
+
+    /// \brief Implementation of interface method
+    private: void ClearUndoRedoStacks() override;
+
+    /// \brief Pushes to the undo commands stack
+    /// \param[in] command commandI object to push
+    private: void PushToUndoCommandsStack(std::unique_ptr<CommandI> command) override;
+  
+    /// \brief Pushes to the redo commands stack
+    /// \param[in] command commandI object to push
+    private: void PushToRedoCommandsStack(std::unique_ptr<CommandI> command) override;
+
+    /// \brief Pops from the undo commands stack and executes the popped command
+    private: void PopFromUndoCommandsStack();
+
+    /// \brief Pops from the undo commands stack and executes the popped command
+    private: void PopFromRedoCommandsStack();
+
+    /// \brief Pointer to the GUI obejct
     private: std::shared_ptr<GUII> gui;
+
+    /// @brief Pointer to the sdformat parser object
     private: std::shared_ptr<SDFormatParserI> sdformatParser;
+
+    /// @brief Stack for undo functionality
+    std::stack<std::unique_ptr<CommandI>> undo_commands_stack;
+
+    /// @brief Stack for redo functionality
+    std::stack<std::unique_ptr<CommandI>> redo_commands_stack;
 };
 
 #endif

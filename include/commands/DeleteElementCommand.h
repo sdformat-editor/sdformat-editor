@@ -39,27 +39,31 @@ class DeleteElementCommand : public CommandI
 
   /// \brief Implementation of interface method. 
   /// \returns Always true. Removes the element to delete from it's parent
-  private: bool execute() override;
+  private: bool Execute() override;
 
   /// \brief Implementation of interface method. 
   /// \returns Returns true if the element to delete was already deleted and now restored to its parent
-  private: bool execute_undo() override;
+  private: bool ExecuteUndo() override;
 
   /// \brief Implementation of interface method. 
   /// \returns Returns true if the element to delete was removed from its parent again
-  private: bool execute_redo() override;
+  private: bool ExecuteRedo() override;
 
   /// \brief Implementation of interface method.
   /// \returns Returns true if the command as been executed or redone
-  private: bool is_undoable() override;
+  private: bool IsUndoable() override;
 
   /// \brief Implementation of interface method.
   /// \returns Returns true if the command has been undone
-  private: bool is_redoable() override;
+  private: bool IsRedoable() override;
 
   /// \brief Implementation of interface method.
   /// \returns Always false
-  private: bool is_threaded() override;
+  private: bool IsThreaded() override;
+
+  /// \brief Implementation of interface method.
+  /// \returns Always false
+  private: bool ChangesProgramStateIrreversibly() override;
 
   /// \brief Filepath of the model
   private: std::string file_path;
