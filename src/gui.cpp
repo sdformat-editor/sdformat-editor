@@ -263,12 +263,20 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
   // The boolean indicates whether or not this tree node was visited
   std::stack<std::pair<sdf::ElementPtr,bool>> sdf_tree_stack;
 
-  // Append the root model element to the stack
-  sdf_tree_stack.emplace(sdformat_parser->GetSDFElement()->Root()->GetFirstElement(), false);
-
   // To ensure that there are no issue with repeat elements for ImGui,
   // every button will be given a unique id.
   int unique_id = 0;
+
+  if (sdformat_parser->GetSDFElement()->Root()->GetFirstElement())
+  {
+    // Append the root model element to the stack
+    sdf_tree_stack.emplace(sdformat_parser->GetSDFElement()->Root()->GetFirstElement(), false);
+  }
+  else if (ImGui::Button(("Append element##" + std::to_string(unique_id++)).c_str()))
+  {
+    // Create an AppendElement command
+    std::cout << "Append called for " + sdformat_parser->GetSDFElement()->Root()->ReferenceSDF() + " element called " + sdformat_parser->GetSDFElement()->Root()->GetName();
+  }
 
   while (!sdf_tree_stack.empty())
   {
@@ -309,7 +317,6 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
       {
         // Create a DeleteElement command
         if (!prevent_input_flag) command = command_factory->MakeDeleteElementCommand(current_element_ptr);
-        std::cout << "Delete called for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName();
       }
       ImGui::SameLine();
       if (ImGui::Button(("Append element##" + std::to_string(unique_id++)).c_str()))

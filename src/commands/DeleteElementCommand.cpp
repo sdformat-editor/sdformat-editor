@@ -80,7 +80,7 @@ bool DeleteElementCommand::Execute()
             // The command does not need to do anything and can finish executing.
             return true;
         }
-    }
+    } 
 
     // Store the parent
     this->element_to_deletes_parent = element_to_delete->GetParent();
