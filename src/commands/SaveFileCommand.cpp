@@ -44,12 +44,9 @@ bool SaveFileCommand::Execute()
     user_choices.push_back({"Cancel", false});
   
     this->gui->OpenChoiceDialog(dialog_message, user_choices);
-    std::cout << "sup" << std::endl;
   
     if (user_choices[0].second)
     {
-      std::cout << "y tho" << std::endl;
-    
       // User has chosen to proceed
   
       bool file_saved = false;
@@ -62,8 +59,6 @@ bool SaveFileCommand::Execute()
         std::string x = this->sdformatParser->GetSDFElement()->ToString();
         file_saved = FileOperations::GetSoleInstance().WriteFile(x);
       }
-  
-      std::cout << "breh" << std::endl;
   
       const std::string dialog_message_header = "Info";
       const std::string dialog_message_footer = file_saved ? "File saved." : "Could not save file. Are you sure this file exists and is writeable?";

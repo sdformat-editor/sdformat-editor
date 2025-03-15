@@ -45,8 +45,6 @@ bool FileOperations::WriteFile(const std::string& file_path, const std::string& 
     
     // NOTE: (zaid) maybe the errors here should be brought up to the GUI
 
-    std::cout << "we here" << std::endl;
-  
     if (file_path.empty()) {
         std::cerr << "Error: File path is empty." << std::endl;
         return false;
