@@ -2,7 +2,7 @@
 <sdf version='1.11'>
   <model name='SuperSimpleModel'>
     <link name='simple_link'>
-      <pose>-0.13500000000000001 -0.1525 -0.016 1.5708 0 0.7854000000000001</pose>
+      <pose>-0.13500000000000001 -0.1525 -0.016 1.5707999999999998 0 0.7854000000000001</pose>
       <inertial>
         <pose>0 0 0 0 0 0</pose>
         <mass>0.002</mass>
@@ -33,7 +33,7 @@
       <pose relative_to='body'>0 0 0 0 0 0</pose>
     </joint>
     <static>false</static>
-    <self_collide>false</self_collide>
     <allow_auto_disable>true</allow_auto_disable>
+    <self_collide>false</self_collide>
   </model>
 </sdf>

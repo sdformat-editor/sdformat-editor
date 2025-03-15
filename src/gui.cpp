@@ -156,6 +156,10 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
   {
     if (!(this->prevent_input_flag)) command = command_factory->MakeRedoCommand();
   }
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)) && ImGui::IsKeyPressed(ImGuiKey_S))
+  {
+    if (!prevent_input_flag) command = command_factory->MakeSaveFileCommand();
+  }
 
   if (ImGui::BeginMainMenuBar())
   {
@@ -170,7 +174,7 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
           }
           if (ImGui::MenuItem("Save", "Ctrl+S"))
           {
-            if (!prevent_input_flag) command = command_factory->MakeSaveFileCommand(false);
+            if (!prevent_input_flag) command = command_factory->MakeSaveFileCommand();
           }
           if (ImGui::MenuItem("Save as.."))
           {
@@ -420,7 +424,7 @@ void GUI::OpenChoiceDialog(DialogMessage dialogMessage, std::vector<std::pair<st
       ImGui::SetWindowFontScale(1.0f); 
       ImGui::Text("%s", dialogMessage.body.c_str());
 
-      ImGui::SetWindowFontScale(1.5f); 
+      ImGui::SetWindowFontScale(1.1f); 
       ImGui::Text("%s", dialogMessage.footer.c_str());
 
       ImGui::SetWindowFontScale(1.0f); 

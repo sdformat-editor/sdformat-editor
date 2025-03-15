@@ -24,9 +24,9 @@ Collaboration diagram for File\+Operations\+:
 \item 
 std\+::string \mbox{\hyperlink{classFileOperations_a50b5908070cc9bdd8879aade4daa855f}{Open\+File\+Dialog}} ()
 \begin{DoxyCompactList}\small\item\em Opens a dialog for the user to open a file on their filesystem. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classFileOperations_a9cb6d43595e1712dc48c68c2358f27f7}{Write\+File}} (const std\+::string \&file\+\_\+path, const std\+::string \&contents)
+bool \mbox{\hyperlink{classFileOperations_a90ff510d41a0f63c21338c58351f1991}{Write\+File}} (const std\+::string \&file\+\_\+path, const std\+::string \&contents)
 \begin{DoxyCompactList}\small\item\em writes a string to a file \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classFileOperations_a8084bfa9beae2eab0cb3f8a6d9501024}{Write\+File}} (const std\+::string \&contents)
+bool \mbox{\hyperlink{classFileOperations_af014174169b8d154ca69988e5f13b53b}{Write\+File}} (const std\+::string \&contents)
 \begin{DoxyCompactList}\small\item\em writes a string to a file \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -87,11 +87,11 @@ Opens a dialog for the user to open a file on their filesystem.
 \begin{DoxyReturn}{Returns}
 An absolute file path or an empty string 
 \end{DoxyReturn}
-\Hypertarget{classFileOperations_a8084bfa9beae2eab0cb3f8a6d9501024}\label{classFileOperations_a8084bfa9beae2eab0cb3f8a6d9501024} 
+\Hypertarget{classFileOperations_af014174169b8d154ca69988e5f13b53b}\label{classFileOperations_af014174169b8d154ca69988e5f13b53b} 
 \index{FileOperations@{FileOperations}!WriteFile@{WriteFile}}
 \index{WriteFile@{WriteFile}!FileOperations@{FileOperations}}
 \doxysubsubsection{\texorpdfstring{WriteFile()}{WriteFile()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void File\+Operations\+::\+Write\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{contents }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool File\+Operations\+::\+Write\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{contents }\end{DoxyParamCaption})}
 
 
 
@@ -102,11 +102,15 @@ writes a string to a file
 \mbox{\texttt{ in}}  & {\em contents} & the contents to write to the given file \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classFileOperations_a9cb6d43595e1712dc48c68c2358f27f7}\label{classFileOperations_a9cb6d43595e1712dc48c68c2358f27f7} 
+\begin{DoxyReturn}{Returns}
+true if successful ~\newline
+ 
+\end{DoxyReturn}
+\Hypertarget{classFileOperations_a90ff510d41a0f63c21338c58351f1991}\label{classFileOperations_a90ff510d41a0f63c21338c58351f1991} 
 \index{FileOperations@{FileOperations}!WriteFile@{WriteFile}}
 \index{WriteFile@{WriteFile}!FileOperations@{FileOperations}}
 \doxysubsubsection{\texorpdfstring{WriteFile()}{WriteFile()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void File\+Operations\+::\+Write\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+path,  }\item[{const std\+::string \&}]{contents }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool File\+Operations\+::\+Write\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+path,  }\item[{const std\+::string \&}]{contents }\end{DoxyParamCaption})}
 
 
 
@@ -119,6 +123,10 @@ writes a string to a file
 \mbox{\texttt{ in}}  & {\em contents} & the contents to write to the given file \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successful ~\newline
+ 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

@@ -1,5 +1,5 @@
 <map id="CommandFactoryI" name="CommandFactoryI">
-<area shape="rect" id="Node000001" title="Interface for the SDFormat Editor&#39;s Command Factory." alt="" coords="5,5,339,495"/>
-<area shape="rect" id="Node000002" href="$classCommandFactory.html" title="Implementation of CommandFactoryI." alt="" coords="47,543,297,1421"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,508,175,542,169,542,169,508"/>
+<area shape="rect" id="Node000001" title="Interface for the SDFormat Editor&#39;s Command Factory." alt="" coords="5,5,339,480"/>
+<area shape="rect" id="Node000002" href="$classCommandFactory.html" title="Implementation of CommandFactoryI." alt="" coords="47,528,297,1392"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,494,175,528,169,528,169,494"/>
 </map>

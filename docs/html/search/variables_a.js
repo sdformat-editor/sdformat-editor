@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['window_0',['window',['../classGUI.html#a2955f39e8b9690cf35a43a8b0768f64f',1,'GUI']]]
+  ['undo_5fcommands_5fstack_0',['undo_commands_stack',['../classCommandFactory.html#a6d830ca9ea12019b54f4031a4b065d61',1,'CommandFactory']]]
 ];

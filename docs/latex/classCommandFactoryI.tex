@@ -40,7 +40,7 @@ virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$
 \begin{DoxyCompactList}\small\item\em Create a undo command. \end{DoxyCompactList}\item 
 virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_a8fca05c4893b73f13f25a419ad0023fe}{Make\+Redo\+Command}} ()=0
 \begin{DoxyCompactList}\small\item\em Create a redo command. \end{DoxyCompactList}\item 
-virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_ab9cb56487941f72228e7950a5abb3f57}{Make\+Save\+File\+Command}} (bool force\+\_\+save\+\_\+as\+\_\+not\+\_\+save)=0
+virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_a7471998dae22305a28ccf44f38b8975d}{Make\+Save\+File\+Command}} ()=0
 \begin{DoxyCompactList}\small\item\em Create a save file command. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classCommandFactoryI_a02b9823f6bf6072d5cc88dc7638e228d}{Push\+To\+Undo\+Commands\+Stack}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ command, const bool new\+\_\+change=true)=0
 \begin{DoxyCompactList}\small\item\em Pushes to the undo commands stack. \end{DoxyCompactList}\item 
@@ -151,27 +151,22 @@ Unique pointer to a command interface
 
 Implemented in \mbox{\hyperlink{classCommandFactory_a2fcf5cf1f66e884e14df68737d328814}{Command\+Factory}}.
 
-\Hypertarget{classCommandFactoryI_ab9cb56487941f72228e7950a5abb3f57}\label{classCommandFactoryI_ab9cb56487941f72228e7950a5abb3f57} 
+\Hypertarget{classCommandFactoryI_a7471998dae22305a28ccf44f38b8975d}\label{classCommandFactoryI_a7471998dae22305a28ccf44f38b8975d} 
 \index{CommandFactoryI@{CommandFactoryI}!MakeSaveFileCommand@{MakeSaveFileCommand}}
 \index{MakeSaveFileCommand@{MakeSaveFileCommand}!CommandFactoryI@{CommandFactoryI}}
 \doxysubsubsection{\texorpdfstring{MakeSaveFileCommand()}{MakeSaveFileCommand()}}
-{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+I\+::\+Make\+Save\+File\+Command (\begin{DoxyParamCaption}\item[{bool}]{force\+\_\+save\+\_\+as\+\_\+not\+\_\+save }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+I\+::\+Make\+Save\+File\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
 Create a save file command. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em force\+\_\+save\+\_\+as\+\_\+not\+\_\+save} & TODO\+: description (evan) \\
-\hline
-\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Unique pointer to a command interface 
 \end{DoxyReturn}
 
 
-Implemented in \mbox{\hyperlink{classCommandFactory_a07c6572ccb124f88a190dfcca2cae1fd}{Command\+Factory}}.
+Implemented in \mbox{\hyperlink{classCommandFactory_a78d5a75442860ab72c8439772e1ea8e4}{Command\+Factory}}.
 
 \Hypertarget{classCommandFactoryI_a3540850eb4c889aaabbd288d0f2ee40d}\label{classCommandFactoryI_a3540850eb4c889aaabbd288d0f2ee40d} 
 \index{CommandFactoryI@{CommandFactoryI}!MakeUndoCommand@{MakeUndoCommand}}

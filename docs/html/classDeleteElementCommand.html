@@ -87,7 +87,7 @@ Inheritance diagram for DeleteElementCommand:</div>
 <div class="dyncontent">
 <div class="center"><img src="classDeleteElementCommand__inherit__graph.png" border="0" usemap="#aDeleteElementCommand_inherit__map" alt="Inheritance graph"/></div>
 <map name="aDeleteElementCommand_inherit__map" id="aDeleteElementCommand_inherit__map">
-<area shape="rect" title="Open model command implementation of CommandI." alt="" coords="5,253,279,740"/>
+<area shape="rect" title="Open model command implementation of CommandI." alt="" coords="5,253,279,720"/>
 <area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="31,5,253,205"/>
 <area shape="poly" title=" " alt="" coords="145,219,145,253,139,253,139,219"/>
 </map>
@@ -97,7 +97,7 @@ Collaboration diagram for DeleteElementCommand:</div>
 <div class="dyncontent">
 <div class="center"><img src="classDeleteElementCommand__coll__graph.png" border="0" usemap="#aDeleteElementCommand_coll__map" alt="Collaboration graph"/></div>
 <map name="aDeleteElementCommand_coll__map" id="aDeleteElementCommand_coll__map">
-<area shape="rect" title="Open model command implementation of CommandI." alt="" coords="5,253,279,740"/>
+<area shape="rect" title="Open model command implementation of CommandI." alt="" coords="5,253,279,720"/>
 <area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="31,5,253,205"/>
 <area shape="poly" title=" " alt="" coords="145,219,145,253,139,253,139,219"/>
 </map>
@@ -106,7 +106,7 @@ Collaboration diagram for DeleteElementCommand:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a6796f38ecded076228bebafc5a84e407" id="r_a6796f38ecded076228bebafc5a84e407"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDeleteElementCommand.html#a6796f38ecded076228bebafc5a84e407">DeleteElementCommand</a> (std::shared_ptr&lt; <a class="el" href="classGUII.html">GUII</a> &gt; <a class="el" href="classDeleteElementCommand.html#acb100fa43faadf65fd45b1d85c9cd422">gui</a>, std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParserI</a> &gt; <a class="el" href="classDeleteElementCommand.html#ab16c056e97800b642019050ac1c9f3e7">sdformatParser</a>, sdf::ElementPtr <a class="el" href="classDeleteElementCommand.html#a9f98aee907df7939719627cb3845b1ce">element_to_delete</a>)</td></tr>
-<tr class="memdesc:a6796f38ecded076228bebafc5a84e407"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for open model command objects.  <br /></td></tr>
+<tr class="memdesc:a6796f38ecded076228bebafc5a84e407"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for delete command objects.  <br /></td></tr>
 <tr class="separator:a6796f38ecded076228bebafc5a84e407"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
@@ -135,10 +135,6 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a7ecef4a6e82b43327c928ef7977dee4a" id="r_a7ecef4a6e82b43327c928ef7977dee4a"><td class="memItemLeft" align="right" valign="top"><a id="a7ecef4a6e82b43327c928ef7977dee4a" name="a7ecef4a6e82b43327c928ef7977dee4a"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>file_path</b></td></tr>
-<tr class="memdesc:a7ecef4a6e82b43327c928ef7977dee4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filepath of the model. <br /></td></tr>
-<tr class="separator:a7ecef4a6e82b43327c928ef7977dee4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb100fa43faadf65fd45b1d85c9cd422" id="r_acb100fa43faadf65fd45b1d85c9cd422"><td class="memItemLeft" align="right" valign="top"><a id="acb100fa43faadf65fd45b1d85c9cd422" name="acb100fa43faadf65fd45b1d85c9cd422"></a>
 std::shared_ptr&lt; <a class="el" href="classGUII.html">GUII</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>gui</b></td></tr>
 <tr class="memdesc:acb100fa43faadf65fd45b1d85c9cd422"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the gui interface. <br /></td></tr>
@@ -199,11 +195,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_redoable
       </table>
 </div><div class="memdoc">
 
-<p>Constructor for open model command objects. </p>
+<p>Constructor for delete command objects. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">gui</td><td>Pointer to the <a class="el" href="classGUII.html" title="Interface for the SDFormat Editor&#39;s Graphical User Interface Note that this class also inherits from ...">GUII</a> object </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">sdformatParser</td><td>Pointer to the <a class="el" href="classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser.">SDFormatParserI</a> object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">element_to_delete</td><td>Pointer to the element that may be deleted </td></tr>
   </table>
   </dd>
 </dl>

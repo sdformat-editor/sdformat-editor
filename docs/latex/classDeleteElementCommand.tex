@@ -33,7 +33,7 @@ Collaboration diagram for Delete\+Element\+Command\+:
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classDeleteElementCommand_a6796f38ecded076228bebafc5a84e407}{Delete\+Element\+Command}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ \mbox{\hyperlink{classDeleteElementCommand_acb100fa43faadf65fd45b1d85c9cd422}{gui}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classDeleteElementCommand_ab16c056e97800b642019050ac1c9f3e7}{sdformat\+Parser}}, sdf\+::\+Element\+Ptr \mbox{\hyperlink{classDeleteElementCommand_a9f98aee907df7939719627cb3845b1ce}{element\+\_\+to\+\_\+delete}})
-\begin{DoxyCompactList}\small\item\em Constructor for open model command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Constructor for delete command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -54,9 +54,6 @@ bool \mbox{\hyperlink{classDeleteElementCommand_acd07af54e3fcdfce7f7593dad933cc3
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classDeleteElementCommand_a7ecef4a6e82b43327c928ef7977dee4a}\label{classDeleteElementCommand_a7ecef4a6e82b43327c928ef7977dee4a} 
-std\+::string {\bfseries file\+\_\+path}
-\begin{DoxyCompactList}\small\item\em Filepath of the model. \end{DoxyCompactList}\item 
 \Hypertarget{classDeleteElementCommand_acb100fa43faadf65fd45b1d85c9cd422}\label{classDeleteElementCommand_acb100fa43faadf65fd45b1d85c9cd422} 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ {\bfseries gui}
 \begin{DoxyCompactList}\small\item\em Pointer to the gui interface. \end{DoxyCompactList}\item 
@@ -89,13 +86,15 @@ Open model command implementation of \doxylink{classCommandI}{CommandI}.
 
 
 
-Constructor for open model command objects. 
+Constructor for delete command objects. 
 
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em gui} & Pointer to the \doxylink{classGUII}{GUII} object \\
 \hline
 \mbox{\texttt{ in}}  & {\em sdformat\+Parser} & Pointer to the \doxylink{classSDFormatParserI}{SDFormat\+ParserI} object \\
+\hline
+\mbox{\texttt{ in}}  & {\em element\+\_\+to\+\_\+delete} & Pointer to the element that may be deleted \\
 \hline
 \end{DoxyParams}
 

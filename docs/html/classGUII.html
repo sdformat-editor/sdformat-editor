@@ -87,9 +87,9 @@ Inheritance diagram for GUII:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGUII__inherit__graph.png" border="0" usemap="#aGUII_inherit__map" alt="Inheritance graph"/></div>
 <map name="aGUII_inherit__map" id="aGUII_inherit__map">
-<area shape="rect" title="Interface for the SDFormat Editor&#39;s Graphical User Interface Note that this class also inherits from ..." alt="" coords="21,133,301,445"/>
-<area shape="rect" href="classGUI.html" title="Implementation of GUII." alt="" coords="5,493,316,1324"/>
-<area shape="poly" title=" " alt="" coords="163,459,163,493,158,493,158,459"/>
+<area shape="rect" title="Interface for the SDFormat Editor&#39;s Graphical User Interface Note that this class also inherits from ..." alt="" coords="21,133,301,475"/>
+<area shape="rect" href="classGUI.html" title="Implementation of GUII." alt="" coords="5,523,316,1383"/>
+<area shape="poly" title=" " alt="" coords="163,488,163,523,158,523,158,488"/>
 <area shape="rect" title=" " alt="" coords="90,5,231,85"/>
 <area shape="poly" title=" " alt="" coords="163,99,163,133,158,133,158,99"/>
 </map>
@@ -99,7 +99,7 @@ Collaboration diagram for GUII:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGUII__coll__graph.png" border="0" usemap="#aGUII_coll__map" alt="Collaboration graph"/></div>
 <map name="aGUII_coll__map" id="aGUII_coll__map">
-<area shape="rect" title="Interface for the SDFormat Editor&#39;s Graphical User Interface Note that this class also inherits from ..." alt="" coords="5,133,285,445"/>
+<area shape="rect" title="Interface for the SDFormat Editor&#39;s Graphical User Interface Note that this class also inherits from ..." alt="" coords="5,133,285,475"/>
 <area shape="rect" title=" " alt="" coords="75,5,216,85"/>
 <area shape="poly" title=" " alt="" coords="148,99,148,133,143,133,143,99"/>
 </map>
@@ -119,9 +119,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a9ae3de58253702261056dc0981a046ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicate if the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> should close <br  />
   <br /></td></tr>
 <tr class="separator:a9ae3de58253702261056dc0981a046ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec50bda8cf955a9ce900b61f507d5d4b" id="r_aec50bda8cf955a9ce900b61f507d5d4b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGUII.html#aec50bda8cf955a9ce900b61f507d5d4b">OpenYesNoDialog</a> (<a class="el" href="structGUII_1_1DialogMessage.html">DialogMessage</a> dialogMessage)=0</td></tr>
-<tr class="memdesc:aec50bda8cf955a9ce900b61f507d5d4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables a "yes/no" dialog message in the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> that will be override everything else displayed by the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a>.  <br /></td></tr>
-<tr class="separator:aec50bda8cf955a9ce900b61f507d5d4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2308b7ef4b8be7547242a3b15ebad492" id="r_a2308b7ef4b8be7547242a3b15ebad492"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGUII.html#a2308b7ef4b8be7547242a3b15ebad492">OpenChoiceDialog</a> (<a class="el" href="structGUII_1_1DialogMessage.html">DialogMessage</a> dialogMessage, std::vector&lt; std::pair&lt; std::string, bool &gt; &gt; &amp;choices)=0</td></tr>
+<tr class="memdesc:a2308b7ef4b8be7547242a3b15ebad492"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables a choice dialog message in the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> that will be override everything else displayed by the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a>.  <br /></td></tr>
+<tr class="separator:a2308b7ef4b8be7547242a3b15ebad492"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d2baf2d5e991049a6b79c2ed8fd83cd" id="r_a8d2baf2d5e991049a6b79c2ed8fd83cd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGUII.html#a8d2baf2d5e991049a6b79c2ed8fd83cd">SetPreventInputFlag</a> (bool set)=0</td></tr>
 <tr class="memdesc:a8d2baf2d5e991049a6b79c2ed8fd83cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to change the flag which can be set to prevent the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> from taking user input. This can be used in instances where OpenFileDialog or another threadded method is running.  <br /></td></tr>
 <tr class="separator:a8d2baf2d5e991049a6b79c2ed8fd83cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -221,8 +221,8 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aec50bda8cf955a9ce900b61f507d5d4b" name="aec50bda8cf955a9ce900b61f507d5d4b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec50bda8cf955a9ce900b61f507d5d4b">&#9670;&#160;</a></span>OpenYesNoDialog()</h2>
+<a id="a2308b7ef4b8be7547242a3b15ebad492" name="a2308b7ef4b8be7547242a3b15ebad492"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2308b7ef4b8be7547242a3b15ebad492">&#9670;&#160;</a></span>OpenChoiceDialog()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -231,11 +231,21 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool GUII::OpenYesNoDialog </td>
+          <td class="memname">virtual void GUII::OpenChoiceDialog </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structGUII_1_1DialogMessage.html">DialogMessage</a>&#160;</td>
-          <td class="paramname"><em>dialogMessage</em></td><td>)</td>
+          <td class="paramname"><em>dialogMessage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::vector&lt; std::pair&lt; std::string, bool &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>choices</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -245,16 +255,16 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Enables a "yes/no" dialog message in the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> that will be override everything else displayed by the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a>. </p>
+<p>Enables a choice dialog message in the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> that will be override everything else displayed by the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">dialogMessage</td><td>struct containing the strings to display </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">choices</td><td>a vector of string,bools pairs where one bool will be set true, corresponding to the user's choice </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The user's reponse </dd></dl>
 
-<p>Implemented in <a class="el" href="classGUI.html#abd67d228ea9fc89c741087adcaee9190">GUI</a>.</p>
+<p>Implemented in <a class="el" href="classGUI.html#a371c336213806742abe81172d845b0de">GUI</a>.</p>
 
 </div>
 </div>

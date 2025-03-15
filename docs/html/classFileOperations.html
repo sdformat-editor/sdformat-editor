@@ -97,12 +97,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a50b5908070cc9bdd8879aade4daa855f" id="r_a50b5908070cc9bdd8879aade4daa855f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileOperations.html#a50b5908070cc9bdd8879aade4daa855f">OpenFileDialog</a> ()</td></tr>
 <tr class="memdesc:a50b5908070cc9bdd8879aade4daa855f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a dialog for the user to open a file on their filesystem.  <br /></td></tr>
 <tr class="separator:a50b5908070cc9bdd8879aade4daa855f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cb6d43595e1712dc48c68c2358f27f7" id="r_a9cb6d43595e1712dc48c68c2358f27f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileOperations.html#a9cb6d43595e1712dc48c68c2358f27f7">WriteFile</a> (const std::string &amp;file_path, const std::string &amp;contents)</td></tr>
-<tr class="memdesc:a9cb6d43595e1712dc48c68c2358f27f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">writes a string to a file  <br /></td></tr>
-<tr class="separator:a9cb6d43595e1712dc48c68c2358f27f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8084bfa9beae2eab0cb3f8a6d9501024" id="r_a8084bfa9beae2eab0cb3f8a6d9501024"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileOperations.html#a8084bfa9beae2eab0cb3f8a6d9501024">WriteFile</a> (const std::string &amp;contents)</td></tr>
-<tr class="memdesc:a8084bfa9beae2eab0cb3f8a6d9501024"><td class="mdescLeft">&#160;</td><td class="mdescRight">writes a string to a file  <br /></td></tr>
-<tr class="separator:a8084bfa9beae2eab0cb3f8a6d9501024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90ff510d41a0f63c21338c58351f1991" id="r_a90ff510d41a0f63c21338c58351f1991"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileOperations.html#a90ff510d41a0f63c21338c58351f1991">WriteFile</a> (const std::string &amp;file_path, const std::string &amp;contents)</td></tr>
+<tr class="memdesc:a90ff510d41a0f63c21338c58351f1991"><td class="mdescLeft">&#160;</td><td class="mdescRight">writes a string to a file  <br /></td></tr>
+<tr class="separator:a90ff510d41a0f63c21338c58351f1991"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af014174169b8d154ca69988e5f13b53b" id="r_af014174169b8d154ca69988e5f13b53b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileOperations.html#af014174169b8d154ca69988e5f13b53b">WriteFile</a> (const std::string &amp;contents)</td></tr>
+<tr class="memdesc:af014174169b8d154ca69988e5f13b53b"><td class="mdescLeft">&#160;</td><td class="mdescRight">writes a string to a file  <br /></td></tr>
+<tr class="separator:af014174169b8d154ca69988e5f13b53b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -187,14 +187,14 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>active_file_pa
 
 </div>
 </div>
-<a id="a8084bfa9beae2eab0cb3f8a6d9501024" name="a8084bfa9beae2eab0cb3f8a6d9501024"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8084bfa9beae2eab0cb3f8a6d9501024">&#9670;&#160;</a></span>WriteFile() <span class="overload">[1/2]</span></h2>
+<a id="af014174169b8d154ca69988e5f13b53b" name="af014174169b8d154ca69988e5f13b53b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af014174169b8d154ca69988e5f13b53b">&#9670;&#160;</a></span>WriteFile() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void FileOperations::WriteFile </td>
+          <td class="memname">bool FileOperations::WriteFile </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>contents</em></td><td>)</td>
@@ -210,17 +210,19 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>active_file_pa
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful <br  />
+ </dd></dl>
 
 </div>
 </div>
-<a id="a9cb6d43595e1712dc48c68c2358f27f7" name="a9cb6d43595e1712dc48c68c2358f27f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9cb6d43595e1712dc48c68c2358f27f7">&#9670;&#160;</a></span>WriteFile() <span class="overload">[2/2]</span></h2>
+<a id="a90ff510d41a0f63c21338c58351f1991" name="a90ff510d41a0f63c21338c58351f1991"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90ff510d41a0f63c21338c58351f1991">&#9670;&#160;</a></span>WriteFile() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void FileOperations::WriteFile </td>
+          <td class="memname">bool FileOperations::WriteFile </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>file_path</em>, </td>
@@ -247,6 +249,8 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>active_file_pa
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful <br  />
+ </dd></dl>
 
 </div>
 </div>

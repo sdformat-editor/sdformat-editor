@@ -86,9 +86,9 @@ Inheritance diagram for CommandFactoryI:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCommandFactoryI__inherit__graph.png" border="0" usemap="#aCommandFactoryI_inherit__map" alt="Inheritance graph"/></div>
 <map name="aCommandFactoryI_inherit__map" id="aCommandFactoryI_inherit__map">
-<area shape="rect" title="Interface for the SDFormat Editor&#39;s Command Factory." alt="" coords="5,5,339,495"/>
-<area shape="rect" href="classCommandFactory.html" title="Implementation of CommandFactoryI." alt="" coords="47,543,297,1421"/>
-<area shape="poly" title=" " alt="" coords="175,508,175,542,169,542,169,508"/>
+<area shape="rect" title="Interface for the SDFormat Editor&#39;s Command Factory." alt="" coords="5,5,339,480"/>
+<area shape="rect" href="classCommandFactory.html" title="Implementation of CommandFactoryI." alt="" coords="47,528,297,1392"/>
+<area shape="poly" title=" " alt="" coords="175,494,175,528,169,528,169,494"/>
 </map>
 </div>
 <div class="dynheader">
@@ -96,7 +96,7 @@ Collaboration diagram for CommandFactoryI:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCommandFactoryI__coll__graph.png" border="0" usemap="#aCommandFactoryI_coll__map" alt="Collaboration graph"/></div>
 <map name="aCommandFactoryI_coll__map" id="aCommandFactoryI_coll__map">
-<area shape="rect" title="Interface for the SDFormat Editor&#39;s Command Factory." alt="" coords="5,5,339,495"/>
+<area shape="rect" title="Interface for the SDFormat Editor&#39;s Command Factory." alt="" coords="5,5,339,480"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -114,9 +114,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8fca05c4893b73f13f25a419ad0023fe" id="r_a8fca05c4893b73f13f25a419ad0023fe"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#a8fca05c4893b73f13f25a419ad0023fe">MakeRedoCommand</a> ()=0</td></tr>
 <tr class="memdesc:a8fca05c4893b73f13f25a419ad0023fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a redo command.  <br /></td></tr>
 <tr class="separator:a8fca05c4893b73f13f25a419ad0023fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9cb56487941f72228e7950a5abb3f57" id="r_ab9cb56487941f72228e7950a5abb3f57"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#ab9cb56487941f72228e7950a5abb3f57">MakeSaveFileCommand</a> (bool force_save_as_not_save)=0</td></tr>
-<tr class="memdesc:ab9cb56487941f72228e7950a5abb3f57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a save file command.  <br /></td></tr>
-<tr class="separator:ab9cb56487941f72228e7950a5abb3f57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7471998dae22305a28ccf44f38b8975d" id="r_a7471998dae22305a28ccf44f38b8975d"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#a7471998dae22305a28ccf44f38b8975d">MakeSaveFileCommand</a> ()=0</td></tr>
+<tr class="memdesc:a7471998dae22305a28ccf44f38b8975d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a save file command.  <br /></td></tr>
+<tr class="separator:a7471998dae22305a28ccf44f38b8975d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02b9823f6bf6072d5cc88dc7638e228d" id="r_a02b9823f6bf6072d5cc88dc7638e228d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#a02b9823f6bf6072d5cc88dc7638e228d">PushToUndoCommandsStack</a> (std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt; command, const bool new_change=true)=0</td></tr>
 <tr class="memdesc:a02b9823f6bf6072d5cc88dc7638e228d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes to the undo commands stack.  <br /></td></tr>
 <tr class="separator:a02b9823f6bf6072d5cc88dc7638e228d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -310,8 +310,8 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab9cb56487941f72228e7950a5abb3f57" name="ab9cb56487941f72228e7950a5abb3f57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9cb56487941f72228e7950a5abb3f57">&#9670;&#160;</a></span>MakeSaveFileCommand()</h2>
+<a id="a7471998dae22305a28ccf44f38b8975d" name="a7471998dae22305a28ccf44f38b8975d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7471998dae22305a28ccf44f38b8975d">&#9670;&#160;</a></span>MakeSaveFileCommand()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -322,8 +322,7 @@ Private Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt; CommandFactoryI::MakeSaveFileCommand </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>force_save_as_not_save</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -335,15 +334,9 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Create a save file command. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">force_save_as_not_save</td><td>TODO: description (evan) </td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="section return"><dt>Returns</dt><dd>Unique pointer to a command interface </dd></dl>
 
-<p>Implemented in <a class="el" href="classCommandFactory.html#a07c6572ccb124f88a190dfcca2cae1fd">CommandFactory</a>.</p>
+<p>Implemented in <a class="el" href="classCommandFactory.html#a78d5a75442860ab72c8439772e1ea8e4">CommandFactory</a>.</p>
 
 </div>
 </div>

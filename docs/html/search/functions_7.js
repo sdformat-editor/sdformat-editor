@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['makedeleteelementcommand_0',['makedeleteelementcommand',['../classCommandFactory.html#a1508f65be6f325e2d6d3ef333c6b1816',1,'CommandFactory::MakeDeleteElementCommand()'],['../classCommandFactoryI.html#ac9688f96d9551acf9aa141a1a5873186',1,'CommandFactoryI::MakeDeleteElementCommand()']]],
-  ['makeopenfilecommand_1',['makeopenfilecommand',['../classCommandFactory.html#a0eb5eb4b7cf969a4f909c22bc0f5f576',1,'CommandFactory::MakeOpenFileCommand()'],['../classCommandFactoryI.html#adebc954d2a1401735e055ec827eb1b35',1,'CommandFactoryI::MakeOpenFileCommand()']]],
-  ['makeredocommand_2',['makeredocommand',['../classCommandFactory.html#a2fcf5cf1f66e884e14df68737d328814',1,'CommandFactory::MakeRedoCommand()'],['../classCommandFactoryI.html#a8fca05c4893b73f13f25a419ad0023fe',1,'CommandFactoryI::MakeRedoCommand()']]],
-  ['makesavefilecommand_3',['makesavefilecommand',['../classCommandFactory.html#a07c6572ccb124f88a190dfcca2cae1fd',1,'CommandFactory::MakeSaveFileCommand()'],['../classCommandFactoryI.html#ab9cb56487941f72228e7950a5abb3f57',1,'CommandFactoryI::MakeSaveFileCommand()']]],
-  ['makeundocommand_4',['makeundocommand',['../classCommandFactory.html#a3f3046aa9a06f6848c591e1223395f65',1,'CommandFactory::MakeUndoCommand()'],['../classCommandFactoryI.html#a3540850eb4c889aaabbd288d0f2ee40d',1,'CommandFactoryI::MakeUndoCommand()']]]
+  ['lockmutex_0',['lockmutex',['../classGUI.html#a631a94dcf2eebb86e07151a1cc2bfe21',1,'GUI::LockMutex()'],['../classGUII.html#a5a7b0b6b1c50a83a53c3cc1884b0795c',1,'GUII::LockMutex()']]]
 ];

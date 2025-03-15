@@ -37,17 +37,19 @@ std::string FileOperations::OpenFileDialog()
     return result;
 }
 
-void FileOperations::WriteFile(const std::string& contents) {
-    this->WriteFile(this->active_file_path, contents);
+bool FileOperations::WriteFile(const std::string& contents) {
+    return this->WriteFile(this->active_file_path, contents);
 }
 
-void FileOperations::WriteFile(const std::string& file_path, const std::string& contents) {
+bool FileOperations::WriteFile(const std::string& file_path, const std::string& contents) {
     
     // NOTE: (zaid) maybe the errors here should be brought up to the GUI
+
+    std::cout << "we here" << std::endl;
   
     if (file_path.empty()) {
         std::cerr << "Error: File path is empty." << std::endl;
-        return;
+        return false;
     }
 
     std::ofstream file;
@@ -56,9 +58,11 @@ void FileOperations::WriteFile(const std::string& file_path, const std::string& 
 
     if (!file.is_open()) {
         std::cerr << "Error: Could not open file " << file_path << std::endl;
-        return;
+        return false;
     }
 
     file << contents;
     file.close();
+
+    return true;
 }
