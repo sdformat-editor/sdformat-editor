@@ -359,18 +359,29 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
       {
         ImGui::TextUnformatted((attribute_ptr->GetKey() + ": " +  attribute_ptr->GetAsString() + " ("  + attribute_ptr->GetTypeName()+ ")").c_str());
 
-        static char value_buffer[128] = "";
-        ImGui::SameLine();
-        ImGui::PushItemWidth(window_width*0.1f); 
-        ImGui::InputText(("##" + std::to_string(unique_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
-        ImGui::PopItemWidth();
-        ImGui::SameLine();
-
-        if (ImGui::Button(("Set new value##" + std::to_string(unique_id++)).c_str()))
-        {
-          // Create a SetAttributeValue
-          std::cout << "New value for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName()
-          << ": " << value_buffer << std::endl;
+        
+        static char value_buffer[1024] = "";
+        if (attribute_to_edit == attribute_ptr) {
+          ImGui::SameLine();
+          ImGui::PushItemWidth(window_width*0.1f); 
+          ImGui::InputText(("##" + std::to_string(unique_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
+          ImGui::PopItemWidth();
+          ImGui::SameLine();
+          
+          if (ImGui::Button(("Save##" + std::to_string(unique_id++)).c_str()))
+          {
+            command = command_factory->MakeModifyAttributeCommand(attribute_ptr, value_buffer);
+            value_buffer[0] = '\0';
+            this->attribute_to_edit = nullptr;            
+            std::cout << "New value for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName()
+            << ": " << value_buffer << std::endl;
+          }
+        } else {
+          ImGui::SameLine();
+          if (ImGui::Button(("Modify##" + std::to_string(unique_id++)).c_str())) {
+            this->attribute_to_edit = attribute_ptr;
+            strcpy(value_buffer, attribute_ptr->GetAsString().c_str());
+          }
         }
       }
 

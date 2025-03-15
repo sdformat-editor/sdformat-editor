@@ -62,6 +62,10 @@ class CommandFactoryI
   /// \return Unique pointer to a command interface
   public: virtual std::unique_ptr<CommandI> MakeSaveFileCommand() = 0;
 
+  /// \brief create a modify attribute command
+  /// \return a unique pointer to the commmand interface
+  public: virtual std::unique_ptr<CommandI> MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, std::string new_value) = 0;
+
   /// \brief Pushes to the undo commands stack
   /// \param[in] command commandI object to push
   /// \param[in] new_change indicates if we are pushing a new change, and thus should clear the redo stack

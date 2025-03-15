@@ -105,6 +105,9 @@ class GUI : public GUII
   /// @brief Mutex to protect shared resources
   private: std::mutex gui_mutex;
 
+  /// @brief Holds a reference to the attribute the user is currently editing
+  private: sdf::ParamPtr attribute_to_edit = nullptr;
+
 };
 
 #endif

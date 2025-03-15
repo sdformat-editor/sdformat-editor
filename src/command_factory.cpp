@@ -2,6 +2,7 @@
 #include "commands/DeleteElementCommand.h"
 #include "commands/GenericCommand.h"
 #include "commands/OpenFileCommand.h"
+#include "commands/ModifyAttributeCommand.h"
 
 CommandFactory::CommandFactory(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser)
 {
@@ -32,6 +33,10 @@ std::unique_ptr<CommandI> CommandFactory::MakeRedoCommand()
 std::unique_ptr<CommandI> CommandFactory::MakeDeleteElementCommand(sdf::ElementPtr element_to_delete)
 {
     return std::make_unique<DeleteElementCommand>(this->gui, this->sdformatParser, element_to_delete);
+}
+
+std::unique_ptr<CommandI> CommandFactory::MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, std::string new_value) {
+    return std::make_unique<ModifyAttributeCommand>(this->gui, this->sdformatParser, attribute_to_modify, new_value);
 }
 
 void CommandFactory::PushToUndoCommandsStack(std::unique_ptr<CommandI> command, const bool new_change)
