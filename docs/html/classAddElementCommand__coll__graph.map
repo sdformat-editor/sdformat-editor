@@ -1,0 +1,5 @@
+<map id="AddElementCommand" name="AddElementCommand">
+<area shape="rect" id="Node000001" title="Open model command implementation of CommandI." alt="" coords="5,253,279,720"/>
+<area shape="rect" id="Node000002" href="$classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="31,5,253,205"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,219,145,253,139,253,139,219"/>
+</map>

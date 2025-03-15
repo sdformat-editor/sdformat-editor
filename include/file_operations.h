@@ -43,12 +43,14 @@ class FileOperations
     /// \brief writes a string to a file
     /// \param[in] file_path the filepath of the file to write to
     /// \param[in] contents the contents to write to the given file
-    public: void WriteFile(const std::string& file_path, const std::string& contents);
+    /// \returns true if successful 
+    public: bool WriteFile(const std::string& file_path, const std::string& contents);
 
     /// \callgraph
     /// \brief writes a string to a file
     /// \param[in] contents the contents to write to the given file
-    public: void WriteFile(const std::string& contents);
+    /// \returns true if successful 
+    public: bool WriteFile(const std::string& contents);
 
     /// \callgraph
     /// \brief Prevent access to the constructor of this class

@@ -50,9 +50,8 @@ class CommandFactory : public CommandFactoryI
     private: std::unique_ptr<CommandI> MakeDeleteElementCommand(sdf::ElementPtr element_to_delete) override;
 
     /// \brief Implementation of interface method
-    /// \param force_save_as_not_save TODO: description (evan)
     /// \return Unique pointer to a command interface
-    private: std::unique_ptr<CommandI> MakeSaveFileCommand(bool force_save_as_not_save);
+    private: std::unique_ptr<CommandI> MakeSaveFileCommand();
 
     /// \brief Implementation of interface method
     /// \return Unique pointer to a command interface

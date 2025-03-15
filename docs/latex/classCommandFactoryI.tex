@@ -1,0 +1,232 @@
+\doxysection{Command\+FactoryI Class Reference}
+\hypertarget{classCommandFactoryI}{}\label{classCommandFactoryI}\index{CommandFactoryI@{CommandFactoryI}}
+
+
+Interface for the SDFormat Editor\textquotesingle{}s Command Factory.  
+
+
+
+
+{\ttfamily \#include $<$command\+\_\+factory\+\_\+interface.\+h$>$}
+
+
+
+Inheritance diagram for Command\+FactoryI\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classCommandFactoryI__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Command\+FactoryI\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{classCommandFactoryI__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_adebc954d2a1401735e055ec827eb1b35}{Make\+Open\+File\+Command}} ()=0
+\begin{DoxyCompactList}\small\item\em Create an open file command. \end{DoxyCompactList}\item 
+virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_ac9688f96d9551acf9aa141a1a5873186}{Make\+Delete\+Element\+Command}} (sdf\+::\+Element\+Ptr element\+\_\+to\+\_\+delete)=0
+\begin{DoxyCompactList}\small\item\em Create a delete element command. \end{DoxyCompactList}\item 
+virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_a3540850eb4c889aaabbd288d0f2ee40d}{Make\+Undo\+Command}} ()=0
+\begin{DoxyCompactList}\small\item\em Create a undo command. \end{DoxyCompactList}\item 
+virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_a8fca05c4893b73f13f25a419ad0023fe}{Make\+Redo\+Command}} ()=0
+\begin{DoxyCompactList}\small\item\em Create a redo command. \end{DoxyCompactList}\item 
+virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_a7471998dae22305a28ccf44f38b8975d}{Make\+Save\+File\+Command}} ()=0
+\begin{DoxyCompactList}\small\item\em Create a save file command. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classCommandFactoryI_a02b9823f6bf6072d5cc88dc7638e228d}{Push\+To\+Undo\+Commands\+Stack}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ command, const bool new\+\_\+change=true)=0
+\begin{DoxyCompactList}\small\item\em Pushes to the undo commands stack. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classCommandFactoryI_ae0165834d2d83c1593bef86c0d91311f}{Push\+To\+Redo\+Commands\+Stack}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ command)=0
+\begin{DoxyCompactList}\small\item\em Pushes to the redo commands stack. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classCommandFactoryI_ac102d66b6e65f52cca9c01d3c732535a}{Clear\+Undo\+Redo\+Stacks}} ()=0
+\begin{DoxyCompactList}\small\item\em Clears both the undo and redo stacks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classCommandFactoryI_aa9795d9e3c14eaf8158acc9e850dfc59}{Initialize}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ gui, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ sdformat\+Parser)=0
+\begin{DoxyCompactList}\small\item\em Initialization of the Command Factory. Should be wrapped in the constructor of the implementation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for the SDFormat Editor\textquotesingle{}s Command Factory. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCommandFactoryI_ac102d66b6e65f52cca9c01d3c732535a}\label{classCommandFactoryI_ac102d66b6e65f52cca9c01d3c732535a} 
+\index{CommandFactoryI@{CommandFactoryI}!ClearUndoRedoStacks@{ClearUndoRedoStacks}}
+\index{ClearUndoRedoStacks@{ClearUndoRedoStacks}!CommandFactoryI@{CommandFactoryI}}
+\doxysubsubsection{\texorpdfstring{ClearUndoRedoStacks()}{ClearUndoRedoStacks()}}
+{\footnotesize\ttfamily virtual void Command\+Factory\+I\+::\+Clear\+Undo\+Redo\+Stacks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Clears both the undo and redo stacks. 
+
+
+
+Implemented in \mbox{\hyperlink{classCommandFactory_a7004adb56291b4ad5802753b2afcf83a}{Command\+Factory}}.
+
+\Hypertarget{classCommandFactoryI_aa9795d9e3c14eaf8158acc9e850dfc59}\label{classCommandFactoryI_aa9795d9e3c14eaf8158acc9e850dfc59} 
+\index{CommandFactoryI@{CommandFactoryI}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!CommandFactoryI@{CommandFactoryI}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily virtual void Command\+Factory\+I\+::\+Initialize (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$}]{gui,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+Parser }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+
+Initialization of the Command Factory. Should be wrapped in the constructor of the implementation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em gui} & A pointer to the \doxylink{classGUI}{GUI} element \\
+\hline
+\mbox{\texttt{ in}}  & {\em sdformat\+\_\+parser} & A pointer to the sdformat parser object \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCommandFactory_aacc5fd8c5575d203451203c1209f2948}{Command\+Factory}}.
+
+\Hypertarget{classCommandFactoryI_ac9688f96d9551acf9aa141a1a5873186}\label{classCommandFactoryI_ac9688f96d9551acf9aa141a1a5873186} 
+\index{CommandFactoryI@{CommandFactoryI}!MakeDeleteElementCommand@{MakeDeleteElementCommand}}
+\index{MakeDeleteElementCommand@{MakeDeleteElementCommand}!CommandFactoryI@{CommandFactoryI}}
+\doxysubsubsection{\texorpdfstring{MakeDeleteElementCommand()}{MakeDeleteElementCommand()}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+I\+::\+Make\+Delete\+Element\+Command (\begin{DoxyParamCaption}\item[{sdf\+::\+Element\+Ptr}]{element\+\_\+to\+\_\+delete }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create a delete element command. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em element\+\_\+to\+\_\+delete} & The SDF element to delete \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Unique pointer to a command interface 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCommandFactory_a1508f65be6f325e2d6d3ef333c6b1816}{Command\+Factory}}.
+
+\Hypertarget{classCommandFactoryI_adebc954d2a1401735e055ec827eb1b35}\label{classCommandFactoryI_adebc954d2a1401735e055ec827eb1b35} 
+\index{CommandFactoryI@{CommandFactoryI}!MakeOpenFileCommand@{MakeOpenFileCommand}}
+\index{MakeOpenFileCommand@{MakeOpenFileCommand}!CommandFactoryI@{CommandFactoryI}}
+\doxysubsubsection{\texorpdfstring{MakeOpenFileCommand()}{MakeOpenFileCommand()}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+I\+::\+Make\+Open\+File\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create an open file command. 
+
+\begin{DoxyReturn}{Returns}
+Unique pointer to a command interface ~\newline
+ 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCommandFactory_a0eb5eb4b7cf969a4f909c22bc0f5f576}{Command\+Factory}}.
+
+\Hypertarget{classCommandFactoryI_a8fca05c4893b73f13f25a419ad0023fe}\label{classCommandFactoryI_a8fca05c4893b73f13f25a419ad0023fe} 
+\index{CommandFactoryI@{CommandFactoryI}!MakeRedoCommand@{MakeRedoCommand}}
+\index{MakeRedoCommand@{MakeRedoCommand}!CommandFactoryI@{CommandFactoryI}}
+\doxysubsubsection{\texorpdfstring{MakeRedoCommand()}{MakeRedoCommand()}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+I\+::\+Make\+Redo\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create a redo command. 
+
+\begin{DoxyReturn}{Returns}
+Unique pointer to a command interface 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCommandFactory_a2fcf5cf1f66e884e14df68737d328814}{Command\+Factory}}.
+
+\Hypertarget{classCommandFactoryI_a7471998dae22305a28ccf44f38b8975d}\label{classCommandFactoryI_a7471998dae22305a28ccf44f38b8975d} 
+\index{CommandFactoryI@{CommandFactoryI}!MakeSaveFileCommand@{MakeSaveFileCommand}}
+\index{MakeSaveFileCommand@{MakeSaveFileCommand}!CommandFactoryI@{CommandFactoryI}}
+\doxysubsubsection{\texorpdfstring{MakeSaveFileCommand()}{MakeSaveFileCommand()}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+I\+::\+Make\+Save\+File\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create a save file command. 
+
+\begin{DoxyReturn}{Returns}
+Unique pointer to a command interface 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCommandFactory_a78d5a75442860ab72c8439772e1ea8e4}{Command\+Factory}}.
+
+\Hypertarget{classCommandFactoryI_a3540850eb4c889aaabbd288d0f2ee40d}\label{classCommandFactoryI_a3540850eb4c889aaabbd288d0f2ee40d} 
+\index{CommandFactoryI@{CommandFactoryI}!MakeUndoCommand@{MakeUndoCommand}}
+\index{MakeUndoCommand@{MakeUndoCommand}!CommandFactoryI@{CommandFactoryI}}
+\doxysubsubsection{\texorpdfstring{MakeUndoCommand()}{MakeUndoCommand()}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+I\+::\+Make\+Undo\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create a undo command. 
+
+\begin{DoxyReturn}{Returns}
+Unique pointer to a command interface 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCommandFactory_a3f3046aa9a06f6848c591e1223395f65}{Command\+Factory}}.
+
+\Hypertarget{classCommandFactoryI_ae0165834d2d83c1593bef86c0d91311f}\label{classCommandFactoryI_ae0165834d2d83c1593bef86c0d91311f} 
+\index{CommandFactoryI@{CommandFactoryI}!PushToRedoCommandsStack@{PushToRedoCommandsStack}}
+\index{PushToRedoCommandsStack@{PushToRedoCommandsStack}!CommandFactoryI@{CommandFactoryI}}
+\doxysubsubsection{\texorpdfstring{PushToRedoCommandsStack()}{PushToRedoCommandsStack()}}
+{\footnotesize\ttfamily virtual void Command\+Factory\+I\+::\+Push\+To\+Redo\+Commands\+Stack (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$}]{command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pushes to the redo commands stack. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em command} & commandI object to push \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCommandFactory_a98344baef5725377a99af087525fe921}{Command\+Factory}}.
+
+\Hypertarget{classCommandFactoryI_a02b9823f6bf6072d5cc88dc7638e228d}\label{classCommandFactoryI_a02b9823f6bf6072d5cc88dc7638e228d} 
+\index{CommandFactoryI@{CommandFactoryI}!PushToUndoCommandsStack@{PushToUndoCommandsStack}}
+\index{PushToUndoCommandsStack@{PushToUndoCommandsStack}!CommandFactoryI@{CommandFactoryI}}
+\doxysubsubsection{\texorpdfstring{PushToUndoCommandsStack()}{PushToUndoCommandsStack()}}
+{\footnotesize\ttfamily virtual void Command\+Factory\+I\+::\+Push\+To\+Undo\+Commands\+Stack (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$}]{command,  }\item[{const bool}]{new\+\_\+change = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pushes to the undo commands stack. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em command} & commandI object to push \\
+\hline
+\mbox{\texttt{ in}}  & {\em new\+\_\+change} & indicates if we are pushing a new change, and thus should clear the redo stack \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCommandFactory_a2c72a867a04bce8271284aa034d3466a}{Command\+Factory}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/interfaces/command\+\_\+factory\+\_\+interface.\+h\end{DoxyCompactItemize}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['prevent_5finput_5fflag_0',['prevent_input_flag',['../classGUI.html#a0d3ed3d3ea1560ec4321e84f5dc7fca3',1,'GUI']]]
+  ['new_5felement_0',['new_element',['../classAddElementCommand.html#ad21d720d48430e696f5b72ebba4adad4',1,'AddElementCommand']]]
 ];

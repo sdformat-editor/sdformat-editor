@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['sdfelement_0',['sdfElement',['../classSDFormatParser.html#a2fc0ef9b53d30ff08378f9b7194517b9',1,'SDFormatParser']]],
-  ['sdformat_5fparser_1',['sdformat_parser',['../classGUI.html#ac4c318d3b227ae03cea3447780465d90',1,'GUI']]],
-  ['sdformatparser_2',['sdformatparser',['../classSDFormatParser.html',1,'SDFormatParser'],['../classOpenFileCommand.html#a3d87b192bd7874008f90c3e76b07d0a9',1,'OpenFileCommand::sdformatParser'],['../classFileEditorRunner.html#a10a63970e169797160759b1cab2e5b80',1,'FileEditorRunner::sdformatParser']]],
-  ['sdformatparseri_3',['SDFormatParserI',['../classSDFormatParserI.html',1,'']]],
-  ['sdformatparsertest_4',['SDFormatParserTest',['../classSDFormatParserTest.html',1,'']]],
-  ['set_5fprevent_5finput_5fflag_5',['set_prevent_input_flag',['../classGUI.html#a61fc0808de95295ac5ed429e2c0d0dcf',1,'GUI::set_prevent_input_flag()'],['../classGUII.html#ad37748b4d362758dc84b8a90e7130a78',1,'GUII::set_prevent_input_flag()']]],
-  ['shouldclose_6',['shouldclose',['../classGUI.html#a75a2aa8cff0e7601e0e8b97000213094',1,'GUI::ShouldClose()'],['../classGUII.html#a9ae3de58253702261056dc0981a046ac',1,'GUII::ShouldClose()']]]
+  ['parent_5felement_0',['parent_element',['../classAddElementCommand.html#afe0cf423818c5f9ca83a72c9cdbbd7ab',1,'AddElementCommand']]],
+  ['popfromredocommandsstack_1',['PopFromRedoCommandsStack',['../classCommandFactory.html#aa0b577939e44b3901ba59c5c3ea67fa3',1,'CommandFactory']]],
+  ['popfromundocommandsstack_2',['PopFromUndoCommandsStack',['../classCommandFactory.html#a520ba655e4ddd675d62024e89f3769e0',1,'CommandFactory']]],
+  ['prevent_5finput_5fflag_3',['prevent_input_flag',['../classGUI.html#a0d3ed3d3ea1560ec4321e84f5dc7fca3',1,'GUI']]],
+  ['pushtoredocommandsstack_4',['pushtoredocommandsstack',['../classCommandFactory.html#a98344baef5725377a99af087525fe921',1,'CommandFactory::PushToRedoCommandsStack()'],['../classCommandFactoryI.html#ae0165834d2d83c1593bef86c0d91311f',1,'CommandFactoryI::PushToRedoCommandsStack()']]],
+  ['pushtoundocommandsstack_5',['pushtoundocommandsstack',['../classCommandFactory.html#a2c72a867a04bce8271284aa034d3466a',1,'CommandFactory::PushToUndoCommandsStack()'],['../classCommandFactoryI.html#a02b9823f6bf6072d5cc88dc7638e228d',1,'CommandFactoryI::PushToUndoCommandsStack()']]]
 ];
