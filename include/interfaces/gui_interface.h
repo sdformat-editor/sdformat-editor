@@ -26,7 +26,10 @@
 #include <mutex>
 
 #include <interfaces/sdformat_parser_interface.h>
-#include <interfaces/command_interface.h>
+#include <interfaces/command_factory_interface.h>
+
+// Predeclare CommandFactoryI to avoid circular dependencies
+class CommandFactoryI;
 
 /// \brief Interface for the SDFormat Editor's Graphical User Interface 
 /// Note that this class also inherits from std::enable_shared_from_this<GUII>, 
@@ -44,27 +47,37 @@ class GUII : public std::enable_shared_from_this<GUII>
 
     /// \callgraph
     /// \brief Updating the GUI
+    /// \param[in] command_factory used for creating command objects
     /// \returns The a pointer to the command resulting from the user's action during this frame
-    public: virtual std::unique_ptr<CommandI> Update() = 0;
+    public: virtual std::unique_ptr<CommandI> Update(std::shared_ptr<CommandFactoryI> command_factory) = 0;
 
     /// \callgraph
     /// \brief Indicate if the GUI should close 
     public: virtual bool ShouldClose() = 0;
 
+    public: struct DialogMessage
+    {  
+        const std::string header;
+        const std::string body;
+        const std::string footer;
+    };
+
     /// \callgraph
-    /// \brief Open the file dialog
-    /// \returns An file path or ""
-    public: virtual std::string OpenFileDialog() = 0;
+    /// \brief Enables a choice dialog message in the GUI that will be override everything else displayed by the GUI
+    /// \param[in] dialogMessage struct containing the strings to display
+    /// \param[out] choices a vector of string,bools pairs where one bool will be set true, corresponding to the user's choice
+    public: virtual void OpenChoiceDialog(DialogMessage dialogMessage, std::vector<std::pair<std::string, bool>>& choices) = 0;
 
     /// \callgraph
     /// \brief Method to change the flag which can be set to prevent the GUI from taking user input.
     /// This can be used in instances where OpenFileDialog or another threadded method is running.
     /// \param[in] set value to set the flag
-    public: virtual void set_prevent_input_flag(bool set) = 0;
+    public: virtual void SetPreventInputFlag(bool set) = 0;
 
     /// \callgraph
     /// \brief Method to lock mutex
-    public: virtual std::unique_lock<std::mutex> lock_mutex() = 0;
+    public: virtual std::unique_lock<std::mutex> LockMutex() = 0;
+
 
 };;
 

@@ -29,19 +29,24 @@ Collaboration diagram for GUII\+:
 \includegraphics[width=290pt]{classGUII__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structGUII_1_1DialogMessage}{Dialog\+Message}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classGUII_a4e441601baac13f94796fde8d3d66400}{Update}} ()=0
+virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classGUII_afb6e5bacfbd456eb08a766d852b28d2f}{Update}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCommandFactoryI}{Command\+FactoryI}} $>$ command\+\_\+factory)=0
 \begin{DoxyCompactList}\small\item\em Updating the \doxylink{classGUI}{GUI}. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{classGUII_a9ae3de58253702261056dc0981a046ac}{Should\+Close}} ()=0
 \begin{DoxyCompactList}\small\item\em Indicate if the \doxylink{classGUI}{GUI} should close ~\newline
  \end{DoxyCompactList}\item 
-virtual std\+::string \mbox{\hyperlink{classGUII_a4f80df3bf862a6da0cb37f17b59d3bf5}{Open\+File\+Dialog}} ()=0
-\begin{DoxyCompactList}\small\item\em Open the file dialog. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classGUII_ad37748b4d362758dc84b8a90e7130a78}{set\+\_\+prevent\+\_\+input\+\_\+flag}} (bool set)=0
+virtual void \mbox{\hyperlink{classGUII_a2308b7ef4b8be7547242a3b15ebad492}{Open\+Choice\+Dialog}} (\mbox{\hyperlink{structGUII_1_1DialogMessage}{Dialog\+Message}} dialog\+Message, std\+::vector$<$ std\+::pair$<$ std\+::string, bool $>$ $>$ \&choices)=0
+\begin{DoxyCompactList}\small\item\em Enables a choice dialog message in the \doxylink{classGUI}{GUI} that will be override everything else displayed by the \doxylink{classGUI}{GUI}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classGUII_a8d2baf2d5e991049a6b79c2ed8fd83cd}{Set\+Prevent\+Input\+Flag}} (bool set)=0
 \begin{DoxyCompactList}\small\item\em Method to change the flag which can be set to prevent the \doxylink{classGUI}{GUI} from taking user input. This can be used in instances where Open\+File\+Dialog or another threadded method is running. \end{DoxyCompactList}\item 
-virtual std\+::unique\+\_\+lock$<$ std\+::mutex $>$ \mbox{\hyperlink{classGUII_af1ccbf49fca88af0a4cb9c65b2423b5e}{lock\+\_\+mutex}} ()=0
+virtual std\+::unique\+\_\+lock$<$ std\+::mutex $>$ \mbox{\hyperlink{classGUII_a5a7b0b6b1c50a83a53c3cc1884b0795c}{Lock\+Mutex}} ()=0
 \begin{DoxyCompactList}\small\item\em Method to lock mutex. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
@@ -77,11 +82,11 @@ Initialization of the \doxylink{classGUI}{GUI}. Should be wrapped in the constru
 
 Implemented in \mbox{\hyperlink{classGUI_a6297d2816b36e76ef65067988f4d18c2}{GUI}}.
 
-\Hypertarget{classGUII_af1ccbf49fca88af0a4cb9c65b2423b5e}\label{classGUII_af1ccbf49fca88af0a4cb9c65b2423b5e} 
-\index{GUII@{GUII}!lock\_mutex@{lock\_mutex}}
-\index{lock\_mutex@{lock\_mutex}!GUII@{GUII}}
-\doxysubsubsection{\texorpdfstring{lock\_mutex()}{lock\_mutex()}}
-{\footnotesize\ttfamily virtual std\+::unique\+\_\+lock$<$ std\+::mutex $>$ GUII\+::lock\+\_\+mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+\Hypertarget{classGUII_a5a7b0b6b1c50a83a53c3cc1884b0795c}\label{classGUII_a5a7b0b6b1c50a83a53c3cc1884b0795c} 
+\index{GUII@{GUII}!LockMutex@{LockMutex}}
+\index{LockMutex@{LockMutex}!GUII@{GUII}}
+\doxysubsubsection{\texorpdfstring{LockMutex()}{LockMutex()}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+lock$<$ std\+::mutex $>$ GUII\+::\+Lock\+Mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -89,30 +94,34 @@ Method to lock mutex.
 
 
 
-Implemented in \mbox{\hyperlink{classGUI_a010a7967bf27388e17947933270cac99}{GUI}}.
+Implemented in \mbox{\hyperlink{classGUI_a631a94dcf2eebb86e07151a1cc2bfe21}{GUI}}.
 
-\Hypertarget{classGUII_a4f80df3bf862a6da0cb37f17b59d3bf5}\label{classGUII_a4f80df3bf862a6da0cb37f17b59d3bf5} 
-\index{GUII@{GUII}!OpenFileDialog@{OpenFileDialog}}
-\index{OpenFileDialog@{OpenFileDialog}!GUII@{GUII}}
-\doxysubsubsection{\texorpdfstring{OpenFileDialog()}{OpenFileDialog()}}
-{\footnotesize\ttfamily virtual std\+::string GUII\+::\+Open\+File\+Dialog (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
-
-
-
-Open the file dialog. 
-
-\begin{DoxyReturn}{Returns}
-An file path or "{}"{} 
-\end{DoxyReturn}
+\Hypertarget{classGUII_a2308b7ef4b8be7547242a3b15ebad492}\label{classGUII_a2308b7ef4b8be7547242a3b15ebad492} 
+\index{GUII@{GUII}!OpenChoiceDialog@{OpenChoiceDialog}}
+\index{OpenChoiceDialog@{OpenChoiceDialog}!GUII@{GUII}}
+\doxysubsubsection{\texorpdfstring{OpenChoiceDialog()}{OpenChoiceDialog()}}
+{\footnotesize\ttfamily virtual void GUII\+::\+Open\+Choice\+Dialog (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGUII_1_1DialogMessage}{Dialog\+Message}}}]{dialog\+Message,  }\item[{std\+::vector$<$ std\+::pair$<$ std\+::string, bool $>$ $>$ \&}]{choices }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
-Implemented in \mbox{\hyperlink{classGUI_ae03ac5fb89b2ba7be43c2aae029f3e95}{GUI}}.
 
-\Hypertarget{classGUII_ad37748b4d362758dc84b8a90e7130a78}\label{classGUII_ad37748b4d362758dc84b8a90e7130a78} 
-\index{GUII@{GUII}!set\_prevent\_input\_flag@{set\_prevent\_input\_flag}}
-\index{set\_prevent\_input\_flag@{set\_prevent\_input\_flag}!GUII@{GUII}}
-\doxysubsubsection{\texorpdfstring{set\_prevent\_input\_flag()}{set\_prevent\_input\_flag()}}
-{\footnotesize\ttfamily virtual void GUII\+::set\+\_\+prevent\+\_\+input\+\_\+flag (\begin{DoxyParamCaption}\item[{bool}]{set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+Enables a choice dialog message in the \doxylink{classGUI}{GUI} that will be override everything else displayed by the \doxylink{classGUI}{GUI}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dialog\+Message} & struct containing the strings to display \\
+\hline
+\mbox{\texttt{ out}}  & {\em choices} & a vector of string,bools pairs where one bool will be set true, corresponding to the user\textquotesingle{}s choice \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classGUI_a371c336213806742abe81172d845b0de}{GUI}}.
+
+\Hypertarget{classGUII_a8d2baf2d5e991049a6b79c2ed8fd83cd}\label{classGUII_a8d2baf2d5e991049a6b79c2ed8fd83cd} 
+\index{GUII@{GUII}!SetPreventInputFlag@{SetPreventInputFlag}}
+\index{SetPreventInputFlag@{SetPreventInputFlag}!GUII@{GUII}}
+\doxysubsubsection{\texorpdfstring{SetPreventInputFlag()}{SetPreventInputFlag()}}
+{\footnotesize\ttfamily virtual void GUII\+::\+Set\+Prevent\+Input\+Flag (\begin{DoxyParamCaption}\item[{bool}]{set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -125,7 +134,7 @@ Method to change the flag which can be set to prevent the \doxylink{classGUI}{GU
 \end{DoxyParams}
 
 
-Implemented in \mbox{\hyperlink{classGUI_a61fc0808de95295ac5ed429e2c0d0dcf}{GUI}}.
+Implemented in \mbox{\hyperlink{classGUI_a487fb746f6310430c4a42a3f2e5015d1}{GUI}}.
 
 \Hypertarget{classGUII_a9ae3de58253702261056dc0981a046ac}\label{classGUII_a9ae3de58253702261056dc0981a046ac} 
 \index{GUII@{GUII}!ShouldClose@{ShouldClose}}
@@ -142,22 +151,27 @@ Indicate if the \doxylink{classGUI}{GUI} should close ~\newline
 
 Implemented in \mbox{\hyperlink{classGUI_a75a2aa8cff0e7601e0e8b97000213094}{GUI}}.
 
-\Hypertarget{classGUII_a4e441601baac13f94796fde8d3d66400}\label{classGUII_a4e441601baac13f94796fde8d3d66400} 
+\Hypertarget{classGUII_afb6e5bacfbd456eb08a766d852b28d2f}\label{classGUII_afb6e5bacfbd456eb08a766d852b28d2f} 
 \index{GUII@{GUII}!Update@{Update}}
 \index{Update@{Update}!GUII@{GUII}}
 \doxysubsubsection{\texorpdfstring{Update()}{Update()}}
-{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ GUII\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ GUII\+::\+Update (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCommandFactoryI}{Command\+FactoryI}} $>$}]{command\+\_\+factory }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
 Updating the \doxylink{classGUI}{GUI}. 
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em command\+\_\+factory} & used for creating command objects \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The a pointer to the command resulting from the user\textquotesingle{}s action during this frame 
 \end{DoxyReturn}
 
 
-Implemented in \mbox{\hyperlink{classGUI_a9105e79c17af7d6e3cf021aa7008eb34}{GUI}}.
+Implemented in \mbox{\hyperlink{classGUI_a7d798a41c26b3f555ceba68f058d3d6c}{GUI}}.
 
 
 

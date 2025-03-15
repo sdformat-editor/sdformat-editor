@@ -32,44 +32,51 @@
 \DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <GLFW/glfw3.h>}\ }
 \DoxyCodeLine{00029\ }
 \DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <interfaces/gui\_interface.h>}}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGUI}{GUI}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classGUII}{GUII}}}
-\DoxyCodeLine{00034\ \{}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{public}:\ \mbox{\hyperlink{classGUI}{GUI}}(\textcolor{keyword}{const}\ std::string\ \&window\_name,\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\_parser}},\ \textcolor{keywordtype}{bool}\ \&success);}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{public}:\ \mbox{\hyperlink{classGUI_ac9cae2328dcb5d83bdfaeca49a2eb695}{\string~GUI}}();}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00045\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a6297d2816b36e76ef65067988f4d18c2}{Initialize}}(\textcolor{keyword}{const}\ std::string\ \&window\_name,\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\_parser}},\ \textcolor{keywordtype}{bool}\ \&success)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00048\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGUI_a75a2aa8cff0e7601e0e8b97000213094}{ShouldClose}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00051\ \ \ \textcolor{keyword}{private}:\ std::unique\_ptr<CommandI>\ \mbox{\hyperlink{classGUI_a9105e79c17af7d6e3cf021aa7008eb34}{Update}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00055\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a61fc0808de95295ac5ed429e2c0d0dcf}{set\_prevent\_input\_flag}}(\textcolor{keywordtype}{bool}\ set)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00056\ \ \ }
-\DoxyCodeLine{00061\ \ \ \textcolor{keyword}{private}:\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_ad0fd69fc7f512cacf6bfec7d67d6141a}{GLFWErrorCallback}}(\textcolor{keywordtype}{int}\ error,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *description);}
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00065\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a38936ef1fe8f17e0211034161730f056}{DisplaySDFRootElement}}(std::unique\_ptr<CommandI>\ \&command,\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\_parser}});}
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00069\ \ \ \textcolor{keyword}{private}:\ std::string\ \mbox{\hyperlink{classGUI_ae03ac5fb89b2ba7be43c2aae029f3e95}{OpenFileDialog}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}command\_factory.h"{}}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGUI}{GUI}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classGUII}{GUII}}}
+\DoxyCodeLine{00035\ \{}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \textcolor{keyword}{public}:\ \mbox{\hyperlink{classGUI}{GUI}}(\textcolor{keyword}{const}\ std::string\ \&window\_name,\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\_parser}},\ \textcolor{keywordtype}{bool}\ \&success);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00043\ \ \ \textcolor{keyword}{public}:\ \mbox{\hyperlink{classGUI_ac9cae2328dcb5d83bdfaeca49a2eb695}{\string~GUI}}();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00046\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a6297d2816b36e76ef65067988f4d18c2}{Initialize}}(\textcolor{keyword}{const}\ std::string\ \&window\_name,\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\_parser}},\ \textcolor{keywordtype}{bool}\ \&success)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00049\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGUI_a75a2aa8cff0e7601e0e8b97000213094}{ShouldClose}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \ \ \textcolor{keyword}{private}:\ std::unique\_ptr<CommandI>\ \mbox{\hyperlink{classGUI_a7d798a41c26b3f555ceba68f058d3d6c}{Update}}(std::shared\_ptr<CommandFactoryI>\ command\_factory)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00058\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a487fb746f6310430c4a42a3f2e5015d1}{SetPreventInputFlag}}(\textcolor{keywordtype}{bool}\ set)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{public}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a371c336213806742abe81172d845b0de}{OpenChoiceDialog}}(\mbox{\hyperlink{structGUII_1_1DialogMessage}{DialogMessage}}\ dialogMessage,\ std::vector<std::pair<std::string,\ bool>>\&\ choices)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00064\ \ \ }
+\DoxyCodeLine{00069\ \ \ \textcolor{keyword}{private}:\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_ad0fd69fc7f512cacf6bfec7d67d6141a}{GLFWErrorCallback}}(\textcolor{keywordtype}{int}\ error,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *description);}
 \DoxyCodeLine{00070\ }
-\DoxyCodeLine{00072\ \ \ \textcolor{keyword}{private}:\ std::unique\_lock<std::mutex>\ \mbox{\hyperlink{classGUI_a010a7967bf27388e17947933270cac99}{lock\_mutex}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00075\ \ \ \textcolor{keyword}{private}:\ std::atomic<bool>\ \mbox{\hyperlink{classGUI_a0d3ed3d3ea1560ec4321e84f5dc7fca3}{prevent\_input\_flag}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00076\ \ \ }
-\DoxyCodeLine{00078\ \ \ \textcolor{keyword}{private}:\ GLFWwindow\ *\mbox{\hyperlink{classGUI_a2955f39e8b9690cf35a43a8b0768f64f}{window}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00074\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a25a3bd1406803fafb9840d311a9fc7f9}{DisplaySDFRootElement}}(std::unique\_ptr<CommandI>\ \&command,\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\_parser}},\ std::shared\_ptr<CommandFactoryI>\ command\_factory);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00078\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGUI_a70390acea16ec9de6dba4439cd2654fa}{SetupNewFrame}}();}
 \DoxyCodeLine{00079\ }
-\DoxyCodeLine{00081\ \ \ \textcolor{keyword}{private}:\ ImGuiIO\ *\mbox{\hyperlink{classGUI_ac6297526aeb809b472c7952fae1d07f7}{io}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00082\ }
-\DoxyCodeLine{00084\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\_parser}};}
-\DoxyCodeLine{00085\ }
-\DoxyCodeLine{00087\ \ \ \textcolor{keyword}{private}:\ ImVec4\ \mbox{\hyperlink{classGUI_a34015969cf7c7eb56194a7a084778315}{background\_colour}};}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00090\ \ \ \textcolor{keyword}{private}:\ std::mutex\ \mbox{\hyperlink{classGUI_a317352348d111967600e09cea9d2c03c}{gui\_mutex}};}
-\DoxyCodeLine{00091\ }
-\DoxyCodeLine{00092\ \};}
-\DoxyCodeLine{00093\ }
-\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00083\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a1b5b6b76c93d2f1505f08dd048a2ca9b}{DrawCoreFrame}}(std::unique\_ptr<CommandI>\&\ command,\ std::shared\_ptr<CommandFactoryI>\ command\_factory);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00086\ \ \ \textcolor{keyword}{private}:\ std::unique\_lock<std::mutex>\ \mbox{\hyperlink{classGUI_a631a94dcf2eebb86e07151a1cc2bfe21}{LockMutex}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<CommandFactory>\ command\_factory;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00091\ \ \ \textcolor{keyword}{private}:\ std::atomic<bool>\ \mbox{\hyperlink{classGUI_a0d3ed3d3ea1560ec4321e84f5dc7fca3}{prevent\_input\_flag}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00092\ \ \ }
+\DoxyCodeLine{00094\ \ \ \textcolor{keyword}{private}:\ GLFWwindow\ *\mbox{\hyperlink{classGUI_a2955f39e8b9690cf35a43a8b0768f64f}{window}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00097\ \ \ \textcolor{keyword}{private}:\ ImGuiIO\ *\mbox{\hyperlink{classGUI_ac6297526aeb809b472c7952fae1d07f7}{io}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00100\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\_parser}};}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00103\ \ \ \textcolor{keyword}{private}:\ ImVec4\ \mbox{\hyperlink{classGUI_a34015969cf7c7eb56194a7a084778315}{background\_colour}};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00106\ \ \ \textcolor{keyword}{private}:\ std::mutex\ \mbox{\hyperlink{classGUI_a317352348d111967600e09cea9d2c03c}{gui\_mutex}};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

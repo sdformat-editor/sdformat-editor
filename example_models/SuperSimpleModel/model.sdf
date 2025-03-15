@@ -63,13 +63,13 @@
         <cast_shadows>0</cast_shadows>
       </visual>
     </link>
+    <static>false</static>
+    <allow_auto_disable>true</allow_auto_disable>
+    <self_collide>false</self_collide>
     <joint name='simple_joint' type='fixed'>
       <parent>body</parent>
       <child>simple_link</child>
       <pose relative_to="body">0 0 0 0 0 0</pose>
     </joint>
-    <static>0</static>
-    <self_collide>0</self_collide>
-    <allow_auto_disable>1</allow_auto_disable>
   </model>
 </sdf>

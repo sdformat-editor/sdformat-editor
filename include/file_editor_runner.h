@@ -33,7 +33,7 @@ class FileEditorRunner
 
     /// \brief Top level method that starts the program
     /// \return Exit state for main function
-    public: int run_program();
+    public: int RunProgram();
 
     /// @brief Variable for checking if the gui was initilized successfully
     bool gui_initalization_successful;
@@ -44,11 +44,8 @@ class FileEditorRunner
     /// @brief Pointer to the GUI class
     std::shared_ptr<GUII> gui;
 
-    /// @brief Stack for undo functionality
-    std::vector<std::unique_ptr<CommandI>> undo_commands_stack;
-
-    /// @brief Stack for redo functionality
-    std::vector<std::unique_ptr<CommandI>> redo_commands_stack;
+    /// @brief Pointer to the CommandFactory class
+    std::shared_ptr<CommandFactoryI> command_factory;
 
 };
 

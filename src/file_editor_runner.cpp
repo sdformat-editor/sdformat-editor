@@ -26,12 +26,12 @@ FileEditorRunner::FileEditorRunner()
     this->sdformatParser = std::make_shared<SDFormatParser>();
 
     this->gui = std::make_shared<GUI>("SDFormat Editor", this->sdformatParser, this->gui_initalization_successful);
-
     // TODO: Actually do something with the stacks
-    
+
+    this->command_factory = std::make_shared<CommandFactory>(this->gui, this->sdformatParser);    
 }
 
-int FileEditorRunner::run_program()
+int FileEditorRunner::RunProgram()
 {
     // Exit the program if the GUI cannot initalize
     // This may happen if there is no active display
@@ -42,12 +42,12 @@ int FileEditorRunner::run_program()
     {
         // Poll the GUI for user input
         // Update will return nullptr if the user does nothing
-        std::unique_ptr<CommandI> user_command = this->gui->Update();
+        std::unique_ptr<CommandI> user_command = this->gui->Update(this->command_factory);
 
         if (user_command)
         {
             // Some commands require a different thread (ex. OpenFileCommand)
-            if (user_command->threaded())
+            if (user_command->IsThreaded())
             {
                 // Make a thread for executing this command
                 std::thread command_thread([user_command = std::move(user_command), this]() mutable {
@@ -55,25 +55,40 @@ int FileEditorRunner::run_program()
                     // (zaid) I don't forsee there being a time where we really need to take user input
                     // while an external thread is doing some operation (ex. opening a file). To make things
                     // simpler for now, the gui will not create any more commands while an external thread is running.
-                    this->gui->set_prevent_input_flag(true);   
+                    this->gui->SetPreventInputFlag(true);   
 
-                    if (user_command->execute())
+                    if (user_command->Execute())
                     {
-                        // Add the command to the undo stack if it executes successfully
-                        this->undo_commands_stack.push_back(std::move(user_command));
+                        if (user_command->ChangesProgramStateIrreversibly())
+                        {
+                            this->command_factory->ClearUndoRedoStacks();
+                        }
+                        if (user_command->IsUndoable())
+                        {
+                            // Add the command to the undo stack if it executes successfully
+                            this->command_factory->PushToUndoCommandsStack(std::move(user_command));
+                        }
                     }
 
                     // Allow the GUI to take user commands
-                    this->gui->set_prevent_input_flag(false); 
+                    this->gui->SetPreventInputFlag(false); 
                     
                 });             
                 
                 // Detach the thread such that it runs in the background
                 command_thread.detach();
             }
-            else if (user_command->execute())
+            else if (user_command->Execute())
             {
-                this->undo_commands_stack.push_back(std::move(user_command));
+                if (user_command->ChangesProgramStateIrreversibly())
+                {
+                    this->command_factory->ClearUndoRedoStacks();
+                }
+                if (user_command->IsUndoable())
+                {
+                    // Add the command to the undo stack if it executes successfully
+                    this->command_factory->PushToUndoCommandsStack(std::move(user_command));
+                }
             }
         }
     }

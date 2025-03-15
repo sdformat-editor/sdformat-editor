@@ -1,0 +1,227 @@
+\doxysection{Delete\+Element\+Command Class Reference}
+\hypertarget{classDeleteElementCommand}{}\label{classDeleteElementCommand}\index{DeleteElementCommand@{DeleteElementCommand}}
+
+
+Open model command implementation of \doxylink{classCommandI}{CommandI}.  
+
+
+
+
+{\ttfamily \#include $<$Delete\+Element\+Command.\+h$>$}
+
+
+
+Inheritance diagram for Delete\+Element\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classDeleteElementCommand__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Delete\+Element\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classDeleteElementCommand__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDeleteElementCommand_a6796f38ecded076228bebafc5a84e407}{Delete\+Element\+Command}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ \mbox{\hyperlink{classDeleteElementCommand_acb100fa43faadf65fd45b1d85c9cd422}{gui}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classDeleteElementCommand_ab16c056e97800b642019050ac1c9f3e7}{sdformat\+Parser}}, sdf\+::\+Element\+Ptr \mbox{\hyperlink{classDeleteElementCommand_a9f98aee907df7939719627cb3845b1ce}{element\+\_\+to\+\_\+delete}})
+\begin{DoxyCompactList}\small\item\em Constructor for delete command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classDeleteElementCommand_ad606aae7b0d869bdaeccbe40c44c48a6}{Execute}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDeleteElementCommand_a81259f19e29ff98fe4282c67897457c9}{Execute\+Undo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDeleteElementCommand_a25f8b7d96cc27cfdb55dbe5810c82835}{Execute\+Redo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDeleteElementCommand_a4ad99f4f3c8ca4b266af9c545744fdb6}{Is\+Undoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDeleteElementCommand_a6c5f04219ace0f3808af89a68828702b}{Is\+Redoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDeleteElementCommand_a4561b97e2c51f2516e64d0ba816febe5}{Is\+Threaded}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDeleteElementCommand_acd07af54e3fcdfce7f7593dad933cc3e}{Changes\+Program\+State\+Irreversibly}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classDeleteElementCommand_acb100fa43faadf65fd45b1d85c9cd422}\label{classDeleteElementCommand_acb100fa43faadf65fd45b1d85c9cd422} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ {\bfseries gui}
+\begin{DoxyCompactList}\small\item\em Pointer to the gui interface. \end{DoxyCompactList}\item 
+\Hypertarget{classDeleteElementCommand_ab16c056e97800b642019050ac1c9f3e7}\label{classDeleteElementCommand_ab16c056e97800b642019050ac1c9f3e7} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ {\bfseries sdformat\+Parser}
+\begin{DoxyCompactList}\small\item\em Pointer to the sdformat parser interface. \end{DoxyCompactList}\item 
+\Hypertarget{classDeleteElementCommand_a9f98aee907df7939719627cb3845b1ce}\label{classDeleteElementCommand_a9f98aee907df7939719627cb3845b1ce} 
+sdf\+::\+Element\+Ptr {\bfseries element\+\_\+to\+\_\+delete}
+\begin{DoxyCompactList}\small\item\em Pointer to the element to delete. \end{DoxyCompactList}\item 
+\Hypertarget{classDeleteElementCommand_a13248954418b753c0854b59c50b8ed9b}\label{classDeleteElementCommand_a13248954418b753c0854b59c50b8ed9b} 
+sdf\+::\+Element\+Ptr {\bfseries element\+\_\+to\+\_\+deletes\+\_\+parent}
+\begin{DoxyCompactList}\small\item\em Pointer to the parent of the element to delete. \end{DoxyCompactList}\item 
+\Hypertarget{classDeleteElementCommand_a2d9da989eb2d2559a5619159b83471d1}\label{classDeleteElementCommand_a2d9da989eb2d2559a5619159b83471d1} 
+bool {\bfseries is\+\_\+currently\+\_\+undoable} = false
+\begin{DoxyCompactList}\small\item\em Store if the command is currently undo-\/able. \end{DoxyCompactList}\item 
+\Hypertarget{classDeleteElementCommand_acbdad8af0ff0516e5bd403df6d36078f}\label{classDeleteElementCommand_acbdad8af0ff0516e5bd403df6d36078f} 
+bool {\bfseries is\+\_\+currently\+\_\+redoable} = false
+\begin{DoxyCompactList}\small\item\em Store if the command is currently redo-\/able. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Open model command implementation of \doxylink{classCommandI}{CommandI}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classDeleteElementCommand_a6796f38ecded076228bebafc5a84e407}\label{classDeleteElementCommand_a6796f38ecded076228bebafc5a84e407} 
+\index{DeleteElementCommand@{DeleteElementCommand}!DeleteElementCommand@{DeleteElementCommand}}
+\index{DeleteElementCommand@{DeleteElementCommand}!DeleteElementCommand@{DeleteElementCommand}}
+\doxysubsubsection{\texorpdfstring{DeleteElementCommand()}{DeleteElementCommand()}}
+{\footnotesize\ttfamily Delete\+Element\+Command\+::\+Delete\+Element\+Command (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$}]{gui,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+Parser,  }\item[{sdf\+::\+Element\+Ptr}]{element\+\_\+to\+\_\+delete }\end{DoxyParamCaption})}
+
+
+
+Constructor for delete command objects. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em gui} & Pointer to the \doxylink{classGUII}{GUII} object \\
+\hline
+\mbox{\texttt{ in}}  & {\em sdformat\+Parser} & Pointer to the \doxylink{classSDFormatParserI}{SDFormat\+ParserI} object \\
+\hline
+\mbox{\texttt{ in}}  & {\em element\+\_\+to\+\_\+delete} & Pointer to the element that may be deleted \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classDeleteElementCommand_acd07af54e3fcdfce7f7593dad933cc3e}\label{classDeleteElementCommand_acd07af54e3fcdfce7f7593dad933cc3e} 
+\index{DeleteElementCommand@{DeleteElementCommand}!ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}}
+\index{ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}!DeleteElementCommand@{DeleteElementCommand}}
+\doxysubsubsection{\texorpdfstring{ChangesProgramStateIrreversibly()}{ChangesProgramStateIrreversibly()}}
+{\footnotesize\ttfamily bool Delete\+Element\+Command\+::\+Changes\+Program\+State\+Irreversibly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}{CommandI}}.
+
+\Hypertarget{classDeleteElementCommand_ad606aae7b0d869bdaeccbe40c44c48a6}\label{classDeleteElementCommand_ad606aae7b0d869bdaeccbe40c44c48a6} 
+\index{DeleteElementCommand@{DeleteElementCommand}!Execute@{Execute}}
+\index{Execute@{Execute}!DeleteElementCommand@{DeleteElementCommand}}
+\doxysubsubsection{\texorpdfstring{Execute()}{Execute()}}
+{\footnotesize\ttfamily bool Delete\+Element\+Command\+::\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always true. Removes the element to delete from it\textquotesingle{}s parent 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_ad0107a73ebccd619860597db7bad2cce}{CommandI}}.
+
+\Hypertarget{classDeleteElementCommand_a25f8b7d96cc27cfdb55dbe5810c82835}\label{classDeleteElementCommand_a25f8b7d96cc27cfdb55dbe5810c82835} 
+\index{DeleteElementCommand@{DeleteElementCommand}!ExecuteRedo@{ExecuteRedo}}
+\index{ExecuteRedo@{ExecuteRedo}!DeleteElementCommand@{DeleteElementCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteRedo()}{ExecuteRedo()}}
+{\footnotesize\ttfamily bool Delete\+Element\+Command\+::\+Execute\+Redo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the element to delete was removed from its parent again 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a10b7094ad088998d95045e7db350eb0a}{CommandI}}.
+
+\Hypertarget{classDeleteElementCommand_a81259f19e29ff98fe4282c67897457c9}\label{classDeleteElementCommand_a81259f19e29ff98fe4282c67897457c9} 
+\index{DeleteElementCommand@{DeleteElementCommand}!ExecuteUndo@{ExecuteUndo}}
+\index{ExecuteUndo@{ExecuteUndo}!DeleteElementCommand@{DeleteElementCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteUndo()}{ExecuteUndo()}}
+{\footnotesize\ttfamily bool Delete\+Element\+Command\+::\+Execute\+Undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the element to delete was already deleted and now restored to its parent 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a38d5a489ac6de24f3b40035083c5ed9a}{CommandI}}.
+
+\Hypertarget{classDeleteElementCommand_a6c5f04219ace0f3808af89a68828702b}\label{classDeleteElementCommand_a6c5f04219ace0f3808af89a68828702b} 
+\index{DeleteElementCommand@{DeleteElementCommand}!IsRedoable@{IsRedoable}}
+\index{IsRedoable@{IsRedoable}!DeleteElementCommand@{DeleteElementCommand}}
+\doxysubsubsection{\texorpdfstring{IsRedoable()}{IsRedoable()}}
+{\footnotesize\ttfamily bool Delete\+Element\+Command\+::\+Is\+Redoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the command has been undone 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
+
+\Hypertarget{classDeleteElementCommand_a4561b97e2c51f2516e64d0ba816febe5}\label{classDeleteElementCommand_a4561b97e2c51f2516e64d0ba816febe5} 
+\index{DeleteElementCommand@{DeleteElementCommand}!IsThreaded@{IsThreaded}}
+\index{IsThreaded@{IsThreaded}!DeleteElementCommand@{DeleteElementCommand}}
+\doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
+{\footnotesize\ttfamily bool Delete\+Element\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}{CommandI}}.
+
+\Hypertarget{classDeleteElementCommand_a4ad99f4f3c8ca4b266af9c545744fdb6}\label{classDeleteElementCommand_a4ad99f4f3c8ca4b266af9c545744fdb6} 
+\index{DeleteElementCommand@{DeleteElementCommand}!IsUndoable@{IsUndoable}}
+\index{IsUndoable@{IsUndoable}!DeleteElementCommand@{DeleteElementCommand}}
+\doxysubsubsection{\texorpdfstring{IsUndoable()}{IsUndoable()}}
+{\footnotesize\ttfamily bool Delete\+Element\+Command\+::\+Is\+Undoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the command as been executed or redone 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a4722f602fdfa6387aa0fced8dfa0e9fd}{CommandI}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/commands/Delete\+Element\+Command.\+h\item 
+src/commands/Delete\+Element\+Command.\+cpp\end{DoxyCompactItemize}

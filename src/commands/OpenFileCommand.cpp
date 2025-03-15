@@ -18,6 +18,7 @@
 */
 
 #include "commands/OpenFileCommand.h"
+#include "file_operations.h"
 
 
 OpenFileCommand::OpenFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser) 
@@ -26,10 +27,10 @@ OpenFileCommand::OpenFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFo
   
 }
 
-bool OpenFileCommand::execute()
+bool OpenFileCommand::Execute()
 {
 
-  std::string file_path = this->gui->OpenFileDialog();
+  std::string file_path = FileOperations::GetSoleInstance().OpenFileDialog();
   
   if (file_path == "")
   {
@@ -38,24 +39,40 @@ bool OpenFileCommand::execute()
   
   bool success;
 
-  std::unique_lock<std::mutex> lock_var = gui->lock_mutex();
+  std::unique_lock<std::mutex> lock_var = gui->LockMutex();
   this->sdformatParser->Initialize(file_path, success);
 
   return success;
 
 }
 
-bool OpenFileCommand::threaded() 
+bool OpenFileCommand::ExecuteUndo()
+{
+  return this->IsUndoable();
+}
+
+bool OpenFileCommand::ExecuteRedo()
+{
+  return this->IsRedoable();
+}
+
+bool OpenFileCommand::IsThreaded() 
 {
   return true;
 }
 
-bool OpenFileCommand::undo()
+bool OpenFileCommand::IsUndoable()
 {
   return false;
 }
 
-bool OpenFileCommand::redo()
+bool OpenFileCommand::IsRedoable()
 {
   return false;
+}
+
+bool OpenFileCommand::ChangesProgramStateIrreversibly()
+{
+    // Stub implementation
+    return true;
 }

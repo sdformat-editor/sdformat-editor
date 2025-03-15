@@ -17,8 +17,8 @@
 * Developer: Zaid Duraid, Ean Wheeler, Evan Vokey
 */
 
-#ifndef SDFORMAT_EDITOR_ADD_MODEL_COMMAND_HH_
-#define SDFORMAT_EDITOR_ADD_MODEL_COMMAND_HH_
+#ifndef SDFORMAT_EDITOR_OPEN_FILE_COMMAND_HH_
+#define SDFORMAT_EDITOR_OPEN_FILE_COMMAND_HH_
 
 
 #include <interfaces/command_interface.h>
@@ -38,19 +38,31 @@ class OpenFileCommand : public CommandI
 
   /// \brief Implementation of interface method. 
   /// \returns True if the SDFormatParser has successfully parsed the file and it has been displayed in the GUI
-  private: bool execute() override;
+  private: bool Execute() override;
+
+  /// @brief Implementation of interface method.
+  /// @return Always false
+  private: bool ExecuteUndo() override;
+
+  /// @brief Implementation of interface method.
+  /// @return Always false
+  private: bool ExecuteRedo() override;
 
   /// \brief Implementation of interface method.
   /// \returns Always False
-  private: bool undo() override;
+  private: bool IsUndoable() override;
 
   /// \brief Implementation of interface method.
-  /// \returns Always False
-  private: bool redo() override;
+  /// \returns Always false
+  private: bool IsRedoable() override;
 
   /// \brief Implementation of interface method.
-  /// \returns Always True
-  private: bool threaded() override;
+  /// \returns Always true
+  private: bool IsThreaded() override;
+
+  /// \brief Implementation of interface method.
+  /// \returns Always true
+  private: bool ChangesProgramStateIrreversibly() override;
 
   /// \brief Filepath of the model
   private: std::string file_path;

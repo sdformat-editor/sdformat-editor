@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['gui_0',['GUI',['../classGUI.html',1,'']]],
-  ['guii_1',['GUII',['../classGUII.html',1,'']]],
-  ['guitest_2',['GUITest',['../classGUITest.html',1,'']]]
+  ['deleteelementcommand_0',['DeleteElementCommand',['../classDeleteElementCommand.html',1,'']]],
+  ['dialogmessage_1',['DialogMessage',['../structGUII_1_1DialogMessage.html',1,'GUII']]]
 ];

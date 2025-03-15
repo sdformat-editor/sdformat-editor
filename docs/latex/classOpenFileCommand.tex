@@ -11,8 +11,7 @@ Open model command implementation of \doxylink{classCommandI}{CommandI}.
 
 
 
-Inheritance diagram for Open\+File\+Command\+:
-\nopagebreak
+Inheritance diagram for Open\+File\+Command\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Inheritance diagram for Open\+File\+Command\+:
 \end{figure}
 
 
-Collaboration diagram for Open\+File\+Command\+:
-\nopagebreak
+Collaboration diagram for Open\+File\+Command\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -37,13 +35,19 @@ Collaboration diagram for Open\+File\+Command\+:
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-bool \mbox{\hyperlink{classOpenFileCommand_a9f2249eeea3c1f00f6da3ef8ff199adc}{execute}} () override
+bool \mbox{\hyperlink{classOpenFileCommand_aaaa8a9f550b1669d7a427a9c143c74b9}{Execute}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classOpenFileCommand_a86214f23a23dbb76040bde89c24ef726}{undo}} () override
+bool \mbox{\hyperlink{classOpenFileCommand_a6081ebc56ffd4c603609b548cea6c53c}{Execute\+Undo}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classOpenFileCommand_aebbaf527dbfbb97cb8d0232f735dcf13}{redo}} () override
+bool \mbox{\hyperlink{classOpenFileCommand_aec939dcbd7f334068effbee9c6adc201}{Execute\+Redo}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classOpenFileCommand_a9d101dff59daef197d4da811bae59965}{threaded}} () override
+bool \mbox{\hyperlink{classOpenFileCommand_afa163c258a28f6f7af8f43908e181605}{Is\+Undoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenFileCommand_afdf34480b36f0fa36f41fc546333a5dc}{Is\+Redoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenFileCommand_a3fb7e479af973fb23f422c955e24fc77}{Is\+Threaded}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenFileCommand_ae020a395fb497ac749d5ddb54d2ce7ef}{Changes\+Program\+State\+Irreversibly}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -83,11 +87,28 @@ Constructor for open model command objects.
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classOpenFileCommand_a9f2249eeea3c1f00f6da3ef8ff199adc}\label{classOpenFileCommand_a9f2249eeea3c1f00f6da3ef8ff199adc} 
-\index{OpenFileCommand@{OpenFileCommand}!execute@{execute}}
-\index{execute@{execute}!OpenFileCommand@{OpenFileCommand}}
-\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
-{\footnotesize\ttfamily bool Open\+File\+Command\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+\Hypertarget{classOpenFileCommand_ae020a395fb497ac749d5ddb54d2ce7ef}\label{classOpenFileCommand_ae020a395fb497ac749d5ddb54d2ce7ef} 
+\index{OpenFileCommand@{OpenFileCommand}!ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}}
+\index{ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}!OpenFileCommand@{OpenFileCommand}}
+\doxysubsubsection{\texorpdfstring{ChangesProgramStateIrreversibly()}{ChangesProgramStateIrreversibly()}}
+{\footnotesize\ttfamily bool Open\+File\+Command\+::\+Changes\+Program\+State\+Irreversibly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always true 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}{CommandI}}.
+
+\Hypertarget{classOpenFileCommand_aaaa8a9f550b1669d7a427a9c143c74b9}\label{classOpenFileCommand_aaaa8a9f550b1669d7a427a9c143c74b9} 
+\index{OpenFileCommand@{OpenFileCommand}!Execute@{Execute}}
+\index{Execute@{Execute}!OpenFileCommand@{OpenFileCommand}}
+\doxysubsubsection{\texorpdfstring{Execute()}{Execute()}}
+{\footnotesize\ttfamily bool Open\+File\+Command\+::\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
@@ -98,13 +119,81 @@ True if the \doxylink{classSDFormatParser}{SDFormat\+Parser} has successfully pa
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{classCommandI_a07ef0084dd68bd32719b5c1c4248df91}{CommandI}}.
+Implements \mbox{\hyperlink{classCommandI_ad0107a73ebccd619860597db7bad2cce}{CommandI}}.
 
-\Hypertarget{classOpenFileCommand_aebbaf527dbfbb97cb8d0232f735dcf13}\label{classOpenFileCommand_aebbaf527dbfbb97cb8d0232f735dcf13} 
-\index{OpenFileCommand@{OpenFileCommand}!redo@{redo}}
-\index{redo@{redo}!OpenFileCommand@{OpenFileCommand}}
-\doxysubsubsection{\texorpdfstring{redo()}{redo()}}
-{\footnotesize\ttfamily bool Open\+File\+Command\+::redo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+\Hypertarget{classOpenFileCommand_aec939dcbd7f334068effbee9c6adc201}\label{classOpenFileCommand_aec939dcbd7f334068effbee9c6adc201} 
+\index{OpenFileCommand@{OpenFileCommand}!ExecuteRedo@{ExecuteRedo}}
+\index{ExecuteRedo@{ExecuteRedo}!OpenFileCommand@{OpenFileCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteRedo()}{ExecuteRedo()}}
+{\footnotesize\ttfamily bool Open\+File\+Command\+::\+Execute\+Redo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a10b7094ad088998d95045e7db350eb0a}{CommandI}}.
+
+\Hypertarget{classOpenFileCommand_a6081ebc56ffd4c603609b548cea6c53c}\label{classOpenFileCommand_a6081ebc56ffd4c603609b548cea6c53c} 
+\index{OpenFileCommand@{OpenFileCommand}!ExecuteUndo@{ExecuteUndo}}
+\index{ExecuteUndo@{ExecuteUndo}!OpenFileCommand@{OpenFileCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteUndo()}{ExecuteUndo()}}
+{\footnotesize\ttfamily bool Open\+File\+Command\+::\+Execute\+Undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a38d5a489ac6de24f3b40035083c5ed9a}{CommandI}}.
+
+\Hypertarget{classOpenFileCommand_afdf34480b36f0fa36f41fc546333a5dc}\label{classOpenFileCommand_afdf34480b36f0fa36f41fc546333a5dc} 
+\index{OpenFileCommand@{OpenFileCommand}!IsRedoable@{IsRedoable}}
+\index{IsRedoable@{IsRedoable}!OpenFileCommand@{OpenFileCommand}}
+\doxysubsubsection{\texorpdfstring{IsRedoable()}{IsRedoable()}}
+{\footnotesize\ttfamily bool Open\+File\+Command\+::\+Is\+Redoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
+
+\Hypertarget{classOpenFileCommand_a3fb7e479af973fb23f422c955e24fc77}\label{classOpenFileCommand_a3fb7e479af973fb23f422c955e24fc77} 
+\index{OpenFileCommand@{OpenFileCommand}!IsThreaded@{IsThreaded}}
+\index{IsThreaded@{IsThreaded}!OpenFileCommand@{OpenFileCommand}}
+\doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
+{\footnotesize\ttfamily bool Open\+File\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always true 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}{CommandI}}.
+
+\Hypertarget{classOpenFileCommand_afa163c258a28f6f7af8f43908e181605}\label{classOpenFileCommand_afa163c258a28f6f7af8f43908e181605} 
+\index{OpenFileCommand@{OpenFileCommand}!IsUndoable@{IsUndoable}}
+\index{IsUndoable@{IsUndoable}!OpenFileCommand@{OpenFileCommand}}
+\doxysubsubsection{\texorpdfstring{IsUndoable()}{IsUndoable()}}
+{\footnotesize\ttfamily bool Open\+File\+Command\+::\+Is\+Undoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
@@ -115,41 +204,7 @@ Always False
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{classCommandI_a045529cc0219b14d416d14794ca0321a}{CommandI}}.
-
-\Hypertarget{classOpenFileCommand_a9d101dff59daef197d4da811bae59965}\label{classOpenFileCommand_a9d101dff59daef197d4da811bae59965} 
-\index{OpenFileCommand@{OpenFileCommand}!threaded@{threaded}}
-\index{threaded@{threaded}!OpenFileCommand@{OpenFileCommand}}
-\doxysubsubsection{\texorpdfstring{threaded()}{threaded()}}
-{\footnotesize\ttfamily bool Open\+File\+Command\+::threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
-
-
-
-Implementation of interface method. 
-
-\begin{DoxyReturn}{Returns}
-Always True 
-\end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classCommandI_a0da54a11aa067099da52f04d20c0859a}{CommandI}}.
-
-\Hypertarget{classOpenFileCommand_a86214f23a23dbb76040bde89c24ef726}\label{classOpenFileCommand_a86214f23a23dbb76040bde89c24ef726} 
-\index{OpenFileCommand@{OpenFileCommand}!undo@{undo}}
-\index{undo@{undo}!OpenFileCommand@{OpenFileCommand}}
-\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
-{\footnotesize\ttfamily bool Open\+File\+Command\+::undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
-
-
-
-Implementation of interface method. 
-
-\begin{DoxyReturn}{Returns}
-Always False 
-\end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classCommandI_aa9d8718f12bcb260fdfa03ecd51076bf}{CommandI}}.
+Implements \mbox{\hyperlink{classCommandI_a4722f602fdfa6387aa0fced8dfa0e9fd}{CommandI}}.
 
 
 

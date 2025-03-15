@@ -41,7 +41,35 @@ class SDFormatParser : public SDFormatParserI
     /// \returns The main sdfElement associated this this SDFormatParser instance
     private: sdf::SDFPtr GetSDFElement() override;
 
+    /// \brief Implementation of interface method
+    /// \param[in] key the string to search for
+    /// \returns The elements and attributes that mention this given key
+    private: Mentions FindMentions(std::string key) override;
+
+    /// \brief Implementation of interface method
+    /// \param[in] key the string to search for
+    /// \param[in] element_to_exclude the element to exclude in the search
+    /// \returns The elements and attributes that mention this given key
+    private: Mentions FindMentions(std::string key, sdf::ElementPtr element_to_exclude) override;
+
+    /// \brief Implementation of interface method
+    /// \param[in] key the string to search for
+    /// \param[in] attribute_to_exclude the attribute to exclude in the search
+    /// \returns The elements and attributes that mention this given key
+    private: Mentions FindMentions(std::string key, sdf::ParamPtr attribute_to_exclude) override;
+
+    /// \brief Implementation of interface method
+    /// \param[in] key the string to search for
+    /// \param[in] element_to_exclude the element to exclude in the search; Can be nullptr
+    /// \param[in] attribute_to_exclude the attribute to exclude in the search; Can be nullptr
+    /// \returns The elements and attributes that mention this given key
+    private: Mentions FindMentions(std::string key, sdf::ElementPtr element_to_exclude, sdf::ParamPtr attribute_to_exclude) override;
+
     
+    /// \brief Implementation of interface method
+    /// \param[in] element element that we want a tree path for
+    /// \return Tree path as a string
+    private: std::string GetSDFTreePathToElement(sdf::ElementPtr element) override; 
 };
 
 #endif

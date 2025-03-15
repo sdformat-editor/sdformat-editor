@@ -19,7 +19,6 @@
 
 #include "gui.h"
 #include "commands/OpenFileCommand.h"
-#include "file_operations.h"
 #include <stack>
 
 GUI::GUI(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success)
@@ -37,12 +36,12 @@ bool GUI::ShouldClose()
   return glfwWindowShouldClose(this->window);
 }
 
-void GUI::set_prevent_input_flag(bool set)
+void GUI::SetPreventInputFlag(bool set)
 {
   this->prevent_input_flag = set;
 }
 
-std::unique_lock<std::mutex> GUI::lock_mutex()
+std::unique_lock<std::mutex> GUI::LockMutex()
 {
   return std::unique_lock<std::mutex>(this->gui_mutex);
 }
@@ -128,29 +127,40 @@ void GUI::Initialize(const std::string &window_name, std::shared_ptr<SDFormatPar
   success = true;
 }
 
-std::string GUI::OpenFileDialog()
+bool GUI::SetupNewFrame()
 {
-  return FileOperations::OpenFileDialog();
-}
-
-
-std::unique_ptr<CommandI> GUI::Update()
-{
-  std::unique_ptr<CommandI> command = nullptr;
-
   glfwPollEvents();
   if (glfwGetWindowAttrib(this->window, GLFW_ICONIFIED) != 0)
   {
       ImGui_ImplGlfw_Sleep(10);
-      return command;
+      return false;
   }
 
   // Start the Dear ImGui frame
   ImGui_ImplOpenGL3_NewFrame();
   ImGui_ImplGlfw_NewFrame();
   ImGui::NewFrame();
-
   
+  return true;
+}
+
+void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<CommandFactoryI> command_factory)
+{  
+
+  // Check for keyboard shortcut inputs
+  if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl) && ImGui::IsKeyPressed(ImGuiKey_Z))
+  {
+    if (!(this->prevent_input_flag)) command = command_factory->MakeUndoCommand();
+  }
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)) && ImGui::IsKeyPressed(ImGuiKey_Y))
+  {
+    if (!(this->prevent_input_flag)) command = command_factory->MakeRedoCommand();
+  }
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)) && ImGui::IsKeyPressed(ImGuiKey_S))
+  {
+    if (!prevent_input_flag) command = command_factory->MakeSaveFileCommand();
+  }
+
   if (ImGui::BeginMainMenuBar())
   {
       if (ImGui::BeginMenu("File"))
@@ -160,13 +170,26 @@ std::unique_ptr<CommandI> GUI::Update()
           }
           if (ImGui::MenuItem("Open", "Ctrl+O"))
           {
-            if (!prevent_input_flag) command = std::make_unique<OpenFileCommand>(shared_from_this(), this->sdformat_parser);
+            if (!prevent_input_flag) command = command_factory->MakeOpenFileCommand();
           }
           if (ImGui::MenuItem("Save", "Ctrl+S"))
           {
+            if (!prevent_input_flag) command = command_factory->MakeSaveFileCommand();
           }
           if (ImGui::MenuItem("Save as.."))
           {
+          }
+          ImGui::EndMenu();
+      }
+      if (ImGui::BeginMenu("Edit"))
+      {
+          if (ImGui::MenuItem("Undo", "Ctrl+Z"))
+          {
+            if (!(this->prevent_input_flag)) command = command_factory->MakeUndoCommand();
+          }
+          if (ImGui::MenuItem("Redo", "Ctrl+Y"))
+          {
+            if (!(this->prevent_input_flag)) command = command_factory->MakeRedoCommand();
           }
           ImGui::EndMenu();
       }
@@ -191,7 +214,7 @@ std::unique_ptr<CommandI> GUI::Update()
 
     // If the user hasn't done anything so far, accept commands from the SDF element tree.
     // Otherwise, display the tree but do not take commands.
-    this->DisplaySDFRootElement(command, sdformat_parser);
+    this->DisplaySDFRootElement(command, sdformat_parser, command_factory);
     
 
     ImGui::ColorEdit3("clear color", (float *)&this->background_colour); // Edit 3 floats representing a color
@@ -210,11 +233,24 @@ std::unique_ptr<CommandI> GUI::Update()
   ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
   glfwSwapBuffers(window);
+}
+
+std::unique_ptr<CommandI> GUI::Update(std::shared_ptr<CommandFactoryI> command_factory)
+{
+
+  std::unique_ptr<CommandI> command = nullptr;
+
+  if (!this->SetupNewFrame())
+  {
+      return command;
+  }
+
+  this->DrawCoreFrame(command, command_factory);
 
   return command;
 }
 
-void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_ptr<SDFormatParserI> sdformat_parser)
+void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_ptr<SDFormatParserI> sdformat_parser, std::shared_ptr<CommandFactoryI> command_factory)
 {
 
   // Return if there is no SDF element tree to show
@@ -225,18 +261,26 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
   }
 
   // Lock the mutex since we will be reading from the SDFormatParser
-  std::unique_lock<std::mutex> lock_var = this->lock_mutex();
+  std::unique_lock<std::mutex> lock_var = this->LockMutex();
   
   // Create a stack to hold the element instances to display
   // The boolean indicates whether or not this tree node was visited
   std::stack<std::pair<sdf::ElementPtr,bool>> sdf_tree_stack;
 
-  // Append the root model element to the stack
-  sdf_tree_stack.emplace(sdformat_parser->GetSDFElement()->Root()->GetFirstElement(), false);
-
   // To ensure that there are no issue with repeat elements for ImGui,
   // every button will be given a unique id.
   int unique_id = 0;
+
+  if (sdformat_parser->GetSDFElement()->Root()->GetFirstElement())
+  {
+    // Append the root model element to the stack
+    sdf_tree_stack.emplace(sdformat_parser->GetSDFElement()->Root()->GetFirstElement(), false);
+  }
+  else if (ImGui::Button(("Append element##" + std::to_string(unique_id++)).c_str()))
+  {
+    // Create an AppendElement command
+    std::cout << "Append called for " + sdformat_parser->GetSDFElement()->Root()->ReferenceSDF() + " element called " + sdformat_parser->GetSDFElement()->Root()->GetName();
+  }
 
   while (!sdf_tree_stack.empty())
   {
@@ -276,7 +320,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
       if (ImGui::Button(("Delete element##" + std::to_string(unique_id++)).c_str()))
       {
         // Create a DeleteElement command
-        std::cout << "Delete called for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName();
+        if (!prevent_input_flag) command = command_factory->MakeDeleteElementCommand(current_element_ptr);
       }
       ImGui::SameLine();
       if (ImGui::Button(("Append element##" + std::to_string(unique_id++)).c_str()))
@@ -357,6 +401,58 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
       continue;
     }
   }
+}
+
+void GUI::OpenChoiceDialog(DialogMessage dialogMessage, std::vector<std::pair<std::string, bool>>& choices)
+{
+  this->SetPreventInputFlag(true);
+
+  bool user_responded = false;
+  
+  while (!(this->ShouldClose() || user_responded))
+  {
+
+    if (!this->SetupNewFrame())
+    {
+        continue;
+    }
+
+    ImGui::OpenPopup(dialogMessage.header.c_str());
+
+    if (ImGui::BeginPopupModal(dialogMessage.header.c_str(), NULL, ImGuiWindowFlags_AlwaysAutoResize))
+    {
+      ImGui::SetWindowFontScale(1.0f); 
+      ImGui::Text("%s", dialogMessage.body.c_str());
+
+      ImGui::SetWindowFontScale(1.1f); 
+      ImGui::Text("%s", dialogMessage.footer.c_str());
+
+      ImGui::SetWindowFontScale(1.0f); 
+      ImGui::Separator();
+
+      for (auto &choice : choices)
+      {
+        if (ImGui::Button(choice.first.c_str()))
+        {
+          user_responded = true;
+          choice.second = true;
+          ImGui::CloseCurrentPopup();
+          break;
+        }
+        ImGui::SameLine();
+      }
+
+      ImGui::EndPopup();
+    }
+    std::unique_ptr<CommandI> dummy_command = nullptr;
+
+    // Passing in nullptr for the command factory won't cause an issue since prevent_input_flag is true. 
+    // However, it should be strictly enforced that the command_factory argument is only used when
+    // the prevent_input_flag is false.
+    this->DrawCoreFrame(dummy_command, nullptr);
+  }
+  
+  this->SetPreventInputFlag(false);
 }
 
 GUI::~GUI()

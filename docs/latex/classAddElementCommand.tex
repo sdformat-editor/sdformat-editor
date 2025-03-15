@@ -1,0 +1,227 @@
+\doxysection{Add\+Element\+Command Class Reference}
+\hypertarget{classAddElementCommand}{}\label{classAddElementCommand}\index{AddElementCommand@{AddElementCommand}}
+
+
+Open model command implementation of \doxylink{classCommandI}{CommandI}.  
+
+
+
+
+{\ttfamily \#include $<$Add\+Element\+Command.\+h$>$}
+
+
+
+Inheritance diagram for Add\+Element\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classAddElementCommand__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Add\+Element\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classAddElementCommand__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAddElementCommand_a9d73773722af4d82df6fd042d41ccbb5}{Add\+Element\+Command}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ \mbox{\hyperlink{classAddElementCommand_a5daefdd75e0170a76c348c9b7d979e1b}{gui}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classAddElementCommand_a149431ce2278122cace61255e04cdd0d}{sdformat\+Parser}}, sdf\+::\+Element\+Ptr \mbox{\hyperlink{classAddElementCommand_afe0cf423818c5f9ca83a72c9cdbbd7ab}{parent\+\_\+element}})
+\begin{DoxyCompactList}\small\item\em Constructor for open model command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classAddElementCommand_a6e8c1cd748d556e3385df4a6f4ad676f}{Execute}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAddElementCommand_ae67cee7111ea7d83a0d57bfc7f72d121}{Execute\+Undo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAddElementCommand_aa0aaea9a74a5112c3e7e5e04bfe8bbab}{Execute\+Redo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAddElementCommand_a43f52d3865e6c47250929b42b743ddc8}{Is\+Undoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAddElementCommand_ac71009f4a4858e664619c738966878ae}{Is\+Redoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAddElementCommand_ad3a7cd0752dc92e57b4ee64b7f1e95df}{Is\+Threaded}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAddElementCommand_a095686d88826409e62e82b4526b2b544}{Changes\+Program\+State\+Irreversibly}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classAddElementCommand_a5daefdd75e0170a76c348c9b7d979e1b}\label{classAddElementCommand_a5daefdd75e0170a76c348c9b7d979e1b} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ {\bfseries gui}
+\begin{DoxyCompactList}\small\item\em Pointer to the gui interface. \end{DoxyCompactList}\item 
+\Hypertarget{classAddElementCommand_a149431ce2278122cace61255e04cdd0d}\label{classAddElementCommand_a149431ce2278122cace61255e04cdd0d} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ {\bfseries sdformat\+Parser}
+\begin{DoxyCompactList}\small\item\em Pointer to the sdformat parser interface. \end{DoxyCompactList}\item 
+\Hypertarget{classAddElementCommand_afe0cf423818c5f9ca83a72c9cdbbd7ab}\label{classAddElementCommand_afe0cf423818c5f9ca83a72c9cdbbd7ab} 
+sdf\+::\+Element\+Ptr {\bfseries parent\+\_\+element}
+\begin{DoxyCompactList}\small\item\em Pointer to the parent of the element that may be added. \end{DoxyCompactList}\item 
+\Hypertarget{classAddElementCommand_ad21d720d48430e696f5b72ebba4adad4}\label{classAddElementCommand_ad21d720d48430e696f5b72ebba4adad4} 
+sdf\+::\+Element\+Ptr {\bfseries new\+\_\+element}
+\begin{DoxyCompactList}\small\item\em Pointer to the added element. \end{DoxyCompactList}\item 
+\Hypertarget{classAddElementCommand_af727a296181d503e53df4ff25763c36f}\label{classAddElementCommand_af727a296181d503e53df4ff25763c36f} 
+bool {\bfseries is\+\_\+currently\+\_\+undoable} = false
+\begin{DoxyCompactList}\small\item\em Store if the command is currently undo-\/able. \end{DoxyCompactList}\item 
+\Hypertarget{classAddElementCommand_acee6745f83b22edfcb05a42611c1e1f7}\label{classAddElementCommand_acee6745f83b22edfcb05a42611c1e1f7} 
+bool {\bfseries is\+\_\+currently\+\_\+redoable} = false
+\begin{DoxyCompactList}\small\item\em Store if the command is currently redo-\/able. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Open model command implementation of \doxylink{classCommandI}{CommandI}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classAddElementCommand_a9d73773722af4d82df6fd042d41ccbb5}\label{classAddElementCommand_a9d73773722af4d82df6fd042d41ccbb5} 
+\index{AddElementCommand@{AddElementCommand}!AddElementCommand@{AddElementCommand}}
+\index{AddElementCommand@{AddElementCommand}!AddElementCommand@{AddElementCommand}}
+\doxysubsubsection{\texorpdfstring{AddElementCommand()}{AddElementCommand()}}
+{\footnotesize\ttfamily Add\+Element\+Command\+::\+Add\+Element\+Command (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$}]{gui,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+Parser,  }\item[{sdf\+::\+Element\+Ptr}]{parent\+\_\+element }\end{DoxyParamCaption})}
+
+
+
+Constructor for open model command objects. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em gui} & Pointer to the \doxylink{classGUII}{GUII} object \\
+\hline
+\mbox{\texttt{ in}}  & {\em sdformat\+Parser} & Pointer to the \doxylink{classSDFormatParserI}{SDFormat\+ParserI} object \\
+\hline
+\mbox{\texttt{ in}}  & {\em parent\+\_\+element} & Pointer to the parent of the element that may be added \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classAddElementCommand_a095686d88826409e62e82b4526b2b544}\label{classAddElementCommand_a095686d88826409e62e82b4526b2b544} 
+\index{AddElementCommand@{AddElementCommand}!ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}}
+\index{ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}!AddElementCommand@{AddElementCommand}}
+\doxysubsubsection{\texorpdfstring{ChangesProgramStateIrreversibly()}{ChangesProgramStateIrreversibly()}}
+{\footnotesize\ttfamily bool Add\+Element\+Command\+::\+Changes\+Program\+State\+Irreversibly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}{CommandI}}.
+
+\Hypertarget{classAddElementCommand_a6e8c1cd748d556e3385df4a6f4ad676f}\label{classAddElementCommand_a6e8c1cd748d556e3385df4a6f4ad676f} 
+\index{AddElementCommand@{AddElementCommand}!Execute@{Execute}}
+\index{Execute@{Execute}!AddElementCommand@{AddElementCommand}}
+\doxysubsubsection{\texorpdfstring{Execute()}{Execute()}}
+{\footnotesize\ttfamily bool Add\+Element\+Command\+::\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always true. Removes the element to delete from it\textquotesingle{}s parent 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_ad0107a73ebccd619860597db7bad2cce}{CommandI}}.
+
+\Hypertarget{classAddElementCommand_aa0aaea9a74a5112c3e7e5e04bfe8bbab}\label{classAddElementCommand_aa0aaea9a74a5112c3e7e5e04bfe8bbab} 
+\index{AddElementCommand@{AddElementCommand}!ExecuteRedo@{ExecuteRedo}}
+\index{ExecuteRedo@{ExecuteRedo}!AddElementCommand@{AddElementCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteRedo()}{ExecuteRedo()}}
+{\footnotesize\ttfamily bool Add\+Element\+Command\+::\+Execute\+Redo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the element to delete was removed from its parent again 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a10b7094ad088998d95045e7db350eb0a}{CommandI}}.
+
+\Hypertarget{classAddElementCommand_ae67cee7111ea7d83a0d57bfc7f72d121}\label{classAddElementCommand_ae67cee7111ea7d83a0d57bfc7f72d121} 
+\index{AddElementCommand@{AddElementCommand}!ExecuteUndo@{ExecuteUndo}}
+\index{ExecuteUndo@{ExecuteUndo}!AddElementCommand@{AddElementCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteUndo()}{ExecuteUndo()}}
+{\footnotesize\ttfamily bool Add\+Element\+Command\+::\+Execute\+Undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the element to delete was already deleted and now restored to its parent 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a38d5a489ac6de24f3b40035083c5ed9a}{CommandI}}.
+
+\Hypertarget{classAddElementCommand_ac71009f4a4858e664619c738966878ae}\label{classAddElementCommand_ac71009f4a4858e664619c738966878ae} 
+\index{AddElementCommand@{AddElementCommand}!IsRedoable@{IsRedoable}}
+\index{IsRedoable@{IsRedoable}!AddElementCommand@{AddElementCommand}}
+\doxysubsubsection{\texorpdfstring{IsRedoable()}{IsRedoable()}}
+{\footnotesize\ttfamily bool Add\+Element\+Command\+::\+Is\+Redoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the command has been undone 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
+
+\Hypertarget{classAddElementCommand_ad3a7cd0752dc92e57b4ee64b7f1e95df}\label{classAddElementCommand_ad3a7cd0752dc92e57b4ee64b7f1e95df} 
+\index{AddElementCommand@{AddElementCommand}!IsThreaded@{IsThreaded}}
+\index{IsThreaded@{IsThreaded}!AddElementCommand@{AddElementCommand}}
+\doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
+{\footnotesize\ttfamily bool Add\+Element\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}{CommandI}}.
+
+\Hypertarget{classAddElementCommand_a43f52d3865e6c47250929b42b743ddc8}\label{classAddElementCommand_a43f52d3865e6c47250929b42b743ddc8} 
+\index{AddElementCommand@{AddElementCommand}!IsUndoable@{IsUndoable}}
+\index{IsUndoable@{IsUndoable}!AddElementCommand@{AddElementCommand}}
+\doxysubsubsection{\texorpdfstring{IsUndoable()}{IsUndoable()}}
+{\footnotesize\ttfamily bool Add\+Element\+Command\+::\+Is\+Undoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the command as been executed or redone 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a4722f602fdfa6387aa0fced8dfa0e9fd}{CommandI}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/commands/Add\+Element\+Command.\+h\item 
+src/commands/Add\+Element\+Command.\+cpp\end{DoxyCompactItemize}

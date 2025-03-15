@@ -1,19 +1,14 @@
 #include "file_operations.h"
 
+#include <fstream>
+#include <iostream>
 
-// FileOperations::FileOperations()
-// {
-//     operation_active = false;
-// }
-
-// void FileOperations::OpenAndParse()
-// {
-//     if (open_dialog_thread.joinable()) {
-//         open_dialog_thread.join();
-//     }
-
-//     open_dialog_thread = std::thread(&FileOperations::SyncOpenDialog, this);
-// }
+FileOperations& FileOperations::GetSoleInstance()
+{
+    static FileOperations instance;
+    
+    return instance;
+}
 
 std::string FileOperations::OpenFileDialog()
 {
@@ -37,7 +32,35 @@ std::string FileOperations::OpenFileDialog()
         result.pop_back();
     }
 
+    this->active_file_path = result;
+
     return result;
-    
 }
 
+bool FileOperations::WriteFile(const std::string& contents) {
+    return this->WriteFile(this->active_file_path, contents);
+}
+
+bool FileOperations::WriteFile(const std::string& file_path, const std::string& contents) {
+    
+    // NOTE: (zaid) maybe the errors here should be brought up to the GUI
+
+    if (file_path.empty()) {
+        std::cerr << "Error: File path is empty." << std::endl;
+        return false;
+    }
+
+    std::ofstream file;
+
+    file.open(file_path);
+
+    if (!file.is_open()) {
+        std::cerr << "Error: Could not open file " << file_path << std::endl;
+        return false;
+    }
+
+    file << contents;
+    file.close();
+
+    return true;
+}
