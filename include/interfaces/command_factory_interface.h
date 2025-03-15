@@ -59,9 +59,8 @@ class CommandFactoryI
   public: virtual std::unique_ptr<CommandI> MakeRedoCommand() = 0;
 
   /// \brief Create a save file command
-  /// \param force_save_as_not_save TODO: description (evan)
   /// \return Unique pointer to a command interface
-  public: virtual std::unique_ptr<CommandI> MakeSaveFileCommand(bool force_save_as_not_save) = 0;
+  public: virtual std::unique_ptr<CommandI> MakeSaveFileCommand() = 0;
 
   /// \brief Pushes to the undo commands stack
   /// \param[in] command commandI object to push

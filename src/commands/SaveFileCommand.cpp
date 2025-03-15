@@ -21,7 +21,7 @@
 #include "file_operations.h"
 
 
-SaveFileCommand::SaveFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, bool force_save_as_not_save) 
+SaveFileCommand::SaveFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser) 
   : gui(gui), sdformatParser(sdformatParser)
 {
   
@@ -29,15 +29,73 @@ SaveFileCommand::SaveFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFo
 
 bool SaveFileCommand::Execute()
 {
-  
-  std::unique_lock<std::mutex> lock_var = gui->LockMutex();
 
+  if (this->sdformatParser->GetSDFElement())
+  {
+    const std::string dialog_message_header = "Warning";
+    const std::string dialog_message_body = "Saving will overwrite existing file contents.";
+    const std::string dialog_message_footer = "Are you sure you want to continue?";
   
-  this->sdformatParser->GetSDFElement()->ToString();
-  std::string x = this->sdformatParser->GetSDFElement()->ToString();
-  FileOperations::GetSoleInstance().WriteFile(x);
+    GUII::DialogMessage dialog_message{dialog_message_header, dialog_message_body, dialog_message_footer};
+  
+    std::vector<std::pair<std::string, bool>> user_choices;
+  
+    user_choices.push_back({"Proceed", false});
+    user_choices.push_back({"Cancel", false});
+  
+    this->gui->OpenChoiceDialog(dialog_message, user_choices);
+    std::cout << "sup" << std::endl;
+  
+    if (user_choices[0].second)
+    {
+      std::cout << "y tho" << std::endl;
+    
+      // User has chosen to proceed
+  
+      bool file_saved = false;
+    
+      // Attempt to save the XML 
+      // TODO: Add functionality to conserve existing comments, maintian relative file paths, and maintain the order of unmodified elements 
+      {
+        std::unique_lock<std::mutex> lock_var = gui->LockMutex();
+  
+        std::string x = this->sdformatParser->GetSDFElement()->ToString();
+        file_saved = FileOperations::GetSoleInstance().WriteFile(x);
+      }
+  
+      std::cout << "breh" << std::endl;
+  
+      const std::string dialog_message_header = "Info";
+      const std::string dialog_message_footer = file_saved ? "File saved." : "Could not save file. Are you sure this file exists and is writeable?";
+  
+      GUII::DialogMessage dialog_message{dialog_message_header, "", dialog_message_footer};
+  
+      std::vector<std::pair<std::string, bool>> user_choices = {{"Ok", false}};
+  
+      this->gui->OpenChoiceDialog(dialog_message, user_choices);
+  
+      return file_saved;
+    }
+    else
+    {
+      return false;
+    }
+  }
+  else
+  {
+    const std::string dialog_message_header = "Info";
+    const std::string dialog_message_footer = "Cannot execute, there is no SDF tree loaded";
+  
+    GUII::DialogMessage dialog_message{dialog_message_header, "", dialog_message_footer};
+  
+    std::vector<std::pair<std::string, bool>> user_choices;
+  
+    user_choices.push_back({"Ok", false});
+  
+    this->gui->OpenChoiceDialog(dialog_message, user_choices);
 
-  return true;
+    return false;
+  }
 }
 
 bool SaveFileCommand::ExecuteUndo()
@@ -52,7 +110,7 @@ bool SaveFileCommand::ExecuteRedo()
 
 bool SaveFileCommand::IsThreaded() 
 {
-  return true;
+  return false;
 }
 
 bool SaveFileCommand::IsUndoable()

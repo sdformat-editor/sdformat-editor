@@ -59,8 +59,8 @@ class GUI : public GUII
 
   /// \brief Implementation of interface method 
   /// \param[in] dialogMessage struct containing the strings to display
-  /// \returns The user's reponse
-  public: bool OpenYesNoDialog(DialogMessage dialogMessage) override;
+  /// \param[out] choices a vector of string,bools pairs where one bool will be set true, corresponding to the user's choice
+  public: void OpenChoiceDialog(DialogMessage dialogMessage, std::vector<std::pair<std::string, bool>>& choices) override;
   
   /// \brief Function for handling GLFW Error (required to be static by GLFW)
   ///         NOTE: (zaid) It may be good to integrate this with an error handler class

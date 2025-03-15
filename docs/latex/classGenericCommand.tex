@@ -1,0 +1,206 @@
+\doxysection{Generic\+Command Class Reference}
+\hypertarget{classGenericCommand}{}\label{classGenericCommand}\index{GenericCommand@{GenericCommand}}
+
+
+Executes and pops the top commandI object from a stack.  
+
+
+
+
+{\ttfamily \#include $<$Generic\+Command.\+h$>$}
+
+
+
+Inheritance diagram for Generic\+Command\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{classGenericCommand__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Generic\+Command\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{classGenericCommand__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGenericCommand_adb7b02bb053e2c29e0b3841d7ab81f03}{Generic\+Command}} (std\+::function$<$ void()$>$ \mbox{\hyperlink{classGenericCommand_a37df214926be94ef4ac4bc46fd4270fa}{function\+\_\+handle}})
+\begin{DoxyCompactList}\small\item\em Constructor for open model command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classGenericCommand_a663cc7cb4a3fd95196a1ff28785fc688}{Execute}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGenericCommand_a9850a1f2ca9eb74507ea0e8d5a4d1d3e}{Execute\+Undo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGenericCommand_ac0511e9b0bc5f8b33e1ceb0001fca69b}{Execute\+Redo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGenericCommand_afa14aae0989db8983af2ac5c2a2e9722}{Is\+Undoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGenericCommand_ab4f7eba842e2e7b19f55781499bd6b5a}{Is\+Redoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGenericCommand_aaad69c127eaa595dad9b582421d78a7d}{Is\+Threaded}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGenericCommand_a5169594e3d7ab0c2368237db5dced223}{Changes\+Program\+State\+Irreversibly}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classGenericCommand_a37df214926be94ef4ac4bc46fd4270fa}\label{classGenericCommand_a37df214926be94ef4ac4bc46fd4270fa} 
+std\+::function$<$ void()$>$ {\bfseries function\+\_\+handle}
+\begin{DoxyCompactList}\small\item\em Function pointer to hold the command function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Executes and pops the top commandI object from a stack. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGenericCommand_adb7b02bb053e2c29e0b3841d7ab81f03}\label{classGenericCommand_adb7b02bb053e2c29e0b3841d7ab81f03} 
+\index{GenericCommand@{GenericCommand}!GenericCommand@{GenericCommand}}
+\index{GenericCommand@{GenericCommand}!GenericCommand@{GenericCommand}}
+\doxysubsubsection{\texorpdfstring{GenericCommand()}{GenericCommand()}}
+{\footnotesize\ttfamily Generic\+Command\+::\+Generic\+Command (\begin{DoxyParamCaption}\item[{std\+::function$<$ void()$>$}]{function\+\_\+handle }\end{DoxyParamCaption})}
+
+
+
+Constructor for open model command objects. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em function\+\_\+pointer} & unction pointer to hold the command function \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGenericCommand_a5169594e3d7ab0c2368237db5dced223}\label{classGenericCommand_a5169594e3d7ab0c2368237db5dced223} 
+\index{GenericCommand@{GenericCommand}!ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}}
+\index{ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}!GenericCommand@{GenericCommand}}
+\doxysubsubsection{\texorpdfstring{ChangesProgramStateIrreversibly()}{ChangesProgramStateIrreversibly()}}
+{\footnotesize\ttfamily bool Generic\+Command\+::\+Changes\+Program\+State\+Irreversibly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}{CommandI}}.
+
+\Hypertarget{classGenericCommand_a663cc7cb4a3fd95196a1ff28785fc688}\label{classGenericCommand_a663cc7cb4a3fd95196a1ff28785fc688} 
+\index{GenericCommand@{GenericCommand}!Execute@{Execute}}
+\index{Execute@{Execute}!GenericCommand@{GenericCommand}}
+\doxysubsubsection{\texorpdfstring{Execute()}{Execute()}}
+{\footnotesize\ttfamily bool Generic\+Command\+::\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always true. RExecutes and pops the top commandI object from a stack 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_ad0107a73ebccd619860597db7bad2cce}{CommandI}}.
+
+\Hypertarget{classGenericCommand_ac0511e9b0bc5f8b33e1ceb0001fca69b}\label{classGenericCommand_ac0511e9b0bc5f8b33e1ceb0001fca69b} 
+\index{GenericCommand@{GenericCommand}!ExecuteRedo@{ExecuteRedo}}
+\index{ExecuteRedo@{ExecuteRedo}!GenericCommand@{GenericCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteRedo()}{ExecuteRedo()}}
+{\footnotesize\ttfamily bool Generic\+Command\+::\+Execute\+Redo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a10b7094ad088998d95045e7db350eb0a}{CommandI}}.
+
+\Hypertarget{classGenericCommand_a9850a1f2ca9eb74507ea0e8d5a4d1d3e}\label{classGenericCommand_a9850a1f2ca9eb74507ea0e8d5a4d1d3e} 
+\index{GenericCommand@{GenericCommand}!ExecuteUndo@{ExecuteUndo}}
+\index{ExecuteUndo@{ExecuteUndo}!GenericCommand@{GenericCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteUndo()}{ExecuteUndo()}}
+{\footnotesize\ttfamily bool Generic\+Command\+::\+Execute\+Undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a38d5a489ac6de24f3b40035083c5ed9a}{CommandI}}.
+
+\Hypertarget{classGenericCommand_ab4f7eba842e2e7b19f55781499bd6b5a}\label{classGenericCommand_ab4f7eba842e2e7b19f55781499bd6b5a} 
+\index{GenericCommand@{GenericCommand}!IsRedoable@{IsRedoable}}
+\index{IsRedoable@{IsRedoable}!GenericCommand@{GenericCommand}}
+\doxysubsubsection{\texorpdfstring{IsRedoable()}{IsRedoable()}}
+{\footnotesize\ttfamily bool Generic\+Command\+::\+Is\+Redoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
+
+\Hypertarget{classGenericCommand_aaad69c127eaa595dad9b582421d78a7d}\label{classGenericCommand_aaad69c127eaa595dad9b582421d78a7d} 
+\index{GenericCommand@{GenericCommand}!IsThreaded@{IsThreaded}}
+\index{IsThreaded@{IsThreaded}!GenericCommand@{GenericCommand}}
+\doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
+{\footnotesize\ttfamily bool Generic\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}{CommandI}}.
+
+\Hypertarget{classGenericCommand_afa14aae0989db8983af2ac5c2a2e9722}\label{classGenericCommand_afa14aae0989db8983af2ac5c2a2e9722} 
+\index{GenericCommand@{GenericCommand}!IsUndoable@{IsUndoable}}
+\index{IsUndoable@{IsUndoable}!GenericCommand@{GenericCommand}}
+\doxysubsubsection{\texorpdfstring{IsUndoable()}{IsUndoable()}}
+{\footnotesize\ttfamily bool Generic\+Command\+::\+Is\+Undoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a4722f602fdfa6387aa0fced8dfa0e9fd}{CommandI}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/commands/Generic\+Command.\+h\item 
+src/commands/Generic\+Command.\+cpp\end{DoxyCompactItemize}

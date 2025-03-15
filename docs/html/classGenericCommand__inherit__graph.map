@@ -1,0 +1,5 @@
+<map id="GenericCommand" name="GenericCommand">
+<area shape="rect" id="Node000001" title="Executes and pops the top commandI object from a stack." alt="" coords="13,253,219,547"/>
+<area shape="rect" id="Node000002" href="$classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="5,5,227,205"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,219,119,253,113,253,113,219"/>
+</map>

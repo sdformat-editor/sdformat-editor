@@ -70,6 +70,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classSDFormatParserI-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SDFormatParserI Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
@@ -85,9 +86,9 @@ Inheritance diagram for SDFormatParserI:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSDFormatParserI__inherit__graph.png" border="0" usemap="#aSDFormatParserI_inherit__map" alt="Inheritance graph"/></div>
 <map name="aSDFormatParserI_inherit__map" id="aSDFormatParserI_inherit__map">
-<area shape="rect" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="25,5,215,135"/>
-<area shape="rect" href="classSDFormatParser.html" title="Implementation of SDFormatParserI." alt="" coords="5,183,235,312"/>
-<area shape="poly" title=" " alt="" coords="123,148,123,182,117,182,117,148"/>
+<area shape="rect" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,264,381"/>
+<area shape="rect" href="classSDFormatParser.html" title="Implementation of SDFormatParserI." alt="" coords="23,429,246,849"/>
+<area shape="poly" title=" " alt="" coords="137,395,137,429,132,429,132,395"/>
 </map>
 </div>
 <div class="dynheader">
@@ -95,10 +96,16 @@ Collaboration diagram for SDFormatParserI:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSDFormatParserI__coll__graph.png" border="0" usemap="#aSDFormatParserI_coll__map" alt="Collaboration graph"/></div>
 <map name="aSDFormatParserI_coll__map" id="aSDFormatParserI_coll__map">
-<area shape="rect" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,195,135"/>
+<area shape="rect" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,264,381"/>
 </map>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSDFormatParserI_1_1Mentions.html">Mentions</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct to define a "mentions" object type.  <a href="structSDFormatParserI_1_1Mentions.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a404feccbe479eadff00da8ca881fbc85" id="r_a404feccbe479eadff00da8ca881fbc85"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a404feccbe479eadff00da8ca881fbc85">Initialize</a> (const std::string file_path, bool &amp;success)=0</td></tr>
@@ -107,10 +114,213 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9a5b36f28e49f669d0bd8685253be72e" id="r_a9a5b36f28e49f669d0bd8685253be72e"><td class="memItemLeft" align="right" valign="top">virtual sdf::SDFPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a9a5b36f28e49f669d0bd8685253be72e">GetSDFElement</a> ()=0</td></tr>
 <tr class="memdesc:a9a5b36f28e49f669d0bd8685253be72e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the main sdfElement associated this this <a class="el" href="classSDFormatParser.html" title="Implementation of SDFormatParserI.">SDFormatParser</a> instance.  <br /></td></tr>
 <tr class="separator:a9a5b36f28e49f669d0bd8685253be72e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac72fb1714f0918b0f7fc964bf8fb9a10" id="r_ac72fb1714f0918b0f7fc964bf8fb9a10"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structSDFormatParserI_1_1Mentions.html">Mentions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#ac72fb1714f0918b0f7fc964bf8fb9a10">FindMentions</a> (std::string key)=0</td></tr>
+<tr class="memdesc:ac72fb1714f0918b0f7fc964bf8fb9a10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the locations of potential references to the element to delete.  <br /></td></tr>
+<tr class="separator:ac72fb1714f0918b0f7fc964bf8fb9a10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e69c1b46ed0023c7fc019e2f865f438" id="r_a1e69c1b46ed0023c7fc019e2f865f438"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structSDFormatParserI_1_1Mentions.html">Mentions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a1e69c1b46ed0023c7fc019e2f865f438">FindMentions</a> (std::string key, sdf::ElementPtr element_to_exclude)=0</td></tr>
+<tr class="memdesc:a1e69c1b46ed0023c7fc019e2f865f438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the locations of potential references to the element to delete.  <br /></td></tr>
+<tr class="separator:a1e69c1b46ed0023c7fc019e2f865f438"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a589267553e67bd84d250f2ab53bee436" id="r_a589267553e67bd84d250f2ab53bee436"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structSDFormatParserI_1_1Mentions.html">Mentions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a589267553e67bd84d250f2ab53bee436">FindMentions</a> (std::string key, sdf::ParamPtr attribute_to_exclude)=0</td></tr>
+<tr class="memdesc:a589267553e67bd84d250f2ab53bee436"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the locations of potential references to the element to delete.  <br /></td></tr>
+<tr class="separator:a589267553e67bd84d250f2ab53bee436"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73c8e4a06d862addd44822118ef8c16f" id="r_a73c8e4a06d862addd44822118ef8c16f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structSDFormatParserI_1_1Mentions.html">Mentions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a73c8e4a06d862addd44822118ef8c16f">FindMentions</a> (std::string key, sdf::ElementPtr element_to_exclude, sdf::ParamPtr attribute_to_exclude)=0</td></tr>
+<tr class="memdesc:a73c8e4a06d862addd44822118ef8c16f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the locations of potential references to the element to delete.  <br /></td></tr>
+<tr class="separator:a73c8e4a06d862addd44822118ef8c16f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a203d76c76addc968d746bc75b747c399" id="r_a203d76c76addc968d746bc75b747c399"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a203d76c76addc968d746bc75b747c399">GetSDFTreePathToElement</a> (sdf::ElementPtr element)=0</td></tr>
+<tr class="memdesc:a203d76c76addc968d746bc75b747c399"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the tree path to this element.  <br /></td></tr>
+<tr class="separator:a203d76c76addc968d746bc75b747c399"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for the SDFormat Editor's Parser. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac72fb1714f0918b0f7fc964bf8fb9a10" name="ac72fb1714f0918b0f7fc964bf8fb9a10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac72fb1714f0918b0f7fc964bf8fb9a10">&#9670;&#160;</a></span>FindMentions() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="structSDFormatParserI_1_1Mentions.html">Mentions</a> SDFormatParserI::FindMentions </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Determines the locations of potential references to the element to delete. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>the string to search for </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The elements and attributes that mention this given key </dd></dl>
+
+<p>Implemented in <a class="el" href="classSDFormatParser.html#aff85c7ed5d58583cba150f6454c3a669">SDFormatParser</a>.</p>
+
+</div>
+</div>
+<a id="a1e69c1b46ed0023c7fc019e2f865f438" name="a1e69c1b46ed0023c7fc019e2f865f438"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e69c1b46ed0023c7fc019e2f865f438">&#9670;&#160;</a></span>FindMentions() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="structSDFormatParserI_1_1Mentions.html">Mentions</a> SDFormatParserI::FindMentions </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sdf::ElementPtr&#160;</td>
+          <td class="paramname"><em>element_to_exclude</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Determines the locations of potential references to the element to delete. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>the string to search for </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">element_to_exclude</td><td>the element to exclude in the search </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The elements and attributes that mention this given key </dd></dl>
+
+<p>Implemented in <a class="el" href="classSDFormatParser.html#a56e195cc3d0f84498f39b9e91d789dec">SDFormatParser</a>.</p>
+
+</div>
+</div>
+<a id="a73c8e4a06d862addd44822118ef8c16f" name="a73c8e4a06d862addd44822118ef8c16f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73c8e4a06d862addd44822118ef8c16f">&#9670;&#160;</a></span>FindMentions() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="structSDFormatParserI_1_1Mentions.html">Mentions</a> SDFormatParserI::FindMentions </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sdf::ElementPtr&#160;</td>
+          <td class="paramname"><em>element_to_exclude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sdf::ParamPtr&#160;</td>
+          <td class="paramname"><em>attribute_to_exclude</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Determines the locations of potential references to the element to delete. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>the string to search for </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">element_to_exclude</td><td>the element to exclude in the search </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">attribute_to_exclude</td><td>the attribute to exclude in the search </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The elements and attributes that mention this given key </dd></dl>
+
+<p>Implemented in <a class="el" href="classSDFormatParser.html#a49e81716bf38dd27f040cbd0f82ac41f">SDFormatParser</a>.</p>
+
+</div>
+</div>
+<a id="a589267553e67bd84d250f2ab53bee436" name="a589267553e67bd84d250f2ab53bee436"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a589267553e67bd84d250f2ab53bee436">&#9670;&#160;</a></span>FindMentions() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="structSDFormatParserI_1_1Mentions.html">Mentions</a> SDFormatParserI::FindMentions </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sdf::ParamPtr&#160;</td>
+          <td class="paramname"><em>attribute_to_exclude</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Determines the locations of potential references to the element to delete. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>the string to search for </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">attribute_to_exclude</td><td>the attribute to exclude in the search </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The elements and attributes that mention this given key </dd></dl>
+
+<p>Implemented in <a class="el" href="classSDFormatParser.html#a0fcc73cf597a43c882367f5a6d5d2d08">SDFormatParser</a>.</p>
+
+</div>
+</div>
 <a id="a9a5b36f28e49f669d0bd8685253be72e" name="a9a5b36f28e49f669d0bd8685253be72e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9a5b36f28e49f669d0bd8685253be72e">&#9670;&#160;</a></span>GetSDFElement()</h2>
 
@@ -138,6 +348,43 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>the main sdfElement associated this this <a class="el" href="classSDFormatParser.html" title="Implementation of SDFormatParserI.">SDFormatParser</a> instance </dd></dl>
 
 <p>Implemented in <a class="el" href="classSDFormatParser.html#a05c7ff0e224988a867849ebe85e67bb7">SDFormatParser</a>.</p>
+
+</div>
+</div>
+<a id="a203d76c76addc968d746bc75b747c399" name="a203d76c76addc968d746bc75b747c399"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a203d76c76addc968d746bc75b747c399">&#9670;&#160;</a></span>GetSDFTreePathToElement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::string SDFormatParserI::GetSDFTreePathToElement </td>
+          <td>(</td>
+          <td class="paramtype">sdf::ElementPtr&#160;</td>
+          <td class="paramname"><em>element</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the tree path to this element. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">element</td><td>element that we want a tree path for </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Tree path as a string </dd></dl>
+
+<p>Implemented in <a class="el" href="classSDFormatParser.html#a0e8ccb7ccaf1533237bda33ce008c7af">SDFormatParser</a>.</p>
 
 </div>
 </div>

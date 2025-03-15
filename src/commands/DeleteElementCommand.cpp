@@ -40,7 +40,7 @@ bool DeleteElementCommand::Execute()
     }
 
     // If this element has mentions anywhere else OR it is a required attributes, 
-    // display an "are you sure?" message to the user
+    // display a choice dialog to the user
     if (!mentions.attributes.empty() || !mentions.elements.empty() || this->element_to_delete->GetRequired() == "1" || this->element_to_delete->GetRequired() == "+")
     {
 
@@ -48,9 +48,21 @@ bool DeleteElementCommand::Execute()
         const std::string dialog_message_footer = "Are you sure you want to continue?";
         std::string dialog_message_body;
 
-        if (this->element_to_delete->GetRequired() == "1" || this->element_to_delete->GetRequired() == "+")
+        std::vector<std::pair<std::string, bool>> user_choices;
+
+        bool element_required = this->element_to_delete->GetRequired() == "1" || this->element_to_delete->GetRequired() == "+";
+
+        user_choices.push_back({"Proceed", false});
+        user_choices.push_back({"Cancel", false});
+
+        if (element_required)
         {
-            dialog_message_body += "Element "  + this->sdformatParser->GetSDFTreePathToElement(this->element_to_delete) + " is a required element.\n\n";
+            dialog_message_body += "Element "  + this->sdformatParser->GetSDFTreePathToElement(this->element_to_delete) 
+                                    + " is a required element due to its parent! Deleting it will render this SDF invalid.\n\n";
+            
+            // Modify the user choices based on this scenario
+            user_choices[0].first = "Proceed anyway (break the sdf)";
+            user_choices.push_back({"Delete the element's parent", false});
         }
 
         if (!mentions.elements.empty())
@@ -73,12 +85,22 @@ bool DeleteElementCommand::Execute()
 
         GUII::DialogMessage dialog_message{dialog_message_header, dialog_message_body, dialog_message_footer};
 
-        // Display the "Are you sure?" dialog
-        if (!this->gui->OpenYesNoDialog(dialog_message))
+        this->gui->OpenChoiceDialog(dialog_message, user_choices);
+
+        if (element_required && user_choices[2].second)
         {
-            // User decides to not proceed. 
-            // The command does not need to do anything and can finish executing.
-            return true;
+            // User has chosen to delete the element's parent
+
+            // Set the parent as the element to delete.
+            this->element_to_delete = this->element_to_delete->GetParent();
+            
+            return this->Execute();
+        }
+        else if (user_choices[1].second) 
+        {
+            // User has chosen to cancel command
+
+            return false;
         }
     } 
 

@@ -89,7 +89,7 @@ void CommandFactory::ClearStack(std::stack<std::unique_ptr<CommandI>>& stack)
     }
 }
 
-std::unique_ptr<CommandI> CommandFactory::MakeSaveFileCommand(bool force_save_as_not_save)
+std::unique_ptr<CommandI> CommandFactory::MakeSaveFileCommand()
 {
-    return std::make_unique<SaveFileCommand>(this->gui, this->sdformatParser, force_save_as_not_save);
+    return std::make_unique<SaveFileCommand>(this->gui, this->sdformatParser);
 }

@@ -36,23 +36,27 @@ Collaboration diagram for GUI\+:
 \begin{DoxyCompactList}\small\item\em Constructor that wraps the Initialize method. \end{DoxyCompactList}\item 
 \Hypertarget{classGUI_ac9cae2328dcb5d83bdfaeca49a2eb695}\label{classGUI_ac9cae2328dcb5d83bdfaeca49a2eb695} 
 {\bfseries \texorpdfstring{$\sim$}{\string~}\+GUI} ()
-\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGUI_a371c336213806742abe81172d845b0de}{Open\+Choice\+Dialog}} (\mbox{\hyperlink{structGUII_1_1DialogMessage}{Dialog\+Message}} dialog\+Message, std\+::vector$<$ std\+::pair$<$ std\+::string, bool $>$ $>$ \&choices) override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classGUI_a6297d2816b36e76ef65067988f4d18c2}{Initialize}} (const std\+::string \&window\+\_\+name, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\+\_\+parser}}, bool \&success) override
-\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Implementation of interface method, wrapped by constructor. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classGUI_a75a2aa8cff0e7601e0e8b97000213094}{Should\+Close}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
-std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classGUI_a9105e79c17af7d6e3cf021aa7008eb34}{Update}} () override
-\begin{DoxyCompactList}\small\item\em Implementation of update method. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classGUI_a61fc0808de95295ac5ed429e2c0d0dcf}{set\+\_\+prevent\+\_\+input\+\_\+flag}} (bool set) override
-\begin{DoxyCompactList}\small\item\em Implementation of flag setting method. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classGUI_a38936ef1fe8f17e0211034161730f056}{Display\+SDFRoot\+Element}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \&command, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\+\_\+parser}})
-\begin{DoxyCompactList}\small\item\em Function to display the SDF root element in the \doxylink{classGUI}{GUI} in a tree format. \end{DoxyCompactList}\item 
-std\+::string \mbox{\hyperlink{classGUI_ae03ac5fb89b2ba7be43c2aae029f3e95}{Open\+File\+Dialog}} () override
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classGUI_a7d798a41c26b3f555ceba68f058d3d6c}{Update}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCommandFactoryI}{Command\+FactoryI}} $>$ command\+\_\+factory) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
-std\+::unique\+\_\+lock$<$ std\+::mutex $>$ \mbox{\hyperlink{classGUI_a010a7967bf27388e17947933270cac99}{lock\+\_\+mutex}} () override
+void \mbox{\hyperlink{classGUI_a487fb746f6310430c4a42a3f2e5015d1}{Set\+Prevent\+Input\+Flag}} (bool set) override
+\begin{DoxyCompactList}\small\item\em Implementation of flag setting method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGUI_a25a3bd1406803fafb9840d311a9fc7f9}{Display\+SDFRoot\+Element}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \&command, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\+\_\+parser}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCommandFactoryI}{Command\+FactoryI}} $>$ command\+\_\+factory)
+\begin{DoxyCompactList}\small\item\em Function to display the SDF root element in the \doxylink{classGUI}{GUI} in a tree format. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGUI_a70390acea16ec9de6dba4439cd2654fa}{Setup\+New\+Frame}} ()
+\begin{DoxyCompactList}\small\item\em Sets up a new Im\+GUI frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGUI_a1b5b6b76c93d2f1505f08dd048a2ca9b}{Draw\+Core\+Frame}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \&command, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCommandFactoryI}{Command\+FactoryI}} $>$ command\+\_\+factory)
+\begin{DoxyCompactList}\small\item\em Draw the core part of the Im\+GUI frame. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+lock$<$ std\+::mutex $>$ \mbox{\hyperlink{classGUI_a631a94dcf2eebb86e07151a1cc2bfe21}{Lock\+Mutex}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of lock method. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
@@ -61,6 +65,9 @@ static void \mbox{\hyperlink{classGUI_ad0fd69fc7f512cacf6bfec7d67d6141a}{GLFWErr
 \begin{DoxyCompactList}\small\item\em Function for handling GLFW Error (required to be static by GLFW) NOTE\+: (zaid) It may be good to integrate this with an error handler class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classGUI_abd93d5960f46786b7412957f65d77243}\label{classGUI_abd93d5960f46786b7412957f65d77243} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCommandFactory}{Command\+Factory}} $>$ {\bfseries command\+\_\+factory}
 \item 
 \Hypertarget{classGUI_a0d3ed3d3ea1560ec4321e84f5dc7fca3}\label{classGUI_a0d3ed3d3ea1560ec4321e84f5dc7fca3} 
 std\+::atomic$<$ bool $>$ {\bfseries prevent\+\_\+input\+\_\+flag} = false
@@ -107,11 +114,11 @@ Constructor that wraps the Initialize method.
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classGUI_a38936ef1fe8f17e0211034161730f056}\label{classGUI_a38936ef1fe8f17e0211034161730f056} 
+\Hypertarget{classGUI_a25a3bd1406803fafb9840d311a9fc7f9}\label{classGUI_a25a3bd1406803fafb9840d311a9fc7f9} 
 \index{GUI@{GUI}!DisplaySDFRootElement@{DisplaySDFRootElement}}
 \index{DisplaySDFRootElement@{DisplaySDFRootElement}!GUI@{GUI}}
 \doxysubsubsection{\texorpdfstring{DisplaySDFRootElement()}{DisplaySDFRootElement()}}
-{\footnotesize\ttfamily void GUI\+::\+Display\+SDFRoot\+Element (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \&}]{command,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+\_\+parser }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void GUI\+::\+Display\+SDFRoot\+Element (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \&}]{command,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+\_\+parser,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCommandFactoryI}{Command\+FactoryI}} $>$}]{command\+\_\+factory }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -119,9 +126,29 @@ Function to display the SDF root element in the \doxylink{classGUI}{GUI} in a tr
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ out}}  & {\em The} & a pointer to the command resulting from the user\textquotesingle{}s action during this frame \\
+\mbox{\texttt{ out}}  & {\em command} & a pointer to the command resulting from the user\textquotesingle{}s action during this frame \\
+\hline
+\mbox{\texttt{ in}}  & {\em sdformat\+\_\+parser} & an \doxylink{classSDFormatParserI}{SDFormat\+ParserI} instance containing an sdf element \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classGUI_a1b5b6b76c93d2f1505f08dd048a2ca9b}\label{classGUI_a1b5b6b76c93d2f1505f08dd048a2ca9b} 
+\index{GUI@{GUI}!DrawCoreFrame@{DrawCoreFrame}}
+\index{DrawCoreFrame@{DrawCoreFrame}!GUI@{GUI}}
+\doxysubsubsection{\texorpdfstring{DrawCoreFrame()}{DrawCoreFrame()}}
+{\footnotesize\ttfamily void GUI\+::\+Draw\+Core\+Frame (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \&}]{command,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCommandFactoryI}{Command\+FactoryI}} $>$}]{command\+\_\+factory }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Draw the core part of the Im\+GUI frame. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em command\+\_\+factory} & used for creating command objects \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The a pointer to the command resulting from the user\textquotesingle{}s action during this frame 
+\end{DoxyReturn}
 \Hypertarget{classGUI_ad0fd69fc7f512cacf6bfec7d67d6141a}\label{classGUI_ad0fd69fc7f512cacf6bfec7d67d6141a} 
 \index{GUI@{GUI}!GLFWErrorCallback@{GLFWErrorCallback}}
 \index{GLFWErrorCallback@{GLFWErrorCallback}!GUI@{GUI}}
@@ -148,17 +175,17 @@ Function for handling GLFW Error (required to be static by GLFW) NOTE\+: (zaid) 
 
 
 
-Implementation of interface method. 
+Implementation of interface method, wrapped by constructor. 
 
 
 
 Implements \mbox{\hyperlink{classGUII_a235dc88af7208ecae673c042103b10c9}{GUII}}.
 
-\Hypertarget{classGUI_a010a7967bf27388e17947933270cac99}\label{classGUI_a010a7967bf27388e17947933270cac99} 
-\index{GUI@{GUI}!lock\_mutex@{lock\_mutex}}
-\index{lock\_mutex@{lock\_mutex}!GUI@{GUI}}
-\doxysubsubsection{\texorpdfstring{lock\_mutex()}{lock\_mutex()}}
-{\footnotesize\ttfamily std\+::unique\+\_\+lock$<$ std\+::mutex $>$ GUI\+::lock\+\_\+mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+\Hypertarget{classGUI_a631a94dcf2eebb86e07151a1cc2bfe21}\label{classGUI_a631a94dcf2eebb86e07151a1cc2bfe21} 
+\index{GUI@{GUI}!LockMutex@{LockMutex}}
+\index{LockMutex@{LockMutex}!GUI@{GUI}}
+\doxysubsubsection{\texorpdfstring{LockMutex()}{LockMutex()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+lock$<$ std\+::mutex $>$ GUI\+::\+Lock\+Mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
@@ -166,30 +193,34 @@ Implementation of lock method.
 
 
 
-Implements \mbox{\hyperlink{classGUII_af1ccbf49fca88af0a4cb9c65b2423b5e}{GUII}}.
+Implements \mbox{\hyperlink{classGUII_a5a7b0b6b1c50a83a53c3cc1884b0795c}{GUII}}.
 
-\Hypertarget{classGUI_ae03ac5fb89b2ba7be43c2aae029f3e95}\label{classGUI_ae03ac5fb89b2ba7be43c2aae029f3e95} 
-\index{GUI@{GUI}!OpenFileDialog@{OpenFileDialog}}
-\index{OpenFileDialog@{OpenFileDialog}!GUI@{GUI}}
-\doxysubsubsection{\texorpdfstring{OpenFileDialog()}{OpenFileDialog()}}
-{\footnotesize\ttfamily std\+::string GUI\+::\+Open\+File\+Dialog (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+\Hypertarget{classGUI_a371c336213806742abe81172d845b0de}\label{classGUI_a371c336213806742abe81172d845b0de} 
+\index{GUI@{GUI}!OpenChoiceDialog@{OpenChoiceDialog}}
+\index{OpenChoiceDialog@{OpenChoiceDialog}!GUI@{GUI}}
+\doxysubsubsection{\texorpdfstring{OpenChoiceDialog()}{OpenChoiceDialog()}}
+{\footnotesize\ttfamily void GUI\+::\+Open\+Choice\+Dialog (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGUII_1_1DialogMessage}{Dialog\+Message}}}]{dialog\+Message,  }\item[{std\+::vector$<$ std\+::pair$<$ std\+::string, bool $>$ $>$ \&}]{choices }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
 Implementation of interface method. 
 
-\begin{DoxyReturn}{Returns}
-An file path or "{}"{} 
-\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dialog\+Message} & struct containing the strings to display \\
+\hline
+\mbox{\texttt{ out}}  & {\em choices} & a vector of string,bools pairs where one bool will be set true, corresponding to the user\textquotesingle{}s choice \\
+\hline
+\end{DoxyParams}
 
 
-Implements \mbox{\hyperlink{classGUII_a4f80df3bf862a6da0cb37f17b59d3bf5}{GUII}}.
+Implements \mbox{\hyperlink{classGUII_a2308b7ef4b8be7547242a3b15ebad492}{GUII}}.
 
-\Hypertarget{classGUI_a61fc0808de95295ac5ed429e2c0d0dcf}\label{classGUI_a61fc0808de95295ac5ed429e2c0d0dcf} 
-\index{GUI@{GUI}!set\_prevent\_input\_flag@{set\_prevent\_input\_flag}}
-\index{set\_prevent\_input\_flag@{set\_prevent\_input\_flag}!GUI@{GUI}}
-\doxysubsubsection{\texorpdfstring{set\_prevent\_input\_flag()}{set\_prevent\_input\_flag()}}
-{\footnotesize\ttfamily void GUI\+::set\+\_\+prevent\+\_\+input\+\_\+flag (\begin{DoxyParamCaption}\item[{bool}]{set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+\Hypertarget{classGUI_a487fb746f6310430c4a42a3f2e5015d1}\label{classGUI_a487fb746f6310430c4a42a3f2e5015d1} 
+\index{GUI@{GUI}!SetPreventInputFlag@{SetPreventInputFlag}}
+\index{SetPreventInputFlag@{SetPreventInputFlag}!GUI@{GUI}}
+\doxysubsubsection{\texorpdfstring{SetPreventInputFlag()}{SetPreventInputFlag()}}
+{\footnotesize\ttfamily void GUI\+::\+Set\+Prevent\+Input\+Flag (\begin{DoxyParamCaption}\item[{bool}]{set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
@@ -202,8 +233,21 @@ Implementation of flag setting method.
 \end{DoxyParams}
 
 
-Implements \mbox{\hyperlink{classGUII_ad37748b4d362758dc84b8a90e7130a78}{GUII}}.
+Implements \mbox{\hyperlink{classGUII_a8d2baf2d5e991049a6b79c2ed8fd83cd}{GUII}}.
 
+\Hypertarget{classGUI_a70390acea16ec9de6dba4439cd2654fa}\label{classGUI_a70390acea16ec9de6dba4439cd2654fa} 
+\index{GUI@{GUI}!SetupNewFrame@{SetupNewFrame}}
+\index{SetupNewFrame@{SetupNewFrame}!GUI@{GUI}}
+\doxysubsubsection{\texorpdfstring{SetupNewFrame()}{SetupNewFrame()}}
+{\footnotesize\ttfamily bool GUI\+::\+Setup\+New\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sets up a new Im\+GUI frame. 
+
+\begin{DoxyReturn}{Returns}
+false if the window is minimized 
+\end{DoxyReturn}
 \Hypertarget{classGUI_a75a2aa8cff0e7601e0e8b97000213094}\label{classGUI_a75a2aa8cff0e7601e0e8b97000213094} 
 \index{GUI@{GUI}!ShouldClose@{ShouldClose}}
 \index{ShouldClose@{ShouldClose}!GUI@{GUI}}
@@ -218,19 +262,27 @@ Implementation of interface method.
 
 Implements \mbox{\hyperlink{classGUII_a9ae3de58253702261056dc0981a046ac}{GUII}}.
 
-\Hypertarget{classGUI_a9105e79c17af7d6e3cf021aa7008eb34}\label{classGUI_a9105e79c17af7d6e3cf021aa7008eb34} 
+\Hypertarget{classGUI_a7d798a41c26b3f555ceba68f058d3d6c}\label{classGUI_a7d798a41c26b3f555ceba68f058d3d6c} 
 \index{GUI@{GUI}!Update@{Update}}
 \index{Update@{Update}!GUI@{GUI}}
 \doxysubsubsection{\texorpdfstring{Update()}{Update()}}
-{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ GUI\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ GUI\+::\+Update (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCommandFactoryI}{Command\+FactoryI}} $>$}]{command\+\_\+factory }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
-Implementation of update method. 
+Implementation of interface method. 
 
 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em command\+\_\+factory} & used for creating command objects \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The a pointer to the command resulting from the user\textquotesingle{}s action during this frame 
+\end{DoxyReturn}
 
-Implements \mbox{\hyperlink{classGUII_a4e441601baac13f94796fde8d3d66400}{GUII}}.
+
+Implements \mbox{\hyperlink{classGUII_afb6e5bacfbd456eb08a766d852b28d2f}{GUII}}.
 
 
 

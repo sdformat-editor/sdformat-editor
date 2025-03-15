@@ -32,9 +32,10 @@ class DeleteElementCommand : public CommandI
 {
 
   /// \callgraph
-  /// \brief Constructor for open model command objects.
+  /// \brief Constructor for delete command objects.
   /// \param[in] gui Pointer to the GUII object 
   /// \param[in] sdformatParser Pointer to the SDFormatParserI object
+  /// \param[in] element_to_delete Pointer to the element that may be deleted
   public: DeleteElementCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ElementPtr element_to_delete);
 
   /// \brief Implementation of interface method. 
@@ -64,9 +65,6 @@ class DeleteElementCommand : public CommandI
   /// \brief Implementation of interface method.
   /// \returns Always false
   private: bool ChangesProgramStateIrreversibly() override;
-
-  /// \brief Filepath of the model
-  private: std::string file_path;
 
   /// @brief Pointer to the gui interface
   private: std::shared_ptr<GUII> gui;
