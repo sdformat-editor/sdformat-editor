@@ -84,10 +84,10 @@ class ModifyAttributeCommand : public CommandI
   private: std::string old_value;
 
   /// @brief Store if the command is currently undo-able
-  private: bool is_currently_undoable = false;
+  private: bool is_currently_undoable = true;
 
   /// @brief Store if the command is currently redo-able
-  private: bool is_currently_redoable = false;
+  private: bool is_currently_redoable = true;
 };
 
 #endif
