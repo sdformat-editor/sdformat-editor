@@ -399,12 +399,11 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
   }
 }
 
-bool GUI::OpenYesNoDialog(DialogMessage dialogMessage)
+void GUI::OpenChoiceDialog(DialogMessage dialogMessage, std::vector<std::pair<std::string, bool>>& choices)
 {
   this->SetPreventInputFlag(true);
 
   bool user_responded = false;
-  bool user_response = false;
   
   while (!(this->ShouldClose() || user_responded))
   {
@@ -414,13 +413,10 @@ bool GUI::OpenYesNoDialog(DialogMessage dialogMessage)
         continue;
     }
 
-    ImGui::OpenPopup("Yes/No Dialog");
+    ImGui::OpenPopup(dialogMessage.header.c_str());
 
-    if (ImGui::BeginPopupModal("Yes/No Dialog", NULL, ImGuiWindowFlags_AlwaysAutoResize))
+    if (ImGui::BeginPopupModal(dialogMessage.header.c_str(), NULL, ImGuiWindowFlags_AlwaysAutoResize))
     {
-      ImGui::SetWindowFontScale(1.5f); 
-      ImGui::Text("%s", dialogMessage.header.c_str());
-
       ImGui::SetWindowFontScale(1.0f); 
       ImGui::Text("%s", dialogMessage.body.c_str());
 
@@ -430,17 +426,16 @@ bool GUI::OpenYesNoDialog(DialogMessage dialogMessage)
       ImGui::SetWindowFontScale(1.0f); 
       ImGui::Separator();
 
-      if (ImGui::Button("Yes", ImVec2(120, 0)))
+      for (auto &choice : choices)
       {
-        user_response = true;
-        user_responded = true;
-        ImGui::CloseCurrentPopup();
-      }
-      ImGui::SameLine();
-      if (ImGui::Button("No", ImVec2(120, 0)))
-      {
-        user_responded = true;
-        ImGui::CloseCurrentPopup();
+        if (ImGui::Button(choice.first.c_str()))
+        {
+          user_responded = true;
+          choice.second = true;
+          ImGui::CloseCurrentPopup();
+          break;
+        }
+        ImGui::SameLine();
       }
 
       ImGui::EndPopup();
@@ -454,8 +449,6 @@ bool GUI::OpenYesNoDialog(DialogMessage dialogMessage)
   }
   
   this->SetPreventInputFlag(false);
-
-  return user_response;
 }
 
 GUI::~GUI()
