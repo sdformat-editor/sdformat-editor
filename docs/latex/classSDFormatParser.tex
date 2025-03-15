@@ -16,7 +16,7 @@ Inheritance diagram for SDFormat\+Parser\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=252pt]{classSDFormatParser__inherit__graph}
+\includegraphics[height=550pt]{classSDFormatParser__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -26,15 +26,25 @@ Collaboration diagram for SDFormat\+Parser\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=252pt]{classSDFormatParser__coll__graph}
+\includegraphics[height=550pt]{classSDFormatParser__coll__graph}
 \end{center}
 \end{figure}
-\doxysubsubsection*{Public Member Functions}
+\doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-virtual void \mbox{\hyperlink{classSDFormatParser_ada8d05784ae55ffebeb83f41ce1b70fa}{Initialize}} (const std\+::string file\+\_\+path, bool \&success) override
+void \mbox{\hyperlink{classSDFormatParser_ada8d05784ae55ffebeb83f41ce1b70fa}{Initialize}} (const std\+::string file\+\_\+path, bool \&success) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 sdf\+::\+SDFPtr \mbox{\hyperlink{classSDFormatParser_a05c7ff0e224988a867849ebe85e67bb7}{Get\+SDFElement}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} \mbox{\hyperlink{classSDFormatParser_aff85c7ed5d58583cba150f6454c3a669}{Find\+Mentions}} (std\+::string key) override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} \mbox{\hyperlink{classSDFormatParser_a56e195cc3d0f84498f39b9e91d789dec}{Find\+Mentions}} (std\+::string key, sdf\+::\+Element\+Ptr element\+\_\+to\+\_\+exclude) override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} \mbox{\hyperlink{classSDFormatParser_a0fcc73cf597a43c882367f5a6d5d2d08}{Find\+Mentions}} (std\+::string key, sdf\+::\+Param\+Ptr attribute\+\_\+to\+\_\+exclude) override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} \mbox{\hyperlink{classSDFormatParser_a49e81716bf38dd27f040cbd0f82ac41f}{Find\+Mentions}} (std\+::string key, sdf\+::\+Element\+Ptr element\+\_\+to\+\_\+exclude, sdf\+::\+Param\+Ptr attribute\+\_\+to\+\_\+exclude) override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classSDFormatParser_a0e8ccb7ccaf1533237bda33ce008c7af}{Get\+SDFTree\+Path\+To\+Element}} (sdf\+::\+Element\+Ptr element) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -42,17 +52,114 @@ sdf\+::\+SDFPtr \mbox{\hyperlink{classSDFormatParser_a05c7ff0e224988a867849ebe85
 \Hypertarget{classSDFormatParser_a2fc0ef9b53d30ff08378f9b7194517b9}\label{classSDFormatParser_a2fc0ef9b53d30ff08378f9b7194517b9} 
 sdf\+::\+SDFPtr {\bfseries sdf\+Element}
 \begin{DoxyCompactList}\small\item\em The main sdf\+Element associated this this \doxylink{classSDFormatParser}{SDFormat\+Parser} instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}
 Implementation of \doxylink{classSDFormatParserI}{SDFormat\+ParserI}. 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classSDFormatParser_aff85c7ed5d58583cba150f6454c3a669}\label{classSDFormatParser_aff85c7ed5d58583cba150f6454c3a669} 
+\index{SDFormatParser@{SDFormatParser}!FindMentions@{FindMentions}}
+\index{FindMentions@{FindMentions}!SDFormatParser@{SDFormatParser}}
+\doxysubsubsection{\texorpdfstring{FindMentions()}{FindMentions()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{SDFormat\+Parser\+::\+Mentions}} SDFormat\+Parser\+::\+Find\+Mentions (\begin{DoxyParamCaption}\item[{std\+::string}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em key} & the string to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The elements and attributes that mention this given key 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSDFormatParserI_ac72fb1714f0918b0f7fc964bf8fb9a10}{SDFormat\+ParserI}}.
+
+\Hypertarget{classSDFormatParser_a56e195cc3d0f84498f39b9e91d789dec}\label{classSDFormatParser_a56e195cc3d0f84498f39b9e91d789dec} 
+\index{SDFormatParser@{SDFormatParser}!FindMentions@{FindMentions}}
+\index{FindMentions@{FindMentions}!SDFormatParser@{SDFormatParser}}
+\doxysubsubsection{\texorpdfstring{FindMentions()}{FindMentions()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{SDFormat\+Parser\+::\+Mentions}} SDFormat\+Parser\+::\+Find\+Mentions (\begin{DoxyParamCaption}\item[{std\+::string}]{key,  }\item[{sdf\+::\+Element\+Ptr}]{element\+\_\+to\+\_\+exclude }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em key} & the string to search for \\
+\hline
+\mbox{\texttt{ in}}  & {\em element\+\_\+to\+\_\+exclude} & the element to exclude in the search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The elements and attributes that mention this given key 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSDFormatParserI_a1e69c1b46ed0023c7fc019e2f865f438}{SDFormat\+ParserI}}.
+
+\Hypertarget{classSDFormatParser_a49e81716bf38dd27f040cbd0f82ac41f}\label{classSDFormatParser_a49e81716bf38dd27f040cbd0f82ac41f} 
+\index{SDFormatParser@{SDFormatParser}!FindMentions@{FindMentions}}
+\index{FindMentions@{FindMentions}!SDFormatParser@{SDFormatParser}}
+\doxysubsubsection{\texorpdfstring{FindMentions()}{FindMentions()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{SDFormat\+Parser\+::\+Mentions}} SDFormat\+Parser\+::\+Find\+Mentions (\begin{DoxyParamCaption}\item[{std\+::string}]{key,  }\item[{sdf\+::\+Element\+Ptr}]{element\+\_\+to\+\_\+exclude,  }\item[{sdf\+::\+Param\+Ptr}]{attribute\+\_\+to\+\_\+exclude }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em key} & the string to search for \\
+\hline
+\mbox{\texttt{ in}}  & {\em element\+\_\+to\+\_\+exclude} & the element to exclude in the search; Can be nullptr \\
+\hline
+\mbox{\texttt{ in}}  & {\em attribute\+\_\+to\+\_\+exclude} & the attribute to exclude in the search; Can be nullptr \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The elements and attributes that mention this given key 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSDFormatParserI_a73c8e4a06d862addd44822118ef8c16f}{SDFormat\+ParserI}}.
+
+\Hypertarget{classSDFormatParser_a0fcc73cf597a43c882367f5a6d5d2d08}\label{classSDFormatParser_a0fcc73cf597a43c882367f5a6d5d2d08} 
+\index{SDFormatParser@{SDFormatParser}!FindMentions@{FindMentions}}
+\index{FindMentions@{FindMentions}!SDFormatParser@{SDFormatParser}}
+\doxysubsubsection{\texorpdfstring{FindMentions()}{FindMentions()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{SDFormat\+Parser\+::\+Mentions}} SDFormat\+Parser\+::\+Find\+Mentions (\begin{DoxyParamCaption}\item[{std\+::string}]{key,  }\item[{sdf\+::\+Param\+Ptr}]{attribute\+\_\+to\+\_\+exclude }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em key} & the string to search for \\
+\hline
+\mbox{\texttt{ in}}  & {\em attribute\+\_\+to\+\_\+exclude} & the attribute to exclude in the search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The elements and attributes that mention this given key 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSDFormatParserI_a589267553e67bd84d250f2ab53bee436}{SDFormat\+ParserI}}.
+
 \Hypertarget{classSDFormatParser_a05c7ff0e224988a867849ebe85e67bb7}\label{classSDFormatParser_a05c7ff0e224988a867849ebe85e67bb7} 
 \index{SDFormatParser@{SDFormatParser}!GetSDFElement@{GetSDFElement}}
 \index{GetSDFElement@{GetSDFElement}!SDFormatParser@{SDFormatParser}}
 \doxysubsubsection{\texorpdfstring{GetSDFElement()}{GetSDFElement()}}
-{\footnotesize\ttfamily sdf\+::\+SDFPtr SDFormat\+Parser\+::\+Get\+SDFElement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily sdf\+::\+SDFPtr SDFormat\+Parser\+::\+Get\+SDFElement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
@@ -65,11 +172,33 @@ The main sdf\+Element associated this this \doxylink{classSDFormatParser}{SDForm
 
 Implements \mbox{\hyperlink{classSDFormatParserI_a9a5b36f28e49f669d0bd8685253be72e}{SDFormat\+ParserI}}.
 
+\Hypertarget{classSDFormatParser_a0e8ccb7ccaf1533237bda33ce008c7af}\label{classSDFormatParser_a0e8ccb7ccaf1533237bda33ce008c7af} 
+\index{SDFormatParser@{SDFormatParser}!GetSDFTreePathToElement@{GetSDFTreePathToElement}}
+\index{GetSDFTreePathToElement@{GetSDFTreePathToElement}!SDFormatParser@{SDFormatParser}}
+\doxysubsubsection{\texorpdfstring{GetSDFTreePathToElement()}{GetSDFTreePathToElement()}}
+{\footnotesize\ttfamily std\+::string SDFormat\+Parser\+::\+Get\+SDFTree\+Path\+To\+Element (\begin{DoxyParamCaption}\item[{sdf\+::\+Element\+Ptr}]{element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em element} & element that we want a tree path for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tree path as a string 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSDFormatParserI_a203d76c76addc968d746bc75b747c399}{SDFormat\+ParserI}}.
+
 \Hypertarget{classSDFormatParser_ada8d05784ae55ffebeb83f41ce1b70fa}\label{classSDFormatParser_ada8d05784ae55ffebeb83f41ce1b70fa} 
 \index{SDFormatParser@{SDFormatParser}!Initialize@{Initialize}}
 \index{Initialize@{Initialize}!SDFormatParser@{SDFormatParser}}
 \doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
-{\footnotesize\ttfamily void SDFormat\+Parser\+::\+Initialize (\begin{DoxyParamCaption}\item[{const std\+::string}]{file\+\_\+path,  }\item[{bool \&}]{success }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily void SDFormat\+Parser\+::\+Initialize (\begin{DoxyParamCaption}\item[{const std\+::string}]{file\+\_\+path,  }\item[{bool \&}]{success }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 

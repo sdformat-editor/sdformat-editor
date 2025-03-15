@@ -16,7 +16,7 @@ Inheritance diagram for CommandI\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=286pt]{classCommandI__inherit__graph}
+\includegraphics[width=350pt]{classCommandI__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -26,31 +26,54 @@ Collaboration diagram for CommandI\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=225pt]{classCommandI__coll__graph}
+\includegraphics[width=246pt]{classCommandI__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-virtual bool \mbox{\hyperlink{classCommandI_a07ef0084dd68bd32719b5c1c4248df91}{execute}} ()=0
+virtual bool \mbox{\hyperlink{classCommandI_ad0107a73ebccd619860597db7bad2cce}{Execute}} ()=0
 \begin{DoxyCompactList}\small\item\em Execution of the command. Must be implemented as applicable by the derived class. \end{DoxyCompactList}\item 
-virtual bool \mbox{\hyperlink{classCommandI_aa9d8718f12bcb260fdfa03ecd51076bf}{undo}} ()=0
+virtual bool \mbox{\hyperlink{classCommandI_a38d5a489ac6de24f3b40035083c5ed9a}{Execute\+Undo}} ()=0
+\begin{DoxyCompactList}\small\item\em Execution of the undo command. Must be implemented as applicable by the derived class. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classCommandI_a10b7094ad088998d95045e7db350eb0a}{Execute\+Redo}} ()=0
+\begin{DoxyCompactList}\small\item\em Execution of the redo command. Must be implemented as applicable by the derived class. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classCommandI_a4722f602fdfa6387aa0fced8dfa0e9fd}{Is\+Undoable}} ()=0
 \begin{DoxyCompactList}\small\item\em Undo functionality of the command. \end{DoxyCompactList}\item 
-virtual bool \mbox{\hyperlink{classCommandI_a045529cc0219b14d416d14794ca0321a}{redo}} ()=0
+virtual bool \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{Is\+Redoable}} ()=0
 \begin{DoxyCompactList}\small\item\em Redo functionality of the command. \end{DoxyCompactList}\item 
-virtual bool \mbox{\hyperlink{classCommandI_a0da54a11aa067099da52f04d20c0859a}{threaded}} ()=0
-\begin{DoxyCompactList}\small\item\em Indicates if this command should be run in a thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
+virtual bool \mbox{\hyperlink{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}{Is\+Threaded}} ()=0
+\begin{DoxyCompactList}\small\item\em Indicates if this command should be run in a thread. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}{Changes\+Program\+State\+Irreversibly}} ()=0
+\begin{DoxyCompactList}\small\item\em Indicates if this command is an irreversible state-\/changing command. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 The command class encapsulates the interactions between the various interfaces of the SDFormat Editor, providing undo/redo functionality when applicable. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classCommandI_a07ef0084dd68bd32719b5c1c4248df91}\label{classCommandI_a07ef0084dd68bd32719b5c1c4248df91} 
-\index{CommandI@{CommandI}!execute@{execute}}
-\index{execute@{execute}!CommandI@{CommandI}}
-\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
-{\footnotesize\ttfamily virtual bool Command\+I\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+\Hypertarget{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}\label{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444} 
+\index{CommandI@{CommandI}!ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}}
+\index{ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}!CommandI@{CommandI}}
+\doxysubsubsection{\texorpdfstring{ChangesProgramStateIrreversibly()}{ChangesProgramStateIrreversibly()}}
+{\footnotesize\ttfamily virtual bool Command\+I\+::\+Changes\+Program\+State\+Irreversibly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Indicates if this command is an irreversible state-\/changing command. 
+
+\begin{DoxyReturn}{Returns}
+True if this command changes the state of the program irreversibly 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classDeleteElementCommand_acd07af54e3fcdfce7f7593dad933cc3e}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_a5169594e3d7ab0c2368237db5dced223}{Generic\+Command}}, \mbox{\hyperlink{classOpenFileCommand_ae020a395fb497ac749d5ddb54d2ce7ef}{Open\+File\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_aca27d37ba37fadaab46b06ea13bec632}{Save\+File\+Command}}.
+
+\Hypertarget{classCommandI_ad0107a73ebccd619860597db7bad2cce}\label{classCommandI_ad0107a73ebccd619860597db7bad2cce} 
+\index{CommandI@{CommandI}!Execute@{Execute}}
+\index{Execute@{Execute}!CommandI@{CommandI}}
+\doxysubsubsection{\texorpdfstring{Execute()}{Execute()}}
+{\footnotesize\ttfamily virtual bool Command\+I\+::\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -61,30 +84,64 @@ True if the command has been executed
 \end{DoxyReturn}
 
 
-Implemented in \mbox{\hyperlink{classOpenFileCommand_a9f2249eeea3c1f00f6da3ef8ff199adc}{Open\+File\+Command}}.
+Implemented in \mbox{\hyperlink{classSaveFileCommand_a4836ac21dbfd6aab0a487f30335bce73}{Save\+File\+Command}}, \mbox{\hyperlink{classDeleteElementCommand_ad606aae7b0d869bdaeccbe40c44c48a6}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_a663cc7cb4a3fd95196a1ff28785fc688}{Generic\+Command}}, and \mbox{\hyperlink{classOpenFileCommand_aaaa8a9f550b1669d7a427a9c143c74b9}{Open\+File\+Command}}.
 
-\Hypertarget{classCommandI_a045529cc0219b14d416d14794ca0321a}\label{classCommandI_a045529cc0219b14d416d14794ca0321a} 
-\index{CommandI@{CommandI}!redo@{redo}}
-\index{redo@{redo}!CommandI@{CommandI}}
-\doxysubsubsection{\texorpdfstring{redo()}{redo()}}
-{\footnotesize\ttfamily virtual bool Command\+I\+::redo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+\Hypertarget{classCommandI_a10b7094ad088998d95045e7db350eb0a}\label{classCommandI_a10b7094ad088998d95045e7db350eb0a} 
+\index{CommandI@{CommandI}!ExecuteRedo@{ExecuteRedo}}
+\index{ExecuteRedo@{ExecuteRedo}!CommandI@{CommandI}}
+\doxysubsubsection{\texorpdfstring{ExecuteRedo()}{ExecuteRedo()}}
+{\footnotesize\ttfamily virtual bool Command\+I\+::\+Execute\+Redo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Execution of the redo command. Must be implemented as applicable by the derived class. 
+
+\begin{DoxyReturn}{Returns}
+True if the command is redo-\/able and has been redone 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classDeleteElementCommand_a25f8b7d96cc27cfdb55dbe5810c82835}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_ac0511e9b0bc5f8b33e1ceb0001fca69b}{Generic\+Command}}, \mbox{\hyperlink{classOpenFileCommand_aec939dcbd7f334068effbee9c6adc201}{Open\+File\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_a70eea57dbc9c418267c5582fba6b05a8}{Save\+File\+Command}}.
+
+\Hypertarget{classCommandI_a38d5a489ac6de24f3b40035083c5ed9a}\label{classCommandI_a38d5a489ac6de24f3b40035083c5ed9a} 
+\index{CommandI@{CommandI}!ExecuteUndo@{ExecuteUndo}}
+\index{ExecuteUndo@{ExecuteUndo}!CommandI@{CommandI}}
+\doxysubsubsection{\texorpdfstring{ExecuteUndo()}{ExecuteUndo()}}
+{\footnotesize\ttfamily virtual bool Command\+I\+::\+Execute\+Undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Execution of the undo command. Must be implemented as applicable by the derived class. 
+
+\begin{DoxyReturn}{Returns}
+True if the command undo-\/able and has been undone 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classDeleteElementCommand_a81259f19e29ff98fe4282c67897457c9}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_a9850a1f2ca9eb74507ea0e8d5a4d1d3e}{Generic\+Command}}, \mbox{\hyperlink{classOpenFileCommand_a6081ebc56ffd4c603609b548cea6c53c}{Open\+File\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_ab122ab89b7e2c525ae077de0040e1ee7}{Save\+File\+Command}}.
+
+\Hypertarget{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}\label{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6} 
+\index{CommandI@{CommandI}!IsRedoable@{IsRedoable}}
+\index{IsRedoable@{IsRedoable}!CommandI@{CommandI}}
+\doxysubsubsection{\texorpdfstring{IsRedoable()}{IsRedoable()}}
+{\footnotesize\ttfamily virtual bool Command\+I\+::\+Is\+Redoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
 Redo functionality of the command. 
 
 \begin{DoxyReturn}{Returns}
-True if the command can be and has been redone 
+True if the command can be redone 
 \end{DoxyReturn}
 
 
-Implemented in \mbox{\hyperlink{classOpenFileCommand_aebbaf527dbfbb97cb8d0232f735dcf13}{Open\+File\+Command}}.
+Implemented in \mbox{\hyperlink{classDeleteElementCommand_a6c5f04219ace0f3808af89a68828702b}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_ab4f7eba842e2e7b19f55781499bd6b5a}{Generic\+Command}}, \mbox{\hyperlink{classOpenFileCommand_afdf34480b36f0fa36f41fc546333a5dc}{Open\+File\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_a47cf7448aee11bb954fb40af4022e122}{Save\+File\+Command}}.
 
-\Hypertarget{classCommandI_a0da54a11aa067099da52f04d20c0859a}\label{classCommandI_a0da54a11aa067099da52f04d20c0859a} 
-\index{CommandI@{CommandI}!threaded@{threaded}}
-\index{threaded@{threaded}!CommandI@{CommandI}}
-\doxysubsubsection{\texorpdfstring{threaded()}{threaded()}}
-{\footnotesize\ttfamily virtual bool Command\+I\+::threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+\Hypertarget{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}\label{classCommandI_a6b173d77055ac6a8c548b6737ca03caf} 
+\index{CommandI@{CommandI}!IsThreaded@{IsThreaded}}
+\index{IsThreaded@{IsThreaded}!CommandI@{CommandI}}
+\doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
+{\footnotesize\ttfamily virtual bool Command\+I\+::\+Is\+Threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -95,24 +152,24 @@ True if this command should be run in a thread
 \end{DoxyReturn}
 
 
-Implemented in \mbox{\hyperlink{classOpenFileCommand_a9d101dff59daef197d4da811bae59965}{Open\+File\+Command}}.
+Implemented in \mbox{\hyperlink{classDeleteElementCommand_a4561b97e2c51f2516e64d0ba816febe5}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_aaad69c127eaa595dad9b582421d78a7d}{Generic\+Command}}, \mbox{\hyperlink{classOpenFileCommand_a3fb7e479af973fb23f422c955e24fc77}{Open\+File\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_a0d77c2d15577db0fd124b2e453bba00a}{Save\+File\+Command}}.
 
-\Hypertarget{classCommandI_aa9d8718f12bcb260fdfa03ecd51076bf}\label{classCommandI_aa9d8718f12bcb260fdfa03ecd51076bf} 
-\index{CommandI@{CommandI}!undo@{undo}}
-\index{undo@{undo}!CommandI@{CommandI}}
-\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
-{\footnotesize\ttfamily virtual bool Command\+I\+::undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+\Hypertarget{classCommandI_a4722f602fdfa6387aa0fced8dfa0e9fd}\label{classCommandI_a4722f602fdfa6387aa0fced8dfa0e9fd} 
+\index{CommandI@{CommandI}!IsUndoable@{IsUndoable}}
+\index{IsUndoable@{IsUndoable}!CommandI@{CommandI}}
+\doxysubsubsection{\texorpdfstring{IsUndoable()}{IsUndoable()}}
+{\footnotesize\ttfamily virtual bool Command\+I\+::\+Is\+Undoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
 Undo functionality of the command. 
 
 \begin{DoxyReturn}{Returns}
-True if the command can be and has been undone 
+True if the command can be undone 
 \end{DoxyReturn}
 
 
-Implemented in \mbox{\hyperlink{classOpenFileCommand_a86214f23a23dbb76040bde89c24ef726}{Open\+File\+Command}}.
+Implemented in \mbox{\hyperlink{classDeleteElementCommand_a4ad99f4f3c8ca4b266af9c545744fdb6}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_afa14aae0989db8983af2ac5c2a2e9722}{Generic\+Command}}, \mbox{\hyperlink{classOpenFileCommand_afa163c258a28f6f7af8f43908e181605}{Open\+File\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_a85292d15bc3c13b7ad14a0b73d1dd154}{Save\+File\+Command}}.
 
 
 

@@ -70,7 +70,10 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classFileOperations-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">FileOperations Class Reference</div></div>
 </div><!--header-->
@@ -85,21 +88,59 @@ Collaboration diagram for FileOperations:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFileOperations__coll__graph.png" border="0" usemap="#aFileOperations_coll__map" alt="Collaboration graph"/></div>
 <map name="aFileOperations_coll__map" id="aFileOperations_coll__map">
-<area shape="rect" title="Singleton class to handle file operations." alt="" coords="5,5,147,85"/>
+<area shape="rect" title="Singleton class to handle file operations." alt="" coords="5,5,217,343"/>
 </map>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a50b5908070cc9bdd8879aade4daa855f" id="r_a50b5908070cc9bdd8879aade4daa855f"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileOperations.html#a50b5908070cc9bdd8879aade4daa855f">OpenFileDialog</a> ()</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a50b5908070cc9bdd8879aade4daa855f" id="r_a50b5908070cc9bdd8879aade4daa855f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileOperations.html#a50b5908070cc9bdd8879aade4daa855f">OpenFileDialog</a> ()</td></tr>
 <tr class="memdesc:a50b5908070cc9bdd8879aade4daa855f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a dialog for the user to open a file on their filesystem.  <br /></td></tr>
 <tr class="separator:a50b5908070cc9bdd8879aade4daa855f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cb6d43595e1712dc48c68c2358f27f7" id="r_a9cb6d43595e1712dc48c68c2358f27f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileOperations.html#a9cb6d43595e1712dc48c68c2358f27f7">WriteFile</a> (const std::string &amp;file_path, const std::string &amp;contents)</td></tr>
+<tr class="memdesc:a9cb6d43595e1712dc48c68c2358f27f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">writes a string to a file  <br /></td></tr>
+<tr class="separator:a9cb6d43595e1712dc48c68c2358f27f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8084bfa9beae2eab0cb3f8a6d9501024" id="r_a8084bfa9beae2eab0cb3f8a6d9501024"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileOperations.html#a8084bfa9beae2eab0cb3f8a6d9501024">WriteFile</a> (const std::string &amp;contents)</td></tr>
+<tr class="memdesc:a8084bfa9beae2eab0cb3f8a6d9501024"><td class="mdescLeft">&#160;</td><td class="mdescRight">writes a string to a file  <br /></td></tr>
+<tr class="separator:a8084bfa9beae2eab0cb3f8a6d9501024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a666230d09e02f6cb71016c12b2c18548" id="r_a666230d09e02f6cb71016c12b2c18548"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classFileOperations.html">FileOperations</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileOperations.html#a666230d09e02f6cb71016c12b2c18548">GetSoleInstance</a> ()</td></tr>
+<tr class="memdesc:a666230d09e02f6cb71016c12b2c18548"><td class="mdescLeft">&#160;</td><td class="mdescRight">The only method by which a <a class="el" href="classFileOperations.html" title="Singleton class to handle file operations.">FileOperations</a> instance can be returned.  <br /></td></tr>
+<tr class="separator:a666230d09e02f6cb71016c12b2c18548"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a196fc0455c1e0d5c1b3d64230cab76e5" id="r_a196fc0455c1e0d5c1b3d64230cab76e5"><td class="memItemLeft" align="right" valign="top"><a id="a196fc0455c1e0d5c1b3d64230cab76e5" name="a196fc0455c1e0d5c1b3d64230cab76e5"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>FileOperations</b> ()=default</td></tr>
+<tr class="memdesc:a196fc0455c1e0d5c1b3d64230cab76e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prevent access to the constructor of this class. <br /></td></tr>
+<tr class="separator:a196fc0455c1e0d5c1b3d64230cab76e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef626cf484c86fe0f875d3b550ce9857" id="r_aef626cf484c86fe0f875d3b550ce9857"><td class="memItemLeft" align="right" valign="top"><a id="aef626cf484c86fe0f875d3b550ce9857" name="aef626cf484c86fe0f875d3b550ce9857"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~FileOperations</b> ()=default</td></tr>
+<tr class="memdesc:aef626cf484c86fe0f875d3b550ce9857"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prevent access to the destructor of this class. <br /></td></tr>
+<tr class="separator:aef626cf484c86fe0f875d3b550ce9857"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5da1790781c8f79684955589d2381c83" id="r_a5da1790781c8f79684955589d2381c83"><td class="memItemLeft" align="right" valign="top"><a id="a5da1790781c8f79684955589d2381c83" name="a5da1790781c8f79684955589d2381c83"></a>
+<a class="el" href="classFileOperations.html">FileOperations</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classFileOperations.html">FileOperations</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a5da1790781c8f79684955589d2381c83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prevent the assignment of one instance of <a class="el" href="classFileOperations.html" title="Singleton class to handle file operations.">FileOperations</a> to another, ensuring there can only be one instance. <br /></td></tr>
+<tr class="separator:a5da1790781c8f79684955589d2381c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5f57497c9671a58cab18c61f54bbb8f" id="r_ae5f57497c9671a58cab18c61f54bbb8f"><td class="memItemLeft" align="right" valign="top"><a id="ae5f57497c9671a58cab18c61f54bbb8f" name="ae5f57497c9671a58cab18c61f54bbb8f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>FileOperations</b> (const <a class="el" href="classFileOperations.html">FileOperations</a> &amp;)=delete</td></tr>
+<tr class="memdesc:ae5f57497c9671a58cab18c61f54bbb8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete the copy constructor of <a class="el" href="classFileOperations.html" title="Singleton class to handle file operations.">FileOperations</a>, preventing copies of the reference the the sole instance from being made <br  />
+ <br /></td></tr>
+<tr class="separator:ae5f57497c9671a58cab18c61f54bbb8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a9165fd8b97d9ce88cdd9de08dbe6b2c3" id="r_a9165fd8b97d9ce88cdd9de08dbe6b2c3"><td class="memItemLeft" align="right" valign="top"><a id="a9165fd8b97d9ce88cdd9de08dbe6b2c3" name="a9165fd8b97d9ce88cdd9de08dbe6b2c3"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>active_file_path</b></td></tr>
+<tr class="separator:a9165fd8b97d9ce88cdd9de08dbe6b2c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Singleton class to handle file operations. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a50b5908070cc9bdd8879aade4daa855f" name="a50b5908070cc9bdd8879aade4daa855f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50b5908070cc9bdd8879aade4daa855f">&#9670;&#160;</a></span>OpenFileDialog()</h2>
+<a id="a666230d09e02f6cb71016c12b2c18548" name="a666230d09e02f6cb71016c12b2c18548"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a666230d09e02f6cb71016c12b2c18548">&#9670;&#160;</a></span>GetSoleInstance()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -108,7 +149,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string FileOperations::OpenFileDialog </td>
+          <td class="memname"><a class="el" href="classFileOperations.html">FileOperations</a> &amp; FileOperations::GetSoleInstance </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -121,8 +162,91 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>The only method by which a <a class="el" href="classFileOperations.html" title="Singleton class to handle file operations.">FileOperations</a> instance can be returned. </p>
+<dl class="section return"><dt>Returns</dt><dd>The sole instance of FileOperationsI </dd></dl>
+
+</div>
+</div>
+<a id="a50b5908070cc9bdd8879aade4daa855f" name="a50b5908070cc9bdd8879aade4daa855f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50b5908070cc9bdd8879aade4daa855f">&#9670;&#160;</a></span>OpenFileDialog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string FileOperations::OpenFileDialog </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 <p>Opens a dialog for the user to open a file on their filesystem. </p>
 <dl class="section return"><dt>Returns</dt><dd>An absolute file path or an empty string </dd></dl>
+
+</div>
+</div>
+<a id="a8084bfa9beae2eab0cb3f8a6d9501024" name="a8084bfa9beae2eab0cb3f8a6d9501024"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8084bfa9beae2eab0cb3f8a6d9501024">&#9670;&#160;</a></span>WriteFile() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FileOperations::WriteFile </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>contents</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>writes a string to a file </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">contents</td><td>the contents to write to the given file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9cb6d43595e1712dc48c68c2358f27f7" name="a9cb6d43595e1712dc48c68c2358f27f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cb6d43595e1712dc48c68c2358f27f7">&#9670;&#160;</a></span>WriteFile() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FileOperations::WriteFile </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>file_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>contents</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>writes a string to a file </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">file_path</td><td>the filepath of the file to write to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">contents</td><td>the contents to write to the given file </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

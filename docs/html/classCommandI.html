@@ -85,9 +85,15 @@ Inheritance diagram for CommandI:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCommandI__inherit__graph.png" border="0" usemap="#aCommandI_inherit__map" alt="Inheritance graph"/></div>
 <map name="aCommandI_inherit__map" id="aCommandI_inherit__map">
-<area shape="rect" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="46,5,239,131"/>
-<area shape="rect" href="classOpenFileCommand.html" title="Open model command implementation of CommandI." alt="" coords="5,179,280,437"/>
-<area shape="poly" title=" " alt="" coords="145,145,145,178,140,178,140,145"/>
+<area shape="rect" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="427,5,649,205"/>
+<area shape="rect" href="classDeleteElementCommand.html" title="Open model command implementation of CommandI." alt="" coords="5,253,279,740"/>
+<area shape="poly" title=" " alt="" coords="417,167,352,207,293,255,281,268,277,264,290,251,349,202,414,162"/>
+<area shape="rect" href="classGenericCommand.html" title="Executes and pops the top commandI object from a stack." alt="" coords="303,350,509,643"/>
+<area shape="poly" title=" " alt="" coords="502,220,458,351,453,349,497,218"/>
+<area shape="rect" href="classOpenFileCommand.html" title="Open model command implementation of CommandI." alt="" coords="533,315,807,678"/>
+<area shape="poly" title=" " alt="" coords="579,218,611,314,606,316,573,219"/>
+<area shape="rect" href="classSaveFileCommand.html" title="Open model command implementation of CommandI." alt="" coords="832,318,1105,675"/>
+<area shape="poly" title=" " alt="" coords="662,151,744,194,784,221,821,251,850,282,877,316,873,319,846,286,818,255,781,225,742,199,660,156"/>
 </map>
 </div>
 <div class="dynheader">
@@ -95,30 +101,39 @@ Collaboration diagram for CommandI:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCommandI__coll__graph.png" border="0" usemap="#aCommandI_coll__map" alt="Collaboration graph"/></div>
 <map name="aCommandI_coll__map" id="aCommandI_coll__map">
-<area shape="rect" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="5,5,199,131"/>
+<area shape="rect" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="5,5,227,205"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a07ef0084dd68bd32719b5c1c4248df91" id="r_a07ef0084dd68bd32719b5c1c4248df91"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandI.html#a07ef0084dd68bd32719b5c1c4248df91">execute</a> ()=0</td></tr>
-<tr class="memdesc:a07ef0084dd68bd32719b5c1c4248df91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execution of the command. Must be implemented as applicable by the derived class.  <br /></td></tr>
-<tr class="separator:a07ef0084dd68bd32719b5c1c4248df91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9d8718f12bcb260fdfa03ecd51076bf" id="r_aa9d8718f12bcb260fdfa03ecd51076bf"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandI.html#aa9d8718f12bcb260fdfa03ecd51076bf">undo</a> ()=0</td></tr>
-<tr class="memdesc:aa9d8718f12bcb260fdfa03ecd51076bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Undo functionality of the command.  <br /></td></tr>
-<tr class="separator:aa9d8718f12bcb260fdfa03ecd51076bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a045529cc0219b14d416d14794ca0321a" id="r_a045529cc0219b14d416d14794ca0321a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandI.html#a045529cc0219b14d416d14794ca0321a">redo</a> ()=0</td></tr>
-<tr class="memdesc:a045529cc0219b14d416d14794ca0321a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Redo functionality of the command.  <br /></td></tr>
-<tr class="separator:a045529cc0219b14d416d14794ca0321a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0da54a11aa067099da52f04d20c0859a" id="r_a0da54a11aa067099da52f04d20c0859a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandI.html#a0da54a11aa067099da52f04d20c0859a">threaded</a> ()=0</td></tr>
-<tr class="memdesc:a0da54a11aa067099da52f04d20c0859a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if this command should be run in a thread.  <br /></td></tr>
-<tr class="separator:a0da54a11aa067099da52f04d20c0859a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0107a73ebccd619860597db7bad2cce" id="r_ad0107a73ebccd619860597db7bad2cce"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandI.html#ad0107a73ebccd619860597db7bad2cce">Execute</a> ()=0</td></tr>
+<tr class="memdesc:ad0107a73ebccd619860597db7bad2cce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execution of the command. Must be implemented as applicable by the derived class.  <br /></td></tr>
+<tr class="separator:ad0107a73ebccd619860597db7bad2cce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38d5a489ac6de24f3b40035083c5ed9a" id="r_a38d5a489ac6de24f3b40035083c5ed9a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandI.html#a38d5a489ac6de24f3b40035083c5ed9a">ExecuteUndo</a> ()=0</td></tr>
+<tr class="memdesc:a38d5a489ac6de24f3b40035083c5ed9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execution of the undo command. Must be implemented as applicable by the derived class.  <br /></td></tr>
+<tr class="separator:a38d5a489ac6de24f3b40035083c5ed9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10b7094ad088998d95045e7db350eb0a" id="r_a10b7094ad088998d95045e7db350eb0a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandI.html#a10b7094ad088998d95045e7db350eb0a">ExecuteRedo</a> ()=0</td></tr>
+<tr class="memdesc:a10b7094ad088998d95045e7db350eb0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execution of the redo command. Must be implemented as applicable by the derived class.  <br /></td></tr>
+<tr class="separator:a10b7094ad088998d95045e7db350eb0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4722f602fdfa6387aa0fced8dfa0e9fd" id="r_a4722f602fdfa6387aa0fced8dfa0e9fd"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandI.html#a4722f602fdfa6387aa0fced8dfa0e9fd">IsUndoable</a> ()=0</td></tr>
+<tr class="memdesc:a4722f602fdfa6387aa0fced8dfa0e9fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Undo functionality of the command.  <br /></td></tr>
+<tr class="separator:a4722f602fdfa6387aa0fced8dfa0e9fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3abee4f38d41e59b915e0dd94c4846b6" id="r_a3abee4f38d41e59b915e0dd94c4846b6"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandI.html#a3abee4f38d41e59b915e0dd94c4846b6">IsRedoable</a> ()=0</td></tr>
+<tr class="memdesc:a3abee4f38d41e59b915e0dd94c4846b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Redo functionality of the command.  <br /></td></tr>
+<tr class="separator:a3abee4f38d41e59b915e0dd94c4846b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b173d77055ac6a8c548b6737ca03caf" id="r_a6b173d77055ac6a8c548b6737ca03caf"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandI.html#a6b173d77055ac6a8c548b6737ca03caf">IsThreaded</a> ()=0</td></tr>
+<tr class="memdesc:a6b173d77055ac6a8c548b6737ca03caf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if this command should be run in a thread.  <br /></td></tr>
+<tr class="separator:a6b173d77055ac6a8c548b6737ca03caf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a348eb5fb0fcad378b2cf2fc454f51444" id="r_a348eb5fb0fcad378b2cf2fc454f51444"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandI.html#a348eb5fb0fcad378b2cf2fc454f51444">ChangesProgramStateIrreversibly</a> ()=0</td></tr>
+<tr class="memdesc:a348eb5fb0fcad378b2cf2fc454f51444"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if this command is an irreversible state-changing command.  <br /></td></tr>
+<tr class="separator:a348eb5fb0fcad378b2cf2fc454f51444"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The command class encapsulates the interactions between the various interfaces of the SDFormat Editor, providing undo/redo functionality when applicable. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a07ef0084dd68bd32719b5c1c4248df91" name="a07ef0084dd68bd32719b5c1c4248df91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07ef0084dd68bd32719b5c1c4248df91">&#9670;&#160;</a></span>execute()</h2>
+<a id="a348eb5fb0fcad378b2cf2fc454f51444" name="a348eb5fb0fcad378b2cf2fc454f51444"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a348eb5fb0fcad378b2cf2fc454f51444">&#9670;&#160;</a></span>ChangesProgramStateIrreversibly()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -127,7 +142,37 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool CommandI::execute </td>
+          <td class="memname">virtual bool CommandI::ChangesProgramStateIrreversibly </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indicates if this command is an irreversible state-changing command. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if this command changes the state of the program irreversibly </dd></dl>
+
+<p>Implemented in <a class="el" href="classDeleteElementCommand.html#acd07af54e3fcdfce7f7593dad933cc3e">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#a5169594e3d7ab0c2368237db5dced223">GenericCommand</a>, <a class="el" href="classOpenFileCommand.html#ae020a395fb497ac749d5ddb54d2ce7ef">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#aca27d37ba37fadaab46b06ea13bec632">SaveFileCommand</a>.</p>
+
+</div>
+</div>
+<a id="ad0107a73ebccd619860597db7bad2cce" name="ad0107a73ebccd619860597db7bad2cce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0107a73ebccd619860597db7bad2cce">&#9670;&#160;</a></span>Execute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool CommandI::Execute </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -143,12 +188,12 @@ Public Member Functions</h2></td></tr>
 <p>Execution of the command. Must be implemented as applicable by the derived class. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the command has been executed </dd></dl>
 
-<p>Implemented in <a class="el" href="classOpenFileCommand.html#a9f2249eeea3c1f00f6da3ef8ff199adc">OpenFileCommand</a>.</p>
+<p>Implemented in <a class="el" href="classSaveFileCommand.html#a4836ac21dbfd6aab0a487f30335bce73">SaveFileCommand</a>, <a class="el" href="classDeleteElementCommand.html#ad606aae7b0d869bdaeccbe40c44c48a6">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#a663cc7cb4a3fd95196a1ff28785fc688">GenericCommand</a>, and <a class="el" href="classOpenFileCommand.html#aaaa8a9f550b1669d7a427a9c143c74b9">OpenFileCommand</a>.</p>
 
 </div>
 </div>
-<a id="a045529cc0219b14d416d14794ca0321a" name="a045529cc0219b14d416d14794ca0321a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a045529cc0219b14d416d14794ca0321a">&#9670;&#160;</a></span>redo()</h2>
+<a id="a10b7094ad088998d95045e7db350eb0a" name="a10b7094ad088998d95045e7db350eb0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10b7094ad088998d95045e7db350eb0a">&#9670;&#160;</a></span>ExecuteRedo()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -157,7 +202,67 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool CommandI::redo </td>
+          <td class="memname">virtual bool CommandI::ExecuteRedo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Execution of the redo command. Must be implemented as applicable by the derived class. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the command is redo-able and has been redone </dd></dl>
+
+<p>Implemented in <a class="el" href="classDeleteElementCommand.html#a25f8b7d96cc27cfdb55dbe5810c82835">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#ac0511e9b0bc5f8b33e1ceb0001fca69b">GenericCommand</a>, <a class="el" href="classOpenFileCommand.html#aec939dcbd7f334068effbee9c6adc201">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#a70eea57dbc9c418267c5582fba6b05a8">SaveFileCommand</a>.</p>
+
+</div>
+</div>
+<a id="a38d5a489ac6de24f3b40035083c5ed9a" name="a38d5a489ac6de24f3b40035083c5ed9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38d5a489ac6de24f3b40035083c5ed9a">&#9670;&#160;</a></span>ExecuteUndo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool CommandI::ExecuteUndo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Execution of the undo command. Must be implemented as applicable by the derived class. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the command undo-able and has been undone </dd></dl>
+
+<p>Implemented in <a class="el" href="classDeleteElementCommand.html#a81259f19e29ff98fe4282c67897457c9">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#a9850a1f2ca9eb74507ea0e8d5a4d1d3e">GenericCommand</a>, <a class="el" href="classOpenFileCommand.html#a6081ebc56ffd4c603609b548cea6c53c">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#ab122ab89b7e2c525ae077de0040e1ee7">SaveFileCommand</a>.</p>
+
+</div>
+</div>
+<a id="a3abee4f38d41e59b915e0dd94c4846b6" name="a3abee4f38d41e59b915e0dd94c4846b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3abee4f38d41e59b915e0dd94c4846b6">&#9670;&#160;</a></span>IsRedoable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool CommandI::IsRedoable </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -171,14 +276,14 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Redo functionality of the command. </p>
-<dl class="section return"><dt>Returns</dt><dd>True if the command can be and has been redone </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the command can be redone </dd></dl>
 
-<p>Implemented in <a class="el" href="classOpenFileCommand.html#aebbaf527dbfbb97cb8d0232f735dcf13">OpenFileCommand</a>.</p>
+<p>Implemented in <a class="el" href="classDeleteElementCommand.html#a6c5f04219ace0f3808af89a68828702b">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#ab4f7eba842e2e7b19f55781499bd6b5a">GenericCommand</a>, <a class="el" href="classOpenFileCommand.html#afdf34480b36f0fa36f41fc546333a5dc">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#a47cf7448aee11bb954fb40af4022e122">SaveFileCommand</a>.</p>
 
 </div>
 </div>
-<a id="a0da54a11aa067099da52f04d20c0859a" name="a0da54a11aa067099da52f04d20c0859a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0da54a11aa067099da52f04d20c0859a">&#9670;&#160;</a></span>threaded()</h2>
+<a id="a6b173d77055ac6a8c548b6737ca03caf" name="a6b173d77055ac6a8c548b6737ca03caf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b173d77055ac6a8c548b6737ca03caf">&#9670;&#160;</a></span>IsThreaded()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -187,7 +292,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool CommandI::threaded </td>
+          <td class="memname">virtual bool CommandI::IsThreaded </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -203,12 +308,12 @@ Public Member Functions</h2></td></tr>
 <p>Indicates if this command should be run in a thread. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this command should be run in a thread </dd></dl>
 
-<p>Implemented in <a class="el" href="classOpenFileCommand.html#a9d101dff59daef197d4da811bae59965">OpenFileCommand</a>.</p>
+<p>Implemented in <a class="el" href="classDeleteElementCommand.html#a4561b97e2c51f2516e64d0ba816febe5">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#aaad69c127eaa595dad9b582421d78a7d">GenericCommand</a>, <a class="el" href="classOpenFileCommand.html#a3fb7e479af973fb23f422c955e24fc77">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#a0d77c2d15577db0fd124b2e453bba00a">SaveFileCommand</a>.</p>
 
 </div>
 </div>
-<a id="aa9d8718f12bcb260fdfa03ecd51076bf" name="aa9d8718f12bcb260fdfa03ecd51076bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9d8718f12bcb260fdfa03ecd51076bf">&#9670;&#160;</a></span>undo()</h2>
+<a id="a4722f602fdfa6387aa0fced8dfa0e9fd" name="a4722f602fdfa6387aa0fced8dfa0e9fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4722f602fdfa6387aa0fced8dfa0e9fd">&#9670;&#160;</a></span>IsUndoable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -217,7 +322,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool CommandI::undo </td>
+          <td class="memname">virtual bool CommandI::IsUndoable </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -231,9 +336,9 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Undo functionality of the command. </p>
-<dl class="section return"><dt>Returns</dt><dd>True if the command can be and has been undone </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the command can be undone </dd></dl>
 
-<p>Implemented in <a class="el" href="classOpenFileCommand.html#a86214f23a23dbb76040bde89c24ef726">OpenFileCommand</a>.</p>
+<p>Implemented in <a class="el" href="classDeleteElementCommand.html#a4ad99f4f3c8ca4b266af9c545744fdb6">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#afa14aae0989db8983af2ac5c2a2e9722">GenericCommand</a>, <a class="el" href="classOpenFileCommand.html#afa163c258a28f6f7af8f43908e181605">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#a85292d15bc3c13b7ad14a0b73d1dd154">SaveFileCommand</a>.</p>
 
 </div>
 </div>

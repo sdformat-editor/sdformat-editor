@@ -1,0 +1,62 @@
+\doxysection{command\+\_\+factory\+\_\+interface.\+h}
+\hypertarget{command__factory__interface_8h_source}{}\label{command__factory__interface_8h_source}\index{include/interfaces/command\_factory\_interface.h@{include/interfaces/command\_factory\_interface.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ sdformat-\/editor}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Copyright\ 2025\ sdformat-\/editor}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*\ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*\ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*\ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{*\ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00015\ \textcolor{comment}{*\ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{*}}
+\DoxyCodeLine{00017\ \textcolor{comment}{*\ Developer:\ Zaid\ Duraid,\ Ean\ Wheeler,\ Evan\ Vokey}}
+\DoxyCodeLine{00018\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ COMMAND\_FACTORY\_INTERFACE\_HH\_}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ COMMAND\_FACTORY\_INTERFACE\_HH\_}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ SDFormat\ dependencies}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <sdf/sdf.hh>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}interfaces/command\_interface.h"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}interfaces/gui\_interface.h"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}interfaces/sdformat\_parser\_interface.h"{}}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <stack>}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ Predeclare\ GUII\ to\ avoid\ circular\ dependencies}}
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGUII}{GUII}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCommandFactoryI}{CommandFactoryI}}}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00041\ \ \ \textcolor{keyword}{private}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCommandFactoryI_aa9795d9e3c14eaf8158acc9e850dfc59}{Initialize}}(std::shared\_ptr<GUII>\ gui,\ std::shared\_ptr<SDFormatParserI>\ sdformatParser)\ =\ 0;}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ std::unique\_ptr<CommandI>\ \mbox{\hyperlink{classCommandFactoryI_adebc954d2a1401735e055ec827eb1b35}{MakeOpenFileCommand}}()\ =\ 0;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ std::unique\_ptr<CommandI>\ \mbox{\hyperlink{classCommandFactoryI_ac9688f96d9551acf9aa141a1a5873186}{MakeDeleteElementCommand}}(}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ sdf::ElementPtr\ element\_to\_delete)\ =\ 0;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00055\ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ std::unique\_ptr<CommandI>\ \mbox{\hyperlink{classCommandFactoryI_a3540850eb4c889aaabbd288d0f2ee40d}{MakeUndoCommand}}()\ =\ 0;}
+\DoxyCodeLine{00056\ \ \ }
+\DoxyCodeLine{00059\ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ std::unique\_ptr<CommandI>\ \mbox{\hyperlink{classCommandFactoryI_a8fca05c4893b73f13f25a419ad0023fe}{MakeRedoCommand}}()\ =\ 0;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ std::unique\_ptr<CommandI>\ \mbox{\hyperlink{classCommandFactoryI_ab9cb56487941f72228e7950a5abb3f57}{MakeSaveFileCommand}}(\textcolor{keywordtype}{bool}\ force\_save\_as\_not\_save)\ =\ 0;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00069\ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCommandFactoryI_a02b9823f6bf6072d5cc88dc7638e228d}{PushToUndoCommandsStack}}(std::unique\_ptr<CommandI>\ command,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ new\_change\ =\ \textcolor{keyword}{true})\ =\ 0;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00073\ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCommandFactoryI_ae0165834d2d83c1593bef86c0d91311f}{PushToRedoCommandsStack}}(std::unique\_ptr<CommandI>\ command)\ =\ 0;}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00076\ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCommandFactoryI_ac102d66b6e65f52cca9c01d3c732535a}{ClearUndoRedoStacks}}()\ =\ 0;}
+\DoxyCodeLine{00077\ \};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ COMMAND\_FACTORY\_INTERFACE\_HH\_}}
+
+\end{DoxyCode}

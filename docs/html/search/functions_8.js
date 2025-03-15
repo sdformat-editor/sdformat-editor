@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['set_5fprevent_5finput_5fflag_0',['set_prevent_input_flag',['../classGUI.html#a61fc0808de95295ac5ed429e2c0d0dcf',1,'GUI::set_prevent_input_flag()'],['../classGUII.html#ad37748b4d362758dc84b8a90e7130a78',1,'GUII::set_prevent_input_flag()']]],
-  ['shouldclose_1',['shouldclose',['../classGUI.html#a75a2aa8cff0e7601e0e8b97000213094',1,'GUI::ShouldClose()'],['../classGUII.html#a9ae3de58253702261056dc0981a046ac',1,'GUII::ShouldClose()']]]
+  ['openfilecommand_0',['OpenFileCommand',['../classOpenFileCommand.html#a56de8dcb25876eaf688c642a8f75c20b',1,'OpenFileCommand']]],
+  ['openfiledialog_1',['OpenFileDialog',['../classFileOperations.html#a50b5908070cc9bdd8879aade4daa855f',1,'FileOperations']]],
+  ['openyesnodialog_2',['openyesnodialog',['../classGUI.html#abd67d228ea9fc89c741087adcaee9190',1,'GUI::OpenYesNoDialog()'],['../classGUII.html#aec50bda8cf955a9ce900b61f507d5d4b',1,'GUII::OpenYesNoDialog()']]],
+  ['operator_3d_3',['operator=',['../classFileOperations.html#a5da1790781c8f79684955589d2381c83',1,'FileOperations']]]
 ];

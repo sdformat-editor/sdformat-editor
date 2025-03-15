@@ -1,0 +1,213 @@
+\doxysection{Save\+File\+Command Class Reference}
+\hypertarget{classSaveFileCommand}{}\label{classSaveFileCommand}\index{SaveFileCommand@{SaveFileCommand}}
+
+
+Open model command implementation of \doxylink{classCommandI}{CommandI}.  
+
+
+
+
+{\ttfamily \#include $<$Save\+File\+Command.\+h$>$}
+
+
+
+Inheritance diagram for Save\+File\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{classSaveFileCommand__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Save\+File\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{classSaveFileCommand__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSaveFileCommand_a3453f38c602c6449ec798ff29b4ac908}{Save\+File\+Command}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ \mbox{\hyperlink{classSaveFileCommand_afeee4e8ebf16746136162d68afdca50b}{gui}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classSaveFileCommand_aeb65da235c7b0a3195d46e32e1c1e4a8}{sdformat\+Parser}}, bool force\+\_\+save\+\_\+as\+\_\+not\+\_\+save)
+\begin{DoxyCompactList}\small\item\em Constructor for open model command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classSaveFileCommand_a4836ac21dbfd6aab0a487f30335bce73}{Execute}} ()
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSaveFileCommand_ab122ab89b7e2c525ae077de0040e1ee7}{Execute\+Undo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSaveFileCommand_a70eea57dbc9c418267c5582fba6b05a8}{Execute\+Redo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSaveFileCommand_a85292d15bc3c13b7ad14a0b73d1dd154}{Is\+Undoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSaveFileCommand_a47cf7448aee11bb954fb40af4022e122}{Is\+Redoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSaveFileCommand_a0d77c2d15577db0fd124b2e453bba00a}{Is\+Threaded}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSaveFileCommand_aca27d37ba37fadaab46b06ea13bec632}{Changes\+Program\+State\+Irreversibly}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSaveFileCommand_afeee4e8ebf16746136162d68afdca50b}\label{classSaveFileCommand_afeee4e8ebf16746136162d68afdca50b} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ {\bfseries gui}
+\begin{DoxyCompactList}\small\item\em Pointer to the gui interface. \end{DoxyCompactList}\item 
+\Hypertarget{classSaveFileCommand_aeb65da235c7b0a3195d46e32e1c1e4a8}\label{classSaveFileCommand_aeb65da235c7b0a3195d46e32e1c1e4a8} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ {\bfseries sdformat\+Parser}
+\begin{DoxyCompactList}\small\item\em Pointer to the sdformat parser interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Open model command implementation of \doxylink{classCommandI}{CommandI}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSaveFileCommand_a3453f38c602c6449ec798ff29b4ac908}\label{classSaveFileCommand_a3453f38c602c6449ec798ff29b4ac908} 
+\index{SaveFileCommand@{SaveFileCommand}!SaveFileCommand@{SaveFileCommand}}
+\index{SaveFileCommand@{SaveFileCommand}!SaveFileCommand@{SaveFileCommand}}
+\doxysubsubsection{\texorpdfstring{SaveFileCommand()}{SaveFileCommand()}}
+{\footnotesize\ttfamily Save\+File\+Command\+::\+Save\+File\+Command (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$}]{gui,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+Parser,  }\item[{bool}]{force\+\_\+save\+\_\+as\+\_\+not\+\_\+save }\end{DoxyParamCaption})}
+
+
+
+Constructor for open model command objects. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em gui} & Pointer to the \doxylink{classGUII}{GUII} object \\
+\hline
+\mbox{\texttt{ in}}  & {\em sdformat\+Parser} & Pointer to the \doxylink{classSDFormatParserI}{SDFormat\+ParserI} object \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSaveFileCommand_aca27d37ba37fadaab46b06ea13bec632}\label{classSaveFileCommand_aca27d37ba37fadaab46b06ea13bec632} 
+\index{SaveFileCommand@{SaveFileCommand}!ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}}
+\index{ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}!SaveFileCommand@{SaveFileCommand}}
+\doxysubsubsection{\texorpdfstring{ChangesProgramStateIrreversibly()}{ChangesProgramStateIrreversibly()}}
+{\footnotesize\ttfamily bool Save\+File\+Command\+::\+Changes\+Program\+State\+Irreversibly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}{CommandI}}.
+
+\Hypertarget{classSaveFileCommand_a4836ac21dbfd6aab0a487f30335bce73}\label{classSaveFileCommand_a4836ac21dbfd6aab0a487f30335bce73} 
+\index{SaveFileCommand@{SaveFileCommand}!Execute@{Execute}}
+\index{Execute@{Execute}!SaveFileCommand@{SaveFileCommand}}
+\doxysubsubsection{\texorpdfstring{Execute()}{Execute()}}
+{\footnotesize\ttfamily bool Save\+File\+Command\+::\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+True if the \doxylink{classSDFormatParser}{SDFormat\+Parser} has successfully parsed the file and it has been displayed in the \doxylink{classGUI}{GUI} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_ad0107a73ebccd619860597db7bad2cce}{CommandI}}.
+
+\Hypertarget{classSaveFileCommand_a70eea57dbc9c418267c5582fba6b05a8}\label{classSaveFileCommand_a70eea57dbc9c418267c5582fba6b05a8} 
+\index{SaveFileCommand@{SaveFileCommand}!ExecuteRedo@{ExecuteRedo}}
+\index{ExecuteRedo@{ExecuteRedo}!SaveFileCommand@{SaveFileCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteRedo()}{ExecuteRedo()}}
+{\footnotesize\ttfamily bool Save\+File\+Command\+::\+Execute\+Redo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a10b7094ad088998d95045e7db350eb0a}{CommandI}}.
+
+\Hypertarget{classSaveFileCommand_ab122ab89b7e2c525ae077de0040e1ee7}\label{classSaveFileCommand_ab122ab89b7e2c525ae077de0040e1ee7} 
+\index{SaveFileCommand@{SaveFileCommand}!ExecuteUndo@{ExecuteUndo}}
+\index{ExecuteUndo@{ExecuteUndo}!SaveFileCommand@{SaveFileCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteUndo()}{ExecuteUndo()}}
+{\footnotesize\ttfamily bool Save\+File\+Command\+::\+Execute\+Undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a38d5a489ac6de24f3b40035083c5ed9a}{CommandI}}.
+
+\Hypertarget{classSaveFileCommand_a47cf7448aee11bb954fb40af4022e122}\label{classSaveFileCommand_a47cf7448aee11bb954fb40af4022e122} 
+\index{SaveFileCommand@{SaveFileCommand}!IsRedoable@{IsRedoable}}
+\index{IsRedoable@{IsRedoable}!SaveFileCommand@{SaveFileCommand}}
+\doxysubsubsection{\texorpdfstring{IsRedoable()}{IsRedoable()}}
+{\footnotesize\ttfamily bool Save\+File\+Command\+::\+Is\+Redoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
+
+\Hypertarget{classSaveFileCommand_a0d77c2d15577db0fd124b2e453bba00a}\label{classSaveFileCommand_a0d77c2d15577db0fd124b2e453bba00a} 
+\index{SaveFileCommand@{SaveFileCommand}!IsThreaded@{IsThreaded}}
+\index{IsThreaded@{IsThreaded}!SaveFileCommand@{SaveFileCommand}}
+\doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
+{\footnotesize\ttfamily bool Save\+File\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}{CommandI}}.
+
+\Hypertarget{classSaveFileCommand_a85292d15bc3c13b7ad14a0b73d1dd154}\label{classSaveFileCommand_a85292d15bc3c13b7ad14a0b73d1dd154} 
+\index{SaveFileCommand@{SaveFileCommand}!IsUndoable@{IsUndoable}}
+\index{IsUndoable@{IsUndoable}!SaveFileCommand@{SaveFileCommand}}
+\doxysubsubsection{\texorpdfstring{IsUndoable()}{IsUndoable()}}
+{\footnotesize\ttfamily bool Save\+File\+Command\+::\+Is\+Undoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a4722f602fdfa6387aa0fced8dfa0e9fd}{CommandI}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/commands/Save\+File\+Command.\+h\item 
+src/commands/Save\+File\+Command.\+cpp\end{DoxyCompactItemize}

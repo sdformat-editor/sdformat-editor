@@ -86,7 +86,7 @@ Collaboration diagram for FileEditorRunner:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFileEditorRunner__coll__graph.png" border="0" usemap="#aFileEditorRunner_coll__map" alt="Collaboration graph"/></div>
 <map name="aFileEditorRunner_coll__map" id="aFileEditorRunner_coll__map">
-<area shape="rect" title="Implementation of program start up to be called by main." alt="" coords="5,5,211,273"/>
+<area shape="rect" title="Implementation of program start up to be called by main." alt="" coords="5,5,223,209"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -96,9 +96,9 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>FileEditorRunner</b> ()</td></tr>
 <tr class="memdesc:add1e32a44cc0639e422d2788592d5bba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that calls the top level method. <br /></td></tr>
 <tr class="separator:add1e32a44cc0639e422d2788592d5bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefe9d65d30a5a528bd1769c2bbfd478c" id="r_aefe9d65d30a5a528bd1769c2bbfd478c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileEditorRunner.html#aefe9d65d30a5a528bd1769c2bbfd478c">run_program</a> ()</td></tr>
-<tr class="memdesc:aefe9d65d30a5a528bd1769c2bbfd478c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Top level method that starts the program.  <br /></td></tr>
-<tr class="separator:aefe9d65d30a5a528bd1769c2bbfd478c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad60d0d7c1095deb03879a82c5d0bb62a" id="r_ad60d0d7c1095deb03879a82c5d0bb62a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileEditorRunner.html#ad60d0d7c1095deb03879a82c5d0bb62a">RunProgram</a> ()</td></tr>
+<tr class="memdesc:ad60d0d7c1095deb03879a82c5d0bb62a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Top level method that starts the program.  <br /></td></tr>
+<tr class="separator:ad60d0d7c1095deb03879a82c5d0bb62a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -114,26 +114,22 @@ std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParse
 std::shared_ptr&lt; <a class="el" href="classGUII.html">GUII</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>gui</b></td></tr>
 <tr class="memdesc:a0a505fea2a1ac267449ba21a33f0d88d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> class. <br /></td></tr>
 <tr class="separator:a0a505fea2a1ac267449ba21a33f0d88d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a887008b980538dfc40741566bd399939" id="r_a887008b980538dfc40741566bd399939"><td class="memItemLeft" align="right" valign="top"><a id="a887008b980538dfc40741566bd399939" name="a887008b980538dfc40741566bd399939"></a>
-std::vector&lt; std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>undo_commands_stack</b></td></tr>
-<tr class="memdesc:a887008b980538dfc40741566bd399939"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stack for undo functionality. <br /></td></tr>
-<tr class="separator:a887008b980538dfc40741566bd399939"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a245b6bf15d0b9dd4f9df037bc30445c7" id="r_a245b6bf15d0b9dd4f9df037bc30445c7"><td class="memItemLeft" align="right" valign="top"><a id="a245b6bf15d0b9dd4f9df037bc30445c7" name="a245b6bf15d0b9dd4f9df037bc30445c7"></a>
-std::vector&lt; std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>redo_commands_stack</b></td></tr>
-<tr class="memdesc:a245b6bf15d0b9dd4f9df037bc30445c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stack for redo functionality. <br /></td></tr>
-<tr class="separator:a245b6bf15d0b9dd4f9df037bc30445c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8717b5e873b012ad91193acbadfb22d5" id="r_a8717b5e873b012ad91193acbadfb22d5"><td class="memItemLeft" align="right" valign="top"><a id="a8717b5e873b012ad91193acbadfb22d5" name="a8717b5e873b012ad91193acbadfb22d5"></a>
+std::shared_ptr&lt; <a class="el" href="classCommandFactoryI.html">CommandFactoryI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>command_factory</b></td></tr>
+<tr class="memdesc:a8717b5e873b012ad91193acbadfb22d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the <a class="el" href="classCommandFactory.html" title="Implementation of CommandFactoryI.">CommandFactory</a> class. <br /></td></tr>
+<tr class="separator:a8717b5e873b012ad91193acbadfb22d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of program start up to be called by main. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="aefe9d65d30a5a528bd1769c2bbfd478c" name="aefe9d65d30a5a528bd1769c2bbfd478c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aefe9d65d30a5a528bd1769c2bbfd478c">&#9670;&#160;</a></span>run_program()</h2>
+<a id="ad60d0d7c1095deb03879a82c5d0bb62a" name="ad60d0d7c1095deb03879a82c5d0bb62a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad60d0d7c1095deb03879a82c5d0bb62a">&#9670;&#160;</a></span>RunProgram()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int FileEditorRunner::run_program </td>
+          <td class="memname">int FileEditorRunner::RunProgram </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

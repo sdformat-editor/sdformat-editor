@@ -36,13 +36,22 @@
 \DoxyCodeLine{00033\ }
 \DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{private}:\ sdf::SDFPtr\ \mbox{\hyperlink{classSDFormatParser_a2fc0ef9b53d30ff08378f9b7194517b9}{sdfElement}};}
 \DoxyCodeLine{00036\ }
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSDFormatParser_ada8d05784ae55ffebeb83f41ce1b70fa}{Initialize}}(\textcolor{keyword}{const}\ std::string\ file\_path,\ \textcolor{keywordtype}{bool}\ \&success)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSDFormatParser_ada8d05784ae55ffebeb83f41ce1b70fa}{Initialize}}(\textcolor{keyword}{const}\ std::string\ file\_path,\ \textcolor{keywordtype}{bool}\ \&success)\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00039\ }
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{public}:\ sdf::SDFPtr\ \mbox{\hyperlink{classSDFormatParser_a05c7ff0e224988a867849ebe85e67bb7}{GetSDFElement}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{private}:\ sdf::SDFPtr\ \mbox{\hyperlink{classSDFormatParser_a05c7ff0e224988a867849ebe85e67bb7}{GetSDFElement}}()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \ \ \ \ }
-\DoxyCodeLine{00045\ \};}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{private}:\ \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}}\ \mbox{\hyperlink{classSDFormatParser_aff85c7ed5d58583cba150f6454c3a669}{FindMentions}}(std::string\ key)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{private}:\ \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}}\ \mbox{\hyperlink{classSDFormatParser_aff85c7ed5d58583cba150f6454c3a669}{FindMentions}}(std::string\ key,\ sdf::ElementPtr\ element\_to\_exclude)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{private}:\ \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}}\ \mbox{\hyperlink{classSDFormatParser_aff85c7ed5d58583cba150f6454c3a669}{FindMentions}}(std::string\ key,\ sdf::ParamPtr\ attribute\_to\_exclude)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{private}:\ \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}}\ \mbox{\hyperlink{classSDFormatParser_aff85c7ed5d58583cba150f6454c3a669}{FindMentions}}(std::string\ key,\ sdf::ElementPtr\ element\_to\_exclude,\ sdf::ParamPtr\ attribute\_to\_exclude)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{private}:\ std::string\ \mbox{\hyperlink{classSDFormatParser_a0e8ccb7ccaf1533237bda33ce008c7af}{GetSDFTreePathToElement}}(sdf::ElementPtr\ element)\ \textcolor{keyword}{override};\ }
+\DoxyCodeLine{00073\ \};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

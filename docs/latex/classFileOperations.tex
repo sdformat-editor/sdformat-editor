@@ -16,25 +16,69 @@ Collaboration diagram for File\+Operations\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=186pt]{classFileOperations__coll__graph}
+\includegraphics[width=239pt]{classFileOperations__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classFileOperations_a50b5908070cc9bdd8879aade4daa855f}{Open\+File\+Dialog}} ()
+\begin{DoxyCompactList}\small\item\em Opens a dialog for the user to open a file on their filesystem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFileOperations_a9cb6d43595e1712dc48c68c2358f27f7}{Write\+File}} (const std\+::string \&file\+\_\+path, const std\+::string \&contents)
+\begin{DoxyCompactList}\small\item\em writes a string to a file \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFileOperations_a8084bfa9beae2eab0cb3f8a6d9501024}{Write\+File}} (const std\+::string \&contents)
+\begin{DoxyCompactList}\small\item\em writes a string to a file \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static std\+::string \mbox{\hyperlink{classFileOperations_a50b5908070cc9bdd8879aade4daa855f}{Open\+File\+Dialog}} ()
-\begin{DoxyCompactList}\small\item\em Opens a dialog for the user to open a file on their filesystem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+static \mbox{\hyperlink{classFileOperations}{File\+Operations}} \& \mbox{\hyperlink{classFileOperations_a666230d09e02f6cb71016c12b2c18548}{Get\+Sole\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em The only method by which a \doxylink{classFileOperations}{File\+Operations} instance can be returned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classFileOperations_a196fc0455c1e0d5c1b3d64230cab76e5}\label{classFileOperations_a196fc0455c1e0d5c1b3d64230cab76e5} 
+{\bfseries File\+Operations} ()=default
+\begin{DoxyCompactList}\small\item\em Prevent access to the constructor of this class. \end{DoxyCompactList}\item 
+\Hypertarget{classFileOperations_aef626cf484c86fe0f875d3b550ce9857}\label{classFileOperations_aef626cf484c86fe0f875d3b550ce9857} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+File\+Operations} ()=default
+\begin{DoxyCompactList}\small\item\em Prevent access to the destructor of this class. \end{DoxyCompactList}\item 
+\Hypertarget{classFileOperations_a5da1790781c8f79684955589d2381c83}\label{classFileOperations_a5da1790781c8f79684955589d2381c83} 
+\mbox{\hyperlink{classFileOperations}{File\+Operations}} \& {\bfseries operator=} (const \mbox{\hyperlink{classFileOperations}{File\+Operations}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Prevent the assignment of one instance of \doxylink{classFileOperations}{File\+Operations} to another, ensuring there can only be one instance. \end{DoxyCompactList}\item 
+\Hypertarget{classFileOperations_ae5f57497c9671a58cab18c61f54bbb8f}\label{classFileOperations_ae5f57497c9671a58cab18c61f54bbb8f} 
+{\bfseries File\+Operations} (const \mbox{\hyperlink{classFileOperations}{File\+Operations}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Delete the copy constructor of \doxylink{classFileOperations}{File\+Operations}, preventing copies of the reference the the sole instance from being made ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classFileOperations_a9165fd8b97d9ce88cdd9de08dbe6b2c3}\label{classFileOperations_a9165fd8b97d9ce88cdd9de08dbe6b2c3} 
+std\+::string {\bfseries active\+\_\+file\+\_\+path}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Singleton class to handle file operations. 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classFileOperations_a666230d09e02f6cb71016c12b2c18548}\label{classFileOperations_a666230d09e02f6cb71016c12b2c18548} 
+\index{FileOperations@{FileOperations}!GetSoleInstance@{GetSoleInstance}}
+\index{GetSoleInstance@{GetSoleInstance}!FileOperations@{FileOperations}}
+\doxysubsubsection{\texorpdfstring{GetSoleInstance()}{GetSoleInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classFileOperations}{File\+Operations}} \& File\+Operations\+::\+Get\+Sole\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The only method by which a \doxylink{classFileOperations}{File\+Operations} instance can be returned. 
+
+\begin{DoxyReturn}{Returns}
+The sole instance of File\+OperationsI 
+\end{DoxyReturn}
 \Hypertarget{classFileOperations_a50b5908070cc9bdd8879aade4daa855f}\label{classFileOperations_a50b5908070cc9bdd8879aade4daa855f} 
 \index{FileOperations@{FileOperations}!OpenFileDialog@{OpenFileDialog}}
 \index{OpenFileDialog@{OpenFileDialog}!FileOperations@{FileOperations}}
 \doxysubsubsection{\texorpdfstring{OpenFileDialog()}{OpenFileDialog()}}
-{\footnotesize\ttfamily std\+::string File\+Operations\+::\+Open\+File\+Dialog (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily std\+::string File\+Operations\+::\+Open\+File\+Dialog (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -43,6 +87,38 @@ Opens a dialog for the user to open a file on their filesystem.
 \begin{DoxyReturn}{Returns}
 An absolute file path or an empty string 
 \end{DoxyReturn}
+\Hypertarget{classFileOperations_a8084bfa9beae2eab0cb3f8a6d9501024}\label{classFileOperations_a8084bfa9beae2eab0cb3f8a6d9501024} 
+\index{FileOperations@{FileOperations}!WriteFile@{WriteFile}}
+\index{WriteFile@{WriteFile}!FileOperations@{FileOperations}}
+\doxysubsubsection{\texorpdfstring{WriteFile()}{WriteFile()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void File\+Operations\+::\+Write\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{contents }\end{DoxyParamCaption})}
+
+
+
+writes a string to a file 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em contents} & the contents to write to the given file \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classFileOperations_a9cb6d43595e1712dc48c68c2358f27f7}\label{classFileOperations_a9cb6d43595e1712dc48c68c2358f27f7} 
+\index{FileOperations@{FileOperations}!WriteFile@{WriteFile}}
+\index{WriteFile@{WriteFile}!FileOperations@{FileOperations}}
+\doxysubsubsection{\texorpdfstring{WriteFile()}{WriteFile()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void File\+Operations\+::\+Write\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+path,  }\item[{const std\+::string \&}]{contents }\end{DoxyParamCaption})}
+
+
+
+writes a string to a file 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em file\+\_\+path} & the filepath of the file to write to \\
+\hline
+\mbox{\texttt{ in}}  & {\em contents} & the contents to write to the given file \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

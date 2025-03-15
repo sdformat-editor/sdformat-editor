@@ -16,7 +16,7 @@ Inheritance diagram for SDFormat\+ParserI\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=252pt]{classSDFormatParserI__inherit__graph}
+\includegraphics[height=550pt]{classSDFormatParserI__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -26,22 +26,133 @@ Collaboration diagram for SDFormat\+ParserI\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=222pt]{classSDFormatParserI__coll__graph}
+\includegraphics[width=274pt]{classSDFormatParserI__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}}
+\begin{DoxyCompactList}\small\item\em Struct to define a "{}mentions"{} object type. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 virtual void \mbox{\hyperlink{classSDFormatParserI_a404feccbe479eadff00da8ca881fbc85}{Initialize}} (const std\+::string file\+\_\+path, bool \&success)=0
 \begin{DoxyCompactList}\small\item\em Initialization of the Parser. Will re-\/initalize the parser if initalized already. NOTE\+: (zaid) As more features are added, more things will be added to this initalize method. \end{DoxyCompactList}\item 
 virtual sdf\+::\+SDFPtr \mbox{\hyperlink{classSDFormatParserI_a9a5b36f28e49f669d0bd8685253be72e}{Get\+SDFElement}} ()=0
-\begin{DoxyCompactList}\small\item\em Returns the main sdf\+Element associated this this \doxylink{classSDFormatParser}{SDFormat\+Parser} instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the main sdf\+Element associated this this \doxylink{classSDFormatParser}{SDFormat\+Parser} instance. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} \mbox{\hyperlink{classSDFormatParserI_ac72fb1714f0918b0f7fc964bf8fb9a10}{Find\+Mentions}} (std\+::string key)=0
+\begin{DoxyCompactList}\small\item\em Determines the locations of potential references to the element to delete. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} \mbox{\hyperlink{classSDFormatParserI_a1e69c1b46ed0023c7fc019e2f865f438}{Find\+Mentions}} (std\+::string key, sdf\+::\+Element\+Ptr element\+\_\+to\+\_\+exclude)=0
+\begin{DoxyCompactList}\small\item\em Determines the locations of potential references to the element to delete. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} \mbox{\hyperlink{classSDFormatParserI_a589267553e67bd84d250f2ab53bee436}{Find\+Mentions}} (std\+::string key, sdf\+::\+Param\+Ptr attribute\+\_\+to\+\_\+exclude)=0
+\begin{DoxyCompactList}\small\item\em Determines the locations of potential references to the element to delete. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} \mbox{\hyperlink{classSDFormatParserI_a73c8e4a06d862addd44822118ef8c16f}{Find\+Mentions}} (std\+::string key, sdf\+::\+Element\+Ptr element\+\_\+to\+\_\+exclude, sdf\+::\+Param\+Ptr attribute\+\_\+to\+\_\+exclude)=0
+\begin{DoxyCompactList}\small\item\em Determines the locations of potential references to the element to delete. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{classSDFormatParserI_a203d76c76addc968d746bc75b747c399}{Get\+SDFTree\+Path\+To\+Element}} (sdf\+::\+Element\+Ptr element)=0
+\begin{DoxyCompactList}\small\item\em Get the tree path to this element. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Interface for the SDFormat Editor\textquotesingle{}s Parser. 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classSDFormatParserI_ac72fb1714f0918b0f7fc964bf8fb9a10}\label{classSDFormatParserI_ac72fb1714f0918b0f7fc964bf8fb9a10} 
+\index{SDFormatParserI@{SDFormatParserI}!FindMentions@{FindMentions}}
+\index{FindMentions@{FindMentions}!SDFormatParserI@{SDFormatParserI}}
+\doxysubsubsection{\texorpdfstring{FindMentions()}{FindMentions()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} SDFormat\+Parser\+I\+::\+Find\+Mentions (\begin{DoxyParamCaption}\item[{std\+::string}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Determines the locations of potential references to the element to delete. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em key} & the string to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The elements and attributes that mention this given key 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classSDFormatParser_aff85c7ed5d58583cba150f6454c3a669}{SDFormat\+Parser}}.
+
+\Hypertarget{classSDFormatParserI_a1e69c1b46ed0023c7fc019e2f865f438}\label{classSDFormatParserI_a1e69c1b46ed0023c7fc019e2f865f438} 
+\index{SDFormatParserI@{SDFormatParserI}!FindMentions@{FindMentions}}
+\index{FindMentions@{FindMentions}!SDFormatParserI@{SDFormatParserI}}
+\doxysubsubsection{\texorpdfstring{FindMentions()}{FindMentions()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} SDFormat\+Parser\+I\+::\+Find\+Mentions (\begin{DoxyParamCaption}\item[{std\+::string}]{key,  }\item[{sdf\+::\+Element\+Ptr}]{element\+\_\+to\+\_\+exclude }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Determines the locations of potential references to the element to delete. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em key} & the string to search for \\
+\hline
+\mbox{\texttt{ in}}  & {\em element\+\_\+to\+\_\+exclude} & the element to exclude in the search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The elements and attributes that mention this given key 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classSDFormatParser_a56e195cc3d0f84498f39b9e91d789dec}{SDFormat\+Parser}}.
+
+\Hypertarget{classSDFormatParserI_a73c8e4a06d862addd44822118ef8c16f}\label{classSDFormatParserI_a73c8e4a06d862addd44822118ef8c16f} 
+\index{SDFormatParserI@{SDFormatParserI}!FindMentions@{FindMentions}}
+\index{FindMentions@{FindMentions}!SDFormatParserI@{SDFormatParserI}}
+\doxysubsubsection{\texorpdfstring{FindMentions()}{FindMentions()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} SDFormat\+Parser\+I\+::\+Find\+Mentions (\begin{DoxyParamCaption}\item[{std\+::string}]{key,  }\item[{sdf\+::\+Element\+Ptr}]{element\+\_\+to\+\_\+exclude,  }\item[{sdf\+::\+Param\+Ptr}]{attribute\+\_\+to\+\_\+exclude }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Determines the locations of potential references to the element to delete. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em key} & the string to search for \\
+\hline
+\mbox{\texttt{ in}}  & {\em element\+\_\+to\+\_\+exclude} & the element to exclude in the search \\
+\hline
+\mbox{\texttt{ in}}  & {\em attribute\+\_\+to\+\_\+exclude} & the attribute to exclude in the search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The elements and attributes that mention this given key 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classSDFormatParser_a49e81716bf38dd27f040cbd0f82ac41f}{SDFormat\+Parser}}.
+
+\Hypertarget{classSDFormatParserI_a589267553e67bd84d250f2ab53bee436}\label{classSDFormatParserI_a589267553e67bd84d250f2ab53bee436} 
+\index{SDFormatParserI@{SDFormatParserI}!FindMentions@{FindMentions}}
+\index{FindMentions@{FindMentions}!SDFormatParserI@{SDFormatParserI}}
+\doxysubsubsection{\texorpdfstring{FindMentions()}{FindMentions()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} SDFormat\+Parser\+I\+::\+Find\+Mentions (\begin{DoxyParamCaption}\item[{std\+::string}]{key,  }\item[{sdf\+::\+Param\+Ptr}]{attribute\+\_\+to\+\_\+exclude }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Determines the locations of potential references to the element to delete. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em key} & the string to search for \\
+\hline
+\mbox{\texttt{ in}}  & {\em attribute\+\_\+to\+\_\+exclude} & the attribute to exclude in the search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The elements and attributes that mention this given key 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classSDFormatParser_a0fcc73cf597a43c882367f5a6d5d2d08}{SDFormat\+Parser}}.
+
 \Hypertarget{classSDFormatParserI_a9a5b36f28e49f669d0bd8685253be72e}\label{classSDFormatParserI_a9a5b36f28e49f669d0bd8685253be72e} 
 \index{SDFormatParserI@{SDFormatParserI}!GetSDFElement@{GetSDFElement}}
 \index{GetSDFElement@{GetSDFElement}!SDFormatParserI@{SDFormatParserI}}
@@ -58,6 +169,28 @@ the main sdf\+Element associated this this \doxylink{classSDFormatParser}{SDForm
 
 
 Implemented in \mbox{\hyperlink{classSDFormatParser_a05c7ff0e224988a867849ebe85e67bb7}{SDFormat\+Parser}}.
+
+\Hypertarget{classSDFormatParserI_a203d76c76addc968d746bc75b747c399}\label{classSDFormatParserI_a203d76c76addc968d746bc75b747c399} 
+\index{SDFormatParserI@{SDFormatParserI}!GetSDFTreePathToElement@{GetSDFTreePathToElement}}
+\index{GetSDFTreePathToElement@{GetSDFTreePathToElement}!SDFormatParserI@{SDFormatParserI}}
+\doxysubsubsection{\texorpdfstring{GetSDFTreePathToElement()}{GetSDFTreePathToElement()}}
+{\footnotesize\ttfamily virtual std\+::string SDFormat\+Parser\+I\+::\+Get\+SDFTree\+Path\+To\+Element (\begin{DoxyParamCaption}\item[{sdf\+::\+Element\+Ptr}]{element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the tree path to this element. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em element} & element that we want a tree path for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tree path as a string 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classSDFormatParser_a0e8ccb7ccaf1533237bda33ce008c7af}{SDFormat\+Parser}}.
 
 \Hypertarget{classSDFormatParserI_a404feccbe479eadff00da8ca881fbc85}\label{classSDFormatParserI_a404feccbe479eadff00da8ca881fbc85} 
 \index{SDFormatParserI@{SDFormatParserI}!Initialize@{Initialize}}
