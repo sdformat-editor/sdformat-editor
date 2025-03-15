@@ -49,7 +49,9 @@ bool OpenFileCommand::Execute()
 
   if (success)
   {
-    FILE *cache_file = fopen("last_file_opened.txt", "w");
+    std::string directory = getenv("OLDPWD");
+    std::string data_file = directory + std::string("/data/last_file_opened.txt");
+    FILE *cache_file = fopen(data_file.c_str(), "w");
     const char *c = file_path.c_str();
     fwrite(c, sizeof(char), strlen(c), cache_file);
     fclose(cache_file);

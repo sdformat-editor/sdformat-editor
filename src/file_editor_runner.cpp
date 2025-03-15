@@ -30,7 +30,9 @@ FileEditorRunner::FileEditorRunner()
     this->command_factory = std::make_shared<CommandFactory>(this->gui, this->sdformatParser);
 
     // grab the previous file that was opened
-    FILE *cache_file = fopen("last_file_opened.txt", "r");
+    std::string directory = getenv("OLDPWD");
+    std::string data_file = directory + std::string("/data/last_file_opened.txt");
+    FILE *cache_file = fopen(data_file.c_str(), "r");
     char buffer[100];
     size_t bytesRead;
     if (cache_file != NULL)

@@ -104,6 +104,12 @@ void GUI::Initialize(const std::string &window_name, std::shared_ptr<SDFormatPar
   {
     return;
   }
+  // TODO figure out how to load image to create icon
+  // std::string directory = getenv("OLDPWD");
+  // std::string icon_file = directory + std::string("/data/icons/sdf_icon.png");
+  // GLFWimage *icon;
+  // glfwSetWindowIcon(window, 1, icon);
+  
   glfwMakeContextCurrent(window);
   glfwSwapInterval(1); // Enable vsync
 
