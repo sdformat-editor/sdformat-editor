@@ -279,7 +279,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
   else if (ImGui::Button(("Append element##" + std::to_string(unique_id++)).c_str()))
   {
     // Create an AppendElement command
-    std::cout << "Append called for " + sdformat_parser->GetSDFElement()->Root()->ReferenceSDF() + " element called " + sdformat_parser->GetSDFElement()->Root()->GetName();
+    std::cout << "Append called for " + sdformat_parser->GetSDFElement()->Root()->ReferenceSDF() + " element called " + sdformat_parser->GetSDFElement()->Root()->GetName() << std::endl;
   }
 
   while (!sdf_tree_stack.empty())
@@ -326,7 +326,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
       if (ImGui::Button(("Append element##" + std::to_string(unique_id++)).c_str()))
       {
         // Create an AppendElement command
-        std::cout << "Append called for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName();
+        std::cout << "Append called for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName() << std::endl;
       }
 
       // Get the current window size
@@ -348,7 +348,8 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
 
         if (ImGui::Button(("Set new value##" + std::to_string(unique_id++)).c_str()))
         {
-          // Create a SetElementValue command
+          command = command_factory->MakeModifyElementCommand(current_element_ptr, value_buffer);
+          value_buffer[0] = '\0';
           std::cout << "New value for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName()
           << ": " << value_buffer << std::endl;
         }
