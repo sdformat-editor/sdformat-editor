@@ -34,6 +34,7 @@ bool AddElementCommand::Execute()
 {
     if (!new_element)
     {
+        std::cout << "Adding custom elements is not implemented" << std::endl;
         return false;
     }
     else
