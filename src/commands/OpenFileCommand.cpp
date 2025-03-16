@@ -19,6 +19,7 @@
 
 #include "commands/OpenFileCommand.h"
 #include "file_operations.h"
+#include <sys/stat.h>
 
 
 OpenFileCommand::OpenFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, std::string file_path) 
@@ -49,12 +50,18 @@ bool OpenFileCommand::Execute()
 
   if (success)
   {
-    std::string directory = getenv("OLDPWD");
-    std::string data_file = directory + std::string("/data/last_file_opened.txt");
-    FILE *cache_file = fopen(data_file.c_str(), "w");
-    const char *c = file_path.c_str();
-    fwrite(c, sizeof(char), strlen(c), cache_file);
-    fclose(cache_file);
+    std::string data_dir = std::string(getenv("HOME")) + "/.local/share/sdformat_editor/";
+    struct stat info;
+    // Check if data directory exists
+    if (stat(data_dir.c_str(), &info) == 0) {
+      std::string data_file = data_dir + "last_file_opened.txt";
+      FILE *cache_file = fopen(data_file.c_str(), "w");
+      const char *c = file_path.c_str();
+      fwrite(c, sizeof(char), strlen(c), cache_file);
+      fclose(cache_file);
+    } else {
+      std::cerr << "Failed to locate directory!" << std::endl;
+    }
   }
 
   return success;

@@ -20,7 +20,7 @@
 #include "file_editor_runner.h"
 #include <thread>
 
-FileEditorRunner::FileEditorRunner()
+FileEditorRunner::FileEditorRunner(bool data_dir_created)
 {
     // The sdformatParser will be null until the user opens a file
     this->sdformatParser = std::make_shared<SDFormatParser>();
@@ -30,39 +30,40 @@ FileEditorRunner::FileEditorRunner()
     this->command_factory = std::make_shared<CommandFactory>(this->gui, this->sdformatParser);
 
     // grab the previous file that was opened
-    std::string directory = getenv("OLDPWD");
-    std::string data_file = directory + std::string("/data/last_file_opened.txt");
-    FILE *cache_file = fopen(data_file.c_str(), "r");
-    char buffer[100];
-    size_t bytesRead;
-    if (cache_file != NULL)
-    {
-        std::unique_ptr<CommandI> command;
-        while ((bytesRead = fread(buffer, 1, sizeof(buffer) - 1, cache_file)) > 0){
-      
-            // Null-terminate the buffer
-            buffer[bytesRead] = '\0'; 
-            
-            // Print the read data
-            std::string previous_file_path = std::string(buffer);
-            command = this->command_factory->MakeOpenFileCommand(previous_file_path);
-        };
-        fclose(cache_file);
-        if (command != NULL)
+    if (data_dir_created) {
+        std::string data_file = std::string(getenv("HOME")) + "/.local/share/sdformat_editor/last_file_opened.txt";
+        FILE *cache_file = fopen(data_file.c_str(), "r");
+        char buffer[100];
+        size_t bytesRead;
+        if (cache_file != NULL)
         {
-            std::thread command_thread([command = std::move(command), this]() mutable {
+            std::unique_ptr<CommandI> command;
+            while ((bytesRead = fread(buffer, 1, sizeof(buffer) - 1, cache_file)) > 0){
+        
+                // Null-terminate the buffer
+                buffer[bytesRead] = '\0'; 
                 
-                this->gui->SetPreventInputFlag(true);   
+                // Open the sdf file from last execution
+                std::string previous_file_path = std::string(buffer);
+                command = this->command_factory->MakeOpenFileCommand(previous_file_path);
+            };
+            fclose(cache_file);
+            if (command != NULL)
+            {
+                std::thread command_thread([command = std::move(command), this]() mutable {
+                    
+                    this->gui->SetPreventInputFlag(true);   
 
-                command->Execute();
+                    command->Execute();
 
-                // Allow the GUI to take user commands
-                this->gui->SetPreventInputFlag(false); 
-            });
-            // Detach the thread such that it runs in the background
-            command_thread.detach();
-        }
-    };
+                    // Allow the GUI to take user commands
+                    this->gui->SetPreventInputFlag(false); 
+                });
+                // Detach the thread such that it runs in the background
+                command_thread.detach();
+            }
+        };
+    }
 }
 
 int FileEditorRunner::RunProgram()

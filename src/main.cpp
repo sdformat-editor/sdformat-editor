@@ -18,12 +18,34 @@
 */
 
 #include "file_editor_runner.h"
+#include <sys/stat.h>
 
 // Entry point
 int main(int, char **)
 {
+    bool data_dir_created = true;
+    // Get the home directory
+    const char* home_dir = std::getenv("HOME");
+    if (home_dir == nullptr) {
+        std::cerr << "Could not find home directory" << std::endl;
+        data_dir_created = false;
+    }
+
+    // Construct the path to the data directory
+    std::string data_dir = std::string(home_dir) + "/.local/share/sdformat_editor/";
+
+    // Check if the directory exists, if not, create it
+    struct stat info;
+    if (stat(data_dir.c_str(), &info) != 0) {
+        std::cout << "Directory doesn't exist, creating: " << data_dir << std::endl;
+        if (mkdir(data_dir.c_str(), 0775) != 0) {
+            std::cerr << "Failed to create directory!" << std::endl;
+            data_dir_created = false;
+        }
+    }
+
     // Create instance of main program
-    FileEditorRunner program;
+    FileEditorRunner program(data_dir_created);
 
     // Status of termination
     int status;

@@ -29,7 +29,7 @@
 class FileEditorRunner
 {
     /// \brief Constructor that calls the top level method
-    public: FileEditorRunner();
+    public: FileEditorRunner(bool data_dir_created = false);
 
     /// \brief Top level method that starts the program
     /// \return Exit state for main function
