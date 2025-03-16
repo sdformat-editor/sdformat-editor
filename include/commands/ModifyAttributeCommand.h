@@ -28,6 +28,7 @@
 #include <vector>
 
 /// \brief Open model command implementation of CommandI
+template <typename T>
 class ModifyAttributeCommand : public CommandI
 {
 
@@ -35,7 +36,7 @@ class ModifyAttributeCommand : public CommandI
   /// \brief Constructor for open model command objects.
   /// \param[in] gui Pointer to the GUII object 
   /// \param[in] sdformatParser Pointer to the SDFormatParserI object
-  public: ModifyAttributeCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ParamPtr attribute_to_modify, std::string new_value);
+  public: ModifyAttributeCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ParamPtr attribute_to_modify, T new_value);
 
   /// \brief Implementation of interface method. 
   /// \returns Always true. Removes the element to delete from it's parent
@@ -78,10 +79,10 @@ class ModifyAttributeCommand : public CommandI
   private: sdf::ParamPtr attribute_to_modify;
 
   /// @brief new value for string
-  private: std::string new_value;
+  private: T new_value;
 
   /// @brief old value for string
-  private: std::string old_value;
+  private: T old_value;
 
   /// @brief Store if the command is currently undo-able
   private: bool is_currently_undoable = true;

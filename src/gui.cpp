@@ -413,32 +413,46 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
       // Go through each attribute of this element
       for (const auto &attribute_ptr : current_element_ptr->GetAttributes())
       {
-        ImGui::TextUnformatted((attribute_ptr->GetKey() + ": " +  attribute_ptr->GetAsString() + " ("  + attribute_ptr->GetTypeName()+ ")").c_str());
-
-        static char value_buffer[1024] = "";
-        if (attribute_to_edit == attribute_ptr) {
+        
+        bool x;
+        if (attribute_ptr->IsType<bool>() && attribute_ptr->Get(x)) {
+          // Render checkbox
+          bool original_value = x;
+          ImGui::Checkbox(("##" + std::to_string(unique_input_id++)).c_str(), &x);
           ImGui::SameLine();
-          ImGui::PushItemWidth(window_width*0.1f); 
-          ImGui::InputText(("##" + std::to_string(unique_input_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
-          ImGui::PopItemWidth();
-          ImGui::SameLine();
+          ImGui::TextUnformatted((attribute_ptr->GetKey() + ": " +  attribute_ptr->GetAsString() + " ("  + attribute_ptr->GetTypeName()+ ")").c_str());
           
-          if (ImGui::Button(("Save##" + std::to_string(unique_input_id++)).c_str()))
-          {
-            if (!prevent_input_flag) command = command_factory->MakeModifyAttributeCommand(attribute_ptr, value_buffer);
-            value_buffer[0] = '\0';
-            this->attribute_to_edit.reset();            
-            std::cout << "New value for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName()
-            << ": " << value_buffer << std::endl;
+          if (original_value != x) {
+            if (!prevent_input_flag) command = command_factory->MakeModifyAttributeCommand(attribute_ptr, x);
           }
         } else {
-          ImGui::SameLine();
-          if (ImGui::Button(("Modify##" + std::to_string(unique_input_id++)).c_str())) {
-            this->attribute_to_edit = attribute_ptr;
-            this->element_to_edit.reset();
-            strcpy(value_buffer, attribute_ptr->GetAsString().c_str());
+          ImGui::TextUnformatted((attribute_ptr->GetKey() + ": " +  attribute_ptr->GetAsString() + " ("  + attribute_ptr->GetTypeName()+ ")").c_str());
+          static char value_buffer[1024] = "";
+          if (attribute_to_edit == attribute_ptr) {
+            ImGui::SameLine();
+            ImGui::PushItemWidth(window_width*0.1f); 
+            ImGui::InputText(("##" + std::to_string(unique_input_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
+            ImGui::PopItemWidth();
+            ImGui::SameLine();
+            
+            if (ImGui::Button(("Save##" + std::to_string(unique_input_id++)).c_str()))
+            {
+              if (!prevent_input_flag) command = command_factory->MakeModifyAttributeCommand(attribute_ptr, std::string(value_buffer));
+              value_buffer[0] = '\0';
+              this->attribute_to_edit.reset();            
+              std::cout << "New value for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName()
+              << ": " << value_buffer << std::endl;
+            }
+          } else {
+            ImGui::SameLine();
+            if (ImGui::Button(("Modify##" + std::to_string(unique_input_id++)).c_str())) {
+              this->attribute_to_edit = attribute_ptr;
+              this->element_to_edit.reset();
+              strcpy(value_buffer, attribute_ptr->GetAsString().c_str());
+            }
           }
         }
+
       }
 
       if (current_element_ptr->GetFirstElement())

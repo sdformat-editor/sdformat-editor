@@ -1,11 +1,14 @@
 #include "commands/ModifyAttributeCommand.h"
 
-ModifyAttributeCommand::ModifyAttributeCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ParamPtr attribute_to_modify, std::string new_value) : gui(gui), sdformatParser(sdformatParser), attribute_to_modify(attribute_to_modify), new_value(new_value) {}
+template class ModifyAttributeCommand<bool>;
+template class ModifyAttributeCommand<std::string>;
 
-bool ModifyAttributeCommand::Execute()
+template <typename T> ModifyAttributeCommand<T>::ModifyAttributeCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ParamPtr attribute_to_modify, T new_value) : gui(gui), sdformatParser(sdformatParser), attribute_to_modify(attribute_to_modify), new_value(new_value) {}
+
+template <typename T> bool ModifyAttributeCommand<T>::Execute()
 {
-    old_value = attribute_to_modify->GetAsString();
-    if (attribute_to_modify->SetFromString(new_value))
+    if (!attribute_to_modify->Get(old_value)) return false;
+    if (attribute_to_modify->Set(new_value))
     {
         this->is_currently_undoable = true;
         this->is_currently_redoable = false;
@@ -15,9 +18,9 @@ bool ModifyAttributeCommand::Execute()
     return true;
 }
 
-bool ModifyAttributeCommand::ExecuteUndo()
+template <typename T> bool ModifyAttributeCommand<T>::ExecuteUndo()
 {
-    if (attribute_to_modify->SetFromString(old_value))
+    if (attribute_to_modify->Set(old_value))
     {
         this->is_currently_undoable = false;
         this->is_currently_redoable = true;
@@ -27,9 +30,9 @@ bool ModifyAttributeCommand::ExecuteUndo()
     return false;
 }
 
-bool ModifyAttributeCommand::ExecuteRedo()
+template <typename T> bool ModifyAttributeCommand<T>::ExecuteRedo()
 {
-    if (attribute_to_modify->SetFromString(new_value))
+    if (attribute_to_modify->Set(new_value))
     {
         this->is_currently_undoable = true;
         this->is_currently_redoable = false;
@@ -39,23 +42,23 @@ bool ModifyAttributeCommand::ExecuteRedo()
     return false;
 }
 
-bool ModifyAttributeCommand::IsUndoable()
+template <typename T> bool ModifyAttributeCommand<T>::IsUndoable()
 {
     return this->is_currently_undoable;
 }
 
-bool ModifyAttributeCommand::IsRedoable()
+template <typename T> bool ModifyAttributeCommand<T>::IsRedoable()
 {
     return this->is_currently_redoable;
 }
 
-bool ModifyAttributeCommand::IsThreaded()
+template <typename T> bool ModifyAttributeCommand<T>::IsThreaded()
 {
     // Stub implementation
     return false;
 }
 
-bool ModifyAttributeCommand::ChangesProgramStateIrreversibly()
+template <typename T> bool ModifyAttributeCommand<T>::ChangesProgramStateIrreversibly()
 {
     // Stub implementation
     return false;
