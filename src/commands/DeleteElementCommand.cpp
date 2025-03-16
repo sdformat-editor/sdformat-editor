@@ -39,9 +39,11 @@ bool DeleteElementCommand::Execute()
         mentions = this->sdformatParser->FindMentions(name_attribute->GetAsString(), this->element_to_delete);
     }
 
+    bool element_required = this->ElementRequired();
+
     // If this element has mentions anywhere else OR it is a required attributes, 
     // display a choice dialog to the user
-    if (!mentions.attributes.empty() || !mentions.elements.empty() || this->element_to_delete->GetRequired() == "1" || this->element_to_delete->GetRequired() == "+")
+    if (!mentions.attributes.empty() || !mentions.elements.empty() || element_required)
     {
 
         const std::string dialog_message_header = "Warning";
@@ -49,8 +51,6 @@ bool DeleteElementCommand::Execute()
         std::string dialog_message_body;
 
         std::vector<std::pair<std::string, bool>> user_choices;
-
-        bool element_required = this->element_to_delete->GetRequired() == "1" || this->element_to_delete->GetRequired() == "+";
 
         user_choices.push_back({"Proceed", false});
         user_choices.push_back({"Cancel", false});
@@ -115,6 +115,29 @@ bool DeleteElementCommand::Execute()
     this->is_currently_redoable = false;
 
     return true;
+}
+
+bool DeleteElementCommand::ElementRequired()
+{
+    if (!(this->element_to_delete->GetRequired() == "1" || this->element_to_delete->GetRequired() == "+"))
+    {
+        return false;
+    }
+    else
+    {
+        // Go through each child 
+        sdf::ElementPtr child_element_ptr = this->element_to_delete->GetParent()->GetFirstElement();
+        while (child_element_ptr)
+        {
+            if ((child_element_ptr->GetName() == this->element_to_delete->GetName()) && (child_element_ptr.get() != this->element_to_delete.get()))
+            {
+                // Although the element_to_delete is required, there is child of the same type. Thus, element_to_delete is not strictly required
+                return false;
+            }
+            child_element_ptr = child_element_ptr->GetNextElement("");
+        }
+        return true;
+    }
 }
 
 bool DeleteElementCommand::ExecuteUndo()
