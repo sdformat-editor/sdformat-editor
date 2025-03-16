@@ -395,6 +395,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
             {
             if   (!prevent_input_flag) command = command_factory->MakeModifyElementCommand(current_element_ptr, std::string(value_buffer));
               value_buffer[0] = '\0';
+              element_to_edit.reset();
               std::cout << "New value for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName()
               << ": " << value_buffer << std::endl;
             }
