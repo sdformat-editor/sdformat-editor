@@ -49,6 +49,13 @@ class CommandFactory : public CommandFactoryI
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeDeleteElementCommand(sdf::ElementPtr element_to_delete) override;
 
+    /// \brief Create an add element command
+    /// \param[in] parent_element The SDF element to delete
+    /// \param[in] new_element The SDF element to delete
+    /// \return Unique pointer to a command interface
+    private: std::unique_ptr<CommandI> MakeAddElementCommand(
+      sdf::ElementPtr parent_element, sdf::ElementPtr new_element) override;
+
     /// \brief Implementation of interface method
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeSaveFileCommand();
@@ -60,6 +67,15 @@ class CommandFactory : public CommandFactoryI
     /// \brief Implementation of interface method
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeRedoCommand() override;
+
+    /// \brief Implementation of interface method
+    /// \return Unique pointer to a command interface
+    private: std::unique_ptr<CommandI> MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, std::string new_value) override;
+    private: std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, bool new_value) override;
+
+    /// \brief Implementation of interface method
+    /// \return Unique pointer to a command interface
+    private: std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, std::string new_value) override;
 
     /// \brief Clears the undo stack
     private: void ClearStack(std::stack<std::unique_ptr<CommandI>>& stack);

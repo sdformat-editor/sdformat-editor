@@ -71,16 +71,32 @@ class GUI : public GUII
   /// \brief Function to display the SDF root element in the GUI in a tree format 
   /// \param[out] command a pointer to the command resulting from the user's action during this frame
   /// \param[in] sdformat_parser an SDFormatParserI instance containing an sdf element
-  private: void DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_ptr<SDFormatParserI> sdformat_parser, std::shared_ptr<CommandFactoryI> command_factory);
+  private: void DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_ptr<SDFormatParserI> sdformat_parser, 
+    std::shared_ptr<CommandFactoryI> command_factory);
 
   /// \brief Sets up a new ImGUI frame
   /// \returns false if the window is minimized
   private: bool SetupNewFrame();
 
   /// \brief Draw the core part of the ImGUI frame
+  /// \param[out] command a pointer to the command resulting from the user's action during this frame
   /// \param[in] command_factory used for creating command objects
   /// \returns The a pointer to the command resulting from the user's action during this frame
   private: void DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<CommandFactoryI> command_factory);
+
+  /// @brief Create a dropdown list 
+  /// @param[in] element A pointer to the element for which to create a dropdown
+  /// \param[out] command a pointer to the command resulting from the user's action during this frame
+  /// \param[in] command_factory used for creating command objects
+  /// \param[out] unique_id a unique id for the ImGUI dropdowm 
+  private: void CreateAppendElementDropdown(sdf::ElementPtr element, std::unique_ptr<CommandI> &command, 
+    std::shared_ptr<CommandFactoryI> command_factory, int& unique_id);
+
+  /// @brief Create a dropdown list 
+  /// @param[in] items A vector of strings to include in the dropdown
+  /// @param[out] selected_item an integer representing the selected item 
+  /// \param[out] unique_id a unique id for the ImGUI dropdowm 
+  private: void CreateDropdown(const std::vector<std::string>& items, const std::vector<std::string>& item_descriptions, int& selected_item, int& unique_id);
 
   /// \brief Implementation of lock method
   private: std::unique_lock<std::mutex> LockMutex() override;
@@ -99,11 +115,20 @@ class GUI : public GUII
   /// @brief Pointer to the sdformat_parser object
   private: std::shared_ptr<SDFormatParserI> sdformat_parser;
 
+  /// @brief An element for which we want to show the "append_to" dropdown
+  private: sdf::ElementPtr element_to_append_to;
+
   /// @brief The background color used in the GUI
   private: ImVec4 background_colour;
 
   /// @brief Mutex to protect shared resources
   private: std::mutex gui_mutex;
+
+  /// @brief Holds a reference to the attribute the user is currently editing
+  private: sdf::ParamPtr attribute_to_edit;
+
+  /// @brief Holds a reference to the element the user is currently editing
+  private: sdf::ElementPtr element_to_edit;
 
 };
 

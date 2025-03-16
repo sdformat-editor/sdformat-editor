@@ -50,6 +50,13 @@ class CommandFactoryI
   public: virtual std::unique_ptr<CommandI> MakeDeleteElementCommand(
       sdf::ElementPtr element_to_delete) = 0;
 
+  /// \brief Create an add element command
+  /// \param[in] parent_element The SDF element to delete
+  /// \param[in] new_element The SDF element to delete
+  /// \return Unique pointer to a command interface
+  public: virtual std::unique_ptr<CommandI> MakeAddElementCommand(
+    sdf::ElementPtr parent_element, sdf::ElementPtr new_element) = 0;
+
   /// \brief Create a undo command
   /// \return Unique pointer to a command interface
   public: virtual std::unique_ptr<CommandI> MakeUndoCommand() = 0;
@@ -61,6 +68,15 @@ class CommandFactoryI
   /// \brief Create a save file command
   /// \return Unique pointer to a command interface
   public: virtual std::unique_ptr<CommandI> MakeSaveFileCommand() = 0;
+
+  /// \brief create a modify attribute command
+  /// \return a unique pointer to the commmand interface
+  public: virtual std::unique_ptr<CommandI> MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, std::string new_value) = 0;
+  
+  /// \brief create a modify element command
+  /// \return a unique pointer to the commmand interface
+  public: virtual std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, std::string new_value) = 0;
+  public: virtual std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, bool new_value) = 0;
 
   /// \brief Pushes to the undo commands stack
   /// \param[in] command commandI object to push

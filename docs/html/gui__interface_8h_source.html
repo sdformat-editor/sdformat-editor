@@ -122,27 +122,27 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classGUII.html#afb6e5bacfbd456eb08a766d852b28d2f">   52</a></span>    <span class="keyword">public</span>: <span class="keyword">virtual</span> std::unique_ptr&lt;CommandI&gt; <a class="code hl_function" href="classGUII.html#afb6e5bacfbd456eb08a766d852b28d2f">Update</a>(std::shared_ptr&lt;CommandFactoryI&gt; command_factory) = 0;</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classGUII.html#a9ae3de58253702261056dc0981a046ac">   56</a></span>    <span class="keyword">public</span>: <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classGUII.html#a9ae3de58253702261056dc0981a046ac">ShouldClose</a>() = 0;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="foldopen" id="foldopen00058" data-start="{" data-end="};">
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="structGUII_1_1DialogMessage.html">   58</a></span>    <span class="keyword">public</span>: <span class="keyword">struct </span><a class="code hl_struct" href="structGUII_1_1DialogMessage.html">DialogMessage</a></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    {  </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keyword">const</span> std::string header;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keyword">const</span> std::string body;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keyword">const</span> std::string footer;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    };</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    </div>
+<div class="foldopen" id="foldopen00060" data-start="{" data-end="};">
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="structGUII_1_1DialogMessage.html">   60</a></span>    <span class="keyword">public</span>: <span class="keyword">struct </span><a class="code hl_struct" href="structGUII_1_1DialogMessage.html">DialogMessage</a></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    {  </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keyword">const</span> std::string header;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keyword">const</span> std::string body;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">const</span> std::string footer;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    };</div>
 </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classGUII.html#a2308b7ef4b8be7547242a3b15ebad492">   69</a></span>    <span class="keyword">public</span>: <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classGUII.html#a2308b7ef4b8be7547242a3b15ebad492">OpenChoiceDialog</a>(<a class="code hl_struct" href="structGUII_1_1DialogMessage.html">DialogMessage</a> dialogMessage, std::vector&lt;std::pair&lt;std::string, bool&gt;&gt;&amp; choices) = 0;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classGUII.html#a8d2baf2d5e991049a6b79c2ed8fd83cd">   75</a></span>    <span class="keyword">public</span>: <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classGUII.html#a8d2baf2d5e991049a6b79c2ed8fd83cd">SetPreventInputFlag</a>(<span class="keywordtype">bool</span> set) = 0;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classGUII.html#a5a7b0b6b1c50a83a53c3cc1884b0795c">   79</a></span>    <span class="keyword">public</span>: <span class="keyword">virtual</span> std::unique_lock&lt;std::mutex&gt; <a class="code hl_function" href="classGUII.html#a5a7b0b6b1c50a83a53c3cc1884b0795c">LockMutex</a>() = 0;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>};;</div>
-</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classGUII.html#a2308b7ef4b8be7547242a3b15ebad492">   71</a></span>    <span class="keyword">public</span>: <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classGUII.html#a2308b7ef4b8be7547242a3b15ebad492">OpenChoiceDialog</a>(<a class="code hl_struct" href="structGUII_1_1DialogMessage.html">DialogMessage</a> dialogMessage, std::vector&lt;std::pair&lt;std::string, bool&gt;&gt;&amp; choices) = 0;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classGUII.html#a8d2baf2d5e991049a6b79c2ed8fd83cd">   77</a></span>    <span class="keyword">public</span>: <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classGUII.html#a8d2baf2d5e991049a6b79c2ed8fd83cd">SetPreventInputFlag</a>(<span class="keywordtype">bool</span> set) = 0;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classGUII.html#a5a7b0b6b1c50a83a53c3cc1884b0795c">   81</a></span>    <span class="keyword">public</span>: <span class="keyword">virtual</span> std::unique_lock&lt;std::mutex&gt; <a class="code hl_function" href="classGUII.html#a5a7b0b6b1c50a83a53c3cc1884b0795c">LockMutex</a>() = 0;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>};;</div>
+</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassCommandFactoryI_html"><div class="ttname"><a href="classCommandFactoryI.html">CommandFactoryI</a></div><div class="ttdoc">Interface for the SDFormat Editor's Command Factory.</div><div class="ttdef"><b>Definition</b> command_factory_interface.h:36</div></div>
 <div class="ttc" id="aclassGUII_html"><div class="ttname"><a href="classGUII.html">GUII</a></div><div class="ttdoc">Interface for the SDFormat Editor's Graphical User Interface Note that this class also inherits from ...</div><div class="ttdef"><b>Definition</b> gui_interface.h:39</div></div>
 <div class="ttc" id="aclassGUII_html_a2308b7ef4b8be7547242a3b15ebad492"><div class="ttname"><a href="classGUII.html#a2308b7ef4b8be7547242a3b15ebad492">GUII::OpenChoiceDialog</a></div><div class="ttdeci">virtual void OpenChoiceDialog(DialogMessage dialogMessage, std::vector&lt; std::pair&lt; std::string, bool &gt; &gt; &amp;choices)=0</div><div class="ttdoc">Enables a choice dialog message in the GUI that will be override everything else displayed by the GUI...</div></div>
@@ -151,7 +151,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aclassGUII_html_a8d2baf2d5e991049a6b79c2ed8fd83cd"><div class="ttname"><a href="classGUII.html#a8d2baf2d5e991049a6b79c2ed8fd83cd">GUII::SetPreventInputFlag</a></div><div class="ttdeci">virtual void SetPreventInputFlag(bool set)=0</div><div class="ttdoc">Method to change the flag which can be set to prevent the GUI from taking user input....</div></div>
 <div class="ttc" id="aclassGUII_html_a9ae3de58253702261056dc0981a046ac"><div class="ttname"><a href="classGUII.html#a9ae3de58253702261056dc0981a046ac">GUII::ShouldClose</a></div><div class="ttdeci">virtual bool ShouldClose()=0</div><div class="ttdoc">Indicate if the GUI should close</div></div>
 <div class="ttc" id="aclassGUII_html_afb6e5bacfbd456eb08a766d852b28d2f"><div class="ttname"><a href="classGUII.html#afb6e5bacfbd456eb08a766d852b28d2f">GUII::Update</a></div><div class="ttdeci">virtual std::unique_ptr&lt; CommandI &gt; Update(std::shared_ptr&lt; CommandFactoryI &gt; command_factory)=0</div><div class="ttdoc">Updating the GUI.</div></div>
-<div class="ttc" id="astructGUII_1_1DialogMessage_html"><div class="ttname"><a href="structGUII_1_1DialogMessage.html">GUII::DialogMessage</a></div><div class="ttdef"><b>Definition</b> gui_interface.h:59</div></div>
+<div class="ttc" id="astructGUII_1_1DialogMessage_html"><div class="ttname"><a href="structGUII_1_1DialogMessage.html">GUII::DialogMessage</a></div><div class="ttdoc">Struct representing a dialog message. This struct encapsulates the components of a dialog message.</div><div class="ttdef"><b>Definition</b> gui_interface.h:61</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

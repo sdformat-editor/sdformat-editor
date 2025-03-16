@@ -11,8 +11,7 @@ Open model command implementation of \doxylink{classCommandI}{CommandI}.
 
 
 
-Inheritance diagram for Add\+Element\+Command\+:
-\nopagebreak
+Inheritance diagram for Add\+Element\+Command\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Inheritance diagram for Add\+Element\+Command\+:
 \end{figure}
 
 
-Collaboration diagram for Add\+Element\+Command\+:
-\nopagebreak
+Collaboration diagram for Add\+Element\+Command\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -32,7 +30,7 @@ Collaboration diagram for Add\+Element\+Command\+:
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classAddElementCommand_a9d73773722af4d82df6fd042d41ccbb5}{Add\+Element\+Command}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ \mbox{\hyperlink{classAddElementCommand_a5daefdd75e0170a76c348c9b7d979e1b}{gui}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classAddElementCommand_a149431ce2278122cace61255e04cdd0d}{sdformat\+Parser}}, sdf\+::\+Element\+Ptr \mbox{\hyperlink{classAddElementCommand_afe0cf423818c5f9ca83a72c9cdbbd7ab}{parent\+\_\+element}})
+\mbox{\hyperlink{classAddElementCommand_a61d8775c6af3055cf183522b2281bb52}{Add\+Element\+Command}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ \mbox{\hyperlink{classAddElementCommand_a5daefdd75e0170a76c348c9b7d979e1b}{gui}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classAddElementCommand_a149431ce2278122cace61255e04cdd0d}{sdformat\+Parser}}, sdf\+::\+Element\+Ptr \mbox{\hyperlink{classAddElementCommand_afe0cf423818c5f9ca83a72c9cdbbd7ab}{parent\+\_\+element}}, sdf\+::\+Element\+Ptr \mbox{\hyperlink{classAddElementCommand_ad21d720d48430e696f5b72ebba4adad4}{new\+\_\+element}})
 \begin{DoxyCompactList}\small\item\em Constructor for open model command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
@@ -78,11 +76,11 @@ bool {\bfseries is\+\_\+currently\+\_\+redoable} = false
 Open model command implementation of \doxylink{classCommandI}{CommandI}. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classAddElementCommand_a9d73773722af4d82df6fd042d41ccbb5}\label{classAddElementCommand_a9d73773722af4d82df6fd042d41ccbb5} 
+\Hypertarget{classAddElementCommand_a61d8775c6af3055cf183522b2281bb52}\label{classAddElementCommand_a61d8775c6af3055cf183522b2281bb52} 
 \index{AddElementCommand@{AddElementCommand}!AddElementCommand@{AddElementCommand}}
 \index{AddElementCommand@{AddElementCommand}!AddElementCommand@{AddElementCommand}}
 \doxysubsubsection{\texorpdfstring{AddElementCommand()}{AddElementCommand()}}
-{\footnotesize\ttfamily Add\+Element\+Command\+::\+Add\+Element\+Command (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$}]{gui,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+Parser,  }\item[{sdf\+::\+Element\+Ptr}]{parent\+\_\+element }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Add\+Element\+Command\+::\+Add\+Element\+Command (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$}]{gui,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+Parser,  }\item[{sdf\+::\+Element\+Ptr}]{parent\+\_\+element,  }\item[{sdf\+::\+Element\+Ptr}]{new\+\_\+element }\end{DoxyParamCaption})}
 
 
 
@@ -95,6 +93,8 @@ Constructor for open model command objects.
 \mbox{\texttt{ in}}  & {\em sdformat\+Parser} & Pointer to the \doxylink{classSDFormatParserI}{SDFormat\+ParserI} object \\
 \hline
 \mbox{\texttt{ in}}  & {\em parent\+\_\+element} & Pointer to the parent of the element that may be added \\
+\hline
+\mbox{\texttt{ in}}  & {\em new\+\_\+element} & Pointer to the element that is to be added \\
 \hline
 \end{DoxyParams}
 

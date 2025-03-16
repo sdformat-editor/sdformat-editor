@@ -1,0 +1,231 @@
+\doxysection{Modify\+Attribute\+Command Class Reference}
+\hypertarget{classModifyAttributeCommand}{}\label{classModifyAttributeCommand}\index{ModifyAttributeCommand@{ModifyAttributeCommand}}
+
+
+Open model command implementation of \doxylink{classCommandI}{CommandI}.  
+
+
+
+
+{\ttfamily \#include $<$Modify\+Attribute\+Command.\+h$>$}
+
+
+
+Inheritance diagram for Modify\+Attribute\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classModifyAttributeCommand__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Modify\+Attribute\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classModifyAttributeCommand__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classModifyAttributeCommand_adf3c6d19cf58523518fea3bb026fa307}{Modify\+Attribute\+Command}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ \mbox{\hyperlink{classModifyAttributeCommand_a0dbc1a31dd4d9920bfdd4d6530384148}{gui}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classModifyAttributeCommand_a8108234866ab26359a0821ef6e51042b}{sdformat\+Parser}}, sdf\+::\+Param\+Ptr \mbox{\hyperlink{classModifyAttributeCommand_ad0be831ea91b48dde9c689b732e6431f}{attribute\+\_\+to\+\_\+modify}}, std\+::string \mbox{\hyperlink{classModifyAttributeCommand_a693aab93368c7b381d06cff000547837}{new\+\_\+value}})
+\begin{DoxyCompactList}\small\item\em Constructor for open model command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classModifyAttributeCommand_a6ecdfff9ab76e6aabf2dca53189a607d}{Execute}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classModifyAttributeCommand_a63a687b8b53a0be0dcde670defca894f}{Execute\+Undo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classModifyAttributeCommand_a5edc3b6b78a6968da86f363bf3bf147d}{Execute\+Redo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classModifyAttributeCommand_ac82f75afba3bc14a4dbf13ce022699c6}{Is\+Undoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classModifyAttributeCommand_a06aa24b4a68404232a26ce53ab2dafa4}{Is\+Redoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classModifyAttributeCommand_aeacd54768b255f76fb95d57ec69a76d4}{Is\+Threaded}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classModifyAttributeCommand_a90f47c2b7af9cb1280e07cc453259365}{Changes\+Program\+State\+Irreversibly}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classModifyAttributeCommand_af751c642e9dd6069fc62eefc2db8e515}\label{classModifyAttributeCommand_af751c642e9dd6069fc62eefc2db8e515} 
+std\+::string {\bfseries file\+\_\+path}
+\begin{DoxyCompactList}\small\item\em Filepath of the model. \end{DoxyCompactList}\item 
+\Hypertarget{classModifyAttributeCommand_a0dbc1a31dd4d9920bfdd4d6530384148}\label{classModifyAttributeCommand_a0dbc1a31dd4d9920bfdd4d6530384148} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ {\bfseries gui}
+\begin{DoxyCompactList}\small\item\em Pointer to the gui interface. \end{DoxyCompactList}\item 
+\Hypertarget{classModifyAttributeCommand_a8108234866ab26359a0821ef6e51042b}\label{classModifyAttributeCommand_a8108234866ab26359a0821ef6e51042b} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ {\bfseries sdformat\+Parser}
+\begin{DoxyCompactList}\small\item\em Pointer to the sdformat parser interface. \end{DoxyCompactList}\item 
+\Hypertarget{classModifyAttributeCommand_ad0be831ea91b48dde9c689b732e6431f}\label{classModifyAttributeCommand_ad0be831ea91b48dde9c689b732e6431f} 
+sdf\+::\+Param\+Ptr {\bfseries attribute\+\_\+to\+\_\+modify}
+\begin{DoxyCompactList}\small\item\em Pointer to the attribute to modify. \end{DoxyCompactList}\item 
+\Hypertarget{classModifyAttributeCommand_a693aab93368c7b381d06cff000547837}\label{classModifyAttributeCommand_a693aab93368c7b381d06cff000547837} 
+std\+::string {\bfseries new\+\_\+value}
+\begin{DoxyCompactList}\small\item\em new value for string \end{DoxyCompactList}\item 
+\Hypertarget{classModifyAttributeCommand_a83479b0e105f3d6a4902b58a3f6a9cb5}\label{classModifyAttributeCommand_a83479b0e105f3d6a4902b58a3f6a9cb5} 
+std\+::string {\bfseries old\+\_\+value}
+\begin{DoxyCompactList}\small\item\em old value for string \end{DoxyCompactList}\item 
+\Hypertarget{classModifyAttributeCommand_a0fa0399853f03198591487cafdeb96df}\label{classModifyAttributeCommand_a0fa0399853f03198591487cafdeb96df} 
+bool {\bfseries is\+\_\+currently\+\_\+undoable} = true
+\begin{DoxyCompactList}\small\item\em Store if the command is currently undo-\/able. \end{DoxyCompactList}\item 
+\Hypertarget{classModifyAttributeCommand_a832b103c22a58b237918b1e0c13eb8b2}\label{classModifyAttributeCommand_a832b103c22a58b237918b1e0c13eb8b2} 
+bool {\bfseries is\+\_\+currently\+\_\+redoable} = true
+\begin{DoxyCompactList}\small\item\em Store if the command is currently redo-\/able. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Open model command implementation of \doxylink{classCommandI}{CommandI}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classModifyAttributeCommand_adf3c6d19cf58523518fea3bb026fa307}\label{classModifyAttributeCommand_adf3c6d19cf58523518fea3bb026fa307} 
+\index{ModifyAttributeCommand@{ModifyAttributeCommand}!ModifyAttributeCommand@{ModifyAttributeCommand}}
+\index{ModifyAttributeCommand@{ModifyAttributeCommand}!ModifyAttributeCommand@{ModifyAttributeCommand}}
+\doxysubsubsection{\texorpdfstring{ModifyAttributeCommand()}{ModifyAttributeCommand()}}
+{\footnotesize\ttfamily Modify\+Attribute\+Command\+::\+Modify\+Attribute\+Command (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$}]{gui,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+Parser,  }\item[{sdf\+::\+Param\+Ptr}]{attribute\+\_\+to\+\_\+modify,  }\item[{std\+::string}]{new\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Constructor for open model command objects. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em gui} & Pointer to the \doxylink{classGUII}{GUII} object \\
+\hline
+\mbox{\texttt{ in}}  & {\em sdformat\+Parser} & Pointer to the \doxylink{classSDFormatParserI}{SDFormat\+ParserI} object \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classModifyAttributeCommand_a90f47c2b7af9cb1280e07cc453259365}\label{classModifyAttributeCommand_a90f47c2b7af9cb1280e07cc453259365} 
+\index{ModifyAttributeCommand@{ModifyAttributeCommand}!ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}}
+\index{ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}!ModifyAttributeCommand@{ModifyAttributeCommand}}
+\doxysubsubsection{\texorpdfstring{ChangesProgramStateIrreversibly()}{ChangesProgramStateIrreversibly()}}
+{\footnotesize\ttfamily bool Modify\+Attribute\+Command\+::\+Changes\+Program\+State\+Irreversibly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}{CommandI}}.
+
+\Hypertarget{classModifyAttributeCommand_a6ecdfff9ab76e6aabf2dca53189a607d}\label{classModifyAttributeCommand_a6ecdfff9ab76e6aabf2dca53189a607d} 
+\index{ModifyAttributeCommand@{ModifyAttributeCommand}!Execute@{Execute}}
+\index{Execute@{Execute}!ModifyAttributeCommand@{ModifyAttributeCommand}}
+\doxysubsubsection{\texorpdfstring{Execute()}{Execute()}}
+{\footnotesize\ttfamily bool Modify\+Attribute\+Command\+::\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always true. Removes the element to delete from it\textquotesingle{}s parent 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_ad0107a73ebccd619860597db7bad2cce}{CommandI}}.
+
+\Hypertarget{classModifyAttributeCommand_a5edc3b6b78a6968da86f363bf3bf147d}\label{classModifyAttributeCommand_a5edc3b6b78a6968da86f363bf3bf147d} 
+\index{ModifyAttributeCommand@{ModifyAttributeCommand}!ExecuteRedo@{ExecuteRedo}}
+\index{ExecuteRedo@{ExecuteRedo}!ModifyAttributeCommand@{ModifyAttributeCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteRedo()}{ExecuteRedo()}}
+{\footnotesize\ttfamily bool Modify\+Attribute\+Command\+::\+Execute\+Redo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the element to delete was removed from its parent again 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a10b7094ad088998d95045e7db350eb0a}{CommandI}}.
+
+\Hypertarget{classModifyAttributeCommand_a63a687b8b53a0be0dcde670defca894f}\label{classModifyAttributeCommand_a63a687b8b53a0be0dcde670defca894f} 
+\index{ModifyAttributeCommand@{ModifyAttributeCommand}!ExecuteUndo@{ExecuteUndo}}
+\index{ExecuteUndo@{ExecuteUndo}!ModifyAttributeCommand@{ModifyAttributeCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteUndo()}{ExecuteUndo()}}
+{\footnotesize\ttfamily bool Modify\+Attribute\+Command\+::\+Execute\+Undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the element to delete was already deleted and now restored to its parent 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a38d5a489ac6de24f3b40035083c5ed9a}{CommandI}}.
+
+\Hypertarget{classModifyAttributeCommand_a06aa24b4a68404232a26ce53ab2dafa4}\label{classModifyAttributeCommand_a06aa24b4a68404232a26ce53ab2dafa4} 
+\index{ModifyAttributeCommand@{ModifyAttributeCommand}!IsRedoable@{IsRedoable}}
+\index{IsRedoable@{IsRedoable}!ModifyAttributeCommand@{ModifyAttributeCommand}}
+\doxysubsubsection{\texorpdfstring{IsRedoable()}{IsRedoable()}}
+{\footnotesize\ttfamily bool Modify\+Attribute\+Command\+::\+Is\+Redoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the command has been undone 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
+
+\Hypertarget{classModifyAttributeCommand_aeacd54768b255f76fb95d57ec69a76d4}\label{classModifyAttributeCommand_aeacd54768b255f76fb95d57ec69a76d4} 
+\index{ModifyAttributeCommand@{ModifyAttributeCommand}!IsThreaded@{IsThreaded}}
+\index{IsThreaded@{IsThreaded}!ModifyAttributeCommand@{ModifyAttributeCommand}}
+\doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
+{\footnotesize\ttfamily bool Modify\+Attribute\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}{CommandI}}.
+
+\Hypertarget{classModifyAttributeCommand_ac82f75afba3bc14a4dbf13ce022699c6}\label{classModifyAttributeCommand_ac82f75afba3bc14a4dbf13ce022699c6} 
+\index{ModifyAttributeCommand@{ModifyAttributeCommand}!IsUndoable@{IsUndoable}}
+\index{IsUndoable@{IsUndoable}!ModifyAttributeCommand@{ModifyAttributeCommand}}
+\doxysubsubsection{\texorpdfstring{IsUndoable()}{IsUndoable()}}
+{\footnotesize\ttfamily bool Modify\+Attribute\+Command\+::\+Is\+Undoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the command as been executed or redone 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a4722f602fdfa6387aa0fced8dfa0e9fd}{CommandI}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/commands/Modify\+Attribute\+Command.\+h\item 
+src/commands/Modify\+Attribute\+Command.\+cpp\end{DoxyCompactItemize}

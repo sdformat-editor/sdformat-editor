@@ -2,6 +2,9 @@
 #include "commands/DeleteElementCommand.h"
 #include "commands/GenericCommand.h"
 #include "commands/OpenFileCommand.h"
+#include "commands/ModifyAttributeCommand.h"
+#include "commands/ModifyElementCommand.h"
+#include "commands/AddElementCommand.h"
 
 CommandFactory::CommandFactory(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser)
 {
@@ -32,6 +35,23 @@ std::unique_ptr<CommandI> CommandFactory::MakeRedoCommand()
 std::unique_ptr<CommandI> CommandFactory::MakeDeleteElementCommand(sdf::ElementPtr element_to_delete)
 {
     return std::make_unique<DeleteElementCommand>(this->gui, this->sdformatParser, element_to_delete);
+}
+
+std::unique_ptr<CommandI> CommandFactory::MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, std::string new_value) {
+    return std::make_unique<ModifyAttributeCommand>(this->gui, this->sdformatParser, attribute_to_modify, new_value);
+}
+
+std::unique_ptr<CommandI> CommandFactory::MakeModifyElementCommand(sdf::ElementPtr element_to_modify, std::string new_value) {
+    return std::make_unique<ModifyElementCommand<std::string>>(this->gui, this->sdformatParser, element_to_modify, new_value);
+}
+
+std::unique_ptr<CommandI> CommandFactory::MakeModifyElementCommand(sdf::ElementPtr element_to_modify, bool new_value) {
+    return std::make_unique<ModifyElementCommand<bool>>(this->gui, this->sdformatParser, element_to_modify, new_value);
+}
+
+std::unique_ptr<CommandI> CommandFactory::MakeAddElementCommand(sdf::ElementPtr parent_element, sdf::ElementPtr new_element)
+{
+    return std::make_unique<AddElementCommand>(this->gui, this->sdformatParser, parent_element, new_element);
 }
 
 void CommandFactory::PushToUndoCommandsStack(std::unique_ptr<CommandI> command, const bool new_change)

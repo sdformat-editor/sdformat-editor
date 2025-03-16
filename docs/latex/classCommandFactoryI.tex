@@ -26,7 +26,7 @@ Collaboration diagram for Command\+FactoryI\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=330pt]{classCommandFactoryI__coll__graph}
+\includegraphics[height=550pt]{classCommandFactoryI__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -36,12 +36,18 @@ virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$
 \begin{DoxyCompactList}\small\item\em Create an open file command. \end{DoxyCompactList}\item 
 virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_ac9688f96d9551acf9aa141a1a5873186}{Make\+Delete\+Element\+Command}} (sdf\+::\+Element\+Ptr element\+\_\+to\+\_\+delete)=0
 \begin{DoxyCompactList}\small\item\em Create a delete element command. \end{DoxyCompactList}\item 
+virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_a4e764eb31669356953e48ee262a55664}{Make\+Add\+Element\+Command}} (sdf\+::\+Element\+Ptr parent\+\_\+element, sdf\+::\+Element\+Ptr new\+\_\+element)=0
+\begin{DoxyCompactList}\small\item\em Create an add element command. \end{DoxyCompactList}\item 
 virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_a3540850eb4c889aaabbd288d0f2ee40d}{Make\+Undo\+Command}} ()=0
 \begin{DoxyCompactList}\small\item\em Create a undo command. \end{DoxyCompactList}\item 
 virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_a8fca05c4893b73f13f25a419ad0023fe}{Make\+Redo\+Command}} ()=0
 \begin{DoxyCompactList}\small\item\em Create a redo command. \end{DoxyCompactList}\item 
 virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_a7471998dae22305a28ccf44f38b8975d}{Make\+Save\+File\+Command}} ()=0
 \begin{DoxyCompactList}\small\item\em Create a save file command. \end{DoxyCompactList}\item 
+virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_ada9f96393de008687bcad0b8ce05dd17}{Make\+Modify\+Attribute\+Command}} (sdf\+::\+Param\+Ptr attribute\+\_\+to\+\_\+modify, std\+::string new\+\_\+value)=0
+\begin{DoxyCompactList}\small\item\em create a modify attribute command \end{DoxyCompactList}\item 
+virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_a74b52abcab9f75f6350f52ae189a5353}{Make\+Modify\+Element\+Command}} (sdf\+::\+Element\+Ptr element\+\_\+to\+\_\+modify, std\+::string new\+\_\+value)=0
+\begin{DoxyCompactList}\small\item\em create a modify element command \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classCommandFactoryI_a02b9823f6bf6072d5cc88dc7638e228d}{Push\+To\+Undo\+Commands\+Stack}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ command, const bool new\+\_\+change=true)=0
 \begin{DoxyCompactList}\small\item\em Pushes to the undo commands stack. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classCommandFactoryI_ae0165834d2d83c1593bef86c0d91311f}{Push\+To\+Redo\+Commands\+Stack}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ command)=0
@@ -94,6 +100,30 @@ Initialization of the Command Factory. Should be wrapped in the constructor of t
 
 Implemented in \mbox{\hyperlink{classCommandFactory_aacc5fd8c5575d203451203c1209f2948}{Command\+Factory}}.
 
+\Hypertarget{classCommandFactoryI_a4e764eb31669356953e48ee262a55664}\label{classCommandFactoryI_a4e764eb31669356953e48ee262a55664} 
+\index{CommandFactoryI@{CommandFactoryI}!MakeAddElementCommand@{MakeAddElementCommand}}
+\index{MakeAddElementCommand@{MakeAddElementCommand}!CommandFactoryI@{CommandFactoryI}}
+\doxysubsubsection{\texorpdfstring{MakeAddElementCommand()}{MakeAddElementCommand()}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+I\+::\+Make\+Add\+Element\+Command (\begin{DoxyParamCaption}\item[{sdf\+::\+Element\+Ptr}]{parent\+\_\+element,  }\item[{sdf\+::\+Element\+Ptr}]{new\+\_\+element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create an add element command. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em parent\+\_\+element} & The SDF element to delete \\
+\hline
+\mbox{\texttt{ in}}  & {\em new\+\_\+element} & The SDF element to delete \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Unique pointer to a command interface 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCommandFactory_ac85c323b84dca7565057f9d007286d36}{Command\+Factory}}.
+
 \Hypertarget{classCommandFactoryI_ac9688f96d9551acf9aa141a1a5873186}\label{classCommandFactoryI_ac9688f96d9551acf9aa141a1a5873186} 
 \index{CommandFactoryI@{CommandFactoryI}!MakeDeleteElementCommand@{MakeDeleteElementCommand}}
 \index{MakeDeleteElementCommand@{MakeDeleteElementCommand}!CommandFactoryI@{CommandFactoryI}}
@@ -115,6 +145,40 @@ Unique pointer to a command interface
 
 
 Implemented in \mbox{\hyperlink{classCommandFactory_a1508f65be6f325e2d6d3ef333c6b1816}{Command\+Factory}}.
+
+\Hypertarget{classCommandFactoryI_ada9f96393de008687bcad0b8ce05dd17}\label{classCommandFactoryI_ada9f96393de008687bcad0b8ce05dd17} 
+\index{CommandFactoryI@{CommandFactoryI}!MakeModifyAttributeCommand@{MakeModifyAttributeCommand}}
+\index{MakeModifyAttributeCommand@{MakeModifyAttributeCommand}!CommandFactoryI@{CommandFactoryI}}
+\doxysubsubsection{\texorpdfstring{MakeModifyAttributeCommand()}{MakeModifyAttributeCommand()}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+I\+::\+Make\+Modify\+Attribute\+Command (\begin{DoxyParamCaption}\item[{sdf\+::\+Param\+Ptr}]{attribute\+\_\+to\+\_\+modify,  }\item[{std\+::string}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+create a modify attribute command 
+
+\begin{DoxyReturn}{Returns}
+a unique pointer to the commmand interface 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCommandFactory_ac9008bbd79e920391da4b542128c32e1}{Command\+Factory}}.
+
+\Hypertarget{classCommandFactoryI_a74b52abcab9f75f6350f52ae189a5353}\label{classCommandFactoryI_a74b52abcab9f75f6350f52ae189a5353} 
+\index{CommandFactoryI@{CommandFactoryI}!MakeModifyElementCommand@{MakeModifyElementCommand}}
+\index{MakeModifyElementCommand@{MakeModifyElementCommand}!CommandFactoryI@{CommandFactoryI}}
+\doxysubsubsection{\texorpdfstring{MakeModifyElementCommand()}{MakeModifyElementCommand()}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+I\+::\+Make\+Modify\+Element\+Command (\begin{DoxyParamCaption}\item[{sdf\+::\+Element\+Ptr}]{element\+\_\+to\+\_\+modify,  }\item[{std\+::string}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+create a modify element command 
+
+\begin{DoxyReturn}{Returns}
+a unique pointer to the commmand interface 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCommandFactory_a21e97bad47e283c966451340d4e2b570}{Command\+Factory}}.
 
 \Hypertarget{classCommandFactoryI_adebc954d2a1401735e055ec827eb1b35}\label{classCommandFactoryI_adebc954d2a1401735e055ec827eb1b35} 
 \index{CommandFactoryI@{CommandFactoryI}!MakeOpenFileCommand@{MakeOpenFileCommand}}
