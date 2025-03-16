@@ -452,6 +452,11 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
               strcpy(value_buffer, attribute_ptr->GetAsString().c_str());
             }
           }
+          ImGui::SameLine();
+          if (ImGui::Button(("Delete##" + std::to_string(unique_input_id++)).c_str())) {
+            command = command_factory->MakeDeleteAttributeCommand(attribute_ptr);
+            attribute_to_edit.reset();
+          }
         }
 
       }

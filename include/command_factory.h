@@ -77,6 +77,10 @@ class CommandFactory : public CommandFactoryI
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, std::string new_value) override;
     private: std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, bool new_value) override;
+
+    /// \brief Implementation of interface method
+    /// \return Unique pointer to a command interface
+    private: std::unique_ptr<CommandI> MakeDeleteAttributeCommand(sdf::ParamPtr attribute_to_delete) override;
     
     /// \brief Clears the undo stack
     private: void ClearStack(std::stack<std::unique_ptr<CommandI>>& stack);
