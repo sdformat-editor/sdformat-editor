@@ -108,6 +108,9 @@ class GUI : public GUII
   /// @brief Holds a reference to the attribute the user is currently editing
   private: sdf::ParamPtr attribute_to_edit = nullptr;
 
+  /// @brief Holds a reference to the element the user is currently editing
+  private: sdf::ElementPtr element_to_edit = nullptr;
+
 };
 
 #endif
