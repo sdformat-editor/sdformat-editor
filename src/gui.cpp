@@ -506,8 +506,8 @@ void GUI::CreateAppendElementDropdown(sdf::ElementPtr element, std::unique_ptr<C
 void GUI::CreateDropdown(const std::vector<std::string>& items, const std::vector<std::string>& item_descriptions, int& selected_item, int& unique_id)
 {
 
-  static const char* item_current = items[0].c_str();            // Here our selection is a single pointer stored outside the object.
-  if (ImGui::BeginCombo(("##"+std::to_string(unique_id++)).c_str(), item_current)) // The second parameter is the label previewed before opening the combo.
+  static std::string item_current = items[0];            // Here our selection is a single pointer stored outside the object.
+  if (ImGui::BeginCombo(("##"+std::to_string(unique_id++)).c_str(), item_current.c_str())) // The second parameter is the label previewed before opening the combo.
   {
       for (size_t n = 0; n < items.size(); n++)
       {
@@ -533,6 +533,7 @@ void GUI::CreateDropdown(const std::vector<std::string>& items, const std::vecto
             ImGui::TextWrapped("%s", item_descriptions[n].c_str());
             ImGui::PopTextWrapPos();
             ImGui::EndTooltip();
+            item_current = items[n];
         }
       }
 
