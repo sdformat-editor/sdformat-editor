@@ -349,7 +349,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
 
           if (ImGui::Button(("Save##" + std::to_string(unique_id++)).c_str()))
           {
-            command = command_factory->MakeModifyElementCommand(current_element_ptr, value_buffer);
+          if   (!prevent_input_flag) command = command_factory->MakeModifyElementCommand(current_element_ptr, value_buffer);
             value_buffer[0] = '\0';
             std::cout << "New value for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName()
             << ": " << value_buffer << std::endl;
@@ -379,7 +379,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
           
           if (ImGui::Button(("Save##" + std::to_string(unique_id++)).c_str()))
           {
-            command = command_factory->MakeModifyAttributeCommand(attribute_ptr, value_buffer);
+            if (!prevent_input_flag) command = command_factory->MakeModifyAttributeCommand(attribute_ptr, value_buffer);
             value_buffer[0] = '\0';
             this->attribute_to_edit = nullptr;            
             std::cout << "New value for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName()

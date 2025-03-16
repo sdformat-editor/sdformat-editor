@@ -5,20 +5,38 @@ ModifyAttributeCommand::ModifyAttributeCommand(std::shared_ptr<GUII> gui, std::s
 bool ModifyAttributeCommand::Execute()
 {
     old_value = attribute_to_modify->GetAsString();
-    attribute_to_modify->SetFromString(new_value);
+    if (attribute_to_modify->SetFromString(new_value))
+    {
+        this->is_currently_undoable = true;
+        this->is_currently_redoable = false;
+
+        return true;
+    }
     return true;
 }
 
 bool ModifyAttributeCommand::ExecuteUndo()
 {
-    attribute_to_modify->SetFromString(old_value);
-    return true;
+    if (attribute_to_modify->SetFromString(old_value))
+    {
+        this->is_currently_undoable = false;
+        this->is_currently_redoable = true;
+
+        return true;
+    }
+    return false;
 }
 
 bool ModifyAttributeCommand::ExecuteRedo()
 {
-    attribute_to_modify->SetFromString(new_value);
-    return true;
+    if (attribute_to_modify->SetFromString(new_value))
+    {
+        this->is_currently_undoable = true;
+        this->is_currently_redoable = false;
+    
+        return true;
+    }
+    return false;
 }
 
 bool ModifyAttributeCommand::IsUndoable()

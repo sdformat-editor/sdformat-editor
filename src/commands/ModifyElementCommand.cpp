@@ -5,20 +5,39 @@ ModifyElementCommand::ModifyElementCommand(std::shared_ptr<GUII> gui, std::share
 bool ModifyElementCommand::Execute()
 {
     old_value = element_to_modify->GetValue()->GetAsString();
-    element_to_modify->Set(new_value);
-    return true;
+    if (element_to_modify->Set(new_value))
+    {
+        this->is_currently_undoable = true;
+        this->is_currently_redoable = false;
+
+        return true;
+    }
+    
+    return false;
 }
 
 bool ModifyElementCommand::ExecuteUndo()
 {
-    element_to_modify->Set(old_value);
-    return true;
+    if (element_to_modify->Set(old_value))
+    {
+        this->is_currently_undoable = false;
+        this->is_currently_redoable = true;
+        
+        return true;
+    } 
+    return false;
 }
 
 bool ModifyElementCommand::ExecuteRedo()
 {
-    element_to_modify->Set(new_value);
-    return true;
+    if (element_to_modify->Set(new_value))
+    {
+        this->is_currently_undoable = true;
+        this->is_currently_redoable = false;
+    
+        return true;
+    }
+    return false;
 }
 
 bool ModifyElementCommand::IsUndoable()
