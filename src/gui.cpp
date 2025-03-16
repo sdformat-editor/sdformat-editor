@@ -271,15 +271,28 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
   // every button will be given a unique id.
   int unique_id = 0;
 
-  if (sdformat_parser->GetSDFElement()->Root()->GetFirstElement())
+  sdf::ElementPtr root_element = sdformat_parser->GetSDFElement()->Root();
+
+  if (root_element->GetFirstElement())
   {
     // Append the root model element to the stack
-    sdf_tree_stack.emplace(sdformat_parser->GetSDFElement()->Root()->GetFirstElement(), false);
+    sdf_tree_stack.emplace(root_element->GetFirstElement(), false);
   }
-  else if (ImGui::Button(("Append element##" + std::to_string(unique_id++)).c_str()))
+  else if (ImGui::Button((std::string((this->element_to_append_to.get() == root_element.get()) ? "Cancel##" : "Append Element##") + std::to_string(unique_id++)).c_str()))
   {
-    // Create an AppendElement command
-    std::cout << "Append called for " + sdformat_parser->GetSDFElement()->Root()->ReferenceSDF() + " element called " + sdformat_parser->GetSDFElement()->Root()->GetName();
+    if (this->element_to_append_to.get() == root_element.get())
+    {
+      this->element_to_append_to.reset();
+    }
+    else
+    {
+      this->element_to_append_to = root_element;
+    }
+  }
+
+  if (this->element_to_append_to.get() == root_element.get())
+  {
+    this->CreateAppendElementDropdown(this->element_to_append_to, command, command_factory, unique_id);
   }
 
   while (!sdf_tree_stack.empty())
@@ -311,7 +324,6 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
     // Create a unique identifier for the tree node
     if (ImGui::TreeNode(node_name.c_str()))
     {
-
       // If we are here, it means that we are exploring a new node
       // Mark the current node as visited
       sdf_tree_stack.top().second = true;
@@ -323,10 +335,21 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
         if (!prevent_input_flag) command = command_factory->MakeDeleteElementCommand(current_element_ptr);
       }
       ImGui::SameLine();
-      if (ImGui::Button(("Append element##" + std::to_string(unique_id++)).c_str()))
+      if (ImGui::Button((std::string((this->element_to_append_to.get() == current_element_ptr.get()) ? "Cancel##" : "Append Element##") + std::to_string(unique_id++)).c_str()))
       {
-        // Create an AppendElement command
-        std::cout << "Append called for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName();
+        if (this->element_to_append_to.get() == current_element_ptr.get())
+        {
+          this->element_to_append_to.reset();
+        }
+        else
+        {
+          this->element_to_append_to = current_element_ptr;
+        }
+      }
+
+      if (this->element_to_append_to.get() == current_element_ptr.get())
+      {
+        this->CreateAppendElementDropdown(this->element_to_append_to, command, command_factory, unique_id);
       }
 
       // Get the current window size
@@ -368,6 +391,8 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
 
         if (ImGui::Button(("Set new value##" + std::to_string(unique_id++)).c_str()))
         {
+          this->element_to_append_to.reset();
+
           // Create a SetAttributeValue
           std::cout << "New value for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName()
           << ": " << value_buffer << std::endl;
@@ -400,6 +425,82 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
       sdf_tree_stack.pop();
       continue;
     }
+  }
+}
+
+void GUI::CreateAppendElementDropdown(sdf::ElementPtr element, std::unique_ptr<CommandI> &command, std::shared_ptr<CommandFactoryI> command_factory, int& unique_id)
+{
+    std::vector<std::string> element_names;
+    std::vector<std::string> element_descriptions;
+  
+    element_names.push_back("##");
+    element_descriptions.push_back("");
+  
+    for (size_t i = 0; i < element->GetElementDescriptionCount(); i++)
+    {
+      element_names.push_back(element->GetElementDescription(i)->GetName());
+      element_descriptions.push_back(element->GetElementDescription(i)->GetDescription());
+    }
+  
+    // Add an option to create a custom element
+    element_names.push_back("I want to create a custom element");
+    element_descriptions.push_back("Open a dialog to create a custom element");
+  
+    int selected_element = 0;
+    this->CreateDropdown(element_names, element_descriptions, selected_element, unique_id);
+  
+    // Use a static cast
+    if (static_cast<size_t>(selected_element) > element->GetElementDescriptionCount())
+    {
+      // Make an add element command where the new_element parameter is null, indicating this is an entirely new element 
+      if (!prevent_input_flag) {
+        command = command_factory->MakeAddElementCommand(element, nullptr);
+        this->element_to_append_to.reset();
+      }
+    }
+    else if (selected_element > 0)
+    {
+      if (!prevent_input_flag) {
+        command = command_factory->MakeAddElementCommand(element, element->GetElementDescription(selected_element-1));
+        this->element_to_append_to.reset();
+      }
+    }
+}
+
+void GUI::CreateDropdown(const std::vector<std::string>& items, const std::vector<std::string>& item_descriptions, int& selected_item, int& unique_id)
+{
+
+  static const char* item_current = items[0].c_str();            // Here our selection is a single pointer stored outside the object.
+  if (ImGui::BeginCombo(("##"+std::to_string(unique_id++)).c_str(), item_current)) // The second parameter is the label previewed before opening the combo.
+  {
+      for (size_t n = 0; n < items.size(); n++)
+      {
+        bool is_selected = (item_current == items[n]);
+        if (ImGui::Selectable(items[n].c_str(), is_selected))
+        {
+            selected_item = static_cast<int>(n);
+            ImGui::EndCombo();
+            return;
+        }
+        if (is_selected)
+        {
+            ImGui::SetItemDefaultFocus();   // Set the initial focus when opening the combo (scrolling + for keyboard navigation support in the upcoming navigation branch)
+        }
+          
+        // Check if the current item is hovered
+        if (ImGui::IsItemHovered())
+        {
+            ImGui::BeginTooltip();
+            int window_width, _;
+            glfwGetWindowSize(this->window, &window_width, &_);
+            ImGui::PushTextWrapPos(window_width * 0.3f); // Limit the width of the tooltip to 30% of the window width
+            ImGui::TextWrapped("%s", item_descriptions[n].c_str());
+            ImGui::PopTextWrapPos();
+            ImGui::EndTooltip();
+        }
+      }
+
+      ImGui::EndCombo();
   }
 }
 

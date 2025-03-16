@@ -50,6 +50,13 @@ class CommandFactoryI
   public: virtual std::unique_ptr<CommandI> MakeDeleteElementCommand(
       sdf::ElementPtr element_to_delete) = 0;
 
+  /// \brief Create an add element command
+  /// \param[in] parent_element The SDF element to delete
+  /// \param[in] new_element The SDF element to delete
+  /// \return Unique pointer to a command interface
+  public: virtual std::unique_ptr<CommandI> MakeAddElementCommand(
+    sdf::ElementPtr parent_element, sdf::ElementPtr new_element) = 0;
+
   /// \brief Create a undo command
   /// \return Unique pointer to a command interface
   public: virtual std::unique_ptr<CommandI> MakeUndoCommand() = 0;

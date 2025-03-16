@@ -49,6 +49,13 @@ class CommandFactory : public CommandFactoryI
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeDeleteElementCommand(sdf::ElementPtr element_to_delete) override;
 
+    /// \brief Create an add element command
+    /// \param[in] parent_element The SDF element to delete
+    /// \param[in] new_element The SDF element to delete
+    /// \return Unique pointer to a command interface
+    private: std::unique_ptr<CommandI> MakeAddElementCommand(
+      sdf::ElementPtr parent_element, sdf::ElementPtr new_element) override;
+
     /// \brief Implementation of interface method
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeSaveFileCommand();
