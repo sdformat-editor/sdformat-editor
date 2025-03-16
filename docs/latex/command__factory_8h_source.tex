@@ -49,27 +49,31 @@
 \DoxyCodeLine{00059\ }
 \DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{private}:\ std::unique\_ptr<CommandI>\ \mbox{\hyperlink{classCommandFactory_a2fcf5cf1f66e884e14df68737d328814}{MakeRedoCommand}}()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00063\ }
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCommandFactory_ae1d7df73f389adc3ad33002a5747f9a5}{ClearStack}}(std::stack<std::unique\_ptr<CommandI>>\&\ stack);}
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCommandFactory_a7004adb56291b4ad5802753b2afcf83a}{ClearUndoRedoStacks}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCommandFactory_a2c72a867a04bce8271284aa034d3466a}{PushToUndoCommandsStack}}(std::unique\_ptr<CommandI>\ command,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ new\_change\ =\ \textcolor{keyword}{true})\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00074\ \ \ }
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCommandFactory_a98344baef5725377a99af087525fe921}{PushToRedoCommandsStack}}(std::unique\_ptr<CommandI>\ command)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCommandFactory_a520ba655e4ddd675d62024e89f3769e0}{PopFromUndoCommandsStack}}();}
-\DoxyCodeLine{00081\ }
-\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCommandFactory_aa0b577939e44b3901ba59c5c3ea67fa3}{PopFromRedoCommandsStack}}();}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<GUII>\ \mbox{\hyperlink{classCommandFactory_a1c713712483797deff7521a6b424c2c8}{gui}};}
-\DoxyCodeLine{00087\ }
-\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classCommandFactory_aaa8545298254030bfb5ca2ee60daecec}{sdformatParser}};}
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00092\ \ \ \ \ std::stack<std::unique\_ptr<CommandI>>\ \mbox{\hyperlink{classCommandFactory_a6d830ca9ea12019b54f4031a4b065d61}{undo\_commands\_stack}};}
-\DoxyCodeLine{00093\ }
-\DoxyCodeLine{00095\ \ \ \ \ std::stack<std::unique\_ptr<CommandI>>\ \mbox{\hyperlink{classCommandFactory_a655c7d848358248b1c135e1533c788df}{redo\_commands\_stack}};}
-\DoxyCodeLine{00096\ \};}
-\DoxyCodeLine{00097\ }
-\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{private}:\ std::unique\_ptr<CommandI>\ \mbox{\hyperlink{classCommandFactory_ac9008bbd79e920391da4b542128c32e1}{MakeModifyAttributeCommand}}(sdf::ParamPtr\ attribute\_to\_modify,\ std::string\ new\_value)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{private}:\ std::unique\_ptr<CommandI>\ \mbox{\hyperlink{classCommandFactory_a21e97bad47e283c966451340d4e2b570}{MakeModifyElementCommand}}(sdf::ElementPtr\ element\_to\_modify,\ std::string\ new\_value)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCommandFactory_ae1d7df73f389adc3ad33002a5747f9a5}{ClearStack}}(std::stack<std::unique\_ptr<CommandI>>\&\ stack);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCommandFactory_a7004adb56291b4ad5802753b2afcf83a}{ClearUndoRedoStacks}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCommandFactory_a2c72a867a04bce8271284aa034d3466a}{PushToUndoCommandsStack}}(std::unique\_ptr<CommandI>\ command,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ new\_change\ =\ \textcolor{keyword}{true})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00082\ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCommandFactory_a98344baef5725377a99af087525fe921}{PushToRedoCommandsStack}}(std::unique\_ptr<CommandI>\ command)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCommandFactory_a520ba655e4ddd675d62024e89f3769e0}{PopFromUndoCommandsStack}}();}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCommandFactory_aa0b577939e44b3901ba59c5c3ea67fa3}{PopFromRedoCommandsStack}}();}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<GUII>\ \mbox{\hyperlink{classCommandFactory_a1c713712483797deff7521a6b424c2c8}{gui}};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classCommandFactory_aaa8545298254030bfb5ca2ee60daecec}{sdformatParser}};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00100\ \ \ \ \ std::stack<std::unique\_ptr<CommandI>>\ \mbox{\hyperlink{classCommandFactory_a6d830ca9ea12019b54f4031a4b065d61}{undo\_commands\_stack}};}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00103\ \ \ \ \ std::stack<std::unique\_ptr<CommandI>>\ \mbox{\hyperlink{classCommandFactory_a655c7d848358248b1c135e1533c788df}{redo\_commands\_stack}};}
+\DoxyCodeLine{00104\ \};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

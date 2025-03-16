@@ -160,7 +160,7 @@ Public Member Functions</h2></td></tr>
 <p>Indicates if this command is an irreversible state-changing command. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this command changes the state of the program irreversibly </dd></dl>
 
-<p>Implemented in <a class="el" href="classAddElementCommand.html#a095686d88826409e62e82b4526b2b544">AddElementCommand</a>, <a class="el" href="classDeleteElementCommand.html#acd07af54e3fcdfce7f7593dad933cc3e">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#a5169594e3d7ab0c2368237db5dced223">GenericCommand</a>, <a class="el" href="classOpenFileCommand.html#ae020a395fb497ac749d5ddb54d2ce7ef">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#aca27d37ba37fadaab46b06ea13bec632">SaveFileCommand</a>.</p>
+<p>Implemented in <a class="el" href="classDeleteElementCommand.html#acd07af54e3fcdfce7f7593dad933cc3e">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#a5169594e3d7ab0c2368237db5dced223">GenericCommand</a>, <a class="el" href="classModifyAttributeCommand.html#a90f47c2b7af9cb1280e07cc453259365">ModifyAttributeCommand</a>, <a class="el" href="classModifyElementCommand.html#a80dfc34f97318d469e624245a4af6879">ModifyElementCommand</a>, <a class="el" href="classOpenFileCommand.html#ae020a395fb497ac749d5ddb54d2ce7ef">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#aca27d37ba37fadaab46b06ea13bec632">SaveFileCommand</a>.</p>
 
 </div>
 </div>
@@ -190,7 +190,7 @@ Public Member Functions</h2></td></tr>
 <p>Execution of the command. Must be implemented as applicable by the derived class. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the command has been executed </dd></dl>
 
-<p>Implemented in <a class="el" href="classSaveFileCommand.html#a4836ac21dbfd6aab0a487f30335bce73">SaveFileCommand</a>, <a class="el" href="classAddElementCommand.html#a6e8c1cd748d556e3385df4a6f4ad676f">AddElementCommand</a>, <a class="el" href="classDeleteElementCommand.html#ad606aae7b0d869bdaeccbe40c44c48a6">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#a663cc7cb4a3fd95196a1ff28785fc688">GenericCommand</a>, and <a class="el" href="classOpenFileCommand.html#aaaa8a9f550b1669d7a427a9c143c74b9">OpenFileCommand</a>.</p>
+<p>Implemented in <a class="el" href="classSaveFileCommand.html#a4836ac21dbfd6aab0a487f30335bce73">SaveFileCommand</a>, <a class="el" href="classDeleteElementCommand.html#ad606aae7b0d869bdaeccbe40c44c48a6">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#a663cc7cb4a3fd95196a1ff28785fc688">GenericCommand</a>, <a class="el" href="classModifyAttributeCommand.html#a6ecdfff9ab76e6aabf2dca53189a607d">ModifyAttributeCommand</a>, <a class="el" href="classModifyElementCommand.html#a1c9c0414d88fd9a3475fb2833906e216">ModifyElementCommand</a>, and <a class="el" href="classOpenFileCommand.html#aaaa8a9f550b1669d7a427a9c143c74b9">OpenFileCommand</a>.</p>
 
 </div>
 </div>
@@ -220,7 +220,7 @@ Public Member Functions</h2></td></tr>
 <p>Execution of the redo command. Must be implemented as applicable by the derived class. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the command is redo-able and has been redone </dd></dl>
 
-<p>Implemented in <a class="el" href="classAddElementCommand.html#aa0aaea9a74a5112c3e7e5e04bfe8bbab">AddElementCommand</a>, <a class="el" href="classDeleteElementCommand.html#a25f8b7d96cc27cfdb55dbe5810c82835">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#ac0511e9b0bc5f8b33e1ceb0001fca69b">GenericCommand</a>, <a class="el" href="classOpenFileCommand.html#aec939dcbd7f334068effbee9c6adc201">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#a70eea57dbc9c418267c5582fba6b05a8">SaveFileCommand</a>.</p>
+<p>Implemented in <a class="el" href="classDeleteElementCommand.html#a25f8b7d96cc27cfdb55dbe5810c82835">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#ac0511e9b0bc5f8b33e1ceb0001fca69b">GenericCommand</a>, <a class="el" href="classModifyAttributeCommand.html#a5edc3b6b78a6968da86f363bf3bf147d">ModifyAttributeCommand</a>, <a class="el" href="classModifyElementCommand.html#ae012f3705ed602cb51831b27b1ef9ab1">ModifyElementCommand</a>, <a class="el" href="classOpenFileCommand.html#aec939dcbd7f334068effbee9c6adc201">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#a70eea57dbc9c418267c5582fba6b05a8">SaveFileCommand</a>.</p>
 
 </div>
 </div>
@@ -250,7 +250,7 @@ Public Member Functions</h2></td></tr>
 <p>Execution of the undo command. Must be implemented as applicable by the derived class. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the command undo-able and has been undone </dd></dl>
 
-<p>Implemented in <a class="el" href="classAddElementCommand.html#ae67cee7111ea7d83a0d57bfc7f72d121">AddElementCommand</a>, <a class="el" href="classDeleteElementCommand.html#a81259f19e29ff98fe4282c67897457c9">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#a9850a1f2ca9eb74507ea0e8d5a4d1d3e">GenericCommand</a>, <a class="el" href="classOpenFileCommand.html#a6081ebc56ffd4c603609b548cea6c53c">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#ab122ab89b7e2c525ae077de0040e1ee7">SaveFileCommand</a>.</p>
+<p>Implemented in <a class="el" href="classDeleteElementCommand.html#a81259f19e29ff98fe4282c67897457c9">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#a9850a1f2ca9eb74507ea0e8d5a4d1d3e">GenericCommand</a>, <a class="el" href="classModifyAttributeCommand.html#a63a687b8b53a0be0dcde670defca894f">ModifyAttributeCommand</a>, <a class="el" href="classModifyElementCommand.html#a085ad9c257bd5f607a07f0af4751280a">ModifyElementCommand</a>, <a class="el" href="classOpenFileCommand.html#a6081ebc56ffd4c603609b548cea6c53c">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#ab122ab89b7e2c525ae077de0040e1ee7">SaveFileCommand</a>.</p>
 
 </div>
 </div>
@@ -280,7 +280,7 @@ Public Member Functions</h2></td></tr>
 <p>Redo functionality of the command. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the command can be redone </dd></dl>
 
-<p>Implemented in <a class="el" href="classAddElementCommand.html#ac71009f4a4858e664619c738966878ae">AddElementCommand</a>, <a class="el" href="classDeleteElementCommand.html#a6c5f04219ace0f3808af89a68828702b">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#ab4f7eba842e2e7b19f55781499bd6b5a">GenericCommand</a>, <a class="el" href="classOpenFileCommand.html#afdf34480b36f0fa36f41fc546333a5dc">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#a47cf7448aee11bb954fb40af4022e122">SaveFileCommand</a>.</p>
+<p>Implemented in <a class="el" href="classDeleteElementCommand.html#a6c5f04219ace0f3808af89a68828702b">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#ab4f7eba842e2e7b19f55781499bd6b5a">GenericCommand</a>, <a class="el" href="classModifyAttributeCommand.html#a06aa24b4a68404232a26ce53ab2dafa4">ModifyAttributeCommand</a>, <a class="el" href="classModifyElementCommand.html#ab95d4a37de8b12b240b0d6aca8bc8064">ModifyElementCommand</a>, <a class="el" href="classOpenFileCommand.html#afdf34480b36f0fa36f41fc546333a5dc">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#a47cf7448aee11bb954fb40af4022e122">SaveFileCommand</a>.</p>
 
 </div>
 </div>
@@ -310,7 +310,7 @@ Public Member Functions</h2></td></tr>
 <p>Indicates if this command should be run in a thread. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this command should be run in a thread </dd></dl>
 
-<p>Implemented in <a class="el" href="classAddElementCommand.html#ad3a7cd0752dc92e57b4ee64b7f1e95df">AddElementCommand</a>, <a class="el" href="classDeleteElementCommand.html#a4561b97e2c51f2516e64d0ba816febe5">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#aaad69c127eaa595dad9b582421d78a7d">GenericCommand</a>, <a class="el" href="classOpenFileCommand.html#a3fb7e479af973fb23f422c955e24fc77">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#a0d77c2d15577db0fd124b2e453bba00a">SaveFileCommand</a>.</p>
+<p>Implemented in <a class="el" href="classDeleteElementCommand.html#a4561b97e2c51f2516e64d0ba816febe5">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#aaad69c127eaa595dad9b582421d78a7d">GenericCommand</a>, <a class="el" href="classModifyAttributeCommand.html#aeacd54768b255f76fb95d57ec69a76d4">ModifyAttributeCommand</a>, <a class="el" href="classModifyElementCommand.html#a940019a0e971a63e0eaa884252cede8f">ModifyElementCommand</a>, <a class="el" href="classOpenFileCommand.html#a3fb7e479af973fb23f422c955e24fc77">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#a0d77c2d15577db0fd124b2e453bba00a">SaveFileCommand</a>.</p>
 
 </div>
 </div>
@@ -340,7 +340,7 @@ Public Member Functions</h2></td></tr>
 <p>Undo functionality of the command. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the command can be undone </dd></dl>
 
-<p>Implemented in <a class="el" href="classAddElementCommand.html#a43f52d3865e6c47250929b42b743ddc8">AddElementCommand</a>, <a class="el" href="classDeleteElementCommand.html#a4ad99f4f3c8ca4b266af9c545744fdb6">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#afa14aae0989db8983af2ac5c2a2e9722">GenericCommand</a>, <a class="el" href="classOpenFileCommand.html#afa163c258a28f6f7af8f43908e181605">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#a85292d15bc3c13b7ad14a0b73d1dd154">SaveFileCommand</a>.</p>
+<p>Implemented in <a class="el" href="classDeleteElementCommand.html#a4ad99f4f3c8ca4b266af9c545744fdb6">DeleteElementCommand</a>, <a class="el" href="classGenericCommand.html#afa14aae0989db8983af2ac5c2a2e9722">GenericCommand</a>, <a class="el" href="classModifyAttributeCommand.html#ac82f75afba3bc14a4dbf13ce022699c6">ModifyAttributeCommand</a>, <a class="el" href="classModifyElementCommand.html#a483f4a5c0ca6332370b466848e7c5c2c">ModifyElementCommand</a>, <a class="el" href="classOpenFileCommand.html#afa163c258a28f6f7af8f43908e181605">OpenFileCommand</a>, and <a class="el" href="classSaveFileCommand.html#a85292d15bc3c13b7ad14a0b73d1dd154">SaveFileCommand</a>.</p>
 
 </div>
 </div>

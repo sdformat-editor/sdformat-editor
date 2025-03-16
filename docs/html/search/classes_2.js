@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['deleteelementcommand_0',['DeleteElementCommand',['../classDeleteElementCommand.html',1,'']]],
-  ['dialogmessage_1',['DialogMessage',['../structGUII_1_1DialogMessage.html',1,'GUII']]]
+  ['fileeditorrunner_0',['FileEditorRunner',['../classFileEditorRunner.html',1,'']]],
+  ['fileoperations_1',['FileOperations',['../classFileOperations.html',1,'']]]
 ];

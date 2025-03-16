@@ -117,6 +117,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7471998dae22305a28ccf44f38b8975d" id="r_a7471998dae22305a28ccf44f38b8975d"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#a7471998dae22305a28ccf44f38b8975d">MakeSaveFileCommand</a> ()=0</td></tr>
 <tr class="memdesc:a7471998dae22305a28ccf44f38b8975d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a save file command.  <br /></td></tr>
 <tr class="separator:a7471998dae22305a28ccf44f38b8975d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada9f96393de008687bcad0b8ce05dd17" id="r_ada9f96393de008687bcad0b8ce05dd17"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#ada9f96393de008687bcad0b8ce05dd17">MakeModifyAttributeCommand</a> (sdf::ParamPtr attribute_to_modify, std::string new_value)=0</td></tr>
+<tr class="memdesc:ada9f96393de008687bcad0b8ce05dd17"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a modify attribute command  <br /></td></tr>
+<tr class="separator:ada9f96393de008687bcad0b8ce05dd17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74b52abcab9f75f6350f52ae189a5353" id="r_a74b52abcab9f75f6350f52ae189a5353"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#a74b52abcab9f75f6350f52ae189a5353">MakeModifyElementCommand</a> (sdf::ElementPtr element_to_modify, std::string new_value)=0</td></tr>
+<tr class="memdesc:a74b52abcab9f75f6350f52ae189a5353"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a modify element command  <br /></td></tr>
+<tr class="separator:a74b52abcab9f75f6350f52ae189a5353"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02b9823f6bf6072d5cc88dc7638e228d" id="r_a02b9823f6bf6072d5cc88dc7638e228d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#a02b9823f6bf6072d5cc88dc7638e228d">PushToUndoCommandsStack</a> (std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt; command, const bool new_change=true)=0</td></tr>
 <tr class="memdesc:a02b9823f6bf6072d5cc88dc7638e228d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes to the undo commands stack.  <br /></td></tr>
 <tr class="separator:a02b9823f6bf6072d5cc88dc7638e228d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -246,6 +252,88 @@ Private Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Unique pointer to a command interface </dd></dl>
 
 <p>Implemented in <a class="el" href="classCommandFactory.html#a1508f65be6f325e2d6d3ef333c6b1816">CommandFactory</a>.</p>
+
+</div>
+</div>
+<a id="ada9f96393de008687bcad0b8ce05dd17" name="ada9f96393de008687bcad0b8ce05dd17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada9f96393de008687bcad0b8ce05dd17">&#9670;&#160;</a></span>MakeModifyAttributeCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt; CommandFactoryI::MakeModifyAttributeCommand </td>
+          <td>(</td>
+          <td class="paramtype">sdf::ParamPtr&#160;</td>
+          <td class="paramname"><em>attribute_to_modify</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>new_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>create a modify attribute command </p>
+<dl class="section return"><dt>Returns</dt><dd>a unique pointer to the commmand interface </dd></dl>
+
+<p>Implemented in <a class="el" href="classCommandFactory.html#ac9008bbd79e920391da4b542128c32e1">CommandFactory</a>.</p>
+
+</div>
+</div>
+<a id="a74b52abcab9f75f6350f52ae189a5353" name="a74b52abcab9f75f6350f52ae189a5353"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74b52abcab9f75f6350f52ae189a5353">&#9670;&#160;</a></span>MakeModifyElementCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt; CommandFactoryI::MakeModifyElementCommand </td>
+          <td>(</td>
+          <td class="paramtype">sdf::ElementPtr&#160;</td>
+          <td class="paramname"><em>element_to_modify</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>new_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>create a modify element command </p>
+<dl class="section return"><dt>Returns</dt><dd>a unique pointer to the commmand interface </dd></dl>
+
+<p>Implemented in <a class="el" href="classCommandFactory.html#a21e97bad47e283c966451340d4e2b570">CommandFactory</a>.</p>
 
 </div>
 </div>

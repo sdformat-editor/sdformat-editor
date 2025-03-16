@@ -42,6 +42,10 @@ virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$
 \begin{DoxyCompactList}\small\item\em Create a redo command. \end{DoxyCompactList}\item 
 virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_a7471998dae22305a28ccf44f38b8975d}{Make\+Save\+File\+Command}} ()=0
 \begin{DoxyCompactList}\small\item\em Create a save file command. \end{DoxyCompactList}\item 
+virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_ada9f96393de008687bcad0b8ce05dd17}{Make\+Modify\+Attribute\+Command}} (sdf\+::\+Param\+Ptr attribute\+\_\+to\+\_\+modify, std\+::string new\+\_\+value)=0
+\begin{DoxyCompactList}\small\item\em create a modify attribute command \end{DoxyCompactList}\item 
+virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactoryI_a74b52abcab9f75f6350f52ae189a5353}{Make\+Modify\+Element\+Command}} (sdf\+::\+Element\+Ptr element\+\_\+to\+\_\+modify, std\+::string new\+\_\+value)=0
+\begin{DoxyCompactList}\small\item\em create a modify element command \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classCommandFactoryI_a02b9823f6bf6072d5cc88dc7638e228d}{Push\+To\+Undo\+Commands\+Stack}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ command, const bool new\+\_\+change=true)=0
 \begin{DoxyCompactList}\small\item\em Pushes to the undo commands stack. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classCommandFactoryI_ae0165834d2d83c1593bef86c0d91311f}{Push\+To\+Redo\+Commands\+Stack}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ command)=0
@@ -115,6 +119,40 @@ Unique pointer to a command interface
 
 
 Implemented in \mbox{\hyperlink{classCommandFactory_a1508f65be6f325e2d6d3ef333c6b1816}{Command\+Factory}}.
+
+\Hypertarget{classCommandFactoryI_ada9f96393de008687bcad0b8ce05dd17}\label{classCommandFactoryI_ada9f96393de008687bcad0b8ce05dd17} 
+\index{CommandFactoryI@{CommandFactoryI}!MakeModifyAttributeCommand@{MakeModifyAttributeCommand}}
+\index{MakeModifyAttributeCommand@{MakeModifyAttributeCommand}!CommandFactoryI@{CommandFactoryI}}
+\doxysubsubsection{\texorpdfstring{MakeModifyAttributeCommand()}{MakeModifyAttributeCommand()}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+I\+::\+Make\+Modify\+Attribute\+Command (\begin{DoxyParamCaption}\item[{sdf\+::\+Param\+Ptr}]{attribute\+\_\+to\+\_\+modify,  }\item[{std\+::string}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+create a modify attribute command 
+
+\begin{DoxyReturn}{Returns}
+a unique pointer to the commmand interface 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCommandFactory_ac9008bbd79e920391da4b542128c32e1}{Command\+Factory}}.
+
+\Hypertarget{classCommandFactoryI_a74b52abcab9f75f6350f52ae189a5353}\label{classCommandFactoryI_a74b52abcab9f75f6350f52ae189a5353} 
+\index{CommandFactoryI@{CommandFactoryI}!MakeModifyElementCommand@{MakeModifyElementCommand}}
+\index{MakeModifyElementCommand@{MakeModifyElementCommand}!CommandFactoryI@{CommandFactoryI}}
+\doxysubsubsection{\texorpdfstring{MakeModifyElementCommand()}{MakeModifyElementCommand()}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+I\+::\+Make\+Modify\+Element\+Command (\begin{DoxyParamCaption}\item[{sdf\+::\+Element\+Ptr}]{element\+\_\+to\+\_\+modify,  }\item[{std\+::string}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+create a modify element command 
+
+\begin{DoxyReturn}{Returns}
+a unique pointer to the commmand interface 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCommandFactory_a21e97bad47e283c966451340d4e2b570}{Command\+Factory}}.
 
 \Hypertarget{classCommandFactoryI_adebc954d2a1401735e055ec827eb1b35}\label{classCommandFactoryI_adebc954d2a1401735e055ec827eb1b35} 
 \index{CommandFactoryI@{CommandFactoryI}!MakeOpenFileCommand@{MakeOpenFileCommand}}
