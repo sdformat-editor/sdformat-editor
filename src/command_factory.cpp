@@ -4,6 +4,7 @@
 #include "commands/OpenFileCommand.h"
 #include "commands/ModifyAttributeCommand.h"
 #include "commands/ModifyElementCommand.h"
+#include "commands/AddElementCommand.h"
 
 CommandFactory::CommandFactory(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser)
 {
@@ -42,6 +43,11 @@ std::unique_ptr<CommandI> CommandFactory::MakeModifyAttributeCommand(sdf::ParamP
 
 std::unique_ptr<CommandI> CommandFactory::MakeModifyElementCommand(sdf::ElementPtr element_to_modify, std::string new_value) {
     return std::make_unique<ModifyElementCommand>(this->gui, this->sdformatParser, element_to_modify, new_value);
+}
+
+std::unique_ptr<CommandI> CommandFactory::MakeAddElementCommand(sdf::ElementPtr parent_element, sdf::ElementPtr new_element)
+{
+    return std::make_unique<AddElementCommand>(this->gui, this->sdformatParser, parent_element, new_element);
 }
 
 void CommandFactory::PushToUndoCommandsStack(std::unique_ptr<CommandI> command, const bool new_change)

@@ -54,7 +54,9 @@ class GUII : public std::enable_shared_from_this<GUII>
     /// \callgraph
     /// \brief Indicate if the GUI should close 
     public: virtual bool ShouldClose() = 0;
-
+    
+    /// \brief Struct representing a dialog message.
+    /// This struct encapsulates the components of a dialog message.
     public: struct DialogMessage
     {  
         const std::string header;

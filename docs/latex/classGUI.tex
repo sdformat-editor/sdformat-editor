@@ -56,6 +56,10 @@ bool \mbox{\hyperlink{classGUI_a70390acea16ec9de6dba4439cd2654fa}{Setup\+New\+Fr
 \begin{DoxyCompactList}\small\item\em Sets up a new Im\+GUI frame. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGUI_a1b5b6b76c93d2f1505f08dd048a2ca9b}{Draw\+Core\+Frame}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \&command, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCommandFactoryI}{Command\+FactoryI}} $>$ command\+\_\+factory)
 \begin{DoxyCompactList}\small\item\em Draw the core part of the Im\+GUI frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGUI_a064adbb51d108a459e84c2c692fcfe44}{Create\+Append\+Element\+Dropdown}} (sdf\+::\+Element\+Ptr element, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \&command, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCommandFactoryI}{Command\+FactoryI}} $>$ command\+\_\+factory, int \&unique\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Create a dropdown list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGUI_a708822790238e79934e5bcceb5c6abe9}{Create\+Dropdown}} (const std\+::vector$<$ std\+::string $>$ \&items, const std\+::vector$<$ std\+::string $>$ \&item\+\_\+descriptions, int \&selected\+\_\+item, int \&unique\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Create a dropdown list. \end{DoxyCompactList}\item 
 std\+::unique\+\_\+lock$<$ std\+::mutex $>$ \mbox{\hyperlink{classGUI_a631a94dcf2eebb86e07151a1cc2bfe21}{Lock\+Mutex}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of lock method. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Private Member Functions}
@@ -81,6 +85,9 @@ Im\+Gui\+IO \texorpdfstring{$\ast$}{*} {\bfseries io} = nullptr
 \Hypertarget{classGUI_ac4c318d3b227ae03cea3447780465d90}\label{classGUI_ac4c318d3b227ae03cea3447780465d90} 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ {\bfseries sdformat\+\_\+parser}
 \begin{DoxyCompactList}\small\item\em Pointer to the sdformat\+\_\+parser object. \end{DoxyCompactList}\item 
+\Hypertarget{classGUI_aab687077ea3c5e75f598d5892902fa18}\label{classGUI_aab687077ea3c5e75f598d5892902fa18} 
+sdf\+::\+Element\+Ptr {\bfseries element\+\_\+to\+\_\+append\+\_\+to}
+\begin{DoxyCompactList}\small\item\em An element for which we want to show the "{}append\+\_\+to"{} dropdown. \end{DoxyCompactList}\item 
 \Hypertarget{classGUI_a34015969cf7c7eb56194a7a084778315}\label{classGUI_a34015969cf7c7eb56194a7a084778315} 
 Im\+Vec4 {\bfseries background\+\_\+colour}
 \begin{DoxyCompactList}\small\item\em The background color used in the \doxylink{classGUI}{GUI}. \end{DoxyCompactList}\item 
@@ -120,6 +127,48 @@ Constructor that wraps the Initialize method.
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classGUI_a064adbb51d108a459e84c2c692fcfe44}\label{classGUI_a064adbb51d108a459e84c2c692fcfe44} 
+\index{GUI@{GUI}!CreateAppendElementDropdown@{CreateAppendElementDropdown}}
+\index{CreateAppendElementDropdown@{CreateAppendElementDropdown}!GUI@{GUI}}
+\doxysubsubsection{\texorpdfstring{CreateAppendElementDropdown()}{CreateAppendElementDropdown()}}
+{\footnotesize\ttfamily void GUI\+::\+Create\+Append\+Element\+Dropdown (\begin{DoxyParamCaption}\item[{sdf\+::\+Element\+Ptr}]{element,  }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \&}]{command,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCommandFactoryI}{Command\+FactoryI}} $>$}]{command\+\_\+factory,  }\item[{int \&}]{unique\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Create a dropdown list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em element} & A pointer to the element for which to create a dropdown \\
+\hline
+\mbox{\texttt{ out}}  & {\em command} & a pointer to the command resulting from the user\textquotesingle{}s action during this frame \\
+\hline
+\mbox{\texttt{ in}}  & {\em command\+\_\+factory} & used for creating command objects \\
+\hline
+\mbox{\texttt{ out}}  & {\em unique\+\_\+id} & a unique id for the Im\+GUI dropdowm ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGUI_a708822790238e79934e5bcceb5c6abe9}\label{classGUI_a708822790238e79934e5bcceb5c6abe9} 
+\index{GUI@{GUI}!CreateDropdown@{CreateDropdown}}
+\index{CreateDropdown@{CreateDropdown}!GUI@{GUI}}
+\doxysubsubsection{\texorpdfstring{CreateDropdown()}{CreateDropdown()}}
+{\footnotesize\ttfamily void GUI\+::\+Create\+Dropdown (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{items,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{item\+\_\+descriptions,  }\item[{int \&}]{selected\+\_\+item,  }\item[{int \&}]{unique\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Create a dropdown list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em items} & A vector of strings to include in the dropdown \\
+\hline
+\mbox{\texttt{ out}}  & {\em selected\+\_\+item} & an integer representing the selected item \\
+\hline
+\mbox{\texttt{ out}}  & {\em unique\+\_\+id} & a unique id for the Im\+GUI dropdowm ~\newline
+ \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classGUI_a25a3bd1406803fafb9840d311a9fc7f9}\label{classGUI_a25a3bd1406803fafb9840d311a9fc7f9} 
 \index{GUI@{GUI}!DisplaySDFRootElement@{DisplaySDFRootElement}}
 \index{DisplaySDFRootElement@{DisplaySDFRootElement}!GUI@{GUI}}
@@ -149,6 +198,8 @@ Draw the core part of the Im\+GUI frame.
 
 
 \begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em command} & a pointer to the command resulting from the user\textquotesingle{}s action during this frame \\
+\hline
 \mbox{\texttt{ in}}  & {\em command\+\_\+factory} & used for creating command objects \\
 \hline
 \end{DoxyParams}

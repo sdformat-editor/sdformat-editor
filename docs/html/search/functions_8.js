@@ -1,7 +1,13 @@
 var searchData=
 [
-  ['openchoicedialog_0',['openchoicedialog',['../classGUI.html#a371c336213806742abe81172d845b0de',1,'GUI::OpenChoiceDialog()'],['../classGUII.html#a2308b7ef4b8be7547242a3b15ebad492',1,'GUII::OpenChoiceDialog()']]],
-  ['openfilecommand_1',['OpenFileCommand',['../classOpenFileCommand.html#a56de8dcb25876eaf688c642a8f75c20b',1,'OpenFileCommand']]],
-  ['openfiledialog_2',['OpenFileDialog',['../classFileOperations.html#a50b5908070cc9bdd8879aade4daa855f',1,'FileOperations']]],
-  ['operator_3d_3',['operator=',['../classFileOperations.html#a5da1790781c8f79684955589d2381c83',1,'FileOperations']]]
+  ['makeaddelementcommand_0',['makeaddelementcommand',['../classCommandFactoryI.html#a4e764eb31669356953e48ee262a55664',1,'CommandFactoryI::MakeAddElementCommand()'],['../classCommandFactory.html#ac85c323b84dca7565057f9d007286d36',1,'CommandFactory::MakeAddElementCommand(sdf::ElementPtr parent_element, sdf::ElementPtr new_element) override']]],
+  ['makedeleteelementcommand_1',['makedeleteelementcommand',['../classCommandFactory.html#a1508f65be6f325e2d6d3ef333c6b1816',1,'CommandFactory::MakeDeleteElementCommand()'],['../classCommandFactoryI.html#ac9688f96d9551acf9aa141a1a5873186',1,'CommandFactoryI::MakeDeleteElementCommand()']]],
+  ['makemodifyattributecommand_2',['makemodifyattributecommand',['../classCommandFactory.html#ac9008bbd79e920391da4b542128c32e1',1,'CommandFactory::MakeModifyAttributeCommand()'],['../classCommandFactoryI.html#ada9f96393de008687bcad0b8ce05dd17',1,'CommandFactoryI::MakeModifyAttributeCommand()']]],
+  ['makemodifyelementcommand_3',['makemodifyelementcommand',['../classCommandFactory.html#a21e97bad47e283c966451340d4e2b570',1,'CommandFactory::MakeModifyElementCommand()'],['../classCommandFactoryI.html#a74b52abcab9f75f6350f52ae189a5353',1,'CommandFactoryI::MakeModifyElementCommand(sdf::ElementPtr element_to_modify, std::string new_value)=0']]],
+  ['makeopenfilecommand_4',['makeopenfilecommand',['../classCommandFactoryI.html#adebc954d2a1401735e055ec827eb1b35',1,'CommandFactoryI::MakeOpenFileCommand()'],['../classCommandFactory.html#a0eb5eb4b7cf969a4f909c22bc0f5f576',1,'CommandFactory::MakeOpenFileCommand() override']]],
+  ['makeredocommand_5',['makeredocommand',['../classCommandFactory.html#a2fcf5cf1f66e884e14df68737d328814',1,'CommandFactory::MakeRedoCommand()'],['../classCommandFactoryI.html#a8fca05c4893b73f13f25a419ad0023fe',1,'CommandFactoryI::MakeRedoCommand()']]],
+  ['makesavefilecommand_6',['makesavefilecommand',['../classCommandFactory.html#a78d5a75442860ab72c8439772e1ea8e4',1,'CommandFactory::MakeSaveFileCommand()'],['../classCommandFactoryI.html#a7471998dae22305a28ccf44f38b8975d',1,'CommandFactoryI::MakeSaveFileCommand()']]],
+  ['makeundocommand_7',['makeundocommand',['../classCommandFactory.html#a3f3046aa9a06f6848c591e1223395f65',1,'CommandFactory::MakeUndoCommand()'],['../classCommandFactoryI.html#a3540850eb4c889aaabbd288d0f2ee40d',1,'CommandFactoryI::MakeUndoCommand()']]],
+  ['modifyattributecommand_8',['ModifyAttributeCommand',['../classModifyAttributeCommand.html#adf3c6d19cf58523518fea3bb026fa307',1,'ModifyAttributeCommand']]],
+  ['modifyelementcommand_9',['ModifyElementCommand',['../classModifyElementCommand.html#aa1d0020faee7edf41239bbef132a2e38',1,'ModifyElementCommand']]]
 ];
