@@ -35,6 +35,12 @@ bool OpenFileCommand::Execute()
   if (file_path == "")
   {
     file_path = FileOperations::GetSoleInstance().OpenFileDialog();
+  } else {
+    FILE *test_file = fopen(file_path.c_str(), "r");
+    if (test_file == NULL) {
+      return false;
+    }
+    fclose(test_file);
   }
 
   // If the file path is still blank, then there was no file specified
