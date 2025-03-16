@@ -6,5 +6,7 @@ var searchData=
   ['command_5ffactory_3',['command_factory',['../classFileEditorRunner.html#a8717b5e873b012ad91193acbadfb22d5',1,'FileEditorRunner']]],
   ['commandfactory_4',['commandfactory',['../classCommandFactory.html',1,'CommandFactory'],['../classCommandFactory.html#afa567fd27292229b3b7c6f91f52cfd5b',1,'CommandFactory::CommandFactory()']]],
   ['commandfactoryi_5',['CommandFactoryI',['../classCommandFactoryI.html',1,'']]],
-  ['commandi_6',['CommandI',['../classCommandI.html',1,'']]]
+  ['commandi_6',['CommandI',['../classCommandI.html',1,'']]],
+  ['createappendelementdropdown_7',['CreateAppendElementDropdown',['../classGUI.html#a064adbb51d108a459e84c2c692fcfe44',1,'GUI']]],
+  ['createdropdown_8',['CreateDropdown',['../classGUI.html#a708822790238e79934e5bcceb5c6abe9',1,'GUI']]]
 ];

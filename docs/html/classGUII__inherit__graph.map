@@ -1,6 +1,6 @@
 <map id="GUII" name="GUII">
 <area shape="rect" id="Node000001" title="Interface for the SDFormat Editor&#39;s Graphical User Interface Note that this class also inherits from ..." alt="" coords="21,133,301,475"/>
-<area shape="rect" id="Node000003" href="$classGUI.html" title="Implementation of GUII." alt="" coords="5,523,316,1383"/>
+<area shape="rect" id="Node000003" href="$classGUI.html" title="Implementation of GUII." alt="" coords="5,523,316,1604"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="163,488,163,523,158,523,158,488"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="90,5,231,85"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,99,163,133,158,133,158,99"/>

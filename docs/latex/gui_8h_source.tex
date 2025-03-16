@@ -53,30 +53,38 @@
 \DoxyCodeLine{00064\ \ \ }
 \DoxyCodeLine{00069\ \ \ \textcolor{keyword}{private}:\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_ad0fd69fc7f512cacf6bfec7d67d6141a}{GLFWErrorCallback}}(\textcolor{keywordtype}{int}\ error,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *description);}
 \DoxyCodeLine{00070\ }
-\DoxyCodeLine{00074\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a25a3bd1406803fafb9840d311a9fc7f9}{DisplaySDFRootElement}}(std::unique\_ptr<CommandI>\ \&command,\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\_parser}},\ std::shared\_ptr<CommandFactoryI>\ command\_factory);}
-\DoxyCodeLine{00075\ }
-\DoxyCodeLine{00078\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGUI_a70390acea16ec9de6dba4439cd2654fa}{SetupNewFrame}}();}
-\DoxyCodeLine{00079\ }
-\DoxyCodeLine{00083\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a1b5b6b76c93d2f1505f08dd048a2ca9b}{DrawCoreFrame}}(std::unique\_ptr<CommandI>\&\ command,\ std::shared\_ptr<CommandFactoryI>\ command\_factory);}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00086\ \ \ \textcolor{keyword}{private}:\ std::unique\_lock<std::mutex>\ \mbox{\hyperlink{classGUI_a631a94dcf2eebb86e07151a1cc2bfe21}{LockMutex}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00087\ }
-\DoxyCodeLine{00088\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<CommandFactory>\ command\_factory;}
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00091\ \ \ \textcolor{keyword}{private}:\ std::atomic<bool>\ \mbox{\hyperlink{classGUI_a0d3ed3d3ea1560ec4321e84f5dc7fca3}{prevent\_input\_flag}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00092\ \ \ }
-\DoxyCodeLine{00094\ \ \ \textcolor{keyword}{private}:\ GLFWwindow\ *\mbox{\hyperlink{classGUI_a2955f39e8b9690cf35a43a8b0768f64f}{window}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00095\ }
-\DoxyCodeLine{00097\ \ \ \textcolor{keyword}{private}:\ ImGuiIO\ *\mbox{\hyperlink{classGUI_ac6297526aeb809b472c7952fae1d07f7}{io}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00100\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\_parser}};}
-\DoxyCodeLine{00101\ }
-\DoxyCodeLine{00103\ \ \ \textcolor{keyword}{private}:\ ImVec4\ \mbox{\hyperlink{classGUI_a34015969cf7c7eb56194a7a084778315}{background\_colour}};}
-\DoxyCodeLine{00104\ }
-\DoxyCodeLine{00106\ \ \ \textcolor{keyword}{private}:\ std::mutex\ \mbox{\hyperlink{classGUI_a317352348d111967600e09cea9d2c03c}{gui\_mutex}};}
-\DoxyCodeLine{00107\ }
-\DoxyCodeLine{00108\ \};}
-\DoxyCodeLine{00109\ }
-\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00074\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a25a3bd1406803fafb9840d311a9fc7f9}{DisplaySDFRootElement}}(std::unique\_ptr<CommandI>\ \&command,\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\_parser}},\ }
+\DoxyCodeLine{00075\ \ \ \ \ std::shared\_ptr<CommandFactoryI>\ command\_factory);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00079\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGUI_a70390acea16ec9de6dba4439cd2654fa}{SetupNewFrame}}();}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00085\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a1b5b6b76c93d2f1505f08dd048a2ca9b}{DrawCoreFrame}}(std::unique\_ptr<CommandI>\&\ command,\ std::shared\_ptr<CommandFactoryI>\ command\_factory);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00092\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a064adbb51d108a459e84c2c692fcfe44}{CreateAppendElementDropdown}}(sdf::ElementPtr\ element,\ std::unique\_ptr<CommandI>\ \&command,\ }
+\DoxyCodeLine{00093\ \ \ \ \ std::shared\_ptr<CommandFactoryI>\ command\_factory,\ \textcolor{keywordtype}{int}\&\ unique\_id);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00099\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a708822790238e79934e5bcceb5c6abe9}{CreateDropdown}}(\textcolor{keyword}{const}\ std::vector<std::string>\&\ items,\ \textcolor{keyword}{const}\ std::vector<std::string>\&\ item\_descriptions,\ \textcolor{keywordtype}{int}\&\ selected\_item,\ \textcolor{keywordtype}{int}\&\ unique\_id);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00102\ \ \ \textcolor{keyword}{private}:\ std::unique\_lock<std::mutex>\ \mbox{\hyperlink{classGUI_a631a94dcf2eebb86e07151a1cc2bfe21}{LockMutex}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<CommandFactory>\ command\_factory;}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00107\ \ \ \textcolor{keyword}{private}:\ std::atomic<bool>\ \mbox{\hyperlink{classGUI_a0d3ed3d3ea1560ec4321e84f5dc7fca3}{prevent\_input\_flag}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00108\ \ \ }
+\DoxyCodeLine{00110\ \ \ \textcolor{keyword}{private}:\ GLFWwindow\ *\mbox{\hyperlink{classGUI_a2955f39e8b9690cf35a43a8b0768f64f}{window}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00113\ \ \ \textcolor{keyword}{private}:\ ImGuiIO\ *\mbox{\hyperlink{classGUI_ac6297526aeb809b472c7952fae1d07f7}{io}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00116\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\_parser}};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00119\ \ \ \textcolor{keyword}{private}:\ sdf::ElementPtr\ \mbox{\hyperlink{classGUI_aab687077ea3c5e75f598d5892902fa18}{element\_to\_append\_to}};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00122\ \ \ \textcolor{keyword}{private}:\ ImVec4\ \mbox{\hyperlink{classGUI_a34015969cf7c7eb56194a7a084778315}{background\_colour}};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00125\ \ \ \textcolor{keyword}{private}:\ std::mutex\ \mbox{\hyperlink{classGUI_a317352348d111967600e09cea9d2c03c}{gui\_mutex}};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \};}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}
