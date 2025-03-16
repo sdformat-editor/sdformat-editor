@@ -49,6 +49,10 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactory_a2fcf5cf1f66e884e14df68737d328814}{Make\+Redo\+Command}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactory_ac9008bbd79e920391da4b542128c32e1}{Make\+Modify\+Attribute\+Command}} (sdf\+::\+Param\+Ptr attribute\+\_\+to\+\_\+modify, std\+::string new\+\_\+value) override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactory_a21e97bad47e283c966451340d4e2b570}{Make\+Modify\+Element\+Command}} (sdf\+::\+Element\+Ptr element\+\_\+to\+\_\+modify, std\+::string new\+\_\+value) override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 \Hypertarget{classCommandFactory_ae1d7df73f389adc3ad33002a5747f9a5}\label{classCommandFactory_ae1d7df73f389adc3ad33002a5747f9a5} 
 void {\bfseries Clear\+Stack} (std\+::stack$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ $>$ \&stack)
 \begin{DoxyCompactList}\small\item\em Clears the undo stack. \end{DoxyCompactList}\item 
@@ -154,6 +158,40 @@ Unique pointer to a command interface
 
 
 Implements \mbox{\hyperlink{classCommandFactoryI_ac9688f96d9551acf9aa141a1a5873186}{Command\+FactoryI}}.
+
+\Hypertarget{classCommandFactory_ac9008bbd79e920391da4b542128c32e1}\label{classCommandFactory_ac9008bbd79e920391da4b542128c32e1} 
+\index{CommandFactory@{CommandFactory}!MakeModifyAttributeCommand@{MakeModifyAttributeCommand}}
+\index{MakeModifyAttributeCommand@{MakeModifyAttributeCommand}!CommandFactory@{CommandFactory}}
+\doxysubsubsection{\texorpdfstring{MakeModifyAttributeCommand()}{MakeModifyAttributeCommand()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+::\+Make\+Modify\+Attribute\+Command (\begin{DoxyParamCaption}\item[{sdf\+::\+Param\+Ptr}]{attribute\+\_\+to\+\_\+modify,  }\item[{std\+::string}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Unique pointer to a command interface 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandFactoryI_ada9f96393de008687bcad0b8ce05dd17}{Command\+FactoryI}}.
+
+\Hypertarget{classCommandFactory_a21e97bad47e283c966451340d4e2b570}\label{classCommandFactory_a21e97bad47e283c966451340d4e2b570} 
+\index{CommandFactory@{CommandFactory}!MakeModifyElementCommand@{MakeModifyElementCommand}}
+\index{MakeModifyElementCommand@{MakeModifyElementCommand}!CommandFactory@{CommandFactory}}
+\doxysubsubsection{\texorpdfstring{MakeModifyElementCommand()}{MakeModifyElementCommand()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+::\+Make\+Modify\+Element\+Command (\begin{DoxyParamCaption}\item[{sdf\+::\+Element\+Ptr}]{element\+\_\+to\+\_\+modify,  }\item[{std\+::string}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Unique pointer to a command interface 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandFactoryI_a74b52abcab9f75f6350f52ae189a5353}{Command\+FactoryI}}.
 
 \Hypertarget{classCommandFactory_a0eb5eb4b7cf969a4f909c22bc0f5f576}\label{classCommandFactory_a0eb5eb4b7cf969a4f909c22bc0f5f576} 
 \index{CommandFactory@{CommandFactory}!MakeOpenFileCommand@{MakeOpenFileCommand}}
