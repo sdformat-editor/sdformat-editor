@@ -371,7 +371,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
           ImGui::Checkbox(("Value##" + std::to_string(unique_input_id++)).c_str(), &x);
 
           if (original_value != x) {
-            current_element_ptr->GetValue()->Set(x);
+            if (!prevent_input_flag) command = command_factory->MakeModifyElementCommand(current_element_ptr, x);
           }
         } else {
           // Display the value and provide a textbox and button for modification

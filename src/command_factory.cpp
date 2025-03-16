@@ -42,7 +42,11 @@ std::unique_ptr<CommandI> CommandFactory::MakeModifyAttributeCommand(sdf::ParamP
 }
 
 std::unique_ptr<CommandI> CommandFactory::MakeModifyElementCommand(sdf::ElementPtr element_to_modify, std::string new_value) {
-    return std::make_unique<ModifyElementCommand>(this->gui, this->sdformatParser, element_to_modify, new_value);
+    return std::make_unique<ModifyElementCommand<std::string>>(this->gui, this->sdformatParser, element_to_modify, new_value);
+}
+
+std::unique_ptr<CommandI> CommandFactory::MakeModifyElementCommand(sdf::ElementPtr element_to_modify, bool new_value) {
+    return std::make_unique<ModifyElementCommand<bool>>(this->gui, this->sdformatParser, element_to_modify, new_value);
 }
 
 std::unique_ptr<CommandI> CommandFactory::MakeAddElementCommand(sdf::ElementPtr parent_element, sdf::ElementPtr new_element)

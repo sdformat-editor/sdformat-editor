@@ -72,10 +72,11 @@ class CommandFactoryI
   /// \brief create a modify attribute command
   /// \return a unique pointer to the commmand interface
   public: virtual std::unique_ptr<CommandI> MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, std::string new_value) = 0;
-
+  
   /// \brief create a modify element command
   /// \return a unique pointer to the commmand interface
   public: virtual std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, std::string new_value) = 0;
+  public: virtual std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, bool new_value) = 0;
 
   /// \brief Pushes to the undo commands stack
   /// \param[in] command commandI object to push

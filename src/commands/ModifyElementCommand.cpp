@@ -1,10 +1,13 @@
 #include "commands/ModifyElementCommand.h"
 
-ModifyElementCommand::ModifyElementCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ElementPtr element_to_modify, std::string new_value) : gui(gui), sdformatParser(sdformatParser), element_to_modify(element_to_modify), new_value(new_value) {}
+template class ModifyElementCommand<std::string>;
+template class ModifyElementCommand<bool>;
 
-bool ModifyElementCommand::Execute()
+template <typename T> ModifyElementCommand<T>::ModifyElementCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ElementPtr element_to_modify, T new_value) : gui(gui), sdformatParser(sdformatParser), element_to_modify(element_to_modify), new_value(new_value) {}
+
+template <typename T> bool ModifyElementCommand<T>::Execute()
 {
-    old_value = element_to_modify->GetValue()->GetAsString();
+    if (!element_to_modify->GetValue()->Get(old_value)) return false;
     if (element_to_modify->Set(new_value))
     {
         this->is_currently_undoable = true;
@@ -16,7 +19,7 @@ bool ModifyElementCommand::Execute()
     return false;
 }
 
-bool ModifyElementCommand::ExecuteUndo()
+template <typename T> bool ModifyElementCommand<T>::ExecuteUndo()
 {
     if (element_to_modify->Set(old_value))
     {
@@ -28,7 +31,7 @@ bool ModifyElementCommand::ExecuteUndo()
     return false;
 }
 
-bool ModifyElementCommand::ExecuteRedo()
+template <typename T> bool ModifyElementCommand<T>::ExecuteRedo()
 {
     if (element_to_modify->Set(new_value))
     {
@@ -40,23 +43,23 @@ bool ModifyElementCommand::ExecuteRedo()
     return false;
 }
 
-bool ModifyElementCommand::IsUndoable()
+template <typename T> bool ModifyElementCommand<T>::IsUndoable()
 {
     return this->is_currently_undoable;
 }
 
-bool ModifyElementCommand::IsRedoable()
+template <typename T> bool ModifyElementCommand<T>::IsRedoable()
 {
     return this->is_currently_redoable;
 }
 
-bool ModifyElementCommand::IsThreaded()
+template <typename T> bool ModifyElementCommand<T>::IsThreaded()
 {
     // Stub implementation
     return false;
 }
 
-bool ModifyElementCommand::ChangesProgramStateIrreversibly()
+template <typename T> bool ModifyElementCommand<T>::ChangesProgramStateIrreversibly()
 {
     // Stub implementation
     return false;
