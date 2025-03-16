@@ -269,7 +269,8 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
 
   // To ensure that there are no issue with repeat elements for ImGui,
   // every button will be given a unique id.
-  int unique_id = 0;
+  int unique_input_id = 0;
+  std::map<std::string, int> unique_node_id_map = {};
 
   sdf::ElementPtr root_element = sdformat_parser->GetSDFElement()->Root();
 
@@ -278,7 +279,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
     // Append the root model element to the stack
     sdf_tree_stack.emplace(root_element->GetFirstElement(), false);
   }
-  else if (ImGui::Button((std::string((this->element_to_append_to.get() == root_element.get()) ? "Cancel##" : "Append Element##") + std::to_string(unique_id++)).c_str()))
+  else if (ImGui::Button((std::string((this->element_to_append_to.get() == root_element.get()) ? "Cancel##" : "Append Element##") + std::to_string(unique_input_id++)).c_str()))
   {
     if (this->element_to_append_to.get() == root_element.get())
     {
@@ -292,7 +293,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
 
   if (this->element_to_append_to.get() == root_element.get())
   {
-    this->CreateAppendElementDropdown(this->element_to_append_to, command, command_factory, unique_id);
+    this->CreateAppendElementDropdown(this->element_to_append_to, command, command_factory, unique_input_id);
   }
 
   while (!sdf_tree_stack.empty())
@@ -311,31 +312,35 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
     sdf::ElementPtr current_element_ptr = sdf_tree_stack.top().first;
 
     std::string node_name;
+    std::string node_name_id;
 
     if (current_element_ptr->GetAttribute("name"))
     {
-      node_name = current_element_ptr->GetName() + ": " + current_element_ptr->GetAttribute("name")->GetAsString() + "##" + std::to_string(unique_id++);
+      node_name = current_element_ptr->GetName() + ": " + current_element_ptr->GetAttribute("name")->GetAsString();
     }
     else
     {
-      node_name = current_element_ptr->GetName() + "##" + std::to_string(unique_id++);
+      node_name = current_element_ptr->GetName();
     }
     
+    unique_node_id_map[node_name] = unique_node_id_map[node_name] + 1;
+    node_name_id = node_name + "##" + std::to_string(unique_node_id_map[node_name]);
+    
     // Create a unique identifier for the tree node
-    if (ImGui::TreeNode(node_name.c_str()))
+    if (ImGui::TreeNode(node_name_id.c_str()))
     {
       // If we are here, it means that we are exploring a new node
       // Mark the current node as visited
       sdf_tree_stack.top().second = true;
 
       // Delete and append buttons for this node
-      if (ImGui::Button(("Delete element##" + std::to_string(unique_id++)).c_str()))
+      if (ImGui::Button(("Delete element##" + std::to_string(unique_input_id++)).c_str()))
       {
         // Create a DeleteElement command
         if (!prevent_input_flag) command = command_factory->MakeDeleteElementCommand(current_element_ptr);
       }
       ImGui::SameLine();
-      if (ImGui::Button((std::string((this->element_to_append_to.get() == current_element_ptr.get()) ? "Cancel##" : "Append Element##") + std::to_string(unique_id++)).c_str()))
+      if (ImGui::Button((std::string((this->element_to_append_to.get() == current_element_ptr.get()) ? "Cancel##" : "Append Element##") + std::to_string(unique_input_id++)).c_str()))
       {
         if (this->element_to_append_to.get() == current_element_ptr.get())
         {
@@ -349,7 +354,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
 
       if (this->element_to_append_to.get() == current_element_ptr.get())
       {
-        this->CreateAppendElementDropdown(this->element_to_append_to, command, command_factory, unique_id);
+        this->CreateAppendElementDropdown(this->element_to_append_to, command, command_factory, unique_input_id);
       }
 
       // Get the current window size
@@ -366,11 +371,11 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
         if (element_to_edit == current_element_ptr) {
           ImGui::SameLine();
           ImGui::PushItemWidth(window_width*0.1f); 
-          ImGui::InputText(("##" + std::to_string(unique_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
+          ImGui::InputText(("##" + std::to_string(unique_input_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
           ImGui::PopItemWidth();
           ImGui::SameLine();
 
-          if (ImGui::Button(("Save##" + std::to_string(unique_id++)).c_str()))
+          if (ImGui::Button(("Save##" + std::to_string(unique_input_id++)).c_str()))
           {
           if   (!prevent_input_flag) command = command_factory->MakeModifyElementCommand(current_element_ptr, value_buffer);
             value_buffer[0] = '\0';
@@ -379,7 +384,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
           }
         } else {
           ImGui::SameLine();
-          if (ImGui::Button(("Modify##" + std::to_string(unique_id++)).c_str())) {
+          if (ImGui::Button(("Modify##" + std::to_string(unique_input_id++)).c_str())) {
             this->element_to_edit = current_element_ptr;
             this->attribute_to_edit.reset();
             strcpy(value_buffer, current_element_ptr->GetValue()->GetAsString().c_str());
@@ -396,11 +401,11 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
         if (attribute_to_edit == attribute_ptr) {
           ImGui::SameLine();
           ImGui::PushItemWidth(window_width*0.1f); 
-          ImGui::InputText(("##" + std::to_string(unique_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
+          ImGui::InputText(("##" + std::to_string(unique_input_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
           ImGui::PopItemWidth();
           ImGui::SameLine();
           
-          if (ImGui::Button(("Save##" + std::to_string(unique_id++)).c_str()))
+          if (ImGui::Button(("Save##" + std::to_string(unique_input_id++)).c_str()))
           {
             if (!prevent_input_flag) command = command_factory->MakeModifyAttributeCommand(attribute_ptr, value_buffer);
             value_buffer[0] = '\0';
@@ -410,7 +415,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
           }
         } else {
           ImGui::SameLine();
-          if (ImGui::Button(("Modify##" + std::to_string(unique_id++)).c_str())) {
+          if (ImGui::Button(("Modify##" + std::to_string(unique_input_id++)).c_str())) {
             this->attribute_to_edit = attribute_ptr;
             this->element_to_edit.reset();
             strcpy(value_buffer, attribute_ptr->GetAsString().c_str());
