@@ -38,7 +38,7 @@ int main(int, char **)
     struct stat info;
     if (stat(data_dir.c_str(), &info) != 0) {
         std::cout << "Directory doesn't exist, creating: " << data_dir << std::endl;
-        if (mkdir(data_dir.c_str(), 0775) != 0) {
+        if (mkdir(data_dir.c_str(), 0700) != 0) {
             std::cerr << "Failed to create directory!" << std::endl;
             data_dir_created = false;
         }
