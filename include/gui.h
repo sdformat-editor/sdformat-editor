@@ -125,10 +125,10 @@ class GUI : public GUII
   private: std::mutex gui_mutex;
 
   /// @brief Holds a reference to the attribute the user is currently editing
-  private: sdf::ParamPtr attribute_to_edit = nullptr;
+  private: sdf::ParamPtr attribute_to_edit;
 
   /// @brief Holds a reference to the element the user is currently editing
-  private: sdf::ElementPtr element_to_edit = nullptr;
+  private: sdf::ElementPtr element_to_edit;
 
 };
 
