@@ -92,6 +92,14 @@ class GUI : public GUII
   private: void CreateModifyAttributeDropdown(sdf::ParamPtr attribute, std::unique_ptr<CommandI> &command, 
     std::shared_ptr<CommandFactoryI> command_factory, int& unique_id);
 
+  /// @brief Create a dropdown list 
+  /// @param[in] element A pointer to the element for which to create a dropdown
+  /// \param[out] command a pointer to the command resulting from the user's action during this frame
+  /// \param[in] command_factory used for creating command objects
+  /// \param[out] unique_id a unique id for the ImGUI dropdowm 
+  private: void CreateModifyElementDropdown(sdf::ElementPtr element, std::unique_ptr<CommandI> &command, 
+    std::shared_ptr<CommandFactoryI> command_factory, int& unique_id);
+
   /// @brief Create a dropdown list for an element 
   /// @param[in] element A pointer to the element for which to create a dropdown
   /// \param[out] command a pointer to the command resulting from the user's action during this frame
@@ -140,6 +148,9 @@ class GUI : public GUII
 
   /// @brief Holds a reference to the element the user is currently editing
   private: sdf::ElementPtr element_to_edit;
+
+  /// @brief Indicates if a dropdown is used for editing attributes
+  private: bool use_dropdown_for_editing_element = false;
 
 };
 

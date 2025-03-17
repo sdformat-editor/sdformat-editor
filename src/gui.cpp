@@ -376,32 +376,51 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
           bool original_value = x;
           ImGui::Checkbox(("Value##" + std::to_string(unique_input_id++)).c_str(), &x);
 
-          if (original_value != x) {
+          if (original_value != x) 
+          {
             if (!prevent_input_flag) command = command_factory->MakeModifyElementCommand(current_element_ptr, x);
           }
-        } else {
+        } 
+        else 
+        {
           // Display the value and provide a textbox and button for modification
           ImGui::TextUnformatted(current_element_ptr->GetValue()->GetAsString().c_str());
           static char value_buffer[128] = "";
           
-          if (element_to_edit == current_element_ptr) {
-            ImGui::SameLine();
-            ImGui::PushItemWidth(window_width*0.1f); 
-            ImGui::InputText(("##" + std::to_string(unique_input_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
-            ImGui::PopItemWidth();
-            ImGui::SameLine();
-
-            if (ImGui::Button(("Save##" + std::to_string(unique_input_id++)).c_str()))
+          if (element_to_edit == current_element_ptr) 
+          {
+            if (ImGui::Button((((this->use_dropdown_for_editing_element) ? "Close Dropdown##" : "Dropdown##") + std::to_string(unique_input_id++)).c_str()))
             {
-            if   (!prevent_input_flag) command = command_factory->MakeModifyElementCommand(current_element_ptr, std::string(value_buffer));
-              value_buffer[0] = '\0';
-              element_to_edit.reset();
-              std::cout << "New value for " + current_element_ptr->ReferenceSDF() + " element called " + current_element_ptr->GetName()
-              << ": " << value_buffer << std::endl;
+              this->use_dropdown_for_editing_element = !(this->use_dropdown_for_editing_element);
             }
-          } else {
+            
+            if (this->use_dropdown_for_editing_element)
+            {
+              this->CreateModifyElementDropdown(element_to_edit, command, command_factory, unique_input_id);
+              this->use_dropdown_for_editing_element=!(this->use_dropdown_for_editing_element);
+            }
+            else
+            {
+              ImGui::SameLine();
+              ImGui::PushItemWidth(window_width*0.1f); 
+              ImGui::InputText(("##" + std::to_string(unique_input_id++)).c_str(), value_buffer, IM_ARRAYSIZE(value_buffer));
+              ImGui::PopItemWidth();
+              ImGui::SameLine();
+  
+              if (ImGui::Button(("Save##" + std::to_string(unique_input_id++)).c_str()))
+              {
+                if (!prevent_input_flag) command = command_factory->MakeModifyElementCommand(current_element_ptr, std::string(value_buffer));
+                value_buffer[0] = '\0';
+                element_to_edit.reset();
+                this->use_dropdown_for_editing_element = false;
+              }
+            }
+          } 
+          else 
+          {
             ImGui::SameLine();
-            if (ImGui::Button(("Modify##" + std::to_string(unique_input_id++)).c_str())) {
+            if (ImGui::Button(("Modify##" + std::to_string(unique_input_id++)).c_str())) 
+            {
               this->element_to_edit = current_element_ptr;
               this->attribute_to_edit.reset();
               strcpy(value_buffer, current_element_ptr->GetValue()->GetAsString().c_str());
@@ -418,22 +437,26 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
         bool attribute_value;
         std::string attribute_info = attribute_ptr->GetKey() + ": " +  attribute_ptr->GetAsString() + " ("  + attribute_ptr->GetTypeName()+ ")";
 
-        if (attribute_ptr->IsType<bool>() && attribute_ptr->Get(attribute_value)) {
+        if (attribute_ptr->IsType<bool>() && attribute_ptr->Get(attribute_value)) 
+        {
           // Render checkbox
           bool original_value = attribute_value;
           ImGui::Checkbox(("##" + std::to_string(unique_input_id++)).c_str(), &attribute_value);
           ImGui::SameLine();
           ImGui::TextUnformatted((attribute_info).c_str());
           
-          if (original_value != attribute_value) {
+          if (original_value != attribute_value) 
+          {
             if (!prevent_input_flag) command = command_factory->MakeModifyAttributeCommand(attribute_ptr, attribute_value);
           }
-        } else {
+        } 
+        else 
+        {
           ImGui::TextUnformatted((attribute_info).c_str());
           static char value_buffer[1024] = "";
           if (attribute_to_edit == attribute_ptr) {
 
-            if (ImGui::Button((((this->use_dropdown_for_editing_attribute) ? "Close Dropdown####" : "Dropdown####") + std::to_string(unique_input_id++)).c_str()))
+            if (ImGui::Button((((this->use_dropdown_for_editing_attribute) ? "Close Dropdown##" : "Dropdown##") + std::to_string(unique_input_id++)).c_str()))
             {
               this->use_dropdown_for_editing_attribute = !(this->use_dropdown_for_editing_attribute);
             }
@@ -457,11 +480,13 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
                 this->attribute_to_edit.reset();        
                 this->use_dropdown_for_editing_attribute = false;
               }
-
             }
-          } else {
+          } 
+          else 
+          {
             ImGui::SameLine();
-            if (ImGui::Button(("Modify##" + std::to_string(unique_input_id++)).c_str())) {
+            if (ImGui::Button(("Modify##" + std::to_string(unique_input_id++)).c_str())) 
+            {
               this->attribute_to_edit = attribute_ptr;
               this->element_to_edit.reset();
               strcpy(value_buffer, attribute_ptr->GetAsString().c_str());
@@ -517,17 +542,51 @@ void GUI::CreateModifyAttributeDropdown(sdf::ParamPtr attribute, std::unique_ptr
 
     for (const auto &element : elements_with_name_attribute)
     {
-      attribute_names.push_back(element->GetAttribute("name")->GetAsString()+"##"+std::to_string(unique_id++));
+      if (element->GetAttribute("name") && 
+          std::find(attribute_names.begin(), attribute_names.end(), element->GetAttribute("name")->GetAsString()) == attribute_names.end())
+      {
+        attribute_names.push_back(element->GetAttribute("name")->GetAsString());
+      }
     }
     
-    int selected_element = 0;
-    this->CreateDropdown(attribute_names, std::vector<std::string>(), selected_element, unique_id);
+    int selected_attribute = 0;
+    this->CreateDropdown(attribute_names, std::vector<std::string>(), selected_attribute, unique_id);
   
-    if ((0 < selected_element) && (static_cast<size_t>(selected_element) < attribute_names.size()))
+    if ((0 < selected_attribute) && (static_cast<size_t>(selected_attribute) < attribute_names.size()))
     {
       if (!prevent_input_flag) 
       {
-        command = command_factory->MakeModifyAttributeCommand(attribute, attribute_names[selected_element-1]);
+        command = command_factory->MakeModifyAttributeCommand(attribute, attribute_names[selected_attribute-1]);
+        this->attribute_to_edit.reset();
+      }
+    }
+}
+
+void GUI::CreateModifyElementDropdown(sdf::ElementPtr element, std::unique_ptr<CommandI> &command, std::shared_ptr<CommandFactoryI> command_factory, int& unique_id)
+{
+    std::vector<std::string> element_names;
+  
+    element_names.push_back("##");
+  
+    std::vector<sdf::ElementPtr> elements_with_name_attribute = this->sdformat_parser->LookupElementsByAttributeType("name");
+
+    for (const auto &element : elements_with_name_attribute)
+    {
+      if (element->GetAttribute("name") && 
+          std::find(element_names.begin(), element_names.end(), element->GetAttribute("name")->GetAsString()) == element_names.end())
+      {
+        element_names.push_back(element->GetAttribute("name")->GetAsString());
+      }
+    }
+    
+    int selected_element = 0;
+    this->CreateDropdown(element_names, std::vector<std::string>(), selected_element, unique_id);
+  
+    if ((0 < selected_element) && (static_cast<size_t>(selected_element) < element_names.size()))
+    {
+      if (!prevent_input_flag) 
+      {
+        command = command_factory->MakeModifyElementCommand(element, element_names[selected_element-1]);
         this->attribute_to_edit.reset();
       }
     }
