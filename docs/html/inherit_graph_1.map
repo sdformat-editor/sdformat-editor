@@ -1,17 +1,19 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="5,153,99,179"/>
-<area shape="rect" id="Node000001" href="$classAddElementCommand.html" title="Open model command implementation of CommandI." alt="" coords="158,5,326,31"/>
-<area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="63,140,95,89,118,62,145,40,168,28,170,33,148,44,122,66,100,92,68,143"/>
-<area shape="rect" id="Node000002" href="$classDeleteElementCommand.html" title="Open model command implementation of CommandI." alt="" coords="149,55,335,80"/>
-<area shape="poly" id="edge3_Node000000_Node000002" title=" " alt="" coords="74,141,106,114,145,89,175,78,177,83,148,94,110,118,78,145"/>
-<area shape="rect" id="Node000003" href="$classGenericCommand.html" title="Executes and pops the top commandI object from a stack." alt="" coords="173,104,311,129"/>
-<area shape="poly" id="edge4_Node000000_Node000003" title=" " alt="" coords="111,147,146,138,190,127,191,132,147,143,113,152"/>
-<area shape="rect" id="Node000004" href="$classModifyAttributeCommand.html" title="Open model command implementation of CommandI." alt="" coords="147,153,337,179"/>
-<area shape="poly" id="edge5_Node000000_Node000004" title=" " alt="" coords="112,163,146,163,146,169,112,169"/>
-<area shape="rect" id="Node000005" href="$classModifyElementCommand.html" title="Open model command implementation of CommandI." alt="" coords="149,203,335,228"/>
-<area shape="poly" id="edge6_Node000000_Node000005" title=" " alt="" coords="112,179,193,200,192,205,111,184"/>
-<area shape="rect" id="Node000006" href="$classOpenFileCommand.html" title="Open model command implementation of CommandI." alt="" coords="169,252,315,277"/>
-<area shape="poly" id="edge7_Node000000_Node000006" title=" " alt="" coords="78,186,110,213,148,237,180,249,178,254,145,242,107,217,74,190"/>
-<area shape="rect" id="Node000007" href="$classSaveFileCommand.html" title="Open model command implementation of CommandI." alt="" coords="170,301,314,327"/>
-<area shape="poly" id="edge8_Node000000_Node000007" title=" " alt="" coords="68,189,100,239,122,265,148,286,173,299,171,304,145,291,119,269,96,242,64,192"/>
+<area shape="rect" id="Node000000" href="$classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="5,179,99,204"/>
+<area shape="rect" id="Node000001" href="$classAddElementCommand.html" title="Open model command implementation of CommandI." alt="" coords="177,5,345,31"/>
+<area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="60,165,90,101,115,68,145,40,175,25,177,30,148,44,119,71,95,104,64,167"/>
+<area shape="rect" id="Node000002" href="$classDeleteAttributeCommand.html" title=" " alt="" coords="166,55,355,80"/>
+<area shape="poly" id="edge3_Node000000_Node000002" title=" " alt="" coords="67,165,100,126,121,106,145,89,171,78,173,83,148,94,125,110,104,129,71,169"/>
+<area shape="rect" id="Node000003" href="$classDeleteElementCommand.html" title="Open model command implementation of CommandI." alt="" coords="167,104,354,129"/>
+<area shape="poly" id="edge4_Node000000_Node000003" title=" " alt="" coords="84,169,146,138,184,127,185,132,148,143,86,174"/>
+<area shape="rect" id="Node000004" href="$classGenericCommand.html" title="Executes and pops the top commandI object from a stack." alt="" coords="191,153,330,179"/>
+<area shape="poly" id="edge5_Node000000_Node000004" title=" " alt="" coords="112,181,191,172,191,177,113,187"/>
+<area shape="rect" id="Node000005" href="$classModifyAttributeCommand.html" title="Open model command implementation of CommandI." alt="" coords="147,203,375,228"/>
+<area shape="poly" id="edge6_Node000000_Node000005" title=" " alt="" coords="113,196,151,200,150,205,112,201"/>
+<area shape="rect" id="Node000006" href="$classModifyElementCommand.html" title="Open model command implementation of CommandI." alt="" coords="148,252,373,277"/>
+<area shape="poly" id="edge7_Node000000_Node000006" title=" " alt="" coords="87,208,148,237,191,249,189,255,146,242,85,213"/>
+<area shape="rect" id="Node000007" href="$classOpenFileCommand.html" title="Open model command implementation of CommandI." alt="" coords="187,301,334,327"/>
+<area shape="poly" id="edge8_Node000000_Node000007" title=" " alt="" coords="72,214,104,252,125,271,148,286,188,302,186,307,145,291,122,275,101,255,68,217"/>
+<area shape="rect" id="Node000008" href="$classSaveFileCommand.html" title="Open model command implementation of CommandI." alt="" coords="189,351,333,376"/>
+<area shape="poly" id="edge9_Node000000_Node000008" title=" " alt="" coords="65,216,96,277,119,309,148,336,168,346,189,354,188,359,166,351,145,340,115,313,91,280,60,218"/>
 </map>

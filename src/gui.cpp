@@ -212,22 +212,16 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
   ImGui::SetNextWindowPos(ImVec2(window_width * 0.3f, 20)); // Position the window below the main menu bar
   ImGui::SetNextWindowSize(ImVec2(window_width * 0.7f, window_height - 20.0f)); // Set the dynamic size of the window
 
-  {
-    ImGui::Begin("SDFormat Editor",  nullptr, ImGuiWindowFlags_NoMove); 
+  ImGui::Begin("SDFormat Editor",  nullptr, ImGuiWindowFlags_NoMove); 
 
-    // TODO: (zaid) Save the current working directory and/or current file as an attribute to the GUI object or the file operations singleton
-    // ImGui::TextUnformatted("Active File is: %s", file_ops->getActiveFilePath().c_str()); // Display some text (you can use a format strings too)
+  // TODO: (zaid) Save the current working directory and/or current file as an attribute to the GUI object or the file operations singleton
+  // ImGui::TextUnformatted("Active File is: %s", file_ops->getActiveFilePath().c_str()); // Display some text (you can use a format strings too)
 
-    // If the user hasn't done anything so far, accept commands from the SDF element tree.
-    // Otherwise, display the tree but do not take commands.
-    this->DisplaySDFRootElement(command, sdformat_parser, command_factory);
-    
-
-    ImGui::ColorEdit3("clear color", (float *)&this->background_colour); // Edit 3 floats representing a color
-
-    ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / this->io->Framerate, this->io->Framerate);
-    ImGui::End();
-  }
+  // If the user hasn't done anything so far, accept commands from the SDF element tree.
+  // Otherwise, display the tree but do not take commands.
+  this->DisplaySDFRootElement(command, sdformat_parser, command_factory);
+  
+  ImGui::End();
 
   // Rendering
   ImGui::Render();
@@ -397,7 +391,6 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
             if (this->use_dropdown_for_editing_element)
             {
               this->CreateModifyElementDropdown(element_to_edit, command, command_factory, unique_input_id);
-              this->use_dropdown_for_editing_element=!(this->use_dropdown_for_editing_element);
             }
             else
             {
@@ -535,8 +528,10 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
 void GUI::CreateModifyAttributeDropdown(sdf::ParamPtr attribute, std::unique_ptr<CommandI> &command, std::shared_ptr<CommandFactoryI> command_factory, int& unique_id)
 {
     std::vector<std::string> attribute_names;
+    std::vector<std::string> attribute_names_with_id;
   
     attribute_names.push_back("##");
+    attribute_names_with_id.push_back("##");
   
     std::vector<sdf::ElementPtr> elements_with_name_attribute = this->sdformat_parser->LookupElementsByAttributeType("name");
 
@@ -546,17 +541,18 @@ void GUI::CreateModifyAttributeDropdown(sdf::ParamPtr attribute, std::unique_ptr
           std::find(attribute_names.begin(), attribute_names.end(), element->GetAttribute("name")->GetAsString()) == attribute_names.end())
       {
         attribute_names.push_back(element->GetAttribute("name")->GetAsString());
+        attribute_names_with_id.push_back(element->GetAttribute("name")->GetAsString()+"##"+std::to_string(unique_id++));
       }
     }
     
     int selected_attribute = 0;
-    this->CreateDropdown(attribute_names, std::vector<std::string>(), selected_attribute, unique_id);
+    this->CreateDropdown(attribute_names_with_id, std::vector<std::string>(), selected_attribute, unique_id);
   
     if ((0 < selected_attribute) && (static_cast<size_t>(selected_attribute) < attribute_names.size()))
     {
       if (!prevent_input_flag) 
       {
-        command = command_factory->MakeModifyAttributeCommand(attribute, attribute_names[selected_attribute-1]);
+        command = command_factory->MakeModifyAttributeCommand(attribute, attribute_names[selected_attribute]);
         this->attribute_to_edit.reset();
       }
     }
@@ -565,8 +561,10 @@ void GUI::CreateModifyAttributeDropdown(sdf::ParamPtr attribute, std::unique_ptr
 void GUI::CreateModifyElementDropdown(sdf::ElementPtr element, std::unique_ptr<CommandI> &command, std::shared_ptr<CommandFactoryI> command_factory, int& unique_id)
 {
     std::vector<std::string> element_names;
+    std::vector<std::string> element_names_with_id;
   
     element_names.push_back("##");
+    element_names_with_id.push_back("##");
   
     std::vector<sdf::ElementPtr> elements_with_name_attribute = this->sdformat_parser->LookupElementsByAttributeType("name");
 
@@ -576,17 +574,18 @@ void GUI::CreateModifyElementDropdown(sdf::ElementPtr element, std::unique_ptr<C
           std::find(element_names.begin(), element_names.end(), element->GetAttribute("name")->GetAsString()) == element_names.end())
       {
         element_names.push_back(element->GetAttribute("name")->GetAsString());
+        element_names_with_id.push_back(element->GetAttribute("name")->GetAsString()+"##"+std::to_string(unique_id++));
       }
     }
     
     int selected_element = 0;
-    this->CreateDropdown(element_names, std::vector<std::string>(), selected_element, unique_id);
+    this->CreateDropdown(element_names_with_id, std::vector<std::string>(), selected_element, unique_id);
   
     if ((0 < selected_element) && (static_cast<size_t>(selected_element) < element_names.size()))
     {
       if (!prevent_input_flag) 
       {
-        command = command_factory->MakeModifyElementCommand(element, element_names[selected_element-1]);
+        command = command_factory->MakeModifyElementCommand(element, element_names[selected_element]);
         this->attribute_to_edit.reset();
       }
     }
@@ -625,7 +624,8 @@ void GUI::CreateAppendElementDropdown(sdf::ElementPtr element, std::unique_ptr<C
     else if (selected_element > 0)
     {
       if (!prevent_input_flag) {
-        command = command_factory->MakeAddElementCommand(element, element->GetElementDescription(selected_element-1));
+        sdf::ElementPtr child_element = element->GetElementDescription(selected_element-1)->Clone();
+        command = command_factory->MakeAddElementCommand(element, child_element);
         this->element_to_append_to.reset();
       }
     }
@@ -643,6 +643,7 @@ void GUI::CreateDropdown(const std::vector<std::string>& items, const std::vecto
         {
             selected_item = static_cast<int>(n);
             ImGui::EndCombo();
+            item_current = "##";
             return;
         }
         if (is_selected)

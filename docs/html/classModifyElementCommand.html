@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SDFormat Editor: ModifyElementCommand Class Reference</title>
+<title>SDFormat Editor: ModifyElementCommand&lt; T &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,7 +74,7 @@ $(function() {
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classModifyElementCommand-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">ModifyElementCommand Class Reference</div></div>
+  <div class="headertitle"><div class="title">ModifyElementCommand&lt; T &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -83,20 +83,20 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="ModifyElementCommand_8h_source.html">ModifyElementCommand.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for ModifyElementCommand:</div>
+Inheritance diagram for ModifyElementCommand&lt; T &gt;:</div>
 <div class="dyncontent">
-<div class="center"><img src="classModifyElementCommand__inherit__graph.png" border="0" usemap="#aModifyElementCommand_inherit__map" alt="Inheritance graph"/></div>
-<map name="aModifyElementCommand_inherit__map" id="aModifyElementCommand_inherit__map">
+<div class="center"><img src="classModifyElementCommand__inherit__graph.png" border="0" usemap="#aModifyElementCommand_3_01T_01_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="aModifyElementCommand_3_01T_01_4_inherit__map" id="aModifyElementCommand_3_01T_01_4_inherit__map">
 <area shape="rect" title="Open model command implementation of CommandI." alt="" coords="5,253,279,760"/>
 <area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="31,5,253,205"/>
 <area shape="poly" title=" " alt="" coords="145,219,145,253,139,253,139,219"/>
 </map>
 </div>
 <div class="dynheader">
-Collaboration diagram for ModifyElementCommand:</div>
+Collaboration diagram for ModifyElementCommand&lt; T &gt;:</div>
 <div class="dyncontent">
-<div class="center"><img src="classModifyElementCommand__coll__graph.png" border="0" usemap="#aModifyElementCommand_coll__map" alt="Collaboration graph"/></div>
-<map name="aModifyElementCommand_coll__map" id="aModifyElementCommand_coll__map">
+<div class="center"><img src="classModifyElementCommand__coll__graph.png" border="0" usemap="#aModifyElementCommand_3_01T_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="aModifyElementCommand_3_01T_01_4_coll__map" id="aModifyElementCommand_3_01T_01_4_coll__map">
 <area shape="rect" title="Open model command implementation of CommandI." alt="" coords="5,253,279,760"/>
 <area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="31,5,253,205"/>
 <area shape="poly" title=" " alt="" coords="145,219,145,253,139,253,139,219"/>
@@ -105,80 +105,83 @@ Collaboration diagram for ModifyElementCommand:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa1d0020faee7edf41239bbef132a2e38" id="r_aa1d0020faee7edf41239bbef132a2e38"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#aa1d0020faee7edf41239bbef132a2e38">ModifyElementCommand</a> (std::shared_ptr&lt; <a class="el" href="classGUII.html">GUII</a> &gt; <a class="el" href="classModifyElementCommand.html#ad7bfb01fba1867c8a6176fe84ee8d7f6">gui</a>, std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParserI</a> &gt; <a class="el" href="classModifyElementCommand.html#a68091d295bd1f2065bf3c6971ec39a25">sdformatParser</a>, sdf::ElementPtr <a class="el" href="classModifyElementCommand.html#a670a54c1dd66a86d9d3e296e17438018">element_to_modify</a>, std::string <a class="el" href="classModifyElementCommand.html#a218220f6dc0c60904a38fd4baaa4012d">new_value</a>)</td></tr>
-<tr class="memdesc:aa1d0020faee7edf41239bbef132a2e38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for open model command objects.  <br /></td></tr>
-<tr class="separator:aa1d0020faee7edf41239bbef132a2e38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae58c80043169ab1088d4483184de30a6" id="r_ae58c80043169ab1088d4483184de30a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#ae58c80043169ab1088d4483184de30a6">ModifyElementCommand</a> (std::shared_ptr&lt; <a class="el" href="classGUII.html">GUII</a> &gt; <a class="el" href="classModifyElementCommand.html#a8e87272c37fea0ef3d02d3a84a406ce3">gui</a>, std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParserI</a> &gt; <a class="el" href="classModifyElementCommand.html#a907dff2096cb4f682561869224bf4542">sdformatParser</a>, sdf::ElementPtr <a class="el" href="classModifyElementCommand.html#afc44353394f733db57f9163186230074">element_to_modify</a>, T <a class="el" href="classModifyElementCommand.html#a17129fae7fe6db89a9c3e9aec5b054a3">new_value</a>)</td></tr>
+<tr class="memdesc:ae58c80043169ab1088d4483184de30a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for open model command objects.  <br /></td></tr>
+<tr class="separator:ae58c80043169ab1088d4483184de30a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a1c9c0414d88fd9a3475fb2833906e216" id="r_a1c9c0414d88fd9a3475fb2833906e216"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#a1c9c0414d88fd9a3475fb2833906e216">Execute</a> () override</td></tr>
-<tr class="memdesc:a1c9c0414d88fd9a3475fb2833906e216"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
-<tr class="separator:a1c9c0414d88fd9a3475fb2833906e216"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a085ad9c257bd5f607a07f0af4751280a" id="r_a085ad9c257bd5f607a07f0af4751280a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#a085ad9c257bd5f607a07f0af4751280a">ExecuteUndo</a> () override</td></tr>
-<tr class="memdesc:a085ad9c257bd5f607a07f0af4751280a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
-<tr class="separator:a085ad9c257bd5f607a07f0af4751280a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae012f3705ed602cb51831b27b1ef9ab1" id="r_ae012f3705ed602cb51831b27b1ef9ab1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#ae012f3705ed602cb51831b27b1ef9ab1">ExecuteRedo</a> () override</td></tr>
-<tr class="memdesc:ae012f3705ed602cb51831b27b1ef9ab1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
-<tr class="separator:ae012f3705ed602cb51831b27b1ef9ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a483f4a5c0ca6332370b466848e7c5c2c" id="r_a483f4a5c0ca6332370b466848e7c5c2c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#a483f4a5c0ca6332370b466848e7c5c2c">IsUndoable</a> () override</td></tr>
-<tr class="memdesc:a483f4a5c0ca6332370b466848e7c5c2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
-<tr class="separator:a483f4a5c0ca6332370b466848e7c5c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab95d4a37de8b12b240b0d6aca8bc8064" id="r_ab95d4a37de8b12b240b0d6aca8bc8064"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#ab95d4a37de8b12b240b0d6aca8bc8064">IsRedoable</a> () override</td></tr>
-<tr class="memdesc:ab95d4a37de8b12b240b0d6aca8bc8064"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
-<tr class="separator:ab95d4a37de8b12b240b0d6aca8bc8064"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a940019a0e971a63e0eaa884252cede8f" id="r_a940019a0e971a63e0eaa884252cede8f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#a940019a0e971a63e0eaa884252cede8f">IsThreaded</a> () override</td></tr>
-<tr class="memdesc:a940019a0e971a63e0eaa884252cede8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
-<tr class="separator:a940019a0e971a63e0eaa884252cede8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80dfc34f97318d469e624245a4af6879" id="r_a80dfc34f97318d469e624245a4af6879"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#a80dfc34f97318d469e624245a4af6879">ChangesProgramStateIrreversibly</a> () override</td></tr>
-<tr class="memdesc:a80dfc34f97318d469e624245a4af6879"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
-<tr class="separator:a80dfc34f97318d469e624245a4af6879"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a059211f2ebd1d3f0c977501c9255e5b4" id="r_a059211f2ebd1d3f0c977501c9255e5b4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#a059211f2ebd1d3f0c977501c9255e5b4">Execute</a> () override</td></tr>
+<tr class="memdesc:a059211f2ebd1d3f0c977501c9255e5b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
+<tr class="separator:a059211f2ebd1d3f0c977501c9255e5b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9883f73cba92657e8c61d6d9d3fb954" id="r_ac9883f73cba92657e8c61d6d9d3fb954"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#ac9883f73cba92657e8c61d6d9d3fb954">ExecuteUndo</a> () override</td></tr>
+<tr class="memdesc:ac9883f73cba92657e8c61d6d9d3fb954"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
+<tr class="separator:ac9883f73cba92657e8c61d6d9d3fb954"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f3076ee2b46f8a3251e56263b2af183" id="r_a9f3076ee2b46f8a3251e56263b2af183"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#a9f3076ee2b46f8a3251e56263b2af183">ExecuteRedo</a> () override</td></tr>
+<tr class="memdesc:a9f3076ee2b46f8a3251e56263b2af183"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
+<tr class="separator:a9f3076ee2b46f8a3251e56263b2af183"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55ba581aa29dbf5a15b3b6f0ebf2da61" id="r_a55ba581aa29dbf5a15b3b6f0ebf2da61"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#a55ba581aa29dbf5a15b3b6f0ebf2da61">IsUndoable</a> () override</td></tr>
+<tr class="memdesc:a55ba581aa29dbf5a15b3b6f0ebf2da61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
+<tr class="separator:a55ba581aa29dbf5a15b3b6f0ebf2da61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0923ab4789fa5640bada3aa931efea7" id="r_aa0923ab4789fa5640bada3aa931efea7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#aa0923ab4789fa5640bada3aa931efea7">IsRedoable</a> () override</td></tr>
+<tr class="memdesc:aa0923ab4789fa5640bada3aa931efea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
+<tr class="separator:aa0923ab4789fa5640bada3aa931efea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49d4b72b16e9436c01881f624e584bea" id="r_a49d4b72b16e9436c01881f624e584bea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#a49d4b72b16e9436c01881f624e584bea">IsThreaded</a> () override</td></tr>
+<tr class="memdesc:a49d4b72b16e9436c01881f624e584bea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
+<tr class="separator:a49d4b72b16e9436c01881f624e584bea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2e39dcf67a8423834883037fc043157" id="r_ab2e39dcf67a8423834883037fc043157"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#ab2e39dcf67a8423834883037fc043157">ChangesProgramStateIrreversibly</a> () override</td></tr>
+<tr class="memdesc:ab2e39dcf67a8423834883037fc043157"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
+<tr class="separator:ab2e39dcf67a8423834883037fc043157"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a1ec927955e3c31edaa023b88728e1c04" id="r_a1ec927955e3c31edaa023b88728e1c04"><td class="memItemLeft" align="right" valign="top"><a id="a1ec927955e3c31edaa023b88728e1c04" name="a1ec927955e3c31edaa023b88728e1c04"></a>
+<tr class="memitem:a878bff125797ae1efab86597eabeddcd" id="r_a878bff125797ae1efab86597eabeddcd"><td class="memItemLeft" align="right" valign="top"><a id="a878bff125797ae1efab86597eabeddcd" name="a878bff125797ae1efab86597eabeddcd"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>file_path</b></td></tr>
-<tr class="memdesc:a1ec927955e3c31edaa023b88728e1c04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filepath of the model. <br /></td></tr>
-<tr class="separator:a1ec927955e3c31edaa023b88728e1c04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7bfb01fba1867c8a6176fe84ee8d7f6" id="r_ad7bfb01fba1867c8a6176fe84ee8d7f6"><td class="memItemLeft" align="right" valign="top"><a id="ad7bfb01fba1867c8a6176fe84ee8d7f6" name="ad7bfb01fba1867c8a6176fe84ee8d7f6"></a>
+<tr class="memdesc:a878bff125797ae1efab86597eabeddcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filepath of the model. <br /></td></tr>
+<tr class="separator:a878bff125797ae1efab86597eabeddcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e87272c37fea0ef3d02d3a84a406ce3" id="r_a8e87272c37fea0ef3d02d3a84a406ce3"><td class="memItemLeft" align="right" valign="top"><a id="a8e87272c37fea0ef3d02d3a84a406ce3" name="a8e87272c37fea0ef3d02d3a84a406ce3"></a>
 std::shared_ptr&lt; <a class="el" href="classGUII.html">GUII</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>gui</b></td></tr>
-<tr class="memdesc:ad7bfb01fba1867c8a6176fe84ee8d7f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the gui interface. <br /></td></tr>
-<tr class="separator:ad7bfb01fba1867c8a6176fe84ee8d7f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68091d295bd1f2065bf3c6971ec39a25" id="r_a68091d295bd1f2065bf3c6971ec39a25"><td class="memItemLeft" align="right" valign="top"><a id="a68091d295bd1f2065bf3c6971ec39a25" name="a68091d295bd1f2065bf3c6971ec39a25"></a>
+<tr class="memdesc:a8e87272c37fea0ef3d02d3a84a406ce3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the gui interface. <br /></td></tr>
+<tr class="separator:a8e87272c37fea0ef3d02d3a84a406ce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a907dff2096cb4f682561869224bf4542" id="r_a907dff2096cb4f682561869224bf4542"><td class="memItemLeft" align="right" valign="top"><a id="a907dff2096cb4f682561869224bf4542" name="a907dff2096cb4f682561869224bf4542"></a>
 std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParserI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>sdformatParser</b></td></tr>
-<tr class="memdesc:a68091d295bd1f2065bf3c6971ec39a25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the sdformat parser interface. <br /></td></tr>
-<tr class="separator:a68091d295bd1f2065bf3c6971ec39a25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a670a54c1dd66a86d9d3e296e17438018" id="r_a670a54c1dd66a86d9d3e296e17438018"><td class="memItemLeft" align="right" valign="top"><a id="a670a54c1dd66a86d9d3e296e17438018" name="a670a54c1dd66a86d9d3e296e17438018"></a>
+<tr class="memdesc:a907dff2096cb4f682561869224bf4542"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the sdformat parser interface. <br /></td></tr>
+<tr class="separator:a907dff2096cb4f682561869224bf4542"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc44353394f733db57f9163186230074" id="r_afc44353394f733db57f9163186230074"><td class="memItemLeft" align="right" valign="top"><a id="afc44353394f733db57f9163186230074" name="afc44353394f733db57f9163186230074"></a>
 sdf::ElementPtr&#160;</td><td class="memItemRight" valign="bottom"><b>element_to_modify</b></td></tr>
-<tr class="memdesc:a670a54c1dd66a86d9d3e296e17438018"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the element to modify. <br /></td></tr>
-<tr class="separator:a670a54c1dd66a86d9d3e296e17438018"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a218220f6dc0c60904a38fd4baaa4012d" id="r_a218220f6dc0c60904a38fd4baaa4012d"><td class="memItemLeft" align="right" valign="top"><a id="a218220f6dc0c60904a38fd4baaa4012d" name="a218220f6dc0c60904a38fd4baaa4012d"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>new_value</b></td></tr>
-<tr class="memdesc:a218220f6dc0c60904a38fd4baaa4012d"><td class="mdescLeft">&#160;</td><td class="mdescRight">new value for string <br /></td></tr>
-<tr class="separator:a218220f6dc0c60904a38fd4baaa4012d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab1bd8984527c1a2a1da8753294a237b" id="r_aab1bd8984527c1a2a1da8753294a237b"><td class="memItemLeft" align="right" valign="top"><a id="aab1bd8984527c1a2a1da8753294a237b" name="aab1bd8984527c1a2a1da8753294a237b"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>old_value</b></td></tr>
-<tr class="memdesc:aab1bd8984527c1a2a1da8753294a237b"><td class="mdescLeft">&#160;</td><td class="mdescRight">old value for string <br /></td></tr>
-<tr class="separator:aab1bd8984527c1a2a1da8753294a237b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a611d52f68d903a08c45cfec1390f8e1e" id="r_a611d52f68d903a08c45cfec1390f8e1e"><td class="memItemLeft" align="right" valign="top"><a id="a611d52f68d903a08c45cfec1390f8e1e" name="a611d52f68d903a08c45cfec1390f8e1e"></a>
+<tr class="memdesc:afc44353394f733db57f9163186230074"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the element to modify. <br /></td></tr>
+<tr class="separator:afc44353394f733db57f9163186230074"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17129fae7fe6db89a9c3e9aec5b054a3" id="r_a17129fae7fe6db89a9c3e9aec5b054a3"><td class="memItemLeft" align="right" valign="top"><a id="a17129fae7fe6db89a9c3e9aec5b054a3" name="a17129fae7fe6db89a9c3e9aec5b054a3"></a>
+T&#160;</td><td class="memItemRight" valign="bottom"><b>new_value</b></td></tr>
+<tr class="memdesc:a17129fae7fe6db89a9c3e9aec5b054a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">new value for string <br /></td></tr>
+<tr class="separator:a17129fae7fe6db89a9c3e9aec5b054a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad85876752efd08c4cccf9c5d78cdb028" id="r_ad85876752efd08c4cccf9c5d78cdb028"><td class="memItemLeft" align="right" valign="top"><a id="ad85876752efd08c4cccf9c5d78cdb028" name="ad85876752efd08c4cccf9c5d78cdb028"></a>
+T&#160;</td><td class="memItemRight" valign="bottom"><b>old_value</b></td></tr>
+<tr class="memdesc:ad85876752efd08c4cccf9c5d78cdb028"><td class="mdescLeft">&#160;</td><td class="mdescRight">old value for string <br /></td></tr>
+<tr class="separator:ad85876752efd08c4cccf9c5d78cdb028"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad21f991bd50a072ef5ce69af62b2dc26" id="r_ad21f991bd50a072ef5ce69af62b2dc26"><td class="memItemLeft" align="right" valign="top"><a id="ad21f991bd50a072ef5ce69af62b2dc26" name="ad21f991bd50a072ef5ce69af62b2dc26"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_undoable</b> = true</td></tr>
-<tr class="memdesc:a611d52f68d903a08c45cfec1390f8e1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store if the command is currently undo-able. <br /></td></tr>
-<tr class="separator:a611d52f68d903a08c45cfec1390f8e1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9881ade323f679cce22599509ad0f632" id="r_a9881ade323f679cce22599509ad0f632"><td class="memItemLeft" align="right" valign="top"><a id="a9881ade323f679cce22599509ad0f632" name="a9881ade323f679cce22599509ad0f632"></a>
+<tr class="memdesc:ad21f991bd50a072ef5ce69af62b2dc26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store if the command is currently undo-able. <br /></td></tr>
+<tr class="separator:ad21f991bd50a072ef5ce69af62b2dc26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17cf1b972ade725f78faa10057e2f781" id="r_a17cf1b972ade725f78faa10057e2f781"><td class="memItemLeft" align="right" valign="top"><a id="a17cf1b972ade725f78faa10057e2f781" name="a17cf1b972ade725f78faa10057e2f781"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_redoable</b> = true</td></tr>
-<tr class="memdesc:a9881ade323f679cce22599509ad0f632"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store if the command is currently redo-able. <br /></td></tr>
-<tr class="separator:a9881ade323f679cce22599509ad0f632"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a17cf1b972ade725f78faa10057e2f781"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store if the command is currently redo-able. <br /></td></tr>
+<tr class="separator:a17cf1b972ade725f78faa10057e2f781"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Open model command implementation of <a class="el" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor...">CommandI</a>. </p>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
+class ModifyElementCommand&lt; T &gt;</div><p>Open model command implementation of <a class="el" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor...">CommandI</a>. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aa1d0020faee7edf41239bbef132a2e38" name="aa1d0020faee7edf41239bbef132a2e38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1d0020faee7edf41239bbef132a2e38">&#9670;&#160;</a></span>ModifyElementCommand()</h2>
+<a id="ae58c80043169ab1088d4483184de30a6" name="ae58c80043169ab1088d4483184de30a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae58c80043169ab1088d4483184de30a6">&#9670;&#160;</a></span>ModifyElementCommand()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">ModifyElementCommand::ModifyElementCommand </td>
+          <td class="memname"><a class="el" href="classModifyElementCommand.html">ModifyElementCommand</a>&lt; T &gt;<a class="el" href="classModifyElementCommand.html">::ModifyElementCommand</a> </td>
           <td>(</td>
           <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classGUII.html">GUII</a> &gt;&#160;</td>
           <td class="paramname"><em>gui</em>, </td>
@@ -198,7 +201,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_redoable
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::string&#160;</td>
+          <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>new_value</em>&#160;</td>
         </tr>
         <tr>
@@ -221,17 +224,19 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_redoable
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a80dfc34f97318d469e624245a4af6879" name="a80dfc34f97318d469e624245a4af6879"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80dfc34f97318d469e624245a4af6879">&#9670;&#160;</a></span>ChangesProgramStateIrreversibly()</h2>
+<a id="ab2e39dcf67a8423834883037fc043157" name="ab2e39dcf67a8423834883037fc043157"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2e39dcf67a8423834883037fc043157">&#9670;&#160;</a></span>ChangesProgramStateIrreversibly()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ModifyElementCommand::ChangesProgramStateIrreversibly </td>
+          <td class="memname">bool <a class="el" href="classModifyElementCommand.html">ModifyElementCommand</a>&lt; T &gt;::ChangesProgramStateIrreversibly </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -251,17 +256,19 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_redoable
 
 </div>
 </div>
-<a id="a1c9c0414d88fd9a3475fb2833906e216" name="a1c9c0414d88fd9a3475fb2833906e216"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c9c0414d88fd9a3475fb2833906e216">&#9670;&#160;</a></span>Execute()</h2>
+<a id="a059211f2ebd1d3f0c977501c9255e5b4" name="a059211f2ebd1d3f0c977501c9255e5b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a059211f2ebd1d3f0c977501c9255e5b4">&#9670;&#160;</a></span>Execute()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ModifyElementCommand::Execute </td>
+          <td class="memname">bool <a class="el" href="classModifyElementCommand.html">ModifyElementCommand</a>&lt; T &gt;::Execute </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -281,17 +288,19 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_redoable
 
 </div>
 </div>
-<a id="ae012f3705ed602cb51831b27b1ef9ab1" name="ae012f3705ed602cb51831b27b1ef9ab1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae012f3705ed602cb51831b27b1ef9ab1">&#9670;&#160;</a></span>ExecuteRedo()</h2>
+<a id="a9f3076ee2b46f8a3251e56263b2af183" name="a9f3076ee2b46f8a3251e56263b2af183"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f3076ee2b46f8a3251e56263b2af183">&#9670;&#160;</a></span>ExecuteRedo()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ModifyElementCommand::ExecuteRedo </td>
+          <td class="memname">bool <a class="el" href="classModifyElementCommand.html">ModifyElementCommand</a>&lt; T &gt;::ExecuteRedo </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -311,17 +320,19 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_redoable
 
 </div>
 </div>
-<a id="a085ad9c257bd5f607a07f0af4751280a" name="a085ad9c257bd5f607a07f0af4751280a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a085ad9c257bd5f607a07f0af4751280a">&#9670;&#160;</a></span>ExecuteUndo()</h2>
+<a id="ac9883f73cba92657e8c61d6d9d3fb954" name="ac9883f73cba92657e8c61d6d9d3fb954"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9883f73cba92657e8c61d6d9d3fb954">&#9670;&#160;</a></span>ExecuteUndo()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ModifyElementCommand::ExecuteUndo </td>
+          <td class="memname">bool <a class="el" href="classModifyElementCommand.html">ModifyElementCommand</a>&lt; T &gt;::ExecuteUndo </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -341,17 +352,19 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_redoable
 
 </div>
 </div>
-<a id="ab95d4a37de8b12b240b0d6aca8bc8064" name="ab95d4a37de8b12b240b0d6aca8bc8064"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab95d4a37de8b12b240b0d6aca8bc8064">&#9670;&#160;</a></span>IsRedoable()</h2>
+<a id="aa0923ab4789fa5640bada3aa931efea7" name="aa0923ab4789fa5640bada3aa931efea7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0923ab4789fa5640bada3aa931efea7">&#9670;&#160;</a></span>IsRedoable()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ModifyElementCommand::IsRedoable </td>
+          <td class="memname">bool <a class="el" href="classModifyElementCommand.html">ModifyElementCommand</a>&lt; T &gt;::IsRedoable </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -371,17 +384,19 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_redoable
 
 </div>
 </div>
-<a id="a940019a0e971a63e0eaa884252cede8f" name="a940019a0e971a63e0eaa884252cede8f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a940019a0e971a63e0eaa884252cede8f">&#9670;&#160;</a></span>IsThreaded()</h2>
+<a id="a49d4b72b16e9436c01881f624e584bea" name="a49d4b72b16e9436c01881f624e584bea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49d4b72b16e9436c01881f624e584bea">&#9670;&#160;</a></span>IsThreaded()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ModifyElementCommand::IsThreaded </td>
+          <td class="memname">bool <a class="el" href="classModifyElementCommand.html">ModifyElementCommand</a>&lt; T &gt;::IsThreaded </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -401,17 +416,19 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_redoable
 
 </div>
 </div>
-<a id="a483f4a5c0ca6332370b466848e7c5c2c" name="a483f4a5c0ca6332370b466848e7c5c2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a483f4a5c0ca6332370b466848e7c5c2c">&#9670;&#160;</a></span>IsUndoable()</h2>
+<a id="a55ba581aa29dbf5a15b3b6f0ebf2da61" name="a55ba581aa29dbf5a15b3b6f0ebf2da61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55ba581aa29dbf5a15b3b6f0ebf2da61">&#9670;&#160;</a></span>IsUndoable()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ModifyElementCommand::IsUndoable </td>
+          <td class="memname">bool <a class="el" href="classModifyElementCommand.html">ModifyElementCommand</a>&lt; T &gt;::IsUndoable </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

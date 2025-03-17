@@ -50,6 +50,21 @@ bool AddElementCommand::Execute()
     return true;
 }
 
+void AddElementCommand::AddElement(sdf::ElementPtr parent, sdf::ElementPtr element)
+{
+    element->SetParent(parent);
+    parent->InsertElement(element);
+
+    for (size_t i = 0; i < element->GetElementDescriptionCount(); i++)
+    {
+      if (element->GetElementDescription(i)->GetRequired() == "1" || element->GetElementDescription(i)->GetRequired() == "+" || element->GetElementDescription(i)->GetRequired() == "*")
+      {
+        sdf::ElementPtr child_element = element->GetElementDescription(i)->Clone();
+        this->AddElement(element, child_element);
+      }
+    }
+}
+
 bool AddElementCommand::ExecuteUndo()
 {
     
