@@ -119,7 +119,7 @@ bool DeleteElementCommand::Execute()
 
 bool DeleteElementCommand::ElementRequired()
 {
-    if (!(this->element_to_delete->GetRequired() == "1" || this->element_to_delete->GetRequired() == "+"))
+    if (!(this->element_to_delete->GetRequired() == "1" || this->element_to_delete->GetRequired() == "+" || this->element_to_delete->GetRequired() == "*"))
     {
         return false;
     }

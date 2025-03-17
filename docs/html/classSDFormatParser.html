@@ -86,9 +86,9 @@ Inheritance diagram for SDFormatParser:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSDFormatParser__inherit__graph.png" border="0" usemap="#aSDFormatParser_inherit__map" alt="Inheritance graph"/></div>
 <map name="aSDFormatParser_inherit__map" id="aSDFormatParser_inherit__map">
-<area shape="rect" title="Implementation of SDFormatParserI." alt="" coords="23,429,246,849"/>
-<area shape="rect" href="classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,264,381"/>
-<area shape="poly" title=" " alt="" coords="137,395,137,429,132,429,132,395"/>
+<area shape="rect" title="Implementation of SDFormatParserI." alt="" coords="19,493,259,977"/>
+<area shape="rect" href="classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,273,445"/>
+<area shape="poly" title=" " alt="" coords="142,459,142,493,137,493,137,459"/>
 </map>
 </div>
 <div class="dynheader">
@@ -96,9 +96,9 @@ Collaboration diagram for SDFormatParser:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSDFormatParser__coll__graph.png" border="0" usemap="#aSDFormatParser_coll__map" alt="Collaboration graph"/></div>
 <map name="aSDFormatParser_coll__map" id="aSDFormatParser_coll__map">
-<area shape="rect" title="Implementation of SDFormatParserI." alt="" coords="23,429,246,849"/>
-<area shape="rect" href="classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,264,381"/>
-<area shape="poly" title=" " alt="" coords="137,395,137,429,132,429,132,395"/>
+<area shape="rect" title="Implementation of SDFormatParserI." alt="" coords="19,493,259,977"/>
+<area shape="rect" href="classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,273,445"/>
+<area shape="poly" title=" " alt="" coords="142,459,142,493,137,493,137,459"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -110,6 +110,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a05c7ff0e224988a867849ebe85e67bb7" id="r_a05c7ff0e224988a867849ebe85e67bb7"><td class="memItemLeft" align="right" valign="top">sdf::SDFPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParser.html#a05c7ff0e224988a867849ebe85e67bb7">GetSDFElement</a> () override</td></tr>
 <tr class="memdesc:a05c7ff0e224988a867849ebe85e67bb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
 <tr class="separator:a05c7ff0e224988a867849ebe85e67bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b5ec820ea299c0a10c92f6e694febba" id="r_a1b5ec820ea299c0a10c92f6e694febba"><td class="memItemLeft" align="right" valign="top">std::vector&lt; sdf::ElementPtr &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParser.html#a1b5ec820ea299c0a10c92f6e694febba">LookupElementsByAttributeType</a> (const std::string &amp;attribute_type) override</td></tr>
+<tr class="memdesc:a1b5ec820ea299c0a10c92f6e694febba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
+<tr class="separator:a1b5ec820ea299c0a10c92f6e694febba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff85c7ed5d58583cba150f6454c3a669" id="r_aff85c7ed5d58583cba150f6454c3a669"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSDFormatParserI_1_1Mentions.html">Mentions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParser.html#aff85c7ed5d58583cba150f6454c3a669">FindMentions</a> (std::string key) override</td></tr>
 <tr class="memdesc:aff85c7ed5d58583cba150f6454c3a669"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
 <tr class="separator:aff85c7ed5d58583cba150f6454c3a669"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -431,6 +434,43 @@ Additional Inherited Members</h2></td></tr>
 <p>Implementation of interface method. </p>
 
 <p>Implements <a class="el" href="classSDFormatParserI.html#a404feccbe479eadff00da8ca881fbc85">SDFormatParserI</a>.</p>
+
+</div>
+</div>
+<a id="a1b5ec820ea299c0a10c92f6e694febba" name="a1b5ec820ea299c0a10c92f6e694febba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b5ec820ea299c0a10c92f6e694febba">&#9670;&#160;</a></span>LookupElementsByAttributeType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; sdf::ElementPtr &gt; SDFormatParser::LookupElementsByAttributeType </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>attribute_type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementation of interface method. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">attribute_type</td><td>The attribute type to use for lookup </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A list of elements with a given attribute type </dd></dl>
+
+<p>Implements <a class="el" href="classSDFormatParserI.html#a5f864b23d097b41660a1291ca5de9999">SDFormatParserI</a>.</p>
 
 </div>
 </div>

@@ -11,7 +11,8 @@ Implementation of \doxylink{classSDFormatParserI}{SDFormat\+ParserI}.
 
 
 
-Inheritance diagram for SDFormat\+Parser\+:\nopagebreak
+Inheritance diagram for SDFormat\+Parser\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,7 +21,8 @@ Inheritance diagram for SDFormat\+Parser\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for SDFormat\+Parser\+:\nopagebreak
+Collaboration diagram for SDFormat\+Parser\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -33,6 +35,8 @@ Collaboration diagram for SDFormat\+Parser\+:\nopagebreak
 void \mbox{\hyperlink{classSDFormatParser_ada8d05784ae55ffebeb83f41ce1b70fa}{Initialize}} (const std\+::string file\+\_\+path, bool \&success) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 sdf\+::\+SDFPtr \mbox{\hyperlink{classSDFormatParser_a05c7ff0e224988a867849ebe85e67bb7}{Get\+SDFElement}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+std\+::vector$<$ sdf\+::\+Element\+Ptr $>$ \mbox{\hyperlink{classSDFormatParser_a1b5ec820ea299c0a10c92f6e694febba}{Lookup\+Elements\+By\+Attribute\+Type}} (const std\+::string \&attribute\+\_\+type) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} \mbox{\hyperlink{classSDFormatParser_aff85c7ed5d58583cba150f6454c3a669}{Find\+Mentions}} (std\+::string key) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
@@ -205,6 +209,28 @@ Implementation of interface method.
 
 
 Implements \mbox{\hyperlink{classSDFormatParserI_a404feccbe479eadff00da8ca881fbc85}{SDFormat\+ParserI}}.
+
+\Hypertarget{classSDFormatParser_a1b5ec820ea299c0a10c92f6e694febba}\label{classSDFormatParser_a1b5ec820ea299c0a10c92f6e694febba} 
+\index{SDFormatParser@{SDFormatParser}!LookupElementsByAttributeType@{LookupElementsByAttributeType}}
+\index{LookupElementsByAttributeType@{LookupElementsByAttributeType}!SDFormatParser@{SDFormatParser}}
+\doxysubsubsection{\texorpdfstring{LookupElementsByAttributeType()}{LookupElementsByAttributeType()}}
+{\footnotesize\ttfamily std\+::vector$<$ sdf\+::\+Element\+Ptr $>$ SDFormat\+Parser\+::\+Lookup\+Elements\+By\+Attribute\+Type (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+\_\+type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em attribute\+\_\+type} & The attribute type to use for lookup \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of elements with a given attribute type 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSDFormatParserI_a5f864b23d097b41660a1291ca5de9999}{SDFormat\+ParserI}}.
 
 
 

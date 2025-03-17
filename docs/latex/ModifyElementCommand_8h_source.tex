@@ -31,40 +31,40 @@
 \DoxyCodeLine{00027\ }
 \DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <vector>}}
 \DoxyCodeLine{00029\ }
-\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classModifyElementCommand}{ModifyElementCommand}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classCommandI}{CommandI}}}
-\DoxyCodeLine{00032\ \{}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{public}:\ \mbox{\hyperlink{classModifyElementCommand}{ModifyElementCommand}}(std::shared\_ptr<GUII>\ \mbox{\hyperlink{classModifyElementCommand_ad7bfb01fba1867c8a6176fe84ee8d7f6}{gui}},\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classModifyElementCommand_a68091d295bd1f2065bf3c6971ec39a25}{sdformatParser}},\ sdf::ElementPtr\ \mbox{\hyperlink{classModifyElementCommand_a670a54c1dd66a86d9d3e296e17438018}{element\_to\_modify}},\ std::string\ \mbox{\hyperlink{classModifyElementCommand_a218220f6dc0c60904a38fd4baaa4012d}{new\_value}});}
+\DoxyCodeLine{00031\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classModifyElementCommand}{ModifyElementCommand}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classCommandI}{CommandI}}}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{public}:\ \mbox{\hyperlink{classModifyElementCommand}{ModifyElementCommand}}(std::shared\_ptr<GUII>\ \mbox{\hyperlink{classModifyElementCommand_a8e87272c37fea0ef3d02d3a84a406ce3}{gui}},\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classModifyElementCommand_a907dff2096cb4f682561869224bf4542}{sdformatParser}},\ sdf::ElementPtr\ \mbox{\hyperlink{classModifyElementCommand_afc44353394f733db57f9163186230074}{element\_to\_modify}},\ T\ \mbox{\hyperlink{classModifyElementCommand_a17129fae7fe6db89a9c3e9aec5b054a3}{new\_value}});}
 \DoxyCodeLine{00039\ }
-\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_a1c9c0414d88fd9a3475fb2833906e216}{Execute}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_a059211f2ebd1d3f0c977501c9255e5b4}{Execute}}()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00043\ }
-\DoxyCodeLine{00046\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_a085ad9c257bd5f607a07f0af4751280a}{ExecuteUndo}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00046\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_ac9883f73cba92657e8c61d6d9d3fb954}{ExecuteUndo}}()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00047\ }
-\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_ae012f3705ed602cb51831b27b1ef9ab1}{ExecuteRedo}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_a9f3076ee2b46f8a3251e56263b2af183}{ExecuteRedo}}()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00051\ }
-\DoxyCodeLine{00054\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_a483f4a5c0ca6332370b466848e7c5c2c}{IsUndoable}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00054\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_a55ba581aa29dbf5a15b3b6f0ebf2da61}{IsUndoable}}()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00055\ }
-\DoxyCodeLine{00058\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_ab95d4a37de8b12b240b0d6aca8bc8064}{IsRedoable}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00058\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_aa0923ab4789fa5640bada3aa931efea7}{IsRedoable}}()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00059\ }
-\DoxyCodeLine{00062\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_a940019a0e971a63e0eaa884252cede8f}{IsThreaded}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00062\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_a49d4b72b16e9436c01881f624e584bea}{IsThreaded}}()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00063\ }
-\DoxyCodeLine{00066\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_a80dfc34f97318d469e624245a4af6879}{ChangesProgramStateIrreversibly}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00066\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_ab2e39dcf67a8423834883037fc043157}{ChangesProgramStateIrreversibly}}()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00067\ }
-\DoxyCodeLine{00069\ \ \ \textcolor{keyword}{private}:\ std::string\ \mbox{\hyperlink{classModifyElementCommand_a1ec927955e3c31edaa023b88728e1c04}{file\_path}};}
+\DoxyCodeLine{00069\ \ \ \textcolor{keyword}{private}:\ std::string\ \mbox{\hyperlink{classModifyElementCommand_a878bff125797ae1efab86597eabeddcd}{file\_path}};}
 \DoxyCodeLine{00070\ }
-\DoxyCodeLine{00072\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<GUII>\ \mbox{\hyperlink{classModifyElementCommand_ad7bfb01fba1867c8a6176fe84ee8d7f6}{gui}};}
+\DoxyCodeLine{00072\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<GUII>\ \mbox{\hyperlink{classModifyElementCommand_a8e87272c37fea0ef3d02d3a84a406ce3}{gui}};}
 \DoxyCodeLine{00073\ }
-\DoxyCodeLine{00075\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classModifyElementCommand_a68091d295bd1f2065bf3c6971ec39a25}{sdformatParser}};}
+\DoxyCodeLine{00075\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classModifyElementCommand_a907dff2096cb4f682561869224bf4542}{sdformatParser}};}
 \DoxyCodeLine{00076\ }
-\DoxyCodeLine{00078\ \ \ \textcolor{keyword}{private}:\ sdf::ElementPtr\ \mbox{\hyperlink{classModifyElementCommand_a670a54c1dd66a86d9d3e296e17438018}{element\_to\_modify}};}
+\DoxyCodeLine{00078\ \ \ \textcolor{keyword}{private}:\ sdf::ElementPtr\ \mbox{\hyperlink{classModifyElementCommand_afc44353394f733db57f9163186230074}{element\_to\_modify}};}
 \DoxyCodeLine{00079\ }
-\DoxyCodeLine{00081\ \ \ \textcolor{keyword}{private}:\ std::string\ \mbox{\hyperlink{classModifyElementCommand_a218220f6dc0c60904a38fd4baaa4012d}{new\_value}};}
+\DoxyCodeLine{00081\ \ \ \textcolor{keyword}{private}:\ T\ \mbox{\hyperlink{classModifyElementCommand_a17129fae7fe6db89a9c3e9aec5b054a3}{new\_value}};}
 \DoxyCodeLine{00082\ }
-\DoxyCodeLine{00084\ \ \ \textcolor{keyword}{private}:\ std::string\ \mbox{\hyperlink{classModifyElementCommand_aab1bd8984527c1a2a1da8753294a237b}{old\_value}};}
+\DoxyCodeLine{00084\ \ \ \textcolor{keyword}{private}:\ T\ \mbox{\hyperlink{classModifyElementCommand_ad85876752efd08c4cccf9c5d78cdb028}{old\_value}};}
 \DoxyCodeLine{00085\ }
-\DoxyCodeLine{00087\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_a611d52f68d903a08c45cfec1390f8e1e}{is\_currently\_undoable}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00087\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_ad21f991bd50a072ef5ce69af62b2dc26}{is\_currently\_undoable}}\ =\ \textcolor{keyword}{true};}
 \DoxyCodeLine{00088\ }
-\DoxyCodeLine{00090\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_a9881ade323f679cce22599509ad0f632}{is\_currently\_redoable}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00090\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyElementCommand_a17cf1b972ade725f78faa10057e2f781}{is\_currently\_redoable}}\ =\ \textcolor{keyword}{true};}
 \DoxyCodeLine{00091\ \};}
 \DoxyCodeLine{00092\ }
 \DoxyCodeLine{00093\ \textcolor{preprocessor}{\#endif}}

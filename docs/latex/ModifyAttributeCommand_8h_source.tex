@@ -31,42 +31,43 @@
 \DoxyCodeLine{00027\ }
 \DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <vector>}}
 \DoxyCodeLine{00029\ }
-\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classModifyAttributeCommand}{ModifyAttributeCommand}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classCommandI}{CommandI}}}
-\DoxyCodeLine{00032\ \{}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{public}:\ \mbox{\hyperlink{classModifyAttributeCommand}{ModifyAttributeCommand}}(std::shared\_ptr<GUII>\ \mbox{\hyperlink{classModifyAttributeCommand_a0dbc1a31dd4d9920bfdd4d6530384148}{gui}},\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classModifyAttributeCommand_a8108234866ab26359a0821ef6e51042b}{sdformatParser}},\ sdf::ParamPtr\ \mbox{\hyperlink{classModifyAttributeCommand_ad0be831ea91b48dde9c689b732e6431f}{attribute\_to\_modify}},\ std::string\ \mbox{\hyperlink{classModifyAttributeCommand_a693aab93368c7b381d06cff000547837}{new\_value}});}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_a6ecdfff9ab76e6aabf2dca53189a607d}{Execute}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00046\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_a63a687b8b53a0be0dcde670defca894f}{ExecuteUndo}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_a5edc3b6b78a6968da86f363bf3bf147d}{ExecuteRedo}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00054\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_ac82f75afba3bc14a4dbf13ce022699c6}{IsUndoable}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00058\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_a06aa24b4a68404232a26ce53ab2dafa4}{IsRedoable}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00062\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_aeacd54768b255f76fb95d57ec69a76d4}{IsThreaded}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00066\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_a90f47c2b7af9cb1280e07cc453259365}{ChangesProgramStateIrreversibly}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00067\ }
-\DoxyCodeLine{00069\ \ \ \textcolor{keyword}{private}:\ std::string\ \mbox{\hyperlink{classModifyAttributeCommand_af751c642e9dd6069fc62eefc2db8e515}{file\_path}};}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00072\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<GUII>\ \mbox{\hyperlink{classModifyAttributeCommand_a0dbc1a31dd4d9920bfdd4d6530384148}{gui}};}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00075\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classModifyAttributeCommand_a8108234866ab26359a0821ef6e51042b}{sdformatParser}};}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00078\ \ \ \textcolor{keyword}{private}:\ sdf::ParamPtr\ \mbox{\hyperlink{classModifyAttributeCommand_ad0be831ea91b48dde9c689b732e6431f}{attribute\_to\_modify}};}
-\DoxyCodeLine{00079\ }
-\DoxyCodeLine{00081\ \ \ \textcolor{keyword}{private}:\ std::string\ \mbox{\hyperlink{classModifyAttributeCommand_a693aab93368c7b381d06cff000547837}{new\_value}};}
-\DoxyCodeLine{00082\ }
-\DoxyCodeLine{00084\ \ \ \textcolor{keyword}{private}:\ std::string\ \mbox{\hyperlink{classModifyAttributeCommand_a83479b0e105f3d6a4902b58a3f6a9cb5}{old\_value}};}
-\DoxyCodeLine{00085\ }
-\DoxyCodeLine{00087\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_a0fa0399853f03198591487cafdeb96df}{is\_currently\_undoable}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00090\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_a832b103c22a58b237918b1e0c13eb8b2}{is\_currently\_redoable}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00091\ \};}
-\DoxyCodeLine{00092\ }
-\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00031\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classModifyAttributeCommand}{ModifyAttributeCommand}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classCommandI}{CommandI}}}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{public}:\ \mbox{\hyperlink{classModifyAttributeCommand}{ModifyAttributeCommand}}(std::shared\_ptr<GUII>\ \mbox{\hyperlink{classModifyAttributeCommand_acd527e444966ce7b2c1c099baa2ba493}{gui}},\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classModifyAttributeCommand_a420d3cfba592f6b1ee1d593edd3507aa}{sdformatParser}},\ sdf::ParamPtr\ \mbox{\hyperlink{classModifyAttributeCommand_ae9bee2202299344deaa3c5ad526fddf3}{attribute\_to\_modify}},\ T\ \mbox{\hyperlink{classModifyAttributeCommand_a2acd06a47c471239981ccd812947c284}{new\_value}});}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00043\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_a9047478e233fe031c878e123b644ac13}{Execute}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00047\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_ab84b33a5f56ed858d290519c9e204605}{ExecuteUndo}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00051\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_af0a64a058bfff504d51b005890a71b98}{ExecuteRedo}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00055\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_ae5f4a94d8c7913093be60ff5de2e7c9a}{IsUndoable}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00059\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_a0d6d063e15b58dde6b748ff6e939c269}{IsRedoable}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_a62494dadb8502d4a6438fd82719e804e}{IsThreaded}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00067\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_a712d809325687e4d149146a40cfcb0fb}{ChangesProgramStateIrreversibly}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00070\ \ \ \textcolor{keyword}{private}:\ std::string\ \mbox{\hyperlink{classModifyAttributeCommand_a80b12586f21950950a13d325d7308195}{file\_path}};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00073\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<GUII>\ \mbox{\hyperlink{classModifyAttributeCommand_acd527e444966ce7b2c1c099baa2ba493}{gui}};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00076\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classModifyAttributeCommand_a420d3cfba592f6b1ee1d593edd3507aa}{sdformatParser}};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00079\ \ \ \textcolor{keyword}{private}:\ sdf::ParamPtr\ \mbox{\hyperlink{classModifyAttributeCommand_ae9bee2202299344deaa3c5ad526fddf3}{attribute\_to\_modify}};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00082\ \ \ \textcolor{keyword}{private}:\ T\ \mbox{\hyperlink{classModifyAttributeCommand_a2acd06a47c471239981ccd812947c284}{new\_value}};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00085\ \ \ \textcolor{keyword}{private}:\ T\ \mbox{\hyperlink{classModifyAttributeCommand_a104521063bc6d93cf0a190e42a033698}{old\_value}};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00088\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_af61c52dfed1eb2ecad9d064c1fb5a5d0}{is\_currently\_undoable}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00091\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModifyAttributeCommand_abe41e4b2ad1bb55c070a37bcaac503b9}{is\_currently\_redoable}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00092\ \};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

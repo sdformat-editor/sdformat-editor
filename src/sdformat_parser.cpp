@@ -95,7 +95,6 @@ SDFormatParser::Mentions SDFormatParser::FindMentions(std::string key, sdf::Para
 
 SDFormatParser::Mentions SDFormatParser::FindMentions(std::string key, sdf::ElementPtr element_to_exclude, sdf::ParamPtr attribute_to_exclude)
 {
-  
   // Define a Mentions object
   SDFormatParser::Mentions mentions;
 
@@ -172,6 +171,72 @@ SDFormatParser::Mentions SDFormatParser::FindMentions(std::string key, sdf::Elem
   }
 
   return mentions;
+}
+
+std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsByAttributeType(const std::string& attribute_type)
+{
+  
+  // Define a Mentions object
+  std::vector<sdf::ElementPtr> elements;
+
+  // Exit if we don't have a root sdf element
+  if (!this->sdfElement) return elements;
+
+  // Create a stack to hold the element to search for
+  // The boolean indicates whether or not this tree node was visited
+  std::stack<std::pair<sdf::ElementPtr,bool>> sdf_tree_stack;
+
+  // Append the root model element to the stack
+  sdf_tree_stack.emplace(this->sdfElement->Root()->GetFirstElement(), false);
+
+  while (!sdf_tree_stack.empty())
+  {
+    // If this node has already been visited and we are returning to it, 
+    // it means we have accounted it and for all of it's child nodes.
+    // In that case, pop the node from the stack
+    if (sdf_tree_stack.top().second)
+    {
+      sdf_tree_stack.pop();
+      continue;
+    }
+
+    sdf_tree_stack.top().second = true;
+
+    // Get a pointer to the current node
+    sdf::ElementPtr current_element = sdf_tree_stack.top().first;
+    
+    // Go through each attribute of this element...
+    for (const auto &current_attribute : current_element->GetAttributes())
+    {
+      // Check for reference equality between the current attribute and the attribute to exclude
+      // Check if this attribute references the key
+      if (current_attribute->GetKey() == attribute_type)
+      {
+        elements.push_back(current_attribute->GetParentElement());
+        break;
+      }
+    }
+
+    if (current_element->GetFirstElement())
+    {
+      // Go through each element 
+      sdf::ElementPtr child_element_ptr = current_element->GetFirstElement();
+      while (child_element_ptr)
+      {
+        // Add this child element to the stack
+        sdf_tree_stack.emplace(child_element_ptr, false);
+        child_element_ptr = child_element_ptr->GetNextElement("");
+      }
+    } else
+    {
+      // If this element has no children (leaf node), then it may be removed from the stack
+      sdf_tree_stack.pop();
+      continue;
+    }
+  }
+
+  return elements;
+
 }
 
 std::string SDFormatParser::GetSDFTreePathToElement(sdf::ElementPtr current_element)

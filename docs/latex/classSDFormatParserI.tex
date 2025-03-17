@@ -11,7 +11,8 @@ Interface for the SDFormat Editor\textquotesingle{}s Parser.
 
 
 
-Inheritance diagram for SDFormat\+ParserI\+:\nopagebreak
+Inheritance diagram for SDFormat\+ParserI\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,11 +21,12 @@ Inheritance diagram for SDFormat\+ParserI\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for SDFormat\+ParserI\+:\nopagebreak
+Collaboration diagram for SDFormat\+ParserI\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=274pt]{classSDFormatParserI__coll__graph}
+\includegraphics[width=281pt]{classSDFormatParserI__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Classes}
@@ -39,6 +41,8 @@ virtual void \mbox{\hyperlink{classSDFormatParserI_a404feccbe479eadff00da8ca881f
 \begin{DoxyCompactList}\small\item\em Initialization of the Parser. Will re-\/initalize the parser if initalized already. NOTE\+: (zaid) As more features are added, more things will be added to this initalize method. \end{DoxyCompactList}\item 
 virtual sdf\+::\+SDFPtr \mbox{\hyperlink{classSDFormatParserI_a9a5b36f28e49f669d0bd8685253be72e}{Get\+SDFElement}} ()=0
 \begin{DoxyCompactList}\small\item\em Returns the main sdf\+Element associated this this \doxylink{classSDFormatParser}{SDFormat\+Parser} instance. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ sdf\+::\+Element\+Ptr $>$ \mbox{\hyperlink{classSDFormatParserI_a5f864b23d097b41660a1291ca5de9999}{Lookup\+Elements\+By\+Attribute\+Type}} (const std\+::string \&attribute\+\_\+type)=0
+\begin{DoxyCompactList}\small\item\em Provides a list of elements which a given attribute type. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} \mbox{\hyperlink{classSDFormatParserI_ac72fb1714f0918b0f7fc964bf8fb9a10}{Find\+Mentions}} (std\+::string key)=0
 \begin{DoxyCompactList}\small\item\em Determines the locations of potential references to the element to delete. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} \mbox{\hyperlink{classSDFormatParserI_a1e69c1b46ed0023c7fc019e2f865f438}{Find\+Mentions}} (std\+::string key, sdf\+::\+Element\+Ptr element\+\_\+to\+\_\+exclude)=0
@@ -210,6 +214,28 @@ Initialization of the Parser. Will re-\/initalize the parser if initalized alrea
 
 
 Implemented in \mbox{\hyperlink{classSDFormatParser_ada8d05784ae55ffebeb83f41ce1b70fa}{SDFormat\+Parser}}.
+
+\Hypertarget{classSDFormatParserI_a5f864b23d097b41660a1291ca5de9999}\label{classSDFormatParserI_a5f864b23d097b41660a1291ca5de9999} 
+\index{SDFormatParserI@{SDFormatParserI}!LookupElementsByAttributeType@{LookupElementsByAttributeType}}
+\index{LookupElementsByAttributeType@{LookupElementsByAttributeType}!SDFormatParserI@{SDFormatParserI}}
+\doxysubsubsection{\texorpdfstring{LookupElementsByAttributeType()}{LookupElementsByAttributeType()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$ sdf\+::\+Element\+Ptr $>$ SDFormat\+Parser\+I\+::\+Lookup\+Elements\+By\+Attribute\+Type (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+\_\+type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Provides a list of elements which a given attribute type. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em attribute\+\_\+type} & The attribute type to use for lookup \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of elements with a given attribute type 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classSDFormatParser_a1b5ec820ea299c0a10c92f6e694febba}{SDFormat\+Parser}}.
 
 
 

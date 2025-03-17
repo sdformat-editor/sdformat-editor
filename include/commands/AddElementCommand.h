@@ -67,6 +67,9 @@ class AddElementCommand : public CommandI
   /// \returns Always false
   private: bool ChangesProgramStateIrreversibly() override;
 
+  /// \brief Internal function to add element
+  private: void AddElement(sdf::ElementPtr parent, sdf::ElementPtr element);
+
   /// @brief Pointer to the gui interface
   private: std::shared_ptr<GUII> gui;
 
