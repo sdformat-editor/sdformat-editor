@@ -57,6 +57,13 @@ class CommandFactoryI
   public: virtual std::unique_ptr<CommandI> MakeAddElementCommand(
     sdf::ElementPtr parent_element, sdf::ElementPtr new_element) = 0;
 
+  /// \brief Create an add attribute command
+  /// \param[in] parent_element The parent of the new SDF attribute
+  /// \param[in] new_attribute The new SDF attribute to add
+  /// \return Unique pointer to a command interface
+  public: virtual std::unique_ptr<CommandI> MakeAddAttributeCommand(
+    sdf::ElementPtr parent_element, sdf::ParamPtr new_attribute) = 0;
+
   /// \brief Create a undo command
   /// \return Unique pointer to a command interface
   public: virtual std::unique_ptr<CommandI> MakeUndoCommand() = 0;

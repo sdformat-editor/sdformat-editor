@@ -363,6 +363,23 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
         this->CreateAppendElementDropdown(this->element_to_append_to, command, command_factory, unique_input_id);
       }
 
+      if (ImGui::Button((std::string((this->element_to_append_to.get() == current_element_ptr.get()) ? "Cancel##" : "Append Attribute##") + std::to_string(unique_input_id++)).c_str()))
+      {
+        if (this->element_to_append_to.get() == current_element_ptr.get())
+        {
+          this->element_to_append_to.reset();
+        }
+        else
+        {
+          this->element_to_append_to = current_element_ptr;
+        }
+      }
+
+      if (this->element_to_append_to.get() == current_element_ptr.get())
+      {
+        this->CreateAppendAttributeDropdown(this->element_to_append_to, command, command_factory, unique_input_id);
+      }
+
       // Get the current window size
       int window_width, _;
       glfwGetWindowSize(this->window, &window_width, &_);
@@ -504,6 +521,45 @@ void GUI::CreateAppendElementDropdown(sdf::ElementPtr element, std::unique_ptr<C
     {
       if (!prevent_input_flag) {
         command = command_factory->MakeAddElementCommand(element, element->GetElementDescription(selected_element-1));
+        this->element_to_append_to.reset();
+      }
+    }
+}
+
+void GUI::CreateAppendAttributeDropdown(sdf::ElementPtr element, std::unique_ptr<CommandI> &command, std::shared_ptr<CommandFactoryI> command_factory, int& unique_id)
+{
+    std::vector<std::string> attribute_names;
+    std::vector<std::string> attribute_descriptions;
+  
+    attribute_names.push_back("##");
+    attribute_descriptions.push_back("");
+  
+    for (size_t i = 0; i < element->GetAttributeCount(); i++)
+    {
+      attribute_names.push_back(element->(i)->GetTypeName());
+      attribute_descriptions.push_back(element->GetAttribute(i)->GetDescription());
+    }
+  
+    // Add an option to create a custom element
+    attribute_names.push_back("I want to create a custom attribute");
+    attribute_descriptions.push_back("Open a dialog to create a custom attribute");
+  
+    int selected_attribute = 0;
+    this->CreateDropdown(attribute_names, attribute_descriptions, selected_attribute, unique_id);
+  
+    // Use a static cast
+    if (static_cast<size_t>(selected_attribute) > element->GetElementDescriptionCount())
+    {
+      // Make an add attribute command where the new_attribute parameter is null, indicating this is an entirely new attribute
+      if (!prevent_input_flag) {
+        command = command_factory->MakeAddAttributeCommand(element, nullptr);
+        this->element_to_append_to.reset();
+      }
+    }
+    else if (selected_attribute > 0)
+    {
+      if (!prevent_input_flag) {
+        command = command_factory->MakeAddAttributeCommand(element, element->GetAttribute(selected_attribute-1));
         this->element_to_append_to.reset();
       }
     }
