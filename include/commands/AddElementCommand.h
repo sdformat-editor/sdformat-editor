@@ -40,15 +40,15 @@ class AddElementCommand : public CommandI
   public: AddElementCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ElementPtr parent_element, sdf::ElementPtr new_element);
 
   /// \brief Implementation of interface method. 
-  /// \returns Always true. Removes the element to delete from it's parent
+  /// \returns Always true. Adds a new element to specified parent
   private: bool Execute() override;
 
   /// \brief Implementation of interface method. 
-  /// \returns Returns true if the element to delete was already deleted and now restored to its parent
+  /// \returns Returns true if the added element was removed from its parent
   private: bool ExecuteUndo() override;
 
   /// \brief Implementation of interface method. 
-  /// \returns Returns true if the element to delete was removed from its parent again
+  /// \returns Returns true if the added element was restored to its parent again
   private: bool ExecuteRedo() override;
 
   /// \brief Implementation of interface method.

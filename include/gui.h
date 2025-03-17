@@ -84,7 +84,7 @@ class GUI : public GUII
   /// \returns The a pointer to the command resulting from the user's action during this frame
   private: void DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<CommandFactoryI> command_factory);
 
-  /// @brief Create a dropdown list 
+  /// @brief Create a dropdown list for appending an element 
   /// @param[in] element A pointer to the element for which to create a dropdown
   /// \param[out] command a pointer to the command resulting from the user's action during this frame
   /// \param[in] command_factory used for creating command objects
