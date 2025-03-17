@@ -6,6 +6,7 @@
 #include "commands/ModifyElementCommand.h"
 #include "commands/AddElementCommand.h"
 #include "commands/AddAttributeCommand.h"
+#include "commands/DeleteAttributeCommand.h"
 
 CommandFactory::CommandFactory(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser)
 {
@@ -39,7 +40,11 @@ std::unique_ptr<CommandI> CommandFactory::MakeDeleteElementCommand(sdf::ElementP
 }
 
 std::unique_ptr<CommandI> CommandFactory::MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, std::string new_value) {
-    return std::make_unique<ModifyAttributeCommand>(this->gui, this->sdformatParser, attribute_to_modify, new_value);
+    return std::make_unique<ModifyAttributeCommand<std::string>>(this->gui, this->sdformatParser, attribute_to_modify, new_value);
+}
+
+std::unique_ptr<CommandI> CommandFactory::MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, bool new_value) {
+    return std::make_unique<ModifyAttributeCommand<bool>>(this->gui, this->sdformatParser, attribute_to_modify, new_value);
 }
 
 std::unique_ptr<CommandI> CommandFactory::MakeModifyElementCommand(sdf::ElementPtr element_to_modify, std::string new_value) {
@@ -58,6 +63,11 @@ std::unique_ptr<CommandI> CommandFactory::MakeAddElementCommand(sdf::ElementPtr 
 std::unique_ptr<CommandI> CommandFactory::MakeAddAttributeCommand(sdf::ElementPtr parent_element, sdf::ParamPtr new_attribute)
 {
     return std::make_unique<AddAttributeCommand>(this->gui, this->sdformatParser, parent_element, new_attribute);
+}
+
+std::unique_ptr<CommandI> CommandFactory::MakeDeleteAttributeCommand(sdf::ParamPtr attribute_to_delete)
+{
+    return std::make_unique<DeleteAttributeCommand>(this->gui, this->sdformatParser, attribute_to_delete);
 }
 
 void CommandFactory::PushToUndoCommandsStack(std::unique_ptr<CommandI> command, const bool new_change)

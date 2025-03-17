@@ -1,5 +1,5 @@
 <map id="SDFormatParserI" name="SDFormatParserI">
-<area shape="rect" id="Node000001" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,264,381"/>
-<area shape="rect" id="Node000002" href="$classSDFormatParser.html" title="Implementation of SDFormatParserI." alt="" coords="23,429,246,849"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,395,137,429,132,429,132,395"/>
+<area shape="rect" id="Node000001" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,273,445"/>
+<area shape="rect" id="Node000002" href="$classSDFormatParser.html" title="Implementation of SDFormatParserI." alt="" coords="19,493,259,977"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,459,142,493,137,493,137,459"/>
 </map>

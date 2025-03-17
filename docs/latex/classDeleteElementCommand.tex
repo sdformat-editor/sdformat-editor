@@ -11,7 +11,8 @@ Open model command implementation of \doxylink{classCommandI}{CommandI}.
 
 
 
-Inheritance diagram for Delete\+Element\+Command\+:\nopagebreak
+Inheritance diagram for Delete\+Element\+Command\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,7 +21,8 @@ Inheritance diagram for Delete\+Element\+Command\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Delete\+Element\+Command\+:\nopagebreak
+Collaboration diagram for Delete\+Element\+Command\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -48,7 +50,9 @@ bool \mbox{\hyperlink{classDeleteElementCommand_a6c5f04219ace0f3808af89a68828702
 bool \mbox{\hyperlink{classDeleteElementCommand_a4561b97e2c51f2516e64d0ba816febe5}{Is\+Threaded}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classDeleteElementCommand_acd07af54e3fcdfce7f7593dad933cc3e}{Changes\+Program\+State\+Irreversibly}} () override
-\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDeleteElementCommand_ae1c81c774b4f5bf31d9bdc26b21d3fd4}{Element\+Required}} ()
+\begin{DoxyCompactList}\small\item\em Determine if an element is strictly required. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -115,6 +119,19 @@ Always false
 
 Implements \mbox{\hyperlink{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}{CommandI}}.
 
+\Hypertarget{classDeleteElementCommand_ae1c81c774b4f5bf31d9bdc26b21d3fd4}\label{classDeleteElementCommand_ae1c81c774b4f5bf31d9bdc26b21d3fd4} 
+\index{DeleteElementCommand@{DeleteElementCommand}!ElementRequired@{ElementRequired}}
+\index{ElementRequired@{ElementRequired}!DeleteElementCommand@{DeleteElementCommand}}
+\doxysubsubsection{\texorpdfstring{ElementRequired()}{ElementRequired()}}
+{\footnotesize\ttfamily bool Delete\+Element\+Command\+::\+Element\+Required (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Determine if an element is strictly required. 
+
+\begin{DoxyReturn}{Returns}
+True if the element is a required element and is the only child element of that type 
+\end{DoxyReturn}
 \Hypertarget{classDeleteElementCommand_ad606aae7b0d869bdaeccbe40c44c48a6}\label{classDeleteElementCommand_ad606aae7b0d869bdaeccbe40c44c48a6} 
 \index{DeleteElementCommand@{DeleteElementCommand}!Execute@{Execute}}
 \index{Execute@{Execute}!DeleteElementCommand@{DeleteElementCommand}}

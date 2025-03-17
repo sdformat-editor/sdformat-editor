@@ -66,6 +66,10 @@ class DeleteElementCommand : public CommandI
   /// \returns Always false
   private: bool ChangesProgramStateIrreversibly() override;
 
+  /// \brief Determine if an element is strictly required 
+  /// \returns True if the element is a required element and is the only child element of that type
+  private: bool ElementRequired();
+
   /// @brief Pointer to the gui interface
   private: std::shared_ptr<GUII> gui;
 

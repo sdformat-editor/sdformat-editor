@@ -1,0 +1,67 @@
+\doxysection{Delete\+Attribute\+Command.\+h}
+\hypertarget{DeleteAttributeCommand_8h_source}{}\label{DeleteAttributeCommand_8h_source}\index{include/commands/DeleteAttributeCommand.h@{include/commands/DeleteAttributeCommand.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ sdformat-\/editor}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Copyright\ 2025\ sdformat-\/editor}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*\ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*\ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*\ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{*\ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00015\ \textcolor{comment}{*\ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{*}}
+\DoxyCodeLine{00017\ \textcolor{comment}{*\ Developer:\ Zaid\ Duraid,\ Ean\ Wheeler,\ Evan\ Vokey}}
+\DoxyCodeLine{00018\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ SDFORMAT\_EDITOR\_DELETE\_ATTRIBUTE\_COMMAND\_HH\_}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ SDFORMAT\_EDITOR\_DELETE\_ATTRIBUTE\_COMMAND\_HH\_}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <interfaces/command\_interface.h>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <interfaces/sdformat\_parser\_interface.h>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <interfaces/gui\_interface.h>}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDeleteAttributeCommand}{DeleteAttributeCommand}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classCommandI}{CommandI}}}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00034\ \ \ \textcolor{keyword}{public}:\ \mbox{\hyperlink{classDeleteAttributeCommand}{DeleteAttributeCommand}}(std::shared\_ptr<GUII>\ \mbox{\hyperlink{classDeleteAttributeCommand_ac31f3e43a4823235d3fda6af88b3ef2e}{gui}},\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classDeleteAttributeCommand_a3123515754fba8256d18bbc9e335d2fd}{sdformatParser}},\ sdf::ParamPtr\ \mbox{\hyperlink{classDeleteAttributeCommand_a09d94a8963ed1d1625441224ee8b166c}{attribute\_to\_delete}});}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDeleteAttributeCommand_ab10d771e56e230d6af1b7de44cef975f}{Execute}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDeleteAttributeCommand_a5eca68dc6d9993cef0be1ea9101a9d20}{ExecuteUndo}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00046\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDeleteAttributeCommand_a133b826daa587df07544b199a52ef8d5}{ExecuteRedo}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDeleteAttributeCommand_a91d0daf21edaf67d72943ec47f245522}{IsUndoable}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00054\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDeleteAttributeCommand_a6c9739c404c65c2d1d356a9db0a8e756}{IsRedoable}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00058\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDeleteAttributeCommand_af1d19e75d8586e01a9e8564b5a7e14d9}{IsThreaded}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00062\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDeleteAttributeCommand_ad5bed5a199ca3b6861fd0a47f6895f1b}{ChangesProgramStateIrreversibly}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00065\ \ \ \textcolor{keyword}{private}:\ std::string\ \mbox{\hyperlink{classDeleteAttributeCommand_ac73d9540434ac626ad9a7e03af35acf6}{file\_path}};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00068\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<GUII>\ \mbox{\hyperlink{classDeleteAttributeCommand_ac31f3e43a4823235d3fda6af88b3ef2e}{gui}};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00071\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classDeleteAttributeCommand_a3123515754fba8256d18bbc9e335d2fd}{sdformatParser}};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00074\ \ \ \textcolor{keyword}{private}:\ sdf::ParamPtr\ \mbox{\hyperlink{classDeleteAttributeCommand_a09d94a8963ed1d1625441224ee8b166c}{attribute\_to\_delete}};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00077\ \ \ \textcolor{keyword}{private}:\ sdf::ElementPtr\ \mbox{\hyperlink{classDeleteAttributeCommand_abdb92e77c11ca72149349b45dfd55363}{parent\_element}};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00080\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDeleteAttributeCommand_a1203dd99c83792eb068ad8319be9beb7}{is\_currently\_undoable}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00083\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDeleteAttributeCommand_afc9fa2ee78ce8dcb99bd9d6169b03fed}{is\_currently\_redoable}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00084\ \};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

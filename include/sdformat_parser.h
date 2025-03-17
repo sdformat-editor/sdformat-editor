@@ -42,6 +42,11 @@ class SDFormatParser : public SDFormatParserI
     private: sdf::SDFPtr GetSDFElement() override;
 
     /// \brief Implementation of interface method
+    /// \param[in] attribute_type The attribute type to use for lookup
+    /// \returns A list of elements with a given attribute type
+    private: std::vector<sdf::ElementPtr> LookupElementsByAttributeType(const std::string& attribute_type) override;
+
+    /// \brief Implementation of interface method
     /// \param[in] key the string to search for
     /// \returns The elements and attributes that mention this given key
     private: Mentions FindMentions(std::string key) override;

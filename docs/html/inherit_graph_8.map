@@ -1,7 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="Node000000" title=" " alt="" coords="5,5,151,45"/>
 <area shape="rect" id="Node000001" href="$classGUII.html" title="Interface for the SDFormat Editor&#39;s Graphical User Interface Note that this class also inherits from ..." alt="" coords="199,13,249,38"/>
-<area shape="poly" id="edge11_Node000000_Node000001" title=" " alt="" coords="165,23,198,23,198,28,165,28"/>
+<area shape="poly" id="edge12_Node000000_Node000001" title=" " alt="" coords="165,23,198,23,198,28,165,28"/>
 <area shape="rect" id="Node000002" href="$classGUI.html" title="Implementation of GUII." alt="" coords="297,13,344,38"/>
-<area shape="poly" id="edge12_Node000001_Node000002" title=" " alt="" coords="263,23,297,23,297,28,263,28"/>
+<area shape="poly" id="edge13_Node000001_Node000002" title=" " alt="" coords="263,23,297,23,297,28,263,28"/>
 </map>

@@ -48,6 +48,11 @@ class SDFormatParserI
         std::vector<sdf::ParamPtr> attributes;
     };
 
+    /// \brief Provides a list of elements which a given attribute type
+    /// \param[in] attribute_type The attribute type to use for lookup
+    /// \returns A list of elements with a given attribute type
+    public: virtual std::vector<sdf::ElementPtr> LookupElementsByAttributeType(const std::string& attribute_type) = 0;
+
     /// \brief Determines the locations of potential references to the element to delete
     /// \param[in] key the string to search for
     /// \returns The elements and attributes that mention this given key
