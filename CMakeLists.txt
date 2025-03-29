@@ -9,7 +9,17 @@ set(imgui_SOURCE_DIR libs/imgui)
 # Find sdformat14
 find_package(sdformat14 REQUIRED)
 
-# message(STATUS "sdformat14_INCLUDE_DIRS: ${sdformat14_INCLUDE_DIRS}")
+# Add OGRE
+option(OGRE_BUILD_COMPONENT_PYTHON "Build Python bindings" OFF)
+option(OGRE_BUILD_COMPONENT_JAVA "Build Java bindings" OFF)
+option(OGRE_BUILD_COMPONENT_CSHARP "Build C# bindings" OFF)
+option(OGRE_BUILD_SAMPLES "Build OGRE samples" OFF)
+option(OGRE_INSTALL_SAMPLES "Install OGRE samples" OFF)
+option(OGRE_INSTALL_DOCS "Install documentation" OFF)
+option(OGRE_INSTALL_PDB "Install debug symbols" OFF)
+option(OGRE_STATIC "Build OGRE as static libraries" ON)
+
+add_subdirectory(libs/ogre)
 
 # Add header files
 file(GLOB_RECURSE HEADER_FILES
@@ -48,6 +58,11 @@ target_include_directories(sdformat-editor PRIVATE
     ${imgui_SOURCE_DIR}/backends
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${sdformat14_INCLUDE_DIRS}  # Add sdformat include directories
+    ${CMAKE_SOURCE_DIR}/libs/ogre/OgreMain/include
+    ${CMAKE_BINARY_DIR}/libs/ogre/include
+    ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Bites/include
+    ${CMAKE_SOURCE_DIR}/libs/ogre/Components/RTShaderSystem/include
+    ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Overlay/include
 )
 
 # Link against sdformat14
@@ -70,6 +85,7 @@ find_package(OpenGL REQUIRED)
 target_link_libraries(sdformat-editor PRIVATE
     OpenGL::GL
     glfw
+    OgreMain
     dl  # Add dynamic loading library
 )
 
@@ -108,6 +124,11 @@ target_include_directories(sdformat-editor-tests PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${gtest_SOURCE_DIR}/googletest/include
     ${sdformat14_INCLUDE_DIRS}  # Add sdformat include directories
+    ${CMAKE_SOURCE_DIR}/libs/ogre/OgreMain/include
+${CMAKE_BINARY_DIR}/libs/ogre/include
+${CMAKE_SOURCE_DIR}/libs/ogre/Components/Bites/include
+${CMAKE_SOURCE_DIR}/libs/ogre/Components/RTShaderSystem/include
+${CMAKE_SOURCE_DIR}/libs/ogre/Components/Overlay/include
 )
 
 # Link against Google Test and other libraries
@@ -116,6 +137,7 @@ target_link_libraries(sdformat-editor-tests PRIVATE
     gtest_main
     sdformat14::sdformat14
     OpenGL::GL
+    OgreMain
     glfw
     dl
 )
