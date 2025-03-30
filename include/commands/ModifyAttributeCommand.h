@@ -36,6 +36,7 @@ class ModifyAttributeCommand : public CommandI
   /// \brief Constructor for open model command objects.
   /// \param[in] gui Pointer to the GUII object 
   /// \param[in] sdformatParser Pointer to the SDFormatParserI object
+  /// \param[in] new_value The new value with which to modify the element
   public: ModifyAttributeCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ParamPtr attribute_to_modify, T new_value);
 
   /// \brief Implementation of interface method. 
@@ -78,10 +79,10 @@ class ModifyAttributeCommand : public CommandI
   /// @brief Pointer to the attribute to modify
   private: sdf::ParamPtr attribute_to_modify;
 
-  /// @brief new value for string
+  /// @brief The value that will be given to the element
   private: T new_value;
 
-  /// @brief old value for string
+  /// @brief The value that will be overridden in the attribute
   private: T old_value;
 
   /// @brief Store if the command is currently undo-able

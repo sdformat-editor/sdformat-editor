@@ -22,11 +22,18 @@
 
 // SDFormat dependencies
 #include <sdf/sdf.hh>
+#include "interfaces/command_factory_interface.h"
 
+// Commands
 #include "commands/DeleteElementCommand.h"
 #include "commands/OpenFileCommand.h"
 #include "commands/SaveFileCommand.h"
-#include "interfaces/command_factory_interface.h"
+#include "commands/DeleteElementCommand.h"
+#include "commands/GenericCommand.h"
+#include "commands/OpenFileCommand.h"
+#include "commands/ModifyAttributeCommand.h"
+#include "commands/ModifyElementCommand.h"
+#include "commands/AddElementCommand.h"
 
 /// \brief Implementation of CommandFactoryI
 class CommandFactory : public CommandFactoryI
@@ -69,19 +76,29 @@ class CommandFactory : public CommandFactoryI
     private: std::unique_ptr<CommandI> MakeRedoCommand() override;
 
     /// \brief Implementation of interface method
+    /// \param[in] attribute_to_modify A pointer to the attribute that will be modified
+    /// \param[in] new_value The new value as a string
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, std::string new_value) override;
+    
+    /// \brief Implementation of interface method
+    /// \param[in] attribute_to_modify A pointer to the attribute that will be modified
+    /// \param[in] new_value The new value as a bool
+    /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, bool new_value) override;
 
     /// \brief Implementation of interface method
+    /// \param[in] element_to_modify A pointer to the element that will be modified
+    /// \param[in] new_value The new value as a string
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, std::string new_value) override;
-    private: std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, bool new_value) override;
 
     /// \brief Implementation of interface method
+    /// \param[in] element_to_modify A pointer to the element that will be modified
+    /// \param[in] new_value The new value as a bool
     /// \return Unique pointer to a command interface
-    private: std::unique_ptr<CommandI> MakeDeleteAttributeCommand(sdf::ParamPtr attribute_to_delete) override;
-    
+    private: std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, bool new_value) override;
+
     /// \brief Clears the undo stack
     private: void ClearStack(std::stack<std::unique_ptr<CommandI>>& stack);
 

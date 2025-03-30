@@ -7,16 +7,85 @@ template <typename T> ModifyElementCommand<T>::ModifyElementCommand(std::shared_
 
 template <typename T> bool ModifyElementCommand<T>::Execute()
 {
-    if (!element_to_modify->GetValue()->Get(old_value)) return false;
-    if (element_to_modify->Set(new_value))
+    if (!element_to_modify->GetValue()->Get(old_value)) 
     {
-        this->is_currently_undoable = true;
-        this->is_currently_redoable = false;
-
-        return true;
-    }
     
-    return false;
+        const std::string dialog_message_header = "Error";
+        const std::string dialog_message_body = "Could not modify element value.";
+        const std::string dialog_message_footer = "Element does not contain the old value.";
+
+        std::vector<std::pair<std::string, bool>> user_choices;
+
+        user_choices.push_back({"OK", false});
+
+        GUII::DialogMessage dialog_message{dialog_message_header, dialog_message_body, dialog_message_footer};
+
+        this->gui->OpenChoiceDialog(dialog_message, user_choices);
+
+        return false;
+    }
+    else
+    {
+        SDFormatParserI::Mentions mentions;
+    
+        // Find mentions of the element to modify, excluding the element itself 
+        if (auto name_attribute = this->element_to_modify->GetAttribute("name"))
+        {
+            mentions = this->sdformatParser->FindMentions(name_attribute->GetAsString(), this->element_to_modify);
+        }
+    
+        // If this element has mentions anywhere else, display a choice dialog to the user
+        if (!mentions.attributes.empty() || !mentions.elements.empty())
+        {
+    
+            const std::string dialog_message_header = "Warning";
+            const std::string dialog_message_footer = "You are modifying an element that is mentioned elsewhere.";
+            std::string dialog_message_body;
+    
+            std::vector<std::pair<std::string, bool>> user_choices;
+    
+            user_choices.push_back({"Proceed", false});
+            user_choices.push_back({"Cancel", false});
+    
+            if (!mentions.elements.empty())
+            {
+                dialog_message_body += "The following elements mention this element: \n";
+                for (const auto &element_mention : mentions.elements)
+                {
+                    dialog_message_body += "- " + this->sdformatParser->GetSDFTreePathToElement(element_mention) + "\n";
+                }
+            }
+    
+            if (!mentions.attributes.empty())
+            {
+                dialog_message_body += "The following attributes mention this element: \n";
+                for (const auto &attribute_mention : mentions.attributes)
+                {
+                    dialog_message_body += "- Attribute " + attribute_mention->GetKey() + " of " + this->sdformatParser->GetSDFTreePathToElement(attribute_mention->GetParentElement()) + "\n";
+                }
+            }
+    
+            GUII::DialogMessage dialog_message{dialog_message_header, dialog_message_body, dialog_message_footer};
+    
+            this->gui->OpenChoiceDialog(dialog_message, user_choices);
+    
+            if (user_choices[1].second) 
+            {
+                // User has chosen to cancel command
+                return false;
+            }
+        }
+        
+        if (element_to_modify->Set(new_value))
+        {
+            this->is_currently_undoable = true;
+            this->is_currently_redoable = false;
+
+            return true;
+        }
+        
+        return false;
+    }
 }
 
 template <typename T> bool ModifyElementCommand<T>::ExecuteUndo()

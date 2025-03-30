@@ -18,6 +18,7 @@
 */
 
 #include "gui.h"
+#include "stb_image.h"
 #include "commands/OpenFileCommand.h"
 #include <stack>
 
@@ -104,14 +105,25 @@ void GUI::Initialize(const std::string &window_name, std::shared_ptr<SDFormatPar
   {
     return;
   }
-  // TODO figure out how to load image to create icon
-  // std::string directory = getenv("OLDPWD");
-  // std::string icon_file = directory + std::string("/data/icons/sdf_icon.png");
-  // GLFWimage *icon;
-  // glfwSetWindowIcon(window, 1, icon);
   
   glfwMakeContextCurrent(window);
   glfwSwapInterval(1); // Enable vsync
+
+  // Load image to create icon
+  int icon_width, icon_height, channels;
+  std::string directory = getenv("OLDPWD");
+  std::string icon_file = directory + std::string("/icons/sdf_icon.png");
+  stbi_uc *img = stbi_load(icon_file.c_str(), &icon_width, &icon_height, &channels, 0);
+  if(img != NULL) {
+    GLFWimage icon;
+    icon.pixels = img;
+    icon.height = icon_height;
+    icon.width = icon_width;
+    glfwSetWindowIcon(window, 1, &icon);
+    stbi_image_free(img);
+  } else {
+    printf("Error in loading the icon. Using default\n");
+  }
 
   // Setup Dear ImGui context
   IMGUI_CHECKVERSION();
@@ -364,21 +376,24 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
       // Check if this element has as associated value (i.e. it is a type element)
       if (current_element_ptr->GetValue())
       {
-        bool x;
-        if (current_element_ptr->GetValue()->IsType<bool>() && current_element_ptr->GetValue()->Get(x)) {
-          // Render checkbox
-          bool original_value = x;
-          ImGui::Checkbox(("Value##" + std::to_string(unique_input_id++)).c_str(), &x);
 
-          if (original_value != x) 
+        if (bool checkbox_state; current_element_ptr->GetValue()->IsType<bool>() && current_element_ptr->GetValue()->Get(checkbox_state)) {
+          // Render checkbox
+          bool original_value = checkbox_state;
+          ImGui::Checkbox(("Value##" + std::to_string(unique_input_id++)).c_str(), &checkbox_state);
+
+          if (original_value != checkbox_state) 
           {
-            if (!prevent_input_flag) command = command_factory->MakeModifyElementCommand(current_element_ptr, x);
+            if (!prevent_input_flag) command = command_factory->MakeModifyElementCommand(current_element_ptr, checkbox_state);
           }
         } 
         else 
         {
           // Display the value and provide a textbox and button for modification
-          ImGui::TextUnformatted(current_element_ptr->GetValue()->GetAsString().c_str());
+
+          std::string value_field_description = current_element_ptr->GetValue()->GetKey() + ": " + current_element_ptr->GetValue()->GetAsString() + + " ("  + current_element_ptr->GetValue()->GetTypeName()+ ")";
+
+          ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "%s", value_field_description.c_str());
           static char value_buffer[128] = "";
           
           if (element_to_edit == current_element_ptr) 
@@ -415,7 +430,10 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
             if (ImGui::Button(("Modify##" + std::to_string(unique_input_id++)).c_str())) 
             {
               this->element_to_edit = current_element_ptr;
+
+              // If we are currently editing an attribute, cancel that process since we are now editing an element
               this->attribute_to_edit.reset();
+
               strcpy(value_buffer, current_element_ptr->GetValue()->GetAsString().c_str());
             }
           }
@@ -436,7 +454,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
           bool original_value = attribute_value;
           ImGui::Checkbox(("##" + std::to_string(unique_input_id++)).c_str(), &attribute_value);
           ImGui::SameLine();
-          ImGui::TextUnformatted((attribute_info).c_str());
+          ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.0f, 1.0f), "%s", attribute_info.c_str());
           
           if (original_value != attribute_value) 
           {
@@ -445,7 +463,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
         } 
         else 
         {
-          ImGui::TextUnformatted((attribute_info).c_str());
+          ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.0f, 1.0f), "%s", attribute_info.c_str());
           static char value_buffer[1024] = "";
           if (attribute_to_edit == attribute_ptr) {
 
@@ -483,13 +501,6 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
               this->attribute_to_edit = attribute_ptr;
               this->element_to_edit.reset();
               strcpy(value_buffer, attribute_ptr->GetAsString().c_str());
-            }
-          }
-          if (attribute_ptr->GetKey() != "name") {
-            ImGui::SameLine();
-            if (ImGui::Button(("Delete##" + std::to_string(unique_input_id++)).c_str())) {
-              command = command_factory->MakeDeleteAttributeCommand(attribute_ptr);
-              attribute_to_edit.reset();
             }
           }
         }
