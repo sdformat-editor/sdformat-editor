@@ -25,11 +25,11 @@ FileEditorRunner::FileEditorRunner(bool data_dir_created)
     // The sdformatParser will be null until the user opens a file
     this->sdformatParser = std::make_shared<SDFormatParser>();
 
-    this->gui = std::make_shared<GUI>("SDFormat Editor", this->sdformatParser, this->gui_initalization_successful);
+    this->model_viewer = std::make_shared<ModelViewer>(this->model_viewer_initalization_successful);
+
+    this->gui = std::make_shared<GUI>("SDFormat Editor", this->sdformatParser, this->model_viewer, this->gui_initalization_successful);
 
     this->command_factory = std::make_shared<CommandFactory>(this->gui, this->sdformatParser);
-
-    this->model_viewer = std::make_shared<ModelViewer>(this->model_viewer_initalization_successful);
 
     // grab the previous file that was opened
     if (data_dir_created) {

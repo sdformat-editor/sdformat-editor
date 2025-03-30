@@ -21,6 +21,7 @@
 #define SDFORMAT_EDITOR_MODEL_VIEWER_INTERFACE_HH_
 
 #include <iostream>
+#include <GL/gl.h> // Include OpenGL header for GLuint
 #include <vector>
 
 /// \brief Interface for the SDFormat Editor's 3D Model Vewer 
@@ -35,9 +36,14 @@ class ModelViewerI
     public: virtual void Initialize(bool &success) = 0;
 
     /// \callgraph
-    /// \param[out] A boolean indicating if the model viewer should close
+    /// \param[out] should_close boolean indicating if the model viewer should close
     /// \brief Updating the Model Viewer
     public: virtual void Update(bool& should_close) = 0;
+
+    /// \callgraph
+    /// \brief Returns a render texture ID which can be rendered by the GUI implementation
+    /// \returns The ID of the render texture
+    public: virtual GLuint GetRenderTexture() = 0;
 
 };
 

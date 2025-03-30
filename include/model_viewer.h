@@ -46,8 +46,11 @@ class ModelViewer : public ModelViewerI
     /// \brief Implementation of interface method
     private: void Initialize(bool &success) override;
 
-    /// \brief Implementation of update method
+    /// \brief Implementation of interface method
     private: void Update(bool& should_close) override;
+
+    /// \brief Implementation of interface method
+    public: GLuint GetRenderTexture() override; 
 
     /// \brief The ogre bites app (i think we need to replace this with smthn else when we integrate with imgui)
     private: OgreBites::ApplicationContext ctx;
@@ -72,6 +75,9 @@ class ModelViewer : public ModelViewerI
 
     /// \brief Pointer to the main scene camera node
     private: Ogre::SceneNode* sceneCameraNode;
+
+    /// \brief The texture we will be rendering into 
+    private: Ogre::TexturePtr renderTexturePointer;
 };
 
 #endif

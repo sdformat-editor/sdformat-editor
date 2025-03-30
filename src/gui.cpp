@@ -22,9 +22,10 @@
 #include "commands/OpenFileCommand.h"
 #include <stack>
 
-GUI::GUI(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success)
+GUI::GUI(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser,
+  std::shared_ptr<ModelViewerI> model_viewer, bool &success)
 {
-  this->Initialize(window_name, sdformat_parser, success);
+  this->Initialize(window_name, sdformat_parser, model_viewer, success);
 }
 
 void GUI::GLFWErrorCallback(int error, const char *description)
@@ -47,12 +48,15 @@ std::unique_lock<std::mutex> GUI::LockMutex()
   return std::unique_lock<std::mutex>(this->gui_mutex);
 }
 
-void GUI::Initialize(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success)
+void GUI::Initialize(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser,
+                          std::shared_ptr<ModelViewerI> model_viewer, bool &success)
 {
 
   success = false; 
 
   this->sdformat_parser = sdformat_parser;
+
+  this->model_viewer = model_viewer;
 
   // Specify the error handler for GLFW
   glfwSetErrorCallback(GUI::GLFWErrorCallback);
@@ -225,6 +229,9 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
   ImGui::SetNextWindowSize(ImVec2(window_width * 0.7f, window_height - 20.0f)); // Set the dynamic size of the window
 
   ImGui::Begin("SDFormat Editor",  nullptr, ImGuiWindowFlags_NoMove); 
+
+  ImGui::Text("This is the rendered texture:");
+  ImGui::Image((ImTextureID)(uintptr_t)this->model_viewer->GetRenderTexture(), ImVec2(512, 512)); // Adjust size as needed
 
   // TODO: (zaid) Save the current working directory and/or current file as an attribute to the GUI object or the file operations singleton
   // ImGui::TextUnformatted("Active File is: %s", file_ops->getActiveFilePath().c_str()); // Display some text (you can use a format strings too)

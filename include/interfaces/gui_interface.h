@@ -25,6 +25,7 @@
 #include <memory>
 #include <mutex>
 
+#include <interfaces/model_viewer_interface.h>
 #include <interfaces/sdformat_parser_interface.h>
 #include <interfaces/command_factory_interface.h>
 
@@ -42,8 +43,10 @@ class GUII : public std::enable_shared_from_this<GUII>
     /// NOTE: (zaid) As more features are added, more things will be added to this initalize method
     /// \param[in] window_name The name to be given to the SDFormatEditor Window
     /// \param[in] sdformat_parser Pointer to the sdformat parser object
+    /// \param[in] model_viewer Pointer to the model viewer object
     /// \param[out] success true if window initalization is successful
-    protected: virtual void Initialize(const std::string &windowName, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success) = 0;
+    protected: virtual void Initialize(const std::string &windowName, std::shared_ptr<SDFormatParserI> sdformat_parser,
+                                        std::shared_ptr<ModelViewerI> model_viewer, bool &success) = 0;
 
     /// \callgraph
     /// \brief Updating the GUI

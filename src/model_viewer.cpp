@@ -34,62 +34,72 @@ class KeyHandler : public OgreBites::InputListener
 
 void ModelViewer::Initialize(bool &success)
 {
+    // Initialize the application context
+    this->ctx.initApp();
 
-  this->ctx.initApp();
+    // Get a pointer to the Ogre root and create a scene manager
+    this->ogreRoot = ctx.getRoot();
+    this->scnMgr = this->ogreRoot->createSceneManager();
 
-  // get a pointer to the already created root
-  this->ogreRoot = ctx.getRoot();
-  this->scnMgr = this->ogreRoot->createSceneManager();
+    // Register the scene manager with the RTShaderSystem
+    this->shadergen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
+    shadergen->addSceneManager(scnMgr);
 
-  // register our scene with the RTSS
-  this->shadergen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
-  shadergen->addSceneManager(scnMgr);
+    // Create a light for the scene
+    this->sceneLight = this->scnMgr->createLight("MainLight");
+    this->sceneLightNode = this->scnMgr->getRootSceneNode()->createChildSceneNode();
+    this->sceneLightNode->setPosition(10, 10, 20);
+    this->sceneLightNode->attachObject(this->sceneLight);
 
-  // without light we would just get a black screen
-  this->sceneLight = this->scnMgr->createLight("MainLight");
-  this->sceneLight->setSpecularColour(0.5, 0.5, 0.5);
-  this->sceneLight->setDiffuseColour(0.3, 0.3, 0.3);
-  this->sceneLightNode = this->scnMgr->getRootSceneNode()->createChildSceneNode();
-  this->sceneLightNode->setPosition(10, 10, 20);
-  this->sceneLightNode->attachObject(this->sceneLight);
+    // Create a camera for rendering to the texture
+    this->sceneCamera = this->scnMgr->createCamera("RenderTextureCamera");
+    this->sceneCamera->setNearClipDistance(5);
+    this->sceneCamera->setAutoAspectRatio(true);
 
-  // also need to tell where we are
-  this->sceneCameraNode = this->scnMgr->getRootSceneNode()->createChildSceneNode();
-  this->sceneCameraNode->setPosition(0, 0, 15);
-  this->sceneCameraNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
+    // Attach the camera to a scene node
+    this->sceneCameraNode = this->scnMgr->getRootSceneNode()->createChildSceneNode();
+    this->sceneCameraNode->setPosition(0, 0, 15);
+    this->sceneCameraNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
+    this->sceneCameraNode->attachObject(this->sceneCamera);
 
-  // create the camera
-  this->sceneCamera = this->scnMgr->createCamera("myCam");
-  this->sceneCamera->setNearClipDistance(5); // specific to this sample
-  this->sceneCamera->setAutoAspectRatio(true);
-  this->sceneCameraNode->attachObject(this->sceneCamera);
+    // Create a texture to render into
+    this->renderTexturePointer = Ogre::TexturePtr(
+        Ogre::TextureManager::getSingleton().createManual(
+            "RenderTexture",
+            Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+            Ogre::TEX_TYPE_2D,
+            1024, 1024, // Texture size
+            0,
+            Ogre::PF_R8G8B8,
+            Ogre::TU_RENDERTARGET
+        )
+    );
 
-  // and tell it to render into the main window
-  this->ctx.getRenderWindow()->addViewport(this->sceneCamera);
+    // Get the render target from the texture
+    Ogre::RenderTexture* rtt = this->renderTexturePointer->getBuffer()->getRenderTarget();
 
+    // Add a viewport to the render target
+    Ogre::Viewport* vp = rtt->addViewport(this->sceneCamera);
+    vp->setBackgroundColour(Ogre::ColourValue(0, 0, 0));
+    this->sceneCamera->setAspectRatio(
+        Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight())
+    );
 
-  // Test code for rendering waterwitch model
-  // Create a resource group for external models
-  Ogre::ResourceGroupManager::getSingleton().createResourceGroup("Models");
-  Ogre::ResourceGroupManager::getSingleton().addResourceLocation("/home/zaid/Documents/sdformat-editor/example_models/Waterwitch", "FileSystem", "Models");
-  Ogre::ResourceGroupManager::getSingleton().initialiseResourceGroup("Models");
-  
-  // Load a model using Assimp plugin instead of Sinbad.mesh
-  // You can use various formats like .fbx, .dae, .obj, etc.
-  Ogre::Entity *entity = scnMgr->createEntity("waterwitch.stl");  // Replace with your model file
-  Ogre::SceneNode *node = scnMgr->getRootSceneNode()->createChildSceneNode();
-  node->attachObject(entity);
-  
-  // Optional: Scale or position the model as needed
-  node->setScale(15, 15, 15);  // Adjust scale if model is too large/small
-  // node->setPosition(0, -5, 0);    // Adjust position if needed
+    // Load a model into the scene
+    Ogre::ResourceGroupManager::getSingleton().createResourceGroup("Models");
+    Ogre::ResourceGroupManager::getSingleton().addResourceLocation(
+        "/home/zaid/Documents/sdformat-editor/example_models/Waterwitch",
+        "FileSystem",
+        "Models"
+    );
+    Ogre::ResourceGroupManager::getSingleton().initialiseResourceGroup("Models");
 
-  // register for input events
-  KeyHandler keyHandler;
-  ctx.addInputListener(&keyHandler);
-  
+    Ogre::Entity* entity = scnMgr->createEntity("waterwitch.stl");
+    Ogre::SceneNode* node = scnMgr->getRootSceneNode()->createChildSceneNode();
+    node->attachObject(entity);
+    node->setScale(15, 15, 15); // Adjust scale if needed
 
-  success = true;
+    success = true;
 }
 
 void ModelViewer::Update(bool& should_close)
@@ -102,4 +112,41 @@ void ModelViewer::Update(bool& should_close)
   }
 }
 
+GLuint ModelViewer::GetRenderTexture()
+{
+  GLuint textureID = 0;
+
+  // Get the hardware pixel buffer from the render texture
+  Ogre::HardwarePixelBufferSharedPtr pixelBuffer = this->renderTexturePointer->getBuffer();
+
+  // Lock the pixel buffer to access its data
+  pixelBuffer->lock(Ogre::HardwareBuffer::HBL_READ_ONLY);
+  const Ogre::PixelBox& pixelBox = pixelBuffer->getCurrentLock();
+
+  // Create an OpenGL texture
+  glGenTextures(1, &textureID);
+  glBindTexture(GL_TEXTURE_2D, textureID);
+
+  // Upload the pixel data to the OpenGL texture
+  glTexImage2D(
+    GL_TEXTURE_2D,
+    0,
+    GL_RGB,
+    pixelBox.getWidth(),
+    pixelBox.getHeight(),
+    0,
+    GL_RGB,
+    GL_UNSIGNED_BYTE,
+    pixelBox.data
+  );
+
+  // Set texture parameters
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+  // Unlock the pixel buffer
+  pixelBuffer->unlock();
+
+  return textureID;
+}
 
