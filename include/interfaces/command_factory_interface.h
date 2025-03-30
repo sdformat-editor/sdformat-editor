@@ -79,10 +79,6 @@ class CommandFactoryI
   public: virtual std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, std::string new_value) = 0;
   public: virtual std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, bool new_value) = 0;
 
-  /// \brief create a delete attribute command
-  /// \return a unique pointer to the commmand interface
-  public: virtual std::unique_ptr<CommandI> MakeDeleteAttributeCommand(sdf::ParamPtr attribute_to_delete) = 0;
-
   /// \brief Pushes to the undo commands stack
   /// \param[in] command commandI object to push
   /// \param[in] new_change indicates if we are pushing a new change, and thus should clear the redo stack

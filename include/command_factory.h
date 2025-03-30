@@ -22,11 +22,18 @@
 
 // SDFormat dependencies
 #include <sdf/sdf.hh>
+#include "interfaces/command_factory_interface.h"
 
+// Commands
 #include "commands/DeleteElementCommand.h"
 #include "commands/OpenFileCommand.h"
 #include "commands/SaveFileCommand.h"
-#include "interfaces/command_factory_interface.h"
+#include "commands/DeleteElementCommand.h"
+#include "commands/GenericCommand.h"
+#include "commands/OpenFileCommand.h"
+#include "commands/ModifyAttributeCommand.h"
+#include "commands/ModifyElementCommand.h"
+#include "commands/AddElementCommand.h"
 
 /// \brief Implementation of CommandFactoryI
 class CommandFactory : public CommandFactoryI
@@ -92,11 +99,6 @@ class CommandFactory : public CommandFactoryI
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, bool new_value) override;
 
-    /// \brief Implementation of interface method
-    /// \param[in] attribute_to_delete A pointer to the attribute that will be deleted
-    /// \return Unique pointer to a command interface
-    private: std::unique_ptr<CommandI> MakeDeleteAttributeCommand(sdf::ParamPtr attribute_to_delete) override;
-    
     /// \brief Clears the undo stack
     private: void ClearStack(std::stack<std::unique_ptr<CommandI>>& stack);
 
