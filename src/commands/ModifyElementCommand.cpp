@@ -35,7 +35,7 @@ template <typename T> bool ModifyElementCommand<T>::Execute()
         }
     
         // If this element has mentions anywhere else, display a choice dialog to the user
-        if (true || !mentions.attributes.empty() || !mentions.elements.empty())
+        if (!mentions.attributes.empty() || !mentions.elements.empty())
         {
     
             const std::string dialog_message_header = "Warning";
