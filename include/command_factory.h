@@ -69,16 +69,31 @@ class CommandFactory : public CommandFactoryI
     private: std::unique_ptr<CommandI> MakeRedoCommand() override;
 
     /// \brief Implementation of interface method
+    /// \param[in] attribute_to_modify A pointer to the attribute that will be modified
+    /// \param[in] new_value The new value as a string
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, std::string new_value) override;
+    
+    /// \brief Implementation of interface method
+    /// \param[in] attribute_to_modify A pointer to the attribute that will be modified
+    /// \param[in] new_value The new value as a bool
+    /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, bool new_value) override;
 
     /// \brief Implementation of interface method
+    /// \param[in] element_to_modify A pointer to the element that will be modified
+    /// \param[in] new_value The new value as a string
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, std::string new_value) override;
+
+    /// \brief Implementation of interface method
+    /// \param[in] element_to_modify A pointer to the element that will be modified
+    /// \param[in] new_value The new value as a bool
+    /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, bool new_value) override;
 
     /// \brief Implementation of interface method
+    /// \param[in] attribute_to_delete A pointer to the attribute that will be deleted
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeDeleteAttributeCommand(sdf::ParamPtr attribute_to_delete) override;
     

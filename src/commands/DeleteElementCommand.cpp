@@ -33,7 +33,7 @@ bool DeleteElementCommand::Execute()
 
     SDFormatParserI::Mentions mentions;
 
-    // Find mentions of the element to deleting, excluding the element itself 
+    // Find mentions of the element to delete, excluding the element itself 
     if (auto name_attribute = this->element_to_delete->GetAttribute("name"))
     {
         mentions = this->sdformatParser->FindMentions(name_attribute->GetAsString(), this->element_to_delete);
