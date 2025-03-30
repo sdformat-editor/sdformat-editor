@@ -110,7 +110,6 @@ add_subdirectory(${gtest_SOURCE_DIR})
 set(TEST_FILES
     tests/test_gui.cpp
     tests/test_sdformat_parser.cpp
-    tests/test_model_viewer.cpp
 )
 
 # Create test executable

@@ -24,6 +24,7 @@
 #include "gui.h"
 #include "sdformat_parser.h"
 #include "interfaces/command_interface.h"
+#include "model_viewer.h"
 
 /// \brief Implementation of program start up to be called by main.
 class FileEditorRunner
@@ -38,14 +39,20 @@ class FileEditorRunner
     /// @brief Variable for checking if the gui was initilized successfully
     bool gui_initalization_successful;
 
+    /// @brief Variable for checking if the model viewer was initilized successfully
+    bool model_viewer_initalization_successful;
+
     /// @brief Pointer to SDFormatParser which will be null until the user opens a file
     std::shared_ptr<SDFormatParserI> sdformatParser;
 
-    /// @brief Pointer to the GUI class
+    /// @brief Pointer to the GUI class instance
     std::shared_ptr<GUII> gui;
 
-    /// @brief Pointer to the CommandFactory class
+    /// @brief Pointer to the CommandFactory class instance
     std::shared_ptr<CommandFactoryI> command_factory;
+
+    /// \brief Pointer to the model viewer class instance
+    std::shared_ptr<ModelViewerI> model_viewer;
 
 };
 

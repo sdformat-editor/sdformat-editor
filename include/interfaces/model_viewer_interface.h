@@ -35,8 +35,9 @@ class ModelViewerI
     public: virtual void Initialize(bool &success) = 0;
 
     /// \callgraph
+    /// \param[out] A boolean indicating if the model viewer should close
     /// \brief Updating the Model Viewer
-    public: virtual void Update() = 0;
+    public: virtual void Update(bool& should_close) = 0;
 
 };
 

@@ -19,11 +19,6 @@
 
 #include "model_viewer.h"
 
-// Ogre dependencies
-#include "Ogre.h"
-#include "OgreApplicationContext.h"
-#include "OgreInput.h"
-#include "OgreRTShaderSystem.h"
 
 class KeyHandler : public OgreBites::InputListener
 {
@@ -39,41 +34,41 @@ class KeyHandler : public OgreBites::InputListener
 
 void ModelViewer::Initialize(bool &success)
 {
-  // Init the OGRE Bites app (do not use with IMGUI)
-  OgreBites::ApplicationContext ctx("My App");
 
-  ctx.initApp();
+  this->ctx.initApp();
 
   // get a pointer to the already created root
-  Ogre::Root *root = ctx.getRoot();
-  Ogre::SceneManager *scnMgr = root->createSceneManager();
+  this->ogreRoot = ctx.getRoot();
+  this->scnMgr = this->ogreRoot->createSceneManager();
 
   // register our scene with the RTSS
-  Ogre::RTShader::ShaderGenerator *shadergen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
+  this->shadergen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
   shadergen->addSceneManager(scnMgr);
 
   // without light we would just get a black screen
-  Ogre::Light *light = scnMgr->createLight("MainLight");
-  light->setSpecularColour(0.5, 0.5, 0.5);
-  light->setDiffuseColour(0.3, 0.3, 0.3);
-  Ogre::SceneNode *lightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
-  lightNode->setPosition(10, 10, 20);
-  lightNode->attachObject(light);
+  this->sceneLight = this->scnMgr->createLight("MainLight");
+  this->sceneLight->setSpecularColour(0.5, 0.5, 0.5);
+  this->sceneLight->setDiffuseColour(0.3, 0.3, 0.3);
+  this->sceneLightNode = this->scnMgr->getRootSceneNode()->createChildSceneNode();
+  this->sceneLightNode->setPosition(10, 10, 20);
+  this->sceneLightNode->attachObject(this->sceneLight);
 
   // also need to tell where we are
-  Ogre::SceneNode *camNode = scnMgr->getRootSceneNode()->createChildSceneNode();
-  camNode->setPosition(0, 0, 15);
-  camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
+  this->sceneCameraNode = this->scnMgr->getRootSceneNode()->createChildSceneNode();
+  this->sceneCameraNode->setPosition(0, 0, 15);
+  this->sceneCameraNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
 
   // create the camera
-  Ogre::Camera *cam = scnMgr->createCamera("myCam");
-  cam->setNearClipDistance(5); // specific to this sample
-  cam->setAutoAspectRatio(true);
-  camNode->attachObject(cam);
+  this->sceneCamera = this->scnMgr->createCamera("myCam");
+  this->sceneCamera->setNearClipDistance(5); // specific to this sample
+  this->sceneCamera->setAutoAspectRatio(true);
+  this->sceneCameraNode->attachObject(this->sceneCamera);
 
   // and tell it to render into the main window
-  ctx.getRenderWindow()->addViewport(cam);
+  this->ctx.getRenderWindow()->addViewport(this->sceneCamera);
 
+
+  // Test code for rendering waterwitch model
   // Create a resource group for external models
   Ogre::ResourceGroupManager::getSingleton().createResourceGroup("Models");
   Ogre::ResourceGroupManager::getSingleton().addResourceLocation("/home/zaid/Documents/sdformat-editor/example_models/Waterwitch", "FileSystem", "Models");
@@ -92,15 +87,19 @@ void ModelViewer::Initialize(bool &success)
   // register for input events
   KeyHandler keyHandler;
   ctx.addInputListener(&keyHandler);
+  
 
-  // Finally, start rendering
-  root->startRendering();
-  ctx.closeApp();
+  success = true;
 }
 
-void ModelViewer::Update()
+void ModelViewer::Update(bool& should_close)
 {
-  // TODO: Implementation
+  OgreBites::WindowEventUtilities::messagePump(); // Updated namespace
+  if (!this->ogreRoot->renderOneFrame())
+  {
+    should_close = true;
+    this->ctx.closeApp();
+  }
 }
 
 
