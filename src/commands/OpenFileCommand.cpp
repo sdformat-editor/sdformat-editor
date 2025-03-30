@@ -23,7 +23,7 @@
 
 
 OpenFileCommand::OpenFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, std::string file_path) 
-  : gui(gui), sdformatParser(sdformatParser), file_path(file_path)
+  : file_path(file_path), gui(gui), sdformatParser(sdformatParser)
 {
   
 }

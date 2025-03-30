@@ -393,7 +393,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
 
           std::string value_field_description = current_element_ptr->GetValue()->GetKey() + ": " + current_element_ptr->GetValue()->GetAsString() + + " ("  + current_element_ptr->GetValue()->GetTypeName()+ ")";
 
-          ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), value_field_description.c_str());
+          ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "%s", value_field_description.c_str());
           static char value_buffer[128] = "";
           
           if (element_to_edit == current_element_ptr) 
@@ -454,7 +454,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
           bool original_value = attribute_value;
           ImGui::Checkbox(("##" + std::to_string(unique_input_id++)).c_str(), &attribute_value);
           ImGui::SameLine();
-          ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.0f, 1.0f), attribute_info.c_str());
+          ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.0f, 1.0f), "%s", attribute_info.c_str());
           
           if (original_value != attribute_value) 
           {
@@ -463,7 +463,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
         } 
         else 
         {
-          ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.0f, 1.0f), attribute_info.c_str());
+          ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.0f, 1.0f), "%s", attribute_info.c_str());
           static char value_buffer[1024] = "";
           if (attribute_to_edit == attribute_ptr) {
 
