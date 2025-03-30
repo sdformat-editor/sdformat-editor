@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.14...3.27)
 project(SDFormat-Editor)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -66,6 +66,7 @@ target_include_directories(sdformat-editor PRIVATE
     ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Bites/include
     ${CMAKE_SOURCE_DIR}/libs/ogre/Components/RTShaderSystem/include
     ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Overlay/include
+    ${CMAKE_SOURCE_DIR}/libs/ogre/PlugIns/Assimp/include
 )
 
 # Link against sdformat14
@@ -85,11 +86,14 @@ find_package(glfw3 REQUIRED)
 
 # Find OpenGL
 find_package(OpenGL REQUIRED)
+
 target_link_libraries(sdformat-editor PRIVATE
     OpenGL::GL
     glfw
     OgreMain
-    dl  # Add dynamic loading library
+    OgreBites
+    OgreRTShaderSystem  
+    dl  
 )
 
 ############################################################
@@ -143,6 +147,8 @@ target_link_libraries(sdformat-editor-tests PRIVATE
     sdformat14::sdformat14
     OpenGL::GL
     OgreMain
+    OgreBites
+    OgreRTShaderSystem  
     glfw
     dl
 )

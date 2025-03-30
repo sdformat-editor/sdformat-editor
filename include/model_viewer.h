@@ -30,7 +30,7 @@ class ModelViewer : public ModelViewerI
     public: ~ModelViewer();
 
     /// \brief Implementation of interface method
-    private: void Initialize(const std::vector<std::string> &cad_files, bool &success) override;
+    private: void Initialize(bool &success) override;
 
     /// \brief Implementation of update method
     private: void Update() override;

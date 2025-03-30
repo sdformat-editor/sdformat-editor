@@ -23,9 +23,7 @@ class ModelViewerTest : public ::testing::Test {
 TEST_F(ModelViewerTest, Initialization) {
     bool model_viewer_initialization_successful = false;
 
-    const std::vector<std::string> empty_vector;
-
-    this->model_viewer->Initialize(empty_vector, model_viewer_initialization_successful);
+    this->model_viewer->Initialize(model_viewer_initialization_successful);
 
     EXPECT_TRUE(model_viewer_initialization_successful);
 }
