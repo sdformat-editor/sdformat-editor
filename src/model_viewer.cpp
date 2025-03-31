@@ -114,7 +114,6 @@ bool ModelViewer::IsRunning()
 void ModelViewer::Quit()
 {
     std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
-    std::cout << "I wanna quit" << std::endl;
     this->should_quit = true;
     this->ctx.closeApp();
 }
