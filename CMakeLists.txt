@@ -65,7 +65,6 @@ target_include_directories(sdformat-editor PRIVATE
     ${CMAKE_BINARY_DIR}/libs/ogre/include
     ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Bites/include
     ${CMAKE_SOURCE_DIR}/libs/ogre/Components/RTShaderSystem/include
-    ${CMAKE_SOURCE_DIR}/libs/ogre/PlugIns/Assimp/include
     ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Overlay/include
     ${CMAKE_SOURCE_DIR}/libs/ogre/PlugIns/Assimp/include
 )

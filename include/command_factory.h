@@ -34,6 +34,8 @@
 #include "commands/ModifyAttributeCommand.h"
 #include "commands/ModifyElementCommand.h"
 #include "commands/AddElementCommand.h"
+#include "commands/RenderModelCommand.h"
+#include "commands/DeleteSceneCommand.h"
 
 /// \brief Implementation of CommandFactoryI
 class CommandFactory : public CommandFactoryI
@@ -69,6 +71,14 @@ class CommandFactory : public CommandFactoryI
     /// \brief Implementation of interface method
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeSaveFileCommand();
+
+    /// \brief Implementation of interface method
+    /// \return Unique pointer to a command interface
+    private: std::unique_ptr<CommandI> MakeRenderModelCommand();
+
+    /// \brief Implementation of interface method
+    /// \return Unique pointer to a command interface
+    private: std::unique_ptr<CommandI> MakeDeleteSceneCommand();
 
     /// \brief Implementation of interface method
     /// \return Unique pointer to a command interface

@@ -17,28 +17,25 @@
 * Developer: Zaid Duraid, Ean Wheeler, Evan Vokey
 */
 
-#ifndef SDFORMAT_EDITOR_SAVE_FILE_COMMAND_HH_
-#define SDFORMAT_EDITOR_SAVE_FILE_COMMAND_HH_
+#ifndef SDFORMAT_EDITOR_DELETE_SCENE_COMMAND_HH_
+#define SDFORMAT_EDITOR_DELETE_SCENE_COMMAND_HH_
 
 
 #include <interfaces/command_interface.h>
-#include <interfaces/sdformat_parser_interface.h>
-#include <interfaces/gui_interface.h>
 
 
-/// \brief Save model command implementation of CommandI
-class SaveFileCommand : public CommandI
+/// \brief Delete Scene command implementation of CommandI
+class DeleteSceneCommand : public CommandI
 {
 
   /// \callgraph
-  /// \brief Constructor for save model command objects.
-  /// \param[in] gui Pointer to the GUII object 
-  /// \param[in] sdformatParser Pointer to the SDFormatParserI object
-  public: SaveFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser);
+  /// \brief Constructor for delete scene command objects.
+  /// \param[in] 
+  public: DeleteSceneCommand();
 
   /// \brief Implementation of interface method. 
-  /// \returns True if the SDFormatParser has successfully parsed the file and it has been displayed in the GUI
-  private: bool Execute();
+  /// \returns True if model is successfully loaded in model viewer
+  private: bool Execute() override;
 
   /// \brief Implementation of interface method. 
   /// \returns Always false
@@ -57,18 +54,12 @@ class SaveFileCommand : public CommandI
   private: bool IsRedoable() override;
 
   /// \brief Implementation of interface method.
-  /// \returns Always false
+  /// \returns Always true
   private: bool IsThreaded() override;
 
   /// \brief Implementation of interface method.
   /// \returns Always false
   private: bool ChangesProgramStateIrreversibly() override;
-
-  /// @brief Pointer to the gui interface
-  private: std::shared_ptr<GUII> gui;
-
-  /// @brief Pointer to the sdformat parser interface
-  private: std::shared_ptr<SDFormatParserI> sdformatParser;
 
 };
 

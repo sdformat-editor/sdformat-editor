@@ -19,6 +19,15 @@ std::unique_ptr<CommandI> CommandFactory::MakeOpenFileCommand(std::string file_p
     return std::make_unique<OpenFileCommand>(this->gui, this->sdformatParser, file_path);
 }
 
+std::unique_ptr<CommandI> CommandFactory::MakeRenderModelCommand()
+{
+    return std::make_unique<RenderModelCommand>();
+}
+
+std::unique_ptr<CommandI> CommandFactory::MakeDeleteSceneCommand()
+{
+    return std::make_unique<DeleteSceneCommand>();
+}
 std::unique_ptr<CommandI> CommandFactory::MakeUndoCommand()
 {
     return std::make_unique<GenericCommand>([this]() { this->PopFromUndoCommandsStack();});

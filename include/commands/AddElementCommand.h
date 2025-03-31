@@ -27,12 +27,12 @@
 
 #include <vector>
 
-/// \brief Open model command implementation of CommandI
+/// \brief Add Element command implementation of CommandI
 class AddElementCommand : public CommandI
 {
 
   /// \callgraph
-  /// \brief Constructor for open model command objects.
+  /// \brief Constructor for add element command objects.
   /// \param[in] gui Pointer to the GUII object 
   /// \param[in] sdformatParser Pointer to the SDFormatParserI object
   /// \param[in] parent_element Pointer to the parent of the element that may be added

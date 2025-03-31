@@ -27,13 +27,13 @@
 
 #include <vector>
 
-/// \brief Open model command implementation of CommandI
+/// \brief Modify Attribute command implementation of CommandI
 template <typename T>
 class ModifyAttributeCommand : public CommandI
 {
 
   /// \callgraph
-  /// \brief Constructor for open model command objects.
+  /// \brief Constructor for modify attribute command objects.
   /// \param[in] gui Pointer to the GUII object 
   /// \param[in] sdformatParser Pointer to the SDFormatParserI object
   /// \param[in] new_value The new value with which to modify the element

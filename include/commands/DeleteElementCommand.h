@@ -27,12 +27,12 @@
 
 #include <vector>
 
-/// \brief Open model command implementation of CommandI
+/// \brief Delete Element command implementation of CommandI
 class DeleteElementCommand : public CommandI
 {
 
   /// \callgraph
-  /// \brief Constructor for delete command objects.
+  /// \brief Constructor for delete element command objects.
   /// \param[in] gui Pointer to the GUII object 
   /// \param[in] sdformatParser Pointer to the SDFormatParserI object
   /// \param[in] element_to_delete Pointer to the element that may be deleted

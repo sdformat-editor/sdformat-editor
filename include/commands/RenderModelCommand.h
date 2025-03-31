@@ -17,28 +17,26 @@
 * Developer: Zaid Duraid, Ean Wheeler, Evan Vokey
 */
 
-#ifndef SDFORMAT_EDITOR_SAVE_FILE_COMMAND_HH_
-#define SDFORMAT_EDITOR_SAVE_FILE_COMMAND_HH_
+#ifndef SDFORMAT_EDITOR_RENDER_MODEL_COMMAND_HH_
+#define SDFORMAT_EDITOR_RENDER_MODEL_COMMAND_HH_
 
 
 #include <interfaces/command_interface.h>
-#include <interfaces/sdformat_parser_interface.h>
-#include <interfaces/gui_interface.h>
+#include <interfaces/model_viewer_interface.h>
 
 
-/// \brief Save model command implementation of CommandI
-class SaveFileCommand : public CommandI
+/// \brief Render Model command implementation of CommandI
+class RenderModelCommand : public CommandI
 {
 
   /// \callgraph
-  /// \brief Constructor for save model command objects.
-  /// \param[in] gui Pointer to the GUII object 
-  /// \param[in] sdformatParser Pointer to the SDFormatParserI object
-  public: SaveFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser);
+  /// \brief Constructor for render model command objects.
+  /// \param[in] 
+  public: RenderModelCommand(std::shared_ptr<ModelViewerI> model_viewer);
 
   /// \brief Implementation of interface method. 
-  /// \returns True if the SDFormatParser has successfully parsed the file and it has been displayed in the GUI
-  private: bool Execute();
+  /// \returns True if model is successfully loaded in model viewer
+  private: bool Execute() override;
 
   /// \brief Implementation of interface method. 
   /// \returns Always false
@@ -57,18 +55,12 @@ class SaveFileCommand : public CommandI
   private: bool IsRedoable() override;
 
   /// \brief Implementation of interface method.
-  /// \returns Always false
+  /// \returns Always true
   private: bool IsThreaded() override;
 
   /// \brief Implementation of interface method.
   /// \returns Always false
   private: bool ChangesProgramStateIrreversibly() override;
-
-  /// @brief Pointer to the gui interface
-  private: std::shared_ptr<GUII> gui;
-
-  /// @brief Pointer to the sdformat parser interface
-  private: std::shared_ptr<SDFormatParserI> sdformatParser;
 
 };
 
