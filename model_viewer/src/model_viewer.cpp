@@ -45,45 +45,36 @@ void ModelViewer::Initialize()
     this->shadergen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
     shadergen->addSceneManager(scnMgr);
 
+    this->scnMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
+
     // Create a light for the scene
     this->sceneLight = this->scnMgr->createLight("MainLight");
     this->sceneLightNode = this->scnMgr->getRootSceneNode()->createChildSceneNode();
     this->sceneLightNode->setPosition(10, 10, 20);
     this->sceneLightNode->attachObject(this->sceneLight);
 
-    // Create a camera for rendering to the texture
-    this->sceneCamera = this->scnMgr->createCamera("RenderTextureCamera");
+    // Create a camera entity
+    this->sceneCamera = this->scnMgr->createCamera("Camera");
     this->sceneCamera->setNearClipDistance(5);
     this->sceneCamera->setAutoAspectRatio(true);
 
     // Attach the camera to a scene node
     this->sceneCameraNode = this->scnMgr->getRootSceneNode()->createChildSceneNode();
+    this->sceneCameraNode->attachObject(this->sceneCamera);
     this->sceneCameraNode->setPosition(0, 0, 15);
     this->sceneCameraNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
-    this->sceneCameraNode->attachObject(this->sceneCamera);
+    
+    this->ctx.getRenderWindow()->addViewport(this->sceneCamera);
 
-    // Create a texture to render into
-    this->renderTexturePointer = Ogre::TexturePtr(
-        Ogre::TextureManager::getSingleton().createManual(
-            "RenderTexture",
-            Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-            Ogre::TEX_TYPE_2D,
-            1024, 1024, // Texture size
-            0,
-            Ogre::PF_R8G8B8,
-            Ogre::TU_RENDERTARGET
-        )
-    );
+    // // Get the render target from the texture
+    // Ogre::RenderTexture* rtt = this->renderTexturePointer->getBuffer()->getRenderTarget();
 
-    // Get the render target from the texture
-    Ogre::RenderTexture* rtt = this->renderTexturePointer->getBuffer()->getRenderTarget();
-
-    // Add a viewport to the render target
-    Ogre::Viewport* vp = rtt->addViewport(this->sceneCamera);
-    vp->setBackgroundColour(Ogre::ColourValue(0, 0, 0));
-    this->sceneCamera->setAspectRatio(
-        Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight())
-    );
+    // // Add a viewport to the render target
+    // Ogre::Viewport* vp = rtt->addViewport(this->sceneCamera);
+    // vp->setBackgroundColour(Ogre::ColourValue(0, 0, 0));
+    // this->sceneCamera->setAspectRatio(
+    //     Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight())
+    // );
 
     // Load a model into the scene
     Ogre::ResourceGroupManager::getSingleton().createResourceGroup("Models");
@@ -94,10 +85,10 @@ void ModelViewer::Initialize()
     );
     Ogre::ResourceGroupManager::getSingleton().initialiseResourceGroup("Models");
 
-    Ogre::Entity* entity = scnMgr->createEntity("waterwitch.stl");
-    Ogre::SceneNode* node = scnMgr->getRootSceneNode()->createChildSceneNode();
-    node->attachObject(entity);
-    node->setScale(15, 15, 15); // Adjust scale if needed
+    Ogre::Entity* test_entity = scnMgr->createEntity("waterwitch.stl");
+    Ogre::SceneNode* test_node = scnMgr->getRootSceneNode()->createChildSceneNode();
+    test_node->attachObject(test_entity);
+    test_node->setScale(15, 15, 15); // Adjust scale if needed
 
     // register for input events
     KeyHandler keyHandler;
