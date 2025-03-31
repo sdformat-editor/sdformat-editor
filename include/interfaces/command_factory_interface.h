@@ -26,6 +26,7 @@
 #include "interfaces/command_interface.h"
 #include "interfaces/gui_interface.h"
 #include "interfaces/sdformat_parser_interface.h"
+#include "interfaces/model_viewer_interface.h"
 #include <stack>
 
 // Predeclare GUII to avoid circular dependencies
@@ -38,7 +39,9 @@ class CommandFactoryI
   /// \brief Initialization of the Command Factory. Should be wrapped in the constructor of the implementation.
   /// \param[in] gui A pointer to the GUI element
   /// \param[in] sdformat_parser A pointer to the sdformat parser object
-  private: virtual void Initialize(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser) = 0;
+  /// \param[in] model_viewer A pointer to the model viewer object
+  private: virtual void Initialize(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, 
+                                    std::shared_ptr<ModelViewerI> model_viewer) = 0;
 
   /// \brief Create an open file command
   /// \return Unique pointer to a command interface 

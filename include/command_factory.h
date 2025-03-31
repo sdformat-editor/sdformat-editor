@@ -42,10 +42,13 @@ class CommandFactory : public CommandFactoryI
     /// \brief Constructor that wraps the Initialize method
     /// \param[in] gui A pointer to the GUI object
     /// \param[in] sdformat_parser A pointer to the sdformat parser object
-    public: CommandFactory(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser);
+    /// \param[in] model_viewer A pointer to the model viewer object
+    public: CommandFactory(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, 
+                            std::shared_ptr<ModelViewerI> model_viewer);
 
     /// \brief Implementation of interface method, wrapped by constructor
-    private: void Initialize(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser);
+    private: void Initialize(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, 
+                              std::shared_ptr<ModelViewerI> model_viewer);
 
     /// \brief Implementation of interface method
     /// \return Unique pointer to a command interface 
@@ -125,6 +128,9 @@ class CommandFactory : public CommandFactoryI
 
     /// @brief Pointer to the sdformat parser object
     private: std::shared_ptr<SDFormatParserI> sdformatParser;
+
+    /// @brief Pointer to the model viewer object
+    private: std::shared_ptr<ModelViewerI> model_viewer;
 
     /// @brief Stack for undo functionality
     std::stack<std::unique_ptr<CommandI>> undo_commands_stack;

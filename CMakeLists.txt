@@ -60,7 +60,7 @@ target_include_directories(sdformat-editor PRIVATE
     ${imgui_SOURCE_DIR}/backends
     ${stb_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${sdformat14_INCLUDE_DIRS} 
+    ${sdformat14_INCLUDE_DIRS}  # Add sdformat include directories
     ${CMAKE_SOURCE_DIR}/libs/ogre/OgreMain/include
     ${CMAKE_BINARY_DIR}/libs/ogre/include
     ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Bites/include
@@ -68,11 +68,6 @@ target_include_directories(sdformat-editor PRIVATE
     ${CMAKE_SOURCE_DIR}/libs/ogre/PlugIns/Assimp/include
     ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Overlay/include
     ${CMAKE_SOURCE_DIR}/libs/ogre/PlugIns/Assimp/include
-)
-
-# Link against sdformat14
-target_link_libraries(sdformat-editor PRIVATE
-    sdformat14::sdformat14
 )
 
 # Compiler warnings
@@ -89,9 +84,9 @@ find_package(glfw3 REQUIRED)
 find_package(OpenGL REQUIRED)
 
 target_link_libraries(sdformat-editor PRIVATE
+    sdformat14::sdformat14
     OpenGL::GL
     glfw
-    dl  # Add dynamic loading library
     OgreMain
     OgreBites
     OgreRTShaderSystem  
@@ -102,56 +97,58 @@ target_link_libraries(sdformat-editor PRIVATE
 ######################## TESTING ###########################
 ############################################################
 
-# # Enable testing
-# enable_testing()
+# Enable testing
+enable_testing()
 
-# # Find Google Test
-# set(gtest_SOURCE_DIR libs/googletest)
+# Find Google Test
+set(gtest_SOURCE_DIR libs/googletest)
 
-# # Add google test
-# add_subdirectory(${gtest_SOURCE_DIR})
+# Add google test
+add_subdirectory(${gtest_SOURCE_DIR})
 
-# # Add test files
-# set(TEST_FILES
-#     tests/test_gui.cpp
-#     tests/test_sdformat_parser.cpp
-# )
+# Add test files
+set(TEST_FILES
+    tests/test_gui.cpp
+    tests/test_sdformat_parser.cpp
+)
 
-# # Create test executable
-# add_executable(sdformat-editor-tests
-#     ${TEST_FILES}
-#     ${_SOURCE_FILES}
-#     ${HEADER_FILES}
-#     ${IMGUI_FILES}
-#     ${stb_SOURCE_DIR}/deprecated/stb_image.c
-# )
+# Create test executable
+add_executable(sdformat-editor-tests
+    ${TEST_FILES}
+    ${_SOURCE_FILES}
+    ${HEADER_FILES}
+    ${IMGUI_FILES}
+    ${stb_SOURCE_DIR}/deprecated/stb_image.c
+)
 
-# # Include directories for tests
-# target_include_directories(sdformat-editor-tests PRIVATE
-#     ${imgui_SOURCE_DIR}
-#     ${imgui_SOURCE_DIR}/backends
-#     ${stb_SOURCE_DIR}
-#     ${CMAKE_CURRENT_SOURCE_DIR}/include
-#     ${gtest_SOURCE_DIR}/googletest/include
-#     ${sdformat14_INCLUDE_DIRS} 
-#     ${CMAKE_SOURCE_DIR}/libs/ogre/OgreMain/include
-#     ${CMAKE_BINARY_DIR}/libs/ogre/include
-#     ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Bites/include
-#     ${CMAKE_SOURCE_DIR}/libs/ogre/Components/RTShaderSystem/include
-#     ${CMAKE_SOURCE_DIR}/libs/ogre/PlugIns/Assimp/include
-#     ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Overlay/include
-#     ${CMAKE_SOURCE_DIR}/libs/ogre/PlugIns/Assimp/include
-# )
+# Include directories for tests
+target_include_directories(sdformat-editor-tests PRIVATE
+    ${imgui_SOURCE_DIR}
+    ${imgui_SOURCE_DIR}/backends
+    ${stb_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${gtest_SOURCE_DIR}/googletest/include
+    ${sdformat14_INCLUDE_DIRS}  # Add sdformat include directories
+    ${CMAKE_SOURCE_DIR}/libs/ogre/OgreMain/include
+    ${CMAKE_BINARY_DIR}/libs/ogre/include
+    ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Bites/include
+    ${CMAKE_SOURCE_DIR}/libs/ogre/Components/RTShaderSystem/include
+    ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Overlay/include
+    ${CMAKE_SOURCE_DIR}/libs/ogre/PlugIns/Assimp/include
+)
 
-# # Link against Google Test and other libraries
-# target_link_libraries(sdformat-editor-tests PRIVATE
-#     gtest
-#     gtest_main
-#     sdformat14::sdformat14
-#     OpenGL::GL
-#     glfw
-#     dl
-# )
+# Link against Google Test and other libraries
+target_link_libraries(sdformat-editor-tests PRIVATE
+    gtest
+    gtest_main
+    sdformat14::sdformat14
+    OpenGL::GL
+    OgreMain
+    OgreBites
+    OgreRTShaderSystem  
+    glfw
+    dl
+)
 
-# # Add test to CTest
-# add_test(NAME sdformat-editor-tests COMMAND sdformat-editor-tests)
+# Add test to CTest
+add_test(NAME sdformat-editor-tests COMMAND sdformat-editor-tests)

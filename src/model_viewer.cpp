@@ -34,6 +34,7 @@ class KeyHandler : public OgreBites::InputListener
 
 void ModelViewer::Initialize()
 {
+    std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
     // Initialize the application context
     this->ctx.initApp();
 
@@ -89,56 +90,33 @@ void ModelViewer::Initialize()
     this->ctx.addInputListener(&keyHandler);
 }
 
-void ModelViewer::RenderFrame(bool& should_quit)
+void ModelViewer::RenderFrame()
 {
-  // Render a single frame
-  if (!this->ogreRoot->renderOneFrame())
-  {
-    // Check if the escape key was pressed using the InputListener mechanism
-    // This functionality is already handled in the KeyHandler class
-    // Ensure KeyHandler is properly registered for input events
-    should_quit = true;
+    std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
+    // Render a single frame
+    if (!this->should_quit && !this->ogreRoot->renderOneFrame())
+    {
+      // Check if the escape key was pressed using the InputListener mechanism
+      // This functionality is already handled in the KeyHandler class
+      // Ensure KeyHandler is properly registered for input events
+      this->should_quit = true;
+      this->ctx.closeApp();
+      return;
+    }
+}
+
+bool ModelViewer::IsRunning()
+{
+    std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
+    return !this->should_quit;
+}
+
+void ModelViewer::Quit()
+{
+    std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
+    std::cout << "I wanna quit" << std::endl;
+    this->should_quit = true;
     this->ctx.closeApp();
-    return;
-  }
-  should_quit = false;
 }
 
-GLuint ModelViewer::GetRenderTexture()
-{
-  GLuint textureID = 0;
-
-  // Get the hardware pixel buffer from the render texture
-  Ogre::HardwarePixelBufferSharedPtr pixelBuffer = this->renderTexturePointer->getBuffer();
-
-  // Lock the pixel buffer to access its data
-  pixelBuffer->lock(Ogre::HardwareBuffer::HBL_READ_ONLY);
-  const Ogre::PixelBox& pixelBox = pixelBuffer->getCurrentLock();
-
-  // Create an OpenGL texture
-  glGenTextures(1, &textureID);
-  glBindTexture(GL_TEXTURE_2D, textureID);
-
-  // Upload the pixel data to the OpenGL texture
-  glTexImage2D(
-    GL_TEXTURE_2D,
-    0,
-    GL_RGB,
-    pixelBox.getWidth(),
-    pixelBox.getHeight(),
-    0,
-    GL_RGB,
-    GL_UNSIGNED_BYTE,
-    pixelBox.data
-  );
-
-  // Set texture parameters
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-  // Unlock the pixel buffer
-  pixelBuffer->unlock();
-
-  return textureID;
-}
 

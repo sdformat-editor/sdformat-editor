@@ -24,13 +24,15 @@ FileEditorRunner::FileEditorRunner(bool data_dir_created)
     // The sdformatParser will be null until the user opens a file
     this->sdformatParser = std::make_shared<SDFormatParser>();
 
+    this->model_viewer = std::make_shared<ModelViewer>();
+
     this->gui = std::make_shared<GUI>("SDFormat Editor", this->sdformatParser, this->gui_initalization_successful);
     
     // Run the model viewer as a seperate thread
     std::thread model_viewer_thread(&FileEditorRunner::RunModelViewerThread, this);
     model_viewer_thread.detach();
 
-    this->command_factory = std::make_shared<CommandFactory>(this->gui, this->sdformatParser);
+    this->command_factory = std::make_shared<CommandFactory>(this->gui, this->sdformatParser, this->model_viewer);
 
     // grab the previous file that was opened
     if (data_dir_created) {
@@ -131,62 +133,23 @@ int FileEditorRunner::RunProgram()
         }
     }
 
-    FileOperations::GetSoleInstance().WriteToModelEditorProcess("quit");
+    this->model_viewer->Quit();
+
+    while (this->model_viewer->IsRunning())
+    {
+
+    }
 
     return 0;
 }
 
 void FileEditorRunner::RunModelViewerThread()
 {
-    // Create and open a FIFO
-    const char* fifo_path = "/tmp/sdf_file_editor_model_viewer_fifo";
+    this->model_viewer->Initialize();
 
-    // Create the FIFO if it doesn't exist
-    if (mkfifo(fifo_path, 0666) < 0 && errno != EEXIST) {
-        std::cerr << "Failed to create FIFO: " << strerror(errno) << std::endl;
-        return;
-    }
-
-    int fifo_file_descriptor = open(fifo_path, O_RDONLY | O_NONBLOCK); // Open FIFO in non-blocking mode
-    if (fifo_file_descriptor < 0)
+    while (this->model_viewer->IsRunning())
     {
-        std::cerr << "Failed to open FIFO for reading." << std::endl;
-        return;
+        // Call the RenderFrame method
+        this->model_viewer->RenderFrame();
     }
-
-    // Initialize the model viewer
-
-    ModelViewerI* model_viewer = new ModelViewer();
-    model_viewer->Initialize();
-
-    bool should_quit = false;
-
-    while (!should_quit)
-    {
-        // Read from the FIFO
-        char buffer[128];
-        memset(buffer, 0, sizeof(buffer)); // Clear the buffer
-        ssize_t bytes_read = read(fifo_file_descriptor, buffer, sizeof(buffer) - 1);
-
-        if (bytes_read > 0)
-        {
-            std::cout << "Received from FIFO: " << buffer << std::endl;
-
-            // Example: Check for a quit command
-            if (std::string(buffer) == "quit")
-            {
-                should_quit = true;
-            }
-            else if (std::string(buffer) == "render_frame")
-            {
-                // Call the RenderFrame method
-                model_viewer->RenderFrame(should_quit);
-            }
-        }
-    }
-
-    // Clean up
-    close(fifo_file_descriptor);
-    unlink(fifo_path); // Remove the FIFO file
-    delete model_viewer;
 }

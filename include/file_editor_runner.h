@@ -26,6 +26,8 @@
 #include "interfaces/command_interface.h"
 #include "file_operations.h"
 #include "model_viewer.h"
+#include <sys/stat.h>
+#include <fstream>
 #include <thread>
 
 /// \brief Implementation of program start up to be called by main.
@@ -55,6 +57,9 @@ class FileEditorRunner
 
     /// @brief Pointer to the CommandFactory class instance
     std::shared_ptr<CommandFactoryI> command_factory;
+
+    /// @brief Pointer to the model viewer object
+    std::shared_ptr<ModelViewerI> model_viewer;
 
 };
 

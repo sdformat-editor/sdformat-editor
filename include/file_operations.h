@@ -21,15 +21,9 @@
 #define FILE_OPERATIONS_HH_
 
 #include <string>
-#include <array>
-
 #include <iostream>
-#include <fcntl.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <cstring>
+#include <array>
 #include <fstream>
-
 
 /// \brief Singleton class to handle file operations
 class FileOperations
@@ -61,11 +55,6 @@ class FileOperations
     public: bool WriteFile(const std::string& contents);
 
     /// \callgraph
-    /// \brief writes to model editor fifo process
-    /// \param[in] contents the contents to write to the process
-    public: void WriteToModelEditorProcess(const std::string& contents);
-
-    /// \callgraph
     /// \brief Prevent access to the constructor of this class
     private: FileOperations() = default;
 
@@ -86,9 +75,6 @@ class FileOperations
     private: std::string active_file_path;
 
     private: int model_editor_fifo_file_descriptor;
-
-
-
 };
 
 #endif

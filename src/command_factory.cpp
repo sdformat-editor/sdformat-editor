@@ -1,14 +1,17 @@
 #include "command_factory.h"
 
-CommandFactory::CommandFactory(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser)
+CommandFactory::CommandFactory(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, 
+                                    std::shared_ptr<ModelViewerI> model_viewer)
 {
-    this->Initialize(gui, sdformatParser);
+    this->Initialize(gui, sdformatParser, model_viewer);
 }
 
-void CommandFactory::Initialize(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser)
+void CommandFactory::Initialize(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, 
+                            std::shared_ptr<ModelViewerI> model_viewer)
 {
     this->gui = gui;
     this->sdformatParser = sdformatParser;
+    this->model_viewer = model_viewer;
 }
 
 std::unique_ptr<CommandI> CommandFactory::MakeOpenFileCommand(std::string file_path)

@@ -28,13 +28,14 @@
 #include "OgreInput.h"
 #include "OgreRTShaderSystem.h"
 #include "OgreWindowEventUtilities.h"
+#include <mutex>
 
 /// \brief Implementation of SDFormatParserI
 class ModelViewer : public ModelViewerI
 {
 
     /// \brief Constructor
-    public: ModelViewer() : ctx("My App") // Initialize ctx here
+    public: ModelViewer() : ctx("SDFormat Model Viewer") // Initialize ctx here
     {
     }
 
@@ -42,10 +43,22 @@ class ModelViewer : public ModelViewerI
     private: void Initialize() override;
 
     /// \brief Implementation of interface method
-    private: GLuint GetRenderTexture() override; 
+    private: void RenderFrame() override;
 
-    /// \brief Implementation of interface method
-    private: void RenderFrame(bool& should_quit) override;
+    /// \callgraph
+    /// \brief Tells the model editor to quit on its next iteration
+    private: void Quit() override;
+
+    /// \callgraph
+    /// \brief Indicates if the model view is running
+    /// \returns a boolean
+    public: bool IsRunning() override;
+
+    /// \brief Mutex for thread safety
+    private: std::mutex model_viewer_mutex;
+
+    /// \brief Mutex for thread safety
+    private: bool should_quit = false;
 
     /// \brief The ogre bites app (i think we need to replace this with smthn else when we integrate with imgui)
     private: OgreBites::ApplicationContext ctx;
