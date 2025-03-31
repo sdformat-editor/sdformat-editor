@@ -30,15 +30,7 @@ class ModelViewerI
 
     /// \callgraph
     /// \brief Initialization of the Model Viewer. 
-    /// NOTE: (zaid) This initalize method is not wrapped by the constructor because we can reinitalize it 
-    //  multiple times (unlike the GUI), which should terminate the program if it closes.
-    /// \param[out] success true if window initalization is successful
-    public: virtual void Initialize(bool &success) = 0;
-
-    /// \callgraph
-    /// \param[out] should_close boolean indicating if the model viewer should close
-    /// \brief Updating the Model Viewer
-    public: virtual void Update(bool& should_close) = 0;
+    public: virtual void Initialize() = 0;
 
     /// \callgraph
     /// \brief Returns a render texture ID which can be rendered by the GUI implementation

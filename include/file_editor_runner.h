@@ -24,7 +24,6 @@
 #include "gui.h"
 #include "sdformat_parser.h"
 #include "interfaces/command_interface.h"
-#include "model_viewer.h"
 
 /// \brief Implementation of program start up to be called by main.
 class FileEditorRunner
@@ -50,9 +49,6 @@ class FileEditorRunner
 
     /// @brief Pointer to the CommandFactory class instance
     std::shared_ptr<CommandFactoryI> command_factory;
-
-    /// \brief Pointer to the model viewer class instance
-    std::shared_ptr<ModelViewerI> model_viewer;
 
 };
 

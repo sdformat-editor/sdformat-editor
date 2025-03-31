@@ -25,9 +25,7 @@ FileEditorRunner::FileEditorRunner(bool data_dir_created)
     // The sdformatParser will be null until the user opens a file
     this->sdformatParser = std::make_shared<SDFormatParser>();
 
-    this->model_viewer = std::make_shared<ModelViewer>(this->model_viewer_initalization_successful);
-
-    this->gui = std::make_shared<GUI>("SDFormat Editor", this->sdformatParser, this->model_viewer, this->gui_initalization_successful);
+    this->gui = std::make_shared<GUI>("SDFormat Editor", this->sdformatParser, this->gui_initalization_successful);
 
     this->command_factory = std::make_shared<CommandFactory>(this->gui, this->sdformatParser);
 
@@ -70,9 +68,9 @@ FileEditorRunner::FileEditorRunner(bool data_dir_created)
 
 int FileEditorRunner::RunProgram()
 {
-    // Exit the program if the GUI or model viewer cannot initalize
+    // Exit the program if the GUI cannot initalize
     // This may happen if there is no active display
-    if (!this->gui_initalization_successful || !this->model_viewer_initalization_successful) return 1;
+    if (!this->gui_initalization_successful) return 1;
 
     // gui->ShouldClose() will become true when the window is closed by the user
     while (!this->gui->ShouldClose())
@@ -80,12 +78,6 @@ int FileEditorRunner::RunProgram()
         // Poll the GUI for user input
         // Update will return nullptr if the user does nothing
         std::unique_ptr<CommandI> user_command = this->gui->Update(this->command_factory);
-
-        // Update the model viewer for one frame
-        bool model_viewer_should_close = false;
-        this->model_viewer->Update(model_viewer_should_close);
-
-        if (model_viewer_should_close) break;
 
         if (user_command)
         {

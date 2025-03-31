@@ -36,18 +36,14 @@ class GUI : public GUII
 
   /// \brief Constructor that wraps the Initialize method
   /// \param[in] window_name The name to be given to the SDFormatEditor Window
-  /// \param[in] sdformat_parser Pointer to the sdformat parser object
-  /// \param[in] model_viewer Pointer to the model viewer object
   /// \param[out] success true if window initalization is successful
-  public: GUI(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser,
-                                  std::shared_ptr<ModelViewerI> model_viewer, bool &success);
+  public: GUI(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success);
 
   /// \brief Destructor 
   public: ~GUI();
 
   /// \brief Implementation of interface method, wrapped by constructor
-  private: void Initialize(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser,
-                              std::shared_ptr<ModelViewerI> model_viewer, bool &success) override;
+  private: void Initialize(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success) override;
 
   /// \brief Implementation of interface method
   private: bool ShouldClose() override;
@@ -134,9 +130,6 @@ class GUI : public GUII
 
   /// @brief Pointer to the sdformat_parser object
   private: std::shared_ptr<SDFormatParserI> sdformat_parser;
-
-  /// @brief Pointer to the sdformat_parser object
-  private: std::shared_ptr<ModelViewerI> model_viewer;
 
   /// @brief An element for which we want to show the "append_to" dropdown
   private: sdf::ElementPtr element_to_append_to;

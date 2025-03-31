@@ -33,21 +33,13 @@
 class ModelViewer : public ModelViewerI
 {
 
-    /// \brief Constructor that wraps the initalize method 
-    /// \NOTE: (zaid) I had to define this in the header file for some reason, 
-    /// doing only the declaration here and implementation in the .cpp file is not
-    /// working right away
-    public: ModelViewer(bool &success) : ctx("My App") // Initialize ctx here
+    /// \brief Constructor
+    public: ModelViewer() : ctx("My App") // Initialize ctx here
     {
-        this->Initialize(success);
     }
 
-
     /// \brief Implementation of interface method
-    private: void Initialize(bool &success) override;
-
-    /// \brief Implementation of interface method
-    private: void Update(bool& should_close) override;
+    private: void Initialize() override;
 
     /// \brief Implementation of interface method
     public: GLuint GetRenderTexture() override; 

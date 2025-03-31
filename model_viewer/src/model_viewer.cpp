@@ -32,7 +32,7 @@ class KeyHandler : public OgreBites::InputListener
     }
 };
 
-void ModelViewer::Initialize(bool &success)
+void ModelViewer::Initialize()
 {
     // Initialize the application context
     this->ctx.initApp();
@@ -99,17 +99,13 @@ void ModelViewer::Initialize(bool &success)
     node->attachObject(entity);
     node->setScale(15, 15, 15); // Adjust scale if needed
 
-    success = true;
-}
+    // register for input events
+    KeyHandler keyHandler;
+    ctx.addInputListener(&keyHandler);
 
-void ModelViewer::Update(bool& should_close)
-{
-  OgreBites::WindowEventUtilities::messagePump(); // Updated namespace
-  if (!this->ogreRoot->renderOneFrame())
-  {
-    should_close = true;
-    this->ctx.closeApp();
-  }
+    // Finally, start rendering
+    this->ogreRoot->startRendering();
+    ctx.closeApp();
 }
 
 GLuint ModelViewer::GetRenderTexture()
