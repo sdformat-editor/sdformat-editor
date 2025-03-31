@@ -17,6 +17,7 @@
 * Developer: Zaid Duraid, Ean Wheeler, Evan Vokey
 */
 
+#include "file_operations.h"
 #include "file_editor_runner.h"
 #include <thread>
 
@@ -127,6 +128,8 @@ int FileEditorRunner::RunProgram()
             }
         }
     }
+
+    FileOperations::GetSoleInstance().WriteToModelEditorProcess("quit");
 
     return 0;
 }

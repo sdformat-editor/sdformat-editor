@@ -33,6 +33,10 @@ class ModelViewerI
     public: virtual void Initialize() = 0;
 
     /// \callgraph
+    /// \brief Rander a single frame
+    public: virtual void RenderFrame(bool& should_quit) = 0;
+
+    /// \callgraph
     /// \brief Returns a render texture ID which can be rendered by the GUI implementation
     /// \returns The ID of the render texture
     public: virtual GLuint GetRenderTexture() = 0;

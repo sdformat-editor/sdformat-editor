@@ -42,7 +42,10 @@ class ModelViewer : public ModelViewerI
     private: void Initialize() override;
 
     /// \brief Implementation of interface method
-    public: GLuint GetRenderTexture() override; 
+    private: GLuint GetRenderTexture() override; 
+
+    /// \brief Implementation of interface method
+    private: void RenderFrame(bool& should_quit) override;
 
     /// \brief The ogre bites app (i think we need to replace this with smthn else when we integrate with imgui)
     private: OgreBites::ApplicationContext ctx;

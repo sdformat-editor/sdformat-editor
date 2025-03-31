@@ -10,8 +10,6 @@ set(stb_SOURCE_DIR libs/stb)
 # Find sdformat14
 find_package(sdformat14 REQUIRED)
 
-# message(STATUS "sdformat14_INCLUDE_DIRS: ${sdformat14_INCLUDE_DIRS}")
-
 # Add header files
 file(GLOB_RECURSE HEADER_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/include/*
@@ -75,6 +73,16 @@ target_link_libraries(sdformat-editor PRIVATE
     glfw
     dl  # Add dynamic loading library
 )
+
+############################################################
+####################### MODEL VIEWER #######################
+############################################################
+
+# Add the model_viewer subdirectory
+add_subdirectory(model_viewer)
+
+# Ensure model-viewer is built before sdformat-editor
+add_dependencies(sdformat-editor model-viewer)
 
 ############################################################
 ######################## TESTING ###########################

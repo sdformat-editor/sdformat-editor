@@ -50,7 +50,7 @@ void ModelViewer::Initialize()
     // Create a light for the scene
     this->sceneLight = this->scnMgr->createLight("MainLight");
     this->sceneLightNode = this->scnMgr->getRootSceneNode()->createChildSceneNode();
-    this->sceneLightNode->setPosition(10, 10, 20);
+    this->sceneLightNode->setPosition(0, 20, 0);
     this->sceneLightNode->attachObject(this->sceneLight);
 
     // Create a camera entity
@@ -61,22 +61,12 @@ void ModelViewer::Initialize()
     // Attach the camera to a scene node
     this->sceneCameraNode = this->scnMgr->getRootSceneNode()->createChildSceneNode();
     this->sceneCameraNode->attachObject(this->sceneCamera);
-    this->sceneCameraNode->setPosition(0, 0, 15);
-    this->sceneCameraNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
+    this->sceneCameraNode->setPosition(0, 47, 222);
+    this->sceneCameraNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_PARENT);
     
     this->ctx.getRenderWindow()->addViewport(this->sceneCamera);
 
-    // // Get the render target from the texture
-    // Ogre::RenderTexture* rtt = this->renderTexturePointer->getBuffer()->getRenderTarget();
-
-    // // Add a viewport to the render target
-    // Ogre::Viewport* vp = rtt->addViewport(this->sceneCamera);
-    // vp->setBackgroundColour(Ogre::ColourValue(0, 0, 0));
-    // this->sceneCamera->setAspectRatio(
-    //     Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight())
-    // );
-
-    // Load a model into the scene
+    // Load some models into the scene
     Ogre::ResourceGroupManager::getSingleton().createResourceGroup("Models");
     Ogre::ResourceGroupManager::getSingleton().addResourceLocation(
         "/home/zaid/Documents/sdformat-editor/example_models/Waterwitch",
@@ -90,13 +80,28 @@ void ModelViewer::Initialize()
     test_node->attachObject(test_entity);
     test_node->setScale(15, 15, 15); // Adjust scale if needed
 
-    // register for input events
-    KeyHandler keyHandler;
-    ctx.addInputListener(&keyHandler);
+    Ogre::Entity* test_entity_2 = scnMgr->createEntity("propeller.stl");
+    Ogre::SceneNode* test_node_t = scnMgr->getRootSceneNode()->createChildSceneNode(Ogre::Vector3(84, 48, 0));
+    test_node_t->attachObject(test_entity_2);
 
-    // Finally, start rendering
-    this->ogreRoot->startRendering();
-    ctx.closeApp();
+    // Register for input events
+    static KeyHandler keyHandler;
+    this->ctx.addInputListener(&keyHandler);
+}
+
+void ModelViewer::RenderFrame(bool& should_quit)
+{
+  // Render a single frame
+  if (!this->ogreRoot->renderOneFrame())
+  {
+    // Check if the escape key was pressed using the InputListener mechanism
+    // This functionality is already handled in the KeyHandler class
+    // Ensure KeyHandler is properly registered for input events
+    should_quit = true;
+    this->ctx.closeApp();
+    return;
+  }
+  should_quit = false;
 }
 
 GLuint ModelViewer::GetRenderTexture()
