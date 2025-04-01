@@ -7,18 +7,7 @@ RenderModelCommand::RenderModelCommand(std::shared_ptr<ModelViewerI> model_viewe
 
 bool RenderModelCommand::Execute()
 {
-    if (this->model_viewer->IsRunning())
-    {
-        this->model_viewer->Quit();
-        while (this->model_viewer->IsRunning())
-        {
-
-        }
-    }
-    
-    std::thread model_viewer_thread(&ModelViewerI::RunModelViewerThread, model_viewer);
-    model_viewer_thread.detach();
-    
+    // implementation
     return true;
 }
 

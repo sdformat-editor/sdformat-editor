@@ -113,20 +113,6 @@ void ModelViewer::Quit()
     this->ctx.closeApp();
 }
 
-void ModelViewer::RunModelViewerThread()
-{
-    this->Initialize();
-
-    while (this->IsRunning())
-    {
-        // Call the RenderFrame method
-        this->RenderFrame();
-
-        // Sleep for 100 milliseconds to achieve ~10Hz frame rate for the model viewer
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    }
-}
-
 void ModelViewer::HandleAddModelQueue() {
   while (!this->add_model_queue.empty()) {
     ModelInfo model_info = this->add_model_queue.front();

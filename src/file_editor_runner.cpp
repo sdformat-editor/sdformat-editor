@@ -28,10 +28,11 @@ FileEditorRunner::FileEditorRunner(bool data_dir_created)
 
     this->gui = std::make_shared<GUI>("SDFormat Editor", this->sdformatParser, this->gui_initalization_successful);
     
-    this->command_factory = std::make_shared<CommandFactory>(this->gui, this->sdformatParser, this->model_viewer);
-
     // Run the model viewer as a seperate thread
-    std::unique_ptr<CommandI> init_model_viewer_command = this->command_factory->MakeRenderModelCommand();
+    std::thread model_viewer_thread(&FileEditorRunner::RunModelViewerThread, this);
+    model_viewer_thread.detach();
+
+    this->command_factory = std::make_shared<CommandFactory>(this->gui, this->sdformatParser, this->model_viewer);
 
     // grab the previous file that was opened
     if (data_dir_created) {
@@ -140,4 +141,18 @@ int FileEditorRunner::RunProgram()
     }
 
     return 0;
+}
+
+void FileEditorRunner::RunModelViewerThread()
+{
+    this->model_viewer->Initialize();
+
+    while (this->model_viewer->IsRunning())
+    {
+        // Call the RenderFrame method
+        this->model_viewer->RenderFrame();
+
+        // Sleep for 100 milliseconds to achieve ~10Hz frame rate for the model viewer
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
 }

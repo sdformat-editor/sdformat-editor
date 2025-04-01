@@ -211,6 +211,14 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
           }
           ImGui::EndMenu();
       }
+      if (ImGui::BeginMenu("Render"))
+      {
+          if (ImGui::MenuItem("Render Model"))
+          {
+            if (!(this->prevent_input_flag)) command = command_factory->MakeRenderModelCommand();
+          }
+          ImGui::EndMenu();
+      }
       ImGui::EndMainMenuBar();
   }
 

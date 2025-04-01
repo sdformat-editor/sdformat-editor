@@ -60,9 +60,6 @@ class ModelViewer : public ModelViewerI
     /// \returns a boolean
     public: bool IsRunning() override;
 
-    /// \brief Runs the model viewer thread
-    private: void RunModelViewerThread();
-
     /// \brief Mutex for thread safety
     private: std::mutex model_viewer_mutex;
 
