@@ -69,7 +69,7 @@ bool ModelViewer::ModelViewerKeyHandler::keyPressed(const OgreBites::KeyboardEve
 bool ModelViewer::ModelViewerKeyHandler::mouseWheelRolled(const OgreBites::MouseWheelEvent &evt)
 {
   std::cout << "Mouse Rolled " << evt.y << std::endl;
-  m->sceneCameraNode->translate(Ogre::Vector3(0, 0, -0.25 * evt.y), Ogre::Node::TS_LOCAL);
+  m->sceneCameraNode->translate(Ogre::Vector3(0, 0, -0.25 * evt.y), Ogre::Node::TS_LOCAL);  
   return true;
 }
 
@@ -103,12 +103,13 @@ void ModelViewer::Initialize()
 
     // Create a camera for rendering to the texture
     this->sceneCamera = this->scnMgr->createCamera("MyCam");
-    this->sceneCamera->setNearClipDistance(1);
+    this->sceneCamera->setNearClipDistance(0.1);
     this->sceneCamera->setAutoAspectRatio(true);
     this->sceneCameraNode->attachObject(this->sceneCamera);
 
     
     this->ctx.getRenderWindow()->addViewport(this->sceneCamera);
+    this->ctx.getRenderWindow()->getViewport(0)->setBackgroundColour(Ogre::ColourValue(0.45f, 0.55f, 0.60f));
 
     // ModelInfo model = {
     //   .model_absolute_path = "/home/evanv/workspace/sdformat-editor/models/Waterwitch/waterwitch.stl",
