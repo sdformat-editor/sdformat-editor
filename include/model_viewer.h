@@ -34,6 +34,7 @@
 #include <vector>
 #include <filesystem>
 #include <mutex>
+#include <queue>
 
 /// \brief Implementation of SDFormatParserI
 class ModelViewer : public ModelViewerI
@@ -66,7 +67,10 @@ class ModelViewer : public ModelViewerI
     private: bool should_quit = false;
 
     /// \brief Implementation of interface method
-    public: bool AddModel(ModelInfo model_info) override;
+    public: void AddModel(ModelInfo model_info) override;
+
+    /// \brief private method which pops ModelInfo's off the model queue and creates their OGRE entities.
+    private: void HandleAddModelQueue();
 
     /// \brief The ogre bites app (i think we need to replace this with smthn else when we integrate with imgui)
     private: OgreBites::ApplicationContext ctx;
@@ -94,6 +98,9 @@ class ModelViewer : public ModelViewerI
 
     /// \brief The texture we will be rendering into 
     private: Ogre::TexturePtr renderTexturePointer;
+
+    /// \brief queue to add models to model viewer
+    private: std::queue<ModelInfo> add_model_queue;
 };
 
 #endif
