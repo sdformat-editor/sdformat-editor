@@ -29,6 +29,7 @@
 #include "OgreRTShaderSystem.h"
 #include "OgreWindowEventUtilities.h"
 #include "OgreAssimpLoader.h"
+#include "OgreCameraMan.h"
 
 #include <string>
 #include <vector>
@@ -96,6 +97,8 @@ class ModelViewer : public ModelViewerI
     /// \brief Pointer to the main scene camera node
     private: Ogre::SceneNode* sceneCameraNode;
 
+    private: OgreBites::CameraMan* cameraController;
+
     /// \brief The texture we will be rendering into 
     private: Ogre::TexturePtr renderTexturePointer;
 
@@ -110,6 +113,9 @@ class ModelViewer : public ModelViewerI
 
             public: bool keyPressed(const OgreBites::KeyboardEvent &evt) override;
             public: bool mouseWheelRolled(const OgreBites::MouseWheelEvent &evt) override;
+            public: bool mouseMoved(const OgreBites::MouseMotionEvent& evt) override;
+            public: bool mousePressed(const OgreBites::MouseButtonEvent& evt) override;
+            public: bool mouseReleased(const OgreBites::MouseButtonEvent& evt) override;
         };
 
     private: ModelViewerKeyHandler keyHandler;

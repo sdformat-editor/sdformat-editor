@@ -166,23 +166,23 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
 {  
   ImGuiIO& io = ImGui::GetIO();
   // Check for keyboard shortcut inputs
-  if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl) && ImGui::IsKeyPressed(ImGuiKey_Z))
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_Z))
   {
     if (!(this->prevent_input_flag)) command = command_factory->MakeUndoCommand();
   }
-  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)) && ImGui::IsKeyPressed(ImGuiKey_Y))
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_Y))
   {
     if (!(this->prevent_input_flag)) command = command_factory->MakeRedoCommand();
   }
-  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)) && ImGui::IsKeyPressed(ImGuiKey_S))
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_S))
   {
     if (!prevent_input_flag) command = command_factory->MakeSaveFileCommand();
   }
-  if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl) && ImGui::IsKeyPressed(ImGuiKey_Equal))
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_Equal))
   {
     if (!prevent_input_flag && io.FontGlobalScale < 5.0f) io.FontGlobalScale += 0.5f;
   }
-  if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl) && ImGui::IsKeyPressed(ImGuiKey_Minus))
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_Minus))
   {
     if (!prevent_input_flag && io.FontGlobalScale > 1.0f) io.FontGlobalScale -= 0.5f;
   }
