@@ -25,6 +25,7 @@
 // SDFormat dependencies
 // This interface depends on the SDFormat Library
 #include <sdf/sdf.hh>
+#include <interfaces/model_viewer_interface.h>
 
 /// \brief Interface for the SDFormat Editor's Parser 
 class SDFormatParserI
@@ -48,10 +49,15 @@ class SDFormatParserI
         std::vector<sdf::ParamPtr> attributes;
     };
 
-    /// \brief Provides a list of elements which a given attribute type
+    /// \brief Provides a list of elements which have an attribute of the given attribute type
     /// \param[in] attribute_type The attribute type to use for lookup
     /// \returns A list of elements with a given attribute type
     public: virtual std::vector<sdf::ElementPtr> LookupElementsByAttributeType(const std::string& attribute_type) = 0;
+
+    /// \brief Provides a list of elements which are of a given type
+    /// \param[in] type The type by which to lookup elements
+    /// \returns A list of elements with a given attribute type
+    public: virtual std::vector<sdf::ElementPtr> LookupElementsByType(const std::string& type) = 0;
 
     /// \brief Determines the locations of potential references to the element to delete
     /// \param[in] key the string to search for
@@ -81,6 +87,10 @@ class SDFormatParserI
     /// \param[in] element element that we want a tree path for
     /// \return Tree path as a string
     public: virtual std::string GetSDFTreePathToElement(sdf::ElementPtr element) = 0; 
+
+    /// \brief Get all models in the sdf tree 
+    /// \return NOTE: (Zaid) idk what the return type will be right now, but it will be a vector of something that stores information about models.
+    public: virtual std::vector<ModelViewerI::ModelInfo> GetModelsFromSDFTree() = 0;
     
 };
 

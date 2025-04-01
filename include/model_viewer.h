@@ -41,7 +41,7 @@ class ModelViewer : public ModelViewerI
 {
 
     /// \brief Constructor
-    public: ModelViewer() : ctx("SDFormat Model Viewer") // Initialize ctx here
+    public: ModelViewer() : ctx("SDFormat Editor Model Viewer") // Initialize ctx here
     {
     }
 

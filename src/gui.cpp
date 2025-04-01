@@ -399,7 +399,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
         {
           // Display the value and provide a textbox and button for modification
 
-          std::string value_field_description = current_element_ptr->GetValue()->GetKey() + ": " + current_element_ptr->GetValue()->GetAsString() + + " ("  + current_element_ptr->GetValue()->GetTypeName()+ ")";
+          std::string value_field_description = current_element_ptr->GetName() + ": " + current_element_ptr->GetValue()->GetAsString() + + " ("  + current_element_ptr->GetValue()->GetTypeName()+ ")";
 
           ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "%s", value_field_description.c_str());
           static char value_buffer[128] = "";

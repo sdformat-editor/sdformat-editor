@@ -135,10 +135,7 @@ int FileEditorRunner::RunProgram()
 
     this->model_viewer->Quit();
 
-    while (this->model_viewer->IsRunning())
-    {
-
-    }
+    while (this->model_viewer->IsRunning());
 
     return 0;
 }

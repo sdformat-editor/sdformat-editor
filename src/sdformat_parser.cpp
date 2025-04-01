@@ -176,8 +176,10 @@ SDFormatParser::Mentions SDFormatParser::FindMentions(std::string key, sdf::Elem
 std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsByAttributeType(const std::string& attribute_type)
 {
   
-  // Define a Mentions object
+  // Define a vector of elements
   std::vector<sdf::ElementPtr> elements;
+
+  // Exit if we don't have a root sdf element
 
   // Exit if we don't have a root sdf element
   if (!this->sdfElement) return elements;
@@ -239,6 +241,64 @@ std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsByAttributeType(const
 
 }
 
+std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsByType(const std::string& type)
+{
+  
+  // Define a vector of elements
+  std::vector<sdf::ElementPtr> elements;
+
+  // Exit if we don't have a root sdf element
+  if (!this->sdfElement) return elements;
+
+  // Create a stack to hold the element to search for
+  // The boolean indicates whether or not this tree node was visited
+  std::stack<std::pair<sdf::ElementPtr,bool>> sdf_tree_stack;
+
+  // Append the root model element to the stack
+  sdf_tree_stack.emplace(this->sdfElement->Root()->GetFirstElement(), false);
+
+  while (!sdf_tree_stack.empty())
+  {
+    // If this node has already been visited and we are returning to it, 
+    // it means we have accounted it and for all of it's child nodes.
+    // In that case, pop the node from the stack
+    if (sdf_tree_stack.top().second)
+    {
+      sdf_tree_stack.pop();
+      continue;
+    }
+
+    sdf_tree_stack.top().second = true;
+
+    // Get a pointer to the current node
+    sdf::ElementPtr current_element = sdf_tree_stack.top().first;
+
+    // Add this element if it is of the type that we are seraching for
+    if (current_element->GetName() == type) elements.push_back(current_element);
+    
+    if (current_element->GetFirstElement())
+    {
+      // Go through each element 
+      sdf::ElementPtr child_element_ptr = current_element->GetFirstElement();
+      while (child_element_ptr)
+      {
+        // Add this child element to the stack
+        sdf_tree_stack.emplace(child_element_ptr, false);
+        child_element_ptr = child_element_ptr->GetNextElement("");
+      }
+    } else
+    {
+      // If this element has no children (leaf node), then it may be removed from the stack
+      sdf_tree_stack.pop();
+      continue;
+    }
+  }
+
+  return elements;
+
+}
+
+
 std::string SDFormatParser::GetSDFTreePathToElement(sdf::ElementPtr current_element)
 {
 
@@ -274,3 +334,28 @@ std::string SDFormatParser::GetSDFTreePathToElement(sdf::ElementPtr current_elem
 
   return sdf_tree_path_to_element;
 } 
+
+std::vector<ModelViewerI::ModelInfo> SDFormatParser::GetModelsFromSDFTree()
+{
+  std::vector<ModelViewerI::ModelInfo> models;
+
+  if (!this->sdfElement) return models;
+
+  std::vector<sdf::ElementPtr> modelDefiningElements;
+  
+  std::vector<sdf::ElementPtr> visualElements = this->LookupElementsByType("visual");
+  std::vector<sdf::ElementPtr> collisionElements = this->LookupElementsByType("collision");
+
+  modelDefiningElements.insert(modelDefiningElements.end(), visualElements.begin(), visualElements.end());
+  modelDefiningElements.insert(modelDefiningElements.end(), collisionElements.begin(), collisionElements.end());
+
+  for (const auto &modelDefiningElement : modelDefiningElements)
+  {
+    if (modelDefiningElement->GetAttribute("name"))
+    {
+      std::cout <<  modelDefiningElement->GetName() + ": " + modelDefiningElement->GetAttribute("name")->GetAsString() << std::endl;
+    }
+  }
+
+  return models;
+}
