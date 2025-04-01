@@ -86,10 +86,6 @@ class CommandFactoryI
   /// \return Unique pointer to a command interface
   public: virtual std::unique_ptr<CommandI> MakeRenderModelCommand() = 0;
 
-  /// \brief Create a delete scene command
-  /// \return Unique pointer to a command interface
-  public: virtual std::unique_ptr<CommandI> MakeDeleteSceneCommand() = 0;
-
   /// \brief Pushes to the undo commands stack
   /// \param[in] command commandI object to push
   /// \param[in] new_change indicates if we are pushing a new change, and thus should clear the redo stack
