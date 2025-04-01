@@ -69,15 +69,15 @@ void ModelViewer::Initialize()
     
     this->ctx.getRenderWindow()->addViewport(this->sceneCamera);
 
-    ModelInfo model = {
-      .model_absolute_path = "/home/evanv/workspace/sdformat-editor/example_models/Waterwitch/waterwitch.stl",
-      .pos_x = 0.0f, .pos_y = 0.0f, .pos_z = 0.0f,
-      .rot_quaternion_w = 0.0f,
-      .rot_quaternion_x = 1.0f,
-      .rot_quaternion_y = 1.0f,
-      .rot_quaternion_z = 0.0f
-    };
-    AddModel(model);
+    // ModelInfo model = {
+    //   .model_absolute_path = "/home/evanv/workspace/sdformat-editor/example_models/Waterwitch/waterwitch.stl",
+    //   .pos_x = 0.0f, .pos_y = 0.0f, .pos_z = 0.0f,
+    //   .rot_quaternion_w = 0.0f,
+    //   .rot_quaternion_x = 1.0f,
+    //   .rot_quaternion_y = 1.0f,
+    //   .rot_quaternion_z = 0.0f
+    // };
+    // AddModel(model);
 
     // Register for input events
     static KeyHandler keyHandler;
@@ -87,6 +87,7 @@ void ModelViewer::Initialize()
 void ModelViewer::RenderFrame()
 {
     std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
+    HandleAddModelQueue();
     // Render a single frame
     if (!this->should_quit && !this->ogreRoot->renderOneFrame())
     {
@@ -126,30 +127,39 @@ void ModelViewer::RunModelViewerThread()
     }
 }
 
-bool ModelViewer::AddModel(ModelViewer::ModelInfo model_info) {
+void ModelViewer::HandleAddModelQueue() {
+  while (!this->add_model_queue.empty()) {
+    ModelInfo model_info = this->add_model_queue.front();
+    this->add_model_queue.pop();
 
-  std::filesystem::path file_path(model_info.model_absolute_path);
-
-  std::string meshName = file_path.filename().string() + "_mesh";
-  Ogre::MeshPtr mesh = Ogre::MeshManager::getSingleton().createManual(
-      meshName, Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-
-  Ogre::SkeletonPtr skeleton;
-  Ogre::AssimpLoader assimpLoader;
-
-  // Load the mesh using AssimpLoader
-  if (!assimpLoader.load(model_info.model_absolute_path, mesh.get(), skeleton, {})) {
-    return false;
+    std::filesystem::path file_path(model_info.model_absolute_path);
+  
+    std::string meshName = file_path.filename().string() + "_mesh";
+    Ogre::MeshPtr mesh = Ogre::MeshManager::getSingleton().createManual(
+        meshName, Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+  
+    Ogre::SkeletonPtr skeleton;
+    Ogre::AssimpLoader assimpLoader;
+  
+    // Load the mesh using AssimpLoader
+    if (!assimpLoader.load(model_info.model_absolute_path, mesh.get(), skeleton, {})) {
+      continue; // skip the model_info
+    }
+  
+    // create the entity 
+    Ogre::Entity* entity = this->scnMgr->createEntity(file_path.filename().string(), mesh);
+  
+    Ogre::SceneNode* scene_node = scnMgr->getRootSceneNode()->createChildSceneNode();
+    scene_node->attachObject(entity);
+  
+    scene_node->setPosition(model_info.pos_x, model_info.pos_y, model_info.pos_z);
+    scene_node->setOrientation(model_info.rot_quaternion_w, model_info.rot_quaternion_x, model_info.rot_quaternion_y, model_info.rot_quaternion_z);
   }
 
-  // create the entity 
-  Ogre::Entity* entity = this->scnMgr->createEntity(file_path.filename().string(), mesh);
 
-  Ogre::SceneNode* scene_node = scnMgr->getRootSceneNode()->createChildSceneNode();
-  scene_node->attachObject(entity);
+}
 
-  scene_node->setPosition(model_info.pos_x, model_info.pos_y, model_info.pos_z);
-  scene_node->setOrientation(model_info.rot_quaternion_w, model_info.rot_quaternion_x, model_info.rot_quaternion_y, model_info.rot_quaternion_z);
-
-  return true;
+void ModelViewer::AddModel(ModelViewer::ModelInfo model_info) {
+  std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
+  add_model_queue.push(model_info);
 }

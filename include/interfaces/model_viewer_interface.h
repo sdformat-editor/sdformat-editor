@@ -55,7 +55,7 @@ class ModelViewerI : public std::enable_shared_from_this<ModelViewerI>
     /// \brief Tells the model viewer to quit on its next iteration
     public: virtual void Quit() = 0;
     
-    public: virtual bool AddModel(ModelInfo) = 0;
+    public: virtual void AddModel(ModelInfo) = 0;
     /// \callgraph
     /// \brief Indicates if the model view is running
     /// \returns a boolean
