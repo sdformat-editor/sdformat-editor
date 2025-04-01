@@ -30,6 +30,10 @@
 #include "OgreWindowEventUtilities.h"
 #include "OgreAssimpLoader.h"
 
+// GLM
+#include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
+
 #include <string>
 #include <vector>
 #include <filesystem>
