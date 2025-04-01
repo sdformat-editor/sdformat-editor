@@ -10,3 +10,6 @@
 [submodule "libs/ogre"]
 	path = libs/ogre
 	url = https://github.com/OGRECave/ogre.git
+[submodule "libs/glm"]
+	path = libs/glm
+	url = https://github.com/g-truc/glm.git

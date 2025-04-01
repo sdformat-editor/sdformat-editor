@@ -60,7 +60,8 @@ target_include_directories(sdformat-editor PRIVATE
     ${imgui_SOURCE_DIR}/backends
     ${stb_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${sdformat14_INCLUDE_DIRS}  # Add sdformat include directories
+    ${sdformat14_INCLUDE_DIRS}  
+    ${CMAKE_CURRENT_SOURCE_DIR}/libs/glm
     ${CMAKE_SOURCE_DIR}/libs/ogre/OgreMain/include
     ${CMAKE_BINARY_DIR}/libs/ogre/include
     ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Bites/include
@@ -127,7 +128,8 @@ target_include_directories(sdformat-editor-tests PRIVATE
     ${stb_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${gtest_SOURCE_DIR}/googletest/include
-    ${sdformat14_INCLUDE_DIRS}  # Add sdformat include directories
+    ${sdformat14_INCLUDE_DIRS} 
+    ${CMAKE_CURRENT_SOURCE_DIR}/libs/glm
     ${CMAKE_SOURCE_DIR}/libs/ogre/OgreMain/include
     ${CMAKE_BINARY_DIR}/libs/ogre/include
     ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Bites/include
