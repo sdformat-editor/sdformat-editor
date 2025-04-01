@@ -19,18 +19,59 @@
 
 #include "model_viewer.h"
 
-
-class KeyHandler : public OgreBites::InputListener
+void ModelViewer::ModelViewerKeyHandler::addModelViewerContext(ModelViewer *m)
 {
-    bool keyPressed(const OgreBites::KeyboardEvent& evt) override
-    {
-        if (evt.keysym.sym == OgreBites::SDLK_ESCAPE)
-        {
-            Ogre::Root::getSingleton().queueEndRendering();
-        }
-        return true;
-    }
-};
+  this->m = m;
+}
+
+bool ModelViewer::ModelViewerKeyHandler::keyPressed(const OgreBites::KeyboardEvent &evt)
+{
+  if (evt.keysym.sym == OgreBites::SDLK_ESCAPE)
+  {
+    std::cout << "Hello ESC Key" << std::endl;
+
+    Ogre::Root::getSingleton().queueEndRendering();
+  }
+  if (evt.keysym.sym == OgreBites::SDLK_UP)
+  {
+    std::cout << "Hello Up Key" << std::endl;
+    m->sceneCameraNode->translate(Ogre::Vector3(0, 1, 0), Ogre::Node::TS_LOCAL);
+    m->sceneCameraNode->lookAt(Ogre::Vector3::ZERO, Ogre::Node::TS_WORLD);
+  }
+  if (evt.keysym.sym == OgreBites::SDLK_DOWN)
+  {
+    std::cout << "Hello Down Key" << std::endl;
+    m->sceneCameraNode->translate(Ogre::Vector3(0, -1, 0), Ogre::Node::TS_LOCAL);
+    m->sceneCameraNode->lookAt(Ogre::Vector3::ZERO, Ogre::Node::TS_WORLD);
+  }
+  if (evt.keysym.sym == OgreBites::SDLK_LEFT)
+  {
+    std::cout << "Hello Left Key" << std::endl;
+    m->sceneCameraNode->translate(Ogre::Vector3(-1, 0, 0), Ogre::Node::TS_LOCAL);
+    m->sceneCameraNode->lookAt(Ogre::Vector3::ZERO, Ogre::Node::TS_WORLD);
+  }
+  if (evt.keysym.sym == OgreBites::SDLK_RIGHT)
+  {
+    std::cout << "Hello Right Key" << std::endl;
+    m->sceneCameraNode->translate(Ogre::Vector3(1, 0, 0), Ogre::Node::TS_LOCAL);
+    m->sceneCameraNode->lookAt(Ogre::Vector3::ZERO, Ogre::Node::TS_WORLD);
+  }
+
+  return true;
+}
+
+// bool ModelViewer::ModelViewerKeyHandler::mouseMoved(const OgreBites::MouseMotionEvent& evt) override
+// {
+//   std::cout << "Mouse moved: " << evt.x << ", " << evt.y << std::endl;
+//   return true;
+// }
+
+bool ModelViewer::ModelViewerKeyHandler::mouseWheelRolled(const OgreBites::MouseWheelEvent &evt)
+{
+  std::cout << "Mouse Rolled " << evt.y << std::endl;
+  m->sceneCameraNode->translate(Ogre::Vector3(0, 0, -0.25 * evt.y), Ogre::Node::TS_LOCAL);
+  return true;
+}
 
 void ModelViewer::Initialize()
 {
@@ -69,6 +110,7 @@ void ModelViewer::Initialize()
     
     this->ctx.getRenderWindow()->addViewport(this->sceneCamera);
 
+
     // ModelInfo model = {
     //   .model_absolute_path = "/home/evanv/workspace/sdformat-editor/example_models/Waterwitch/waterwitch.stl",
     //   .pos_x = 0.0f, .pos_y = 0.0f, .pos_z = 0.0f,
@@ -80,20 +122,23 @@ void ModelViewer::Initialize()
     // AddModel(model);
 
     // Register for input events
-    static KeyHandler keyHandler;
-    this->ctx.addInputListener(&keyHandler);
+    this->keyHandler.addModelViewerContext(this);
+    this->ctx.addInputListener(&this->keyHandler);
 }
 
 void ModelViewer::RenderFrame()
 {
     std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
     HandleAddModelQueue();
+
+    this->ctx.pollEvents(); 
+
     // Render a single frame
     if (!this->should_quit && !this->ogreRoot->renderOneFrame())
     {
       // Check if the escape key was pressed using the InputListener mechanism
-      // This functionality is already handled in the KeyHandler class
-      // Ensure KeyHandler is properly registered for input events
+      // This functionality is already handled in the ModelViewerKeyHandler class
+      // Ensure ModelViewerKeyHandler is properly registered for input events
       this->should_quit = true;
       this->ctx.closeApp();
       return;
@@ -141,8 +186,6 @@ void ModelViewer::HandleAddModelQueue() {
     scene_node->setPosition(model_info.pos_x, model_info.pos_y, model_info.pos_z);
     scene_node->setOrientation(model_info.rot_quaternion_w, model_info.rot_quaternion_x, model_info.rot_quaternion_y, model_info.rot_quaternion_z);
   }
-
-
 }
 
 void ModelViewer::AddModel(ModelViewer::ModelInfo model_info) {

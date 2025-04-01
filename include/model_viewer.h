@@ -101,6 +101,18 @@ class ModelViewer : public ModelViewerI
 
     /// \brief queue to add models to model viewer
     private: std::queue<ModelInfo> add_model_queue;
+
+    private:
+        class ModelViewerKeyHandler : public OgreBites::InputListener
+        {
+            private: ModelViewer *m;
+            public:void addModelViewerContext(ModelViewer *m);
+
+            public: bool keyPressed(const OgreBites::KeyboardEvent &evt) override;
+            public: bool mouseWheelRolled(const OgreBites::MouseWheelEvent &evt) override;
+        };
+
+    private: ModelViewerKeyHandler keyHandler;
 };
 
 #endif
