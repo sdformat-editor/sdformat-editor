@@ -25,7 +25,7 @@
 #include <memory>
 
 /// \brief Interface for the SDFormat Editor's 3D Model Vewer 
-class ModelViewerI : public std::enable_shared_from_this<ModelViewerI>
+class ModelViewerI
 {
     public: typedef struct {
         std::string model_absolute_path;
