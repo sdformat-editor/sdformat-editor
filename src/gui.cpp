@@ -164,7 +164,7 @@ bool GUI::SetupNewFrame()
 
 void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<CommandFactoryI> command_factory)
 {  
-
+  ImGuiIO& io = ImGui::GetIO();
   // Check for keyboard shortcut inputs
   if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl) && ImGui::IsKeyPressed(ImGuiKey_Z))
   {
@@ -177,6 +177,14 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
   if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)) && ImGui::IsKeyPressed(ImGuiKey_S))
   {
     if (!prevent_input_flag) command = command_factory->MakeSaveFileCommand();
+  }
+  if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl) && ImGui::IsKeyPressed(ImGuiKey_Equal))
+  {
+    if (!prevent_input_flag && io.FontGlobalScale < 5.0f) io.FontGlobalScale += 0.5f;
+  }
+  if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl) && ImGui::IsKeyPressed(ImGuiKey_Minus))
+  {
+    if (!prevent_input_flag && io.FontGlobalScale > 1.0f) io.FontGlobalScale -= 0.5f;
   }
 
   if (ImGui::BeginMainMenuBar())
@@ -211,6 +219,18 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
           }
           ImGui::EndMenu();
       }
+      if (ImGui::BeginMenu("Zoom"))
+      {
+          if (ImGui::MenuItem("Zoom in", "Ctrl + ="))
+          {
+            if (!prevent_input_flag && io.FontGlobalScale < 5.0f) io.FontGlobalScale += 0.5f;
+          }
+          if (ImGui::MenuItem("Zoom out", "Ctrl + -"))
+          {
+            if (!prevent_input_flag && io.FontGlobalScale > 1.0f) io.FontGlobalScale -= 0.5f;
+          }
+          ImGui::EndMenu();
+      }
       if (ImGui::BeginMenu("Render"))
       {
           if (ImGui::MenuItem("Render Model"))
@@ -229,8 +249,8 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
   // Set the position and size of the "SDFormat Editor" window
   // The window will be fixed to the right of the screen. It will take up 25% of 
   // the total width and the entire height (minus top menu bar)
-  ImGui::SetNextWindowPos(ImVec2(window_width * 0.3f, 20)); // Position the window below the main menu bar
-  ImGui::SetNextWindowSize(ImVec2(window_width * 0.7f, window_height - 20.0f)); // Set the dynamic size of the window
+  ImGui::SetNextWindowPos(ImVec2(0, 20 * io.FontGlobalScale)); // Position the window below the main menu bar
+  ImGui::SetNextWindowSize(ImVec2(window_width, window_height - (20.0f * io.FontGlobalScale))); // Set the dynamic size of the window
 
   ImGui::Begin("SDFormat Editor",  nullptr, ImGuiWindowFlags_NoMove); 
 
