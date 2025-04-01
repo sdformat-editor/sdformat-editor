@@ -119,4 +119,14 @@ void ModelViewer::Quit()
     this->ctx.closeApp();
 }
 
+void ModelViewer::RunModelViewerThread()
+{
+    this->Initialize();
+
+    while (this->IsRunning())
+    {
+        // Call the RenderFrame method
+        this->RenderFrame();
+    }
+}
 

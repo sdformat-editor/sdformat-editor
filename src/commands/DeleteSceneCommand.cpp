@@ -1,13 +1,17 @@
 #include "commands/DeleteSceneCommand.h"
 
-DeleteSceneCommand::DeleteSceneCommand()
+DeleteSceneCommand::DeleteSceneCommand(std::shared_ptr<ModelViewerI> model_viewer)
 {
-
+    this->model_viewer = model_viewer;
 }
 
 bool DeleteSceneCommand::Execute()
 {
-    // implementation
+    this->model_viewer->Quit();
+    while (this->model_viewer->IsRunning())
+    {
+
+    }
     return true;
 }
 

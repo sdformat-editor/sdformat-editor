@@ -22,9 +22,10 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
 
 /// \brief Interface for the SDFormat Editor's 3D Model Vewer 
-class ModelViewerI
+class ModelViewerI : public std::enable_shared_from_this<ModelViewerI>
 {
 
     /// \callgraph
@@ -43,6 +44,9 @@ class ModelViewerI
     /// \brief Indicates if the model view is running
     /// \returns a boolean
     public: virtual bool IsRunning() = 0;
+
+    /// \brief Runs the model viewer thread
+    public: virtual void RunModelViewerThread() = 0;
 };
 
 #endif

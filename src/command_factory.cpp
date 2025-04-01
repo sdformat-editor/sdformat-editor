@@ -21,12 +21,12 @@ std::unique_ptr<CommandI> CommandFactory::MakeOpenFileCommand(std::string file_p
 
 std::unique_ptr<CommandI> CommandFactory::MakeRenderModelCommand()
 {
-    return std::make_unique<RenderModelCommand>();
+    return std::make_unique<RenderModelCommand>(this->model_viewer);
 }
 
 std::unique_ptr<CommandI> CommandFactory::MakeDeleteSceneCommand()
 {
-    return std::make_unique<DeleteSceneCommand>();
+    return std::make_unique<DeleteSceneCommand>(this->model_viewer);
 }
 std::unique_ptr<CommandI> CommandFactory::MakeUndoCommand()
 {

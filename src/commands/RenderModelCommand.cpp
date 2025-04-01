@@ -1,13 +1,24 @@
 #include "commands/RenderModelCommand.h"
 
-RenderModelCommand::RenderModelCommand()
+RenderModelCommand::RenderModelCommand(std::shared_ptr<ModelViewerI> model_viewer)
 {
-
+    this->model_viewer = model_viewer;
 }
 
 bool RenderModelCommand::Execute()
 {
-    // implementation
+    if (this->model_viewer->IsRunning())
+    {
+        this->model_viewer->Quit();
+        while (this->model_viewer->IsRunning())
+        {
+
+        }
+    }
+    
+    std::thread model_viewer_thread(&ModelViewerI::RunModelViewerThread, model_viewer);
+    model_viewer_thread.detach();
+    
     return true;
 }
 

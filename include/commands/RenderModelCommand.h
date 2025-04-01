@@ -23,6 +23,7 @@
 
 #include <interfaces/command_interface.h>
 #include <interfaces/model_viewer_interface.h>
+#include <thread>
 
 
 /// \brief Render Model command implementation of CommandI
@@ -31,7 +32,7 @@ class RenderModelCommand : public CommandI
 
   /// \callgraph
   /// \brief Constructor for render model command objects.
-  /// \param[in] 
+  /// \param[in] model_viewer A pointer to the model viewer object
   public: RenderModelCommand(std::shared_ptr<ModelViewerI> model_viewer);
 
   /// \brief Implementation of interface method. 
@@ -55,12 +56,15 @@ class RenderModelCommand : public CommandI
   private: bool IsRedoable() override;
 
   /// \brief Implementation of interface method.
-  /// \returns Always true
+  /// \returns Always false
   private: bool IsThreaded() override;
 
   /// \brief Implementation of interface method.
   /// \returns Always false
   private: bool ChangesProgramStateIrreversibly() override;
+
+  /// @brief Pointer to the model viewer object
+  private: std::shared_ptr<ModelViewerI> model_viewer;
 
 };
 

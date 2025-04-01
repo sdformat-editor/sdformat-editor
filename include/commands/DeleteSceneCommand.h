@@ -22,6 +22,7 @@
 
 
 #include <interfaces/command_interface.h>
+#include <interfaces/model_viewer_interface.h>
 
 
 /// \brief Delete Scene command implementation of CommandI
@@ -30,8 +31,8 @@ class DeleteSceneCommand : public CommandI
 
   /// \callgraph
   /// \brief Constructor for delete scene command objects.
-  /// \param[in] 
-  public: DeleteSceneCommand();
+  /// \param[in] model_viewer A pointer to the model viewer object
+  public: DeleteSceneCommand(std::shared_ptr<ModelViewerI> model_viewer);
 
   /// \brief Implementation of interface method. 
   /// \returns True if model is successfully loaded in model viewer
@@ -54,12 +55,15 @@ class DeleteSceneCommand : public CommandI
   private: bool IsRedoable() override;
 
   /// \brief Implementation of interface method.
-  /// \returns Always true
+  /// \returns Always false
   private: bool IsThreaded() override;
 
   /// \brief Implementation of interface method.
   /// \returns Always false
   private: bool ChangesProgramStateIrreversibly() override;
+
+  /// @brief Pointer to the model viewer object
+  private: std::shared_ptr<ModelViewerI> model_viewer;
 
 };
 
