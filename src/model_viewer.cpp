@@ -46,44 +46,38 @@ void ModelViewer::Initialize()
     this->shadergen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
     shadergen->addSceneManager(scnMgr);
 
-    this->scnMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
+    // this->scnMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
 
     // Create a light for the scene
     this->sceneLight = this->scnMgr->createLight("MainLight");
+    this->sceneLight->setSpecularColour(0.5, 0.5, 0.5);
+    this->sceneLight->setDiffuseColour(0.3, 0.3, 0.3);
     this->sceneLightNode = this->scnMgr->getRootSceneNode()->createChildSceneNode();
-    this->sceneLightNode->setPosition(0, 20, 0);
+    this->sceneLightNode->setPosition(10, 10, 20);
     this->sceneLightNode->attachObject(this->sceneLight);
 
-    // Create a camera entity
-    this->sceneCamera = this->scnMgr->createCamera("Camera");
-    this->sceneCamera->setNearClipDistance(5);
-    this->sceneCamera->setAutoAspectRatio(true);
-
-    // Attach the camera to a scene node
     this->sceneCameraNode = this->scnMgr->getRootSceneNode()->createChildSceneNode();
+    this->sceneCameraNode->setPosition(0, 0, 3);
+    this->sceneCameraNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
+
+    // Create a camera for rendering to the texture
+    this->sceneCamera = this->scnMgr->createCamera("MyCam");
+    this->sceneCamera->setNearClipDistance(1);
+    this->sceneCamera->setAutoAspectRatio(true);
     this->sceneCameraNode->attachObject(this->sceneCamera);
-    this->sceneCameraNode->setPosition(0, 47, 222);
-    this->sceneCameraNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_PARENT);
+
     
     this->ctx.getRenderWindow()->addViewport(this->sceneCamera);
 
-    // Load some models into the scene
-    Ogre::ResourceGroupManager::getSingleton().createResourceGroup("Models");
-    Ogre::ResourceGroupManager::getSingleton().addResourceLocation(
-        "/home/zaid/Documents/sdformat-editor/example_models/Waterwitch",
-        "FileSystem",
-        "Models"
-    );
-    Ogre::ResourceGroupManager::getSingleton().initialiseResourceGroup("Models");
-
-    Ogre::Entity* test_entity = scnMgr->createEntity("waterwitch.stl");
-    Ogre::SceneNode* test_node = scnMgr->getRootSceneNode()->createChildSceneNode();
-    test_node->attachObject(test_entity);
-    test_node->setScale(15, 15, 15); // Adjust scale if needed
-
-    Ogre::Entity* test_entity_2 = scnMgr->createEntity("propeller.stl");
-    Ogre::SceneNode* test_node_t = scnMgr->getRootSceneNode()->createChildSceneNode(Ogre::Vector3(84, 48, 0));
-    test_node_t->attachObject(test_entity_2);
+    ModelInfo model = {
+      .model_absolute_path = "/home/evanv/workspace/sdformat-editor/example_models/Waterwitch/waterwitch.stl",
+      .pos_x = 0.0f, .pos_y = 0.0f, .pos_z = 0.0f,
+      .rot_quaternion_w = 0.0f,
+      .rot_quaternion_x = 1.0f,
+      .rot_quaternion_y = 1.0f,
+      .rot_quaternion_z = 0.0f
+    };
+    AddModel(model);
 
     // Register for input events
     static KeyHandler keyHandler;
@@ -119,3 +113,30 @@ void ModelViewer::Quit()
 }
 
 
+bool ModelViewer::AddModel(ModelViewer::ModelInfo model_info) {
+
+  std::filesystem::path file_path(model_info.model_absolute_path);
+
+  std::string meshName = file_path.filename().string() + "_mesh";
+  Ogre::MeshPtr mesh = Ogre::MeshManager::getSingleton().createManual(
+      meshName, Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  Ogre::SkeletonPtr skeleton;
+  Ogre::AssimpLoader assimpLoader;
+
+  // Load the mesh using AssimpLoader
+  if (!assimpLoader.load(model_info.model_absolute_path, mesh.get(), skeleton, {})) {
+    return false;
+  }
+
+  // create the entity 
+  Ogre::Entity* entity = this->scnMgr->createEntity(file_path.filename().string(), mesh);
+
+  Ogre::SceneNode* scene_node = scnMgr->getRootSceneNode()->createChildSceneNode();
+  scene_node->attachObject(entity);
+
+  scene_node->setPosition(model_info.pos_x, model_info.pos_y, model_info.pos_z);
+  scene_node->setOrientation(model_info.rot_quaternion_w, model_info.rot_quaternion_x, model_info.rot_quaternion_y, model_info.rot_quaternion_z);
+
+  return true;
+}

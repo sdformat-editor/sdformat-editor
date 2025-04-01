@@ -26,6 +26,21 @@
 /// \brief Interface for the SDFormat Editor's 3D Model Vewer 
 class ModelViewerI
 {
+    public: typedef struct {
+        std::string model_absolute_path;
+        
+        // Position
+        float pos_x;
+        float pos_y;
+        float pos_z;
+        
+        // Rotation
+        float rot_quaternion_w;
+        float rot_quaternion_x;
+        float rot_quaternion_y;
+        float rot_quaternion_z;
+    } ModelInfo;
+
 
     /// \callgraph
     /// \brief Initialization of the Model Viewer. 
@@ -38,7 +53,8 @@ class ModelViewerI
     /// \callgraph
     /// \brief Tells the model viewer to quit on its next iteration
     public: virtual void Quit() = 0;
-
+    
+    public: virtual bool AddModel(ModelInfo) = 0;
     /// \callgraph
     /// \brief Indicates if the model view is running
     /// \returns a boolean

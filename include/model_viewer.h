@@ -28,6 +28,11 @@
 #include "OgreInput.h"
 #include "OgreRTShaderSystem.h"
 #include "OgreWindowEventUtilities.h"
+#include "OgreAssimpLoader.h"
+
+#include <string>
+#include <vector>
+#include <filesystem>
 #include <mutex>
 
 /// \brief Implementation of SDFormatParserI
@@ -59,6 +64,9 @@ class ModelViewer : public ModelViewerI
 
     /// \brief Mutex for thread safety
     private: bool should_quit = false;
+
+    /// \brief Implementation of interface method
+    public: bool AddModel(ModelInfo model_info) override;
 
     /// \brief The ogre bites app (i think we need to replace this with smthn else when we integrate with imgui)
     private: OgreBites::ApplicationContext ctx;
