@@ -174,17 +174,17 @@ void ModelViewer::HandleAddModelQueue() {
     scene_node->setScale(model_info.scale.x, model_info.scale.y, model_info.scale.z);
     
     // Set the opacity of our model
-    // Ogre::MaterialPtr material = entity->getSubEntity(0)->getMaterial();
+    Ogre::MaterialPtr material = entity->getSubEntity(0)->getMaterial();
 
-    // // Don't modify the existing material, create a new one
-    // Ogre::MaterialPtr new_material = material->clone(file_path.filename().string() + "_mat");
-    // new_material->setSceneBlending(Ogre::SBT_TRANSPARENT_ALPHA);
+    // Don't modify the existing material, create a new one
+    Ogre::MaterialPtr new_material = material->clone(file_path.filename().string() + "_mat_" + std::to_string(unique_naming_counter++));
+    new_material->setSceneBlending(Ogre::SBT_TRANSPARENT_ALPHA);
     // new_material->setDepthWriteEnabled(false);
 
-    // new_material->setDiffuse(1.0f, 1.0f, 1.0f, model_info.opacity);
-    // new_material->setAmbient(1.0f, 1.0f, 1.0f);
+    new_material->setDiffuse(1.0f, 1.0f, 1.0f, model_info.opacity);
+    new_material->setAmbient(1.0f, 1.0f, 1.0f);
 
-    // entity->getSubEntity(0)->setMaterial(new_material);
+    entity->getSubEntity(0)->setMaterial(new_material);
   }
 }
 
@@ -204,15 +204,28 @@ void ModelViewer::AddModel(ModelViewer::PresetModelInfo model_info) {
     .opacity = model_info.opacity,
   };
 
+  // This ifdef SOURCE_PATH preprocessor directive is a cheat to silence VSCode Warnings
+  // SOURCE_PATH is defined in the CMake build. THIS CODE WILL RUN!!!!
+  // TODO: fix this. cause this will not work if the binary is moved off the machine
+  #ifdef SOURCE_PATH
   switch (model_info.preset_type)
   {
-  case PresetType::BOX:
-    abs_model_info.model_absolute_path = "/home/evanv/workspace/sdformat-editor/example_models/UnitCube.stl";
+    case PresetType::BOX:
+    abs_model_info.model_absolute_path = std::string(SOURCE_PATH) + "example_models/UnitCube.stl";
     break;
-  
-  default:
+    
+    case PresetType::CYLINDER:
+    abs_model_info.model_absolute_path = std::string(SOURCE_PATH) + "example_models/UnitCylinder.stl";
+    break;
+    
+    case PresetType::SPHERE:
+    abs_model_info.model_absolute_path = std::string(SOURCE_PATH) + "example_models/UnitSphere.stl";
+    break;
+    
+    default:
     return;
   }
-
+  #endif
+  
   add_model_queue.push(abs_model_info);
 }
