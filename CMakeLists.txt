@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.14...3.27)
 project(SDFormat-Editor)
 
+add_definitions(-DSOURCE_PATH="${CMAKE_SOURCE_DIR}")
+
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
