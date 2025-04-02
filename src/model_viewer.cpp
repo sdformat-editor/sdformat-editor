@@ -249,6 +249,8 @@ void ModelViewer::HandleResetModelsFlag() {
       }
     }
 
+    color_list_index = 0;
+
     reset_models_flag = false;
   }
 }
