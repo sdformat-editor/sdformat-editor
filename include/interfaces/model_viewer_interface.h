@@ -42,7 +42,32 @@ class ModelViewerI
 
         // Scale
         glm::dvec3 scale = {1,1,1};
+
+        float opacity = 1.0f;
     } ModelInfo;
+
+    public: typedef enum PresetType {
+        BOX,
+        CYLINDER
+    };
+
+    public: typedef struct {
+        PresetType preset_type;
+        
+        // Position Vector
+        glm::dvec3 position;
+        
+        // Orientation Quaternion
+        glm::dquat orientation;
+
+        // Scale
+        glm::dvec3 scale = {1,1,1};
+
+        float opacity = 1.0f;
+    } PresetModelInfo;
+
+
+
 
     /// \callgraph
     /// \brief Initialization of the Model Viewer. 
@@ -57,6 +82,8 @@ class ModelViewerI
     public: virtual void Quit() = 0;
     
     public: virtual void AddModel(ModelInfo) = 0;
+    virtual void AddModel(PresetModelInfo) = 0;
+    
     /// \callgraph
     /// \brief Indicates if the model view is running
     /// \returns a boolean

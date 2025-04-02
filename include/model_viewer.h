@@ -73,6 +73,7 @@ class ModelViewer : public ModelViewerI
 
     /// \brief Implementation of interface method
     public: void AddModel(ModelInfo model_info) override;
+    public: void AddModel(PresetModelInfo model_info) override;
 
     /// \brief private method which pops ModelInfo's off the model queue and creates their OGRE entities.
     private: void HandleAddModelQueue();
@@ -124,6 +125,8 @@ class ModelViewer : public ModelViewerI
         };
 
     private: ModelViewerKeyHandler keyHandler;
+
+    private: unsigned long long unique_naming_counter = 0;
 };
 
 #endif
