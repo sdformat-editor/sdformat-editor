@@ -901,6 +901,13 @@ std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::Preset
             continue;
           }
           size_glm = {box_size[0],box_size[1],box_size[2]};
+          ModelViewerI::PresetModelInfo model = {
+            .preset_type = ModelViewerI::PresetType::BOX,
+            .position = absolute_pose.first,
+            .orientation = absolute_pose.second,
+            .scale = size_glm
+          };
+          presetModels.push_back(model);
         }
         else if (geometry_child_element->GetName() == "cylinder" 
                 && (radius_element = geometry_child_element->FindElement("radius")) 
@@ -919,6 +926,13 @@ std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::Preset
             continue;
           }
           size_glm = {cyl_radius[0],cyl_radius[0],cyl_len[0]};
+          ModelViewerI::PresetModelInfo model = {
+            .preset_type = ModelViewerI::PresetType::CYLINDER,
+            .position = absolute_pose.first,
+            .orientation = absolute_pose.second,
+            .scale = size_glm
+          };
+          presetModels.push_back(model);
         }
         else if (geometry_child_element->GetName() == "cylinder" 
                 && (radius_element = geometry_child_element->FindElement("radius")))
@@ -930,14 +944,14 @@ std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::Preset
             continue;
           }
           size_glm = {sphere_radius[0],sphere_radius[0],sphere_radius[0]};
+          ModelViewerI::PresetModelInfo model = {
+            .preset_type = ModelViewerI::PresetType::SPHERE,
+            .position = absolute_pose.first,
+            .orientation = absolute_pose.second,
+            .scale = size_glm
+          };
+          presetModels.push_back(model);
         }
-        ModelViewerI::PresetModelInfo model = {
-          .preset_type = ModelViewerI::PresetType::BOX,
-          .position = absolute_pose.first,
-          .orientation = absolute_pose.second,
-          .scale = size_glm
-        };
-        presetModels.push_back(model);
       }
       else if ((geometry_child_element = geometry_element->FindElement("mesh")))
       {
