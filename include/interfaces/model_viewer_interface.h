@@ -46,7 +46,7 @@ class ModelViewerI
         float opacity = 1.0f;
     } ModelInfo;
 
-    public: typedef enum PresetType {
+    public: enum PresetType {
         BOX,
         CYLINDER
     };
@@ -83,7 +83,7 @@ class ModelViewerI
     
     public: virtual void AddModel(ModelInfo) = 0;
     virtual void AddModel(PresetModelInfo) = 0;
-    
+
     /// \callgraph
     /// \brief Indicates if the model view is running
     /// \returns a boolean
