@@ -149,7 +149,7 @@ void FileEditorRunner::RunModelViewerThread()
         // Call the RenderFrame method
         this->model_viewer->RenderFrame();
 
-        // Sleep for 100 milliseconds to achieve ~10Hz frame rate for the model viewer
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        // Sleep to achieve ~60Hz frame rate for the model viewer
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000/60));
     }
 }
