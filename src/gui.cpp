@@ -174,6 +174,10 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
   {
     if (!(this->prevent_input_flag)) command = command_factory->MakeRedoCommand();
   }
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_O))
+  {
+    if (!prevent_input_flag) command = command_factory->MakeOpenFileCommand("");
+  }
   if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_S))
   {
     if (!prevent_input_flag) command = command_factory->MakeSaveFileCommand();
@@ -185,6 +189,10 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
   if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_Minus))
   {
     if (!prevent_input_flag && io.FontGlobalScale > 1.0f) io.FontGlobalScale -= 0.5f;
+  }
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_R))
+  {
+    if (!prevent_input_flag) command = command_factory->MakeRenderModelCommand();
   }
 
   if (ImGui::BeginMainMenuBar())
@@ -233,7 +241,7 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
       }
       if (ImGui::BeginMenu("Render"))
       {
-          if (ImGui::MenuItem("Render Model"))
+          if (ImGui::MenuItem("Render Model", "Ctrl+R"))
           {
             if (!(this->prevent_input_flag)) command = command_factory->MakeRenderModelCommand();
           }
