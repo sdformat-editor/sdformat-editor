@@ -24,6 +24,7 @@
 #include <cstring>
 #include <limits.h>
 #include <memory>
+#include <filesystem>
 
 #include <interfaces/sdformat_parser_interface.h>
 
@@ -132,6 +133,9 @@ class SDFormatParser : public SDFormatParserI
 
     /// \brief Implementation of interface method 
     private: std::vector<ModelViewerI::ModelInfo> GetModelsFromSDFTree() override;
+
+    /// \brief Store the file path of the sdf file
+    private: std::string sdf_file_path;
 };
 
 #endif

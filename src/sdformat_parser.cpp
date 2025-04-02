@@ -69,6 +69,8 @@ void SDFormatParser::Initialize(std::string file_path, bool &success)
   // In the future, it's possible to allow the user to define custom elements that are not specified by the spec.
   // All that needs to be done is store somewhere the configuration for these custom elements and corresponding parent elements.
   
+  this->sdf_file_path = file_path;
+
   success = true;
 }
 
@@ -838,6 +840,41 @@ std::vector<ModelViewerI::ModelInfo> SDFormatParser::GetModelsFromSDFTree()
   model_defining_elements.insert(model_defining_elements.end(), visual_elements.begin(), visual_elements.end());
   model_defining_elements.insert(model_defining_elements.end(), collision_elements.begin(), collision_elements.end());
 
+  for (sdf::ElementPtr element : model_defining_elements) {
+    sdf::ElementPtr child_element = element->GetFirstElement();
+      while (child_element)
+      {
+        if (child_element->GetName() == "geometry") {
+          sdf::ElementPtr geometry_child_element = child_element->GetFirstElement();
+          while (geometry_child_element)
+          {
+            // TODO: check for pre defined shapes here
+            if (geometry_child_element->GetName() == "mesh") {
+              sdf::ElementPtr mesh_child_element = geometry_child_element->GetFirstElement();
+              while (mesh_child_element)
+              {
+                if (mesh_child_element->GetName() == "uri") {
+                  std::string mesh_path = mesh_child_element->GetValue()->GetAsString();
+                  if (std::filesystem::path(mesh_path).is_relative()) {
+                    std::string sdf_dir = std::filesystem::path(sdf_file_path).parent_path();
+                    mesh_path = sdf_dir + "/" + mesh_path;
+                  }
+                  ModelViewerI::ModelInfo model = {
+                    .model_absolute_path = mesh_path,
+                    .position = {0.0f, 0.0f, 0.0f},
+                    .orientation = {0.0f, 1.0f, 0.0f, 0.0f},
+                  };
+                  models.push_back(model);
+                }
+                mesh_child_element = mesh_child_element->GetNextElement("");
+              }
+            }
+            geometry_child_element = geometry_child_element->GetNextElement("");
+          }
+        }
+        child_element = child_element->GetNextElement("");
+      }
+  }
   for (const auto &model_defining_element : model_defining_elements)
   {
     

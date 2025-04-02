@@ -151,7 +151,7 @@ void ModelViewer::HandleAddModelQueue() {
 
     std::filesystem::path file_path(model_info.model_absolute_path);
   
-    std::string meshName = file_path.filename().string() + "_mesh";
+    std::string meshName = file_path.filename().string() + "_mesh_" + std::to_string(unique_naming_counter++);
     Ogre::MeshPtr mesh = Ogre::MeshManager::getSingleton().createManual(
         meshName, Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
   
@@ -164,7 +164,7 @@ void ModelViewer::HandleAddModelQueue() {
     }
   
     // create the entity 
-    Ogre::Entity* entity = this->scnMgr->createEntity(file_path.filename().string(), mesh);
+    Ogre::Entity* entity = this->scnMgr->createEntity(file_path.filename().string() + std::to_string(unique_naming_counter++), mesh);
   
     Ogre::SceneNode* scene_node = scnMgr->getRootSceneNode()->createChildSceneNode();
     scene_node->attachObject(entity);
@@ -172,10 +172,47 @@ void ModelViewer::HandleAddModelQueue() {
     scene_node->setPosition(model_info.position.x, model_info.position.y, model_info.position.z);
     scene_node->setOrientation(model_info.orientation.w, model_info.orientation.x, model_info.orientation.y, model_info.orientation.z);
     scene_node->setScale(model_info.scale.x, model_info.scale.y, model_info.scale.z);
+    
+    // Set the opacity of our model
+    // Ogre::MaterialPtr material = entity->getSubEntity(0)->getMaterial();
+
+    // // Don't modify the existing material, create a new one
+    // Ogre::MaterialPtr new_material = material->clone(file_path.filename().string() + "_mat");
+    // new_material->setSceneBlending(Ogre::SBT_TRANSPARENT_ALPHA);
+    // new_material->setDepthWriteEnabled(false);
+
+    // new_material->setDiffuse(1.0f, 1.0f, 1.0f, model_info.opacity);
+    // new_material->setAmbient(1.0f, 1.0f, 1.0f);
+
+    // entity->getSubEntity(0)->setMaterial(new_material);
   }
 }
 
 void ModelViewer::AddModel(ModelViewer::ModelInfo model_info) {
   std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
   add_model_queue.push(model_info);
+}
+
+void ModelViewer::AddModel(ModelViewer::PresetModelInfo model_info) {
+  std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
+
+  ModelViewer::ModelInfo abs_model_info = {
+    .model_absolute_path = "",
+    .position = model_info.position,
+    .orientation = model_info.orientation, 
+    .scale = model_info.scale,
+    .opacity = model_info.opacity,
+  };
+
+  switch (model_info.preset_type)
+  {
+  case PresetType::BOX:
+    abs_model_info.model_absolute_path = "/home/evanv/workspace/sdformat-editor/example_models/UnitCube.stl";
+    break;
+  
+  default:
+    return;
+  }
+
+  add_model_queue.push(abs_model_info);
 }
