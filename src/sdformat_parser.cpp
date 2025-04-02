@@ -474,7 +474,6 @@ bool SDFormatParser::HandleRelativeToSpecificationSpecialcases(sdf::ElementPtr e
 
 std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementPtr element, std::vector<sdf::ElementPtr> previously_visited_elements)
 {
-  // std::cout << "Considering " << this->GetSDFTreePathToElement(element) << std::endl;
   // Get the pose of this element
   std::pair<glm::dvec3, glm::dquat> pose = std::make_pair(glm::dvec3(0.0f), glm::dquat());
   pose.second = glm::dquat(1.0, 0.0, 0.0, 0.0); // Identity quaternion
@@ -502,9 +501,6 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
   {
     if (!HandleRelativeToSpecificationSpecialcases(element, relative_to))
     {
-      // std::cout << "00000000000000000000000" << std::endl;
-      // std::cout << "00000000000000000000000" << std::endl;
-      // std::cout << "00000000000000000000000" << std::endl;
       return pose;
     }
   }
@@ -524,9 +520,6 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
     }
     else if (element->GetName() == "model")
     {
-      // std::cout << "++++++++++++++++++++++++++" << std::endl;
-      // std::cout << "++++++++++++++++++++++++++" << std::endl;
-      // std::cout << "++++++++++++++++++++++++++" << std::endl;
       // Find the canonical link or canonical model
       if (sdf::ElementPtr canonical_element = this->FindCanonical(element))
       {
@@ -645,27 +638,11 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
             }
           }
         }
-        // std::cout << "EXIT" << std::endl;
         return pose;
       }
       else if (scope_element->HasAttribute("name") && scope_element->GetAttribute("name")->GetAsString() != "")
       {
         relative_to = scope_element->GetAttribute("name")->GetAsString();
-        // std::cout << "Absolute Position: (" 
-        //       << pose.first.x << ", " 
-        //       << pose.first.y << ", " 
-        //       << pose.first.z << ")" << std::endl;
-    
-        // std::cout << "Absolute Orientation (Quaternion): (" 
-        //       << pose.second.w << ", " 
-        //       << pose.second.x << ", " 
-        //       << pose.second.y << ", " 
-        //       << pose.second.z << ")" << std::endl;
-        // std::cout << "=============================" << std::endl;
-        // std::cout << this->GetSDFTreePathToElement(element) << std::endl;
-        // std::cout << relative_to << std::endl;
-        // std::cout << "=============================" << std::endl;
-        // std::cout << "=============================" << std::endl;
       }
       else
       {
@@ -701,9 +678,6 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
     sdf::ElementPtr canonical_element_of_referenced_element = this->FindCanonical(closest_referenced_element);
     if (canonical_element_of_referenced_element && canonical_element_of_referenced_element.get() == element.get())
     {
-      // std::cout << "--------------------------" << std::endl;
-      // std::cout << "--------------------------" << std::endl;
-      // std::cout << "--------------------------" << std::endl;
       bool current_element_is_canonical_link_or_model_of_reference_element = true;
       while (current_element_is_canonical_link_or_model_of_reference_element)
       {
@@ -753,6 +727,45 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
 }
 
 
+std::vector<double> SDFormatParser::ParseStringDoubleVector(const std::string& string_of_doubles, bool& success)
+{
+  std::vector<double> values;
+  success = false;
+
+  if (string_of_doubles.find_first_not_of("0123456789.-e ") != std::string::npos)
+  {
+    return values;
+  }
+
+  // Check for multiple '.' between spaces
+  std::istringstream check_iss(string_of_doubles);
+  std::string token;
+  while (check_iss >> token)
+  {
+    if (std::count(token.begin(), token.end(), '.') > 1)
+    {
+      return values;
+    }
+    else if (token == "-")
+    {
+      return values;
+    }
+  }
+
+  // Parse the string into doubles
+  std::istringstream iss(string_of_doubles);
+  double value;
+
+  while (iss >> value)
+  {
+    values.push_back(value);
+  }
+
+  success = true;
+  return values;
+}
+
+
 std::pair<glm::dvec3, glm::dquat> SDFormatParser::ParsePoseElement(sdf::ElementPtr element, std::string& relative_to)
 {
   std::pair<glm::dvec3, glm::dquat> pose = std::make_pair(glm::dvec3(0.0f), glm::dquat());
@@ -787,52 +800,15 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::ParsePoseElement(sdf::ElementP
     return pose;
   }
 
-  // We expect a string of doubles separated by spaces.
-  // Validate the input string for invalid characters and format issues.
-  std::string input = element->GetValue()->GetAsString();
+  bool parsing_successful;
 
-  // std::cout << input << std::endl;
+  std::vector<double> values = this->ParseStringDoubleVector(element->GetValue()->GetAsString(), parsing_successful);
 
-  if (input.find_first_not_of("0123456789.-e ") != std::string::npos)
+  if (!parsing_successful)
   {
-    std::cerr << "Invalid pose format for " << this->GetSDFTreePathToElement(element) << ". Contains invalid characters." << std::endl;
+    std::cerr << "Invalid pose format for " << this->GetSDFTreePathToElement(element) << std::endl;
     return pose;
   }
-
-  // Check for multiple '.' between spaces
-  std::istringstream check_iss(input);
-  std::string token;
-  while (check_iss >> token)
-  {
-    if (std::count(token.begin(), token.end(), '.') > 1)
-    {
-      std::cerr << "Invalid pose format for " << this->GetSDFTreePathToElement(element) << ". Contains multiple '.' in a single double." << std::endl;
-      return pose;
-    }
-    else if (token == "-")
-    {
-      std::cerr << "Invalid pose format for " << this->GetSDFTreePathToElement(element) << ". Cannot give a value as '-'." << std::endl;
-      return pose;
-    }
-  }
-
-  // std::cout << input << std::endl;
-
-  // Parse the string into doubles
-  std::istringstream iss(input);
-  std::vector<double> values;
-  double value;
-
-  while (iss >> value)
-  {
-    values.push_back(value);
-  }
-
-  // // Print each value in the values array
-  // for (size_t i = 0; i < values.size(); ++i)
-  // {
-  //   std::cout << "Value[" << i << "]: " << values[i] << std::endl;
-  // }
 
   if (!euler_rpy)
   {
@@ -871,11 +847,6 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::ParsePoseElement(sdf::ElementP
     // Combine the rotations
     pose.second = yaw_quat * pitch_quat * roll_quat;
   }
-
-  // std::cout << "Pose at end of call: (" 
-  //       << pose.first.x << ", " 
-  //       << pose.first.y << ", " 
-  //       << pose.first.z << ")" << std::endl;
 
   return pose;
 }
@@ -930,26 +901,6 @@ std::vector<ModelViewerI::ModelInfo> SDFormatParser::GetModelsFromSDFTree()
       child_element = child_element->GetNextElement("");
     }
   }
-  
-  // for (const auto &model_defining_element : model_defining_elements)
-  // {
-    
-  //   std::cout << "##############################################" << std::endl;
-    
-  //   std::pair<glm::dvec3, glm::dquat> absolute_pose = this->FindAbsolutePose(model_defining_element);
-
-  //   std::cout << this->GetSDFTreePathToElement(model_defining_element) << std::endl;
-  //   std::cout << "Absolute Position: (" 
-  //         << absolute_pose.first.x << ", " 
-  //         << absolute_pose.first.y << ", " 
-  //         << absolute_pose.first.z << ")" << std::endl;
-
-  //   std::cout << "Absolute Orientation (Quaternion): (" 
-  //         << absolute_pose.second.w << ", " 
-  //         << absolute_pose.second.x << ", " 
-  //         << absolute_pose.second.y << ", " 
-  //         << absolute_pose.second.z << ")" << std::endl;
-  // }
 
   return models;
 }

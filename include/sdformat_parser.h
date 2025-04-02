@@ -131,6 +131,12 @@ class SDFormatParser : public SDFormatParserI
     /// \returns Returns true if successful
     private: bool HandleRelativeToSpecificationSpecialcases(sdf::ElementPtr element, std::string& relative_to);
 
+    /// \brief Given a string containing doubles seperated by spaces, this method returns a vector a doubles
+    /// \param[in] string_of_doubles
+    /// \param[out] success
+    /// \returns Returns a vector of doubles
+    private: std::vector<double> ParseStringDoubleVector(const std::string& string_of_doubles, bool& success);
+
     /// \brief Implementation of interface method 
     private: std::vector<ModelViewerI::ModelInfo> GetModelsFromSDFTree() override;
 
