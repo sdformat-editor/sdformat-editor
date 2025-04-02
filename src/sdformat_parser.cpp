@@ -606,23 +606,33 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
       
       // Use the scope as the implicit element which the pose is given relative to
       sdf::ElementPtr scope_element = element->GetParent();
-      
-      if (scope_element.get() == this->sdfElement->Root().get())
-      {
-        // The scope element is the root element, which itself *should*(?) not be relative to anything. 
 
-        std::pair<glm::dvec3, glm::dquat> referenced_pose = std::make_pair(glm::dvec3(0.0f), glm::dquat());
-        referenced_pose.second = glm::dquat(1.0, 0.0, 0.0, 0.0); // Identity quaternion
+
+      
+      
+      // if (scope_element.get() == this->sdfElement->Root().get())
+      // {
+      //   // The scope element is the root element, which itself *should*(?) not be relative to anything. 
+
+      //   std::pair<glm::dvec3, glm::dquat> referenced_pose = std::make_pair(glm::dvec3(0.0f), glm::dquat());
+      //   referenced_pose.second = glm::dquat(1.0, 0.0, 0.0, 0.0); // Identity quaternion
         
-        if (scope_element->HasElement("pose"))
-        {
-          // Recursively find the absolute pose of the referenced element
-          std::pair<glm::dvec3, glm::dquat> referenced_pose = this->ParsePoseElement(scope_element->GetElement("pose"), relative_to);
-        }
+      //   if (scope_element->HasElement("pose"))
+      //   {
+      //     // Recursively find the absolute pose of the referenced element
+      //     std::pair<glm::dvec3, glm::dquat> referenced_pose = this->ParsePoseElement(scope_element->GetElement("pose"), relative_to);
+      //   }
     
-        // Combine the poses
-        pose.first += referenced_pose.first;
-        pose.second = referenced_pose.second * pose.second;
+      //   // Combine the poses
+      //   pose.first += referenced_pose.first;
+      //   pose.second = referenced_pose.second * pose.second;
+      // }
+      // else 
+
+      if (!scope_element)
+      {
+        // The current element is the root element
+        return pose;
       }
       else if (scope_element->HasAttribute("name") && scope_element->GetAttribute("name")->GetAsString() != "")
       {
@@ -714,6 +724,7 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
   return pose;
 }
 
+
 std::pair<glm::dvec3, glm::dquat> SDFormatParser::ParsePoseElement(sdf::ElementPtr element, std::string& relative_to)
 {
   std::pair<glm::dvec3, glm::dquat> pose = std::make_pair(glm::dvec3(0.0f), glm::dquat());
@@ -752,7 +763,9 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::ParsePoseElement(sdf::ElementP
   // Validate the input string for invalid characters and format issues.
   std::string input = element->GetValue()->GetAsString();
 
-  if (input.find_first_not_of("0123456789.- ") != std::string::npos)
+  // std::cout << input << std::endl;
+
+  if (input.find_first_not_of("0123456789.-e ") != std::string::npos)
   {
     std::cerr << "Invalid pose format for " << this->GetSDFTreePathToElement(element) << ". Contains invalid characters." << std::endl;
     return pose;
@@ -775,6 +788,8 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::ParsePoseElement(sdf::ElementP
     }
   }
 
+  // std::cout << input << std::endl;
+
   // Parse the string into doubles
   std::istringstream iss(input);
   std::vector<double> values;
@@ -784,6 +799,12 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::ParsePoseElement(sdf::ElementP
   {
     values.push_back(value);
   }
+
+  // Print each value in the values array
+  // for (size_t i = 0; i < values.size(); ++i)
+  // {
+  //   std::cout << "Value[" << i << "]: " << values[i] << std::endl;
+  // }
 
   if (!euler_rpy)
   {
@@ -877,25 +898,25 @@ std::vector<ModelViewerI::ModelInfo> SDFormatParser::GetModelsFromSDFTree()
     }
   }
   
-  for (const auto &model_defining_element : model_defining_elements)
-  {
+  // for (const auto &model_defining_element : model_defining_elements)
+  // {
     
-    std::cout << "##############################################" << std::endl;
+  //   std::cout << "##############################################" << std::endl;
     
-    std::pair<glm::dvec3, glm::dquat> absolute_pose = this->FindAbsolutePose(model_defining_element);
+  //   std::pair<glm::dvec3, glm::dquat> absolute_pose = this->FindAbsolutePose(model_defining_element);
 
-    std::cout << this->GetSDFTreePathToElement(model_defining_element) << std::endl;
-    std::cout << "Absolute Position: (" 
-          << absolute_pose.first.x << ", " 
-          << absolute_pose.first.y << ", " 
-          << absolute_pose.first.z << ")" << std::endl;
+  //   std::cout << this->GetSDFTreePathToElement(model_defining_element) << std::endl;
+  //   std::cout << "Absolute Position: (" 
+  //         << absolute_pose.first.x << ", " 
+  //         << absolute_pose.first.y << ", " 
+  //         << absolute_pose.first.z << ")" << std::endl;
 
-    std::cout << "Absolute Orientation (Quaternion): (" 
-          << absolute_pose.second.w << ", " 
-          << absolute_pose.second.x << ", " 
-          << absolute_pose.second.y << ", " 
-          << absolute_pose.second.z << ")" << std::endl;
-  }
+  //   std::cout << "Absolute Orientation (Quaternion): (" 
+  //         << absolute_pose.second.w << ", " 
+  //         << absolute_pose.second.x << ", " 
+  //         << absolute_pose.second.y << ", " 
+  //         << absolute_pose.second.z << ")" << std::endl;
+  // }
 
   return models;
 }
