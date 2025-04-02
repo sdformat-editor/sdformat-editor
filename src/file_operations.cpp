@@ -13,6 +13,30 @@ std::string FileOperations::OpenFileDialog()
     std::string result;
 
     FILE *pipe = popen("zenity --file-selection", "r");
+
+    while (fgets(buffer.data(), buffer.size(), pipe) != nullptr)
+    {
+        result += buffer.data();
+    }
+
+    pclose(pipe);
+
+    // Remove trailing newline
+    if (!result.empty() && result.back() == '\n')
+    {
+        result.pop_back();
+    }
+    this->SetActiveFilePath(result);
+
+    return result;
+}
+
+std::string FileOperations::OpenDirectoryDialog()
+{
+    std::array<char, 256> buffer;
+    std::string result;
+
+    FILE *pipe = popen("zenity --file-selection --directory", "r");
     // if (!pipe)
     //     return "";
 

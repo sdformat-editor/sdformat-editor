@@ -42,6 +42,11 @@ class FileOperations
     public: std::string OpenFileDialog();
 
     /// \callgraph
+    /// \brief Opens a dialog for the user to open a directory on their filesystem 
+    /// \return An absolute file path or an empty string
+    public: std::string OpenDirectoryDialog();
+
+    /// \callgraph
     /// \brief writes a string to a file
     /// \param[in] file_path the filepath of the file to write to
     /// \param[in] contents the contents to write to the given file

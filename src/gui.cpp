@@ -201,9 +201,7 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
       {
           if (ImGui::MenuItem("Create"))
           {
-            if (!prevent_input_flag) {
-
-            }
+            if (!prevent_input_flag) command = command_factory->MakeOpenDirectoryCommand();
           }
           if (ImGui::MenuItem("Open", "Ctrl+O"))
           {
