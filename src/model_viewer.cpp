@@ -174,17 +174,17 @@ void ModelViewer::HandleAddModelQueue() {
     scene_node->setScale(model_info.scale.x, model_info.scale.y, model_info.scale.z);
     
     // Set the opacity of our model
-    // Ogre::MaterialPtr material = entity->getSubEntity(0)->getMaterial();
+    Ogre::MaterialPtr material = entity->getSubEntity(0)->getMaterial();
 
-    // // Don't modify the existing material, create a new one
-    // Ogre::MaterialPtr new_material = material->clone(file_path.filename().string() + "_mat");
-    // new_material->setSceneBlending(Ogre::SBT_TRANSPARENT_ALPHA);
+    // Don't modify the existing material, create a new one
+    Ogre::MaterialPtr new_material = material->clone(file_path.filename().string() + "_mat_" + std::to_string(unique_naming_counter++));
+    new_material->setSceneBlending(Ogre::SBT_TRANSPARENT_ALPHA);
     // new_material->setDepthWriteEnabled(false);
 
-    // new_material->setDiffuse(1.0f, 1.0f, 1.0f, model_info.opacity);
-    // new_material->setAmbient(1.0f, 1.0f, 1.0f);
+    new_material->setDiffuse(1.0f, 1.0f, 1.0f, model_info.opacity);
+    new_material->setAmbient(1.0f, 1.0f, 1.0f);
 
-    // entity->getSubEntity(0)->setMaterial(new_material);
+    entity->getSubEntity(0)->setMaterial(new_material);
   }
 }
 
