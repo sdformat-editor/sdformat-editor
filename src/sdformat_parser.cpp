@@ -934,7 +934,7 @@ std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::Preset
           };
           presetModels.push_back(model);
         }
-        else if (geometry_child_element->GetName() == "cylinder" 
+        else if (geometry_child_element->GetName() == "sphere" 
                 && (radius_element = geometry_child_element->FindElement("radius")))
         {
           std::vector<double> sphere_radius = ParseStringDoubleVector(radius_element->GetValue()->GetAsString(), success);
