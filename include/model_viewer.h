@@ -101,6 +101,7 @@ class ModelViewer : public ModelViewerI
     /// \brief Pointer to the main scene camera node
     private: Ogre::SceneNode* sceneCameraNode;
 
+    /// \brief Pointer to the main camera controller
     private: OgreBites::CameraMan* cameraController;
 
     /// \brief The texture we will be rendering into 
@@ -114,7 +115,7 @@ class ModelViewer : public ModelViewerI
         {
             private: ModelViewer *m;
             public:void addModelViewerContext(ModelViewer *m);
-
+            // most of these are just to call the methods of CameraMan
             public: bool keyPressed(const OgreBites::KeyboardEvent &evt) override;
             public: bool mouseWheelRolled(const OgreBites::MouseWheelEvent &evt) override;
             public: bool mouseMoved(const OgreBites::MouseMotionEvent& evt) override;

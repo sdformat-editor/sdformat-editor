@@ -92,6 +92,8 @@ void ModelViewer::Initialize()
     this->sceneCamera->setNearClipDistance(0.1);
     this->sceneCamera->setAutoAspectRatio(true);
     this->sceneCameraNode->attachObject(this->sceneCamera);
+    
+    // Create a cameraman to control the camera
     this->cameraController = new OgreBites::CameraMan(this->sceneCameraNode);
     this->cameraController->setStyle(OgreBites::CameraStyle::CS_ORBIT);
 
