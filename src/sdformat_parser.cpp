@@ -474,6 +474,7 @@ bool SDFormatParser::HandleRelativeToSpecificationSpecialcases(sdf::ElementPtr e
 
 std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementPtr element, std::vector<sdf::ElementPtr> previously_visited_elements)
 {
+  // std::cout << "Considering " << this->GetSDFTreePathToElement(element) << std::endl;
   // Get the pose of this element
   std::pair<glm::dvec3, glm::dquat> pose = std::make_pair(glm::dvec3(0.0f), glm::dquat());
   pose.second = glm::dquat(1.0, 0.0, 0.0, 0.0); // Identity quaternion
@@ -501,6 +502,9 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
   {
     if (!HandleRelativeToSpecificationSpecialcases(element, relative_to))
     {
+      // std::cout << "00000000000000000000000" << std::endl;
+      // std::cout << "00000000000000000000000" << std::endl;
+      // std::cout << "00000000000000000000000" << std::endl;
       return pose;
     }
   }
@@ -520,6 +524,9 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
     }
     else if (element->GetName() == "model")
     {
+      // std::cout << "++++++++++++++++++++++++++" << std::endl;
+      // std::cout << "++++++++++++++++++++++++++" << std::endl;
+      // std::cout << "++++++++++++++++++++++++++" << std::endl;
       // Find the canonical link or canonical model
       if (sdf::ElementPtr canonical_element = this->FindCanonical(element))
       {
@@ -534,10 +541,10 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
           return pose;
         }
       }
-      else
-      {
-        return pose;
-      }
+      // else
+      // {
+      //   return pose;
+      // }
     }
     else if (element->GetName() == "joint")
     {
@@ -606,37 +613,59 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
       
       // Use the scope as the implicit element which the pose is given relative to
       sdf::ElementPtr scope_element = element->GetParent();
-
-
       
-      
-      // if (scope_element.get() == this->sdfElement->Root().get())
-      // {
-      //   // The scope element is the root element, which itself *should*(?) not be relative to anything. 
-
-      //   std::pair<glm::dvec3, glm::dquat> referenced_pose = std::make_pair(glm::dvec3(0.0f), glm::dquat());
-      //   referenced_pose.second = glm::dquat(1.0, 0.0, 0.0, 0.0); // Identity quaternion
-        
-      //   if (scope_element->HasElement("pose"))
-      //   {
-      //     // Recursively find the absolute pose of the referenced element
-      //     std::pair<glm::dvec3, glm::dquat> referenced_pose = this->ParsePoseElement(scope_element->GetElement("pose"), relative_to);
-      //   }
-    
-      //   // Combine the poses
-      //   pose.first += referenced_pose.first;
-      //   pose.second = referenced_pose.second * pose.second;
-      // }
-      // else 
-
       if (!scope_element)
       {
         // The current element is the root element
+
+        // We are going to exit and end a series of recursive calls to this function.
+        // In the scenario where a  previous recursive call was to canonical link of root element
+        // AND the previously visited elements does not include the main model/world element (which
+        // is the first child of the root element), we need to consider the main model/world element.
+        // This might apply to actors and lights as well, but the 3D mesh parsing feature was not made for those
+        
+        if (sdf::ElementPtr top_level_model_or_world = element->GetFirstElement())
+        {
+          // Check if top_level_model_or_world is in previously_visited_elements
+          bool previously_visited = false;
+          for (const auto& visited_element : previously_visited_elements)
+          {
+            if (visited_element.get() == top_level_model_or_world.get())
+            {
+              previously_visited = true;
+            }
+          }
+          if (!previously_visited)
+          {
+            if (top_level_model_or_world->HasElement("pose"))
+            {
+              std::pair<glm::dvec3, glm::dquat> reference_pose =  this->ParsePoseElement(top_level_model_or_world->GetElement("pose"), relative_to);
+              pose.first += reference_pose.first;
+              pose.second = reference_pose.second * pose.second;
+            }
+          }
+        }
+        // std::cout << "EXIT" << std::endl;
         return pose;
       }
       else if (scope_element->HasAttribute("name") && scope_element->GetAttribute("name")->GetAsString() != "")
       {
         relative_to = scope_element->GetAttribute("name")->GetAsString();
+        // std::cout << "Absolute Position: (" 
+        //       << pose.first.x << ", " 
+        //       << pose.first.y << ", " 
+        //       << pose.first.z << ")" << std::endl;
+    
+        // std::cout << "Absolute Orientation (Quaternion): (" 
+        //       << pose.second.w << ", " 
+        //       << pose.second.x << ", " 
+        //       << pose.second.y << ", " 
+        //       << pose.second.z << ")" << std::endl;
+        // std::cout << "=============================" << std::endl;
+        // std::cout << this->GetSDFTreePathToElement(element) << std::endl;
+        // std::cout << relative_to << std::endl;
+        // std::cout << "=============================" << std::endl;
+        // std::cout << "=============================" << std::endl;
       }
       else
       {
@@ -672,18 +701,19 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
     sdf::ElementPtr canonical_element_of_referenced_element = this->FindCanonical(closest_referenced_element);
     if (canonical_element_of_referenced_element && canonical_element_of_referenced_element.get() == element.get())
     {
+      // std::cout << "--------------------------" << std::endl;
+      // std::cout << "--------------------------" << std::endl;
+      // std::cout << "--------------------------" << std::endl;
       bool current_element_is_canonical_link_or_model_of_reference_element = true;
       while (current_element_is_canonical_link_or_model_of_reference_element)
       {
         element = closest_referenced_element;
         closest_referenced_element = this->FindScope(closest_referenced_element);
 
-        if (closest_referenced_element == this->sdfElement->Root())
-        {
-          // The scope element is the root element, which *should*(?) not be relative to anything. 
-          return pose;
-        }
-        else if (!canonical_element_of_referenced_element)
+        canonical_element_of_referenced_element = this->FindCanonical(closest_referenced_element);
+        
+        
+        if (!canonical_element_of_referenced_element)
         {
           // Referenced element does not contain a canonical element, we're good
           current_element_is_canonical_link_or_model_of_reference_element = false;
@@ -719,8 +749,6 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
     pose.second = referenced_pose.second * pose.second;
   }
 
-    
-  // TODO: Implement the function logic here
   return pose;
 }
 
@@ -800,7 +828,7 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::ParsePoseElement(sdf::ElementP
     values.push_back(value);
   }
 
-  // Print each value in the values array
+  // // Print each value in the values array
   // for (size_t i = 0; i < values.size(); ++i)
   // {
   //   std::cout << "Value[" << i << "]: " << values[i] << std::endl;
@@ -843,6 +871,11 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::ParsePoseElement(sdf::ElementP
     // Combine the rotations
     pose.second = yaw_quat * pitch_quat * roll_quat;
   }
+
+  // std::cout << "Pose at end of call: (" 
+  //       << pose.first.x << ", " 
+  //       << pose.first.y << ", " 
+  //       << pose.first.z << ")" << std::endl;
 
   return pose;
 }
