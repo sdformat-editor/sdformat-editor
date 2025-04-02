@@ -127,6 +127,15 @@ class ModelViewer : public ModelViewerI
     private: ModelViewerKeyHandler keyHandler;
 
     private: unsigned long long unique_naming_counter = 0;
+
+    private: Ogre::ColourValue color_list[2] = {
+        Ogre::ColourValue(6.3699f, 3.1256f, 0.633f),
+        Ogre::ColourValue(0.549f, 3.1569f, 0.1569f),
+        // Ogre::ColourValue(),
+        // Ogre::ColourValue(),
+        // Ogre::ColourValue()
+    };
+    private: unsigned int color_list_index = 0;
 };
 
 #endif

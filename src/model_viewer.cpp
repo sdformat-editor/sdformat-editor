@@ -181,8 +181,10 @@ void ModelViewer::HandleAddModelQueue() {
     new_material->setSceneBlending(Ogre::SBT_TRANSPARENT_ALPHA);
     // new_material->setDepthWriteEnabled(false);
 
-    new_material->setDiffuse(1.0f, 1.0f, 1.0f, model_info.opacity);
-    new_material->setAmbient(1.0f, 1.0f, 1.0f);
+    new_material->setDiffuse(color_list[color_list_index].r, color_list[color_list_index].g, color_list[color_list_index].b, model_info.opacity);
+    new_material->setAmbient(color_list[color_list_index]);
+    color_list_index = (color_list_index + 1) % std::size(color_list);
+    new_material->setShadingMode(Ogre::SO_FLAT);
 
     entity->getSubEntity(0)->setMaterial(new_material);
   }
