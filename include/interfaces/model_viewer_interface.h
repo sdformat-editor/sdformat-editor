@@ -48,7 +48,8 @@ class ModelViewerI
 
     public: enum PresetType {
         BOX,
-        CYLINDER
+        CYLINDER,
+        SPHERE
     };
 
     public: typedef struct {

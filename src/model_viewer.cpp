@@ -209,6 +209,14 @@ void ModelViewer::AddModel(ModelViewer::PresetModelInfo model_info) {
   case PresetType::BOX:
     abs_model_info.model_absolute_path = "/home/evanv/workspace/sdformat-editor/example_models/UnitCube.stl";
     break;
+
+  case PresetType::CYLINDER:
+    abs_model_info.model_absolute_path = "/home/evanv/workspace/sdformat-editor/example_models/UnitCylinder.stl";
+    break;
+
+  case PresetType::SPHERE:
+    abs_model_info.model_absolute_path = "/home/evanv/workspace/sdformat-editor/example_models/UnitSphere.stl";
+    break;
   
   default:
     return;
