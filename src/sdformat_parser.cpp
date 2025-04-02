@@ -859,56 +859,110 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::ParsePoseElement(sdf::ElementP
   return pose;
 }
 
-std::vector<ModelViewerI::ModelInfo> SDFormatParser::GetModelsFromSDFTree()
+std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::PresetModelInfo>> SDFormatParser::GetModelsFromSDFTree()
 {
   std::vector<ModelViewerI::ModelInfo> models;
+  std::vector<ModelViewerI::PresetModelInfo> presetModels;
 
-  if (!this->sdfElement) return models;
+  if (!this->sdfElement) return std::pair(models, presetModels);
 
   std::vector<sdf::ElementPtr> model_defining_elements;
   
   std::vector<sdf::ElementPtr> visual_elements = this->LookupElementsByType("visual");
-  std::vector<sdf::ElementPtr> collision_elements = this->LookupElementsByType("collision");
-
   model_defining_elements.insert(model_defining_elements.end(), visual_elements.begin(), visual_elements.end());
-  model_defining_elements.insert(model_defining_elements.end(), collision_elements.begin(), collision_elements.end());
-
+  
+  if (render_collisions)
+  {
+    std::vector<sdf::ElementPtr> collision_elements = this->LookupElementsByType("collision");
+    model_defining_elements.insert(model_defining_elements.end(), collision_elements.begin(), collision_elements.end());
+  }
+  
   for (sdf::ElementPtr model_defining_element : model_defining_elements) {
-    sdf::ElementPtr child_element = model_defining_element->GetFirstElement();
     std::pair<glm::dvec3, glm::dquat> absolute_pose = this->FindAbsolutePose(model_defining_element);
-    while (child_element)
+    sdf::ElementPtr geometry_element;
+    if ((geometry_element = model_defining_element->FindElement("geometry")))
     {
-      if (child_element->GetName() == "geometry") {
-        sdf::ElementPtr geometry_child_element = child_element->GetFirstElement();
-        while (geometry_child_element)
+      sdf::ElementPtr geometry_child_element;
+      if ((geometry_child_element = geometry_element->FindElement("box")) 
+          || (geometry_child_element = geometry_element->FindElement("cylinder")) 
+          || (geometry_child_element = geometry_element->FindElement("sphere")))
+      {
+        sdf::ElementPtr size_element;
+        sdf::ElementPtr radius_element;
+        sdf::ElementPtr length_element;
+        glm::vec3 size_glm;
+        bool success = true;
+        if (geometry_child_element->GetName() == "box" && (size_element = geometry_child_element->FindElement("size")))
         {
-          // TODO: check for pre defined shapes here
-          if (geometry_child_element->GetName() == "mesh") {
-            sdf::ElementPtr mesh_child_element = geometry_child_element->GetFirstElement();
-            while (mesh_child_element)
-            {
-              if (mesh_child_element->GetName() == "uri") {
-                std::string mesh_path = mesh_child_element->GetValue()->GetAsString();
-                if (std::filesystem::path(mesh_path).is_relative()) {
-                  std::string sdf_dir = std::filesystem::path(sdf_file_path).parent_path();
-                  mesh_path = sdf_dir + "/" + mesh_path;
-                }
-                ModelViewerI::ModelInfo model = {
-                  .model_absolute_path = mesh_path,
-                  .position = absolute_pose.first,
-                  .orientation = absolute_pose.second,
-                };
-                models.push_back(model);
-              }
-              mesh_child_element = mesh_child_element->GetNextElement("");
-            }
+          std::vector<double> box_size = ParseStringDoubleVector(size_element->GetValue()->GetAsString(), success);
+          if (success == false || box_size.size() != 3)
+          {
+            std::cerr << "Invalid size specified for " << this->GetSDFTreePathToElement(size_element) << std::endl;
+            continue;
           }
-          geometry_child_element = geometry_child_element->GetNextElement("");
+          size_glm = {box_size[0],box_size[1],box_size[2]};
+        }
+        else if (geometry_child_element->GetName() == "cylinder" 
+                && (radius_element = geometry_child_element->FindElement("radius")) 
+                && (length_element = geometry_child_element->FindElement("length")))
+        {
+          std::vector<double> cyl_radius = ParseStringDoubleVector(radius_element->GetValue()->GetAsString(), success);
+          if (success == false || cyl_radius.size() != 1)
+          {
+            std::cerr << "Invalid specified for " << this->GetSDFTreePathToElement(radius_element) << std::endl;
+            continue;
+          }
+          std::vector<double> cyl_len = ParseStringDoubleVector(radius_element->GetValue()->GetAsString(), success);
+          if (success == false || cyl_len.size() != 1)
+          {
+            std::cerr << "Invalid specified for " << this->GetSDFTreePathToElement(length_element) << std::endl;
+            continue;
+          }
+          size_glm = {cyl_radius[0],cyl_radius[0],cyl_len[0]};
+        }
+        else if (geometry_child_element->GetName() == "cylinder" 
+                && (radius_element = geometry_child_element->FindElement("radius")))
+        {
+          std::vector<double> sphere_radius = ParseStringDoubleVector(radius_element->GetValue()->GetAsString(), success);
+          if (success == false || sphere_radius.size() != 1)
+          {
+            std::cerr << "Invalid specified for " << this->GetSDFTreePathToElement(radius_element) << std::endl;
+            continue;
+          }
+          size_glm = {sphere_radius[0],sphere_radius[0],sphere_radius[0]};
+        }
+        ModelViewerI::PresetModelInfo model = {
+          .preset_type = ModelViewerI::PresetType::BOX,
+          .position = absolute_pose.first,
+          .orientation = absolute_pose.second,
+          .scale = size_glm
+        };
+        presetModels.push_back(model);
+      }
+      else if ((geometry_child_element = geometry_element->FindElement("mesh")))
+      {
+        sdf::ElementPtr uri_element;
+        if ((uri_element = geometry_child_element->FindElement("uri")))
+        {
+          std::string mesh_path = uri_element->GetValue()->GetAsString();
+          if (std::filesystem::path(mesh_path).is_relative()) {
+            std::string sdf_dir = std::filesystem::path(sdf_file_path).parent_path();
+            mesh_path = sdf_dir + "/" + mesh_path;
+          }
+          ModelViewerI::ModelInfo model = {
+            .model_absolute_path = mesh_path,
+            .position = absolute_pose.first,
+            .orientation = absolute_pose.second,
+          };
+          models.push_back(model);
         }
       }
-      child_element = child_element->GetNextElement("");
+    } 
+    else
+    {
+      std::cerr << "Model defining element " << this->GetSDFTreePathToElement(model_defining_element) << " does not contain geometry element" << std::endl;
     }
   }
 
-  return models;
+  return std::pair(models, presetModels);
 }

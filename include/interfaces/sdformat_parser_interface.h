@@ -96,7 +96,7 @@ class SDFormatParserI
 
     /// \brief Get all models in the sdf tree 
     /// \return NOTE: (Zaid) idk what the return type will be right now, but it will be a vector of something that stores information about models.
-    public: virtual std::vector<ModelViewerI::ModelInfo> GetModelsFromSDFTree() = 0;
+    public: virtual std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::PresetModelInfo>> GetModelsFromSDFTree() = 0;
     
 };
 
