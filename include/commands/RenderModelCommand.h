@@ -23,6 +23,7 @@
 
 #include <interfaces/command_interface.h>
 #include <interfaces/model_viewer_interface.h>
+#include <interfaces/sdformat_parser_interface.h>
 #include <thread>
 
 
@@ -33,7 +34,7 @@ class RenderModelCommand : public CommandI
   /// \callgraph
   /// \brief Constructor for render model command objects.
   /// \param[in] model_viewer A pointer to the model viewer object
-  public: RenderModelCommand(std::shared_ptr<ModelViewerI> model_viewer);
+  public: RenderModelCommand(std::shared_ptr<ModelViewerI> model_viewer, std::shared_ptr<SDFormatParserI> sdformat_parser);
 
   /// \brief Implementation of interface method. 
   /// \returns True if model is successfully loaded in model viewer
@@ -65,6 +66,9 @@ class RenderModelCommand : public CommandI
 
   /// @brief Pointer to the model viewer object
   private: std::shared_ptr<ModelViewerI> model_viewer;
+
+  /// @brief Pointer to the model viewer object
+  private: std::shared_ptr<SDFormatParserI> sdformat_parser;
 
 };
 
