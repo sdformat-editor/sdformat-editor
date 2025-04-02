@@ -75,8 +75,14 @@ class ModelViewer : public ModelViewerI
     public: void AddModel(ModelInfo model_info) override;
     public: void AddModel(PresetModelInfo model_info) override;
 
+    /// \brief Implementation of the interface method
+    public: void ResetModels() override;
+
     /// \brief private method which pops ModelInfo's off the model queue and creates their OGRE entities.
     private: void HandleAddModelQueue();
+
+    /// brief private method to handle reset models flag
+    private: void HandleResetModelsFlag();
 
     /// \brief The ogre bites app (i think we need to replace this with smthn else when we integrate with imgui)
     private: OgreBites::ApplicationContext ctx;
@@ -136,6 +142,9 @@ class ModelViewer : public ModelViewerI
         // Ogre::ColourValue()
     };
     private: unsigned int color_list_index = 0;
+
+    /// \brief if true, reset model on next frame and set false
+    private: std::atomic<bool> reset_models_flag;
 };
 
 #endif
