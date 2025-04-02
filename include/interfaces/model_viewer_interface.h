@@ -23,6 +23,10 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+#include <string>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
 
 /// \brief Interface for the SDFormat Editor's 3D Model Vewer 
 class ModelViewerI
@@ -30,18 +34,15 @@ class ModelViewerI
     public: typedef struct {
         std::string model_absolute_path;
         
-        // Position
-        float pos_x;
-        float pos_y;
-        float pos_z;
+        // Position Vector
+        glm::dvec3 position;
         
-        // Rotation
-        float rot_quaternion_w;
-        float rot_quaternion_x;
-        float rot_quaternion_y;
-        float rot_quaternion_z;
-    } ModelInfo;
+        // Orientation Quaternion
+        glm::dquat orientation;
 
+        // Scale
+        glm::dvec3 scale = {1,1,1};
+    } ModelInfo;
 
     /// \callgraph
     /// \brief Initialization of the Model Viewer. 

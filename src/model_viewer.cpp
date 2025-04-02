@@ -89,22 +89,19 @@ void ModelViewer::Initialize()
 
     // Create a camera for rendering to the texture
     this->sceneCamera = this->scnMgr->createCamera("MyCam");
-    this->sceneCamera->setNearClipDistance(1);
+    this->sceneCamera->setNearClipDistance(0.1);
     this->sceneCamera->setAutoAspectRatio(true);
     this->sceneCameraNode->attachObject(this->sceneCamera);
     this->cameraController = new OgreBites::CameraMan(this->sceneCameraNode);
     this->cameraController->setStyle(OgreBites::CameraStyle::CS_ORBIT);
 
     this->ctx.getRenderWindow()->addViewport(this->sceneCamera);
-
+    this->ctx.getRenderWindow()->getViewport(0)->setBackgroundColour(Ogre::ColourValue(0.45f, 0.55f, 0.60f));
 
     // ModelInfo model = {
-    //   .model_absolute_path = "/home/evanv/workspace/sdformat-editor/example_models/Waterwitch/waterwitch.stl",
-    //   .pos_x = 0.0f, .pos_y = 0.0f, .pos_z = 0.0f,
-    //   .rot_quaternion_w = 0.0f,
-    //   .rot_quaternion_x = 1.0f,
-    //   .rot_quaternion_y = 1.0f,
-    //   .rot_quaternion_z = 0.0f
+    //   .model_absolute_path = "/home/evanv/workspace/sdformat-editor/models/Waterwitch/waterwitch.stl",
+    //   .position = {0.0f, 0.0f, 0.0f},
+    //   .orientation = {0.0f, 1.0f, 0.0f, 0.0f},
     // };
     // AddModel(model);
 
@@ -170,8 +167,9 @@ void ModelViewer::HandleAddModelQueue() {
     Ogre::SceneNode* scene_node = scnMgr->getRootSceneNode()->createChildSceneNode();
     scene_node->attachObject(entity);
   
-    scene_node->setPosition(model_info.pos_x, model_info.pos_y, model_info.pos_z);
-    scene_node->setOrientation(model_info.rot_quaternion_w, model_info.rot_quaternion_x, model_info.rot_quaternion_y, model_info.rot_quaternion_z);
+    scene_node->setPosition(model_info.position.x, model_info.position.y, model_info.position.z);
+    scene_node->setOrientation(model_info.orientation.w, model_info.orientation.x, model_info.orientation.y, model_info.orientation.z);
+    scene_node->setScale(model_info.scale.x, model_info.scale.y, model_info.scale.z);
   }
 }
 
