@@ -235,8 +235,6 @@ void ModelViewer::AddModel(ModelViewer::PresetModelInfo model_info) {
 
 void ModelViewer::HandleResetModelsFlag() {
   if (reset_models_flag) {
-    reset_models_flag = false;
-
     // Reset the models
     Ogre::SceneNode* scene_node = scnMgr->getRootSceneNode();
 
