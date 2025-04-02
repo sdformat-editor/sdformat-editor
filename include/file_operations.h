@@ -55,6 +55,11 @@ class FileOperations
     public: bool WriteFile(const std::string& contents);
 
     /// \callgraph
+    /// \brief Sets the active file path
+    /// \param[in] file_path The file path to set as the active path
+    public: void SetActiveFilePath(const std::string& file_path);
+
+    /// \callgraph
     /// \brief Prevent access to the constructor of this class
     private: FileOperations() = default;
 

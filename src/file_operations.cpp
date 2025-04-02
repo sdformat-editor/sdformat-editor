@@ -28,27 +28,15 @@ std::string FileOperations::OpenFileDialog()
     {
         result.pop_back();
     }
-
-    this->active_file_path = result;
+    this->SetActiveFilePath(result);
 
     return result;
 }
 
-// void FileOperations::WriteToModelEditorProcess(const std::string& contents)
-// {
-//     const char* fifo_path = "/tmp/sdf_file_editor_model_viewer_fifo";
-
-//     // Open the FIFO for writing
-//     this->model_editor_fifo_file_descriptor = open(fifo_path, O_WRONLY);
-//     if (this->model_editor_fifo_file_descriptor < 0) {
-//         std::cerr << "Failed to open FIFO for writing." << std::endl;
-//     }
-    
-//     write(model_editor_fifo_file_descriptor, contents.c_str(), strlen(contents.c_str()) + 1); // Include null terminator
-
-//     // Close the FIFO
-//     close(this->model_editor_fifo_file_descriptor);
-// }
+void FileOperations::SetActiveFilePath(const std::string& file_path)
+{
+    this->active_file_path = file_path;
+}
 
 bool FileOperations::WriteFile(const std::string& contents) 
 {
