@@ -115,6 +115,7 @@ void ModelViewer::Initialize()
 void ModelViewer::RenderFrame()
 {
     std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
+    HandleResetModelsFlag();
     HandleAddModelQueue();
 
     this->ctx.pollEvents(); 
@@ -230,4 +231,30 @@ void ModelViewer::AddModel(ModelViewer::PresetModelInfo model_info) {
   #endif
   
   add_model_queue.push(abs_model_info);
+}
+
+void ModelViewer::HandleResetModelsFlag() {
+  if (reset_models_flag) {
+    reset_models_flag = false;
+
+    // Reset the models
+    Ogre::SceneNode* scene_node = scnMgr->getRootSceneNode();
+
+    for (Ogre::Node* node : scene_node->getChildren()) {
+      Ogre::SceneNode* s = dynamic_cast<Ogre::SceneNode*>(node);
+      if (s) {
+        for (Ogre::MovableObject* moveable_object: s->getAttachedObjects()) {
+          if (moveable_object->getMovableType() == "Entity") {
+            scene_node->removeAndDestroyChild(s);
+          }
+        }
+      }
+    }
+
+    reset_models_flag = false;
+  }
+}
+
+void ModelViewer::ResetModels() {
+  this->reset_models_flag = true;
 }

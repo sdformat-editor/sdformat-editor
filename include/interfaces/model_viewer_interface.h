@@ -81,9 +81,15 @@ class ModelViewerI
     /// \callgraph
     /// \brief Tells the model viewer to quit on its next iteration
     public: virtual void Quit() = 0;
-    
+
+    /// \callgraph
+    /// \brief Add a model to the model viewer, the model will be rendered on the next frame.
     public: virtual void AddModel(ModelInfo) = 0;
-    virtual void AddModel(PresetModelInfo) = 0;
+    public: virtual void AddModel(PresetModelInfo) = 0;
+
+    /// \callgraph
+    /// \brief resets the model viewer, deleting all currently rendered models
+    public: virtual void ResetModels() = 0;
 
     /// \callgraph
     /// \brief Indicates if the model view is running
