@@ -257,4 +257,7 @@ void ModelViewer::HandleResetModelsFlag() {
 
 void ModelViewer::ResetModels() {
   this->reset_models_flag = true;
+  
+  // Clear items currently in the queue
+  while (!this->add_model_queue.empty()) add_model_queue.pop();
 }
