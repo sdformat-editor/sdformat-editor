@@ -49,7 +49,7 @@
       </collision>
     </link>
     <link name='for_star_propeller'>
-      <pose>-0.13500000000000001 -0.1525 -0.016 1.5708 0 0.7854000000000001</pose>
+      <pose>-0.13500000000000001 -0.1525 -0.016 1.5707999999999998 5.5511151231257827e-17 0.78540000000000021</pose>
       <inertial>
         <pose>0 0 0 0 0 0</pose>
         <mass>0.002</mass>
@@ -104,7 +104,7 @@
       </axis>
     </joint>
     <link name='for_port_propeller'>
-      <pose>0.13500000000000001 -0.1525 -0.016 1.5708 0 -0.7854000000000001</pose>
+      <pose>0.13500000000000001 -0.1525 -0.016 1.5707999999999998 -5.5511151231257827e-17 -0.78540000000000021</pose>
       <inertial>
         <pose>0 0 0 0 0 0</pose>
         <mass>0.002</mass>
@@ -159,7 +159,7 @@
       </axis>
     </joint>
     <link name='aft_star_propeller'>
-      <pose>-0.13500000000000001 0.14699999999999999 -0.016 -1.5708 0 -0.7854000000000001</pose>
+      <pose>-0.13500000000000001 0.14699999999999999 -0.016 -1.5707999999999998 5.5511151231257827e-17 -0.78540000000000021</pose>
       <inertial>
         <pose>0 0 0 0 0 0</pose>
         <mass>0.002</mass>
@@ -214,7 +214,7 @@
       </axis>
     </joint>
     <link name='aft_port_propeller'>
-      <pose>0.13500000000000001 0.14699999999999999 -0.016 -1.5708 0 0.7854000000000001</pose>
+      <pose>0.13500000000000001 0.14699999999999999 -0.016 -1.5707999999999998 -5.5511151231257827e-17 0.78540000000000021</pose>
       <inertial>
         <pose>0 0 0 0 0 0</pose>
         <mass>0.002</mass>
@@ -467,7 +467,7 @@
       </axis>
     </joint>
     <link name='front_camera_downtilt'>
-      <pose relative_to='front_camera_enclosure'>0.02 -0.0050000000000000001 0 0 0 -1.1693700000000002</pose>
+      <pose relative_to='front_camera_enclosure'>0.02 -0.0050000000000000001 0 0 0 -1.1693700000000007</pose>
       <inertial>
         <mass>0.001</mass>
       </inertial>
@@ -607,7 +607,7 @@
       </axis>
     </joint>
     <link name='back_camera_downtilt'>
-      <pose relative_to='back_camera_enclosure'>0.02 0.0050000000000000001 0 0 0 -1.1693700000000002</pose>
+      <pose relative_to='back_camera_enclosure'>0.02 0.0050000000000000001 0 0 0 -1.1693700000000007</pose>
       <inertial>
         <mass>0.001</mass>
       </inertial>
@@ -747,6 +747,6 @@
     <static>false</static>
     <self_collide>false</self_collide>
     <allow_auto_disable>true</allow_auto_disable>
-    <pose>1 1 1 1.0000000000000002 1.0000000000000002 1.0000000000000002</pose>
+    <pose>1 0 0 0 0 0.099999999999999992</pose>
   </model>
 </sdf>

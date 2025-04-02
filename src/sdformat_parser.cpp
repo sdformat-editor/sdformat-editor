@@ -474,6 +474,8 @@ bool SDFormatParser::HandleRelativeToSpecificationSpecialcases(sdf::ElementPtr e
 
 std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementPtr element, std::vector<sdf::ElementPtr> previously_visited_elements)
 {
+  // std::cout << "#####################################" << std::endl;
+  // std::cout << "Considering element "  << this->GetSDFTreePathToElement(element) << std::endl;
   // Get the pose of this element
   std::pair<glm::dvec3, glm::dquat> pose = std::make_pair(glm::dvec3(0.0f), glm::dquat());
   pose.second = glm::dquat(1.0, 0.0, 0.0, 0.0); // Identity quaternion
@@ -534,10 +536,6 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
           return pose;
         }
       }
-      // else
-      // {
-      //   return pose;
-      // }
     }
     else if (element->GetName() == "joint")
     {
@@ -633,11 +631,18 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
             if (top_level_model_or_world->HasElement("pose"))
             {
               std::pair<glm::dvec3, glm::dquat> reference_pose =  this->ParsePoseElement(top_level_model_or_world->GetElement("pose"), relative_to);
+
+              // Apply the rotation of the referenced pose to the position vector
+              pose.first = reference_pose.second * pose.first;
+
               pose.first += reference_pose.first;
               pose.second = reference_pose.second * pose.second;
             }
           }
         }
+        // std::cout << "Pose: Position(" << pose.first.x << ", " << pose.first.y << ", " << pose.first.z 
+        //       << "), Orientation(" << pose.second.w << ", " << pose.second.x << ", " << pose.second.y << ", " << pose.second.z << ")" << std::endl;
+        // std::cout << "EXIT" << std::endl;
         return pose;
       }
       else if (scope_element->HasAttribute("name") && scope_element->GetAttribute("name")->GetAsString() != "")
@@ -686,7 +691,6 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
 
         canonical_element_of_referenced_element = this->FindCanonical(closest_referenced_element);
         
-        
         if (!canonical_element_of_referenced_element)
         {
           // Referenced element does not contain a canonical element, we're good
@@ -714,15 +718,19 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
     // Add closest_referenced_element to previously_visited_elements to avoid revisiting
     previously_visited_elements.push_back(closest_referenced_element);
 
-
     // Recursively find the absolute pose of the referenced element
     std::pair<glm::dvec3, glm::dquat> referenced_pose = this->FindAbsolutePose(closest_referenced_element, previously_visited_elements);
+
+    // Apply the rotation of the referenced pose to the position vector
+    pose.first = referenced_pose.second * pose.first;
 
     // Combine the poses
     pose.first += referenced_pose.first;
     pose.second = referenced_pose.second * pose.second;
   }
 
+  // std::cout << this->GetSDFTreePathToElement(element)  << "-> Pose: Position(" << pose.first.x << ", " << pose.first.y << ", " << pose.first.z 
+  // << "), Orientation(" << pose.second.w << ", " << pose.second.x << ", " << pose.second.y << ", " << pose.second.z << ")" << std::endl;
   return pose;
 }
 
