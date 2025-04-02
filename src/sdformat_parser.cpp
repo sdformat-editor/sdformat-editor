@@ -175,21 +175,30 @@ SDFormatParser::Mentions SDFormatParser::FindMentions(std::string key, sdf::Elem
 
 std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsByAttributeType(const std::string& attribute_type)
 {
-  
+  return this->LookupElementsInternal(attribute_type, "", this->sdfElement->Root(), nullptr);
+}
+
+std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsByAttributeTypeAndValue(const std::string& attribute_type, const std::string& attribute_value)
+{
+  return this->LookupElementsInternal(attribute_type, attribute_value, this->sdfElement->Root(), nullptr);
+}
+
+
+std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsInternal(const std::string& attribute_type, const std::string& attribute_value,
+                                                                                      sdf::ElementPtr scope, sdf::ElementPtr scope_to_exclude)
+{
   // Define a vector of elements
   std::vector<sdf::ElementPtr> elements;
 
-  // Exit if we don't have a root sdf element
-
-  // Exit if we don't have a root sdf element
-  if (!this->sdfElement) return elements;
+  // Exit if the "scope" element does not exist
+  if (!scope) return elements;
 
   // Create a stack to hold the element to search for
   // The boolean indicates whether or not this tree node was visited
   std::stack<std::pair<sdf::ElementPtr,bool>> sdf_tree_stack;
 
-  // Append the root model element to the stack
-  sdf_tree_stack.emplace(this->sdfElement->Root()->GetFirstElement(), false);
+  // Append the scope element to the stack
+  sdf_tree_stack.emplace(scope, false);
 
   while (!sdf_tree_stack.empty())
   {
@@ -206,19 +215,32 @@ std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsByAttributeType(const
 
     // Get a pointer to the current node
     sdf::ElementPtr current_element = sdf_tree_stack.top().first;
-    
-    // Go through each attribute of this element...
-    for (const auto &current_attribute : current_element->GetAttributes())
+
+    // If there is a scope that we are excluding out of the search, 
+    // we can consider the root element of this scope to be a leaf node
+    if (scope_to_exclude)
     {
-      // Check for reference equality between the current attribute and the attribute to exclude
-      // Check if this attribute references the key
-      if (current_attribute->GetKey() == attribute_type)
+      if (current_element.get() == scope_to_exclude.get())
       {
-        elements.push_back(current_attribute->GetParentElement());
-        break;
+        sdf_tree_stack.pop();
+        continue;
       }
     }
 
+    // Add this element if it is of the type that we are searching for
+    if (current_element->HasAttribute(attribute_type)) 
+    {
+      sdf::ParamPtr attribute = current_element->GetAttribute(attribute_type);
+      if (attribute_value != "")
+      {
+        if (attribute->GetAsString() == attribute_value) elements.push_back(current_element);
+      }
+      else
+      {
+        elements.push_back(current_element);
+      }
+    }
+    
     if (current_element->GetFirstElement())
     {
       // Go through each element 
@@ -237,8 +259,14 @@ std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsByAttributeType(const
     }
   }
 
+  // If we did not reach the root element in terms of scope, continue checking outer scopes
+  if (scope.get() != this->sdfElement->Root().get()) 
+  {
+    // Exclude the current scope as we search outer scopes so we don't add the same elements again
+    auto outer_scope_elements = this->LookupElementsInternal(attribute_type, attribute_value, this->FindScope(scope), scope);
+    elements.insert(elements.end(), outer_scope_elements.begin(), outer_scope_elements.end());
+  }
   return elements;
-
 }
 
 std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsByType(const std::string& type)
@@ -273,7 +301,7 @@ std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsByType(const std::str
     // Get a pointer to the current node
     sdf::ElementPtr current_element = sdf_tree_stack.top().first;
 
-    // Add this element if it is of the type that we are seraching for
+    // Add this element if it is of the type that we are searching for
     if (current_element->GetName() == type) elements.push_back(current_element);
     
     if (current_element->GetFirstElement())
@@ -335,26 +363,481 @@ std::string SDFormatParser::GetSDFTreePathToElement(sdf::ElementPtr current_elem
   return sdf_tree_path_to_element;
 } 
 
+sdf::ElementPtr SDFormatParser::FindScope(sdf::ElementPtr element)
+{
+  while (element->GetParent())
+  {
+    if (element->GetParent()->GetName() == "model" || element->GetParent()->GetName() == "world") 
+    {
+      return element->GetParent();
+    }
+    element = element->GetParent();
+  }
+
+  return this->sdfElement->Root();
+}
+
+sdf::ElementPtr SDFormatParser::FindCanonical(sdf::ElementPtr model_element)
+{
+  // Ensure that the given element is a model element
+  if (!(model_element->GetName() == "model")) return nullptr;
+
+  if (model_element->HasAttribute("canonical_link") && model_element->GetAttribute("canonical_link")->GetAsString() != "")
+  {
+    if (model_element->HasElement(model_element->GetAttribute("canonical_link")->GetAsString()))
+    {
+      return model_element->GetElement(model_element->GetAttribute("canonical_link")->GetAsString());
+    }
+  }
+
+  // If we are here, no explicit canonical link was found
+
+  // Iterate through in an attempt to find the first child link
+  sdf::ElementPtr child_element = model_element->GetFirstElement();
+  while (child_element)
+  {
+    if (child_element->GetName() == "link")
+    {
+      return child_element;
+    }
+    child_element = child_element->GetNextElement();
+  }
+
+  // If we are here, there is no child link elements at all
+
+  // Iterate through in an attempt to find the first child model
+  child_element = model_element->GetFirstElement();
+  while (child_element)
+  {
+    if (child_element->GetName() == "model")
+    {
+      return child_element;
+    }
+    child_element = child_element->GetNextElement();
+  }
+
+  std::cerr << this->GetSDFTreePathToElement(model_element) << " does not have a canonical link or nested models." << std::endl; 
+
+  return nullptr;
+}
+
+bool SDFormatParser::HandleRelativeToSpecificationSpecialcases(sdf::ElementPtr element, std::string& relative_to)
+{
+  if (relative_to == "__model__")
+  {
+    while (element->GetParent())
+    {
+      if (element->GetParent()->GetName() == "model") 
+      {
+        if (element->GetParent()->HasAttribute("name"))
+        {
+          relative_to = element->GetParent()->GetAttribute("name")->GetAsString();
+        }
+        break;
+      }
+      element = element->GetParent();
+    }
+    // If the relative_to string is still the same, we could not find a valid enclosing model scope
+    if (relative_to == "__model__")
+    {
+      std::cerr << "Could not find a valid model for_relative specification of " 
+                  << this->GetSDFTreePathToElement(element) << std::endl;
+      return false;
+    }
+  }
+  else if (relative_to == "world")
+  {
+    while (element->GetParent())
+    {
+      if (element->GetParent()->GetName() == "world") 
+      {
+        if (element->GetParent()->HasAttribute("name"))
+        {
+          relative_to = element->GetParent()->GetAttribute("name")->GetAsString();
+        }
+        break;
+      }
+      element = element->GetParent();
+    }
+    // If the relative_to string is still the same, we could not find a valid valid enclosing world scope
+    if (relative_to == "world")
+    {
+      std::cerr << "Could not find a valid world for_relative specification of " 
+                  << this->GetSDFTreePathToElement(element) << std::endl;
+      return false;
+    }
+  }
+  return true;
+}
+
+std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementPtr element, std::vector<sdf::ElementPtr> previously_visited_elements)
+{
+  // Get the pose of this element
+  std::pair<glm::dvec3, glm::dquat> pose = std::make_pair(glm::dvec3(0.0f), glm::dquat());
+  std::string relative_to = "";
+
+  // Attempt to get the pose if it is defined
+  if (element->GetFirstElement())
+  {
+    // Go through each element 
+    sdf::ElementPtr child_element_ptr = element->GetFirstElement();
+    while (child_element_ptr)
+    {
+      if (child_element_ptr->GetName() == "pose")
+      {
+        // We have a pose element. 
+        pose = this->ParsePoseElement(child_element_ptr, relative_to);
+        break;
+      }
+      child_element_ptr = child_element_ptr->GetNextElement("");
+    }
+  } 
+
+  if (relative_to != "")
+  {
+    if (!HandleRelativeToSpecificationSpecialcases(element, relative_to))
+    {
+      return pose;
+    }
+  }
+  else 
+  {
+    if (element->GetName() == "frame")
+    {
+      // If we have a frame with no non-empty "relative_to" attribute, we use the "attached_to" attribute instead
+      if (element->HasAttribute("attached_to") && element->GetAttribute("attached_to")->GetAsString() != "")
+      {
+        relative_to == element->GetAttribute("attached_to")->GetAsString();
+        if (!HandleRelativeToSpecificationSpecialcases(element, relative_to))
+        {
+          return pose;
+        }
+      }
+    }
+    else if (element->GetName() == "model")
+    {
+      // Find the canonical link or canonical model
+      if (sdf::ElementPtr canonical_element = this->FindCanonical(element))
+      {
+        if (canonical_element->HasAttribute("name") && canonical_element->GetAttribute("name")->GetAsString() != "")
+        {
+          relative_to = canonical_element->GetAttribute("name")->GetAsString();
+        }
+        else
+        {
+          std::cerr << "Could not find a valid canonical link or nested model element for " 
+          << this->GetSDFTreePathToElement(element) << std::endl;
+          return pose;
+        }
+      }
+      else
+      {
+        return pose;
+      }
+    }
+    else if (element->GetName() == "joint")
+    {
+      // Find the child link
+      bool has_child = false;
+      sdf::ElementPtr child_element_ptr = element->GetFirstElement();
+      while (child_element_ptr)
+      {
+        if (child_element_ptr->GetName() == "child")
+        {
+          has_child = true;
+
+          // Joints without a relative_to attribute will have their position be defined relative to their child element
+          // We need to locate the element referenced by the child and ensure that it is a link
+
+          // First check that the child is not an empty string and is not "world", which is specifically disallowed
+          if (child_element_ptr->GetValue()->GetAsString() == "" || child_element_ptr->GetValue()->GetAsString() == "world")
+          {
+            std::cerr << "Invalid child specified for  " 
+                        << this->GetSDFTreePathToElement(element) << std::endl;
+            return pose;
+          }
+          
+          std::vector<sdf::ElementPtr> possibly_referenced_child_elements = this->LookupElementsInternal("name", child_element_ptr->GetValue()->GetAsString(),
+                                                                                    this->FindScope(child_element_ptr), nullptr);
+          
+          if (possibly_referenced_child_elements.size() <= 0)
+          {
+            std::cerr << "Could not find elements referenced by the child of  " 
+                        << this->GetSDFTreePathToElement(element) << std::endl;
+            return pose;
+          }
+          else
+          {
+            // LookupElementsInternal will return the referenced elements by order of when they were found in scopes. 
+            // We can grab the first element since it is the closest referenced element 
+            sdf::ElementPtr closest_referenced_child_element = possibly_referenced_child_elements[0];
+            if (closest_referenced_child_element->GetName() != "link")
+            {
+              std::cerr << "The child of the following joint is not a link:  " 
+                          << this->GetSDFTreePathToElement(element) << std::endl;
+              return pose;
+            }
+            else if (closest_referenced_child_element->HasAttribute("name") && closest_referenced_child_element->GetAttribute("name")->GetAsString() != "")
+            {
+              relative_to = closest_referenced_child_element->GetAttribute("name")->GetAsString();
+            }
+          }
+          
+          break;
+        }
+        child_element_ptr = child_element_ptr->GetNextElement("");
+      }
+      if (!has_child)
+      {
+        std::cerr << "No children specified for  " 
+                    << this->GetSDFTreePathToElement(element) << std::endl;
+        return pose;
+
+      }
+    }
+    else
+    {
+      // There is no relative_to specification and none of the special cases applied
+      // In this case we assume that pose is given relative to the nested scope
+      
+      // Use the scope as the implicit element which the pose is given relative to
+      sdf::ElementPtr scope_element = this->FindScope(element);
+      
+      if (scope_element.get() == this->sdfElement->Root().get())
+      {
+        // The scope element is the root element, which *should*(?) not be relative to anything. 
+        return pose;
+      }
+      else if (scope_element->HasAttribute("name") && scope_element->GetAttribute("name")->GetAsString() != "")
+      {
+        relative_to = scope_element->GetAttribute("name")->GetAsString();
+      }
+      else
+      {
+        std::cerr << "The scope element for the following element does not contain a valid name: " 
+        << this->GetSDFTreePathToElement(element) << std::endl;
+        return pose;
+      }
+    }
+  }
+
+  // At this point, we know that the pose is "relative_to" some other element
+  // Determine what that element is (searching the current scope first)
+  std::vector<sdf::ElementPtr> possibly_referenced_elements = this->LookupElementsInternal("name", relative_to,
+                                              this->FindScope(element), nullptr);
+  
+  if (possibly_referenced_elements.size() <= 0)
+  {
+    std::cerr << "Could not find elements referenced by the pose of  " 
+                << this->GetSDFTreePathToElement(element) << std::endl;
+    return pose;
+  }
+  else
+  {
+    // LookupElementsInternal will return the referenced elements by order of when they were found in scopes. 
+    // We can grab the first element since it is the closest referenced element 
+    sdf::ElementPtr closest_referenced_element = possibly_referenced_elements[0];
+
+    // If the element for which we have been trying to find the pose for so far is a 
+    // canonical link or model, it may be that it's relative_to specification currently
+    // references it's parent model, which is bound to lead to a cyclic reference.
+    // A canonical link or model should be relative to it's enclosing scope. 
+    // If the enclosing scope is a model, we should make sure that also is not a canonical model.
+    sdf::ElementPtr canonical_element_of_referenced_element = this->FindCanonical(closest_referenced_element);
+    if (canonical_element_of_referenced_element && canonical_element_of_referenced_element.get() == element.get())
+    {
+      bool current_element_is_canonical_link_or_model_of_reference_element = true;
+      while (current_element_is_canonical_link_or_model_of_reference_element)
+      {
+        element = closest_referenced_element;
+        closest_referenced_element = this->FindScope(closest_referenced_element);
+
+        if (closest_referenced_element == this->sdfElement->Root())
+        {
+          // The scope element is the root element, which *should*(?) not be relative to anything. 
+          return pose;
+        }
+        else if (!canonical_element_of_referenced_element)
+        {
+          // Referenced element does not contain a canonical element, we're good
+          current_element_is_canonical_link_or_model_of_reference_element = false;
+        }
+        else if (canonical_element_of_referenced_element.get() != element.get())
+        {
+          // Referenced element does contain a canonical element, but it's not equal to our current element
+          current_element_is_canonical_link_or_model_of_reference_element = false;
+        }
+      }
+    }
+
+    // Check if closest_referenced_element is in previously_visited_elements (cyclic reference)
+    for (const auto& visited_element : previously_visited_elements)
+    {
+      if (visited_element.get() == closest_referenced_element.get())
+      {
+        std::cerr << "Found a cyclic reference for " 
+                  << this->GetSDFTreePathToElement(element) << std::endl;
+        return pose;
+      }
+    }
+
+    // Add closest_referenced_element to previously_visited_elements to avoid revisiting
+    previously_visited_elements.push_back(closest_referenced_element);
+
+
+    // Recursively find the absolute pose of the referenced element
+    std::pair<glm::dvec3, glm::dquat> referenced_pose = this->FindAbsolutePose(closest_referenced_element, previously_visited_elements);
+
+    // Combine the poses
+    pose.first += referenced_pose.first;
+    pose.second = referenced_pose.second * pose.second;
+  }
+
+    
+  // TODO: Implement the function logic here
+  return pose;
+}
+
+std::pair<glm::dvec3, glm::dquat> SDFormatParser::ParsePoseElement(sdf::ElementPtr element, std::string& relative_to)
+{
+  std::pair<glm::dvec3, glm::dquat> pose = std::make_pair(glm::dvec3(0.0f), glm::dquat());
+
+  // Get the relative_to specification.
+  if (element->HasAttribute("relative_to")) relative_to = element->GetAttribute("relative_to")->GetAsString();
+
+  bool euler_rpy;
+
+  // determine the rotation format
+  if (element->HasAttribute("rotation_format")) 
+  {
+    if (element->GetAttribute("rotation_format")->GetAsString() == "euler_rpy")
+    {
+      euler_rpy = true;
+    }
+    else if (element->GetAttribute("rotation_format")->GetAsString() == "quat_xyzw")
+    {
+      euler_rpy = false;
+    }
+    else
+    {
+      std::cerr << "Invalid rotation format given for " << this->GetSDFTreePathToElement(element) << std::endl;
+      return pose;
+    }
+  }
+
+  if (element->GetValue()->GetAsString() == "") 
+  { 
+    // Empty pose element, assume the default that we already have
+    return pose;
+  }
+
+  // We expect a string of doubles separated by spaces.
+  // Validate the input string for invalid characters and format issues.
+  std::string input = element->GetValue()->GetAsString();
+  if (input.find_first_not_of("0123456789.- ") != std::string::npos)
+  {
+    std::cerr << "Invalid pose format for " << this->GetSDFTreePathToElement(element) << ". Contains invalid characters." << std::endl;
+    return pose;
+  }
+
+  // Check for multiple '.' between spaces
+  std::istringstream check_iss(input);
+  std::string token;
+  while (check_iss >> token)
+  {
+    if (std::count(token.begin(), token.end(), '.') > 1)
+    {
+      std::cerr << "Invalid pose format for " << this->GetSDFTreePathToElement(element) << ". Contains multiple '.' in a single double." << std::endl;
+    }
+    else if (token == "-")
+    {
+      std::cerr << "Invalid pose format for " << this->GetSDFTreePathToElement(element) << ". Cannot give a value as '-'." << std::endl;
+    }
+    return pose;
+  }
+
+  // Parse the string into doubles
+  std::istringstream iss(input);
+  std::vector<double> values;
+  double value;
+
+  while (iss >> value)
+  {
+    values.push_back(value);
+  }
+
+  if (!euler_rpy)
+  {
+    // We expect a translation and a quaternion
+
+    if (values.size() != 7)
+    {
+      std::cerr << "Invalid pose format for " << this->GetSDFTreePathToElement(element) << ". Expected 7 doubles for position and quaternion." << std::endl;
+      return pose;
+    }
+
+    // Set position
+    pose.first = glm::dvec3(values[0], values[1], values[2]);
+
+    // Set quaternion
+    pose.second = glm::dquat(values[6], values[3], values[4], values[5]); // glm::dquat(w, x, y, z)
+  }
+  else if (euler_rpy)
+  {
+    // We expect a translation and a euler rpy
+
+    if (values.size() != 6)
+    {
+      std::cerr << "Invalid pose format for " << this->GetSDFTreePathToElement(element) << ". Expected 6 doubles for position and rotation." << std::endl;
+      return pose;
+    }
+
+    // Set position
+    pose.first = glm::dvec3(values[0], values[1], values[2]);
+
+    // Convert euler angles (roll, pitch, yaw) to quaternion
+    glm::dquat roll_quat = glm::angleAxis(values[3], glm::dvec3(1.0, 0.0, 0.0));
+    glm::dquat pitch_quat = glm::angleAxis(values[4], glm::dvec3(0.0, 1.0, 0.0));
+    glm::dquat yaw_quat = glm::angleAxis(values[5], glm::dvec3(0.0, 0.0, 1.0));
+
+    // Combine the rotations
+    pose.second = yaw_quat * pitch_quat * roll_quat;
+  }
+
+  return pose;
+}
+
 std::vector<ModelViewerI::ModelInfo> SDFormatParser::GetModelsFromSDFTree()
 {
   std::vector<ModelViewerI::ModelInfo> models;
 
   if (!this->sdfElement) return models;
 
-  std::vector<sdf::ElementPtr> modelDefiningElements;
+  std::vector<sdf::ElementPtr> model_defining_elements;
   
-  std::vector<sdf::ElementPtr> visualElements = this->LookupElementsByType("visual");
-  std::vector<sdf::ElementPtr> collisionElements = this->LookupElementsByType("collision");
+  std::vector<sdf::ElementPtr> visual_elements = this->LookupElementsByType("visual");
+  std::vector<sdf::ElementPtr> collision_elements = this->LookupElementsByType("collision");
 
-  modelDefiningElements.insert(modelDefiningElements.end(), visualElements.begin(), visualElements.end());
-  modelDefiningElements.insert(modelDefiningElements.end(), collisionElements.begin(), collisionElements.end());
+  model_defining_elements.insert(model_defining_elements.end(), visual_elements.begin(), visual_elements.end());
+  model_defining_elements.insert(model_defining_elements.end(), collision_elements.begin(), collision_elements.end());
 
-  for (const auto &modelDefiningElement : modelDefiningElements)
+  for (const auto &model_defining_element : model_defining_elements)
   {
-    if (modelDefiningElement->GetAttribute("name"))
-    {
-      std::cout <<  modelDefiningElement->GetName() + ": " + modelDefiningElement->GetAttribute("name")->GetAsString() << std::endl;
-    }
+    
+    std::pair<glm::dvec3, glm::dquat> absolute_pose = this->FindAbsolutePose(model_defining_element);
+    
+    std::cout << "##############################################" << std::endl;
+    std::cout << this->GetSDFTreePathToElement(model_defining_element) << std::endl;
+    std::cout << "Absolute Position: (" 
+          << absolute_pose.first.x << ", " 
+          << absolute_pose.first.y << ", " 
+          << absolute_pose.first.z << ")" << std::endl;
+
+    std::cout << "Absolute Orientation (Quaternion): (" 
+          << absolute_pose.second.w << ", " 
+          << absolute_pose.second.x << ", " 
+          << absolute_pose.second.y << ", " 
+          << absolute_pose.second.z << ")" << std::endl;
   }
 
   return models;

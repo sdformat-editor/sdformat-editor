@@ -54,6 +54,12 @@ class SDFormatParserI
     /// \returns A list of elements with a given attribute type
     public: virtual std::vector<sdf::ElementPtr> LookupElementsByAttributeType(const std::string& attribute_type) = 0;
 
+    /// \brief Provides a list of elements which have an attribute of the given attribute type and the given attribute value
+    /// \param[in] attribute_type The attribute type to use for lookup
+    /// \param[in] attribute_value The attribute type to use for lookup
+    /// \returns A list of elements with the given attribute type and the given attribute value
+    public: virtual std::vector<sdf::ElementPtr> LookupElementsByAttributeTypeAndValue(const std::string& attribute_type, const std::string& attribute_value) = 0;
+
     /// \brief Provides a list of elements which are of a given type
     /// \param[in] type The type by which to lookup elements
     /// \returns A list of elements with a given attribute type
@@ -63,7 +69,7 @@ class SDFormatParserI
     /// \param[in] key the string to search for
     /// \returns The elements and attributes that mention this given key
     public: virtual Mentions FindMentions(std::string key) = 0;
-
+    
     /// \brief Determines the locations of potential references to the element to delete
     /// \param[in] key the string to search for
     /// \param[in] element_to_exclude the element to exclude in the search
