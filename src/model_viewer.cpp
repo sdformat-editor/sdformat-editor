@@ -211,15 +211,15 @@ void ModelViewer::AddModel(ModelViewer::PresetModelInfo model_info) {
   switch (model_info.preset_type)
   {
     case PresetType::BOX:
-    abs_model_info.model_absolute_path = std::string(SOURCE_PATH) + "example_models/UnitCube.stl";
+    abs_model_info.model_absolute_path = std::string(SOURCE_PATH) + "/example_models/UnitCube.stl";
     break;
     
     case PresetType::CYLINDER:
-    abs_model_info.model_absolute_path = std::string(SOURCE_PATH) + "example_models/UnitCylinder.stl";
+    abs_model_info.model_absolute_path = std::string(SOURCE_PATH) + "/example_models/UnitCylinder.stl";
     break;
     
     case PresetType::SPHERE:
-    abs_model_info.model_absolute_path = std::string(SOURCE_PATH) + "example_models/UnitSphere.stl";
+    abs_model_info.model_absolute_path = std::string(SOURCE_PATH) + "/example_models/UnitSphere.stl";
     break;
     
     default:
