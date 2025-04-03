@@ -26,7 +26,7 @@ template <typename T> bool ModifyAttributeCommand<T>::Execute()
     }
     else
     {   
-        if (this->attribute_to_modify->GetKey() == "name")
+        if ((this->attribute_to_modify->GetKey() == "name") && (this->attribute_to_modify->GetAsString() != "__default__"))
         {   
             // If this is a name attribute, warn the user if it is mentioned anywhere
             SDFormatParserI::Mentions mentions = this->sdformatParser->FindMentions(attribute_to_modify->GetAsString(), this->attribute_to_modify->GetParentElement());
