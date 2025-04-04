@@ -19,10 +19,11 @@
 
 #include "commands/RenderModelCommand.h"
 
-RenderModelCommand::RenderModelCommand(std::shared_ptr<ModelViewerI> model_viewer, std::shared_ptr<SDFormatParserI> sdformat_parser)
+RenderModelCommand::RenderModelCommand(std::shared_ptr<ModelViewerI> model_viewer, std::shared_ptr<SDFormatParserI> sdformat_parser, bool render_collisions_in_model_viewer)
 {
     this->model_viewer = model_viewer;
     this->sdformat_parser = sdformat_parser;
+    this->render_collisions_in_model_viewer = render_collisions_in_model_viewer;
 }
 
 bool RenderModelCommand::Execute()
@@ -33,7 +34,7 @@ bool RenderModelCommand::Execute()
     this->model_viewer->ResetModels();
 
     // Get the model info from the SDFormat Parser (file locations, scale, pose)
-    std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::PresetModelInfo>> models = this->sdformat_parser->GetModelsFromSDFTree();
+    std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::PresetModelInfo>> models = this->sdformat_parser->GetModelsFromSDFTree(render_collisions_in_model_viewer);
 
     // Add both mesh models and preset (simple shape) models 
     for (ModelViewerI::ModelInfo model : models.first) 

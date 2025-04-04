@@ -130,6 +130,9 @@ class GUI : public GUII
 
   /// \brief Flag to indicate if the model viewer is currently running.
   private: bool model_viewer_running = false;
+
+  /// \brief Flag to indicate if the model viewer is currently running.
+  private: bool render_collisions_in_model_viewer = false;
   
   /// \brief Pointer to the GLFW window object, used to manage for rendering and handling window events
   private: GLFWwindow *window = nullptr;

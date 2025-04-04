@@ -38,9 +38,9 @@ std::unique_ptr<CommandI> CommandFactory::MakeOpenFileCommand(std::string file_p
     return std::make_unique<OpenFileCommand>(this->gui, this->sdformatParser, file_path);
 }
 
-std::unique_ptr<CommandI> CommandFactory::MakeRenderModelCommand()
+std::unique_ptr<CommandI> CommandFactory::MakeRenderModelCommand(bool render_collisions_in_model_viewer)
 {
-    return std::make_unique<RenderModelCommand>(this->model_viewer, this->sdformatParser);
+    return std::make_unique<RenderModelCommand>(this->model_viewer, this->sdformatParser, render_collisions_in_model_viewer);
 }
 
 std::unique_ptr<CommandI> CommandFactory::MakeOpenModelViewerCommand()

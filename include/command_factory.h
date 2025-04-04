@@ -79,8 +79,9 @@ class CommandFactory : public CommandFactoryI
     private: std::unique_ptr<CommandI> MakeSaveFileCommand() override;
 
     /// \brief Implementation of interface method
+    /// \param[in] render_collisions_in_model_viewer indicates if collision boxes should be rendered in the model viewer
     /// \return Unique pointer to a command interface
-    private: std::unique_ptr<CommandI> MakeRenderModelCommand() override;
+    private: std::unique_ptr<CommandI> MakeRenderModelCommand(bool render_collisions_in_model_viewer) override;
 
     /// \brief Create a open model viewer model command
     /// \return Unique pointer to a command interface

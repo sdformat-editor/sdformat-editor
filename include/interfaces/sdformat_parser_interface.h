@@ -95,8 +95,12 @@ class SDFormatParserI
     public: virtual std::string GetSDFTreePathToElement(sdf::ElementPtr element) = 0; 
 
     /// \brief Get all models in the sdf tree 
-    /// \return NOTE: (Zaid) idk what the return type will be right now, but it will be a vector of something that stores information about models.
-    public: virtual std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::PresetModelInfo>> GetModelsFromSDFTree() = 0;
+    /// \param[in] render_collisions indicates if collision meshes and shapes are included as well
+    /// \return A pair of vectors condaining structs of the model viewer interfaces's ModelInfo and Preset Model Info, which in turn contain the necessary information
+    /// to render models
+    public: virtual std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::PresetModelInfo>> GetModelsFromSDFTree(bool render_collisions = false) = 0;
+
+
     
 };
 

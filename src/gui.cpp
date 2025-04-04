@@ -199,7 +199,7 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
     }
     else
     {
-      if (!prevent_input_flag) command = command_factory->MakeRenderModelCommand();
+      if (!prevent_input_flag) command = command_factory->MakeRenderModelCommand(this->render_collisions_in_model_viewer);
     }
   }
   if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_C))
@@ -270,13 +270,14 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
         {
           if (ImGui::MenuItem(("Render Model"), "Ctrl+R"))
           {
-            if (!prevent_input_flag) command = command_factory->MakeRenderModelCommand();
+            if (!prevent_input_flag) command = command_factory->MakeRenderModelCommand(this->render_collisions_in_model_viewer);
           }
           if (ImGui::MenuItem(("Close Model Viewer"), "Ctrl+C"))
           {
             this->model_viewer_running = false;
             if (!prevent_input_flag) command = command_factory->MakeCloseModelViewerCommand();
           }
+          ImGui::Checkbox("Render Collisions", &this->render_collisions_in_model_viewer);
         }
         ImGui::EndMenu();
       }

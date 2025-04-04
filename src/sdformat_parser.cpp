@@ -807,7 +807,7 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::ParsePoseElement(sdf::ElementP
   return pose;
 }
 
-std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::PresetModelInfo>> SDFormatParser::GetModelsFromSDFTree()
+std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::PresetModelInfo>> SDFormatParser::GetModelsFromSDFTree(bool render_collisions)
 {
   std::vector<ModelViewerI::ModelInfo> models;
   std::vector<ModelViewerI::PresetModelInfo> presetModels;

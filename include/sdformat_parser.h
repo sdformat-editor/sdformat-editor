@@ -139,13 +139,10 @@ class SDFormatParser : public SDFormatParserI
     private: std::vector<double> ParseStringDoubleVector(const std::string& string_of_doubles, bool& success);
 
     /// \brief Implementation of interface method 
-    private: std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::PresetModelInfo>> GetModelsFromSDFTree() override;
+    private: std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::PresetModelInfo>> GetModelsFromSDFTree(bool render_collisions = false) override;
 
     /// \brief Store the file path of the sdf file
     private: std::string sdf_file_path;
-
-    /// \brief Boolean to toggle rendering collisions
-    private: bool render_collisions = false;
 };
 
 #endif

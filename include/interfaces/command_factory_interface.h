@@ -92,8 +92,9 @@ class CommandFactoryI
   public: virtual std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, bool new_value) = 0;
 
   /// \brief Create a render model command
+  /// \param[in] render_collisions_in_model_viewer indicates if collision boxes should be rendered in the model viewer
   /// \return Unique pointer to a command interface
-  public: virtual std::unique_ptr<CommandI> MakeRenderModelCommand() = 0;
+  public: virtual std::unique_ptr<CommandI> MakeRenderModelCommand(bool render_collisions_in_model_viewer) = 0;
 
   /// \brief Create a open model viewer model command
   /// \return Unique pointer to a command interface

@@ -35,7 +35,7 @@ class RenderModelCommand : public CommandI
   /// \brief Constructor for render model command objects.
   /// \param[in] model_viewer A pointer to the model viewer object
   /// \param[in] sdformat_parser A pointer to the SDFormat parser object
-  public: RenderModelCommand(std::shared_ptr<ModelViewerI> model_viewer, std::shared_ptr<SDFormatParserI> sdformat_parser);
+  public: RenderModelCommand(std::shared_ptr<ModelViewerI> model_viewer, std::shared_ptr<SDFormatParserI> sdformat_parser, bool render_collisions_in_model_viewer);
 
   /// \brief Implementation of interface method. 
   /// \returns True if model is successfully loaded in model viewer
@@ -72,6 +72,9 @@ class RenderModelCommand : public CommandI
 
   /// @brief Pointer to the SDFormat parser object
   private: std::shared_ptr<SDFormatParserI> sdformat_parser;
+
+  /// \brief Indicates if collisions should be rendered in the model viewer
+  private: bool render_collisions_in_model_viewer;
 
 };
 
