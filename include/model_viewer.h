@@ -72,6 +72,7 @@ class ModelViewer : public ModelViewerI
     private: bool should_quit = false;
 
     /// \brief Implementation of interface method
+    /// \param[in] model_info struct containing the model information
     public: void AddModel(ModelInfo model_info) override;
     public: void AddModel(PresetModelInfo model_info) override;
 
@@ -117,6 +118,7 @@ class ModelViewer : public ModelViewerI
     /// \brief queue to add models to model viewer
     private: std::queue<ModelInfo> add_model_queue;
 
+    /// \brief class for handling inputs to the model viewer
     private:
         class ModelViewerKeyHandler : public OgreBites::InputListener
         {
@@ -129,11 +131,14 @@ class ModelViewer : public ModelViewerI
             public: bool mousePressed(const OgreBites::MouseButtonEvent& evt) override;
             public: bool mouseReleased(const OgreBites::MouseButtonEvent& evt) override;
         };
-
+    
+    /// \brief instance of ModelViewerKeyHandler
     private: ModelViewerKeyHandler keyHandler;
 
+    /// @brief 
     private: unsigned long long unique_naming_counter = 0;
 
+    /// \brief list of random colours
     private: Ogre::ColourValue color_list[3] = {
         Ogre::ColourValue(3.3699f, 3.1256f, 0.633f),
         Ogre::ColourValue(0.549f, 3.1569f, 0.1569f),

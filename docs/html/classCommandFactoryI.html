@@ -105,6 +105,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a820f138ee5ab2900eb97039143e6cea6" id="r_a820f138ee5ab2900eb97039143e6cea6"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#a820f138ee5ab2900eb97039143e6cea6">MakeOpenFileCommand</a> (std::string file_path)=0</td></tr>
 <tr class="memdesc:a820f138ee5ab2900eb97039143e6cea6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an open file command.  <br /></td></tr>
 <tr class="separator:a820f138ee5ab2900eb97039143e6cea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1d99be6da3f38948bc8a68872a38390" id="r_ab1d99be6da3f38948bc8a68872a38390"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#ab1d99be6da3f38948bc8a68872a38390">MakeOpenDirectoryCommand</a> ()=0</td></tr>
+<tr class="memdesc:ab1d99be6da3f38948bc8a68872a38390"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an open directory command.  <br /></td></tr>
+<tr class="separator:ab1d99be6da3f38948bc8a68872a38390"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9688f96d9551acf9aa141a1a5873186" id="r_ac9688f96d9551acf9aa141a1a5873186"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#ac9688f96d9551acf9aa141a1a5873186">MakeDeleteElementCommand</a> (sdf::ElementPtr element_to_delete)=0</td></tr>
 <tr class="memdesc:ac9688f96d9551acf9aa141a1a5873186"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a delete element command.  <br /></td></tr>
 <tr class="separator:ac9688f96d9551acf9aa141a1a5873186"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,18 +126,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ada9f96393de008687bcad0b8ce05dd17" id="r_ada9f96393de008687bcad0b8ce05dd17"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#ada9f96393de008687bcad0b8ce05dd17">MakeModifyAttributeCommand</a> (sdf::ParamPtr attribute_to_modify, std::string new_value)=0</td></tr>
 <tr class="memdesc:ada9f96393de008687bcad0b8ce05dd17"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a modify attribute command  <br /></td></tr>
 <tr class="separator:ada9f96393de008687bcad0b8ce05dd17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab949dc2d61fb6de940315d6a73772908" id="r_ab949dc2d61fb6de940315d6a73772908"><td class="memItemLeft" align="right" valign="top"><a id="ab949dc2d61fb6de940315d6a73772908" name="ab949dc2d61fb6de940315d6a73772908"></a>
-virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>MakeModifyAttributeCommand</b> (sdf::ParamPtr attribute_to_modify, bool new_value)=0</td></tr>
+<tr class="memitem:ab949dc2d61fb6de940315d6a73772908" id="r_ab949dc2d61fb6de940315d6a73772908"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#ab949dc2d61fb6de940315d6a73772908">MakeModifyAttributeCommand</a> (sdf::ParamPtr attribute_to_modify, bool new_value)=0</td></tr>
 <tr class="separator:ab949dc2d61fb6de940315d6a73772908"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74b52abcab9f75f6350f52ae189a5353" id="r_a74b52abcab9f75f6350f52ae189a5353"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#a74b52abcab9f75f6350f52ae189a5353">MakeModifyElementCommand</a> (sdf::ElementPtr element_to_modify, std::string new_value)=0</td></tr>
 <tr class="memdesc:a74b52abcab9f75f6350f52ae189a5353"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a modify element command  <br /></td></tr>
 <tr class="separator:a74b52abcab9f75f6350f52ae189a5353"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97cd316cb0f482d0d56bfadfe358428c" id="r_a97cd316cb0f482d0d56bfadfe358428c"><td class="memItemLeft" align="right" valign="top"><a id="a97cd316cb0f482d0d56bfadfe358428c" name="a97cd316cb0f482d0d56bfadfe358428c"></a>
-virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>MakeModifyElementCommand</b> (sdf::ElementPtr element_to_modify, bool new_value)=0</td></tr>
+<tr class="memitem:a97cd316cb0f482d0d56bfadfe358428c" id="r_a97cd316cb0f482d0d56bfadfe358428c"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#a97cd316cb0f482d0d56bfadfe358428c">MakeModifyElementCommand</a> (sdf::ElementPtr element_to_modify, bool new_value)=0</td></tr>
 <tr class="separator:a97cd316cb0f482d0d56bfadfe358428c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d49322544f498ceeb60cce21e44e7ca" id="r_a1d49322544f498ceeb60cce21e44e7ca"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#a1d49322544f498ceeb60cce21e44e7ca">MakeDeleteAttributeCommand</a> (sdf::ParamPtr attribute_to_delete)=0</td></tr>
-<tr class="memdesc:a1d49322544f498ceeb60cce21e44e7ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a delete attribute command  <br /></td></tr>
-<tr class="separator:a1d49322544f498ceeb60cce21e44e7ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab06602f24304dc80aac8ddefaa4ac3c0" id="r_ab06602f24304dc80aac8ddefaa4ac3c0"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#ab06602f24304dc80aac8ddefaa4ac3c0">MakeRenderModelCommand</a> ()=0</td></tr>
+<tr class="memdesc:ab06602f24304dc80aac8ddefaa4ac3c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a render model command.  <br /></td></tr>
+<tr class="separator:ab06602f24304dc80aac8ddefaa4ac3c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02b9823f6bf6072d5cc88dc7638e228d" id="r_a02b9823f6bf6072d5cc88dc7638e228d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#a02b9823f6bf6072d5cc88dc7638e228d">PushToUndoCommandsStack</a> (std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt; command, const bool new_change=true)=0</td></tr>
 <tr class="memdesc:a02b9823f6bf6072d5cc88dc7638e228d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes to the undo commands stack.  <br /></td></tr>
 <tr class="separator:a02b9823f6bf6072d5cc88dc7638e228d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,9 +148,9 @@ virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:aa9795d9e3c14eaf8158acc9e850dfc59" id="r_aa9795d9e3c14eaf8158acc9e850dfc59"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#aa9795d9e3c14eaf8158acc9e850dfc59">Initialize</a> (std::shared_ptr&lt; <a class="el" href="classGUII.html">GUII</a> &gt; gui, std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParserI</a> &gt; sdformatParser)=0</td></tr>
-<tr class="memdesc:aa9795d9e3c14eaf8158acc9e850dfc59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization of the Command Factory. Should be wrapped in the constructor of the implementation.  <br /></td></tr>
-<tr class="separator:aa9795d9e3c14eaf8158acc9e850dfc59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56729b6155827402747d30f96f305709" id="r_a56729b6155827402747d30f96f305709"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandFactoryI.html#a56729b6155827402747d30f96f305709">Initialize</a> (std::shared_ptr&lt; <a class="el" href="classGUII.html">GUII</a> &gt; gui, std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParserI</a> &gt; sdformatParser, std::shared_ptr&lt; <a class="el" href="classModelViewerI.html">ModelViewerI</a> &gt; model_viewer)=0</td></tr>
+<tr class="memdesc:a56729b6155827402747d30f96f305709"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization of the Command Factory. Should be wrapped in the constructor of the implementation.  <br /></td></tr>
+<tr class="separator:a56729b6155827402747d30f96f305709"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for the SDFormat Editor's Command Factory. </p>
@@ -183,8 +184,8 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa9795d9e3c14eaf8158acc9e850dfc59" name="aa9795d9e3c14eaf8158acc9e850dfc59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9795d9e3c14eaf8158acc9e850dfc59">&#9670;&#160;</a></span>Initialize()</h2>
+<a id="a56729b6155827402747d30f96f305709" name="a56729b6155827402747d30f96f305709"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56729b6155827402747d30f96f305709">&#9670;&#160;</a></span>Initialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -202,7 +203,13 @@ Private Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParserI</a> &gt;&#160;</td>
-          <td class="paramname"><em>sdformatParser</em>&#160;</td>
+          <td class="paramname"><em>sdformatParser</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classModelViewerI.html">ModelViewerI</a> &gt;&#160;</td>
+          <td class="paramname"><em>model_viewer</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -222,11 +229,12 @@ Private Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">gui</td><td>A pointer to the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> element </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">sdformat_parser</td><td>A pointer to the sdformat parser object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">model_viewer</td><td>A pointer to the model viewer object </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classCommandFactory.html#aacc5fd8c5575d203451203c1209f2948">CommandFactory</a>.</p>
+<p>Implemented in <a class="el" href="classCommandFactory.html#a7ec90a5b5ef3a522488b24c5ef3269f6">CommandFactory</a>.</p>
 
 </div>
 </div>
@@ -267,45 +275,14 @@ Private Member Functions</h2></td></tr>
 <p>Create an add element command. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">parent_element</td><td>The SDF element to delete </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">new_element</td><td>The SDF element to delete </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">parent_element</td><td>The parent of the new SDF element </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">new_element</td><td>The new SDF element </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Unique pointer to a command interface </dd></dl>
 
 <p>Implemented in <a class="el" href="classCommandFactory.html#ac85c323b84dca7565057f9d007286d36">CommandFactory</a>.</p>
-
-</div>
-</div>
-<a id="a1d49322544f498ceeb60cce21e44e7ca" name="a1d49322544f498ceeb60cce21e44e7ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d49322544f498ceeb60cce21e44e7ca">&#9670;&#160;</a></span>MakeDeleteAttributeCommand()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt; CommandFactoryI::MakeDeleteAttributeCommand </td>
-          <td>(</td>
-          <td class="paramtype">sdf::ParamPtr&#160;</td>
-          <td class="paramname"><em>attribute_to_delete</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>create a delete attribute command </p>
-<dl class="section return"><dt>Returns</dt><dd>a unique pointer to the commmand interface </dd></dl>
-
-<p>Implemented in <a class="el" href="classCommandFactory.html#aba997faf747212017a6dbc6dbaca7ad8">CommandFactory</a>.</p>
 
 </div>
 </div>
@@ -346,8 +323,46 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ab949dc2d61fb6de940315d6a73772908" name="ab949dc2d61fb6de940315d6a73772908"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab949dc2d61fb6de940315d6a73772908">&#9670;&#160;</a></span>MakeModifyAttributeCommand() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt; CommandFactoryI::MakeModifyAttributeCommand </td>
+          <td>(</td>
+          <td class="paramtype">sdf::ParamPtr&#160;</td>
+          <td class="paramname"><em>attribute_to_modify</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>new_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classCommandFactory.html#a5d8cf719dc2f69ad18fbd731d7a0c283">CommandFactory</a>.</p>
+
+</div>
+</div>
 <a id="ada9f96393de008687bcad0b8ce05dd17" name="ada9f96393de008687bcad0b8ce05dd17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada9f96393de008687bcad0b8ce05dd17">&#9670;&#160;</a></span>MakeModifyAttributeCommand()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ada9f96393de008687bcad0b8ce05dd17">&#9670;&#160;</a></span>MakeModifyAttributeCommand() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -381,14 +396,59 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>create a modify attribute command </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">attribute_to_modify</td><td>Pointer to the attribute to modify </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">new_value</td><td>The value that will be given to the element </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>a unique pointer to the commmand interface </dd></dl>
 
 <p>Implemented in <a class="el" href="classCommandFactory.html#ac9008bbd79e920391da4b542128c32e1">CommandFactory</a>.</p>
 
 </div>
 </div>
+<a id="a97cd316cb0f482d0d56bfadfe358428c" name="a97cd316cb0f482d0d56bfadfe358428c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97cd316cb0f482d0d56bfadfe358428c">&#9670;&#160;</a></span>MakeModifyElementCommand() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt; CommandFactoryI::MakeModifyElementCommand </td>
+          <td>(</td>
+          <td class="paramtype">sdf::ElementPtr&#160;</td>
+          <td class="paramname"><em>element_to_modify</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>new_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classCommandFactory.html#a64d63851d3c07658e0c80aa227392416">CommandFactory</a>.</p>
+
+</div>
+</div>
 <a id="a74b52abcab9f75f6350f52ae189a5353" name="a74b52abcab9f75f6350f52ae189a5353"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a74b52abcab9f75f6350f52ae189a5353">&#9670;&#160;</a></span>MakeModifyElementCommand()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a74b52abcab9f75f6350f52ae189a5353">&#9670;&#160;</a></span>MakeModifyElementCommand() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -423,8 +483,46 @@ Private Member Functions</h2></td></tr>
 
 <p>create a modify element command </p>
 <dl class="section return"><dt>Returns</dt><dd>a unique pointer to the commmand interface </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">element_to_modify</td><td>Pointer to the element to modify </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">new_value</td><td>The value that will be given to the element </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="classCommandFactory.html#a21e97bad47e283c966451340d4e2b570">CommandFactory</a>.</p>
+
+</div>
+</div>
+<a id="ab1d99be6da3f38948bc8a68872a38390" name="ab1d99be6da3f38948bc8a68872a38390"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1d99be6da3f38948bc8a68872a38390">&#9670;&#160;</a></span>MakeOpenDirectoryCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt; CommandFactoryI::MakeOpenDirectoryCommand </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create an open directory command. </p>
+<dl class="section return"><dt>Returns</dt><dd>Unique pointer to a command interface <br  />
+ </dd></dl>
+
+<p>Implemented in <a class="el" href="classCommandFactory.html#a6a4b6be29b5291deb216a30887ce7135">CommandFactory</a>.</p>
 
 </div>
 </div>
@@ -453,6 +551,12 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Create an open file command. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">file_path</td><td>Filepath of the model </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>Unique pointer to a command interface <br  />
  </dd></dl>
 
@@ -490,6 +594,36 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ab06602f24304dc80aac8ddefaa4ac3c0" name="ab06602f24304dc80aac8ddefaa4ac3c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab06602f24304dc80aac8ddefaa4ac3c0">&#9670;&#160;</a></span>MakeRenderModelCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::unique_ptr&lt; <a class="el" href="classCommandI.html">CommandI</a> &gt; CommandFactoryI::MakeRenderModelCommand </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create a render model command. </p>
+<dl class="section return"><dt>Returns</dt><dd>Unique pointer to a command interface </dd></dl>
+
+<p>Implemented in <a class="el" href="classCommandFactory.html#a56acdd51bf61f10d1b3f7d8dd2df7f2d">CommandFactory</a>.</p>
+
+</div>
+</div>
 <a id="a7471998dae22305a28ccf44f38b8975d" name="a7471998dae22305a28ccf44f38b8975d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7471998dae22305a28ccf44f38b8975d">&#9670;&#160;</a></span>MakeSaveFileCommand()</h2>
 
@@ -516,7 +650,7 @@ Private Member Functions</h2></td></tr>
 <p>Create a save file command. </p>
 <dl class="section return"><dt>Returns</dt><dd>Unique pointer to a command interface </dd></dl>
 
-<p>Implemented in <a class="el" href="classCommandFactory.html#a78d5a75442860ab72c8439772e1ea8e4">CommandFactory</a>.</p>
+<p>Implemented in <a class="el" href="classCommandFactory.html#a36118f42eee60f33e8e8f7aff8564439">CommandFactory</a>.</p>
 
 </div>
 </div>

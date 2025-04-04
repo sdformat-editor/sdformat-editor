@@ -11,8 +11,7 @@ Implementation of \doxylink{classGUII}{GUII}.
 
 
 
-Inheritance diagram for GUI\+:
-\nopagebreak
+Inheritance diagram for GUI\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Inheritance diagram for GUI\+:
 \end{figure}
 
 
-Collaboration diagram for GUI\+:
-\nopagebreak
+Collaboration diagram for GUI\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -131,6 +129,8 @@ Constructor that wraps the Initialize method.
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em window\+\_\+name} & The name to be given to the SDFormat\+Editor Window \\
 \hline
+\mbox{\texttt{ in}}  & {\em sdformat\+\_\+parser} & A pointer to the sdformat parser object \\
+\hline
 \mbox{\texttt{ out}}  & {\em success} & true if window initalization is successful \\
 \hline
 \end{DoxyParams}
@@ -172,6 +172,8 @@ Create a dropdown list.
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em items} & A vector of strings to include in the dropdown \\
+\hline
+\mbox{\texttt{ in}}  & {\em item\+\_\+descriptions} & A vector of strings for the descriptions of each item \\
 \hline
 \mbox{\texttt{ out}}  & {\em selected\+\_\+item} & an integer representing the selected item \\
 \hline
@@ -239,6 +241,8 @@ Function to display the SDF root element in the \doxylink{classGUI}{GUI} in a tr
 \hline
 \mbox{\texttt{ in}}  & {\em sdformat\+\_\+parser} & an \doxylink{classSDFormatParserI}{SDFormat\+ParserI} instance containing an sdf element \\
 \hline
+\mbox{\texttt{ in}}  & {\em command\+\_\+factory} & used for creating command objects \\
+\hline
 \end{DoxyParams}
 \Hypertarget{classGUI_a1b5b6b76c93d2f1505f08dd048a2ca9b}\label{classGUI_a1b5b6b76c93d2f1505f08dd048a2ca9b} 
 \index{GUI@{GUI}!DrawCoreFrame@{DrawCoreFrame}}
@@ -288,6 +292,15 @@ Function for handling GLFW Error (required to be static by GLFW) NOTE\+: (zaid) 
 
 Implementation of interface method, wrapped by constructor. 
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em window\+\_\+name} & The name to be given to the SDFormat\+Editor Window \\
+\hline
+\mbox{\texttt{ in}}  & {\em sdformat\+\_\+parser} & A pointer to the sdformat parser object \\
+\hline
+\mbox{\texttt{ out}}  & {\em success} & true if window initalization is successful \\
+\hline
+\end{DoxyParams}
 
 
 Implements \mbox{\hyperlink{classGUII_a235dc88af7208ecae673c042103b10c9}{GUII}}.

@@ -31,6 +31,7 @@
 /// \brief Interface for the SDFormat Editor's 3D Model Vewer 
 class ModelViewerI
 {
+    /// \brief Struct representing information of a model's visual information
     public: typedef struct {
         std::string model_absolute_path;
         
@@ -52,6 +53,7 @@ class ModelViewerI
         SPHERE
     };
 
+    /// \brief Struct representing information of a model's visual information for pre-defined shapes
     public: typedef struct {
         PresetType preset_type;
         
@@ -66,9 +68,6 @@ class ModelViewerI
 
         float opacity = 1.0f;
     } PresetModelInfo;
-
-
-
 
     /// \callgraph
     /// \brief Initialization of the Model Viewer. 

@@ -44,6 +44,7 @@ class CommandFactoryI
                                     std::shared_ptr<ModelViewerI> model_viewer) = 0;
 
   /// \brief Create an open file command
+  /// \param[in] file_path Filepath of the model
   /// \return Unique pointer to a command interface 
   public: virtual std::unique_ptr<CommandI> MakeOpenFileCommand(std::string file_path) = 0;
 
@@ -77,12 +78,16 @@ class CommandFactoryI
   public: virtual std::unique_ptr<CommandI> MakeSaveFileCommand() = 0;
 
   /// \brief create a modify attribute command
+  /// \param[in] attribute_to_modify Pointer to the attribute to modify
+  /// \param[in] new_value The value that will be given to the element
   /// \return a unique pointer to the commmand interface
   public: virtual std::unique_ptr<CommandI> MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, std::string new_value) = 0;
   public: virtual std::unique_ptr<CommandI> MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, bool new_value) = 0;
 
   /// \brief create a modify element command
   /// \return a unique pointer to the commmand interface
+  /// \param[in] element_to_modify Pointer to the element to modify
+  /// \param[in] new_value The value that will be given to the element
   public: virtual std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, std::string new_value) = 0;
   public: virtual std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, bool new_value) = 0;
 

@@ -115,8 +115,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a9a5b36f28e49f669d0bd8685253be72e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the main sdfElement associated this this <a class="el" href="classSDFormatParser.html" title="Implementation of SDFormatParserI.">SDFormatParser</a> instance.  <br /></td></tr>
 <tr class="separator:a9a5b36f28e49f669d0bd8685253be72e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f864b23d097b41660a1291ca5de9999" id="r_a5f864b23d097b41660a1291ca5de9999"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; sdf::ElementPtr &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a5f864b23d097b41660a1291ca5de9999">LookupElementsByAttributeType</a> (const std::string &amp;attribute_type)=0</td></tr>
-<tr class="memdesc:a5f864b23d097b41660a1291ca5de9999"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a list of elements which a given attribute type.  <br /></td></tr>
+<tr class="memdesc:a5f864b23d097b41660a1291ca5de9999"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a list of elements which have an attribute of the given attribute type.  <br /></td></tr>
 <tr class="separator:a5f864b23d097b41660a1291ca5de9999"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a06d82c847747cd6914d4fee1d32aac" id="r_a8a06d82c847747cd6914d4fee1d32aac"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; sdf::ElementPtr &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a8a06d82c847747cd6914d4fee1d32aac">LookupElementsByAttributeTypeAndValue</a> (const std::string &amp;attribute_type, const std::string &amp;attribute_value)=0</td></tr>
+<tr class="memdesc:a8a06d82c847747cd6914d4fee1d32aac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a list of elements which have an attribute of the given attribute type and the given attribute value.  <br /></td></tr>
+<tr class="separator:a8a06d82c847747cd6914d4fee1d32aac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae84b01a81a2c366630a530c40ad8c75c" id="r_ae84b01a81a2c366630a530c40ad8c75c"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; sdf::ElementPtr &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#ae84b01a81a2c366630a530c40ad8c75c">LookupElementsByType</a> (const std::string &amp;type)=0</td></tr>
+<tr class="memdesc:ae84b01a81a2c366630a530c40ad8c75c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a list of elements which are of a given type.  <br /></td></tr>
+<tr class="separator:ae84b01a81a2c366630a530c40ad8c75c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac72fb1714f0918b0f7fc964bf8fb9a10" id="r_ac72fb1714f0918b0f7fc964bf8fb9a10"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structSDFormatParserI_1_1Mentions.html">Mentions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#ac72fb1714f0918b0f7fc964bf8fb9a10">FindMentions</a> (std::string key)=0</td></tr>
 <tr class="memdesc:ac72fb1714f0918b0f7fc964bf8fb9a10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the locations of potential references to the element to delete.  <br /></td></tr>
 <tr class="separator:ac72fb1714f0918b0f7fc964bf8fb9a10"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,6 +138,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a203d76c76addc968d746bc75b747c399" id="r_a203d76c76addc968d746bc75b747c399"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a203d76c76addc968d746bc75b747c399">GetSDFTreePathToElement</a> (sdf::ElementPtr element)=0</td></tr>
 <tr class="memdesc:a203d76c76addc968d746bc75b747c399"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the tree path to this element.  <br /></td></tr>
 <tr class="separator:a203d76c76addc968d746bc75b747c399"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5a2f9891457766afc4ee83ae83da073" id="r_ab5a2f9891457766afc4ee83ae83da073"><td class="memItemLeft" align="right" valign="top">virtual std::pair&lt; std::vector&lt; <a class="el" href="structModelViewerI_1_1ModelInfo.html">ModelViewerI::ModelInfo</a> &gt;, std::vector&lt; <a class="el" href="structModelViewerI_1_1PresetModelInfo.html">ModelViewerI::PresetModelInfo</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#ab5a2f9891457766afc4ee83ae83da073">GetModelsFromSDFTree</a> ()=0</td></tr>
+<tr class="memdesc:ab5a2f9891457766afc4ee83ae83da073"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all models in the sdf tree.  <br /></td></tr>
+<tr class="separator:ab5a2f9891457766afc4ee83ae83da073"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for the SDFormat Editor's Parser. </p>
@@ -324,6 +333,36 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ab5a2f9891457766afc4ee83ae83da073" name="ab5a2f9891457766afc4ee83ae83da073"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5a2f9891457766afc4ee83ae83da073">&#9670;&#160;</a></span>GetModelsFromSDFTree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::pair&lt; std::vector&lt; <a class="el" href="structModelViewerI_1_1ModelInfo.html">ModelViewerI::ModelInfo</a> &gt;, std::vector&lt; <a class="el" href="structModelViewerI_1_1PresetModelInfo.html">ModelViewerI::PresetModelInfo</a> &gt; &gt; SDFormatParserI::GetModelsFromSDFTree </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get all models in the sdf tree. </p>
+<dl class="section return"><dt>Returns</dt><dd>NOTE: (Zaid) idk what the return type will be right now, but it will be a vector of something that stores information about models. </dd></dl>
+
+<p>Implemented in <a class="el" href="classSDFormatParser.html#a5dfbb6cfca78f371488cabb6c7ef9b9a">SDFormatParser</a>.</p>
+
+</div>
+</div>
 <a id="a9a5b36f28e49f669d0bd8685253be72e" name="a9a5b36f28e49f669d0bd8685253be72e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9a5b36f28e49f669d0bd8685253be72e">&#9670;&#160;</a></span>GetSDFElement()</h2>
 
@@ -462,7 +501,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Provides a list of elements which a given attribute type. </p>
+<p>Provides a list of elements which have an attribute of the given attribute type. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">attribute_type</td><td>The attribute type to use for lookup </td></tr>
@@ -472,6 +511,91 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>A list of elements with a given attribute type </dd></dl>
 
 <p>Implemented in <a class="el" href="classSDFormatParser.html#a1b5ec820ea299c0a10c92f6e694febba">SDFormatParser</a>.</p>
+
+</div>
+</div>
+<a id="a8a06d82c847747cd6914d4fee1d32aac" name="a8a06d82c847747cd6914d4fee1d32aac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a06d82c847747cd6914d4fee1d32aac">&#9670;&#160;</a></span>LookupElementsByAttributeTypeAndValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::vector&lt; sdf::ElementPtr &gt; SDFormatParserI::LookupElementsByAttributeTypeAndValue </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>attribute_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>attribute_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Provides a list of elements which have an attribute of the given attribute type and the given attribute value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">attribute_type</td><td>The attribute type to use for lookup </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">attribute_value</td><td>The attribute type to use for lookup </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A list of elements with the given attribute type and the given attribute value </dd></dl>
+
+<p>Implemented in <a class="el" href="classSDFormatParser.html#abbe60b1d2fc33b87871dc488bb17a2a6">SDFormatParser</a>.</p>
+
+</div>
+</div>
+<a id="ae84b01a81a2c366630a530c40ad8c75c" name="ae84b01a81a2c366630a530c40ad8c75c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae84b01a81a2c366630a530c40ad8c75c">&#9670;&#160;</a></span>LookupElementsByType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::vector&lt; sdf::ElementPtr &gt; SDFormatParserI::LookupElementsByType </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Provides a list of elements which are of a given type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>The type by which to lookup elements </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A list of elements with a given attribute type </dd></dl>
+
+<p>Implemented in <a class="el" href="classSDFormatParser.html#a92b9474a2f06ab588e8aa4201e963578">SDFormatParser</a>.</p>
 
 </div>
 </div>

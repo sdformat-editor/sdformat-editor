@@ -26,17 +26,104 @@
 \DoxyCodeLine{00022\ }
 \DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <interfaces/model\_viewer\_interface.h>}}
 \DoxyCodeLine{00024\ }
-\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classModelViewer}{ModelViewer}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classModelViewerI}{ModelViewerI}}}
-\DoxyCodeLine{00027\ \{}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{public}:\ \mbox{\hyperlink{classModelViewer_aa7f40294e0d575b5673576f72e480bda}{\string~ModelViewer}}();}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewer_ab4431564b45537fb462c289ebd4a6083}{Initialize}}(\textcolor{keyword}{const}\ std::vector<std::string>\ \&cad\_files,\ \textcolor{keywordtype}{bool}\ \&success)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewer_a70b591bc5b9a97ba8f3054b346329e0c}{Update}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ Ogre\ dependencies}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}Ogre.h"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}OgreApplicationContext.h"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}OgreInput.h"{}}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}OgreRTShaderSystem.h"{}}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ "{}OgreWindowEventUtilities.h"{}}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}OgreAssimpLoader.h"{}}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}OgreCameraMan.h"{}}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ GLM}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <glm/gtc/quaternion.hpp>}}
 \DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \};}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classModelViewer}{ModelViewer}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classModelViewerI}{ModelViewerI}}}
+\DoxyCodeLine{00046\ \{}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{public}:\ \mbox{\hyperlink{classModelViewer_af2030418dda408c44d24a399b3b70aed}{ModelViewer}}()\ :\ \mbox{\hyperlink{classModelViewer_af9b29c36b3a77cc8f10e104c6d9c5c6d}{ctx}}(\textcolor{stringliteral}{"{}SDFormat\ Editor\ Model\ Viewer"{}})\ \textcolor{comment}{//\ Initialize\ ctx\ here}}
+\DoxyCodeLine{00050\ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewer_acd52edb619831370a5d2af34a125fa87}{Initialize}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewer_a62aab1ba5d9b8fe2999a2a4afc0ca2bd}{RenderFrame}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewer_acc426bf890f6ba957fd15589fb3c26b1}{Quit}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModelViewer_a7cec8c6e3b729811538137102621eea5}{IsRunning}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{private}:\ std::mutex\ \mbox{\hyperlink{classModelViewer_a7be426a13067e203357ca88708d5bf32}{model\_viewer\_mutex}};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModelViewer_a887381909ce7ba00890bba00ef840180}{should\_quit}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewer_ac1cb8b80a5d4b91449cd62fc9c033073}{AddModel}}(\mbox{\hyperlink{structModelViewerI_1_1ModelInfo}{ModelInfo}}\ model\_info)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewer_ac1cb8b80a5d4b91449cd62fc9c033073}{AddModel}}(\mbox{\hyperlink{structModelViewerI_1_1PresetModelInfo}{PresetModelInfo}}\ model\_info)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewer_ae3676b28106f80d71523256697001509}{ResetModels}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewer_a8f0a6daa9ba2df15fc9f49118e3c54d5}{HandleAddModelQueue}}();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewer_a4623b661e6e3fcf45fbb1ced2f7a6da4}{HandleResetModelsFlag}}();}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{private}:\ OgreBites::ApplicationContext\ \mbox{\hyperlink{classModelViewer_af9b29c36b3a77cc8f10e104c6d9c5c6d}{ctx}};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{private}:\ Ogre::Root*\ \mbox{\hyperlink{classModelViewer_a6b78542c089e4f543a9d72f3a331852e}{ogreRoot}};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{private}:\ Ogre::SceneManager*\ \mbox{\hyperlink{classModelViewer_ad8c341e8b2f894ce07a8f7638d6035db}{scnMgr}};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{private}:\ Ogre::RTShader::ShaderGenerator\ *\mbox{\hyperlink{classModelViewer_ae72e8894d545cb0016ea29e6c643dbc5}{shadergen}};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{private}:\ Ogre::Light\ *\mbox{\hyperlink{classModelViewer_ae20d248d30cae20caab2679d4952c0ae}{sceneLight}};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{private}:\ Ogre::SceneNode\ *\mbox{\hyperlink{classModelViewer_a75effc643f5c108e696953c25920ca86}{sceneLightNode}};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{private}:\ Ogre::Camera\ *\mbox{\hyperlink{classModelViewer_a432c69dd729558890503eec0811c0143}{sceneCamera}};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{private}:\ Ogre::SceneNode*\ \mbox{\hyperlink{classModelViewer_a0e99d4c08f42737ac7e194b2c6e36831}{sceneCameraNode}};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{private}:\ OgreBites::CameraMan*\ \mbox{\hyperlink{classModelViewer_a6b76f852d788bbd99ee33c3a0879c305}{cameraController}};}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keyword}{private}:\ Ogre::TexturePtr\ \mbox{\hyperlink{classModelViewer_ab9370ab2931c2271585e71d007974837}{renderTexturePointer}};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{private}:\ std::queue<ModelInfo>\ \mbox{\hyperlink{classModelViewer_af41928ef5b1c5bbda014f9d13559daeb}{add\_model\_queue}};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classModelViewer_1_1ModelViewerKeyHandler}{ModelViewerKeyHandler}}\ :\ \textcolor{keyword}{public}\ OgreBites::InputListener}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:\ \mbox{\hyperlink{classModelViewer}{ModelViewer}}\ *m;}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:\textcolor{keywordtype}{void}\ addModelViewerContext(\mbox{\hyperlink{classModelViewer}{ModelViewer}}\ *m);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ most\ of\ these\ are\ just\ to\ call\ the\ methods\ of\ CameraMan}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keywordtype}{bool}\ keyPressed(\textcolor{keyword}{const}\ OgreBites::KeyboardEvent\ \&evt)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keywordtype}{bool}\ mouseWheelRolled(\textcolor{keyword}{const}\ OgreBites::MouseWheelEvent\ \&evt)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keywordtype}{bool}\ mouseMoved(\textcolor{keyword}{const}\ OgreBites::MouseMotionEvent\&\ evt)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keywordtype}{bool}\ mousePressed(\textcolor{keyword}{const}\ OgreBites::MouseButtonEvent\&\ evt)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keywordtype}{bool}\ mouseReleased(\textcolor{keyword}{const}\ OgreBites::MouseButtonEvent\&\ evt)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00134\ \ \ \ \ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keyword}{private}:\ \mbox{\hyperlink{classModelViewer_1_1ModelViewerKeyHandler}{ModelViewerKeyHandler}}\ \mbox{\hyperlink{classModelViewer_a275903d2d24d27d99fc7fa0f0406c910}{keyHandler}};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ unique\_naming\_counter\ =\ 0;}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{private}:\ Ogre::ColourValue\ \mbox{\hyperlink{classModelViewer_a8daa83ba1e9358e9b297ab076f4c5115}{color\_list}}[3]\ =\ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ Ogre::ColourValue(3.3699f,\ 3.1256f,\ 0.633f),}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ Ogre::ColourValue(0.549f,\ 3.1569f,\ 0.1569f),}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ Ogre::ColourValue(4.1325f,\ 1.1339f,\ 0.234f),}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ogre::ColourValue(),}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ogre::ColourValue()}}
+\DoxyCodeLine{00148\ \ \ \ \ \};}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ color\_list\_index\ =\ 0;}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keyword}{private}:\ std::atomic<bool>\ \mbox{\hyperlink{classModelViewer_a5fba280cd482efd89cb232f6646005f4}{reset\_models\_flag}};}
+\DoxyCodeLine{00153\ \};}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

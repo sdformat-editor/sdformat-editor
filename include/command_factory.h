@@ -49,10 +49,14 @@ class CommandFactory : public CommandFactoryI
                             std::shared_ptr<ModelViewerI> model_viewer);
 
     /// \brief Implementation of interface method, wrapped by constructor
+    /// \param[in] gui A pointer to the GUI object
+    /// \param[in] sdformat_parser A pointer to the sdformat parser object
+    /// \param[in] model_viewer A pointer to the model viewer object
     private: void Initialize(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, 
                               std::shared_ptr<ModelViewerI> model_viewer);
 
-    /// \brief Implementation of interface method
+    /// \brief Implementation of interface method\
+    /// \param[in] file_path Filepath of the model
     /// \return Unique pointer to a command interface 
     private: std::unique_ptr<CommandI> MakeOpenFileCommand(std::string file_path) override;
 

@@ -78,7 +78,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Open model command implementation of <a class="el" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor...">CommandI</a>.  
+<p>Modify Attribute command implementation of <a class="el" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor...">CommandI</a>.  
  <a href="classModifyAttributeCommand.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="ModifyAttributeCommand_8h_source.html">ModifyAttributeCommand.h</a>&gt;</code></p>
@@ -106,7 +106,7 @@ Collaboration diagram for ModifyAttributeCommand&lt; T &gt;:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a41c1bbcf1427037a89a5eeeb362dc438" id="r_a41c1bbcf1427037a89a5eeeb362dc438"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyAttributeCommand.html#a41c1bbcf1427037a89a5eeeb362dc438">ModifyAttributeCommand</a> (std::shared_ptr&lt; <a class="el" href="classGUII.html">GUII</a> &gt; <a class="el" href="classModifyAttributeCommand.html#acd527e444966ce7b2c1c099baa2ba493">gui</a>, std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParserI</a> &gt; <a class="el" href="classModifyAttributeCommand.html#a420d3cfba592f6b1ee1d593edd3507aa">sdformatParser</a>, sdf::ParamPtr <a class="el" href="classModifyAttributeCommand.html#ae9bee2202299344deaa3c5ad526fddf3">attribute_to_modify</a>, T <a class="el" href="classModifyAttributeCommand.html#a2acd06a47c471239981ccd812947c284">new_value</a>)</td></tr>
-<tr class="memdesc:a41c1bbcf1427037a89a5eeeb362dc438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for open model command objects.  <br /></td></tr>
+<tr class="memdesc:a41c1bbcf1427037a89a5eeeb362dc438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for modify attribute command objects.  <br /></td></tr>
 <tr class="separator:a41c1bbcf1427037a89a5eeeb362dc438"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
@@ -153,11 +153,11 @@ sdf::ParamPtr&#160;</td><td class="memItemRight" valign="bottom"><b>attribute_to
 <tr class="separator:ae9bee2202299344deaa3c5ad526fddf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2acd06a47c471239981ccd812947c284" id="r_a2acd06a47c471239981ccd812947c284"><td class="memItemLeft" align="right" valign="top"><a id="a2acd06a47c471239981ccd812947c284" name="a2acd06a47c471239981ccd812947c284"></a>
 T&#160;</td><td class="memItemRight" valign="bottom"><b>new_value</b></td></tr>
-<tr class="memdesc:a2acd06a47c471239981ccd812947c284"><td class="mdescLeft">&#160;</td><td class="mdescRight">new value for string <br /></td></tr>
+<tr class="memdesc:a2acd06a47c471239981ccd812947c284"><td class="mdescLeft">&#160;</td><td class="mdescRight">The value that will be given to the element. <br /></td></tr>
 <tr class="separator:a2acd06a47c471239981ccd812947c284"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a104521063bc6d93cf0a190e42a033698" id="r_a104521063bc6d93cf0a190e42a033698"><td class="memItemLeft" align="right" valign="top"><a id="a104521063bc6d93cf0a190e42a033698" name="a104521063bc6d93cf0a190e42a033698"></a>
 T&#160;</td><td class="memItemRight" valign="bottom"><b>old_value</b></td></tr>
-<tr class="memdesc:a104521063bc6d93cf0a190e42a033698"><td class="mdescLeft">&#160;</td><td class="mdescRight">old value for string <br /></td></tr>
+<tr class="memdesc:a104521063bc6d93cf0a190e42a033698"><td class="mdescLeft">&#160;</td><td class="mdescRight">The value that will be overridden in the attribute. <br /></td></tr>
 <tr class="separator:a104521063bc6d93cf0a190e42a033698"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af61c52dfed1eb2ecad9d064c1fb5a5d0" id="r_af61c52dfed1eb2ecad9d064c1fb5a5d0"><td class="memItemLeft" align="right" valign="top"><a id="af61c52dfed1eb2ecad9d064c1fb5a5d0" name="af61c52dfed1eb2ecad9d064c1fb5a5d0"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_undoable</b> = true</td></tr>
@@ -170,7 +170,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_redoable
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
-class ModifyAttributeCommand&lt; T &gt;</div><p>Open model command implementation of <a class="el" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor...">CommandI</a>. </p>
+class ModifyAttributeCommand&lt; T &gt;</div><p>Modify Attribute command implementation of <a class="el" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor...">CommandI</a>. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a41c1bbcf1427037a89a5eeeb362dc438" name="a41c1bbcf1427037a89a5eeeb362dc438"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a41c1bbcf1427037a89a5eeeb362dc438">&#9670;&#160;</a></span>ModifyAttributeCommand()</h2>
@@ -212,11 +212,13 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Constructor for open model command objects. </p>
+<p>Constructor for modify attribute command objects. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">gui</td><td>Pointer to the <a class="el" href="classGUII.html" title="Interface for the SDFormat Editor&#39;s Graphical User Interface Note that this class also inherits from ...">GUII</a> object </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">sdformatParser</td><td>Pointer to the <a class="el" href="classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser.">SDFormatParserI</a> object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">attribute_to_modify</td><td>Pointer to the attribute to modify </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">new_value</td><td>The new value with which to modify the element </td></tr>
   </table>
   </dd>
 </dl>

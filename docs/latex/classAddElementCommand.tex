@@ -2,7 +2,7 @@
 \hypertarget{classAddElementCommand}{}\label{classAddElementCommand}\index{AddElementCommand@{AddElementCommand}}
 
 
-Open model command implementation of \doxylink{classCommandI}{CommandI}.  
+Add Element command implementation of \doxylink{classCommandI}{CommandI}.  
 
 
 
@@ -33,7 +33,7 @@ Collaboration diagram for Add\+Element\+Command\+:
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classAddElementCommand_a61d8775c6af3055cf183522b2281bb52}{Add\+Element\+Command}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ \mbox{\hyperlink{classAddElementCommand_a5daefdd75e0170a76c348c9b7d979e1b}{gui}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classAddElementCommand_a149431ce2278122cace61255e04cdd0d}{sdformat\+Parser}}, sdf\+::\+Element\+Ptr \mbox{\hyperlink{classAddElementCommand_afe0cf423818c5f9ca83a72c9cdbbd7ab}{parent\+\_\+element}}, sdf\+::\+Element\+Ptr \mbox{\hyperlink{classAddElementCommand_ad21d720d48430e696f5b72ebba4adad4}{new\+\_\+element}})
-\begin{DoxyCompactList}\small\item\em Constructor for open model command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Constructor for add element command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -78,7 +78,7 @@ bool {\bfseries is\+\_\+currently\+\_\+redoable} = false
 
 
 \doxysubsection{Detailed Description}
-Open model command implementation of \doxylink{classCommandI}{CommandI}. 
+Add Element command implementation of \doxylink{classCommandI}{CommandI}. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classAddElementCommand_a61d8775c6af3055cf183522b2281bb52}\label{classAddElementCommand_a61d8775c6af3055cf183522b2281bb52} 
@@ -89,7 +89,7 @@ Open model command implementation of \doxylink{classCommandI}{CommandI}.
 
 
 
-Constructor for open model command objects. 
+Constructor for add element command objects. 
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -133,7 +133,7 @@ Implements \mbox{\hyperlink{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}{Com
 Implementation of interface method. 
 
 \begin{DoxyReturn}{Returns}
-Always true. Removes the element to delete from it\textquotesingle{}s parent 
+Always true. Adds a new element to specified parent 
 \end{DoxyReturn}
 
 
@@ -150,7 +150,7 @@ Implements \mbox{\hyperlink{classCommandI_ad0107a73ebccd619860597db7bad2cce}{Com
 Implementation of interface method. 
 
 \begin{DoxyReturn}{Returns}
-Returns true if the element to delete was removed from its parent again 
+Returns true if the added element was restored to its parent again 
 \end{DoxyReturn}
 
 
@@ -167,7 +167,7 @@ Implements \mbox{\hyperlink{classCommandI_a10b7094ad088998d95045e7db350eb0a}{Com
 Implementation of interface method. 
 
 \begin{DoxyReturn}{Returns}
-Returns true if the element to delete was already deleted and now restored to its parent 
+Returns true if the added element was removed from its parent 
 \end{DoxyReturn}
 
 

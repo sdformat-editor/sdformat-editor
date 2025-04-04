@@ -36,6 +36,7 @@ class GUI : public GUII
 
   /// \brief Constructor that wraps the Initialize method
   /// \param[in] window_name The name to be given to the SDFormatEditor Window
+  /// \param[in] sdformat_parser A pointer to the sdformat parser object
   /// \param[out] success true if window initalization is successful
   public: GUI(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success);
 
@@ -43,6 +44,9 @@ class GUI : public GUII
   public: ~GUI();
 
   /// \brief Implementation of interface method, wrapped by constructor
+  /// \param[in] window_name The name to be given to the SDFormatEditor Window
+  /// \param[in] sdformat_parser A pointer to the sdformat parser object
+  /// \param[out] success true if window initalization is successful
   private: void Initialize(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success) override;
 
   /// \brief Implementation of interface method
@@ -71,6 +75,7 @@ class GUI : public GUII
   /// \brief Function to display the SDF root element in the GUI in a tree format 
   /// \param[out] command a pointer to the command resulting from the user's action during this frame
   /// \param[in] sdformat_parser an SDFormatParserI instance containing an sdf element
+  /// \param[in] command_factory used for creating command objects
   private: void DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_ptr<SDFormatParserI> sdformat_parser, 
     std::shared_ptr<CommandFactoryI> command_factory);
 
@@ -110,6 +115,7 @@ class GUI : public GUII
 
   /// @brief Create a dropdown list 
   /// @param[in] items A vector of strings to include in the dropdown
+  /// @param[in] item_descriptions A vector of strings for the descriptions of each item
   /// @param[out] selected_item an integer representing the selected item 
   /// \param[out] unique_id a unique id for the ImGUI dropdowm 
   private: void CreateDropdown(const std::vector<std::string>& items, const std::vector<std::string>& item_descriptions, int& selected_item, int& unique_id);

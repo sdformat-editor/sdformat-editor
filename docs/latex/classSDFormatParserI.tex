@@ -12,23 +12,11 @@ Interface for the SDFormat Editor\textquotesingle{}s Parser.
 
 
 Inheritance diagram for SDFormat\+ParserI\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=550pt]{classSDFormatParserI__inherit__graph}
-\end{center}
-\end{figure}
+% FIG 0
 
 
 Collaboration diagram for SDFormat\+ParserI\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=281pt]{classSDFormatParserI__coll__graph}
-\end{center}
-\end{figure}
+% FIG 1
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -42,7 +30,11 @@ virtual void \mbox{\hyperlink{classSDFormatParserI_a404feccbe479eadff00da8ca881f
 virtual sdf\+::\+SDFPtr \mbox{\hyperlink{classSDFormatParserI_a9a5b36f28e49f669d0bd8685253be72e}{Get\+SDFElement}} ()=0
 \begin{DoxyCompactList}\small\item\em Returns the main sdf\+Element associated this this \doxylink{classSDFormatParser}{SDFormat\+Parser} instance. \end{DoxyCompactList}\item 
 virtual std\+::vector$<$ sdf\+::\+Element\+Ptr $>$ \mbox{\hyperlink{classSDFormatParserI_a5f864b23d097b41660a1291ca5de9999}{Lookup\+Elements\+By\+Attribute\+Type}} (const std\+::string \&attribute\+\_\+type)=0
-\begin{DoxyCompactList}\small\item\em Provides a list of elements which a given attribute type. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Provides a list of elements which have an attribute of the given attribute type. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ sdf\+::\+Element\+Ptr $>$ \mbox{\hyperlink{classSDFormatParserI_a8a06d82c847747cd6914d4fee1d32aac}{Lookup\+Elements\+By\+Attribute\+Type\+And\+Value}} (const std\+::string \&attribute\+\_\+type, const std\+::string \&attribute\+\_\+value)=0
+\begin{DoxyCompactList}\small\item\em Provides a list of elements which have an attribute of the given attribute type and the given attribute value. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ sdf\+::\+Element\+Ptr $>$ \mbox{\hyperlink{classSDFormatParserI_ae84b01a81a2c366630a530c40ad8c75c}{Lookup\+Elements\+By\+Type}} (const std\+::string \&type)=0
+\begin{DoxyCompactList}\small\item\em Provides a list of elements which are of a given type. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} \mbox{\hyperlink{classSDFormatParserI_ac72fb1714f0918b0f7fc964bf8fb9a10}{Find\+Mentions}} (std\+::string key)=0
 \begin{DoxyCompactList}\small\item\em Determines the locations of potential references to the element to delete. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} \mbox{\hyperlink{classSDFormatParserI_a1e69c1b46ed0023c7fc019e2f865f438}{Find\+Mentions}} (std\+::string key, sdf\+::\+Element\+Ptr element\+\_\+to\+\_\+exclude)=0
@@ -52,7 +44,9 @@ virtual \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} \mbox{\hy
 virtual \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}} \mbox{\hyperlink{classSDFormatParserI_a73c8e4a06d862addd44822118ef8c16f}{Find\+Mentions}} (std\+::string key, sdf\+::\+Element\+Ptr element\+\_\+to\+\_\+exclude, sdf\+::\+Param\+Ptr attribute\+\_\+to\+\_\+exclude)=0
 \begin{DoxyCompactList}\small\item\em Determines the locations of potential references to the element to delete. \end{DoxyCompactList}\item 
 virtual std\+::string \mbox{\hyperlink{classSDFormatParserI_a203d76c76addc968d746bc75b747c399}{Get\+SDFTree\+Path\+To\+Element}} (sdf\+::\+Element\+Ptr element)=0
-\begin{DoxyCompactList}\small\item\em Get the tree path to this element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Get the tree path to this element. \end{DoxyCompactList}\item 
+virtual std\+::pair$<$ std\+::vector$<$ \mbox{\hyperlink{structModelViewerI_1_1ModelInfo}{Model\+Viewer\+I\+::\+Model\+Info}} $>$, std\+::vector$<$ \mbox{\hyperlink{structModelViewerI_1_1PresetModelInfo}{Model\+Viewer\+I\+::\+Preset\+Model\+Info}} $>$ $>$ \mbox{\hyperlink{classSDFormatParserI_ab5a2f9891457766afc4ee83ae83da073}{Get\+Models\+From\+SDFTree}} ()=0
+\begin{DoxyCompactList}\small\item\em Get all models in the sdf tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -155,6 +149,23 @@ The elements and attributes that mention this given key
 
 Implemented in \mbox{\hyperlink{classSDFormatParser_a0fcc73cf597a43c882367f5a6d5d2d08}{SDFormat\+Parser}}.
 
+\Hypertarget{classSDFormatParserI_ab5a2f9891457766afc4ee83ae83da073}\label{classSDFormatParserI_ab5a2f9891457766afc4ee83ae83da073} 
+\index{SDFormatParserI@{SDFormatParserI}!GetModelsFromSDFTree@{GetModelsFromSDFTree}}
+\index{GetModelsFromSDFTree@{GetModelsFromSDFTree}!SDFormatParserI@{SDFormatParserI}}
+\doxysubsubsection{\texorpdfstring{GetModelsFromSDFTree()}{GetModelsFromSDFTree()}}
+{\footnotesize\ttfamily virtual std\+::pair$<$ std\+::vector$<$ \mbox{\hyperlink{structModelViewerI_1_1ModelInfo}{Model\+Viewer\+I\+::\+Model\+Info}} $>$, std\+::vector$<$ \mbox{\hyperlink{structModelViewerI_1_1PresetModelInfo}{Model\+Viewer\+I\+::\+Preset\+Model\+Info}} $>$ $>$ SDFormat\+Parser\+I\+::\+Get\+Models\+From\+SDFTree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get all models in the sdf tree. 
+
+\begin{DoxyReturn}{Returns}
+NOTE\+: (Zaid) idk what the return type will be right now, but it will be a vector of something that stores information about models. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classSDFormatParser_a5dfbb6cfca78f371488cabb6c7ef9b9a}{SDFormat\+Parser}}.
+
 \Hypertarget{classSDFormatParserI_a9a5b36f28e49f669d0bd8685253be72e}\label{classSDFormatParserI_a9a5b36f28e49f669d0bd8685253be72e} 
 \index{SDFormatParserI@{SDFormatParserI}!GetSDFElement@{GetSDFElement}}
 \index{GetSDFElement@{GetSDFElement}!SDFormatParserI@{SDFormatParserI}}
@@ -223,7 +234,7 @@ Implemented in \mbox{\hyperlink{classSDFormatParser_ada8d05784ae55ffebeb83f41ce1
 
 
 
-Provides a list of elements which a given attribute type. 
+Provides a list of elements which have an attribute of the given attribute type. 
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -236,6 +247,52 @@ A list of elements with a given attribute type
 
 
 Implemented in \mbox{\hyperlink{classSDFormatParser_a1b5ec820ea299c0a10c92f6e694febba}{SDFormat\+Parser}}.
+
+\Hypertarget{classSDFormatParserI_a8a06d82c847747cd6914d4fee1d32aac}\label{classSDFormatParserI_a8a06d82c847747cd6914d4fee1d32aac} 
+\index{SDFormatParserI@{SDFormatParserI}!LookupElementsByAttributeTypeAndValue@{LookupElementsByAttributeTypeAndValue}}
+\index{LookupElementsByAttributeTypeAndValue@{LookupElementsByAttributeTypeAndValue}!SDFormatParserI@{SDFormatParserI}}
+\doxysubsubsection{\texorpdfstring{LookupElementsByAttributeTypeAndValue()}{LookupElementsByAttributeTypeAndValue()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$ sdf\+::\+Element\+Ptr $>$ SDFormat\+Parser\+I\+::\+Lookup\+Elements\+By\+Attribute\+Type\+And\+Value (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+\_\+type,  }\item[{const std\+::string \&}]{attribute\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Provides a list of elements which have an attribute of the given attribute type and the given attribute value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em attribute\+\_\+type} & The attribute type to use for lookup \\
+\hline
+\mbox{\texttt{ in}}  & {\em attribute\+\_\+value} & The attribute type to use for lookup \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of elements with the given attribute type and the given attribute value 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classSDFormatParser_abbe60b1d2fc33b87871dc488bb17a2a6}{SDFormat\+Parser}}.
+
+\Hypertarget{classSDFormatParserI_ae84b01a81a2c366630a530c40ad8c75c}\label{classSDFormatParserI_ae84b01a81a2c366630a530c40ad8c75c} 
+\index{SDFormatParserI@{SDFormatParserI}!LookupElementsByType@{LookupElementsByType}}
+\index{LookupElementsByType@{LookupElementsByType}!SDFormatParserI@{SDFormatParserI}}
+\doxysubsubsection{\texorpdfstring{LookupElementsByType()}{LookupElementsByType()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$ sdf\+::\+Element\+Ptr $>$ SDFormat\+Parser\+I\+::\+Lookup\+Elements\+By\+Type (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Provides a list of elements which are of a given type. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em type} & The type by which to lookup elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of elements with a given attribute type 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classSDFormatParser_a92b9474a2f06ab588e8aa4201e963578}{SDFormat\+Parser}}.
 
 
 

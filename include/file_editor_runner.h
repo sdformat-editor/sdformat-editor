@@ -34,6 +34,7 @@
 class FileEditorRunner
 {
     /// \brief Constructor that calls the top level method
+    /// \param[in] data_dir_created boolean that communicates if the file to contain the previous model exists
     public: FileEditorRunner(bool data_dir_created = false);
 
     /// \brief Top level method that starts the program

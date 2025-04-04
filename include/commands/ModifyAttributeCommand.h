@@ -36,6 +36,7 @@ class ModifyAttributeCommand : public CommandI
   /// \brief Constructor for modify attribute command objects.
   /// \param[in] gui Pointer to the GUII object 
   /// \param[in] sdformatParser Pointer to the SDFormatParserI object
+  /// \param[in] attribute_to_modify Pointer to the attribute to modify
   /// \param[in] new_value The new value with which to modify the element
   public: ModifyAttributeCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ParamPtr attribute_to_modify, T new_value);
 

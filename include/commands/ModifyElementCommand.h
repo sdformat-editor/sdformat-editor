@@ -35,6 +35,7 @@ class ModifyElementCommand : public CommandI
   /// \brief Constructor for modify element command objects.
   /// \param[in] gui Pointer to the GUII object 
   /// \param[in] sdformatParser Pointer to the SDFormatParserI object
+  /// \param[in] element_to_modify Pointer to the element to modify
   /// \param[in] new_value The new value with which to modify the element
   public: ModifyElementCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ElementPtr element_to_modify, T new_value);
 

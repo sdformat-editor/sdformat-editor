@@ -127,6 +127,7 @@ class SDFormatParser : public SDFormatParserI
     private: std::pair<glm::dvec3, glm::dquat> ParsePoseElement(sdf::ElementPtr element, std::string& relative_to);
 
     /// \brief Considers if this is a special case of "relative_to" and approperiately handles it
+    /// \param[in] element The non-pose element which we want to parse
     /// \param[out] relative_to The "relative_to" specification
     /// \returns Returns true if successful
     private: bool HandleRelativeToSpecificationSpecialcases(sdf::ElementPtr element, std::string& relative_to);

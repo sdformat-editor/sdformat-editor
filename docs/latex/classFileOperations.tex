@@ -11,7 +11,8 @@ Singleton class to handle file operations.
 
 
 
-Collaboration diagram for File\+Operations\+:\nopagebreak
+Collaboration diagram for File\+Operations\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,10 +24,14 @@ Collaboration diagram for File\+Operations\+:\nopagebreak
 \item 
 std\+::string \mbox{\hyperlink{classFileOperations_a50b5908070cc9bdd8879aade4daa855f}{Open\+File\+Dialog}} ()
 \begin{DoxyCompactList}\small\item\em Opens a dialog for the user to open a file on their filesystem. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classFileOperations_aa02ee948d9ea1f97124b9ad7baa51133}{Open\+Directory\+Dialog}} ()
+\begin{DoxyCompactList}\small\item\em Opens a dialog for the user to open a directory on their filesystem. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classFileOperations_a90ff510d41a0f63c21338c58351f1991}{Write\+File}} (const std\+::string \&file\+\_\+path, const std\+::string \&contents)
 \begin{DoxyCompactList}\small\item\em writes a string to a file \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classFileOperations_af014174169b8d154ca69988e5f13b53b}{Write\+File}} (const std\+::string \&contents)
-\begin{DoxyCompactList}\small\item\em writes a string to a file \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em writes a string to a file \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFileOperations_ae40d89ff68fc7b77e40d67734bb91d4c}{Set\+Active\+File\+Path}} (const std\+::string \&file\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Sets the active file path. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -53,6 +58,9 @@ static \mbox{\hyperlink{classFileOperations}{File\+Operations}} \& \mbox{\hyperl
 \item 
 \Hypertarget{classFileOperations_a9165fd8b97d9ce88cdd9de08dbe6b2c3}\label{classFileOperations_a9165fd8b97d9ce88cdd9de08dbe6b2c3} 
 std\+::string {\bfseries active\+\_\+file\+\_\+path}
+\item 
+\Hypertarget{classFileOperations_a62bf1a9e5c95b29d1105ac2fa73e22dc}\label{classFileOperations_a62bf1a9e5c95b29d1105ac2fa73e22dc} 
+int {\bfseries model\+\_\+editor\+\_\+fifo\+\_\+file\+\_\+descriptor}
 \end{DoxyCompactItemize}
 
 
@@ -73,6 +81,19 @@ The only method by which a \doxylink{classFileOperations}{File\+Operations} inst
 \begin{DoxyReturn}{Returns}
 The sole instance of File\+OperationsI 
 \end{DoxyReturn}
+\Hypertarget{classFileOperations_aa02ee948d9ea1f97124b9ad7baa51133}\label{classFileOperations_aa02ee948d9ea1f97124b9ad7baa51133} 
+\index{FileOperations@{FileOperations}!OpenDirectoryDialog@{OpenDirectoryDialog}}
+\index{OpenDirectoryDialog@{OpenDirectoryDialog}!FileOperations@{FileOperations}}
+\doxysubsubsection{\texorpdfstring{OpenDirectoryDialog()}{OpenDirectoryDialog()}}
+{\footnotesize\ttfamily std\+::string File\+Operations\+::\+Open\+Directory\+Dialog (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Opens a dialog for the user to open a directory on their filesystem. 
+
+\begin{DoxyReturn}{Returns}
+An absolute file path or an empty string 
+\end{DoxyReturn}
 \Hypertarget{classFileOperations_a50b5908070cc9bdd8879aade4daa855f}\label{classFileOperations_a50b5908070cc9bdd8879aade4daa855f} 
 \index{FileOperations@{FileOperations}!OpenFileDialog@{OpenFileDialog}}
 \index{OpenFileDialog@{OpenFileDialog}!FileOperations@{FileOperations}}
@@ -86,6 +107,21 @@ Opens a dialog for the user to open a file on their filesystem.
 \begin{DoxyReturn}{Returns}
 An absolute file path or an empty string 
 \end{DoxyReturn}
+\Hypertarget{classFileOperations_ae40d89ff68fc7b77e40d67734bb91d4c}\label{classFileOperations_ae40d89ff68fc7b77e40d67734bb91d4c} 
+\index{FileOperations@{FileOperations}!SetActiveFilePath@{SetActiveFilePath}}
+\index{SetActiveFilePath@{SetActiveFilePath}!FileOperations@{FileOperations}}
+\doxysubsubsection{\texorpdfstring{SetActiveFilePath()}{SetActiveFilePath()}}
+{\footnotesize\ttfamily void File\+Operations\+::\+Set\+Active\+File\+Path (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Sets the active file path. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em file\+\_\+path} & The file path to set as the active path \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classFileOperations_af014174169b8d154ca69988e5f13b53b}\label{classFileOperations_af014174169b8d154ca69988e5f13b53b} 
 \index{FileOperations@{FileOperations}!WriteFile@{WriteFile}}
 \index{WriteFile@{WriteFile}!FileOperations@{FileOperations}}

@@ -1,0 +1,201 @@
+\doxysection{Open\+Directory\+Command Class Reference}
+\hypertarget{classOpenDirectoryCommand}{}\label{classOpenDirectoryCommand}\index{OpenDirectoryCommand@{OpenDirectoryCommand}}
+
+
+Open directory command implementation of \doxylink{classCommandI}{CommandI}.  
+
+
+
+
+{\ttfamily \#include $<$Open\+Directory\+Command.\+h$>$}
+
+
+
+Inheritance diagram for Open\+Directory\+Command\+:
+% FIG 0
+
+
+Collaboration diagram for Open\+Directory\+Command\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classOpenDirectoryCommand_a5e7b0d2941d0e30b0216d114c0ecb6ea}{Open\+Directory\+Command}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ \mbox{\hyperlink{classOpenDirectoryCommand_ab82b88a3e8d22c8e582c4330275c7766}{gui}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classOpenDirectoryCommand_a546d751e3c1bfa4245ba02f5b6acc2cd}{sdformat\+Parser}})
+\begin{DoxyCompactList}\small\item\em Constructor for open directory command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classOpenDirectoryCommand_a3bb5ea7f34f8ce816da4d312e9917d50}{Execute}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenDirectoryCommand_aff3d48093e5f0a025fa21d35e042f2e7}{Execute\+Undo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenDirectoryCommand_aca6fd54d0e069879b4cd72d9039be616}{Execute\+Redo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenDirectoryCommand_afc29a358eb1ca3a3e5b962e9018f2d74}{Is\+Undoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenDirectoryCommand_a1d3c1c6315b16c02f83d5d85dd6e5d29}{Is\+Redoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenDirectoryCommand_a518e5582afc7f14a090ac536a0c357fb}{Is\+Threaded}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenDirectoryCommand_a04bb0fb9d9291c3cb942b820b183e1d4}{Changes\+Program\+State\+Irreversibly}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classOpenDirectoryCommand_ab82b88a3e8d22c8e582c4330275c7766}\label{classOpenDirectoryCommand_ab82b88a3e8d22c8e582c4330275c7766} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ {\bfseries gui}
+\begin{DoxyCompactList}\small\item\em Pointer to the gui interface. \end{DoxyCompactList}\item 
+\Hypertarget{classOpenDirectoryCommand_a546d751e3c1bfa4245ba02f5b6acc2cd}\label{classOpenDirectoryCommand_a546d751e3c1bfa4245ba02f5b6acc2cd} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ {\bfseries sdformat\+Parser}
+\begin{DoxyCompactList}\small\item\em Pointer to the sdformat parser interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Open directory command implementation of \doxylink{classCommandI}{CommandI}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classOpenDirectoryCommand_a5e7b0d2941d0e30b0216d114c0ecb6ea}\label{classOpenDirectoryCommand_a5e7b0d2941d0e30b0216d114c0ecb6ea} 
+\index{OpenDirectoryCommand@{OpenDirectoryCommand}!OpenDirectoryCommand@{OpenDirectoryCommand}}
+\index{OpenDirectoryCommand@{OpenDirectoryCommand}!OpenDirectoryCommand@{OpenDirectoryCommand}}
+\doxysubsubsection{\texorpdfstring{OpenDirectoryCommand()}{OpenDirectoryCommand()}}
+{\footnotesize\ttfamily Open\+Directory\+Command\+::\+Open\+Directory\+Command (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$}]{gui,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+Parser }\end{DoxyParamCaption})}
+
+
+
+Constructor for open directory command objects. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em gui} & Pointer to the \doxylink{classGUII}{GUII} object \\
+\hline
+\mbox{\texttt{ in}}  & {\em sdformat\+Parser} & Pointer to the \doxylink{classSDFormatParserI}{SDFormat\+ParserI} object \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classOpenDirectoryCommand_a04bb0fb9d9291c3cb942b820b183e1d4}\label{classOpenDirectoryCommand_a04bb0fb9d9291c3cb942b820b183e1d4} 
+\index{OpenDirectoryCommand@{OpenDirectoryCommand}!ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}}
+\index{ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}!OpenDirectoryCommand@{OpenDirectoryCommand}}
+\doxysubsubsection{\texorpdfstring{ChangesProgramStateIrreversibly()}{ChangesProgramStateIrreversibly()}}
+{\footnotesize\ttfamily bool Open\+Directory\+Command\+::\+Changes\+Program\+State\+Irreversibly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always true 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}{CommandI}}.
+
+\Hypertarget{classOpenDirectoryCommand_a3bb5ea7f34f8ce816da4d312e9917d50}\label{classOpenDirectoryCommand_a3bb5ea7f34f8ce816da4d312e9917d50} 
+\index{OpenDirectoryCommand@{OpenDirectoryCommand}!Execute@{Execute}}
+\index{Execute@{Execute}!OpenDirectoryCommand@{OpenDirectoryCommand}}
+\doxysubsubsection{\texorpdfstring{Execute()}{Execute()}}
+{\footnotesize\ttfamily bool Open\+Directory\+Command\+::\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+True if the \doxylink{classSDFormatParser}{SDFormat\+Parser} has successfully parsed the newly created file and it has been displayed in the \doxylink{classGUI}{GUI} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_ad0107a73ebccd619860597db7bad2cce}{CommandI}}.
+
+\Hypertarget{classOpenDirectoryCommand_aca6fd54d0e069879b4cd72d9039be616}\label{classOpenDirectoryCommand_aca6fd54d0e069879b4cd72d9039be616} 
+\index{OpenDirectoryCommand@{OpenDirectoryCommand}!ExecuteRedo@{ExecuteRedo}}
+\index{ExecuteRedo@{ExecuteRedo}!OpenDirectoryCommand@{OpenDirectoryCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteRedo()}{ExecuteRedo()}}
+{\footnotesize\ttfamily bool Open\+Directory\+Command\+::\+Execute\+Redo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a10b7094ad088998d95045e7db350eb0a}{CommandI}}.
+
+\Hypertarget{classOpenDirectoryCommand_aff3d48093e5f0a025fa21d35e042f2e7}\label{classOpenDirectoryCommand_aff3d48093e5f0a025fa21d35e042f2e7} 
+\index{OpenDirectoryCommand@{OpenDirectoryCommand}!ExecuteUndo@{ExecuteUndo}}
+\index{ExecuteUndo@{ExecuteUndo}!OpenDirectoryCommand@{OpenDirectoryCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteUndo()}{ExecuteUndo()}}
+{\footnotesize\ttfamily bool Open\+Directory\+Command\+::\+Execute\+Undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a38d5a489ac6de24f3b40035083c5ed9a}{CommandI}}.
+
+\Hypertarget{classOpenDirectoryCommand_a1d3c1c6315b16c02f83d5d85dd6e5d29}\label{classOpenDirectoryCommand_a1d3c1c6315b16c02f83d5d85dd6e5d29} 
+\index{OpenDirectoryCommand@{OpenDirectoryCommand}!IsRedoable@{IsRedoable}}
+\index{IsRedoable@{IsRedoable}!OpenDirectoryCommand@{OpenDirectoryCommand}}
+\doxysubsubsection{\texorpdfstring{IsRedoable()}{IsRedoable()}}
+{\footnotesize\ttfamily bool Open\+Directory\+Command\+::\+Is\+Redoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
+
+\Hypertarget{classOpenDirectoryCommand_a518e5582afc7f14a090ac536a0c357fb}\label{classOpenDirectoryCommand_a518e5582afc7f14a090ac536a0c357fb} 
+\index{OpenDirectoryCommand@{OpenDirectoryCommand}!IsThreaded@{IsThreaded}}
+\index{IsThreaded@{IsThreaded}!OpenDirectoryCommand@{OpenDirectoryCommand}}
+\doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
+{\footnotesize\ttfamily bool Open\+Directory\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always true 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}{CommandI}}.
+
+\Hypertarget{classOpenDirectoryCommand_afc29a358eb1ca3a3e5b962e9018f2d74}\label{classOpenDirectoryCommand_afc29a358eb1ca3a3e5b962e9018f2d74} 
+\index{OpenDirectoryCommand@{OpenDirectoryCommand}!IsUndoable@{IsUndoable}}
+\index{IsUndoable@{IsUndoable}!OpenDirectoryCommand@{OpenDirectoryCommand}}
+\doxysubsubsection{\texorpdfstring{IsUndoable()}{IsUndoable()}}
+{\footnotesize\ttfamily bool Open\+Directory\+Command\+::\+Is\+Undoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always False 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a4722f602fdfa6387aa0fced8dfa0e9fd}{CommandI}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/commands/Open\+Directory\+Command.\+h\item 
+src/commands/Open\+Directory\+Command.\+cpp\end{DoxyCompactItemize}

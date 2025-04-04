@@ -2,7 +2,7 @@
 \hypertarget{classModifyElementCommand}{}\label{classModifyElementCommand}\index{ModifyElementCommand$<$ T $>$@{ModifyElementCommand$<$ T $>$}}
 
 
-Open model command implementation of \doxylink{classCommandI}{CommandI}.  
+Modify Element command implementation of \doxylink{classCommandI}{CommandI}.  
 
 
 
@@ -12,28 +12,16 @@ Open model command implementation of \doxylink{classCommandI}{CommandI}.
 
 
 Inheritance diagram for Modify\+Element\+Command\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=550pt]{classModifyElementCommand__inherit__graph}
-\end{center}
-\end{figure}
+% FIG 0
 
 
 Collaboration diagram for Modify\+Element\+Command\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=550pt]{classModifyElementCommand__coll__graph}
-\end{center}
-\end{figure}
+% FIG 1
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classModifyElementCommand_ae58c80043169ab1088d4483184de30a6}{Modify\+Element\+Command}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ \mbox{\hyperlink{classModifyElementCommand_a8e87272c37fea0ef3d02d3a84a406ce3}{gui}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classModifyElementCommand_a907dff2096cb4f682561869224bf4542}{sdformat\+Parser}}, sdf\+::\+Element\+Ptr \mbox{\hyperlink{classModifyElementCommand_afc44353394f733db57f9163186230074}{element\+\_\+to\+\_\+modify}}, T \mbox{\hyperlink{classModifyElementCommand_a17129fae7fe6db89a9c3e9aec5b054a3}{new\+\_\+value}})
-\begin{DoxyCompactList}\small\item\em Constructor for open model command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Constructor for modify element command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -68,10 +56,10 @@ sdf\+::\+Element\+Ptr {\bfseries element\+\_\+to\+\_\+modify}
 \begin{DoxyCompactList}\small\item\em Pointer to the element to modify. \end{DoxyCompactList}\item 
 \Hypertarget{classModifyElementCommand_a17129fae7fe6db89a9c3e9aec5b054a3}\label{classModifyElementCommand_a17129fae7fe6db89a9c3e9aec5b054a3} 
 T {\bfseries new\+\_\+value}
-\begin{DoxyCompactList}\small\item\em new value for string \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The value that will be given to the element. \end{DoxyCompactList}\item 
 \Hypertarget{classModifyElementCommand_ad85876752efd08c4cccf9c5d78cdb028}\label{classModifyElementCommand_ad85876752efd08c4cccf9c5d78cdb028} 
 T {\bfseries old\+\_\+value}
-\begin{DoxyCompactList}\small\item\em old value for string \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The value that will be overridden in the element. \end{DoxyCompactList}\item 
 \Hypertarget{classModifyElementCommand_ad21f991bd50a072ef5ce69af62b2dc26}\label{classModifyElementCommand_ad21f991bd50a072ef5ce69af62b2dc26} 
 bool {\bfseries is\+\_\+currently\+\_\+undoable} = true
 \begin{DoxyCompactList}\small\item\em Store if the command is currently undo-\/able. \end{DoxyCompactList}\item 
@@ -83,7 +71,7 @@ bool {\bfseries is\+\_\+currently\+\_\+redoable} = true
 \doxysubsection{Detailed Description}
 \subsubsection*{template$<$typename T$>$\newline
 class Modify\+Element\+Command$<$ T $>$}
-Open model command implementation of \doxylink{classCommandI}{CommandI}. 
+Modify Element command implementation of \doxylink{classCommandI}{CommandI}. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classModifyElementCommand_ae58c80043169ab1088d4483184de30a6}\label{classModifyElementCommand_ae58c80043169ab1088d4483184de30a6} 
@@ -95,13 +83,17 @@ Open model command implementation of \doxylink{classCommandI}{CommandI}.
 
 
 
-Constructor for open model command objects. 
+Constructor for modify element command objects. 
 
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em gui} & Pointer to the \doxylink{classGUII}{GUII} object \\
 \hline
 \mbox{\texttt{ in}}  & {\em sdformat\+Parser} & Pointer to the \doxylink{classSDFormatParserI}{SDFormat\+ParserI} object \\
+\hline
+\mbox{\texttt{ in}}  & {\em element\+\_\+to\+\_\+modify} & Pointer to the element to modify \\
+\hline
+\mbox{\texttt{ in}}  & {\em new\+\_\+value} & The new value with which to modify the element \\
 \hline
 \end{DoxyParams}
 

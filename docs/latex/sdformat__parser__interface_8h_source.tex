@@ -29,33 +29,40 @@
 \DoxyCodeLine{00025\ \textcolor{comment}{//\ SDFormat\ dependencies}}
 \DoxyCodeLine{00026\ \textcolor{comment}{//\ This\ interface\ depends\ on\ the\ SDFormat\ Library}}
 \DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <sdf/sdf.hh>}}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSDFormatParserI}{SDFormatParserI}}}
-\DoxyCodeLine{00031\ \{}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSDFormatParserI_a404feccbe479eadff00da8ca881fbc85}{Initialize}}(\textcolor{keyword}{const}\ std::string\ file\_path,\ \textcolor{keywordtype}{bool}\ \&success)\ =\ 0;}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ sdf::SDFPtr\ \mbox{\hyperlink{classSDFormatParserI_a9a5b36f28e49f669d0bd8685253be72e}{GetSDFElement}}()\ =\ 0;}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}}}
-\DoxyCodeLine{00046\ \ \ \ \ \{}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ std::vector<sdf::ElementPtr>\ elements;}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::vector<sdf::ParamPtr>\ attributes;}
-\DoxyCodeLine{00049\ \ \ \ \ \};}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ std::vector<sdf::ElementPtr>\ \mbox{\hyperlink{classSDFormatParserI_a5f864b23d097b41660a1291ca5de9999}{LookupElementsByAttributeType}}(\textcolor{keyword}{const}\ std::string\&\ attribute\_type)\ =\ 0;}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}}\ \mbox{\hyperlink{classSDFormatParserI_ac72fb1714f0918b0f7fc964bf8fb9a10}{FindMentions}}(std::string\ key)\ =\ 0;}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}}\ \mbox{\hyperlink{classSDFormatParserI_a1e69c1b46ed0023c7fc019e2f865f438}{FindMentions}}(std::string\ key,\ sdf::ElementPtr\ element\_to\_exclude)\ =\ 0;}
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}}\ \mbox{\hyperlink{classSDFormatParserI_a589267553e67bd84d250f2ab53bee436}{FindMentions}}(std::string\ key,\ sdf::ParamPtr\ attribute\_to\_exclude)\ =\ 0;}
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}}\ \mbox{\hyperlink{classSDFormatParserI_a73c8e4a06d862addd44822118ef8c16f}{FindMentions}}(std::string\ key,\ sdf::ElementPtr\ element\_to\_exclude,\ sdf::ParamPtr\ attribute\_to\_exclude)\ =\ 0;}
-\DoxyCodeLine{00079\ }
-\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{classSDFormatParserI_a203d76c76addc968d746bc75b747c399}{GetSDFTreePathToElement}}(sdf::ElementPtr\ element)\ =\ 0;\ }
-\DoxyCodeLine{00084\ \ \ \ \ }
-\DoxyCodeLine{00085\ \};}
-\DoxyCodeLine{00086\ }
-\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <interfaces/model\_viewer\_interface.h>}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSDFormatParserI}{SDFormatParserI}}}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSDFormatParserI_a404feccbe479eadff00da8ca881fbc85}{Initialize}}(\textcolor{keyword}{const}\ std::string\ file\_path,\ \textcolor{keywordtype}{bool}\ \&success)\ =\ 0;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ sdf::SDFPtr\ \mbox{\hyperlink{classSDFormatParserI_a9a5b36f28e49f669d0bd8685253be72e}{GetSDFElement}}()\ =\ 0;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}}}
+\DoxyCodeLine{00047\ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::vector<sdf::ElementPtr>\ elements;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ std::vector<sdf::ParamPtr>\ attributes;}
+\DoxyCodeLine{00050\ \ \ \ \ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ std::vector<sdf::ElementPtr>\ \mbox{\hyperlink{classSDFormatParserI_a5f864b23d097b41660a1291ca5de9999}{LookupElementsByAttributeType}}(\textcolor{keyword}{const}\ std::string\&\ attribute\_type)\ =\ 0;}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ std::vector<sdf::ElementPtr>\ \mbox{\hyperlink{classSDFormatParserI_a8a06d82c847747cd6914d4fee1d32aac}{LookupElementsByAttributeTypeAndValue}}(\textcolor{keyword}{const}\ std::string\&\ attribute\_type,\ \textcolor{keyword}{const}\ std::string\&\ attribute\_value)\ =\ 0;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ std::vector<sdf::ElementPtr>\ \mbox{\hyperlink{classSDFormatParserI_ae84b01a81a2c366630a530c40ad8c75c}{LookupElementsByType}}(\textcolor{keyword}{const}\ std::string\&\ type)\ =\ 0;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}}\ \mbox{\hyperlink{classSDFormatParserI_ac72fb1714f0918b0f7fc964bf8fb9a10}{FindMentions}}(std::string\ key)\ =\ 0;}
+\DoxyCodeLine{00072\ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}}\ \mbox{\hyperlink{classSDFormatParserI_a1e69c1b46ed0023c7fc019e2f865f438}{FindMentions}}(std::string\ key,\ sdf::ElementPtr\ element\_to\_exclude)\ =\ 0;}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}}\ \mbox{\hyperlink{classSDFormatParserI_a589267553e67bd84d250f2ab53bee436}{FindMentions}}(std::string\ key,\ sdf::ParamPtr\ attribute\_to\_exclude)\ =\ 0;}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{structSDFormatParserI_1_1Mentions}{Mentions}}\ \mbox{\hyperlink{classSDFormatParserI_a73c8e4a06d862addd44822118ef8c16f}{FindMentions}}(std::string\ key,\ sdf::ElementPtr\ element\_to\_exclude,\ sdf::ParamPtr\ attribute\_to\_exclude)\ =\ 0;}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{classSDFormatParserI_a203d76c76addc968d746bc75b747c399}{GetSDFTreePathToElement}}(sdf::ElementPtr\ element)\ =\ 0;\ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ std::pair<std::vector<ModelViewerI::ModelInfo>,\ std::vector<ModelViewerI::PresetModelInfo>>\ \mbox{\hyperlink{classSDFormatParserI_ab5a2f9891457766afc4ee83ae83da073}{GetModelsFromSDFTree}}()\ =\ 0;}
+\DoxyCodeLine{00100\ \ \ \ \ }
+\DoxyCodeLine{00101\ \};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

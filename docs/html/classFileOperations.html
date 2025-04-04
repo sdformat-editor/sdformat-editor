@@ -97,12 +97,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a50b5908070cc9bdd8879aade4daa855f" id="r_a50b5908070cc9bdd8879aade4daa855f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileOperations.html#a50b5908070cc9bdd8879aade4daa855f">OpenFileDialog</a> ()</td></tr>
 <tr class="memdesc:a50b5908070cc9bdd8879aade4daa855f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a dialog for the user to open a file on their filesystem.  <br /></td></tr>
 <tr class="separator:a50b5908070cc9bdd8879aade4daa855f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa02ee948d9ea1f97124b9ad7baa51133" id="r_aa02ee948d9ea1f97124b9ad7baa51133"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileOperations.html#aa02ee948d9ea1f97124b9ad7baa51133">OpenDirectoryDialog</a> ()</td></tr>
+<tr class="memdesc:aa02ee948d9ea1f97124b9ad7baa51133"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a dialog for the user to open a directory on their filesystem.  <br /></td></tr>
+<tr class="separator:aa02ee948d9ea1f97124b9ad7baa51133"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90ff510d41a0f63c21338c58351f1991" id="r_a90ff510d41a0f63c21338c58351f1991"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileOperations.html#a90ff510d41a0f63c21338c58351f1991">WriteFile</a> (const std::string &amp;file_path, const std::string &amp;contents)</td></tr>
 <tr class="memdesc:a90ff510d41a0f63c21338c58351f1991"><td class="mdescLeft">&#160;</td><td class="mdescRight">writes a string to a file  <br /></td></tr>
 <tr class="separator:a90ff510d41a0f63c21338c58351f1991"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af014174169b8d154ca69988e5f13b53b" id="r_af014174169b8d154ca69988e5f13b53b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileOperations.html#af014174169b8d154ca69988e5f13b53b">WriteFile</a> (const std::string &amp;contents)</td></tr>
 <tr class="memdesc:af014174169b8d154ca69988e5f13b53b"><td class="mdescLeft">&#160;</td><td class="mdescRight">writes a string to a file  <br /></td></tr>
 <tr class="separator:af014174169b8d154ca69988e5f13b53b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae40d89ff68fc7b77e40d67734bb91d4c" id="r_ae40d89ff68fc7b77e40d67734bb91d4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileOperations.html#ae40d89ff68fc7b77e40d67734bb91d4c">SetActiveFilePath</a> (const std::string &amp;file_path)</td></tr>
+<tr class="memdesc:ae40d89ff68fc7b77e40d67734bb91d4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the active file path.  <br /></td></tr>
+<tr class="separator:ae40d89ff68fc7b77e40d67734bb91d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -135,6 +141,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a9165fd8b97d9ce88cdd9de08dbe6b2c3" id="r_a9165fd8b97d9ce88cdd9de08dbe6b2c3"><td class="memItemLeft" align="right" valign="top"><a id="a9165fd8b97d9ce88cdd9de08dbe6b2c3" name="a9165fd8b97d9ce88cdd9de08dbe6b2c3"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>active_file_path</b></td></tr>
 <tr class="separator:a9165fd8b97d9ce88cdd9de08dbe6b2c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62bf1a9e5c95b29d1105ac2fa73e22dc" id="r_a62bf1a9e5c95b29d1105ac2fa73e22dc"><td class="memItemLeft" align="right" valign="top"><a id="a62bf1a9e5c95b29d1105ac2fa73e22dc" name="a62bf1a9e5c95b29d1105ac2fa73e22dc"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>model_editor_fifo_file_descriptor</b></td></tr>
+<tr class="separator:a62bf1a9e5c95b29d1105ac2fa73e22dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Singleton class to handle file operations. </p>
@@ -167,6 +176,26 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>active_file_pa
 
 </div>
 </div>
+<a id="aa02ee948d9ea1f97124b9ad7baa51133" name="aa02ee948d9ea1f97124b9ad7baa51133"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa02ee948d9ea1f97124b9ad7baa51133">&#9670;&#160;</a></span>OpenDirectoryDialog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string FileOperations::OpenDirectoryDialog </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Opens a dialog for the user to open a directory on their filesystem. </p>
+<dl class="section return"><dt>Returns</dt><dd>An absolute file path or an empty string </dd></dl>
+
+</div>
+</div>
 <a id="a50b5908070cc9bdd8879aade4daa855f" name="a50b5908070cc9bdd8879aade4daa855f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a50b5908070cc9bdd8879aade4daa855f">&#9670;&#160;</a></span>OpenFileDialog()</h2>
 
@@ -184,6 +213,32 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>active_file_pa
 
 <p>Opens a dialog for the user to open a file on their filesystem. </p>
 <dl class="section return"><dt>Returns</dt><dd>An absolute file path or an empty string </dd></dl>
+
+</div>
+</div>
+<a id="ae40d89ff68fc7b77e40d67734bb91d4c" name="ae40d89ff68fc7b77e40d67734bb91d4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae40d89ff68fc7b77e40d67734bb91d4c">&#9670;&#160;</a></span>SetActiveFilePath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FileOperations::SetActiveFilePath </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>file_path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the active file path. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">file_path</td><td>The file path to set as the active path </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

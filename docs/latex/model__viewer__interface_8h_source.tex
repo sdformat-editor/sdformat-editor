@@ -26,17 +26,64 @@
 \DoxyCodeLine{00022\ }
 \DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <iostream>}}
 \DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classModelViewerI}{ModelViewerI}}}
-\DoxyCodeLine{00028\ \{}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ \ multiple\ times\ (unlike\ the\ GUI),\ which\ should\ terminate\ the\ program\ if\ it\ closes.}}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewerI_ac6e6cc65e2be33a692061c2b4e02f773}{Initialize}}(\textcolor{keyword}{const}\ std::vector<std::string>\ \&cad\_files,\ \textcolor{keywordtype}{bool}\ \&success)\ =\ 0;}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewerI_a6ee962a2e2820c6af9a6b58df7f37501}{Update}}()\ =\ 0;}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <glm/gtc/quaternion.hpp>}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classModelViewerI}{ModelViewerI}}}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ std::string\ model\_absolute\_path;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Position\ Vector}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ glm::dvec3\ position;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Orientation\ Quaternion}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ glm::dquat\ orientation;}
 \DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Scale}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ glm::dvec3\ scale\ =\ \{1,1,1\};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ opacity\ =\ 1.0f;}
+\DoxyCodeLine{00048\ \ \ \ \ \}\ \mbox{\hyperlink{structModelViewerI_1_1ModelInfo}{ModelInfo}};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{enum}\ PresetType\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ BOX,}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ CYLINDER,}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ SPHERE}
+\DoxyCodeLine{00054\ \ \ \ \ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ PresetType\ preset\_type;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Position\ Vector}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ glm::dvec3\ position;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Orientation\ Quaternion}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ glm::dquat\ orientation;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Scale}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ glm::dvec3\ scale\ =\ \{1,1,1\};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ opacity\ =\ 1.0f;}
+\DoxyCodeLine{00070\ \ \ \ \ \}\ \mbox{\hyperlink{structModelViewerI_1_1PresetModelInfo}{PresetModelInfo}};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewerI_a03a4c90a116f499083e6dc54ddfb16a8}{Initialize}}()\ =\ 0;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewerI_ab115870eb9f4c4914e9ceb6f9c57eb7c}{RenderFrame}}()\ =\ 0;}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewerI_a832e4a2dd4acab999b181a5f1cea3d68}{Quit}}()\ =\ 0;}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewerI_a5a32d458443e0cafbf734469f2c41572}{AddModel}}(\mbox{\hyperlink{structModelViewerI_1_1ModelInfo}{ModelInfo}})\ =\ 0;}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewerI_a5a32d458443e0cafbf734469f2c41572}{AddModel}}(\mbox{\hyperlink{structModelViewerI_1_1PresetModelInfo}{PresetModelInfo}})\ =\ 0;}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModelViewerI_a1106c4b7a621fb3a52bbf23ac607b1ea}{ResetModels}}()\ =\ 0;}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classModelViewerI_aa705daf3812d9a096057398051e20a2a}{IsRunning}}()\ =\ 0;}
+\DoxyCodeLine{00097\ \};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

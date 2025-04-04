@@ -258,6 +258,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">window_name</td><td>The name to be given to the SDFormatEditor Window </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sdformat_parser</td><td>A pointer to the sdformat parser object </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">success</td><td>true if window initalization is successful </td></tr>
   </table>
   </dd>
@@ -376,6 +377,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">items</td><td>A vector of strings to include in the dropdown </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">item_descriptions</td><td>A vector of strings for the descriptions of each item </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">selected_item</td><td>an integer representing the selected item </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">unique_id</td><td>a unique id for the ImGUI dropdowm <br  />
  </td></tr>
@@ -550,6 +552,7 @@ Additional Inherited Members</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">command</td><td>a pointer to the command resulting from the user's action during this frame </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">sdformat_parser</td><td>an <a class="el" href="classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser.">SDFormatParserI</a> instance containing an sdf element </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">command_factory</td><td>used for creating command objects </td></tr>
   </table>
   </dd>
 </dl>
@@ -689,6 +692,14 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implementation of interface method, wrapped by constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">window_name</td><td>The name to be given to the SDFormatEditor Window </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sdformat_parser</td><td>A pointer to the sdformat parser object </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">success</td><td>true if window initalization is successful </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="classGUII.html#a235dc88af7208ecae673c042103b10c9">GUII</a>.</p>
 

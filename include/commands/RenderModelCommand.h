@@ -34,6 +34,7 @@ class RenderModelCommand : public CommandI
   /// \callgraph
   /// \brief Constructor for render model command objects.
   /// \param[in] model_viewer A pointer to the model viewer object
+  /// \param[in] sdformat_parser A pointer to the SDFormat parser object
   public: RenderModelCommand(std::shared_ptr<ModelViewerI> model_viewer, std::shared_ptr<SDFormatParserI> sdformat_parser);
 
   /// \brief Implementation of interface method. 
@@ -67,7 +68,7 @@ class RenderModelCommand : public CommandI
   /// @brief Pointer to the model viewer object
   private: std::shared_ptr<ModelViewerI> model_viewer;
 
-  /// @brief Pointer to the model viewer object
+  /// @brief Pointer to the SDFormat parser object
   private: std::shared_ptr<SDFormatParserI> sdformat_parser;
 
 };
