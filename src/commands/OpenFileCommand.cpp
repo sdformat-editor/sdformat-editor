@@ -57,6 +57,7 @@ bool OpenFileCommand::Execute()
   std::unique_lock<std::mutex> lock_var = gui->LockMutex();
   this->sdformatParser->Initialize(file_path, success);
 
+  //Save the file path to an external file
   if (success)
   {
     std::string data_dir = std::string(getenv("HOME")) + "/.local/share/sdformat_editor/";

@@ -104,10 +104,7 @@ bool DeleteElementCommand::Execute()
         }
     } 
 
-    // Store the parent
     this->element_to_deletes_parent = element_to_delete->GetParent();
-    
-    // Remove the element to delete from it's parent
     element_to_delete->RemoveFromParent();
 
     // Flag the command as "undo-able"    

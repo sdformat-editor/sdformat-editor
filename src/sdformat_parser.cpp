@@ -97,17 +97,14 @@ SDFormatParser::Mentions SDFormatParser::FindMentions(std::string key, sdf::Para
 
 SDFormatParser::Mentions SDFormatParser::FindMentions(std::string key, sdf::ElementPtr element_to_exclude, sdf::ParamPtr attribute_to_exclude)
 {
-  // Define a Mentions object
   SDFormatParser::Mentions mentions;
 
-  // Exit if we don't have a root sdf element
   if (!this->sdfElement) return mentions;
 
   // Create a stack to hold the element to search for
   // The boolean indicates whether or not this tree node was visited
   std::stack<std::pair<sdf::ElementPtr,bool>> sdf_tree_stack;
 
-  // Append the root model element to the stack
   sdf_tree_stack.emplace(this->sdfElement->Root()->GetFirstElement(), false);
 
   while (!sdf_tree_stack.empty())
@@ -123,16 +120,13 @@ SDFormatParser::Mentions SDFormatParser::FindMentions(std::string key, sdf::Elem
 
     sdf_tree_stack.top().second = true;
 
-    // Get a pointer to the current node
     sdf::ElementPtr current_element = sdf_tree_stack.top().first;
 
     // Check for reference equality between the current element and the element to exclude
     if (!(current_element.get() == element_to_exclude.get()))
     {
-      // Check if this element has an associated value (i.e. it is a type element)
       if (auto value = current_element->GetValue())
       {
-        // Check if this element references the key
         if (value->GetTypeName() == "string" && value->GetAsString() == key)
         {
           mentions.elements.push_back(current_element);
@@ -140,13 +134,10 @@ SDFormatParser::Mentions SDFormatParser::FindMentions(std::string key, sdf::Elem
       }
     }
     
-    // Go through each attribute of this element...
     for (const auto &current_attribute : current_element->GetAttributes())
     {
-      // Check for reference equality between the current attribute and the attribute to exclude
       if (!(current_attribute.get() == attribute_to_exclude.get()))
       {
-        // Check if this attribute references the key
         if (current_attribute->GetTypeName() == "string" && current_attribute->GetAsString() == key)
         {
           mentions.attributes.push_back(current_attribute);
@@ -189,17 +180,14 @@ std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsByAttributeTypeAndVal
 std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsInternal(const std::string& attribute_type, const std::string& attribute_value,
                                                                                       sdf::ElementPtr scope, sdf::ElementPtr scope_to_exclude)
 {
-  // Define a vector of elements
   std::vector<sdf::ElementPtr> elements;
 
-  // Exit if the "scope" element does not exist
   if (!scope) return elements;
 
   // Create a stack to hold the element to search for
   // The boolean indicates whether or not this tree node was visited
   std::stack<std::pair<sdf::ElementPtr,bool>> sdf_tree_stack;
 
-  // Append the scope element to the stack
   sdf_tree_stack.emplace(scope, false);
 
   while (!sdf_tree_stack.empty())
@@ -215,7 +203,6 @@ std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsInternal(const std::s
 
     sdf_tree_stack.top().second = true;
 
-    // Get a pointer to the current node
     sdf::ElementPtr current_element = sdf_tree_stack.top().first;
 
     // If there is a scope that we are excluding out of the search, 
@@ -229,7 +216,6 @@ std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsInternal(const std::s
       }
     }
 
-    // Add this element if it is of the type that we are searching for
     if (current_element->HasAttribute(attribute_type)) 
     {
       sdf::ParamPtr attribute = current_element->GetAttribute(attribute_type);
@@ -245,11 +231,9 @@ std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsInternal(const std::s
     
     if (current_element->GetFirstElement())
     {
-      // Go through each element 
       sdf::ElementPtr child_element_ptr = current_element->GetFirstElement();
       while (child_element_ptr)
       {
-        // Add this child element to the stack
         sdf_tree_stack.emplace(child_element_ptr, false);
         child_element_ptr = child_element_ptr->GetNextElement("");
       }
@@ -273,18 +257,14 @@ std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsInternal(const std::s
 
 std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsByType(const std::string& type)
 {
-  
-  // Define a vector of elements
   std::vector<sdf::ElementPtr> elements;
 
-  // Exit if we don't have a root sdf element
   if (!this->sdfElement) return elements;
 
   // Create a stack to hold the element to search for
   // The boolean indicates whether or not this tree node was visited
   std::stack<std::pair<sdf::ElementPtr,bool>> sdf_tree_stack;
 
-  // Append the root model element to the stack
   sdf_tree_stack.emplace(this->sdfElement->Root()->GetFirstElement(), false);
 
   while (!sdf_tree_stack.empty())
@@ -300,19 +280,15 @@ std::vector<sdf::ElementPtr> SDFormatParser::LookupElementsByType(const std::str
 
     sdf_tree_stack.top().second = true;
 
-    // Get a pointer to the current node
     sdf::ElementPtr current_element = sdf_tree_stack.top().first;
 
-    // Add this element if it is of the type that we are searching for
     if (current_element->GetName() == type) elements.push_back(current_element);
     
     if (current_element->GetFirstElement())
     {
-      // Go through each element 
       sdf::ElementPtr child_element_ptr = current_element->GetFirstElement();
       while (child_element_ptr)
       {
-        // Add this child element to the stack
         sdf_tree_stack.emplace(child_element_ptr, false);
         child_element_ptr = child_element_ptr->GetNextElement("");
       }
@@ -381,7 +357,6 @@ sdf::ElementPtr SDFormatParser::FindScope(sdf::ElementPtr element)
 
 sdf::ElementPtr SDFormatParser::FindCanonical(sdf::ElementPtr model_element)
 {
-  // Ensure that the given element is a model element
   if (!(model_element->GetName() == "model")) return nullptr;
 
   if (model_element->HasAttribute("canonical_link") && model_element->GetAttribute("canonical_link")->GetAsString() != "")
@@ -439,7 +414,6 @@ bool SDFormatParser::HandleRelativeToSpecificationSpecialcases(sdf::ElementPtr e
       }
       element = element->GetParent();
     }
-    // If the relative_to string is still the same, we could not find a valid enclosing model scope
     if (relative_to == "__model__")
     {
       std::cerr << "Could not find a valid model for_relative specification of " 
@@ -461,7 +435,6 @@ bool SDFormatParser::HandleRelativeToSpecificationSpecialcases(sdf::ElementPtr e
       }
       element = element->GetParent();
     }
-    // If the relative_to string is still the same, we could not find a valid valid enclosing world scope
     if (relative_to == "world")
     {
       std::cerr << "Could not find a valid world for_relative specification of " 
@@ -474,9 +447,6 @@ bool SDFormatParser::HandleRelativeToSpecificationSpecialcases(sdf::ElementPtr e
 
 std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementPtr element, std::vector<sdf::ElementPtr> previously_visited_elements)
 {
-  // std::cout << "#####################################" << std::endl;
-  // std::cout << "Considering element "  << this->GetSDFTreePathToElement(element) << std::endl;
-  // Get the pose of this element
   std::pair<glm::dvec3, glm::dquat> pose = std::make_pair(glm::dvec3(0.0f), glm::dquat());
   pose.second = glm::dquat(1.0, 0.0, 0.0, 0.0); // Identity quaternion
 
@@ -485,13 +455,11 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
   // Attempt to get the pose if it is defined
   if (element->GetFirstElement())
   {
-    // Go through each element 
     sdf::ElementPtr child_element_ptr = element->GetFirstElement();
     while (child_element_ptr)
     {
       if (child_element_ptr->GetName() == "pose")
-      {
-        // We have a pose element. 
+      { 
         pose = this->ParsePoseElement(child_element_ptr, relative_to);
         break;
       }
@@ -522,7 +490,6 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
     }
     else if (element->GetName() == "model")
     {
-      // Find the canonical link or canonical model
       if (sdf::ElementPtr canonical_element = this->FindCanonical(element))
       {
         if (canonical_element->HasAttribute("name") && canonical_element->GetAttribute("name")->GetAsString() != "")
@@ -539,7 +506,6 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
     }
     else if (element->GetName() == "joint")
     {
-      // Find the child link
       bool has_child = false;
       sdf::ElementPtr child_element_ptr = element->GetFirstElement();
       while (child_element_ptr)
@@ -551,7 +517,6 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
           // Joints without a relative_to attribute will have their position be defined relative to their child element
           // We need to locate the element referenced by the child and ensure that it is a link
 
-          // First check that the child is not an empty string and is not "world", which is specifically disallowed
           if (child_element_ptr->GetValue()->GetAsString() == "" || child_element_ptr->GetValue()->GetAsString() == "world")
           {
             std::cerr << "Invalid child specified for  " 
@@ -617,7 +582,6 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
         
         if (sdf::ElementPtr top_level_model_or_world = element->GetFirstElement())
         {
-          // Check if top_level_model_or_world is in previously_visited_elements
           bool previously_visited = false;
           for (const auto& visited_element : previously_visited_elements)
           {
@@ -640,9 +604,7 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
             }
           }
         }
-        // std::cout << "Pose: Position(" << pose.first.x << ", " << pose.first.y << ", " << pose.first.z 
-        //       << "), Orientation(" << pose.second.w << ", " << pose.second.x << ", " << pose.second.y << ", " << pose.second.z << ")" << std::endl;
-        // std::cout << "EXIT" << std::endl;
+        
         return pose;
       }
       else if (scope_element->HasAttribute("name") && scope_element->GetAttribute("name")->GetAsString() != "")
@@ -704,7 +666,6 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
       }
     }
 
-    // Check if closest_referenced_element is in previously_visited_elements (cyclic reference)
     for (const auto& visited_element : previously_visited_elements)
     {
       if (visited_element.get() == closest_referenced_element.get())
@@ -715,10 +676,8 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
       }
     }
 
-    // Add closest_referenced_element to previously_visited_elements to avoid revisiting
     previously_visited_elements.push_back(closest_referenced_element);
 
-    // Recursively find the absolute pose of the referenced element
     std::pair<glm::dvec3, glm::dquat> referenced_pose = this->FindAbsolutePose(closest_referenced_element, previously_visited_elements);
 
     // Apply the rotation of the referenced pose to the position vector
@@ -729,8 +688,6 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::FindAbsolutePose(sdf::ElementP
     pose.second = referenced_pose.second * pose.second;
   }
 
-  // std::cout << this->GetSDFTreePathToElement(element)  << "-> Pose: Position(" << pose.first.x << ", " << pose.first.y << ", " << pose.first.z 
-  // << "), Orientation(" << pose.second.w << ", " << pose.second.x << ", " << pose.second.y << ", " << pose.second.z << ")" << std::endl;
   return pose;
 }
 
@@ -745,7 +702,6 @@ std::vector<double> SDFormatParser::ParseStringDoubleVector(const std::string& s
     return values;
   }
 
-  // Check for multiple '.' between spaces
   std::istringstream check_iss(string_of_doubles);
   std::string token;
   while (check_iss >> token)
@@ -760,7 +716,6 @@ std::vector<double> SDFormatParser::ParseStringDoubleVector(const std::string& s
     }
   }
 
-  // Parse the string into doubles
   std::istringstream iss(string_of_doubles);
   double value;
 
@@ -779,12 +734,10 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::ParsePoseElement(sdf::ElementP
   std::pair<glm::dvec3, glm::dquat> pose = std::make_pair(glm::dvec3(0.0f), glm::dquat());
   pose.second = glm::dquat(1.0, 0.0, 0.0, 0.0); // Identity quaternion
 
-  // Get the relative_to specification.
   if (element->HasAttribute("relative_to")) relative_to = element->GetAttribute("relative_to")->GetAsString();
 
   bool euler_rpy;
 
-  // determine the rotation format
   if (element->HasAttribute("rotation_format")) 
   {
     if (element->GetAttribute("rotation_format")->GetAsString() == "euler_rpy")
@@ -828,10 +781,8 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::ParsePoseElement(sdf::ElementP
       return pose;
     }
 
-    // Set position
     pose.first = glm::dvec3(values[0], values[1], values[2]);
 
-    // Set quaternion
     pose.second = glm::dquat(values[6], values[3], values[4], values[5]); // glm::dquat(w, x, y, z)
   }
   else if (euler_rpy)
@@ -844,15 +795,12 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::ParsePoseElement(sdf::ElementP
       return pose;
     }
 
-    // Set position
     pose.first = glm::dvec3(values[0], values[1], values[2]);
 
-    // Convert euler angles (roll, pitch, yaw) to quaternion
     glm::dquat roll_quat = glm::angleAxis(values[3], glm::dvec3(1.0, 0.0, 0.0));
     glm::dquat pitch_quat = glm::angleAxis(values[4], glm::dvec3(0.0, 1.0, 0.0));
     glm::dquat yaw_quat = glm::angleAxis(values[5], glm::dvec3(0.0, 0.0, 1.0));
 
-    // Combine the rotations
     pose.second = yaw_quat * pitch_quat * roll_quat;
   }
 

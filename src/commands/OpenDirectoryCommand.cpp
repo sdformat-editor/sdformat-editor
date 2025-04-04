@@ -42,6 +42,7 @@ bool OpenDirectoryCommand::Execute()
   
   bool success;
 
+  //Create a new .sdf within the specified directory
   std::unique_lock<std::mutex> lock_var = gui->LockMutex();
   std::string sdf_file = file_path + "/NewModel.sdf";
   FileOperations::GetSoleInstance().SetActiveFilePath(sdf_file);
@@ -61,6 +62,7 @@ bool OpenDirectoryCommand::Execute()
   fclose(new_model);
   this->sdformatParser->Initialize(sdf_file, success);
 
+  // Save the path to an external file
   if (success)
   {
     std::string data_dir = std::string(getenv("HOME")) + "/.local/share/sdformat_editor/";

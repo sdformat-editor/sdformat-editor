@@ -28,8 +28,6 @@ bool ModelViewer::ModelViewerKeyHandler::keyPressed(const OgreBites::KeyboardEve
 {
   if (evt.keysym.sym == OgreBites::SDLK_ESCAPE)
   {
-    std::cout << "Hello ESC Key" << std::endl;
-
     Ogre::Root::getSingleton().queueEndRendering();
   }
   return true;
@@ -62,14 +60,11 @@ bool ModelViewer::ModelViewerKeyHandler::mouseReleased(const OgreBites::MouseBut
 void ModelViewer::Initialize()
 {
     std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
-    // Initialize the application context
     this->ctx.initApp();
 
-    // Get a pointer to the Ogre root and create a scene manager
     this->ogreRoot = ctx.getRoot();
     this->scnMgr = this->ogreRoot->createSceneManager();
 
-    // Register the scene manager with the RTShaderSystem
     this->shadergen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
     shadergen->addSceneManager(scnMgr);
 
@@ -99,13 +94,6 @@ void ModelViewer::Initialize()
 
     this->ctx.getRenderWindow()->addViewport(this->sceneCamera);
     this->ctx.getRenderWindow()->getViewport(0)->setBackgroundColour(Ogre::ColourValue(0.45f, 0.55f, 0.60f));
-
-    // ModelInfo model = {
-    //   .model_absolute_path = "/home/evanv/workspace/sdformat-editor/models/Waterwitch/waterwitch.stl",
-    //   .position = {0.0f, 0.0f, 0.0f},
-    //   .orientation = {0.0f, 1.0f, 0.0f, 0.0f},
-    // };
-    // AddModel(model);
 
     // Register for input events
     this->keyHandler.addModelViewerContext(this);

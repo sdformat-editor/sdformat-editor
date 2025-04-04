@@ -176,23 +176,23 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
   }
   if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_O))
   {
-    if (!prevent_input_flag) command = command_factory->MakeOpenFileCommand("");
+    if (!(this->prevent_input_flag)) command = command_factory->MakeOpenFileCommand("");
   }
   if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_S))
   {
-    if (!prevent_input_flag) command = command_factory->MakeSaveFileCommand();
+    if (!(this->prevent_input_flag)) command = command_factory->MakeSaveFileCommand();
   }
   if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_Equal))
   {
-    if (!prevent_input_flag && io.FontGlobalScale < 5.0f) io.FontGlobalScale += 0.5f;
+    if (!(this->prevent_input_flag) && io.FontGlobalScale < 5.0f) io.FontGlobalScale += 0.5f;
   }
   if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_Minus))
   {
-    if (!prevent_input_flag && io.FontGlobalScale > 1.0f) io.FontGlobalScale -= 0.5f;
+    if (!(this->prevent_input_flag) && io.FontGlobalScale > 1.0f) io.FontGlobalScale -= 0.5f;
   }
   if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_R))
   {
-    if (!prevent_input_flag) command = command_factory->MakeRenderModelCommand();
+    if (!(this->prevent_input_flag)) command = command_factory->MakeRenderModelCommand();
   }
 
   if (ImGui::BeginMainMenuBar())
@@ -255,16 +255,12 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
   int window_width, window_height;
   glfwGetWindowSize(this->window, &window_width, &window_height);
 
-  // Set the position and size of the "SDFormat Editor" window
-  // The window will be fixed to the right of the screen. It will take up 25% of 
-  // the total width and the entire height (minus top menu bar)
+  // Set the position and size of the "SDFormat Editor" window to be fixed and 
+  // cover the full window
   ImGui::SetNextWindowPos(ImVec2(0, 20 * io.FontGlobalScale)); // Position the window below the main menu bar
   ImGui::SetNextWindowSize(ImVec2(window_width, window_height - (20.0f * io.FontGlobalScale))); // Set the dynamic size of the window
 
   ImGui::Begin("SDFormat Editor",  nullptr, ImGuiWindowFlags_NoMove); 
-
-  // TODO: (zaid) Save the current working directory and/or current file as an attribute to the GUI object or the file operations singleton
-  // ImGui::TextUnformatted("Active File is: %s", file_ops->getActiveFilePath().c_str()); // Display some text (you can use a format strings too)
 
   // If the user hasn't done anything so far, accept commands from the SDF element tree.
   // Otherwise, display the tree but do not take commands.
@@ -316,8 +312,8 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
   // The boolean indicates whether or not this tree node was visited
   std::stack<std::pair<sdf::ElementPtr,bool>> sdf_tree_stack;
 
-  // To ensure that there are no issue with repeat elements for ImGui,
-  // every button will be given a unique id.
+  // To ensure that there are no issue with repeat elements for ImGui, every
+  // button will be given a unique id along with every duplicate element name
   int unique_input_id = 0;
   std::map<std::string, int> unique_node_id_map = {};
 
@@ -385,7 +381,6 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
       // Delete and append buttons for this node
       if (ImGui::Button(("Delete element##" + std::to_string(unique_input_id++)).c_str()))
       {
-        // Create a DeleteElement command
         if (!prevent_input_flag) command = command_factory->MakeDeleteElementCommand(current_element_ptr);
       }
       ImGui::SameLine();
@@ -406,7 +401,6 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
         this->CreateAppendElementDropdown(this->element_to_append_to, command, command_factory, unique_input_id);
       }
 
-      // Get the current window size
       int window_width, _;
       glfwGetWindowSize(this->window, &window_width, &_);
 
@@ -653,7 +647,7 @@ void GUI::CreateAppendElementDropdown(sdf::ElementPtr element, std::unique_ptr<C
       element_descriptions.push_back(element->GetElementDescription(i)->GetDescription());
     }
   
-    // Add an option to create a custom element
+    // TODO: Add an option to create a custom element
     element_names.push_back("I want to create a custom element");
     element_descriptions.push_back("Open a dialog to create a custom element");
   
