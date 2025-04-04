@@ -828,6 +828,27 @@ std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::Preset
   for (sdf::ElementPtr model_defining_element : model_defining_elements) {
     std::pair<glm::dvec3, glm::dquat> absolute_pose = this->FindAbsolutePose(model_defining_element);
     sdf::ElementPtr geometry_element;
+    double opacity = 1.0f;
+
+    if (model_defining_element->GetName() == "collision")
+    {
+      opacity = 0.1f;
+    }
+    else if (model_defining_element->HasElement("transparency"))
+    {
+      bool success = false;
+      std::vector<double> transparency_reading = ParseStringDoubleVector(model_defining_element->GetElement("transparency")->GetValue()->GetAsString(), success);
+      if (!success || transparency_reading.size() != 1)
+      {
+        std::cerr << "Invalid transparency specified for " << this->GetSDFTreePathToElement(model_defining_element) << std::endl;
+        continue;
+      }
+      else
+      {
+        opacity = 1 - transparency_reading[0];
+      }
+    }
+
     if ((geometry_element = model_defining_element->FindElement("geometry")))
     {
       sdf::ElementPtr geometry_child_element;
@@ -838,7 +859,8 @@ std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::Preset
         sdf::ElementPtr size_element;
         sdf::ElementPtr radius_element;
         sdf::ElementPtr length_element;
-        glm::vec3 size_glm;
+        ModelViewerI::PresetType preset_type = ModelViewerI::PresetType::BOX;
+        glm::vec3 size_glm = {1.0f, 1.0f, 1.0f};
         bool success = true;
         if (geometry_child_element->GetName() == "box" && (size_element = geometry_child_element->FindElement("size")))
         {
@@ -849,17 +871,9 @@ std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::Preset
             continue;
           }
           size_glm = {box_size[0],box_size[1],box_size[2]};
-          ModelViewerI::PresetModelInfo model = {
-            .preset_type = ModelViewerI::PresetType::BOX,
-            .position = absolute_pose.first,
-            .orientation = absolute_pose.second,
-            .scale = size_glm
-          };
-          presetModels.push_back(model);
+          preset_type = ModelViewerI::PresetType::BOX;
         }
-        else if (geometry_child_element->GetName() == "cylinder" 
-                && (radius_element = geometry_child_element->FindElement("radius")) 
-                && (length_element = geometry_child_element->FindElement("length")))
+        else if (geometry_child_element->GetName() == "cylinder" && (radius_element = geometry_child_element->FindElement("radius")) && (length_element = geometry_child_element->FindElement("length")))
         {
           std::vector<double> cyl_radius = ParseStringDoubleVector(radius_element->GetValue()->GetAsString(), success);
           if (success == false || cyl_radius.size() != 1)
@@ -867,23 +881,16 @@ std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::Preset
             std::cerr << "Invalid specified for " << this->GetSDFTreePathToElement(radius_element) << std::endl;
             continue;
           }
-          std::vector<double> cyl_len = ParseStringDoubleVector(radius_element->GetValue()->GetAsString(), success);
+          std::vector<double> cyl_len = ParseStringDoubleVector(length_element->GetValue()->GetAsString(), success);
           if (success == false || cyl_len.size() != 1)
           {
             std::cerr << "Invalid specified for " << this->GetSDFTreePathToElement(length_element) << std::endl;
             continue;
           }
           size_glm = {cyl_radius[0],cyl_radius[0],cyl_len[0]};
-          ModelViewerI::PresetModelInfo model = {
-            .preset_type = ModelViewerI::PresetType::CYLINDER,
-            .position = absolute_pose.first,
-            .orientation = absolute_pose.second,
-            .scale = size_glm
-          };
-          presetModels.push_back(model);
+          preset_type = ModelViewerI::PresetType::CYLINDER;
         }
-        else if (geometry_child_element->GetName() == "sphere" 
-                && (radius_element = geometry_child_element->FindElement("radius")))
+        else if (geometry_child_element->GetName() == "sphere" && (radius_element = geometry_child_element->FindElement("radius")))
         {
           std::vector<double> sphere_radius = ParseStringDoubleVector(radius_element->GetValue()->GetAsString(), success);
           if (success == false || sphere_radius.size() != 1)
@@ -892,14 +899,22 @@ std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::Preset
             continue;
           }
           size_glm = {sphere_radius[0],sphere_radius[0],sphere_radius[0]};
-          ModelViewerI::PresetModelInfo model = {
-            .preset_type = ModelViewerI::PresetType::SPHERE,
-            .position = absolute_pose.first,
-            .orientation = absolute_pose.second,
-            .scale = size_glm
-          };
-          presetModels.push_back(model);
+          preset_type = ModelViewerI::PresetType::SPHERE;
         }
+        else
+        {
+          std::cerr << "Invalid geometry shape information for " << this->GetSDFTreePathToElement(geometry_element) << std::endl;
+          continue;
+        }
+        
+        ModelViewerI::PresetModelInfo model = {
+          .preset_type = preset_type,
+          .position = absolute_pose.first,
+          .orientation = absolute_pose.second,
+          .scale = size_glm,
+          .opacity = opacity
+        };
+        presetModels.push_back(model);
       }
       else if ((geometry_child_element = geometry_element->FindElement("mesh")))
       {
@@ -915,6 +930,7 @@ std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::Preset
             .model_absolute_path = mesh_path,
             .position = absolute_pose.first,
             .orientation = absolute_pose.second,
+            .opacity = opacity
           };
           models.push_back(model);
         }

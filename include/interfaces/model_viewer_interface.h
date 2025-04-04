@@ -45,7 +45,7 @@ class ModelViewerI
         // Scale
         glm::dvec3 scale = {1,1,1};
 
-        float opacity = 1.0f;
+        double opacity = 1.0f;
     } ModelInfo;
 
     public: enum PresetType {
@@ -67,7 +67,7 @@ class ModelViewerI
         // Scale
         glm::dvec3 scale = {1,1,1};
 
-        float opacity = 1.0f;
+        double opacity = 1.0f;
     } PresetModelInfo;
 
     /// \callgraph
