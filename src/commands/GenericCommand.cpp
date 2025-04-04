@@ -50,8 +50,9 @@ bool GenericCommand::IsRedoable()
     return false;
 }
 
-bool GenericCommand::IsThreaded()
+bool GenericCommand::IsThreaded(bool& prevent_user_input)
 {
+    prevent_user_input = false;
     return false;
 }
 

@@ -17,39 +17,37 @@
 * Developer: Zaid Duraid, Ean Wheeler, Evan Vokey
 */
 
-#ifndef SDFORMAT_EDITOR_SAVE_FILE_COMMAND_HH_
-#define SDFORMAT_EDITOR_SAVE_FILE_COMMAND_HH_
+#ifndef SDFORMAT_EDITOR_CLOSE_MODEL_VIEWER_COMMAND_HH_
+#define SDFORMAT_EDITOR_CLOSE_MODEL_VIEWER_COMMAND_HH_
 
 
 #include <interfaces/command_interface.h>
-#include <interfaces/sdformat_parser_interface.h>
-#include <interfaces/gui_interface.h>
+#include <interfaces/model_viewer_interface.h>
 
 
-/// \brief Save model command implementation of CommandI
-class SaveFileCommand : public CommandI
+/// \brief Close open viewer command implementation of CommandI
+class CloseModelViewerCommand : public CommandI
 {
 
   /// \callgraph
-  /// \brief Constructor for save model command objects.
-  /// \param[in] gui Pointer to the GUII object 
-  /// \param[in] sdformatParser Pointer to the SDFormatParserI object
-  public: SaveFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser);
+  /// \brief Constructor for close model vuewer command objects.
+  /// \param[in] model_viewer Pointer to the ModelViewerI object
+  public: CloseModelViewerCommand(std::shared_ptr<ModelViewerI> model_viewer);
 
   /// \brief Implementation of interface method. 
   /// \returns True if the SDFormatParser has successfully parsed the file and it has been displayed in the GUI
-  private: bool Execute();
+  private: bool Execute() override;
 
-  /// \brief Implementation of interface method. 
-  /// \returns Always false
+  /// @brief Implementation of interface method.
+  /// @return Always false
   private: bool ExecuteUndo() override;
 
-  /// \brief Implementation of interface method. 
-  /// \returns Always false
+  /// @brief Implementation of interface method.
+  /// @return Always false
   private: bool ExecuteRedo() override;
 
   /// \brief Implementation of interface method.
-  /// \returns Always false
+  /// \returns Always False
   private: bool IsUndoable() override;
 
   /// \brief Implementation of interface method.
@@ -59,18 +57,15 @@ class SaveFileCommand : public CommandI
   /// \brief Implementation of interface method.
   /// \param[out] prevent_user_input indicates if user input should be prevented 
   /// if this happens to be a threaded command
-  /// \returns Always false
+  /// \returns Always true
   private: bool IsThreaded(bool& prevent_user_input) override;
 
   /// \brief Implementation of interface method.
-  /// \returns Always false
+  /// \returns Always true
   private: bool ChangesProgramStateIrreversibly() override;
 
-  /// @brief Pointer to the gui interface
-  private: std::shared_ptr<GUII> gui;
-
   /// @brief Pointer to the sdformat parser interface
-  private: std::shared_ptr<SDFormatParserI> sdformatParser;
+  private: std::shared_ptr<ModelViewerI> model_viewer;
 
 };
 

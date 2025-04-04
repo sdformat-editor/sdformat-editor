@@ -30,6 +30,8 @@ OpenDirectoryCommand::OpenDirectoryCommand(std::shared_ptr<GUII> gui, std::share
 
 bool OpenDirectoryCommand::Execute()
 {
+  // Prevent user input in the gui while they are opening a file
+  this->gui->SetPreventInputFlag(true);
 
   // If the parameter is blank, open the file dialog 
   std::string file_path = FileOperations::GetSoleInstance().OpenDirectoryDialog();
@@ -37,6 +39,7 @@ bool OpenDirectoryCommand::Execute()
   // If the file path is blank, then there was no directory specified
   if (file_path == "")
   {
+    this->gui->SetPreventInputFlag(false);
     return false;
   }
   
@@ -55,9 +58,9 @@ bool OpenDirectoryCommand::Execute()
   std::cout << default_model_path << std::endl;
   #endif
   while (fgets(buffer.data(), buffer.size(), default_model) != nullptr)
-    {
-      fwrite(buffer.data(), sizeof(char), strlen(buffer.data()), new_model);
-    }
+  {
+    fwrite(buffer.data(), sizeof(char), strlen(buffer.data()), new_model);
+  }
   fclose(default_model);
   fclose(new_model);
   this->sdformatParser->Initialize(sdf_file, success);
@@ -82,6 +85,8 @@ bool OpenDirectoryCommand::Execute()
     }
   }
 
+  this->gui->SetPreventInputFlag(false);
+
   return success;
 
 }
@@ -96,8 +101,9 @@ bool OpenDirectoryCommand::ExecuteRedo()
   return this->IsRedoable();
 }
 
-bool OpenDirectoryCommand::IsThreaded() 
+bool OpenDirectoryCommand::IsThreaded(bool& prevent_user_input) 
 {
+  prevent_user_input = true;
   return true;
 }
 

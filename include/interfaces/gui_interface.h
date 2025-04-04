@@ -80,7 +80,6 @@ class GUII : public std::enable_shared_from_this<GUII>
     /// \brief Method to lock mutex
     public: virtual std::unique_lock<std::mutex> LockMutex() = 0;
 
-
 };;
 
 #endif

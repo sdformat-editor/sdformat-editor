@@ -24,6 +24,7 @@
 #include <vector>
 #include <memory>
 #include <string>
+#include <mutex>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/quaternion.hpp>
@@ -94,6 +95,10 @@ class ModelViewerI
     /// \brief Indicates if the model view is running
     /// \returns a boolean
     public: virtual bool IsRunning() = 0;
+
+    /// \callgraph
+    /// \brief Method to lock mutex
+    public: virtual std::mutex& GetMutex() = 0;
 };
 
 #endif

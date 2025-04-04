@@ -138,9 +138,9 @@ template <typename T> bool ModifyAttributeCommand<T>::IsRedoable()
     return this->is_currently_redoable;
 }
 
-template <typename T> bool ModifyAttributeCommand<T>::IsThreaded()
+template <typename T> bool ModifyAttributeCommand<T>::IsThreaded(bool& prevent_user_input)
 {
-    // Stub implementation
+    prevent_user_input = false;
     return false;
 }
 

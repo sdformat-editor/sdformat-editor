@@ -27,12 +27,21 @@ RenderModelCommand::RenderModelCommand(std::shared_ptr<ModelViewerI> model_viewe
 
 bool RenderModelCommand::Execute()
 {
+    std::lock_guard<std::mutex> lock(this->model_viewer->GetMutex());
+
+    // Set a flag to remove reset the models in the model viewer
     this->model_viewer->ResetModels();
+
+    // Get the model info from the SDFormat Parser (file locations, scale, pose)
     std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::PresetModelInfo>> models = this->sdformat_parser->GetModelsFromSDFTree();
-    for (ModelViewerI::ModelInfo model : models.first) {
+
+    // Add both mesh models and preset (simple shape) models 
+    for (ModelViewerI::ModelInfo model : models.first) 
+    {
         this->model_viewer->AddModel(model);
     }
-    for (ModelViewerI::PresetModelInfo model : models.second) {
+    for (ModelViewerI::PresetModelInfo model : models.second) 
+    {
         this->model_viewer->AddModel(model);
     }
     return true;
@@ -58,8 +67,9 @@ bool RenderModelCommand::IsRedoable()
     return false;
 }
 
-bool RenderModelCommand::IsThreaded()
+bool RenderModelCommand::IsThreaded(bool& prevent_user_input)
 {
+    prevent_user_input = false;
     return false;
 }
 

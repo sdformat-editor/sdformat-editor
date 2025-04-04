@@ -103,8 +103,9 @@ bool SaveFileCommand::ExecuteRedo()
   return this->IsRedoable();
 }
 
-bool SaveFileCommand::IsThreaded() 
+bool SaveFileCommand::IsThreaded(bool& prevent_user_input) 
 {
+  prevent_user_input = false;
   return false;
 }
 

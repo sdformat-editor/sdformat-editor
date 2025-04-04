@@ -59,7 +59,8 @@ bool ModelViewer::ModelViewerKeyHandler::mouseReleased(const OgreBites::MouseBut
 
 void ModelViewer::Initialize()
 {
-    std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
+    
+    // Initialize the application context
     this->ctx.initApp();
 
     this->ogreRoot = ctx.getRoot();
@@ -95,46 +96,94 @@ void ModelViewer::Initialize()
     this->ctx.getRenderWindow()->addViewport(this->sceneCamera);
     this->ctx.getRenderWindow()->getViewport(0)->setBackgroundColour(Ogre::ColourValue(0.45f, 0.55f, 0.60f));
 
-    // Register for input events
+    // Register the input and window event handler objects
     this->keyHandler.addModelViewerContext(this);
     this->ctx.addInputListener(&this->keyHandler);
+
+    this->is_running = true;
+    this->should_quit = false;
 }
 
 void ModelViewer::RenderFrame()
 {
-    std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
-    HandleResetModelsFlag();
-    HandleAddModelQueue();
+  if (should_quit) 
+  {
+    this->Deinitialize();
+    return;
+  }
+  HandleResetModelsFlag();
 
-    this->ctx.pollEvents(); 
+  HandleAddModelQueue();
 
-    // Render a single frame
-    if (!this->should_quit && !this->ogreRoot->renderOneFrame())
-    {
-      // Check if the escape key was pressed using the InputListener mechanism
-      // This functionality is already handled in the ModelViewerKeyHandler class
-      // Ensure ModelViewerKeyHandler is properly registered for input events
-      this->should_quit = true;
-      this->ctx.closeApp();
-      return;
-    }
+  this->ctx.pollEvents(); 
+
+  // Render a single frame
+  if (!this->should_quit && !this->ogreRoot->renderOneFrame())
+  {
+    // Check if the escape key was pressed using the InputListener mechanism
+    // This functionality is already handled in the ModelViewerKeyHandler class
+    // Ensure ModelViewerKeyHandler is properly registered for input events
+    this->Deinitialize();
+    return;
+  }
+}
+
+std::mutex& ModelViewer::GetMutex()
+{
+  return this->model_viewer_mutex;
 }
 
 bool ModelViewer::IsRunning()
 {
-    std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
-    return !this->should_quit;
+    
+    return this->is_running;
 }
 
 void ModelViewer::Quit()
 {
-    std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
-    this->should_quit = true;
-    this->ctx.closeApp();
+  // Mark the application as quitting
+  this->should_quit = true;
 }
 
-void ModelViewer::HandleAddModelQueue() {
-  while (!this->add_model_queue.empty()) {
+void ModelViewer::Deinitialize()
+{
+  // Empty the model queue
+  while (!this->add_model_queue.empty()) add_model_queue.pop();
+
+  this->unique_naming_counter = 0;
+  this->color_list_index = 0;
+
+
+  this->scnMgr->clearScene();
+  this->scnMgr->destroyAllCameras();
+
+  this->sceneLight = nullptr;
+  this->sceneLightNode = nullptr;
+  this->sceneCamera = nullptr;
+  this->sceneCameraNode = nullptr;
+
+  if (this->cameraController)
+  {
+    delete this->cameraController;
+    this->cameraController = nullptr;
+  }
+
+  if (this->scnMgr)
+  {
+    this->ogreRoot->destroySceneManager(this->scnMgr);
+    this->scnMgr = nullptr;
+  }
+
+  // Close the application context
+  this->ctx.closeApp();
+
+  this->is_running = false;
+}
+
+void ModelViewer::HandleAddModelQueue() 
+{
+  while (!this->add_model_queue.empty()) 
+  {
     ModelInfo model_info = this->add_model_queue.front();
     this->add_model_queue.pop();
 
@@ -179,14 +228,14 @@ void ModelViewer::HandleAddModelQueue() {
   }
 }
 
-void ModelViewer::AddModel(ModelViewer::ModelInfo model_info) {
-  std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
+void ModelViewer::AddModel(ModelViewer::ModelInfo model_info) 
+{
+  
   add_model_queue.push(model_info);
 }
 
-void ModelViewer::AddModel(ModelViewer::PresetModelInfo model_info) {
-  std::lock_guard<std::mutex> lock(this->model_viewer_mutex);
-
+void ModelViewer::AddModel(ModelViewer::PresetModelInfo model_info) 
+{
   ModelViewer::ModelInfo abs_model_info = {
     .model_absolute_path = "",
     .position = model_info.position,
@@ -221,21 +270,13 @@ void ModelViewer::AddModel(ModelViewer::PresetModelInfo model_info) {
   add_model_queue.push(abs_model_info);
 }
 
-void ModelViewer::HandleResetModelsFlag() {
-  if (reset_models_flag) {
-    // Reset the models
-    Ogre::SceneNode* scene_node = scnMgr->getRootSceneNode();
+void ModelViewer::HandleResetModelsFlag() 
+{
+  if (reset_models_flag) 
+  {
+    this->scnMgr->destroyAllMovableObjectsByType("Entity");
 
-    for (Ogre::Node* node : scene_node->getChildren()) {
-      Ogre::SceneNode* s = dynamic_cast<Ogre::SceneNode*>(node);
-      if (s) {
-        for (Ogre::MovableObject* moveable_object: s->getAttachedObjects()) {
-          if (moveable_object->getMovableType() == "Entity") {
-            scene_node->removeAndDestroyChild(s);
-          }
-        }
-      }
-    }
+    this->scnMgr->getRootSceneNode()->removeAllChildren();
 
     color_list_index = 0;
 
@@ -243,7 +284,8 @@ void ModelViewer::HandleResetModelsFlag() {
   }
 }
 
-void ModelViewer::ResetModels() {
+void ModelViewer::ResetModels()
+{
   this->reset_models_flag = true;
   
   // Clear items currently in the queue

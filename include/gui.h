@@ -127,6 +127,9 @@ class GUI : public GUII
 
   /// \brief Flag which can be set to prevent the GUI from taking user input.
   private: std::atomic<bool> prevent_input_flag = false;
+
+  /// \brief Flag to indicate if the model viewer is currently running.
+  private: bool model_viewer_running = false;
   
   /// \brief Pointer to the GLFW window object, used to manage for rendering and handling window events
   private: GLFWwindow *window = nullptr;

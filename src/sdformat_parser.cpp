@@ -736,7 +736,7 @@ std::pair<glm::dvec3, glm::dquat> SDFormatParser::ParsePoseElement(sdf::ElementP
 
   if (element->HasAttribute("relative_to")) relative_to = element->GetAttribute("relative_to")->GetAsString();
 
-  bool euler_rpy;
+  bool euler_rpy = true;
 
   if (element->HasAttribute("rotation_format")) 
   {

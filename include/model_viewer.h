@@ -38,7 +38,6 @@
 #include <string>
 #include <vector>
 #include <filesystem>
-#include <mutex>
 #include <queue>
 
 /// \brief Implementation of SDFormatParserI
@@ -65,11 +64,18 @@ class ModelViewer : public ModelViewerI
     /// \returns a boolean
     public: bool IsRunning() override;
 
+    /// \callgraph
+    /// \brief Deallocates memory and quits the app
+    private: void Deinitialize() ;
+
     /// \brief Mutex for thread safety
     private: std::mutex model_viewer_mutex;
 
     /// \brief Mutex for thread safety
     private: bool should_quit = false;
+
+    /// \brief Model viewer has quit
+    private: bool is_running = false;
 
     /// \brief Implementation of interface method
     /// \param[in] model_info struct containing the model information
@@ -78,6 +84,9 @@ class ModelViewer : public ModelViewerI
 
     /// \brief Implementation of the interface method
     public: void ResetModels() override;
+    
+    /// \brief Implementation of lock method
+    private: std::mutex& GetMutex() override;
 
     /// \brief private method which pops ModelInfo's off the model queue and creates their OGRE entities.
     private: void HandleAddModelQueue();
@@ -112,9 +121,6 @@ class ModelViewer : public ModelViewerI
     /// \brief Pointer to the main camera controller
     private: OgreBites::CameraMan* cameraController;
 
-    /// \brief The texture we will be rendering into 
-    private: Ogre::TexturePtr renderTexturePointer;
-
     /// \brief queue to add models to model viewer
     private: std::queue<ModelInfo> add_model_queue;
 
@@ -132,10 +138,20 @@ class ModelViewer : public ModelViewerI
             public: bool mouseReleased(const OgreBites::MouseButtonEvent& evt) override;
         };
     
+    // private:
+    //     class ModelViewerWindowEventHandler : public OgreBites::WindowEventListener
+    //     {
+    //         private: ModelViewer *m;
+    //         public: void addModelViewerContext(ModelViewer *m);
+    //         public: void windowClosed(Ogre::RenderWindow* rw) override;
+    //         public: void windowMoved(Ogre::RenderWindow* rw) override;
+    //     };
+
     /// \brief instance of ModelViewerKeyHandler
     private: ModelViewerKeyHandler keyHandler;
 
-    /// @brief 
+    // private: ModelViewerWindowEventHandler windowEventHandler;
+
     private: unsigned long long unique_naming_counter = 0;
 
     /// \brief list of random colours

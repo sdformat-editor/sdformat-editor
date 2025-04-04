@@ -141,9 +141,9 @@ template <typename T> bool ModifyElementCommand<T>::IsRedoable()
     return this->is_currently_redoable;
 }
 
-template <typename T> bool ModifyElementCommand<T>::IsThreaded()
+template <typename T> bool ModifyElementCommand<T>::IsThreaded(bool& prevent_user_input)
 {
-    // Stub implementation
+    prevent_user_input = false;
     return false;
 }
 

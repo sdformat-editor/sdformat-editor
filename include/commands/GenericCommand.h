@@ -55,8 +55,10 @@ class GenericCommand : public CommandI
   private: bool IsRedoable() override;
 
   /// \brief Implementation of interface method.
+  /// \param[out] prevent_user_input indicates if user input should be prevented 
+  /// if this happens to be a threaded command
   /// \returns Always false
-  private: bool IsThreaded() override;
+  private: bool IsThreaded(bool& prevent_user_input) override;
 
   /// \brief Implementation of interface method.
   /// \returns Always false

@@ -192,7 +192,23 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
   }
   if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_R))
   {
-    if (!(this->prevent_input_flag)) command = command_factory->MakeRenderModelCommand();
+    if (!model_viewer_running)
+    {
+      this->model_viewer_running = true;
+      if (!prevent_input_flag) command = command_factory->MakeOpenModelViewerCommand();
+    }
+    else
+    {
+      if (!prevent_input_flag) command = command_factory->MakeRenderModelCommand();
+    }
+  }
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_C))
+  {
+    if (model_viewer_running)
+    {
+      this->model_viewer_running = false;
+      if (!prevent_input_flag) command = command_factory->MakeCloseModelViewerCommand();
+    }
   }
 
   if (ImGui::BeginMainMenuBar())
@@ -240,13 +256,29 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
           }
           ImGui::EndMenu();
       }
-      if (ImGui::BeginMenu("Render"))
+      if (ImGui::BeginMenu("Model Viewer"))
       {
-          if (ImGui::MenuItem("Render Model", "Ctrl+R"))
+        if (!model_viewer_running)
+        {
+          if (ImGui::MenuItem(("Open Model Viewer"), "Ctrl+R"))
           {
-            if (!(this->prevent_input_flag)) command = command_factory->MakeRenderModelCommand();
+            this->model_viewer_running = true;
+            if (!prevent_input_flag) command = command_factory->MakeOpenModelViewerCommand();
           }
-          ImGui::EndMenu();
+        }
+        else
+        {
+          if (ImGui::MenuItem(("Render Model"), "Ctrl+R"))
+          {
+            if (!prevent_input_flag) command = command_factory->MakeRenderModelCommand();
+          }
+          if (ImGui::MenuItem(("Close Model Viewer"), "Ctrl+C"))
+          {
+            this->model_viewer_running = false;
+            if (!prevent_input_flag) command = command_factory->MakeCloseModelViewerCommand();
+          }
+        }
+        ImGui::EndMenu();
       }
       ImGui::EndMainMenuBar();
   }

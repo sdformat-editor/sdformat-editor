@@ -43,6 +43,11 @@ std::unique_ptr<CommandI> CommandFactory::MakeRenderModelCommand()
     return std::make_unique<RenderModelCommand>(this->model_viewer, this->sdformatParser);
 }
 
+std::unique_ptr<CommandI> CommandFactory::MakeOpenModelViewerCommand()
+{
+    return std::make_unique<OpenModelViewerCommand>(this->model_viewer);
+}
+
 std::unique_ptr<CommandI> CommandFactory::MakeOpenDirectoryCommand()
 {
     return std::make_unique<OpenDirectoryCommand>(this->gui, this->sdformatParser);
@@ -82,6 +87,12 @@ std::unique_ptr<CommandI> CommandFactory::MakeModifyElementCommand(sdf::ElementP
 std::unique_ptr<CommandI> CommandFactory::MakeAddElementCommand(sdf::ElementPtr parent_element, sdf::ElementPtr new_element)
 {
     return std::make_unique<AddElementCommand>(this->gui, this->sdformatParser, parent_element, new_element);
+}
+
+
+std::unique_ptr<CommandI> CommandFactory::MakeCloseModelViewerCommand()
+{
+    return std::make_unique<CloseModelViewerCommand>(this->model_viewer);
 }
 
 void CommandFactory::PushToUndoCommandsStack(std::unique_ptr<CommandI> command, const bool new_change)

@@ -39,7 +39,8 @@ bool OpenFileCommand::Execute()
   else 
   {
     FILE *test_file = fopen(file_path.c_str(), "r");
-    if (test_file == NULL) {
+    if (test_file == NULL) 
+    {
       return false;
     }
     fclose(test_file);
@@ -91,8 +92,9 @@ bool OpenFileCommand::ExecuteRedo()
   return this->IsRedoable();
 }
 
-bool OpenFileCommand::IsThreaded() 
+bool OpenFileCommand::IsThreaded(bool& prevent_user_input) 
 {
+  prevent_user_input = true;
   return true;
 }
 

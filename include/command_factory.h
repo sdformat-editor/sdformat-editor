@@ -36,6 +36,8 @@
 #include "commands/ModifyElementCommand.h"
 #include "commands/AddElementCommand.h"
 #include "commands/RenderModelCommand.h"
+#include "commands/OpenModelViewerCommand.h"
+#include "commands/CloseModelViewerCommand.h"
 
 /// \brief Implementation of CommandFactoryI
 class CommandFactory : public CommandFactoryI
@@ -79,6 +81,14 @@ class CommandFactory : public CommandFactoryI
     /// \brief Implementation of interface method
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeRenderModelCommand() override;
+
+    /// \brief Create a open model viewer model command
+    /// \return Unique pointer to a command interface
+    public: std::unique_ptr<CommandI> MakeOpenModelViewerCommand() override;
+
+    /// \brief Create a close model viewer model command
+    /// \return Unique pointer to a command interface
+    public: std::unique_ptr<CommandI> MakeCloseModelViewerCommand() override;
 
     /// \brief Implementation of interface method
     /// \return Unique pointer to a command interface

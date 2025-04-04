@@ -40,9 +40,6 @@ class FileEditorRunner
     /// \brief Top level method that starts the program
     /// \return Exit state for main function
     public: int RunProgram();
-
-    /// \brief Runs the model viewer thread
-    private: void RunModelViewerThread();
     
     /// @brief Variable for checking if the gui was initilized successfully
     bool gui_initalization_successful;
