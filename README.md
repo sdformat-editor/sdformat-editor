@@ -4,13 +4,20 @@ SDFormat Editor is developed by Zaid Duraid, Evan Vokey, and Ean Wheeler for the
 
 ## Project Description
 
-This project is a stand-alone GUI editor for SDF (Simulation Description Format) files, which are primarily used by the Gazebo robotics simulation tool. The editor provides a 3D viewer alongside an for editing models, links, joints, and other simulation components defined by the SDF specification.
+This project is a stand-alone graphical editor for SDF (Simulation Description Format) files, which are primarily used by the Gazebo robotics simulation tool. The editor allows for editing any .sdf files defined by the [SDFormat 14 Specification](https://github.com/gazebosim/sdformat/tree/sdf14) while also providing a 3D viewer for rendering visual and collision elements.
 
-The project is built in C++ using the CMake build system. it depends on OGRE for 3D rendering, `libsdformat14` for SDF parsing, and Dear ImGui for the user interface.
+![Program Screenshot](docs/ProgramScreenshot.png)
+
+The project is built in C++ using the CMake build system. It relies on the following dependencies:
+- The [libsdformat14 API](https://github.com/gazebosim/sdformat/tree/sdf14) SDF parsing, which is extended upon by the program's SDFormatPraser
+- [Dear ImGui](https://github.com/ocornut/imgui) for the user interface
+- [OGRE](https://github.com/OGRECave/ogre) for 3D rendering
+- [GLM](https://github.com/g-truc/glm) for more complex mathematics operations
+- [GoogleTest](https://github.com/google/googletest) for auto-generated testing
 
 ## Build Enviroment / OS Support
 
-Development and use of this application is only supported on Ubuntu 24.04 LTS.
+Development and use of this application is only supported on Ubuntu 24.04 LTS, though it may work in other versions.
 
 To build the project on your own machine, you must first add the OSRFoundation Gazebo Harmonic APT repository to your machine.
 
