@@ -2,7 +2,7 @@
 \hypertarget{classModifyAttributeCommand}{}\label{classModifyAttributeCommand}\index{ModifyAttributeCommand$<$ T $>$@{ModifyAttributeCommand$<$ T $>$}}
 
 
-Open model command implementation of \doxylink{classCommandI}{CommandI}.  
+Modify Attribute command implementation of \doxylink{classCommandI}{CommandI}.  
 
 
 
@@ -33,7 +33,7 @@ Collaboration diagram for Modify\+Attribute\+Command\texorpdfstring{$<$}{<} T \t
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classModifyAttributeCommand_a41c1bbcf1427037a89a5eeeb362dc438}{Modify\+Attribute\+Command}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ \mbox{\hyperlink{classModifyAttributeCommand_acd527e444966ce7b2c1c099baa2ba493}{gui}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classModifyAttributeCommand_a420d3cfba592f6b1ee1d593edd3507aa}{sdformat\+Parser}}, sdf\+::\+Param\+Ptr \mbox{\hyperlink{classModifyAttributeCommand_ae9bee2202299344deaa3c5ad526fddf3}{attribute\+\_\+to\+\_\+modify}}, T \mbox{\hyperlink{classModifyAttributeCommand_a2acd06a47c471239981ccd812947c284}{new\+\_\+value}})
-\begin{DoxyCompactList}\small\item\em Constructor for open model command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Constructor for modify attribute command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -47,7 +47,7 @@ bool \mbox{\hyperlink{classModifyAttributeCommand_ae5f4a94d8c7913093be60ff5de2e7
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classModifyAttributeCommand_a0d6d063e15b58dde6b748ff6e939c269}{Is\+Redoable}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classModifyAttributeCommand_a62494dadb8502d4a6438fd82719e804e}{Is\+Threaded}} () override
+bool \mbox{\hyperlink{classModifyAttributeCommand_a211a71d72c9e31f828a945e2da5e7694}{Is\+Threaded}} (bool \&prevent\+\_\+user\+\_\+input) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classModifyAttributeCommand_a712d809325687e4d149146a40cfcb0fb}{Changes\+Program\+State\+Irreversibly}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -68,10 +68,10 @@ sdf\+::\+Param\+Ptr {\bfseries attribute\+\_\+to\+\_\+modify}
 \begin{DoxyCompactList}\small\item\em Pointer to the attribute to modify. \end{DoxyCompactList}\item 
 \Hypertarget{classModifyAttributeCommand_a2acd06a47c471239981ccd812947c284}\label{classModifyAttributeCommand_a2acd06a47c471239981ccd812947c284} 
 T {\bfseries new\+\_\+value}
-\begin{DoxyCompactList}\small\item\em new value for string \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The value that will be given to the element. \end{DoxyCompactList}\item 
 \Hypertarget{classModifyAttributeCommand_a104521063bc6d93cf0a190e42a033698}\label{classModifyAttributeCommand_a104521063bc6d93cf0a190e42a033698} 
 T {\bfseries old\+\_\+value}
-\begin{DoxyCompactList}\small\item\em old value for string \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The value that will be overridden in the attribute. \end{DoxyCompactList}\item 
 \Hypertarget{classModifyAttributeCommand_af61c52dfed1eb2ecad9d064c1fb5a5d0}\label{classModifyAttributeCommand_af61c52dfed1eb2ecad9d064c1fb5a5d0} 
 bool {\bfseries is\+\_\+currently\+\_\+undoable} = true
 \begin{DoxyCompactList}\small\item\em Store if the command is currently undo-\/able. \end{DoxyCompactList}\item 
@@ -83,7 +83,7 @@ bool {\bfseries is\+\_\+currently\+\_\+redoable} = true
 \doxysubsection{Detailed Description}
 \subsubsection*{template$<$typename T$>$\newline
 class Modify\+Attribute\+Command$<$ T $>$}
-Open model command implementation of \doxylink{classCommandI}{CommandI}. 
+Modify Attribute command implementation of \doxylink{classCommandI}{CommandI}. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classModifyAttributeCommand_a41c1bbcf1427037a89a5eeeb362dc438}\label{classModifyAttributeCommand_a41c1bbcf1427037a89a5eeeb362dc438} 
@@ -95,13 +95,17 @@ Open model command implementation of \doxylink{classCommandI}{CommandI}.
 
 
 
-Constructor for open model command objects. 
+Constructor for modify attribute command objects. 
 
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em gui} & Pointer to the \doxylink{classGUII}{GUII} object \\
 \hline
 \mbox{\texttt{ in}}  & {\em sdformat\+Parser} & Pointer to the \doxylink{classSDFormatParserI}{SDFormat\+ParserI} object \\
+\hline
+\mbox{\texttt{ in}}  & {\em attribute\+\_\+to\+\_\+modify} & Pointer to the attribute to modify \\
+\hline
+\mbox{\texttt{ in}}  & {\em new\+\_\+value} & The new value with which to modify the element \\
 \hline
 \end{DoxyParams}
 
@@ -137,7 +141,7 @@ bool \mbox{\hyperlink{classModifyAttributeCommand}{Modify\+Attribute\+Command}}$
 Implementation of interface method. 
 
 \begin{DoxyReturn}{Returns}
-Always true. Removes the element to delete from it\textquotesingle{}s parent 
+True if the attribute has been modified 
 \end{DoxyReturn}
 
 
@@ -155,7 +159,7 @@ bool \mbox{\hyperlink{classModifyAttributeCommand}{Modify\+Attribute\+Command}}$
 Implementation of interface method. 
 
 \begin{DoxyReturn}{Returns}
-Returns true if the element to delete was removed from its parent again 
+Returns true if the element was once again given the new value 
 \end{DoxyReturn}
 
 
@@ -173,7 +177,7 @@ bool \mbox{\hyperlink{classModifyAttributeCommand}{Modify\+Attribute\+Command}}$
 Implementation of interface method. 
 
 \begin{DoxyReturn}{Returns}
-Returns true if the element to delete was already deleted and now restored to its parent 
+Returns true if the attribute has been restored to its initial value 
 \end{DoxyReturn}
 
 
@@ -197,23 +201,28 @@ Returns true if the command has been undone
 
 Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
 
-\Hypertarget{classModifyAttributeCommand_a62494dadb8502d4a6438fd82719e804e}\label{classModifyAttributeCommand_a62494dadb8502d4a6438fd82719e804e} 
+\Hypertarget{classModifyAttributeCommand_a211a71d72c9e31f828a945e2da5e7694}\label{classModifyAttributeCommand_a211a71d72c9e31f828a945e2da5e7694} 
 \index{ModifyAttributeCommand$<$ T $>$@{ModifyAttributeCommand$<$ T $>$}!IsThreaded@{IsThreaded}}
 \index{IsThreaded@{IsThreaded}!ModifyAttributeCommand$<$ T $>$@{ModifyAttributeCommand$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
-bool \mbox{\hyperlink{classModifyAttributeCommand}{Modify\+Attribute\+Command}}$<$ T $>$\+::\+Is\+Threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+bool \mbox{\hyperlink{classModifyAttributeCommand}{Modify\+Attribute\+Command}}$<$ T $>$\+::\+Is\+Threaded (\begin{DoxyParamCaption}\item[{bool \&}]{prevent\+\_\+user\+\_\+input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
 Implementation of interface method. 
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em prevent\+\_\+user\+\_\+input} & indicates if user input should be prevented if this happens to be a threaded command \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Always false 
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}{CommandI}}.
+Implements \mbox{\hyperlink{classCommandI_a1c54206064c146ea9ff089fbe4d321b6}{CommandI}}.
 
 \Hypertarget{classModifyAttributeCommand_ae5f4a94d8c7913093be60ff5de2e7c9a}\label{classModifyAttributeCommand_ae5f4a94d8c7913093be60ff5de2e7c9a} 
 \index{ModifyAttributeCommand$<$ T $>$@{ModifyAttributeCommand$<$ T $>$}!IsUndoable@{IsUndoable}}

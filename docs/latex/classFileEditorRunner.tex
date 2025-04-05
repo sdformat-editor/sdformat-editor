@@ -2,7 +2,7 @@
 \hypertarget{classFileEditorRunner}{}\label{classFileEditorRunner}\index{FileEditorRunner@{FileEditorRunner}}
 
 
-Implementation of program start up to be called by main.  
+Class to manage overall program operation.  
 
 
 
@@ -16,14 +16,13 @@ Collaboration diagram for File\+Editor\+Runner\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=243pt]{classFileEditorRunner__coll__graph}
+\includegraphics[width=258pt]{classFileEditorRunner__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classFileEditorRunner_a8bdefdad7a0dcde430a197f95e63f22c}\label{classFileEditorRunner_a8bdefdad7a0dcde430a197f95e63f22c} 
-{\bfseries File\+Editor\+Runner} (bool data\+\_\+dir\+\_\+created=false)
+\mbox{\hyperlink{classFileEditorRunner_a8bdefdad7a0dcde430a197f95e63f22c}{File\+Editor\+Runner}} (bool data\+\_\+dir\+\_\+created=false)
 \begin{DoxyCompactList}\small\item\em Constructor that calls the top level method. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classFileEditorRunner_ad60d0d7c1095deb03879a82c5d0bb62a}{Run\+Program}} ()
 \begin{DoxyCompactList}\small\item\em Top level method that starts the program. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -33,19 +32,43 @@ int \mbox{\hyperlink{classFileEditorRunner_ad60d0d7c1095deb03879a82c5d0bb62a}{Ru
 \Hypertarget{classFileEditorRunner_a727a0cc1d0a6b1c715b8669e5b29a9bd}\label{classFileEditorRunner_a727a0cc1d0a6b1c715b8669e5b29a9bd} 
 bool {\bfseries gui\+\_\+initalization\+\_\+successful}
 \begin{DoxyCompactList}\small\item\em Variable for checking if the gui was initilized successfully. \end{DoxyCompactList}\item 
+\Hypertarget{classFileEditorRunner_a04a9754168a35830fa0a52a1e5e42595}\label{classFileEditorRunner_a04a9754168a35830fa0a52a1e5e42595} 
+bool {\bfseries model\+\_\+viewer\+\_\+initalization\+\_\+successful}
+\begin{DoxyCompactList}\small\item\em Variable for checking if the model viewer was initilized successfully. \end{DoxyCompactList}\item 
 \Hypertarget{classFileEditorRunner_a10a63970e169797160759b1cab2e5b80}\label{classFileEditorRunner_a10a63970e169797160759b1cab2e5b80} 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ {\bfseries sdformat\+Parser}
 \begin{DoxyCompactList}\small\item\em Pointer to \doxylink{classSDFormatParser}{SDFormat\+Parser} which will be null until the user opens a file. \end{DoxyCompactList}\item 
 \Hypertarget{classFileEditorRunner_a0a505fea2a1ac267449ba21a33f0d88d}\label{classFileEditorRunner_a0a505fea2a1ac267449ba21a33f0d88d} 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ {\bfseries gui}
-\begin{DoxyCompactList}\small\item\em Pointer to the \doxylink{classGUI}{GUI} class. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Pointer to the \doxylink{classGUI}{GUI} class instance. \end{DoxyCompactList}\item 
 \Hypertarget{classFileEditorRunner_a8717b5e873b012ad91193acbadfb22d5}\label{classFileEditorRunner_a8717b5e873b012ad91193acbadfb22d5} 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCommandFactoryI}{Command\+FactoryI}} $>$ {\bfseries command\+\_\+factory}
-\begin{DoxyCompactList}\small\item\em Pointer to the \doxylink{classCommandFactory}{Command\+Factory} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Pointer to the \doxylink{classCommandFactory}{Command\+Factory} class instance. \end{DoxyCompactList}\item 
+\Hypertarget{classFileEditorRunner_ab3a8eeec2d185e87aace44b4e8ac5d63}\label{classFileEditorRunner_ab3a8eeec2d185e87aace44b4e8ac5d63} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classModelViewerI}{Model\+ViewerI}} $>$ {\bfseries model\+\_\+viewer}
+\begin{DoxyCompactList}\small\item\em Pointer to the model viewer object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Implementation of program start up to be called by main. 
+Class to manage overall program operation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classFileEditorRunner_a8bdefdad7a0dcde430a197f95e63f22c}\label{classFileEditorRunner_a8bdefdad7a0dcde430a197f95e63f22c} 
+\index{FileEditorRunner@{FileEditorRunner}!FileEditorRunner@{FileEditorRunner}}
+\index{FileEditorRunner@{FileEditorRunner}!FileEditorRunner@{FileEditorRunner}}
+\doxysubsubsection{\texorpdfstring{FileEditorRunner()}{FileEditorRunner()}}
+{\footnotesize\ttfamily File\+Editor\+Runner\+::\+File\+Editor\+Runner (\begin{DoxyParamCaption}\item[{bool}]{data\+\_\+dir\+\_\+created = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Constructor that calls the top level method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em data\+\_\+dir\+\_\+created} & boolean that communicates if the file to contain the previously opened model exists \\
+\hline
+\end{DoxyParams}
+
 
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classFileEditorRunner_ad60d0d7c1095deb03879a82c5d0bb62a}\label{classFileEditorRunner_ad60d0d7c1095deb03879a82c5d0bb62a} 
@@ -59,7 +82,8 @@ Implementation of program start up to be called by main.
 Top level method that starts the program. 
 
 \begin{DoxyReturn}{Returns}
-Exit state for main function 
+The program\textquotesingle{}s exit state ~\newline
+ 
 \end{DoxyReturn}
 
 

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['parent_5felement_0',['parent_element',['../classAddElementCommand.html#afe0cf423818c5f9ca83a72c9cdbbd7ab',1,'AddElementCommand::parent_element'],['../classDeleteAttributeCommand.html#abdb92e77c11ca72149349b45dfd55363',1,'DeleteAttributeCommand::parent_element']]],
-  ['prevent_5finput_5fflag_1',['prevent_input_flag',['../classGUI.html#a0d3ed3d3ea1560ec4321e84f5dc7fca3',1,'GUI']]]
+  ['new_5felement_0',['new_element',['../classAddElementCommand.html#ad21d720d48430e696f5b72ebba4adad4',1,'AddElementCommand']]],
+  ['new_5fvalue_1',['new_value',['../classModifyAttributeCommand.html#a2acd06a47c471239981ccd812947c284',1,'ModifyAttributeCommand::new_value'],['../classModifyElementCommand.html#a17129fae7fe6db89a9c3e9aec5b054a3',1,'ModifyElementCommand::new_value']]]
 ];

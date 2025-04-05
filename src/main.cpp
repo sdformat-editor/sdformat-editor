@@ -18,7 +18,6 @@
 */
 
 #include "file_editor_runner.h"
-#include <sys/stat.h>
 
 // Entry point
 int main(int, char **)

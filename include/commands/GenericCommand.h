@@ -25,17 +25,17 @@
 
 #include <functional>
 
-/// \brief Executes and pops the top commandI object from a stack
+/// \brief Executes a given function handle.
 class GenericCommand : public CommandI
 {
 
   /// \callgraph
-  /// \brief Constructor for open model command objects.
-  /// \param[in] function_pointer unction pointer to hold the command function
+  /// \brief Constructor for generic function call command objects.
+  /// \param[in] function_pointer function pointer to hold the command function
   public: GenericCommand(std::function<void()> function_handle);
 
   /// \brief Implementation of interface method. 
-  /// \returns Always true. RExecutes and pops the top commandI object from a stack
+  /// \returns Always true. Executes the given function handle.
   private: bool Execute() override;
 
   /// \brief Implementation of interface method. 
@@ -55,8 +55,10 @@ class GenericCommand : public CommandI
   private: bool IsRedoable() override;
 
   /// \brief Implementation of interface method.
+  /// \param[out] prevent_user_input indicates if user input should be prevented 
+  /// if this happens to be a threaded command
   /// \returns Always false
-  private: bool IsThreaded() override;
+  private: bool IsThreaded(bool& prevent_user_input) override;
 
   /// \brief Implementation of interface method.
   /// \returns Always false

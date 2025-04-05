@@ -1,0 +1,5 @@
+<map id="RenderModelCommand" name="RenderModelCommand">
+<area shape="rect" id="Node000001" title="Render Model command implementation of CommandI." alt="" coords="5,268,260,704"/>
+<area shape="rect" id="Node000002" href="$classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="20,5,245,220"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,234,135,268,130,268,130,234"/>
+</map>

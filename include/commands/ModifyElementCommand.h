@@ -27,26 +27,28 @@
 
 #include <vector>
 
-/// \brief Open model command implementation of CommandI
+/// \brief Modify Element command implementation of CommandI
 template <typename T>
 class ModifyElementCommand : public CommandI
 {
   /// \callgraph
-  /// \brief Constructor for open model command objects.
+  /// \brief Constructor for modify element command objects.
   /// \param[in] gui Pointer to the GUII object 
   /// \param[in] sdformatParser Pointer to the SDFormatParserI object
+  /// \param[in] element_to_modify Pointer to the element to modify
+  /// \param[in] new_value The new value with which to modify the element
   public: ModifyElementCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ElementPtr element_to_modify, T new_value);
 
   /// \brief Implementation of interface method. 
-  /// \returns Always true. Removes the element to delete from it's parent
+  /// \returns Returns true if the element's value has been modified
   private: bool Execute() override;
 
   /// \brief Implementation of interface method. 
-  /// \returns Returns true if the element to delete was already deleted and now restored to its parent
+  /// \returns Returns true if the element's value has been reset 
   private: bool ExecuteUndo() override;
 
   /// \brief Implementation of interface method. 
-  /// \returns Returns true if the element to delete was removed from its parent again
+  /// \returns Returns true if the element's value has been one again set to the new value
   private: bool ExecuteRedo() override;
 
   /// \brief Implementation of interface method.
@@ -58,8 +60,10 @@ class ModifyElementCommand : public CommandI
   private: bool IsRedoable() override;
 
   /// \brief Implementation of interface method.
+  /// \param[out] prevent_user_input indicates if user input should be prevented 
+  /// if this happens to be a threaded command
   /// \returns Always false
-  private: bool IsThreaded() override;
+  private: bool IsThreaded(bool& prevent_user_input) override;
 
   /// \brief Implementation of interface method.
   /// \returns Always false
@@ -77,10 +81,10 @@ class ModifyElementCommand : public CommandI
   /// @brief Pointer to the element to modify
   private: sdf::ElementPtr element_to_modify;
 
-  /// @brief new value for string
+  /// @brief The value that will be given to the element
   private: T new_value;
 
-  /// @brief old value for string
+  /// @brief The value that will be overridden in the element
   private: T old_value;
 
   /// @brief Store if the command is currently undo-able

@@ -1,5 +1,7 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.14...3.27)
 project(SDFormat-Editor)
+
+add_definitions(-DSOURCE_PATH="${CMAKE_SOURCE_DIR}")
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -9,7 +11,17 @@ set(imgui_SOURCE_DIR libs/imgui)
 # Find sdformat14
 find_package(sdformat14 REQUIRED)
 
-# message(STATUS "sdformat14_INCLUDE_DIRS: ${sdformat14_INCLUDE_DIRS}")
+# Add OGRE
+option(OGRE_BUILD_COMPONENT_PYTHON "Build Python bindings" OFF)
+option(OGRE_BUILD_COMPONENT_JAVA "Build Java bindings" OFF)
+option(OGRE_BUILD_COMPONENT_CSHARP "Build C# bindings" OFF)
+option(OGRE_BUILD_SAMPLES "Build OGRE samples" OFF)
+option(OGRE_INSTALL_SAMPLES "Install OGRE samples" OFF)
+option(OGRE_INSTALL_DOCS "Install documentation" OFF)
+option(OGRE_INSTALL_PDB "Install debug symbols" OFF)
+option(OGRE_STATIC "Build OGRE as static libraries" ON)
+
+add_subdirectory(libs/ogre)
 
 # Add header files
 file(GLOB_RECURSE HEADER_FILES
@@ -47,12 +59,14 @@ target_include_directories(sdformat-editor PRIVATE
     ${imgui_SOURCE_DIR}
     ${imgui_SOURCE_DIR}/backends
     ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${sdformat14_INCLUDE_DIRS}  # Add sdformat include directories
-)
-
-# Link against sdformat14
-target_link_libraries(sdformat-editor PRIVATE
-    sdformat14::sdformat14
+    ${sdformat14_INCLUDE_DIRS}  
+    ${CMAKE_CURRENT_SOURCE_DIR}/libs/glm
+    ${CMAKE_SOURCE_DIR}/libs/ogre/OgreMain/include
+    ${CMAKE_BINARY_DIR}/libs/ogre/include
+    ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Bites/include
+    ${CMAKE_SOURCE_DIR}/libs/ogre/Components/RTShaderSystem/include
+    ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Overlay/include
+    ${CMAKE_SOURCE_DIR}/libs/ogre/PlugIns/Assimp/include
 )
 
 # Compiler warnings
@@ -67,10 +81,15 @@ find_package(glfw3 REQUIRED)
 
 # Find OpenGL
 find_package(OpenGL REQUIRED)
+
 target_link_libraries(sdformat-editor PRIVATE
+    sdformat14::sdformat14
     OpenGL::GL
     glfw
-    dl  # Add dynamic loading library
+    OgreMain
+    OgreBites
+    OgreRTShaderSystem  
+    dl  
 )
 
 ############################################################
@@ -90,7 +109,6 @@ add_subdirectory(${gtest_SOURCE_DIR})
 set(TEST_FILES
     tests/test_gui.cpp
     tests/test_sdformat_parser.cpp
-    tests/test_model_viewer.cpp
 )
 
 # Create test executable
@@ -107,7 +125,14 @@ target_include_directories(sdformat-editor-tests PRIVATE
     ${imgui_SOURCE_DIR}/backends
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${gtest_SOURCE_DIR}/googletest/include
-    ${sdformat14_INCLUDE_DIRS}  # Add sdformat include directories
+    ${sdformat14_INCLUDE_DIRS} 
+    ${CMAKE_CURRENT_SOURCE_DIR}/libs/glm
+    ${CMAKE_SOURCE_DIR}/libs/ogre/OgreMain/include
+    ${CMAKE_BINARY_DIR}/libs/ogre/include
+    ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Bites/include
+    ${CMAKE_SOURCE_DIR}/libs/ogre/Components/RTShaderSystem/include
+    ${CMAKE_SOURCE_DIR}/libs/ogre/Components/Overlay/include
+    ${CMAKE_SOURCE_DIR}/libs/ogre/PlugIns/Assimp/include
 )
 
 # Link against Google Test and other libraries
@@ -116,6 +141,9 @@ target_link_libraries(sdformat-editor-tests PRIVATE
     gtest_main
     sdformat14::sdformat14
     OpenGL::GL
+    OgreMain
+    OgreBites
+    OgreRTShaderSystem  
     glfw
     dl
 )

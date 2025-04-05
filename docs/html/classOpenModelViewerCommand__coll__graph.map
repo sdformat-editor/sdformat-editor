@@ -1,0 +1,5 @@
+<map id="OpenModelViewerCommand" name="OpenModelViewerCommand">
+<area shape="rect" id="Node000001" title="Run model viewer command implementation of CommandI." alt="" coords="5,268,236,591"/>
+<area shape="rect" id="Node000002" href="$classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="8,5,233,220"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,234,123,268,118,268,118,234"/>
+</map>

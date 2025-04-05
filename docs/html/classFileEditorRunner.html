@@ -77,7 +77,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Implementation of program start up to be called by main.  
+<p>Class to manage overall program operation.  
  <a href="classFileEditorRunner.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="file__editor__runner_8h_source.html">file_editor_runner.h</a>&gt;</code></p>
@@ -86,15 +86,14 @@ Collaboration diagram for FileEditorRunner:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFileEditorRunner__coll__graph.png" border="0" usemap="#aFileEditorRunner_coll__map" alt="Collaboration graph"/></div>
 <map name="aFileEditorRunner_coll__map" id="aFileEditorRunner_coll__map">
-<area shape="rect" title="Implementation of program start up to be called by main." alt="" coords="5,5,223,224"/>
+<area shape="rect" title="Class to manage overall program operation." alt="" coords="5,5,243,293"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8bdefdad7a0dcde430a197f95e63f22c" id="r_a8bdefdad7a0dcde430a197f95e63f22c"><td class="memItemLeft" align="right" valign="top"><a id="a8bdefdad7a0dcde430a197f95e63f22c" name="a8bdefdad7a0dcde430a197f95e63f22c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>FileEditorRunner</b> (bool data_dir_created=false)</td></tr>
-<tr class="memdesc:a8bdefdad7a0dcde430a197f95e63f22c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that calls the top level method. <br /></td></tr>
+<tr class="memitem:a8bdefdad7a0dcde430a197f95e63f22c" id="r_a8bdefdad7a0dcde430a197f95e63f22c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileEditorRunner.html#a8bdefdad7a0dcde430a197f95e63f22c">FileEditorRunner</a> (bool data_dir_created=false)</td></tr>
+<tr class="memdesc:a8bdefdad7a0dcde430a197f95e63f22c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that calls the top level method.  <br /></td></tr>
 <tr class="separator:a8bdefdad7a0dcde430a197f95e63f22c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad60d0d7c1095deb03879a82c5d0bb62a" id="r_ad60d0d7c1095deb03879a82c5d0bb62a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileEditorRunner.html#ad60d0d7c1095deb03879a82c5d0bb62a">RunProgram</a> ()</td></tr>
 <tr class="memdesc:ad60d0d7c1095deb03879a82c5d0bb62a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Top level method that starts the program.  <br /></td></tr>
@@ -106,22 +105,57 @@ Public Attributes</h2></td></tr>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>gui_initalization_successful</b></td></tr>
 <tr class="memdesc:a727a0cc1d0a6b1c715b8669e5b29a9bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable for checking if the gui was initilized successfully. <br /></td></tr>
 <tr class="separator:a727a0cc1d0a6b1c715b8669e5b29a9bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04a9754168a35830fa0a52a1e5e42595" id="r_a04a9754168a35830fa0a52a1e5e42595"><td class="memItemLeft" align="right" valign="top"><a id="a04a9754168a35830fa0a52a1e5e42595" name="a04a9754168a35830fa0a52a1e5e42595"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>model_viewer_initalization_successful</b></td></tr>
+<tr class="memdesc:a04a9754168a35830fa0a52a1e5e42595"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable for checking if the model viewer was initilized successfully. <br /></td></tr>
+<tr class="separator:a04a9754168a35830fa0a52a1e5e42595"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10a63970e169797160759b1cab2e5b80" id="r_a10a63970e169797160759b1cab2e5b80"><td class="memItemLeft" align="right" valign="top"><a id="a10a63970e169797160759b1cab2e5b80" name="a10a63970e169797160759b1cab2e5b80"></a>
 std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParserI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>sdformatParser</b></td></tr>
 <tr class="memdesc:a10a63970e169797160759b1cab2e5b80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to <a class="el" href="classSDFormatParser.html" title="Implementation of SDFormatParserI.">SDFormatParser</a> which will be null until the user opens a file. <br /></td></tr>
 <tr class="separator:a10a63970e169797160759b1cab2e5b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a505fea2a1ac267449ba21a33f0d88d" id="r_a0a505fea2a1ac267449ba21a33f0d88d"><td class="memItemLeft" align="right" valign="top"><a id="a0a505fea2a1ac267449ba21a33f0d88d" name="a0a505fea2a1ac267449ba21a33f0d88d"></a>
 std::shared_ptr&lt; <a class="el" href="classGUII.html">GUII</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>gui</b></td></tr>
-<tr class="memdesc:a0a505fea2a1ac267449ba21a33f0d88d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> class. <br /></td></tr>
+<tr class="memdesc:a0a505fea2a1ac267449ba21a33f0d88d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> class instance. <br /></td></tr>
 <tr class="separator:a0a505fea2a1ac267449ba21a33f0d88d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8717b5e873b012ad91193acbadfb22d5" id="r_a8717b5e873b012ad91193acbadfb22d5"><td class="memItemLeft" align="right" valign="top"><a id="a8717b5e873b012ad91193acbadfb22d5" name="a8717b5e873b012ad91193acbadfb22d5"></a>
 std::shared_ptr&lt; <a class="el" href="classCommandFactoryI.html">CommandFactoryI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>command_factory</b></td></tr>
-<tr class="memdesc:a8717b5e873b012ad91193acbadfb22d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the <a class="el" href="classCommandFactory.html" title="Implementation of CommandFactoryI.">CommandFactory</a> class. <br /></td></tr>
+<tr class="memdesc:a8717b5e873b012ad91193acbadfb22d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the <a class="el" href="classCommandFactory.html" title="Implementation of CommandFactoryI.">CommandFactory</a> class instance. <br /></td></tr>
 <tr class="separator:a8717b5e873b012ad91193acbadfb22d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3a8eeec2d185e87aace44b4e8ac5d63" id="r_ab3a8eeec2d185e87aace44b4e8ac5d63"><td class="memItemLeft" align="right" valign="top"><a id="ab3a8eeec2d185e87aace44b4e8ac5d63" name="ab3a8eeec2d185e87aace44b4e8ac5d63"></a>
+std::shared_ptr&lt; <a class="el" href="classModelViewerI.html">ModelViewerI</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>model_viewer</b></td></tr>
+<tr class="memdesc:ab3a8eeec2d185e87aace44b4e8ac5d63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the model viewer object. <br /></td></tr>
+<tr class="separator:ab3a8eeec2d185e87aace44b4e8ac5d63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implementation of program start up to be called by main. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<div class="textblock"><p>Class to manage overall program operation. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8bdefdad7a0dcde430a197f95e63f22c" name="a8bdefdad7a0dcde430a197f95e63f22c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bdefdad7a0dcde430a197f95e63f22c">&#9670;&#160;</a></span>FileEditorRunner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FileEditorRunner::FileEditorRunner </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>data_dir_created</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor that calls the top level method. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data_dir_created</td><td>boolean that communicates if the file to contain the previously opened model exists </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="ad60d0d7c1095deb03879a82c5d0bb62a" name="ad60d0d7c1095deb03879a82c5d0bb62a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad60d0d7c1095deb03879a82c5d0bb62a">&#9670;&#160;</a></span>RunProgram()</h2>
 
@@ -138,7 +172,8 @@ std::shared_ptr&lt; <a class="el" href="classCommandFactoryI.html">CommandFactor
 </div><div class="memdoc">
 
 <p>Top level method that starts the program. </p>
-<dl class="section return"><dt>Returns</dt><dd>Exit state for main function </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The program's exit state <br  />
+ </dd></dl>
 
 </div>
 </div>

@@ -11,46 +11,178 @@ Implementation of \doxylink{classSDFormatParserI}{SDFormat\+ParserI}.
 
 
 
-Inheritance diagram for Model\+Viewer\+:\nopagebreak
+Inheritance diagram for Model\+Viewer\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=246pt]{classModelViewer__inherit__graph}
+\includegraphics[height=550pt]{classModelViewer__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Model\+Viewer\+:\nopagebreak
+Collaboration diagram for Model\+Viewer\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=246pt]{classModelViewer__coll__graph}
+\includegraphics[height=550pt]{classModelViewer__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classModelViewer_1_1ModelViewerKeyHandler}{Model\+Viewer\+Key\+Handler}}
+\begin{DoxyCompactList}\small\item\em class for handling inputs to the model viewer \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classModelViewer_aa7f40294e0d575b5673576f72e480bda}\label{classModelViewer_aa7f40294e0d575b5673576f72e480bda} 
-{\bfseries \texorpdfstring{$\sim$}{\string~}\+Model\+Viewer} ()
-\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\Hypertarget{classModelViewer_af2030418dda408c44d24a399b3b70aed}\label{classModelViewer_af2030418dda408c44d24a399b3b70aed} 
+{\bfseries Model\+Viewer} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classModelViewer_a7cec8c6e3b729811538137102621eea5}{Is\+Running}} () override
+\begin{DoxyCompactList}\small\item\em Indicates if the model view is running. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classModelViewer_ac1cb8b80a5d4b91449cd62fc9c033073}{Add\+Model}} (\mbox{\hyperlink{structModelViewerI_1_1ModelInfo}{Model\+Info}} model\+\_\+info) override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classModelViewer_ae4fb8bd7a153aebaa09da1ccb95a5a42}{Add\+Model}} (\mbox{\hyperlink{structModelViewerI_1_1PresetModelInfo}{Preset\+Model\+Info}} model\+\_\+info) override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classModelViewer_ae3676b28106f80d71523256697001509}{Reset\+Models}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of the interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classModelViewer_ab4431564b45537fb462c289ebd4a6083}{Initialize}} (const std\+::vector$<$ std\+::string $>$ \&cad\+\_\+files, bool \&success) override
+void \mbox{\hyperlink{classModelViewer_acd52edb619831370a5d2af34a125fa87}{Initialize}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classModelViewer_a70b591bc5b9a97ba8f3054b346329e0c}{Update}} () override
-\begin{DoxyCompactList}\small\item\em Implementation of update method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classModelViewer_a62aab1ba5d9b8fe2999a2a4afc0ca2bd}{Render\+Frame}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classModelViewer_acc426bf890f6ba957fd15589fb3c26b1}{Quit}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_a4a832e6ac5dcf1ae0784d1ef499972b3}\label{classModelViewer_a4a832e6ac5dcf1ae0784d1ef499972b3} 
+void {\bfseries Deinitialize} ()
+\begin{DoxyCompactList}\small\item\em Deallocates memory and quits the model viewer. \end{DoxyCompactList}\item 
+std\+::mutex \& \mbox{\hyperlink{classModelViewer_aaeb535d26d9f9fa93b2c22b6b42277d2}{Get\+Mutex}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_a8f0a6daa9ba2df15fc9f49118e3c54d5}\label{classModelViewer_a8f0a6daa9ba2df15fc9f49118e3c54d5} 
+void {\bfseries Handle\+Add\+Model\+Queue} ()
+\begin{DoxyCompactList}\small\item\em private method which pops Model\+Info\textquotesingle{}s off the model queue and creates their OGRE entities. \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_a4623b661e6e3fcf45fbb1ced2f7a6da4}\label{classModelViewer_a4623b661e6e3fcf45fbb1ced2f7a6da4} 
+void {\bfseries Handle\+Reset\+Models\+Flag} ()
+\begin{DoxyCompactList}\small\item\em private method to handle reset models flag \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classModelViewer_a7be426a13067e203357ca88708d5bf32}\label{classModelViewer_a7be426a13067e203357ca88708d5bf32} 
+std\+::mutex {\bfseries model\+\_\+viewer\+\_\+mutex}
+\begin{DoxyCompactList}\small\item\em Mutex for thread safety. \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_a887381909ce7ba00890bba00ef840180}\label{classModelViewer_a887381909ce7ba00890bba00ef840180} 
+bool {\bfseries should\+\_\+quit} = false
+\begin{DoxyCompactList}\small\item\em Indicates if the model viewer should quit on the next iteration. \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_a7c40952a9a9195736e01944b3b91b383}\label{classModelViewer_a7c40952a9a9195736e01944b3b91b383} 
+bool {\bfseries is\+\_\+running} = false
+\begin{DoxyCompactList}\small\item\em Indicates if the model viewer is running. \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_af9b29c36b3a77cc8f10e104c6d9c5c6d}\label{classModelViewer_af9b29c36b3a77cc8f10e104c6d9c5c6d} 
+Ogre\+Bites\+::\+Application\+Context {\bfseries ctx}
+\begin{DoxyCompactList}\small\item\em The ogre application context, which gives access to attributes from the render window. \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_a6b78542c089e4f543a9d72f3a331852e}\label{classModelViewer_a6b78542c089e4f543a9d72f3a331852e} 
+Ogre\+::\+Root \texorpdfstring{$\ast$}{*} {\bfseries ogre\+Root}
+\begin{DoxyCompactList}\small\item\em Pointer to the ogre root. \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_ad8c341e8b2f894ce07a8f7638d6035db}\label{classModelViewer_ad8c341e8b2f894ce07a8f7638d6035db} 
+Ogre\+::\+Scene\+Manager \texorpdfstring{$\ast$}{*} {\bfseries scn\+Mgr}
+\begin{DoxyCompactList}\small\item\em Pointer to the ogre scene manager. \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_ae72e8894d545cb0016ea29e6c643dbc5}\label{classModelViewer_ae72e8894d545cb0016ea29e6c643dbc5} 
+Ogre\+::\+RTShader\+::\+Shader\+Generator \texorpdfstring{$\ast$}{*} {\bfseries shadergen}
+\begin{DoxyCompactList}\small\item\em Pointer to the ogre shader generator singleton. \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_ae20d248d30cae20caab2679d4952c0ae}\label{classModelViewer_ae20d248d30cae20caab2679d4952c0ae} 
+Ogre\+::\+Light \texorpdfstring{$\ast$}{*} {\bfseries scene\+Light}
+\begin{DoxyCompactList}\small\item\em Pointer to the main scene light. \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_a75effc643f5c108e696953c25920ca86}\label{classModelViewer_a75effc643f5c108e696953c25920ca86} 
+Ogre\+::\+Scene\+Node \texorpdfstring{$\ast$}{*} {\bfseries scene\+Light\+Node}
+\begin{DoxyCompactList}\small\item\em Pointer to the main scene light node. \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_a432c69dd729558890503eec0811c0143}\label{classModelViewer_a432c69dd729558890503eec0811c0143} 
+Ogre\+::\+Camera \texorpdfstring{$\ast$}{*} {\bfseries scene\+Camera}
+\begin{DoxyCompactList}\small\item\em Pointer to the main scene camera. \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_a0e99d4c08f42737ac7e194b2c6e36831}\label{classModelViewer_a0e99d4c08f42737ac7e194b2c6e36831} 
+Ogre\+::\+Scene\+Node \texorpdfstring{$\ast$}{*} {\bfseries scene\+Camera\+Node}
+\begin{DoxyCompactList}\small\item\em Pointer to the main scene camera node. \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_a6b76f852d788bbd99ee33c3a0879c305}\label{classModelViewer_a6b76f852d788bbd99ee33c3a0879c305} 
+Ogre\+Bites\+::\+Camera\+Man \texorpdfstring{$\ast$}{*} {\bfseries camera\+Controller}
+\begin{DoxyCompactList}\small\item\em Pointer to the main camera controller. \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_af41928ef5b1c5bbda014f9d13559daeb}\label{classModelViewer_af41928ef5b1c5bbda014f9d13559daeb} 
+std\+::queue$<$ \mbox{\hyperlink{structModelViewerI_1_1ModelInfo}{Model\+Info}} $>$ {\bfseries add\+\_\+model\+\_\+queue}
+\begin{DoxyCompactList}\small\item\em queue to add models to model viewer \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_a275903d2d24d27d99fc7fa0f0406c910}\label{classModelViewer_a275903d2d24d27d99fc7fa0f0406c910} 
+\mbox{\hyperlink{classModelViewer_1_1ModelViewerKeyHandler}{Model\+Viewer\+Key\+Handler}} {\bfseries key\+Handler}
+\begin{DoxyCompactList}\small\item\em instance of \doxylink{classModelViewer_1_1ModelViewerKeyHandler}{Model\+Viewer\+Key\+Handler} \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_a8b4b6c3523a793b71cd24826f4453734}\label{classModelViewer_a8b4b6c3523a793b71cd24826f4453734} 
+unsigned long long {\bfseries unique\+\_\+naming\+\_\+counter} = 0
+\item 
+Ogre\+::\+Colour\+Value \mbox{\hyperlink{classModelViewer_a002d521fc6d1410a91937ff246c3ffd8}{color\+\_\+list}} \mbox{[}6\mbox{]}
+\begin{DoxyCompactList}\small\item\em list of random colours to assign model \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_a6ae7b74e37f778cf39cf5272c3557cba}\label{classModelViewer_a6ae7b74e37f778cf39cf5272c3557cba} 
+unsigned int {\bfseries color\+\_\+list\+\_\+index} = 0
+\begin{DoxyCompactList}\small\item\em A counter to keeps track of the current colour. \end{DoxyCompactList}\item 
+\Hypertarget{classModelViewer_a5fba280cd482efd89cb232f6646005f4}\label{classModelViewer_a5fba280cd482efd89cb232f6646005f4} 
+std\+::atomic$<$ bool $>$ {\bfseries reset\+\_\+models\+\_\+flag}
+\begin{DoxyCompactList}\small\item\em if true, reset model on next frame and set false \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{classModelViewerI}{Model\+ViewerI}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classModelViewerI_a85d9de97182b690ba7a7b5b9f67b9537}\label{classModelViewerI_a85d9de97182b690ba7a7b5b9f67b9537} 
+enum \mbox{\hyperlink{classModelViewerI_a85d9de97182b690ba7a7b5b9f67b9537}{Preset\+Type}} \{ {\bfseries BOX}
+, {\bfseries CYLINDER}
+, {\bfseries SPHERE}
+ \}
+\begin{DoxyCompactList}\small\item\em Preset shapes which do not require a mesh to be provided in the sdf. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Implementation of \doxylink{classSDFormatParserI}{SDFormat\+ParserI}. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classModelViewer_ab4431564b45537fb462c289ebd4a6083}\label{classModelViewer_ab4431564b45537fb462c289ebd4a6083} 
-\index{ModelViewer@{ModelViewer}!Initialize@{Initialize}}
-\index{Initialize@{Initialize}!ModelViewer@{ModelViewer}}
-\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
-{\footnotesize\ttfamily void Model\+Viewer\+::\+Initialize (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{cad\+\_\+files,  }\item[{bool \&}]{success }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+\Hypertarget{classModelViewer_ac1cb8b80a5d4b91449cd62fc9c033073}\label{classModelViewer_ac1cb8b80a5d4b91449cd62fc9c033073} 
+\index{ModelViewer@{ModelViewer}!AddModel@{AddModel}}
+\index{AddModel@{AddModel}!ModelViewer@{ModelViewer}}
+\doxysubsubsection{\texorpdfstring{AddModel()}{AddModel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Model\+Viewer\+::\+Add\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structModelViewerI_1_1ModelInfo}{Model\+Viewer\+::\+Model\+Info}}}]{model\+\_\+info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em model\+\_\+info} & The model information \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classModelViewerI_a1129d7d5d4e4ccb22cb6b0e98fd1a910}{Model\+ViewerI}}.
+
+\Hypertarget{classModelViewer_ae4fb8bd7a153aebaa09da1ccb95a5a42}\label{classModelViewer_ae4fb8bd7a153aebaa09da1ccb95a5a42} 
+\index{ModelViewer@{ModelViewer}!AddModel@{AddModel}}
+\index{AddModel@{AddModel}!ModelViewer@{ModelViewer}}
+\doxysubsubsection{\texorpdfstring{AddModel()}{AddModel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Model\+Viewer\+::\+Add\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structModelViewerI_1_1PresetModelInfo}{Model\+Viewer\+::\+Preset\+Model\+Info}}}]{model\+\_\+info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em model\+\_\+info} & The preset model information \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classModelViewerI_a5e7f4fd252e68c9c7bc59dc23025c4ff}{Model\+ViewerI}}.
+
+\Hypertarget{classModelViewer_aaeb535d26d9f9fa93b2c22b6b42277d2}\label{classModelViewer_aaeb535d26d9f9fa93b2c22b6b42277d2} 
+\index{ModelViewer@{ModelViewer}!GetMutex@{GetMutex}}
+\index{GetMutex@{GetMutex}!ModelViewer@{ModelViewer}}
+\doxysubsubsection{\texorpdfstring{GetMutex()}{GetMutex()}}
+{\footnotesize\ttfamily std\+::mutex \& Model\+Viewer\+::\+Get\+Mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
@@ -58,21 +190,105 @@ Implementation of interface method.
 
 
 
-Implements \mbox{\hyperlink{classModelViewerI_ac6e6cc65e2be33a692061c2b4e02f773}{Model\+ViewerI}}.
+Implements \mbox{\hyperlink{classModelViewerI_a29aac5578c22b4f778c5e8077beeec68}{Model\+ViewerI}}.
 
-\Hypertarget{classModelViewer_a70b591bc5b9a97ba8f3054b346329e0c}\label{classModelViewer_a70b591bc5b9a97ba8f3054b346329e0c} 
-\index{ModelViewer@{ModelViewer}!Update@{Update}}
-\index{Update@{Update}!ModelViewer@{ModelViewer}}
-\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
-{\footnotesize\ttfamily void Model\+Viewer\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
-
-
-
-Implementation of update method. 
+\Hypertarget{classModelViewer_acd52edb619831370a5d2af34a125fa87}\label{classModelViewer_acd52edb619831370a5d2af34a125fa87} 
+\index{ModelViewer@{ModelViewer}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!ModelViewer@{ModelViewer}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void Model\+Viewer\+::\+Initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
-Implements \mbox{\hyperlink{classModelViewerI_a6ee962a2e2820c6af9a6b58df7f37501}{Model\+ViewerI}}.
+Implementation of interface method. 
+
+
+
+Implements \mbox{\hyperlink{classModelViewerI_a03a4c90a116f499083e6dc54ddfb16a8}{Model\+ViewerI}}.
+
+\Hypertarget{classModelViewer_a7cec8c6e3b729811538137102621eea5}\label{classModelViewer_a7cec8c6e3b729811538137102621eea5} 
+\index{ModelViewer@{ModelViewer}!IsRunning@{IsRunning}}
+\index{IsRunning@{IsRunning}!ModelViewer@{ModelViewer}}
+\doxysubsubsection{\texorpdfstring{IsRunning()}{IsRunning()}}
+{\footnotesize\ttfamily bool Model\+Viewer\+::\+Is\+Running (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Indicates if the model view is running. 
+
+\begin{DoxyReturn}{Returns}
+a boolean 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classModelViewerI_aa705daf3812d9a096057398051e20a2a}{Model\+ViewerI}}.
+
+\Hypertarget{classModelViewer_acc426bf890f6ba957fd15589fb3c26b1}\label{classModelViewer_acc426bf890f6ba957fd15589fb3c26b1} 
+\index{ModelViewer@{ModelViewer}!Quit@{Quit}}
+\index{Quit@{Quit}!ModelViewer@{ModelViewer}}
+\doxysubsubsection{\texorpdfstring{Quit()}{Quit()}}
+{\footnotesize\ttfamily void Model\+Viewer\+::\+Quit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+
+
+Implements \mbox{\hyperlink{classModelViewerI_a832e4a2dd4acab999b181a5f1cea3d68}{Model\+ViewerI}}.
+
+\Hypertarget{classModelViewer_a62aab1ba5d9b8fe2999a2a4afc0ca2bd}\label{classModelViewer_a62aab1ba5d9b8fe2999a2a4afc0ca2bd} 
+\index{ModelViewer@{ModelViewer}!RenderFrame@{RenderFrame}}
+\index{RenderFrame@{RenderFrame}!ModelViewer@{ModelViewer}}
+\doxysubsubsection{\texorpdfstring{RenderFrame()}{RenderFrame()}}
+{\footnotesize\ttfamily void Model\+Viewer\+::\+Render\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+
+
+Implements \mbox{\hyperlink{classModelViewerI_ab115870eb9f4c4914e9ceb6f9c57eb7c}{Model\+ViewerI}}.
+
+\Hypertarget{classModelViewer_ae3676b28106f80d71523256697001509}\label{classModelViewer_ae3676b28106f80d71523256697001509} 
+\index{ModelViewer@{ModelViewer}!ResetModels@{ResetModels}}
+\index{ResetModels@{ResetModels}!ModelViewer@{ModelViewer}}
+\doxysubsubsection{\texorpdfstring{ResetModels()}{ResetModels()}}
+{\footnotesize\ttfamily void Model\+Viewer\+::\+Reset\+Models (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of the interface method. 
+
+
+
+Implements \mbox{\hyperlink{classModelViewerI_a1106c4b7a621fb3a52bbf23ac607b1ea}{Model\+ViewerI}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classModelViewer_a002d521fc6d1410a91937ff246c3ffd8}\label{classModelViewer_a002d521fc6d1410a91937ff246c3ffd8} 
+\index{ModelViewer@{ModelViewer}!color\_list@{color\_list}}
+\index{color\_list@{color\_list}!ModelViewer@{ModelViewer}}
+\doxysubsubsection{\texorpdfstring{color\_list}{color\_list}}
+{\footnotesize\ttfamily Ogre\+::\+Colour\+Value Model\+Viewer\+::color\+\_\+list\mbox{[}6\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Ogre::ColourValue(3.3699f,\ 3.1256f,\ 0.633f),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Ogre::ColourValue(0.549f,\ 3.1569f,\ 0.1569f),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Ogre::ColourValue(4.1325f,\ 1.1339f,\ 0.234f),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Ogre::ColourValue(1.0f,\ 0.5f,\ 0.0f),\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Ogre::ColourValue(0.0f,\ 0.5f,\ 1.0f),\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Ogre::ColourValue(0.5f,\ 0.0f,\ 0.5f)\ \ }
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+list of random colours to assign model 
 
 
 

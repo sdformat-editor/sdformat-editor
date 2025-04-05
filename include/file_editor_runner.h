@@ -24,28 +24,40 @@
 #include "gui.h"
 #include "sdformat_parser.h"
 #include "interfaces/command_interface.h"
+#include "file_operations.h"
+#include "model_viewer.h"
+#include <sys/stat.h>
+#include <fstream>
+#include <thread>
 
-/// \brief Implementation of program start up to be called by main.
+/// \brief Class to manage overall program operation.
 class FileEditorRunner
 {
     /// \brief Constructor that calls the top level method
+    /// \param[in] data_dir_created boolean that communicates if the file to contain the previously opened model exists
     public: FileEditorRunner(bool data_dir_created = false);
 
     /// \brief Top level method that starts the program
-    /// \return Exit state for main function
+    /// \return The program's exit state 
     public: int RunProgram();
-
+    
     /// @brief Variable for checking if the gui was initilized successfully
     bool gui_initalization_successful;
+
+    /// @brief Variable for checking if the model viewer was initilized successfully
+    bool model_viewer_initalization_successful;
 
     /// @brief Pointer to SDFormatParser which will be null until the user opens a file
     std::shared_ptr<SDFormatParserI> sdformatParser;
 
-    /// @brief Pointer to the GUI class
+    /// @brief Pointer to the GUI class instance
     std::shared_ptr<GUII> gui;
 
-    /// @brief Pointer to the CommandFactory class
+    /// @brief Pointer to the CommandFactory class instance
     std::shared_ptr<CommandFactoryI> command_factory;
+
+    /// @brief Pointer to the model viewer object
+    std::shared_ptr<ModelViewerI> model_viewer;
 
 };
 

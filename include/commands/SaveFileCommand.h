@@ -26,18 +26,18 @@
 #include <interfaces/gui_interface.h>
 
 
-/// \brief Open model command implementation of CommandI
+/// \brief Save model command implementation of CommandI
 class SaveFileCommand : public CommandI
 {
 
   /// \callgraph
-  /// \brief Constructor for open model command objects.
+  /// \brief Constructor for save model command objects.
   /// \param[in] gui Pointer to the GUII object 
   /// \param[in] sdformatParser Pointer to the SDFormatParserI object
   public: SaveFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser);
 
   /// \brief Implementation of interface method. 
-  /// \returns True if the SDFormatParser has successfully parsed the file and it has been displayed in the GUI
+  /// \returns True if the file has been successfully saved
   private: bool Execute();
 
   /// \brief Implementation of interface method. 
@@ -57,8 +57,10 @@ class SaveFileCommand : public CommandI
   private: bool IsRedoable() override;
 
   /// \brief Implementation of interface method.
+  /// \param[out] prevent_user_input indicates if user input should be prevented 
+  /// if this happens to be a threaded command
   /// \returns Always false
-  private: bool IsThreaded() override;
+  private: bool IsThreaded(bool& prevent_user_input) override;
 
   /// \brief Implementation of interface method.
   /// \returns Always false

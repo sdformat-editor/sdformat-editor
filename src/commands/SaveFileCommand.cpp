@@ -53,12 +53,8 @@ bool SaveFileCommand::Execute()
     
       // Attempt to save the XML 
       // TODO: Add functionality to conserve existing comments, maintian relative file paths, and maintain the order of unmodified elements 
-      {
-        std::unique_lock<std::mutex> lock_var = gui->LockMutex();
-  
-        std::string x = this->sdformatParser->GetSDFElement()->ToString();
-        file_saved = FileOperations::GetSoleInstance().WriteFile(x);
-      }
+      std::string x = this->sdformatParser->GetSDFElement()->ToString();
+      file_saved = FileOperations::GetSoleInstance().WriteFile(x);
   
       const std::string dialog_message_header = "Info";
       const std::string dialog_message_footer = file_saved ? "File saved." : "Could not save file. Are you sure this file exists and is writeable?";
@@ -103,8 +99,9 @@ bool SaveFileCommand::ExecuteRedo()
   return this->IsRedoable();
 }
 
-bool SaveFileCommand::IsThreaded() 
+bool SaveFileCommand::IsThreaded(bool& prevent_user_input) 
 {
+  prevent_user_input = false;
   return false;
 }
 

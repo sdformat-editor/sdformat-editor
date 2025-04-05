@@ -27,27 +27,29 @@
 
 #include <vector>
 
-/// \brief Open model command implementation of CommandI
+/// \brief Modify Attribute command implementation of CommandI
 template <typename T>
 class ModifyAttributeCommand : public CommandI
 {
 
   /// \callgraph
-  /// \brief Constructor for open model command objects.
+  /// \brief Constructor for modify attribute command objects.
   /// \param[in] gui Pointer to the GUII object 
   /// \param[in] sdformatParser Pointer to the SDFormatParserI object
+  /// \param[in] attribute_to_modify Pointer to the attribute to modify
+  /// \param[in] new_value The new value with which to modify the element
   public: ModifyAttributeCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ParamPtr attribute_to_modify, T new_value);
 
   /// \brief Implementation of interface method. 
-  /// \returns Always true. Removes the element to delete from it's parent
+  /// \returns True if the attribute has been modified
   private: bool Execute() override;
 
   /// \brief Implementation of interface method. 
-  /// \returns Returns true if the element to delete was already deleted and now restored to its parent
+  /// \returns Returns true if the attribute has been restored to its initial value
   private: bool ExecuteUndo() override;
 
   /// \brief Implementation of interface method. 
-  /// \returns Returns true if the element to delete was removed from its parent again
+  /// \returns Returns true if the element was once again given the new value
   private: bool ExecuteRedo() override;
 
   /// \brief Implementation of interface method.
@@ -59,8 +61,10 @@ class ModifyAttributeCommand : public CommandI
   private: bool IsRedoable() override;
 
   /// \brief Implementation of interface method.
+  /// \param[out] prevent_user_input indicates if user input should be prevented 
+  /// if this happens to be a threaded command
   /// \returns Always false
-  private: bool IsThreaded() override;
+  private: bool IsThreaded(bool& prevent_user_input) override;
 
   /// \brief Implementation of interface method.
   /// \returns Always false
@@ -78,10 +82,10 @@ class ModifyAttributeCommand : public CommandI
   /// @brief Pointer to the attribute to modify
   private: sdf::ParamPtr attribute_to_modify;
 
-  /// @brief new value for string
+  /// @brief The value that will be given to the element
   private: T new_value;
 
-  /// @brief old value for string
+  /// @brief The value that will be overridden in the attribute
   private: T old_value;
 
   /// @brief Store if the command is currently undo-able

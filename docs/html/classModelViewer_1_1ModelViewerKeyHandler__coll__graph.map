@@ -1,0 +1,10 @@
+<map id="ModelViewer::ModelViewerKeyHandler" name="ModelViewer::ModelViewerKeyHandler">
+<area shape="rect" id="Node000001" title="class for handling inputs to the model viewer" alt="" coords="252,120,483,461"/>
+<area shape="rect" id="Node000003" href="$classModelViewer.html" title="Implementation of SDFormatParserI." alt="" coords="123,524,383,1127"/>
+<area shape="poly" id="edge4_Node000003_Node000001" title=" " alt="" coords="259,462,251,486,246,509,240,507,246,485,254,461"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="282,5,453,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="370,85,370,120,365,120,365,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="330,523,335,499,340,477,345,478,341,501,336,524"/>
+<area shape="rect" id="Node000004" href="$classModelViewerI.html" title="Interface for the SDFormat Editor&#39;s 3D Model Vewer." alt="" coords="5,159,228,423"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="156,435,178,523,173,524,151,436"/>
+</map>

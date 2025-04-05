@@ -1,5 +1,5 @@
 <map id="OpenFileCommand" name="OpenFileCommand">
-<area shape="rect" id="Node000001" title="Open model command implementation of CommandI." alt="" coords="5,253,279,631"/>
-<area shape="rect" id="Node000002" href="$classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="31,5,253,205"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,219,145,253,139,253,139,219"/>
+<area shape="rect" id="Node000001" title="Open model command implementation of CommandI." alt="" coords="5,268,279,675"/>
+<area shape="rect" id="Node000002" href="$classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="29,5,255,220"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,234,145,268,139,268,139,234"/>
 </map>
