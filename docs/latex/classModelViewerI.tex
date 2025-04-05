@@ -16,7 +16,7 @@ Inheritance diagram for Model\+ViewerI\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=246pt]{classModelViewerI__inherit__graph}
+\includegraphics[height=550pt]{classModelViewerI__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -26,7 +26,7 @@ Collaboration diagram for Model\+ViewerI\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=227pt]{classModelViewerI__coll__graph}
+\includegraphics[width=247pt]{classModelViewerI__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Classes}
@@ -40,11 +40,11 @@ struct \mbox{\hyperlink{structModelViewerI_1_1PresetModelInfo}{Preset\+Model\+In
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{classModelViewerI_a85d9de97182b690ba7a7b5b9f67b9537}\label{classModelViewerI_a85d9de97182b690ba7a7b5b9f67b9537} 
-enum {\bfseries Preset\+Type} \{ {\bfseries BOX}
+enum \mbox{\hyperlink{classModelViewerI_a85d9de97182b690ba7a7b5b9f67b9537}{Preset\+Type}} \{ {\bfseries BOX}
 , {\bfseries CYLINDER}
 , {\bfseries SPHERE}
  \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Preset shapes which do not require a mesh to be provided in the sdf. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -55,34 +55,73 @@ virtual void \mbox{\hyperlink{classModelViewerI_ab115870eb9f4c4914e9ceb6f9c57eb7
 \begin{DoxyCompactList}\small\item\em Rander a single frame. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classModelViewerI_a832e4a2dd4acab999b181a5f1cea3d68}{Quit}} ()=0
 \begin{DoxyCompactList}\small\item\em Tells the model viewer to quit on its next iteration. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classModelViewerI_a5a32d458443e0cafbf734469f2c41572}{Add\+Model}} (\mbox{\hyperlink{structModelViewerI_1_1ModelInfo}{Model\+Info}})=0
+virtual void \mbox{\hyperlink{classModelViewerI_a1129d7d5d4e4ccb22cb6b0e98fd1a910}{Add\+Model}} (\mbox{\hyperlink{structModelViewerI_1_1ModelInfo}{Model\+Info}} model\+\_\+info)=0
 \begin{DoxyCompactList}\small\item\em Add a model to the model viewer, the model will be rendered on the next frame. \end{DoxyCompactList}\item 
-\Hypertarget{classModelViewerI_a4d402a75f56994a06d2b1653b9ba1868}\label{classModelViewerI_a4d402a75f56994a06d2b1653b9ba1868} 
-virtual void {\bfseries Add\+Model} (\mbox{\hyperlink{structModelViewerI_1_1PresetModelInfo}{Preset\+Model\+Info}})=0
-\item 
+virtual void \mbox{\hyperlink{classModelViewerI_a5e7f4fd252e68c9c7bc59dc23025c4ff}{Add\+Model}} (\mbox{\hyperlink{structModelViewerI_1_1PresetModelInfo}{Preset\+Model\+Info}} model\+\_\+info)=0
+\begin{DoxyCompactList}\small\item\em Add a model to the model viewer, the model will be rendered on the next frame. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classModelViewerI_a1106c4b7a621fb3a52bbf23ac607b1ea}{Reset\+Models}} ()=0
-\begin{DoxyCompactList}\small\item\em resets the model viewer, deleting all currently rendered models \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets a flag in the model viewer to remove the models in the scene. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{classModelViewerI_aa705daf3812d9a096057398051e20a2a}{Is\+Running}} ()=0
-\begin{DoxyCompactList}\small\item\em Indicates if the model view is running. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Indicates if the model viewer is running. \end{DoxyCompactList}\item 
+virtual std\+::mutex \& \mbox{\hyperlink{classModelViewerI_a29aac5578c22b4f778c5e8077beeec68}{Get\+Mutex}} ()=0
+\begin{DoxyCompactList}\small\item\em Method to get the model viewer\textquotesingle{}s mutex. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Interface for the SDFormat Editor\textquotesingle{}s 3D Model Vewer. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classModelViewerI_a5a32d458443e0cafbf734469f2c41572}\label{classModelViewerI_a5a32d458443e0cafbf734469f2c41572} 
+\Hypertarget{classModelViewerI_a1129d7d5d4e4ccb22cb6b0e98fd1a910}\label{classModelViewerI_a1129d7d5d4e4ccb22cb6b0e98fd1a910} 
 \index{ModelViewerI@{ModelViewerI}!AddModel@{AddModel}}
 \index{AddModel@{AddModel}!ModelViewerI@{ModelViewerI}}
-\doxysubsubsection{\texorpdfstring{AddModel()}{AddModel()}}
-{\footnotesize\ttfamily virtual void Model\+Viewer\+I\+::\+Add\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structModelViewerI_1_1ModelInfo}{Model\+Info}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+\doxysubsubsection{\texorpdfstring{AddModel()}{AddModel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual void Model\+Viewer\+I\+::\+Add\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structModelViewerI_1_1ModelInfo}{Model\+Info}}}]{model\+\_\+info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
 Add a model to the model viewer, the model will be rendered on the next frame. 
 
 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em model\+\_\+info} & The model information \\
+\hline
+\end{DoxyParams}
+
 
 Implemented in \mbox{\hyperlink{classModelViewer_ac1cb8b80a5d4b91449cd62fc9c033073}{Model\+Viewer}}.
+
+\Hypertarget{classModelViewerI_a5e7f4fd252e68c9c7bc59dc23025c4ff}\label{classModelViewerI_a5e7f4fd252e68c9c7bc59dc23025c4ff} 
+\index{ModelViewerI@{ModelViewerI}!AddModel@{AddModel}}
+\index{AddModel@{AddModel}!ModelViewerI@{ModelViewerI}}
+\doxysubsubsection{\texorpdfstring{AddModel()}{AddModel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual void Model\+Viewer\+I\+::\+Add\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structModelViewerI_1_1PresetModelInfo}{Preset\+Model\+Info}}}]{model\+\_\+info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Add a model to the model viewer, the model will be rendered on the next frame. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em model\+\_\+info} & The preset model information \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classModelViewer_ae4fb8bd7a153aebaa09da1ccb95a5a42}{Model\+Viewer}}.
+
+\Hypertarget{classModelViewerI_a29aac5578c22b4f778c5e8077beeec68}\label{classModelViewerI_a29aac5578c22b4f778c5e8077beeec68} 
+\index{ModelViewerI@{ModelViewerI}!GetMutex@{GetMutex}}
+\index{GetMutex@{GetMutex}!ModelViewerI@{ModelViewerI}}
+\doxysubsubsection{\texorpdfstring{GetMutex()}{GetMutex()}}
+{\footnotesize\ttfamily virtual std\+::mutex \& Model\+Viewer\+I\+::\+Get\+Mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Method to get the model viewer\textquotesingle{}s mutex. 
+
+
+
+Implemented in \mbox{\hyperlink{classModelViewer_aaeb535d26d9f9fa93b2c22b6b42277d2}{Model\+Viewer}}.
 
 \Hypertarget{classModelViewerI_a03a4c90a116f499083e6dc54ddfb16a8}\label{classModelViewerI_a03a4c90a116f499083e6dc54ddfb16a8} 
 \index{ModelViewerI@{ModelViewerI}!Initialize@{Initialize}}
@@ -107,7 +146,7 @@ Implemented in \mbox{\hyperlink{classModelViewer_acd52edb619831370a5d2af34a125fa
 
 
 
-Indicates if the model view is running. 
+Indicates if the model viewer is running. 
 
 \begin{DoxyReturn}{Returns}
 a boolean 
@@ -152,7 +191,7 @@ Implemented in \mbox{\hyperlink{classModelViewer_a62aab1ba5d9b8fe2999a2a4afc0ca2
 
 
 
-resets the model viewer, deleting all currently rendered models 
+Sets a flag in the model viewer to remove the models in the scene. 
 
 
 

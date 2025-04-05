@@ -25,7 +25,7 @@
 
 #include <functional>
 
-/// \brief Executes and pops the top commandI object from a stack
+/// \brief Executes a given function handle.
 class GenericCommand : public CommandI
 {
 
@@ -35,7 +35,7 @@ class GenericCommand : public CommandI
   public: GenericCommand(std::function<void()> function_handle);
 
   /// \brief Implementation of interface method. 
-  /// \returns Always true. RExecutes and pops the top commandI object from a stack
+  /// \returns Always true. Executes the given function handle.
   private: bool Execute() override;
 
   /// \brief Implementation of interface method. 

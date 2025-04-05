@@ -37,7 +37,7 @@ class CommandFactoryI
 {
   /// \callgraph
   /// \brief Initialization of the Command Factory. Should be wrapped in the constructor of the implementation.
-  /// \param[in] gui A pointer to the GUI element
+  /// \param[in] gui A pointer to the GUI object
   /// \param[in] sdformat_parser A pointer to the sdformat parser object
   /// \param[in] model_viewer A pointer to the model viewer object
   private: virtual void Initialize(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, 
@@ -65,7 +65,7 @@ class CommandFactoryI
   public: virtual std::unique_ptr<CommandI> MakeAddElementCommand(
     sdf::ElementPtr parent_element, sdf::ElementPtr new_element) = 0;
 
-  /// \brief Create a undo command
+  /// \brief Create an undo command
   /// \return Unique pointer to a command interface
   public: virtual std::unique_ptr<CommandI> MakeUndoCommand() = 0;
   
@@ -79,16 +79,27 @@ class CommandFactoryI
 
   /// \brief create a modify attribute command
   /// \param[in] attribute_to_modify Pointer to the attribute to modify
-  /// \param[in] new_value The value that will be given to the element
+  /// \param[in] new_value The string value that will be given to the element
   /// \return a unique pointer to the commmand interface
   public: virtual std::unique_ptr<CommandI> MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, std::string new_value) = 0;
+
+  
+  /// \brief create a modify attribute command
+  /// \param[in] attribute_to_modify Pointer to the attribute to modify
+  /// \param[in] new_value The boolean value that will be given to the element
+  /// \return a unique pointer to the commmand interface
   public: virtual std::unique_ptr<CommandI> MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, bool new_value) = 0;
 
   /// \brief create a modify element command
   /// \return a unique pointer to the commmand interface
   /// \param[in] element_to_modify Pointer to the element to modify
-  /// \param[in] new_value The value that will be given to the element
+  /// \param[in] new_value The string value that will be given to the element
   public: virtual std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, std::string new_value) = 0;
+
+  /// \brief create a modify element command
+  /// \return a unique pointer to the commmand interface
+  /// \param[in] element_to_modify Pointer to the element to modify
+  /// \param[in] new_value The boolean value that will be given to the element
   public: virtual std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, bool new_value) = 0;
 
   /// \brief Create a render model command
@@ -100,7 +111,7 @@ class CommandFactoryI
   /// \return Unique pointer to a command interface
   public: virtual std::unique_ptr<CommandI> MakeOpenModelViewerCommand() = 0;
 
-  /// \brief Create a run model viewer model command
+  /// \brief Create a close model viewer model command
   /// \return Unique pointer to a command interface
   public: virtual std::unique_ptr<CommandI> MakeCloseModelViewerCommand() = 0;
 

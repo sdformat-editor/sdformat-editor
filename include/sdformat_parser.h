@@ -73,9 +73,9 @@ class SDFormatParser : public SDFormatParserI
     private: sdf::ElementPtr FindScope(sdf::ElementPtr element); 
 
     /// \brief Finds the canonical link of a model and, if that doesn't exist, the first child nested model 
-    /// \param[in] element we want to the "canonical" of
+    /// \param[in] element we want to the "canonical" of, must be a model element 
     /// \return The canonical link. If that does not exist in the immediate scope, the first nested model. 
-    /// If that does not exist, a null pointer 
+    /// If that does not exist, a null pointer. Also returns a null pointer if the given element is not a model 
     private: sdf::ElementPtr FindCanonical(sdf::ElementPtr element); 
 
     /// \brief Implementation of interface method
@@ -112,7 +112,7 @@ class SDFormatParser : public SDFormatParserI
     /// \return Tree path as a string
     private: std::string GetSDFTreePathToElement(sdf::ElementPtr element) override; 
 
-    /// \brief Finds the absolute pose (translation and rotation) of a given element which contains pose element
+    /// \brief Finds the absolute pose (translation and rotation) of a given mesh/geometry-containing element
     /// \param[in] element The element for which we want to find absolute position
     /// \param[in] previously_visited_elements indicates elements that were previously visited as we are trying to compute absolute pose. 
     ///             Used to detect a reference cycle in "relative_to" mentions.
@@ -127,18 +127,21 @@ class SDFormatParser : public SDFormatParserI
     private: std::pair<glm::dvec3, glm::dquat> ParsePoseElement(sdf::ElementPtr element, std::string& relative_to);
 
     /// \brief Considers if this is a special case of "relative_to" and approperiately handles it
-    /// \param[in] element The non-pose element which we want to parse
+    /// \param[in] element The element to consider
     /// \param[out] relative_to The "relative_to" specification
     /// \returns Returns true if successful
     private: bool HandleRelativeToSpecificationSpecialcases(sdf::ElementPtr element, std::string& relative_to);
 
     /// \brief Given a string containing doubles seperated by spaces, this method returns a vector a doubles
-    /// \param[in] string_of_doubles
-    /// \param[out] success
+    /// \param[in] string_of_doubles a string of doubles (should be parsable by std::istringstream)
+    /// \param[out] success True if the string of doubles was sucessfully parsed
     /// \returns Returns a vector of doubles
     private: std::vector<double> ParseStringDoubleVector(const std::string& string_of_doubles, bool& success);
 
     /// \brief Implementation of interface method 
+    /// \param[in] render_collisions indicates if collision meshes and shapes are included as well
+    /// \return A pair of vectors condaining structs of the model viewer interfaces's ModelInfo and Preset Model Info, which in turn contain the necessary information
+    /// to render models
     private: std::pair<std::vector<ModelViewerI::ModelInfo>, std::vector<ModelViewerI::PresetModelInfo>> GetModelsFromSDFTree(bool render_collisions = false) override;
 
     /// \brief Store the file path of the sdf file

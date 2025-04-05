@@ -12,11 +12,23 @@ Implementation of \doxylink{classSDFormatParserI}{SDFormat\+ParserI}.
 
 
 Inheritance diagram for SDFormat\+Parser\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classSDFormatParser__inherit__graph}
+\end{center}
+\end{figure}
 
 
 Collaboration diagram for SDFormat\+Parser\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classSDFormatParser__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -47,14 +59,14 @@ std\+::vector$<$ sdf\+::\+Element\+Ptr $>$ \mbox{\hyperlink{classSDFormatParser_
 std\+::string \mbox{\hyperlink{classSDFormatParser_a0e8ccb7ccaf1533237bda33ce008c7af}{Get\+SDFTree\+Path\+To\+Element}} (sdf\+::\+Element\+Ptr element) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 std\+::pair$<$ glm\+::dvec3, glm\+::dquat $>$ \mbox{\hyperlink{classSDFormatParser_af3450d6b47d69c91f401b910a84385bd}{Find\+Absolute\+Pose}} (sdf\+::\+Element\+Ptr element, std\+::vector$<$ sdf\+::\+Element\+Ptr $>$ previously\+\_\+visited\+\_\+elements=\{\})
-\begin{DoxyCompactList}\small\item\em Finds the absolute pose (translation and rotation) of a given element which contains pose element. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Finds the absolute pose (translation and rotation) of a given mesh/geometry-\/containing element. \end{DoxyCompactList}\item 
 std\+::pair$<$ glm\+::dvec3, glm\+::dquat $>$ \mbox{\hyperlink{classSDFormatParser_a3df4e630ca08931ec32f88bb5c1be68d}{Parse\+Pose\+Element}} (sdf\+::\+Element\+Ptr element, std\+::string \&relative\+\_\+to)
 \begin{DoxyCompactList}\small\item\em Parses a given pose element to get the pose values, and also indicates if this pose is relative to anything else. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classSDFormatParser_a05285ccc74065e5c654eb06343aa2bbd}{Handle\+Relative\+To\+Specification\+Specialcases}} (sdf\+::\+Element\+Ptr element, std\+::string \&relative\+\_\+to)
 \begin{DoxyCompactList}\small\item\em Considers if this is a special case of "{}relative\+\_\+to"{} and approperiately handles it. \end{DoxyCompactList}\item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{classSDFormatParser_a0523b9cc1158b8827ad19ecad7d68f1f}{Parse\+String\+Double\+Vector}} (const std\+::string \&string\+\_\+of\+\_\+doubles, bool \&success)
 \begin{DoxyCompactList}\small\item\em Given a string containing doubles seperated by spaces, this method returns a vector a doubles. \end{DoxyCompactList}\item 
-std\+::pair$<$ std\+::vector$<$ \mbox{\hyperlink{structModelViewerI_1_1ModelInfo}{Model\+Viewer\+I\+::\+Model\+Info}} $>$, std\+::vector$<$ \mbox{\hyperlink{structModelViewerI_1_1PresetModelInfo}{Model\+Viewer\+I\+::\+Preset\+Model\+Info}} $>$ $>$ \mbox{\hyperlink{classSDFormatParser_a5dfbb6cfca78f371488cabb6c7ef9b9a}{Get\+Models\+From\+SDFTree}} () override
+std\+::pair$<$ std\+::vector$<$ \mbox{\hyperlink{structModelViewerI_1_1ModelInfo}{Model\+Viewer\+I\+::\+Model\+Info}} $>$, std\+::vector$<$ \mbox{\hyperlink{structModelViewerI_1_1PresetModelInfo}{Model\+Viewer\+I\+::\+Preset\+Model\+Info}} $>$ $>$ \mbox{\hyperlink{classSDFormatParser_a1ee28042f9efc950dabe0f6a863b7538}{Get\+Models\+From\+SDFTree}} (bool render\+\_\+collisions=false) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -64,10 +76,7 @@ sdf\+::\+SDFPtr {\bfseries sdf\+Element}
 \begin{DoxyCompactList}\small\item\em The main sdf\+Element associated this this \doxylink{classSDFormatParser}{SDFormat\+Parser} instance. \end{DoxyCompactList}\item 
 \Hypertarget{classSDFormatParser_a18c7e424f82ffe9187da090f17b44069}\label{classSDFormatParser_a18c7e424f82ffe9187da090f17b44069} 
 std\+::string {\bfseries sdf\+\_\+file\+\_\+path}
-\begin{DoxyCompactList}\small\item\em Store the file path of the sdf file. \end{DoxyCompactList}\item 
-\Hypertarget{classSDFormatParser_a452a3dfdb959519d6ae4da62751447e1}\label{classSDFormatParser_a452a3dfdb959519d6ae4da62751447e1} 
-bool {\bfseries render\+\_\+collisions} = false
-\begin{DoxyCompactList}\small\item\em Boolean to toggle rendering collisions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Store the file path of the sdf file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 
 
@@ -83,7 +92,7 @@ Implementation of \doxylink{classSDFormatParserI}{SDFormat\+ParserI}.
 
 
 
-Finds the absolute pose (translation and rotation) of a given element which contains pose element. 
+Finds the absolute pose (translation and rotation) of a given mesh/geometry-\/containing element. 
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -108,11 +117,11 @@ Finds the canonical link of a model and, if that doesn\textquotesingle{}t exist,
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em element} & we want to the "{}canonical"{} of \\
+\mbox{\texttt{ in}}  & {\em element} & we want to the "{}canonical"{} of, must be a model element \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The canonical link. If that does not exist in the immediate scope, the first nested model. If that does not exist, a null pointer ~\newline
+The canonical link. If that does not exist in the immediate scope, the first nested model. If that does not exist, a null pointer. Also returns a null pointer if the given element is not a model ~\newline
  
 \end{DoxyReturn}
 \Hypertarget{classSDFormatParser_aff85c7ed5d58583cba150f6454c3a669}\label{classSDFormatParser_aff85c7ed5d58583cba150f6454c3a669} 
@@ -229,19 +238,27 @@ Finds the nearest world, model, or root element parent of the given element.
 \begin{DoxyReturn}{Returns}
 The world, model, or root element defining the given element\textquotesingle{}s scope 
 \end{DoxyReturn}
-\Hypertarget{classSDFormatParser_a5dfbb6cfca78f371488cabb6c7ef9b9a}\label{classSDFormatParser_a5dfbb6cfca78f371488cabb6c7ef9b9a} 
+\Hypertarget{classSDFormatParser_a1ee28042f9efc950dabe0f6a863b7538}\label{classSDFormatParser_a1ee28042f9efc950dabe0f6a863b7538} 
 \index{SDFormatParser@{SDFormatParser}!GetModelsFromSDFTree@{GetModelsFromSDFTree}}
 \index{GetModelsFromSDFTree@{GetModelsFromSDFTree}!SDFormatParser@{SDFormatParser}}
 \doxysubsubsection{\texorpdfstring{GetModelsFromSDFTree()}{GetModelsFromSDFTree()}}
-{\footnotesize\ttfamily std\+::pair$<$ std\+::vector$<$ \mbox{\hyperlink{structModelViewerI_1_1ModelInfo}{Model\+Viewer\+I\+::\+Model\+Info}} $>$, std\+::vector$<$ \mbox{\hyperlink{structModelViewerI_1_1PresetModelInfo}{Model\+Viewer\+I\+::\+Preset\+Model\+Info}} $>$ $>$ SDFormat\+Parser\+::\+Get\+Models\+From\+SDFTree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::pair$<$ std\+::vector$<$ \mbox{\hyperlink{structModelViewerI_1_1ModelInfo}{Model\+Viewer\+I\+::\+Model\+Info}} $>$, std\+::vector$<$ \mbox{\hyperlink{structModelViewerI_1_1PresetModelInfo}{Model\+Viewer\+I\+::\+Preset\+Model\+Info}} $>$ $>$ SDFormat\+Parser\+::\+Get\+Models\+From\+SDFTree (\begin{DoxyParamCaption}\item[{bool}]{render\+\_\+collisions = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
 Implementation of interface method. 
 
 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em render\+\_\+collisions} & indicates if collision meshes and shapes are included as well \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pair of vectors condaining structs of the model viewer interfaces\textquotesingle{}s Model\+Info and Preset Model Info, which in turn contain the necessary information to render models 
+\end{DoxyReturn}
 
-Implements \mbox{\hyperlink{classSDFormatParserI_ab5a2f9891457766afc4ee83ae83da073}{SDFormat\+ParserI}}.
+
+Implements \mbox{\hyperlink{classSDFormatParserI_a4b5f982de744bae3dfa035ce03bcc536}{SDFormat\+ParserI}}.
 
 \Hypertarget{classSDFormatParser_a05c7ff0e224988a867849ebe85e67bb7}\label{classSDFormatParser_a05c7ff0e224988a867849ebe85e67bb7} 
 \index{SDFormatParser@{SDFormatParser}!GetSDFElement@{GetSDFElement}}
@@ -294,7 +311,7 @@ Considers if this is a special case of "{}relative\+\_\+to"{} and approperiately
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em element} & The non-\/pose element which we want to parse \\
+\mbox{\texttt{ in}}  & {\em element} & The element to consider \\
 \hline
 \mbox{\texttt{ out}}  & {\em relative\+\_\+to} & The "{}relative\+\_\+to"{} specification \\
 \hline
@@ -441,9 +458,9 @@ Given a string containing doubles seperated by spaces, this method returns a vec
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em string\+\_\+of\+\_\+doubles} & \\
+\mbox{\texttt{ in}}  & {\em string\+\_\+of\+\_\+doubles} & a string of doubles (should be parsable by std\+::istringstream) \\
 \hline
-\mbox{\texttt{ out}}  & {\em success} & \\
+\mbox{\texttt{ out}}  & {\em success} & True if the string of doubles was sucessfully parsed \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

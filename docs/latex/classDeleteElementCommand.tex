@@ -47,7 +47,7 @@ bool \mbox{\hyperlink{classDeleteElementCommand_a4ad99f4f3c8ca4b266af9c545744fdb
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classDeleteElementCommand_a6c5f04219ace0f3808af89a68828702b}{Is\+Redoable}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classDeleteElementCommand_a4561b97e2c51f2516e64d0ba816febe5}{Is\+Threaded}} () override
+bool \mbox{\hyperlink{classDeleteElementCommand_a8c76680ad67709fd31e57d874339face}{Is\+Threaded}} (bool \&prevent\+\_\+user\+\_\+input) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classDeleteElementCommand_acd07af54e3fcdfce7f7593dad933cc3e}{Changes\+Program\+State\+Irreversibly}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
@@ -143,7 +143,7 @@ True if the element is a required element and is the only child element of that 
 Implementation of interface method. 
 
 \begin{DoxyReturn}{Returns}
-Always true. Removes the element to delete from it\textquotesingle{}s parent 
+True if the element has been deleted from it\textquotesingle{}s parent 
 \end{DoxyReturn}
 
 
@@ -200,22 +200,27 @@ Returns true if the command has been undone
 
 Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
 
-\Hypertarget{classDeleteElementCommand_a4561b97e2c51f2516e64d0ba816febe5}\label{classDeleteElementCommand_a4561b97e2c51f2516e64d0ba816febe5} 
+\Hypertarget{classDeleteElementCommand_a8c76680ad67709fd31e57d874339face}\label{classDeleteElementCommand_a8c76680ad67709fd31e57d874339face} 
 \index{DeleteElementCommand@{DeleteElementCommand}!IsThreaded@{IsThreaded}}
 \index{IsThreaded@{IsThreaded}!DeleteElementCommand@{DeleteElementCommand}}
 \doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
-{\footnotesize\ttfamily bool Delete\+Element\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily bool Delete\+Element\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}\item[{bool \&}]{prevent\+\_\+user\+\_\+input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
 Implementation of interface method. 
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em prevent\+\_\+user\+\_\+input} & indicates if user input should be prevented if this happens to be a threaded command \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Always false 
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}{CommandI}}.
+Implements \mbox{\hyperlink{classCommandI_a1c54206064c146ea9ff089fbe4d321b6}{CommandI}}.
 
 \Hypertarget{classDeleteElementCommand_a4ad99f4f3c8ca4b266af9c545744fdb6}\label{classDeleteElementCommand_a4ad99f4f3c8ca4b266af9c545744fdb6} 
 \index{DeleteElementCommand@{DeleteElementCommand}!IsUndoable@{IsUndoable}}
@@ -228,7 +233,7 @@ Implements \mbox{\hyperlink{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}{Com
 Implementation of interface method. 
 
 \begin{DoxyReturn}{Returns}
-Returns true if the command as been executed or redone 
+Returns true if the command has been executed or redone 
 \end{DoxyReturn}
 
 

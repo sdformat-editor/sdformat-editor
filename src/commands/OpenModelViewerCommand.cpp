@@ -53,7 +53,7 @@ bool OpenModelViewerCommand::Execute()
       std::this_thread::sleep_for(std::chrono::milliseconds(1000/60));
   }
 
-  return false;
+  return true;
 
 }
 

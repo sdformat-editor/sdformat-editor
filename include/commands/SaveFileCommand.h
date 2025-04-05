@@ -37,7 +37,7 @@ class SaveFileCommand : public CommandI
   public: SaveFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser);
 
   /// \brief Implementation of interface method. 
-  /// \returns True if the SDFormatParser has successfully parsed the file and it has been displayed in the GUI
+  /// \returns True if the file has been successfully saved
   private: bool Execute();
 
   /// \brief Implementation of interface method. 

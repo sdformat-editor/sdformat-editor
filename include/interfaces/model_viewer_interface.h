@@ -35,19 +35,13 @@ class ModelViewerI
     /// \brief Struct representing information of a model's visual information
     public: typedef struct {
         std::string model_absolute_path;
-        
-        // Position Vector
         glm::dvec3 position;
-        
-        // Orientation Quaternion
         glm::dquat orientation;
-
-        // Scale
         glm::dvec3 scale = {1,1,1};
-
         double opacity = 1.0f;
     } ModelInfo;
 
+    /// @brief Preset shapes which do not require a mesh to be provided in the sdf
     public: enum PresetType {
         BOX,
         CYLINDER,
@@ -57,16 +51,9 @@ class ModelViewerI
     /// \brief Struct representing information of a model's visual information for pre-defined shapes
     public: typedef struct {
         PresetType preset_type;
-        
-        // Position Vector
         glm::dvec3 position;
-        
-        // Orientation Quaternion
         glm::dquat orientation;
-
-        // Scale
         glm::dvec3 scale = {1,1,1};
-
         double opacity = 1.0f;
     } PresetModelInfo;
 
@@ -84,20 +71,25 @@ class ModelViewerI
 
     /// \callgraph
     /// \brief Add a model to the model viewer, the model will be rendered on the next frame.
-    public: virtual void AddModel(ModelInfo) = 0;
-    public: virtual void AddModel(PresetModelInfo) = 0;
+    /// \param[in] model_info The model information
+    public: virtual void AddModel(ModelInfo model_info) = 0;
 
     /// \callgraph
-    /// \brief resets the model viewer, deleting all currently rendered models
+    /// \brief Add a model to the model viewer, the model will be rendered on the next frame.
+    /// \param[in] model_info The preset model information
+    public: virtual void AddModel(PresetModelInfo model_info) = 0;
+
+    /// \callgraph
+    /// \brief Sets a flag in the model viewer to remove the models in the scene
     public: virtual void ResetModels() = 0;
 
     /// \callgraph
-    /// \brief Indicates if the model view is running
+    /// \brief Indicates if the model viewer is running
     /// \returns a boolean
     public: virtual bool IsRunning() = 0;
 
     /// \callgraph
-    /// \brief Method to lock mutex
+    /// \brief Method to get the model viewer's mutex
     public: virtual std::mutex& GetMutex() = 0;
 };
 

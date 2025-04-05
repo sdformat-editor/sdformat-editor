@@ -87,9 +87,9 @@ Inheritance diagram for ModelViewerI:</div>
 <div class="dyncontent">
 <div class="center"><img src="classModelViewerI__inherit__graph.png" border="0" usemap="#aModelViewerI_inherit__map" alt="Inheritance graph"/></div>
 <map name="aModelViewerI_inherit__map" id="aModelViewerI_inherit__map">
-<area shape="rect" title="Interface for the SDFormat Editor&#39;s 3D Model Vewer." alt="" coords="18,5,214,135"/>
-<area shape="rect" href="classModelViewer.html" title="Implementation of SDFormatParserI." alt="" coords="5,183,227,332"/>
-<area shape="poly" title=" " alt="" coords="119,148,119,182,113,182,113,148"/>
+<area shape="rect" title="Interface for the SDFormat Editor&#39;s 3D Model Vewer." alt="" coords="24,5,247,269"/>
+<area shape="rect" href="classModelViewer.html" title="Implementation of SDFormatParserI." alt="" coords="5,317,265,920"/>
+<area shape="poly" title=" " alt="" coords="138,283,138,317,133,317,133,283"/>
 </map>
 </div>
 <div class="dynheader">
@@ -97,7 +97,7 @@ Collaboration diagram for ModelViewerI:</div>
 <div class="dyncontent">
 <div class="center"><img src="classModelViewerI__coll__graph.png" border="0" usemap="#aModelViewerI_coll__map" alt="Collaboration graph"/></div>
 <map name="aModelViewerI_coll__map" id="aModelViewerI_coll__map">
-<area shape="rect" title="Interface for the SDFormat Editor&#39;s 3D Model Vewer." alt="" coords="5,5,201,135"/>
+<area shape="rect" title="Interface for the SDFormat Editor&#39;s 3D Model Vewer." alt="" coords="5,5,228,269"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -112,10 +112,11 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a85d9de97182b690ba7a7b5b9f67b9537" id="r_a85d9de97182b690ba7a7b5b9f67b9537"><td class="memItemLeft" align="right" valign="top"><a id="a85d9de97182b690ba7a7b5b9f67b9537" name="a85d9de97182b690ba7a7b5b9f67b9537"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>PresetType</b> { <b>BOX</b>
+<tr class="memitem:a85d9de97182b690ba7a7b5b9f67b9537" id="r_a85d9de97182b690ba7a7b5b9f67b9537"><td class="memItemLeft" align="right" valign="top"><a id="a85d9de97182b690ba7a7b5b9f67b9537" name="a85d9de97182b690ba7a7b5b9f67b9537"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelViewerI.html#a85d9de97182b690ba7a7b5b9f67b9537">PresetType</a> { <b>BOX</b>
 , <b>CYLINDER</b>
 , <b>SPHERE</b>
  }</td></tr>
+<tr class="memdesc:a85d9de97182b690ba7a7b5b9f67b9537"><td class="mdescLeft">&#160;</td><td class="mdescRight">Preset shapes which do not require a mesh to be provided in the sdf. <br /></td></tr>
 <tr class="separator:a85d9de97182b690ba7a7b5b9f67b9537"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -130,24 +131,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a832e4a2dd4acab999b181a5f1cea3d68" id="r_a832e4a2dd4acab999b181a5f1cea3d68"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelViewerI.html#a832e4a2dd4acab999b181a5f1cea3d68">Quit</a> ()=0</td></tr>
 <tr class="memdesc:a832e4a2dd4acab999b181a5f1cea3d68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tells the model viewer to quit on its next iteration.  <br /></td></tr>
 <tr class="separator:a832e4a2dd4acab999b181a5f1cea3d68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a32d458443e0cafbf734469f2c41572" id="r_a5a32d458443e0cafbf734469f2c41572"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelViewerI.html#a5a32d458443e0cafbf734469f2c41572">AddModel</a> (<a class="el" href="structModelViewerI_1_1ModelInfo.html">ModelInfo</a>)=0</td></tr>
-<tr class="memdesc:a5a32d458443e0cafbf734469f2c41572"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a model to the model viewer, the model will be rendered on the next frame.  <br /></td></tr>
-<tr class="separator:a5a32d458443e0cafbf734469f2c41572"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d402a75f56994a06d2b1653b9ba1868" id="r_a4d402a75f56994a06d2b1653b9ba1868"><td class="memItemLeft" align="right" valign="top"><a id="a4d402a75f56994a06d2b1653b9ba1868" name="a4d402a75f56994a06d2b1653b9ba1868"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>AddModel</b> (<a class="el" href="structModelViewerI_1_1PresetModelInfo.html">PresetModelInfo</a>)=0</td></tr>
-<tr class="separator:a4d402a75f56994a06d2b1653b9ba1868"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1129d7d5d4e4ccb22cb6b0e98fd1a910" id="r_a1129d7d5d4e4ccb22cb6b0e98fd1a910"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelViewerI.html#a1129d7d5d4e4ccb22cb6b0e98fd1a910">AddModel</a> (<a class="el" href="structModelViewerI_1_1ModelInfo.html">ModelInfo</a> model_info)=0</td></tr>
+<tr class="memdesc:a1129d7d5d4e4ccb22cb6b0e98fd1a910"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a model to the model viewer, the model will be rendered on the next frame.  <br /></td></tr>
+<tr class="separator:a1129d7d5d4e4ccb22cb6b0e98fd1a910"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e7f4fd252e68c9c7bc59dc23025c4ff" id="r_a5e7f4fd252e68c9c7bc59dc23025c4ff"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelViewerI.html#a5e7f4fd252e68c9c7bc59dc23025c4ff">AddModel</a> (<a class="el" href="structModelViewerI_1_1PresetModelInfo.html">PresetModelInfo</a> model_info)=0</td></tr>
+<tr class="memdesc:a5e7f4fd252e68c9c7bc59dc23025c4ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a model to the model viewer, the model will be rendered on the next frame.  <br /></td></tr>
+<tr class="separator:a5e7f4fd252e68c9c7bc59dc23025c4ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1106c4b7a621fb3a52bbf23ac607b1ea" id="r_a1106c4b7a621fb3a52bbf23ac607b1ea"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelViewerI.html#a1106c4b7a621fb3a52bbf23ac607b1ea">ResetModels</a> ()=0</td></tr>
-<tr class="memdesc:a1106c4b7a621fb3a52bbf23ac607b1ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">resets the model viewer, deleting all currently rendered models  <br /></td></tr>
+<tr class="memdesc:a1106c4b7a621fb3a52bbf23ac607b1ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a flag in the model viewer to remove the models in the scene.  <br /></td></tr>
 <tr class="separator:a1106c4b7a621fb3a52bbf23ac607b1ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa705daf3812d9a096057398051e20a2a" id="r_aa705daf3812d9a096057398051e20a2a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelViewerI.html#aa705daf3812d9a096057398051e20a2a">IsRunning</a> ()=0</td></tr>
-<tr class="memdesc:aa705daf3812d9a096057398051e20a2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if the model view is running.  <br /></td></tr>
+<tr class="memdesc:aa705daf3812d9a096057398051e20a2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if the model viewer is running.  <br /></td></tr>
 <tr class="separator:aa705daf3812d9a096057398051e20a2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29aac5578c22b4f778c5e8077beeec68" id="r_a29aac5578c22b4f778c5e8077beeec68"><td class="memItemLeft" align="right" valign="top">virtual std::mutex &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelViewerI.html#a29aac5578c22b4f778c5e8077beeec68">GetMutex</a> ()=0</td></tr>
+<tr class="memdesc:a29aac5578c22b4f778c5e8077beeec68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to get the model viewer's mutex.  <br /></td></tr>
+<tr class="separator:a29aac5578c22b4f778c5e8077beeec68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for the SDFormat Editor's 3D Model Vewer. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a5a32d458443e0cafbf734469f2c41572" name="a5a32d458443e0cafbf734469f2c41572"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a32d458443e0cafbf734469f2c41572">&#9670;&#160;</a></span>AddModel()</h2>
+<a id="a1129d7d5d4e4ccb22cb6b0e98fd1a910" name="a1129d7d5d4e4ccb22cb6b0e98fd1a910"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1129d7d5d4e4ccb22cb6b0e98fd1a910">&#9670;&#160;</a></span>AddModel() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -159,7 +163,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>AddModel</b> 
           <td class="memname">virtual void ModelViewerI::AddModel </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structModelViewerI_1_1ModelInfo.html">ModelInfo</a>&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><em>model_info</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -171,8 +175,79 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>AddModel</b> 
 </div><div class="memdoc">
 
 <p>Add a model to the model viewer, the model will be rendered on the next frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">model_info</td><td>The model information </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="classModelViewer.html#ac1cb8b80a5d4b91449cd62fc9c033073">ModelViewer</a>.</p>
+
+</div>
+</div>
+<a id="a5e7f4fd252e68c9c7bc59dc23025c4ff" name="a5e7f4fd252e68c9c7bc59dc23025c4ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e7f4fd252e68c9c7bc59dc23025c4ff">&#9670;&#160;</a></span>AddModel() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ModelViewerI::AddModel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structModelViewerI_1_1PresetModelInfo.html">PresetModelInfo</a>&#160;</td>
+          <td class="paramname"><em>model_info</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add a model to the model viewer, the model will be rendered on the next frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">model_info</td><td>The preset model information </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classModelViewer.html#ae4fb8bd7a153aebaa09da1ccb95a5a42">ModelViewer</a>.</p>
+
+</div>
+</div>
+<a id="a29aac5578c22b4f778c5e8077beeec68" name="a29aac5578c22b4f778c5e8077beeec68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29aac5578c22b4f778c5e8077beeec68">&#9670;&#160;</a></span>GetMutex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::mutex &amp; ModelViewerI::GetMutex </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Method to get the model viewer's mutex. </p>
+
+<p>Implemented in <a class="el" href="classModelViewer.html#aaeb535d26d9f9fa93b2c22b6b42277d2">ModelViewer</a>.</p>
 
 </div>
 </div>
@@ -229,7 +304,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>AddModel</b> 
 </table>
 </div><div class="memdoc">
 
-<p>Indicates if the model view is running. </p>
+<p>Indicates if the model viewer is running. </p>
 <dl class="section return"><dt>Returns</dt><dd>a boolean </dd></dl>
 
 <p>Implemented in <a class="el" href="classModelViewer.html#a7cec8c6e3b729811538137102621eea5">ModelViewer</a>.</p>
@@ -317,7 +392,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>AddModel</b> 
 </table>
 </div><div class="memdoc">
 
-<p>resets the model viewer, deleting all currently rendered models </p>
+<p>Sets a flag in the model viewer to remove the models in the scene. </p>
 
 <p>Implemented in <a class="el" href="classModelViewer.html#ae3676b28106f80d71523256697001509">ModelViewer</a>.</p>
 

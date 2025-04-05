@@ -43,7 +43,7 @@ class FileOperations
 
     /// \callgraph
     /// \brief Opens a dialog for the user to open a directory on their filesystem 
-    /// \return An absolute file path or an empty string
+    /// \return An absolute directory path or an empty string
     public: std::string OpenDirectoryDialog();
 
     /// \callgraph
@@ -54,7 +54,7 @@ class FileOperations
     public: bool WriteFile(const std::string& file_path, const std::string& contents);
 
     /// \callgraph
-    /// \brief writes a string to a file
+    /// \brief writes a string to the currently opened file
     /// \param[in] contents the contents to write to the given file
     /// \returns true if successful 
     public: bool WriteFile(const std::string& contents);
@@ -83,8 +83,6 @@ class FileOperations
     private: FileOperations(const FileOperations&) = delete;
 
     private: std::string active_file_path;
-
-    private: int model_editor_fifo_file_descriptor;
 };
 
 #endif

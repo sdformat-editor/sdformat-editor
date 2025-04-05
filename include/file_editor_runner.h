@@ -30,15 +30,15 @@
 #include <fstream>
 #include <thread>
 
-/// \brief Implementation of program start up to be called by main.
+/// \brief Class to manage overall program operation.
 class FileEditorRunner
 {
     /// \brief Constructor that calls the top level method
-    /// \param[in] data_dir_created boolean that communicates if the file to contain the previous model exists
+    /// \param[in] data_dir_created boolean that communicates if the file to contain the previously opened model exists
     public: FileEditorRunner(bool data_dir_created = false);
 
     /// \brief Top level method that starts the program
-    /// \return Exit state for main function
+    /// \return The program's exit state 
     public: int RunProgram();
     
     /// @brief Variable for checking if the gui was initilized successfully

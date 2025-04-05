@@ -12,11 +12,23 @@ Modify Element command implementation of \doxylink{classCommandI}{CommandI}.
 
 
 Inheritance diagram for Modify\+Element\+Command\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classModifyElementCommand__inherit__graph}
+\end{center}
+\end{figure}
 
 
 Collaboration diagram for Modify\+Element\+Command\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classModifyElementCommand__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -35,7 +47,7 @@ bool \mbox{\hyperlink{classModifyElementCommand_a55ba581aa29dbf5a15b3b6f0ebf2da6
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classModifyElementCommand_aa0923ab4789fa5640bada3aa931efea7}{Is\+Redoable}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classModifyElementCommand_a49d4b72b16e9436c01881f624e584bea}{Is\+Threaded}} () override
+bool \mbox{\hyperlink{classModifyElementCommand_a4f8566561514b478c4dcd020a427a908}{Is\+Threaded}} (bool \&prevent\+\_\+user\+\_\+input) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classModifyElementCommand_ab2e39dcf67a8423834883037fc043157}{Changes\+Program\+State\+Irreversibly}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -129,7 +141,7 @@ bool \mbox{\hyperlink{classModifyElementCommand}{Modify\+Element\+Command}}$<$ T
 Implementation of interface method. 
 
 \begin{DoxyReturn}{Returns}
-Always true. Removes the element to delete from it\textquotesingle{}s parent 
+Returns true if the element\textquotesingle{}s value has been modified 
 \end{DoxyReturn}
 
 
@@ -147,7 +159,7 @@ bool \mbox{\hyperlink{classModifyElementCommand}{Modify\+Element\+Command}}$<$ T
 Implementation of interface method. 
 
 \begin{DoxyReturn}{Returns}
-Returns true if the element to delete was removed from its parent again 
+Returns true if the element\textquotesingle{}s value has been one again set to the new value 
 \end{DoxyReturn}
 
 
@@ -165,7 +177,8 @@ bool \mbox{\hyperlink{classModifyElementCommand}{Modify\+Element\+Command}}$<$ T
 Implementation of interface method. 
 
 \begin{DoxyReturn}{Returns}
-Returns true if the element to delete was already deleted and now restored to its parent 
+Returns true if the element\textquotesingle{}s value has been reset ~\newline
+ 
 \end{DoxyReturn}
 
 
@@ -189,23 +202,28 @@ Returns true if the command has been undone
 
 Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
 
-\Hypertarget{classModifyElementCommand_a49d4b72b16e9436c01881f624e584bea}\label{classModifyElementCommand_a49d4b72b16e9436c01881f624e584bea} 
+\Hypertarget{classModifyElementCommand_a4f8566561514b478c4dcd020a427a908}\label{classModifyElementCommand_a4f8566561514b478c4dcd020a427a908} 
 \index{ModifyElementCommand$<$ T $>$@{ModifyElementCommand$<$ T $>$}!IsThreaded@{IsThreaded}}
 \index{IsThreaded@{IsThreaded}!ModifyElementCommand$<$ T $>$@{ModifyElementCommand$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
-bool \mbox{\hyperlink{classModifyElementCommand}{Modify\+Element\+Command}}$<$ T $>$\+::\+Is\+Threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+bool \mbox{\hyperlink{classModifyElementCommand}{Modify\+Element\+Command}}$<$ T $>$\+::\+Is\+Threaded (\begin{DoxyParamCaption}\item[{bool \&}]{prevent\+\_\+user\+\_\+input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
 Implementation of interface method. 
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em prevent\+\_\+user\+\_\+input} & indicates if user input should be prevented if this happens to be a threaded command \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Always false 
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}{CommandI}}.
+Implements \mbox{\hyperlink{classCommandI_a1c54206064c146ea9ff089fbe4d321b6}{CommandI}}.
 
 \Hypertarget{classModifyElementCommand_a55ba581aa29dbf5a15b3b6f0ebf2da61}\label{classModifyElementCommand_a55ba581aa29dbf5a15b3b6f0ebf2da61} 
 \index{ModifyElementCommand$<$ T $>$@{ModifyElementCommand$<$ T $>$}!IsUndoable@{IsUndoable}}

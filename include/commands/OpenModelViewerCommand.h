@@ -17,8 +17,8 @@
 * Developer: Zaid Duraid, Ean Wheeler, Evan Vokey
 */
 
-#ifndef SDFORMAT_EDITOR_RUN_MODEL_VIEWER_COMMAND_HH_
-#define SDFORMAT_EDITOR_RUN_MODEL_VIEWER_COMMAND_HH_
+#ifndef SDFORMAT_EDITOR_OPEN_MODEL_VIEWER_COMMAND_HH_
+#define SDFORMAT_EDITOR_OPEN_MODEL_VIEWER_COMMAND_HH_
 
 
 #include <interfaces/command_interface.h>
@@ -36,7 +36,7 @@ class OpenModelViewerCommand : public CommandI
   public: OpenModelViewerCommand(std::shared_ptr<ModelViewerI> model_viewer);
 
   /// \brief Implementation of interface method. 
-  /// \returns True if the SDFormatParser has successfully parsed the file and it has been displayed in the GUI
+  /// \returns True once the model viewer has finished running (i.e. has been closed)
   private: bool Execute() override;
 
   /// @brief Implementation of interface method.

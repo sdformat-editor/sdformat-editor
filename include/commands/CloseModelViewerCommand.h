@@ -25,17 +25,17 @@
 #include <interfaces/model_viewer_interface.h>
 
 
-/// \brief Close open viewer command implementation of CommandI
+/// \brief Close model viewer command implementation of CommandI
 class CloseModelViewerCommand : public CommandI
 {
 
   /// \callgraph
-  /// \brief Constructor for close model vuewer command objects.
+  /// \brief Constructor for close model viewer command objects.
   /// \param[in] model_viewer Pointer to the ModelViewerI object
   public: CloseModelViewerCommand(std::shared_ptr<ModelViewerI> model_viewer);
 
   /// \brief Implementation of interface method. 
-  /// \returns True if the SDFormatParser has successfully parsed the file and it has been displayed in the GUI
+  /// \returns True if the model viewer is no longer running. 
   private: bool Execute() override;
 
   /// @brief Implementation of interface method.
@@ -57,11 +57,11 @@ class CloseModelViewerCommand : public CommandI
   /// \brief Implementation of interface method.
   /// \param[out] prevent_user_input indicates if user input should be prevented 
   /// if this happens to be a threaded command
-  /// \returns Always true
+  /// \returns Always false
   private: bool IsThreaded(bool& prevent_user_input) override;
 
   /// \brief Implementation of interface method.
-  /// \returns Always true
+  /// \returns Always false
   private: bool ChangesProgramStateIrreversibly() override;
 
   /// @brief Pointer to the sdformat parser interface

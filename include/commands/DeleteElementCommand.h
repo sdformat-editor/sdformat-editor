@@ -39,7 +39,7 @@ class DeleteElementCommand : public CommandI
   public: DeleteElementCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ElementPtr element_to_delete);
 
   /// \brief Implementation of interface method. 
-  /// \returns Always true. Removes the element to delete from it's parent
+  /// \returns True if the element has been deleted from it's parent
   private: bool Execute() override;
 
   /// \brief Implementation of interface method. 
@@ -51,7 +51,7 @@ class DeleteElementCommand : public CommandI
   private: bool ExecuteRedo() override;
 
   /// \brief Implementation of interface method.
-  /// \returns Returns true if the command as been executed or redone
+  /// \returns Returns true if the command has been executed or redone
   private: bool IsUndoable() override;
 
   /// \brief Implementation of interface method.

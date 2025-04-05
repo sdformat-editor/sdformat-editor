@@ -86,9 +86,9 @@ Inheritance diagram for SDFormatParserI:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSDFormatParserI__inherit__graph.png" border="0" usemap="#aSDFormatParserI_inherit__map" alt="Inheritance graph"/></div>
 <map name="aSDFormatParserI_inherit__map" id="aSDFormatParserI_inherit__map">
-<area shape="rect" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,273,445"/>
-<area shape="rect" href="classSDFormatParser.html" title="Implementation of SDFormatParserI." alt="" coords="19,493,259,977"/>
-<area shape="poly" title=" " alt="" coords="142,459,142,493,137,493,137,459"/>
+<area shape="rect" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,273,696"/>
+<area shape="rect" href="classSDFormatParser.html" title="Implementation of SDFormatParserI." alt="" coords="18,744,261,1381"/>
+<area shape="poly" title=" " alt="" coords="142,710,142,744,137,744,137,710"/>
 </map>
 </div>
 <div class="dynheader">
@@ -96,7 +96,7 @@ Collaboration diagram for SDFormatParserI:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSDFormatParserI__coll__graph.png" border="0" usemap="#aSDFormatParserI_coll__map" alt="Collaboration graph"/></div>
 <map name="aSDFormatParserI_coll__map" id="aSDFormatParserI_coll__map">
-<area shape="rect" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,273,445"/>
+<area shape="rect" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,273,696"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -109,7 +109,7 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a404feccbe479eadff00da8ca881fbc85" id="r_a404feccbe479eadff00da8ca881fbc85"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a404feccbe479eadff00da8ca881fbc85">Initialize</a> (const std::string file_path, bool &amp;success)=0</td></tr>
-<tr class="memdesc:a404feccbe479eadff00da8ca881fbc85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization of the Parser. Will re-initalize the parser if initalized already. NOTE: (zaid) As more features are added, more things will be added to this initalize method.  <br /></td></tr>
+<tr class="memdesc:a404feccbe479eadff00da8ca881fbc85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization of the Parser. Will re-initalize the parser if initalized already.  <br /></td></tr>
 <tr class="separator:a404feccbe479eadff00da8ca881fbc85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a5b36f28e49f669d0bd8685253be72e" id="r_a9a5b36f28e49f669d0bd8685253be72e"><td class="memItemLeft" align="right" valign="top">virtual sdf::SDFPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a9a5b36f28e49f669d0bd8685253be72e">GetSDFElement</a> ()=0</td></tr>
 <tr class="memdesc:a9a5b36f28e49f669d0bd8685253be72e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the main sdfElement associated this this <a class="el" href="classSDFormatParser.html" title="Implementation of SDFormatParserI.">SDFormatParser</a> instance.  <br /></td></tr>
@@ -124,23 +124,23 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ae84b01a81a2c366630a530c40ad8c75c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a list of elements which are of a given type.  <br /></td></tr>
 <tr class="separator:ae84b01a81a2c366630a530c40ad8c75c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac72fb1714f0918b0f7fc964bf8fb9a10" id="r_ac72fb1714f0918b0f7fc964bf8fb9a10"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structSDFormatParserI_1_1Mentions.html">Mentions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#ac72fb1714f0918b0f7fc964bf8fb9a10">FindMentions</a> (std::string key)=0</td></tr>
-<tr class="memdesc:ac72fb1714f0918b0f7fc964bf8fb9a10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the locations of potential references to the element to delete.  <br /></td></tr>
+<tr class="memdesc:ac72fb1714f0918b0f7fc964bf8fb9a10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the elements and attributes which mention a given key.  <br /></td></tr>
 <tr class="separator:ac72fb1714f0918b0f7fc964bf8fb9a10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e69c1b46ed0023c7fc019e2f865f438" id="r_a1e69c1b46ed0023c7fc019e2f865f438"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structSDFormatParserI_1_1Mentions.html">Mentions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a1e69c1b46ed0023c7fc019e2f865f438">FindMentions</a> (std::string key, sdf::ElementPtr element_to_exclude)=0</td></tr>
-<tr class="memdesc:a1e69c1b46ed0023c7fc019e2f865f438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the locations of potential references to the element to delete.  <br /></td></tr>
+<tr class="memdesc:a1e69c1b46ed0023c7fc019e2f865f438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the elements and attributes which mention a given key.  <br /></td></tr>
 <tr class="separator:a1e69c1b46ed0023c7fc019e2f865f438"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a589267553e67bd84d250f2ab53bee436" id="r_a589267553e67bd84d250f2ab53bee436"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structSDFormatParserI_1_1Mentions.html">Mentions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a589267553e67bd84d250f2ab53bee436">FindMentions</a> (std::string key, sdf::ParamPtr attribute_to_exclude)=0</td></tr>
-<tr class="memdesc:a589267553e67bd84d250f2ab53bee436"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the locations of potential references to the element to delete.  <br /></td></tr>
+<tr class="memdesc:a589267553e67bd84d250f2ab53bee436"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the elements and attributes which mention a given key.  <br /></td></tr>
 <tr class="separator:a589267553e67bd84d250f2ab53bee436"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73c8e4a06d862addd44822118ef8c16f" id="r_a73c8e4a06d862addd44822118ef8c16f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structSDFormatParserI_1_1Mentions.html">Mentions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a73c8e4a06d862addd44822118ef8c16f">FindMentions</a> (std::string key, sdf::ElementPtr element_to_exclude, sdf::ParamPtr attribute_to_exclude)=0</td></tr>
-<tr class="memdesc:a73c8e4a06d862addd44822118ef8c16f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the locations of potential references to the element to delete.  <br /></td></tr>
+<tr class="memdesc:a73c8e4a06d862addd44822118ef8c16f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the elements and attributes which mention a given key.  <br /></td></tr>
 <tr class="separator:a73c8e4a06d862addd44822118ef8c16f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a203d76c76addc968d746bc75b747c399" id="r_a203d76c76addc968d746bc75b747c399"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a203d76c76addc968d746bc75b747c399">GetSDFTreePathToElement</a> (sdf::ElementPtr element)=0</td></tr>
-<tr class="memdesc:a203d76c76addc968d746bc75b747c399"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the tree path to this element.  <br /></td></tr>
+<tr class="memdesc:a203d76c76addc968d746bc75b747c399"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the tree path to a given element.  <br /></td></tr>
 <tr class="separator:a203d76c76addc968d746bc75b747c399"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5a2f9891457766afc4ee83ae83da073" id="r_ab5a2f9891457766afc4ee83ae83da073"><td class="memItemLeft" align="right" valign="top">virtual std::pair&lt; std::vector&lt; <a class="el" href="structModelViewerI_1_1ModelInfo.html">ModelViewerI::ModelInfo</a> &gt;, std::vector&lt; <a class="el" href="structModelViewerI_1_1PresetModelInfo.html">ModelViewerI::PresetModelInfo</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#ab5a2f9891457766afc4ee83ae83da073">GetModelsFromSDFTree</a> ()=0</td></tr>
-<tr class="memdesc:ab5a2f9891457766afc4ee83ae83da073"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all models in the sdf tree.  <br /></td></tr>
-<tr class="separator:ab5a2f9891457766afc4ee83ae83da073"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b5f982de744bae3dfa035ce03bcc536" id="r_a4b5f982de744bae3dfa035ce03bcc536"><td class="memItemLeft" align="right" valign="top">virtual std::pair&lt; std::vector&lt; <a class="el" href="structModelViewerI_1_1ModelInfo.html">ModelViewerI::ModelInfo</a> &gt;, std::vector&lt; <a class="el" href="structModelViewerI_1_1PresetModelInfo.html">ModelViewerI::PresetModelInfo</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParserI.html#a4b5f982de744bae3dfa035ce03bcc536">GetModelsFromSDFTree</a> (bool render_collisions=false)=0</td></tr>
+<tr class="memdesc:a4b5f982de744bae3dfa035ce03bcc536"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets information about all models in the sdf tree in a format that can be interperted by the model viewer.  <br /></td></tr>
+<tr class="separator:a4b5f982de744bae3dfa035ce03bcc536"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for the SDFormat Editor's Parser. </p>
@@ -169,14 +169,14 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Determines the locations of potential references to the element to delete. </p>
+<p>Finds the elements and attributes which mention a given key. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>the string to search for </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The elements and attributes that mention this given key </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The elements and attributes that mention the given key </dd></dl>
 
 <p>Implemented in <a class="el" href="classSDFormatParser.html#aff85c7ed5d58583cba150f6454c3a669">SDFormatParser</a>.</p>
 
@@ -216,7 +216,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Determines the locations of potential references to the element to delete. </p>
+<p>Finds the elements and attributes which mention a given key. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>the string to search for </td></tr>
@@ -224,7 +224,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The elements and attributes that mention this given key </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The elements and attributes that mention the given key </dd></dl>
 
 <p>Implemented in <a class="el" href="classSDFormatParser.html#a56e195cc3d0f84498f39b9e91d789dec">SDFormatParser</a>.</p>
 
@@ -270,7 +270,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Determines the locations of potential references to the element to delete. </p>
+<p>Finds the elements and attributes which mention a given key. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>the string to search for </td></tr>
@@ -279,7 +279,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The elements and attributes that mention this given key </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The elements and attributes that mention the given key </dd></dl>
 
 <p>Implemented in <a class="el" href="classSDFormatParser.html#a49e81716bf38dd27f040cbd0f82ac41f">SDFormatParser</a>.</p>
 
@@ -319,7 +319,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Determines the locations of potential references to the element to delete. </p>
+<p>Finds the elements and attributes which mention a given key. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>the string to search for </td></tr>
@@ -327,14 +327,14 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The elements and attributes that mention this given key </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The elements and attributes that mention the given key </dd></dl>
 
 <p>Implemented in <a class="el" href="classSDFormatParser.html#a0fcc73cf597a43c882367f5a6d5d2d08">SDFormatParser</a>.</p>
 
 </div>
 </div>
-<a id="ab5a2f9891457766afc4ee83ae83da073" name="ab5a2f9891457766afc4ee83ae83da073"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5a2f9891457766afc4ee83ae83da073">&#9670;&#160;</a></span>GetModelsFromSDFTree()</h2>
+<a id="a4b5f982de744bae3dfa035ce03bcc536" name="a4b5f982de744bae3dfa035ce03bcc536"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b5f982de744bae3dfa035ce03bcc536">&#9670;&#160;</a></span>GetModelsFromSDFTree()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -345,7 +345,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual std::pair&lt; std::vector&lt; <a class="el" href="structModelViewerI_1_1ModelInfo.html">ModelViewerI::ModelInfo</a> &gt;, std::vector&lt; <a class="el" href="structModelViewerI_1_1PresetModelInfo.html">ModelViewerI::PresetModelInfo</a> &gt; &gt; SDFormatParserI::GetModelsFromSDFTree </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>render_collisions</em> = <code>false</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -356,10 +357,16 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get all models in the sdf tree. </p>
-<dl class="section return"><dt>Returns</dt><dd>NOTE: (Zaid) idk what the return type will be right now, but it will be a vector of something that stores information about models. </dd></dl>
+<p>Gets information about all models in the sdf tree in a format that can be interperted by the model viewer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">render_collisions</td><td>indicates if collision meshes and shapes are included as well </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pair of vectors condaining structs of the model viewer interfaces's ModelInfo and Preset Model Info, which in turn contain the necessary information to render models </dd></dl>
 
-<p>Implemented in <a class="el" href="classSDFormatParser.html#a5dfbb6cfca78f371488cabb6c7ef9b9a">SDFormatParser</a>.</p>
+<p>Implemented in <a class="el" href="classSDFormatParser.html#a1ee28042f9efc950dabe0f6a863b7538">SDFormatParser</a>.</p>
 
 </div>
 </div>
@@ -417,7 +424,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the tree path to this element. </p>
+<p>Get the tree path to a given element. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">element</td><td>element that we want a tree path for </td></tr>
@@ -464,7 +471,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Initialization of the Parser. Will re-initalize the parser if initalized already. NOTE: (zaid) As more features are added, more things will be added to this initalize method. </p>
+<p>Initialization of the Parser. Will re-initalize the parser if initalized already. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">file_path</td><td>The relative or absolute filepath to the SDF model. If relative, a relative_to path must be specified. </td></tr>

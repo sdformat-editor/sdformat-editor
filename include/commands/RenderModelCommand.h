@@ -35,10 +35,12 @@ class RenderModelCommand : public CommandI
   /// \brief Constructor for render model command objects.
   /// \param[in] model_viewer A pointer to the model viewer object
   /// \param[in] sdformat_parser A pointer to the SDFormat parser object
+  /// \param[in] render_collisions_in_model_viewer A boolean to indicate wether or not to render collision objects
   public: RenderModelCommand(std::shared_ptr<ModelViewerI> model_viewer, std::shared_ptr<SDFormatParserI> sdformat_parser, bool render_collisions_in_model_viewer);
 
   /// \brief Implementation of interface method. 
-  /// \returns True if model is successfully loaded in model viewer
+  /// \returns This command calls a method from the SDFormat Parser to obtain information about all the models in the sdf tree
+  /// and then adds each model to a render queue on the model viewer, which runs on a seperate thread
   private: bool Execute() override;
 
   /// \brief Implementation of interface method. 

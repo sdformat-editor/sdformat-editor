@@ -12,11 +12,23 @@ Save model command implementation of \doxylink{classCommandI}{CommandI}.
 
 
 Inheritance diagram for Save\+File\+Command\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classSaveFileCommand__inherit__graph}
+\end{center}
+\end{figure}
 
 
 Collaboration diagram for Save\+File\+Command\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classSaveFileCommand__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -35,7 +47,7 @@ bool \mbox{\hyperlink{classSaveFileCommand_a85292d15bc3c13b7ad14a0b73d1dd154}{Is
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classSaveFileCommand_a47cf7448aee11bb954fb40af4022e122}{Is\+Redoable}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classSaveFileCommand_a0d77c2d15577db0fd124b2e453bba00a}{Is\+Threaded}} () override
+bool \mbox{\hyperlink{classSaveFileCommand_a2d9bfd9b7930ff9f7b98620fac7e4896}{Is\+Threaded}} (bool \&prevent\+\_\+user\+\_\+input) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classSaveFileCommand_aca27d37ba37fadaab46b06ea13bec632}{Changes\+Program\+State\+Irreversibly}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -102,7 +114,7 @@ Implements \mbox{\hyperlink{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}{Com
 Implementation of interface method. 
 
 \begin{DoxyReturn}{Returns}
-True if the \doxylink{classSDFormatParser}{SDFormat\+Parser} has successfully parsed the file and it has been displayed in the \doxylink{classGUI}{GUI} 
+True if the file has been successfully saved 
 \end{DoxyReturn}
 
 
@@ -159,22 +171,27 @@ Always false
 
 Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
 
-\Hypertarget{classSaveFileCommand_a0d77c2d15577db0fd124b2e453bba00a}\label{classSaveFileCommand_a0d77c2d15577db0fd124b2e453bba00a} 
+\Hypertarget{classSaveFileCommand_a2d9bfd9b7930ff9f7b98620fac7e4896}\label{classSaveFileCommand_a2d9bfd9b7930ff9f7b98620fac7e4896} 
 \index{SaveFileCommand@{SaveFileCommand}!IsThreaded@{IsThreaded}}
 \index{IsThreaded@{IsThreaded}!SaveFileCommand@{SaveFileCommand}}
 \doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
-{\footnotesize\ttfamily bool Save\+File\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily bool Save\+File\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}\item[{bool \&}]{prevent\+\_\+user\+\_\+input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
 Implementation of interface method. 
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em prevent\+\_\+user\+\_\+input} & indicates if user input should be prevented if this happens to be a threaded command \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Always false 
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}{CommandI}}.
+Implements \mbox{\hyperlink{classCommandI_a1c54206064c146ea9ff089fbe4d321b6}{CommandI}}.
 
 \Hypertarget{classSaveFileCommand_a85292d15bc3c13b7ad14a0b73d1dd154}\label{classSaveFileCommand_a85292d15bc3c13b7ad14a0b73d1dd154} 
 \index{SaveFileCommand@{SaveFileCommand}!IsUndoable@{IsUndoable}}

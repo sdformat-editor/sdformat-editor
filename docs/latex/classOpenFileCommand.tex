@@ -11,20 +11,22 @@ Open model command implementation of \doxylink{classCommandI}{CommandI}.
 
 
 
-Inheritance diagram for Open\+File\+Command\+:\nopagebreak
+Inheritance diagram for Open\+File\+Command\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=285pt]{classOpenFileCommand__inherit__graph}
+\includegraphics[height=550pt]{classOpenFileCommand__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Open\+File\+Command\+:\nopagebreak
+Collaboration diagram for Open\+File\+Command\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=285pt]{classOpenFileCommand__coll__graph}
+\includegraphics[height=550pt]{classOpenFileCommand__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -45,7 +47,7 @@ bool \mbox{\hyperlink{classOpenFileCommand_afa163c258a28f6f7af8f43908e181605}{Is
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classOpenFileCommand_afdf34480b36f0fa36f41fc546333a5dc}{Is\+Redoable}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classOpenFileCommand_a3fb7e479af973fb23f422c955e24fc77}{Is\+Threaded}} () override
+bool \mbox{\hyperlink{classOpenFileCommand_a0afc31cf065ad9e890dec0704cd42308}{Is\+Threaded}} (bool \&prevent\+\_\+user\+\_\+input) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classOpenFileCommand_ae020a395fb497ac749d5ddb54d2ce7ef}{Changes\+Program\+State\+Irreversibly}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -174,22 +176,27 @@ Always false
 
 Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
 
-\Hypertarget{classOpenFileCommand_a3fb7e479af973fb23f422c955e24fc77}\label{classOpenFileCommand_a3fb7e479af973fb23f422c955e24fc77} 
+\Hypertarget{classOpenFileCommand_a0afc31cf065ad9e890dec0704cd42308}\label{classOpenFileCommand_a0afc31cf065ad9e890dec0704cd42308} 
 \index{OpenFileCommand@{OpenFileCommand}!IsThreaded@{IsThreaded}}
 \index{IsThreaded@{IsThreaded}!OpenFileCommand@{OpenFileCommand}}
 \doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
-{\footnotesize\ttfamily bool Open\+File\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily bool Open\+File\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}\item[{bool \&}]{prevent\+\_\+user\+\_\+input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
 Implementation of interface method. 
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em prevent\+\_\+user\+\_\+input} & indicates if user input should be prevented if this happens to be a threaded command \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Always true 
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}{CommandI}}.
+Implements \mbox{\hyperlink{classCommandI_a1c54206064c146ea9ff089fbe4d321b6}{CommandI}}.
 
 \Hypertarget{classOpenFileCommand_afa163c258a28f6f7af8f43908e181605}\label{classOpenFileCommand_afa163c258a28f6f7af8f43908e181605} 
 \index{OpenFileCommand@{OpenFileCommand}!IsUndoable@{IsUndoable}}

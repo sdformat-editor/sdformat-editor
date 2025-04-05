@@ -87,9 +87,9 @@ Inheritance diagram for AddElementCommand:</div>
 <div class="dyncontent">
 <div class="center"><img src="classAddElementCommand__inherit__graph.png" border="0" usemap="#aAddElementCommand_inherit__map" alt="Inheritance graph"/></div>
 <map name="aAddElementCommand_inherit__map" id="aAddElementCommand_inherit__map">
-<area shape="rect" title="Open model command implementation of CommandI." alt="" coords="5,253,279,784"/>
-<area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="31,5,253,205"/>
-<area shape="poly" title=" " alt="" coords="145,219,145,253,139,253,139,219"/>
+<area shape="rect" title="Add Element command implementation of CommandI." alt="" coords="5,268,279,828"/>
+<area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="29,5,255,220"/>
+<area shape="poly" title=" " alt="" coords="145,234,145,268,139,268,139,234"/>
 </map>
 </div>
 <div class="dynheader">
@@ -97,9 +97,9 @@ Collaboration diagram for AddElementCommand:</div>
 <div class="dyncontent">
 <div class="center"><img src="classAddElementCommand__coll__graph.png" border="0" usemap="#aAddElementCommand_coll__map" alt="Collaboration graph"/></div>
 <map name="aAddElementCommand_coll__map" id="aAddElementCommand_coll__map">
-<area shape="rect" title="Open model command implementation of CommandI." alt="" coords="5,253,279,784"/>
-<area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="31,5,253,205"/>
-<area shape="poly" title=" " alt="" coords="145,219,145,253,139,253,139,219"/>
+<area shape="rect" title="Add Element command implementation of CommandI." alt="" coords="5,268,279,828"/>
+<area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="29,5,255,220"/>
+<area shape="poly" title=" " alt="" coords="145,234,145,268,139,268,139,234"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -126,9 +126,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:ac71009f4a4858e664619c738966878ae" id="r_ac71009f4a4858e664619c738966878ae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAddElementCommand.html#ac71009f4a4858e664619c738966878ae">IsRedoable</a> () override</td></tr>
 <tr class="memdesc:ac71009f4a4858e664619c738966878ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
 <tr class="separator:ac71009f4a4858e664619c738966878ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3a7cd0752dc92e57b4ee64b7f1e95df" id="r_ad3a7cd0752dc92e57b4ee64b7f1e95df"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAddElementCommand.html#ad3a7cd0752dc92e57b4ee64b7f1e95df">IsThreaded</a> () override</td></tr>
-<tr class="memdesc:ad3a7cd0752dc92e57b4ee64b7f1e95df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
-<tr class="separator:ad3a7cd0752dc92e57b4ee64b7f1e95df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a945c0d3d8e14dd224e4c75c5bf12a7a7" id="r_a945c0d3d8e14dd224e4c75c5bf12a7a7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAddElementCommand.html#a945c0d3d8e14dd224e4c75c5bf12a7a7">IsThreaded</a> (bool &amp;prevent_user_input) override</td></tr>
+<tr class="memdesc:a945c0d3d8e14dd224e4c75c5bf12a7a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
+<tr class="separator:a945c0d3d8e14dd224e4c75c5bf12a7a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a095686d88826409e62e82b4526b2b544" id="r_a095686d88826409e62e82b4526b2b544"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAddElementCommand.html#a095686d88826409e62e82b4526b2b544">ChangesProgramStateIrreversibly</a> () override</td></tr>
 <tr class="memdesc:a095686d88826409e62e82b4526b2b544"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
 <tr class="separator:a095686d88826409e62e82b4526b2b544"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -273,7 +273,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_redoable
 </div><div class="memdoc">
 
 <p>Implementation of interface method. </p>
-<dl class="section return"><dt>Returns</dt><dd>Always true. Adds a new element to specified parent </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if a new element is added to the specified parent </dd></dl>
 
 <p>Implements <a class="el" href="classCommandI.html#ad0107a73ebccd619860597db7bad2cce">CommandI</a>.</p>
 
@@ -363,14 +363,14 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_redoable
 </div><div class="memdoc">
 
 <p>Implementation of interface method. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns true if the command has been undone </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if the command can be redone </dd></dl>
 
 <p>Implements <a class="el" href="classCommandI.html#a3abee4f38d41e59b915e0dd94c4846b6">CommandI</a>.</p>
 
 </div>
 </div>
-<a id="ad3a7cd0752dc92e57b4ee64b7f1e95df" name="ad3a7cd0752dc92e57b4ee64b7f1e95df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3a7cd0752dc92e57b4ee64b7f1e95df">&#9670;&#160;</a></span>IsThreaded()</h2>
+<a id="a945c0d3d8e14dd224e4c75c5bf12a7a7" name="a945c0d3d8e14dd224e4c75c5bf12a7a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a945c0d3d8e14dd224e4c75c5bf12a7a7">&#9670;&#160;</a></span>IsThreaded()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -381,7 +381,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_redoable
         <tr>
           <td class="memname">bool AddElementCommand::IsThreaded </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">bool &amp;&#160;</td>
+          <td class="paramname"><em>prevent_user_input</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -393,9 +394,15 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_redoable
 </div><div class="memdoc">
 
 <p>Implementation of interface method. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">prevent_user_input</td><td>indicates if user input should be prevented if this happens to be a threaded command </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>Always false </dd></dl>
 
-<p>Implements <a class="el" href="classCommandI.html#a6b173d77055ac6a8c548b6737ca03caf">CommandI</a>.</p>
+<p>Implements <a class="el" href="classCommandI.html#a1c54206064c146ea9ff089fbe4d321b6">CommandI</a>.</p>
 
 </div>
 </div>
@@ -423,7 +430,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_currently_redoable
 </div><div class="memdoc">
 
 <p>Implementation of interface method. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns true if the command as been executed or redone </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if the command can be undone </dd></dl>
 
 <p>Implements <a class="el" href="classCommandI.html#a4722f602fdfa6387aa0fced8dfa0e9fd">CommandI</a>.</p>
 

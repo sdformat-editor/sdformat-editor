@@ -41,15 +41,15 @@ class ModifyAttributeCommand : public CommandI
   public: ModifyAttributeCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ParamPtr attribute_to_modify, T new_value);
 
   /// \brief Implementation of interface method. 
-  /// \returns Always true. Removes the element to delete from it's parent
+  /// \returns True if the attribute has been modified
   private: bool Execute() override;
 
   /// \brief Implementation of interface method. 
-  /// \returns Returns true if the element to delete was already deleted and now restored to its parent
+  /// \returns Returns true if the attribute has been restored to its initial value
   private: bool ExecuteUndo() override;
 
   /// \brief Implementation of interface method. 
-  /// \returns Returns true if the element to delete was removed from its parent again
+  /// \returns Returns true if the element was once again given the new value
   private: bool ExecuteRedo() override;
 
   /// \brief Implementation of interface method.

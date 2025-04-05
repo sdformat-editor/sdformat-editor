@@ -12,11 +12,23 @@ Modify Attribute command implementation of \doxylink{classCommandI}{CommandI}.
 
 
 Inheritance diagram for Modify\+Attribute\+Command\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classModifyAttributeCommand__inherit__graph}
+\end{center}
+\end{figure}
 
 
 Collaboration diagram for Modify\+Attribute\+Command\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classModifyAttributeCommand__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -35,7 +47,7 @@ bool \mbox{\hyperlink{classModifyAttributeCommand_ae5f4a94d8c7913093be60ff5de2e7
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classModifyAttributeCommand_a0d6d063e15b58dde6b748ff6e939c269}{Is\+Redoable}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classModifyAttributeCommand_a62494dadb8502d4a6438fd82719e804e}{Is\+Threaded}} () override
+bool \mbox{\hyperlink{classModifyAttributeCommand_a211a71d72c9e31f828a945e2da5e7694}{Is\+Threaded}} (bool \&prevent\+\_\+user\+\_\+input) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classModifyAttributeCommand_a712d809325687e4d149146a40cfcb0fb}{Changes\+Program\+State\+Irreversibly}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -129,7 +141,7 @@ bool \mbox{\hyperlink{classModifyAttributeCommand}{Modify\+Attribute\+Command}}$
 Implementation of interface method. 
 
 \begin{DoxyReturn}{Returns}
-Always true. Removes the element to delete from it\textquotesingle{}s parent 
+True if the attribute has been modified 
 \end{DoxyReturn}
 
 
@@ -147,7 +159,7 @@ bool \mbox{\hyperlink{classModifyAttributeCommand}{Modify\+Attribute\+Command}}$
 Implementation of interface method. 
 
 \begin{DoxyReturn}{Returns}
-Returns true if the element to delete was removed from its parent again 
+Returns true if the element was once again given the new value 
 \end{DoxyReturn}
 
 
@@ -165,7 +177,7 @@ bool \mbox{\hyperlink{classModifyAttributeCommand}{Modify\+Attribute\+Command}}$
 Implementation of interface method. 
 
 \begin{DoxyReturn}{Returns}
-Returns true if the element to delete was already deleted and now restored to its parent 
+Returns true if the attribute has been restored to its initial value 
 \end{DoxyReturn}
 
 
@@ -189,23 +201,28 @@ Returns true if the command has been undone
 
 Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
 
-\Hypertarget{classModifyAttributeCommand_a62494dadb8502d4a6438fd82719e804e}\label{classModifyAttributeCommand_a62494dadb8502d4a6438fd82719e804e} 
+\Hypertarget{classModifyAttributeCommand_a211a71d72c9e31f828a945e2da5e7694}\label{classModifyAttributeCommand_a211a71d72c9e31f828a945e2da5e7694} 
 \index{ModifyAttributeCommand$<$ T $>$@{ModifyAttributeCommand$<$ T $>$}!IsThreaded@{IsThreaded}}
 \index{IsThreaded@{IsThreaded}!ModifyAttributeCommand$<$ T $>$@{ModifyAttributeCommand$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
-bool \mbox{\hyperlink{classModifyAttributeCommand}{Modify\+Attribute\+Command}}$<$ T $>$\+::\+Is\+Threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+bool \mbox{\hyperlink{classModifyAttributeCommand}{Modify\+Attribute\+Command}}$<$ T $>$\+::\+Is\+Threaded (\begin{DoxyParamCaption}\item[{bool \&}]{prevent\+\_\+user\+\_\+input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
 Implementation of interface method. 
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em prevent\+\_\+user\+\_\+input} & indicates if user input should be prevented if this happens to be a threaded command \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Always false 
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}{CommandI}}.
+Implements \mbox{\hyperlink{classCommandI_a1c54206064c146ea9ff089fbe4d321b6}{CommandI}}.
 
 \Hypertarget{classModifyAttributeCommand_ae5f4a94d8c7913093be60ff5de2e7c9a}\label{classModifyAttributeCommand_ae5f4a94d8c7913093be60ff5de2e7c9a} 
 \index{ModifyAttributeCommand$<$ T $>$@{ModifyAttributeCommand$<$ T $>$}!IsUndoable@{IsUndoable}}

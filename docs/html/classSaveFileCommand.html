@@ -87,9 +87,9 @@ Inheritance diagram for SaveFileCommand:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSaveFileCommand__inherit__graph.png" border="0" usemap="#aSaveFileCommand_inherit__map" alt="Inheritance graph"/></div>
 <map name="aSaveFileCommand_inherit__map" id="aSaveFileCommand_inherit__map">
-<area shape="rect" title="Open model command implementation of CommandI." alt="" coords="5,253,280,596"/>
-<area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="32,5,253,205"/>
-<area shape="poly" title=" " alt="" coords="145,219,145,253,140,253,140,219"/>
+<area shape="rect" title="Save model command implementation of CommandI." alt="" coords="5,268,280,640"/>
+<area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="30,5,255,220"/>
+<area shape="poly" title=" " alt="" coords="145,234,145,267,140,267,140,234"/>
 </map>
 </div>
 <div class="dynheader">
@@ -97,9 +97,9 @@ Collaboration diagram for SaveFileCommand:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSaveFileCommand__coll__graph.png" border="0" usemap="#aSaveFileCommand_coll__map" alt="Collaboration graph"/></div>
 <map name="aSaveFileCommand_coll__map" id="aSaveFileCommand_coll__map">
-<area shape="rect" title="Open model command implementation of CommandI." alt="" coords="5,253,280,596"/>
-<area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="32,5,253,205"/>
-<area shape="poly" title=" " alt="" coords="145,219,145,253,140,253,140,219"/>
+<area shape="rect" title="Save model command implementation of CommandI." alt="" coords="5,268,280,640"/>
+<area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="30,5,255,220"/>
+<area shape="poly" title=" " alt="" coords="145,234,145,267,140,267,140,234"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -126,9 +126,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a47cf7448aee11bb954fb40af4022e122" id="r_a47cf7448aee11bb954fb40af4022e122"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSaveFileCommand.html#a47cf7448aee11bb954fb40af4022e122">IsRedoable</a> () override</td></tr>
 <tr class="memdesc:a47cf7448aee11bb954fb40af4022e122"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
 <tr class="separator:a47cf7448aee11bb954fb40af4022e122"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d77c2d15577db0fd124b2e453bba00a" id="r_a0d77c2d15577db0fd124b2e453bba00a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSaveFileCommand.html#a0d77c2d15577db0fd124b2e453bba00a">IsThreaded</a> () override</td></tr>
-<tr class="memdesc:a0d77c2d15577db0fd124b2e453bba00a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
-<tr class="separator:a0d77c2d15577db0fd124b2e453bba00a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d9bfd9b7930ff9f7b98620fac7e4896" id="r_a2d9bfd9b7930ff9f7b98620fac7e4896"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSaveFileCommand.html#a2d9bfd9b7930ff9f7b98620fac7e4896">IsThreaded</a> (bool &amp;prevent_user_input) override</td></tr>
+<tr class="memdesc:a2d9bfd9b7930ff9f7b98620fac7e4896"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
+<tr class="separator:a2d9bfd9b7930ff9f7b98620fac7e4896"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca27d37ba37fadaab46b06ea13bec632" id="r_aca27d37ba37fadaab46b06ea13bec632"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSaveFileCommand.html#aca27d37ba37fadaab46b06ea13bec632">ChangesProgramStateIrreversibly</a> () override</td></tr>
 <tr class="memdesc:aca27d37ba37fadaab46b06ea13bec632"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
 <tr class="separator:aca27d37ba37fadaab46b06ea13bec632"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -239,7 +239,7 @@ std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParse
 </div><div class="memdoc">
 
 <p>Implementation of interface method. </p>
-<dl class="section return"><dt>Returns</dt><dd>True if the <a class="el" href="classSDFormatParser.html" title="Implementation of SDFormatParserI.">SDFormatParser</a> has successfully parsed the file and it has been displayed in the <a class="el" href="classGUI.html" title="Implementation of GUII.">GUI</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the file has been successfully saved </dd></dl>
 
 <p>Implements <a class="el" href="classCommandI.html#ad0107a73ebccd619860597db7bad2cce">CommandI</a>.</p>
 
@@ -335,8 +335,8 @@ std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParse
 
 </div>
 </div>
-<a id="a0d77c2d15577db0fd124b2e453bba00a" name="a0d77c2d15577db0fd124b2e453bba00a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d77c2d15577db0fd124b2e453bba00a">&#9670;&#160;</a></span>IsThreaded()</h2>
+<a id="a2d9bfd9b7930ff9f7b98620fac7e4896" name="a2d9bfd9b7930ff9f7b98620fac7e4896"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d9bfd9b7930ff9f7b98620fac7e4896">&#9670;&#160;</a></span>IsThreaded()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -347,7 +347,8 @@ std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParse
         <tr>
           <td class="memname">bool SaveFileCommand::IsThreaded </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">bool &amp;&#160;</td>
+          <td class="paramname"><em>prevent_user_input</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -359,9 +360,15 @@ std::shared_ptr&lt; <a class="el" href="classSDFormatParserI.html">SDFormatParse
 </div><div class="memdoc">
 
 <p>Implementation of interface method. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">prevent_user_input</td><td>indicates if user input should be prevented if this happens to be a threaded command </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>Always false </dd></dl>
 
-<p>Implements <a class="el" href="classCommandI.html#a6b173d77055ac6a8c548b6737ca03caf">CommandI</a>.</p>
+<p>Implements <a class="el" href="classCommandI.html#a1c54206064c146ea9ff089fbe4d321b6">CommandI</a>.</p>
 
 </div>
 </div>

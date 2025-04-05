@@ -1,0 +1,60 @@
+\doxysection{Create\+File\+Command.\+h}
+\hypertarget{CreateFileCommand_8h_source}{}\label{CreateFileCommand_8h_source}\index{include/commands/CreateFileCommand.h@{include/commands/CreateFileCommand.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ sdformat-\/editor}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Copyright\ 2025\ sdformat-\/editor}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*\ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*\ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*\ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{*\ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00015\ \textcolor{comment}{*\ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{*}}
+\DoxyCodeLine{00017\ \textcolor{comment}{*\ Developer:\ Zaid\ Duraid,\ Ean\ Wheeler,\ Evan\ Vokey}}
+\DoxyCodeLine{00018\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ SDFORMAT\_EDITOR\_OPEN\_DIRECTORY\_COMMAND\_HH\_}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ SDFORMAT\_EDITOR\_OPEN\_DIRECTORY\_COMMAND\_HH\_}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <interfaces/command\_interface.h>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <interfaces/sdformat\_parser\_interface.h>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <interfaces/gui\_interface.h>}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCreateFileCommand}{CreateFileCommand}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classCommandI}{CommandI}}}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00037\ \ \ \textcolor{keyword}{public}:\ \mbox{\hyperlink{classCreateFileCommand}{CreateFileCommand}}(std::shared\_ptr<GUII>\ \mbox{\hyperlink{classCreateFileCommand_aa3364d080018e46109ea3481f32b2b6f}{gui}},\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classCreateFileCommand_a8c2b982c79ab22b6d12385b3daa8d171}{sdformatParser}});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00041\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCreateFileCommand_a1dd322a7c021f4ea2ffb990329123cd9}{Execute}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCreateFileCommand_a8e7ccebd749d9f276200d6daf23b1bd2}{ExecuteUndo}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00049\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCreateFileCommand_a8d7a711583c4daef91ffed84fecf4dd1}{ExecuteRedo}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00053\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCreateFileCommand_a90e7e56dfbda6686fd4db086a71a2afc}{IsUndoable}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00057\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCreateFileCommand_a2583921a270eff76dd807330f2b08468}{IsRedoable}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCreateFileCommand_a3d6fa72935a1130086ddbd7dc9270998}{IsThreaded}}(\textcolor{keywordtype}{bool}\&\ prevent\_user\_input)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00067\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCreateFileCommand_aae5bd03e5dddc956aa33fd93eca8efc5}{ChangesProgramStateIrreversibly}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00070\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<GUII>\ \mbox{\hyperlink{classCreateFileCommand_aa3364d080018e46109ea3481f32b2b6f}{gui}};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00073\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classCreateFileCommand_a8c2b982c79ab22b6d12385b3daa8d171}{sdformatParser}};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

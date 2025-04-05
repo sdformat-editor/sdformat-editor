@@ -78,7 +78,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Executes and pops the top commandI object from a stack.  
+<p>Executes a given function handle.  
  <a href="classGenericCommand.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="GenericCommand_8h_source.html">GenericCommand.h</a>&gt;</code></p>
@@ -87,9 +87,9 @@ Inheritance diagram for GenericCommand:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGenericCommand__inherit__graph.png" border="0" usemap="#aGenericCommand_inherit__map" alt="Inheritance graph"/></div>
 <map name="aGenericCommand_inherit__map" id="aGenericCommand_inherit__map">
-<area shape="rect" title="Executes and pops the top commandI object from a stack." alt="" coords="13,253,219,547"/>
-<area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="5,5,227,205"/>
-<area shape="poly" title=" " alt="" coords="119,219,119,253,113,253,113,219"/>
+<area shape="rect" title="Executes a given function handle." alt="" coords="15,268,221,591"/>
+<area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="5,5,231,220"/>
+<area shape="poly" title=" " alt="" coords="121,234,121,268,115,268,115,234"/>
 </map>
 </div>
 <div class="dynheader">
@@ -97,9 +97,9 @@ Collaboration diagram for GenericCommand:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGenericCommand__coll__graph.png" border="0" usemap="#aGenericCommand_coll__map" alt="Collaboration graph"/></div>
 <map name="aGenericCommand_coll__map" id="aGenericCommand_coll__map">
-<area shape="rect" title="Executes and pops the top commandI object from a stack." alt="" coords="13,253,219,547"/>
-<area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="5,5,227,205"/>
-<area shape="poly" title=" " alt="" coords="119,219,119,253,113,253,113,219"/>
+<area shape="rect" title="Executes a given function handle." alt="" coords="15,268,221,591"/>
+<area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="5,5,231,220"/>
+<area shape="poly" title=" " alt="" coords="121,234,121,268,115,268,115,234"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -126,9 +126,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:ab4f7eba842e2e7b19f55781499bd6b5a" id="r_ab4f7eba842e2e7b19f55781499bd6b5a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenericCommand.html#ab4f7eba842e2e7b19f55781499bd6b5a">IsRedoable</a> () override</td></tr>
 <tr class="memdesc:ab4f7eba842e2e7b19f55781499bd6b5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
 <tr class="separator:ab4f7eba842e2e7b19f55781499bd6b5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaad69c127eaa595dad9b582421d78a7d" id="r_aaad69c127eaa595dad9b582421d78a7d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenericCommand.html#aaad69c127eaa595dad9b582421d78a7d">IsThreaded</a> () override</td></tr>
-<tr class="memdesc:aaad69c127eaa595dad9b582421d78a7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
-<tr class="separator:aaad69c127eaa595dad9b582421d78a7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74a386005668d9bc588cd980ca478376" id="r_a74a386005668d9bc588cd980ca478376"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenericCommand.html#a74a386005668d9bc588cd980ca478376">IsThreaded</a> (bool &amp;prevent_user_input) override</td></tr>
+<tr class="memdesc:a74a386005668d9bc588cd980ca478376"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
+<tr class="separator:a74a386005668d9bc588cd980ca478376"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5169594e3d7ab0c2368237db5dced223" id="r_a5169594e3d7ab0c2368237db5dced223"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenericCommand.html#a5169594e3d7ab0c2368237db5dced223">ChangesProgramStateIrreversibly</a> () override</td></tr>
 <tr class="memdesc:a5169594e3d7ab0c2368237db5dced223"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
 <tr class="separator:a5169594e3d7ab0c2368237db5dced223"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,7 +141,7 @@ std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom">
 <tr class="separator:a37df214926be94ef4ac4bc46fd4270fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Executes and pops the top commandI object from a stack. </p>
+<div class="textblock"><p>Executes a given function handle. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="adb7b02bb053e2c29e0b3841d7ab81f03" name="adb7b02bb053e2c29e0b3841d7ab81f03"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adb7b02bb053e2c29e0b3841d7ab81f03">&#9670;&#160;</a></span>GenericCommand()</h2>
@@ -224,7 +224,7 @@ std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom">
 </div><div class="memdoc">
 
 <p>Implementation of interface method. </p>
-<dl class="section return"><dt>Returns</dt><dd>Always true. RExecutes and pops the top commandI object from a stack </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Always true. Executes the given function handle. </dd></dl>
 
 <p>Implements <a class="el" href="classCommandI.html#ad0107a73ebccd619860597db7bad2cce">CommandI</a>.</p>
 
@@ -320,8 +320,8 @@ std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom">
 
 </div>
 </div>
-<a id="aaad69c127eaa595dad9b582421d78a7d" name="aaad69c127eaa595dad9b582421d78a7d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaad69c127eaa595dad9b582421d78a7d">&#9670;&#160;</a></span>IsThreaded()</h2>
+<a id="a74a386005668d9bc588cd980ca478376" name="a74a386005668d9bc588cd980ca478376"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74a386005668d9bc588cd980ca478376">&#9670;&#160;</a></span>IsThreaded()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -332,7 +332,8 @@ std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom">
         <tr>
           <td class="memname">bool GenericCommand::IsThreaded </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">bool &amp;&#160;</td>
+          <td class="paramname"><em>prevent_user_input</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -344,9 +345,15 @@ std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom">
 </div><div class="memdoc">
 
 <p>Implementation of interface method. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">prevent_user_input</td><td>indicates if user input should be prevented if this happens to be a threaded command </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>Always false </dd></dl>
 
-<p>Implements <a class="el" href="classCommandI.html#a6b173d77055ac6a8c548b6737ca03caf">CommandI</a>.</p>
+<p>Implements <a class="el" href="classCommandI.html#a1c54206064c146ea9ff089fbe4d321b6">CommandI</a>.</p>
 
 </div>
 </div>

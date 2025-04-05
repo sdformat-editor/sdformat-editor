@@ -1,0 +1,58 @@
+\doxysection{Open\+Model\+Viewer\+Command.\+h}
+\hypertarget{OpenModelViewerCommand_8h_source}{}\label{OpenModelViewerCommand_8h_source}\index{include/commands/OpenModelViewerCommand.h@{include/commands/OpenModelViewerCommand.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ sdformat-\/editor}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Copyright\ 2025\ sdformat-\/editor}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*\ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*\ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*\ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{*\ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00015\ \textcolor{comment}{*\ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{*}}
+\DoxyCodeLine{00017\ \textcolor{comment}{*\ Developer:\ Zaid\ Duraid,\ Ean\ Wheeler,\ Evan\ Vokey}}
+\DoxyCodeLine{00018\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ SDFORMAT\_EDITOR\_OPEN\_MODEL\_VIEWER\_COMMAND\_HH\_}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ SDFORMAT\_EDITOR\_OPEN\_MODEL\_VIEWER\_COMMAND\_HH\_}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <interfaces/command\_interface.h>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <interfaces/model\_viewer\_interface.h>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classOpenModelViewerCommand}{OpenModelViewerCommand}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classCommandI}{CommandI}}}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keyword}{public}:\ \mbox{\hyperlink{classOpenModelViewerCommand}{OpenModelViewerCommand}}(std::shared\_ptr<ModelViewerI>\ \mbox{\hyperlink{classOpenModelViewerCommand_a8f5d0df00efd71ea5758e38f20b37483}{model\_viewer}});}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00040\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classOpenModelViewerCommand_a221a248d1628fb83769f597619ae525b}{Execute}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classOpenModelViewerCommand_a6587a10624951458a19fef16bcd9efe4}{ExecuteUndo}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00048\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classOpenModelViewerCommand_ac287625f85b9da3ea019dbdb4a4ac18c}{ExecuteRedo}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classOpenModelViewerCommand_ad05f3071674aef354a5fd6da8267b552}{IsUndoable}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00056\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classOpenModelViewerCommand_a95006d5f977d67a784dc29ae3bac5e77}{IsRedoable}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00062\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classOpenModelViewerCommand_ab94a614b682378f5b373fa8dbdd333ba}{IsThreaded}}(\textcolor{keywordtype}{bool}\&\ prevent\_user\_input)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00066\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classOpenModelViewerCommand_a7146dcfd24c61013d8ddbb312904d092}{ChangesProgramStateIrreversibly}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00069\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<ModelViewerI>\ \mbox{\hyperlink{classOpenModelViewerCommand_a8f5d0df00efd71ea5758e38f20b37483}{model\_viewer}};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

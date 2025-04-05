@@ -88,7 +88,7 @@ Collaboration diagram for FileOperations:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFileOperations__coll__graph.png" border="0" usemap="#aFileOperations_coll__map" alt="Collaboration graph"/></div>
 <map name="aFileOperations_coll__map" id="aFileOperations_coll__map">
-<area shape="rect" title="Singleton class to handle file operations." alt="" coords="5,5,217,343"/>
+<area shape="rect" title="Singleton class to handle file operations." alt="" coords="5,5,219,412"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -104,7 +104,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a90ff510d41a0f63c21338c58351f1991"><td class="mdescLeft">&#160;</td><td class="mdescRight">writes a string to a file  <br /></td></tr>
 <tr class="separator:a90ff510d41a0f63c21338c58351f1991"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af014174169b8d154ca69988e5f13b53b" id="r_af014174169b8d154ca69988e5f13b53b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileOperations.html#af014174169b8d154ca69988e5f13b53b">WriteFile</a> (const std::string &amp;contents)</td></tr>
-<tr class="memdesc:af014174169b8d154ca69988e5f13b53b"><td class="mdescLeft">&#160;</td><td class="mdescRight">writes a string to a file  <br /></td></tr>
+<tr class="memdesc:af014174169b8d154ca69988e5f13b53b"><td class="mdescLeft">&#160;</td><td class="mdescRight">writes a string to the currently opened file  <br /></td></tr>
 <tr class="separator:af014174169b8d154ca69988e5f13b53b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae40d89ff68fc7b77e40d67734bb91d4c" id="r_ae40d89ff68fc7b77e40d67734bb91d4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileOperations.html#ae40d89ff68fc7b77e40d67734bb91d4c">SetActiveFilePath</a> (const std::string &amp;file_path)</td></tr>
 <tr class="memdesc:ae40d89ff68fc7b77e40d67734bb91d4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the active file path.  <br /></td></tr>
@@ -141,9 +141,6 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a9165fd8b97d9ce88cdd9de08dbe6b2c3" id="r_a9165fd8b97d9ce88cdd9de08dbe6b2c3"><td class="memItemLeft" align="right" valign="top"><a id="a9165fd8b97d9ce88cdd9de08dbe6b2c3" name="a9165fd8b97d9ce88cdd9de08dbe6b2c3"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>active_file_path</b></td></tr>
 <tr class="separator:a9165fd8b97d9ce88cdd9de08dbe6b2c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62bf1a9e5c95b29d1105ac2fa73e22dc" id="r_a62bf1a9e5c95b29d1105ac2fa73e22dc"><td class="memItemLeft" align="right" valign="top"><a id="a62bf1a9e5c95b29d1105ac2fa73e22dc" name="a62bf1a9e5c95b29d1105ac2fa73e22dc"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>model_editor_fifo_file_descriptor</b></td></tr>
-<tr class="separator:a62bf1a9e5c95b29d1105ac2fa73e22dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Singleton class to handle file operations. </p>
@@ -192,7 +189,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>model_editor_fifo_file
 </div><div class="memdoc">
 
 <p>Opens a dialog for the user to open a directory on their filesystem. </p>
-<dl class="section return"><dt>Returns</dt><dd>An absolute file path or an empty string </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An absolute directory path or an empty string </dd></dl>
 
 </div>
 </div>
@@ -258,7 +255,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>model_editor_fifo_file
       </table>
 </div><div class="memdoc">
 
-<p>writes a string to a file </p>
+<p>writes a string to the currently opened file </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">contents</td><td>the contents to write to the given file </td></tr>

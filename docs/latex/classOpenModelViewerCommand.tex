@@ -1,0 +1,213 @@
+\doxysection{Open\+Model\+Viewer\+Command Class Reference}
+\hypertarget{classOpenModelViewerCommand}{}\label{classOpenModelViewerCommand}\index{OpenModelViewerCommand@{OpenModelViewerCommand}}
+
+
+Run model viewer command implementation of \doxylink{classCommandI}{CommandI}.  
+
+
+
+
+{\ttfamily \#include $<$Open\+Model\+Viewer\+Command.\+h$>$}
+
+
+
+Inheritance diagram for Open\+Model\+Viewer\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{classOpenModelViewerCommand__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Open\+Model\+Viewer\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{classOpenModelViewerCommand__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classOpenModelViewerCommand_ab39d76e4851ebf9f108b60c14da907e2}{Open\+Model\+Viewer\+Command}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classModelViewerI}{Model\+ViewerI}} $>$ \mbox{\hyperlink{classOpenModelViewerCommand_a8f5d0df00efd71ea5758e38f20b37483}{model\+\_\+viewer}})
+\begin{DoxyCompactList}\small\item\em Constructor for rum model vuewer command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classOpenModelViewerCommand_a221a248d1628fb83769f597619ae525b}{Execute}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenModelViewerCommand_a6587a10624951458a19fef16bcd9efe4}{Execute\+Undo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenModelViewerCommand_ac287625f85b9da3ea019dbdb4a4ac18c}{Execute\+Redo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenModelViewerCommand_ad05f3071674aef354a5fd6da8267b552}{Is\+Undoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenModelViewerCommand_a95006d5f977d67a784dc29ae3bac5e77}{Is\+Redoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenModelViewerCommand_ab94a614b682378f5b373fa8dbdd333ba}{Is\+Threaded}} (bool \&prevent\+\_\+user\+\_\+input) override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOpenModelViewerCommand_a7146dcfd24c61013d8ddbb312904d092}{Changes\+Program\+State\+Irreversibly}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classOpenModelViewerCommand_a8f5d0df00efd71ea5758e38f20b37483}\label{classOpenModelViewerCommand_a8f5d0df00efd71ea5758e38f20b37483} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classModelViewerI}{Model\+ViewerI}} $>$ {\bfseries model\+\_\+viewer}
+\begin{DoxyCompactList}\small\item\em Pointer to the sdformat parser interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Run model viewer command implementation of \doxylink{classCommandI}{CommandI}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classOpenModelViewerCommand_ab39d76e4851ebf9f108b60c14da907e2}\label{classOpenModelViewerCommand_ab39d76e4851ebf9f108b60c14da907e2} 
+\index{OpenModelViewerCommand@{OpenModelViewerCommand}!OpenModelViewerCommand@{OpenModelViewerCommand}}
+\index{OpenModelViewerCommand@{OpenModelViewerCommand}!OpenModelViewerCommand@{OpenModelViewerCommand}}
+\doxysubsubsection{\texorpdfstring{OpenModelViewerCommand()}{OpenModelViewerCommand()}}
+{\footnotesize\ttfamily Open\+Model\+Viewer\+Command\+::\+Open\+Model\+Viewer\+Command (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classModelViewerI}{Model\+ViewerI}} $>$}]{model\+\_\+viewer }\end{DoxyParamCaption})}
+
+
+
+Constructor for rum model vuewer command objects. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em model\+\_\+viewer} & Pointer to the \doxylink{classModelViewerI}{Model\+ViewerI} object \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classOpenModelViewerCommand_a7146dcfd24c61013d8ddbb312904d092}\label{classOpenModelViewerCommand_a7146dcfd24c61013d8ddbb312904d092} 
+\index{OpenModelViewerCommand@{OpenModelViewerCommand}!ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}}
+\index{ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}!OpenModelViewerCommand@{OpenModelViewerCommand}}
+\doxysubsubsection{\texorpdfstring{ChangesProgramStateIrreversibly()}{ChangesProgramStateIrreversibly()}}
+{\footnotesize\ttfamily bool Open\+Model\+Viewer\+Command\+::\+Changes\+Program\+State\+Irreversibly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always true 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}{CommandI}}.
+
+\Hypertarget{classOpenModelViewerCommand_a221a248d1628fb83769f597619ae525b}\label{classOpenModelViewerCommand_a221a248d1628fb83769f597619ae525b} 
+\index{OpenModelViewerCommand@{OpenModelViewerCommand}!Execute@{Execute}}
+\index{Execute@{Execute}!OpenModelViewerCommand@{OpenModelViewerCommand}}
+\doxysubsubsection{\texorpdfstring{Execute()}{Execute()}}
+{\footnotesize\ttfamily bool Open\+Model\+Viewer\+Command\+::\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+True once the model viewer has finished running (i.\+e. has been closed) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_ad0107a73ebccd619860597db7bad2cce}{CommandI}}.
+
+\Hypertarget{classOpenModelViewerCommand_ac287625f85b9da3ea019dbdb4a4ac18c}\label{classOpenModelViewerCommand_ac287625f85b9da3ea019dbdb4a4ac18c} 
+\index{OpenModelViewerCommand@{OpenModelViewerCommand}!ExecuteRedo@{ExecuteRedo}}
+\index{ExecuteRedo@{ExecuteRedo}!OpenModelViewerCommand@{OpenModelViewerCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteRedo()}{ExecuteRedo()}}
+{\footnotesize\ttfamily bool Open\+Model\+Viewer\+Command\+::\+Execute\+Redo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a10b7094ad088998d95045e7db350eb0a}{CommandI}}.
+
+\Hypertarget{classOpenModelViewerCommand_a6587a10624951458a19fef16bcd9efe4}\label{classOpenModelViewerCommand_a6587a10624951458a19fef16bcd9efe4} 
+\index{OpenModelViewerCommand@{OpenModelViewerCommand}!ExecuteUndo@{ExecuteUndo}}
+\index{ExecuteUndo@{ExecuteUndo}!OpenModelViewerCommand@{OpenModelViewerCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteUndo()}{ExecuteUndo()}}
+{\footnotesize\ttfamily bool Open\+Model\+Viewer\+Command\+::\+Execute\+Undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a38d5a489ac6de24f3b40035083c5ed9a}{CommandI}}.
+
+\Hypertarget{classOpenModelViewerCommand_a95006d5f977d67a784dc29ae3bac5e77}\label{classOpenModelViewerCommand_a95006d5f977d67a784dc29ae3bac5e77} 
+\index{OpenModelViewerCommand@{OpenModelViewerCommand}!IsRedoable@{IsRedoable}}
+\index{IsRedoable@{IsRedoable}!OpenModelViewerCommand@{OpenModelViewerCommand}}
+\doxysubsubsection{\texorpdfstring{IsRedoable()}{IsRedoable()}}
+{\footnotesize\ttfamily bool Open\+Model\+Viewer\+Command\+::\+Is\+Redoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
+
+\Hypertarget{classOpenModelViewerCommand_ab94a614b682378f5b373fa8dbdd333ba}\label{classOpenModelViewerCommand_ab94a614b682378f5b373fa8dbdd333ba} 
+\index{OpenModelViewerCommand@{OpenModelViewerCommand}!IsThreaded@{IsThreaded}}
+\index{IsThreaded@{IsThreaded}!OpenModelViewerCommand@{OpenModelViewerCommand}}
+\doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
+{\footnotesize\ttfamily bool Open\+Model\+Viewer\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}\item[{bool \&}]{prevent\+\_\+user\+\_\+input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em prevent\+\_\+user\+\_\+input} & indicates if user input should be prevented if this happens to be a threaded command \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Always true 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a1c54206064c146ea9ff089fbe4d321b6}{CommandI}}.
+
+\Hypertarget{classOpenModelViewerCommand_ad05f3071674aef354a5fd6da8267b552}\label{classOpenModelViewerCommand_ad05f3071674aef354a5fd6da8267b552} 
+\index{OpenModelViewerCommand@{OpenModelViewerCommand}!IsUndoable@{IsUndoable}}
+\index{IsUndoable@{IsUndoable}!OpenModelViewerCommand@{OpenModelViewerCommand}}
+\doxysubsubsection{\texorpdfstring{IsUndoable()}{IsUndoable()}}
+{\footnotesize\ttfamily bool Open\+Model\+Viewer\+Command\+::\+Is\+Undoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always False 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a4722f602fdfa6387aa0fced8dfa0e9fd}{CommandI}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/commands/Open\+Model\+Viewer\+Command.\+h\item 
+src/commands/Open\+Model\+Viewer\+Command.\+cpp\end{DoxyCompactItemize}

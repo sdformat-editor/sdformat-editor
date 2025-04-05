@@ -86,9 +86,9 @@ Inheritance diagram for SDFormatParser:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSDFormatParser__inherit__graph.png" border="0" usemap="#aSDFormatParser_inherit__map" alt="Inheritance graph"/></div>
 <map name="aSDFormatParser_inherit__map" id="aSDFormatParser_inherit__map">
-<area shape="rect" title="Implementation of SDFormatParserI." alt="" coords="19,493,259,977"/>
-<area shape="rect" href="classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,273,445"/>
-<area shape="poly" title=" " alt="" coords="142,459,142,493,137,493,137,459"/>
+<area shape="rect" title="Implementation of SDFormatParserI." alt="" coords="18,744,261,1381"/>
+<area shape="rect" href="classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,273,696"/>
+<area shape="poly" title=" " alt="" coords="142,710,142,744,137,744,137,710"/>
 </map>
 </div>
 <div class="dynheader">
@@ -96,9 +96,9 @@ Collaboration diagram for SDFormatParser:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSDFormatParser__coll__graph.png" border="0" usemap="#aSDFormatParser_coll__map" alt="Collaboration graph"/></div>
 <map name="aSDFormatParser_coll__map" id="aSDFormatParser_coll__map">
-<area shape="rect" title="Implementation of SDFormatParserI." alt="" coords="19,493,259,977"/>
-<area shape="rect" href="classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,273,445"/>
-<area shape="poly" title=" " alt="" coords="142,459,142,493,137,493,137,459"/>
+<area shape="rect" title="Implementation of SDFormatParserI." alt="" coords="18,744,261,1381"/>
+<area shape="rect" href="classSDFormatParserI.html" title="Interface for the SDFormat Editor&#39;s Parser." alt="" coords="5,5,273,696"/>
+<area shape="poly" title=" " alt="" coords="142,710,142,744,137,744,137,710"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -144,7 +144,7 @@ Private Member Functions</h2></td></tr>
 <tr class="memdesc:a0e8ccb7ccaf1533237bda33ce008c7af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
 <tr class="separator:a0e8ccb7ccaf1533237bda33ce008c7af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3450d6b47d69c91f401b910a84385bd" id="r_af3450d6b47d69c91f401b910a84385bd"><td class="memItemLeft" align="right" valign="top">std::pair&lt; glm::dvec3, glm::dquat &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParser.html#af3450d6b47d69c91f401b910a84385bd">FindAbsolutePose</a> (sdf::ElementPtr element, std::vector&lt; sdf::ElementPtr &gt; previously_visited_elements={})</td></tr>
-<tr class="memdesc:af3450d6b47d69c91f401b910a84385bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the absolute pose (translation and rotation) of a given element which contains pose element.  <br /></td></tr>
+<tr class="memdesc:af3450d6b47d69c91f401b910a84385bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the absolute pose (translation and rotation) of a given mesh/geometry-containing element.  <br /></td></tr>
 <tr class="separator:af3450d6b47d69c91f401b910a84385bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3df4e630ca08931ec32f88bb5c1be68d" id="r_a3df4e630ca08931ec32f88bb5c1be68d"><td class="memItemLeft" align="right" valign="top">std::pair&lt; glm::dvec3, glm::dquat &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParser.html#a3df4e630ca08931ec32f88bb5c1be68d">ParsePoseElement</a> (sdf::ElementPtr element, std::string &amp;relative_to)</td></tr>
 <tr class="memdesc:a3df4e630ca08931ec32f88bb5c1be68d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a given pose element to get the pose values, and also indicates if this pose is relative to anything else.  <br /></td></tr>
@@ -155,9 +155,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a0523b9cc1158b8827ad19ecad7d68f1f" id="r_a0523b9cc1158b8827ad19ecad7d68f1f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParser.html#a0523b9cc1158b8827ad19ecad7d68f1f">ParseStringDoubleVector</a> (const std::string &amp;string_of_doubles, bool &amp;success)</td></tr>
 <tr class="memdesc:a0523b9cc1158b8827ad19ecad7d68f1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a string containing doubles seperated by spaces, this method returns a vector a doubles.  <br /></td></tr>
 <tr class="separator:a0523b9cc1158b8827ad19ecad7d68f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dfbb6cfca78f371488cabb6c7ef9b9a" id="r_a5dfbb6cfca78f371488cabb6c7ef9b9a"><td class="memItemLeft" align="right" valign="top">std::pair&lt; std::vector&lt; <a class="el" href="structModelViewerI_1_1ModelInfo.html">ModelViewerI::ModelInfo</a> &gt;, std::vector&lt; <a class="el" href="structModelViewerI_1_1PresetModelInfo.html">ModelViewerI::PresetModelInfo</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParser.html#a5dfbb6cfca78f371488cabb6c7ef9b9a">GetModelsFromSDFTree</a> () override</td></tr>
-<tr class="memdesc:a5dfbb6cfca78f371488cabb6c7ef9b9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
-<tr class="separator:a5dfbb6cfca78f371488cabb6c7ef9b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ee28042f9efc950dabe0f6a863b7538" id="r_a1ee28042f9efc950dabe0f6a863b7538"><td class="memItemLeft" align="right" valign="top">std::pair&lt; std::vector&lt; <a class="el" href="structModelViewerI_1_1ModelInfo.html">ModelViewerI::ModelInfo</a> &gt;, std::vector&lt; <a class="el" href="structModelViewerI_1_1PresetModelInfo.html">ModelViewerI::PresetModelInfo</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDFormatParser.html#a1ee28042f9efc950dabe0f6a863b7538">GetModelsFromSDFTree</a> (bool render_collisions=false) override</td></tr>
+<tr class="memdesc:a1ee28042f9efc950dabe0f6a863b7538"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
+<tr class="separator:a1ee28042f9efc950dabe0f6a863b7538"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -169,10 +169,6 @@ sdf::SDFPtr&#160;</td><td class="memItemRight" valign="bottom"><b>sdfElement</b>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>sdf_file_path</b></td></tr>
 <tr class="memdesc:a18c7e424f82ffe9187da090f17b44069"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store the file path of the sdf file. <br /></td></tr>
 <tr class="separator:a18c7e424f82ffe9187da090f17b44069"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a452a3dfdb959519d6ae4da62751447e1" id="r_a452a3dfdb959519d6ae4da62751447e1"><td class="memItemLeft" align="right" valign="top"><a id="a452a3dfdb959519d6ae4da62751447e1" name="a452a3dfdb959519d6ae4da62751447e1"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>render_collisions</b> = false</td></tr>
-<tr class="memdesc:a452a3dfdb959519d6ae4da62751447e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boolean to toggle rendering collisions. <br /></td></tr>
-<tr class="separator:a452a3dfdb959519d6ae4da62751447e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -214,7 +210,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Finds the absolute pose (translation and rotation) of a given element which contains pose element. </p>
+<p>Finds the absolute pose (translation and rotation) of a given mesh/geometry-containing element. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">element</td><td>The element for which we want to find absolute position </td></tr>
@@ -254,11 +250,11 @@ Additional Inherited Members</h2></td></tr>
 <p>Finds the canonical link of a model and, if that doesn't exist, the first child nested model. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">element</td><td>we want to the "canonical" of </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">element</td><td>we want to the "canonical" of, must be a model element </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The canonical link. If that does not exist in the immediate scope, the first nested model. If that does not exist, a null pointer <br  />
+<dl class="section return"><dt>Returns</dt><dd>The canonical link. If that does not exist in the immediate scope, the first nested model. If that does not exist, a null pointer. Also returns a null pointer if the given element is not a model <br  />
  </dd></dl>
 
 </div>
@@ -486,8 +482,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a5dfbb6cfca78f371488cabb6c7ef9b9a" name="a5dfbb6cfca78f371488cabb6c7ef9b9a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5dfbb6cfca78f371488cabb6c7ef9b9a">&#9670;&#160;</a></span>GetModelsFromSDFTree()</h2>
+<a id="a1ee28042f9efc950dabe0f6a863b7538" name="a1ee28042f9efc950dabe0f6a863b7538"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ee28042f9efc950dabe0f6a863b7538">&#9670;&#160;</a></span>GetModelsFromSDFTree()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -498,7 +494,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">std::pair&lt; std::vector&lt; <a class="el" href="structModelViewerI_1_1ModelInfo.html">ModelViewerI::ModelInfo</a> &gt;, std::vector&lt; <a class="el" href="structModelViewerI_1_1PresetModelInfo.html">ModelViewerI::PresetModelInfo</a> &gt; &gt; SDFormatParser::GetModelsFromSDFTree </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>render_collisions</em> = <code>false</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -510,8 +507,15 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implementation of interface method. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">render_collisions</td><td>indicates if collision meshes and shapes are included as well </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pair of vectors condaining structs of the model viewer interfaces's ModelInfo and Preset Model Info, which in turn contain the necessary information to render models </dd></dl>
 
-<p>Implements <a class="el" href="classSDFormatParserI.html#ab5a2f9891457766afc4ee83ae83da073">SDFormatParserI</a>.</p>
+<p>Implements <a class="el" href="classSDFormatParserI.html#a4b5f982de744bae3dfa035ce03bcc536">SDFormatParserI</a>.</p>
 
 </div>
 </div>
@@ -619,7 +623,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Considers if this is a special case of "relative_to" and approperiately handles it. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">element</td><td>The non-pose element which we want to parse </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">element</td><td>The element to consider </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">relative_to</td><td>The "relative_to" specification </td></tr>
   </table>
   </dd>
@@ -934,8 +938,8 @@ Additional Inherited Members</h2></td></tr>
 <p>Given a string containing doubles seperated by spaces, this method returns a vector a doubles. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">string_of_doubles</td><td></td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">success</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">string_of_doubles</td><td>a string of doubles (should be parsable by std::istringstream) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">success</td><td>True if the string of doubles was sucessfully parsed </td></tr>
   </table>
   </dd>
 </dl>

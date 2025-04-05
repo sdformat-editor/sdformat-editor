@@ -57,7 +57,7 @@ class CommandFactory : public CommandFactoryI
     private: void Initialize(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, 
                               std::shared_ptr<ModelViewerI> model_viewer);
 
-    /// \brief Implementation of interface method\
+    /// \brief Implementation of interface method
     /// \param[in] file_path Filepath of the model
     /// \return Unique pointer to a command interface 
     private: std::unique_ptr<CommandI> MakeOpenFileCommand(std::string file_path) override;
@@ -145,7 +145,7 @@ class CommandFactory : public CommandFactoryI
     /// \brief Pops from the undo commands stack and executes the popped command
     private: void PopFromUndoCommandsStack();
 
-    /// \brief Pops from the undo commands stack and executes the popped command
+    /// \brief Pops from the redo commands stack and executes the popped command
     private: void PopFromRedoCommandsStack();
 
     /// \brief Pointer to the GUI obejct

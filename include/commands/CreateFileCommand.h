@@ -26,18 +26,18 @@
 #include <interfaces/gui_interface.h>
 
 
-/// \brief Open directory command implementation of CommandI
+/// \brief Create file command implementation of CommandI
 class CreateFileCommand : public CommandI
 {
 
   /// \callgraph
-  /// \brief Constructor for open directory command objects.
+  /// \brief Constructor for create fuke command objects.
   /// \param[in] gui Pointer to the GUII object 
   /// \param[in] sdformatParser Pointer to the SDFormatParserI object
   public: CreateFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser);
 
   /// \brief Implementation of interface method. 
-  /// \returns True if the SDFormatParser has successfully parsed the newly created file and it has been displayed in the GUI
+  /// \returns True if the file has been successfully created in the specified directory
   private: bool Execute() override;
 
   /// @brief Implementation of interface method.

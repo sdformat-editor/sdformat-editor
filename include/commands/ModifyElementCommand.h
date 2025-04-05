@@ -40,15 +40,15 @@ class ModifyElementCommand : public CommandI
   public: ModifyElementCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ElementPtr element_to_modify, T new_value);
 
   /// \brief Implementation of interface method. 
-  /// \returns Always true. Removes the element to delete from it's parent
+  /// \returns Returns true if the element's value has been modified
   private: bool Execute() override;
 
   /// \brief Implementation of interface method. 
-  /// \returns Returns true if the element to delete was already deleted and now restored to its parent
+  /// \returns Returns true if the element's value has been reset 
   private: bool ExecuteUndo() override;
 
   /// \brief Implementation of interface method. 
-  /// \returns Returns true if the element to delete was removed from its parent again
+  /// \returns Returns true if the element's value has been one again set to the new value
   private: bool ExecuteRedo() override;
 
   /// \brief Implementation of interface method.

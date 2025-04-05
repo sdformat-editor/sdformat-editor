@@ -67,7 +67,6 @@ class GUI : public GUII
   private: void OpenChoiceDialog(DialogMessage dialogMessage, std::vector<std::pair<std::string, bool>>& choices) override;
   
   /// \brief Function for handling GLFW Error (required to be static by GLFW)
-  ///         NOTE: (zaid) It may be good to integrate this with an error handler class
   /// \param[in] error Error code from GLFW 
   /// \param[in] description Description of the error from GLFW 
   private: static void GLFWErrorCallback(int error, const char *description);
@@ -86,7 +85,6 @@ class GUI : public GUII
   /// \brief Draw the core part of the ImGUI frame
   /// \param[out] command a pointer to the command resulting from the user's action during this frame
   /// \param[in] command_factory used for creating command objects
-  /// \returns The a pointer to the command resulting from the user's action during this frame
   private: void DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<CommandFactoryI> command_factory);
 
   /// @brief Create a dropdown list 
@@ -131,7 +129,7 @@ class GUI : public GUII
   /// \brief Flag to indicate if the model viewer is currently running.
   private: bool model_viewer_running = false;
 
-  /// \brief Flag to indicate if the model viewer is currently running.
+  /// \brief Flag to indicate if collisions should be loaded in the model viewer.
   private: bool render_collisions_in_model_viewer = false;
   
   /// \brief Pointer to the GLFW window object, used to manage for rendering and handling window events

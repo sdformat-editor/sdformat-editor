@@ -49,56 +49,60 @@
 \DoxyCodeLine{00059\ }
 \DoxyCodeLine{00062\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a487fb746f6310430c4a42a3f2e5015d1}{SetPreventInputFlag}}(\textcolor{keywordtype}{bool}\ set)\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00063\ }
-\DoxyCodeLine{00067\ \ \ \textcolor{keyword}{public}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a371c336213806742abe81172d845b0de}{OpenChoiceDialog}}(\mbox{\hyperlink{structGUII_1_1DialogMessage}{DialogMessage}}\ dialogMessage,\ std::vector<std::pair<std::string,\ bool>>\&\ choices)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00067\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a371c336213806742abe81172d845b0de}{OpenChoiceDialog}}(\mbox{\hyperlink{structGUII_1_1DialogMessage}{DialogMessage}}\ dialogMessage,\ std::vector<std::pair<std::string,\ bool>>\&\ choices)\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00068\ \ \ }
-\DoxyCodeLine{00073\ \ \ \textcolor{keyword}{private}:\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_ad0fd69fc7f512cacf6bfec7d67d6141a}{GLFWErrorCallback}}(\textcolor{keywordtype}{int}\ error,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *description);}
-\DoxyCodeLine{00074\ }
-\DoxyCodeLine{00079\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a25a3bd1406803fafb9840d311a9fc7f9}{DisplaySDFRootElement}}(std::unique\_ptr<CommandI>\ \&command,\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\_parser}},\ }
-\DoxyCodeLine{00080\ \ \ \ \ std::shared\_ptr<CommandFactoryI>\ command\_factory);}
-\DoxyCodeLine{00081\ }
-\DoxyCodeLine{00084\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGUI_a70390acea16ec9de6dba4439cd2654fa}{SetupNewFrame}}();}
-\DoxyCodeLine{00085\ }
-\DoxyCodeLine{00090\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a1b5b6b76c93d2f1505f08dd048a2ca9b}{DrawCoreFrame}}(std::unique\_ptr<CommandI>\&\ command,\ std::shared\_ptr<CommandFactoryI>\ command\_factory);}
-\DoxyCodeLine{00091\ }
-\DoxyCodeLine{00097\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a9be3adfc148baac2e0e490d25f76a394}{CreateModifyAttributeDropdown}}(sdf::ParamPtr\ attribute,\ std::unique\_ptr<CommandI>\ \&command,\ }
-\DoxyCodeLine{00098\ \ \ \ \ std::shared\_ptr<CommandFactoryI>\ command\_factory,\ \textcolor{keywordtype}{int}\&\ unique\_id);}
-\DoxyCodeLine{00099\ }
-\DoxyCodeLine{00105\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a70686f9bbcca8067e8929319a54f8760}{CreateModifyElementDropdown}}(sdf::ElementPtr\ element,\ std::unique\_ptr<CommandI>\ \&command,\ }
-\DoxyCodeLine{00106\ \ \ \ \ std::shared\_ptr<CommandFactoryI>\ command\_factory,\ \textcolor{keywordtype}{int}\&\ unique\_id);}
-\DoxyCodeLine{00107\ }
-\DoxyCodeLine{00113\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a064adbb51d108a459e84c2c692fcfe44}{CreateAppendElementDropdown}}(sdf::ElementPtr\ element,\ std::unique\_ptr<CommandI>\ \&command,\ }
-\DoxyCodeLine{00114\ \ \ \ \ std::shared\_ptr<CommandFactoryI>\ command\_factory,\ \textcolor{keywordtype}{int}\&\ unique\_id);}
-\DoxyCodeLine{00115\ }
-\DoxyCodeLine{00121\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a708822790238e79934e5bcceb5c6abe9}{CreateDropdown}}(\textcolor{keyword}{const}\ std::vector<std::string>\&\ items,\ \textcolor{keyword}{const}\ std::vector<std::string>\&\ item\_descriptions,\ \textcolor{keywordtype}{int}\&\ selected\_item,\ \textcolor{keywordtype}{int}\&\ unique\_id);}
-\DoxyCodeLine{00122\ }
-\DoxyCodeLine{00124\ \ \ \textcolor{keyword}{private}:\ std::unique\_lock<std::mutex>\ \mbox{\hyperlink{classGUI_a631a94dcf2eebb86e07151a1cc2bfe21}{LockMutex}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00072\ \ \ \textcolor{keyword}{private}:\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_ad0fd69fc7f512cacf6bfec7d67d6141a}{GLFWErrorCallback}}(\textcolor{keywordtype}{int}\ error,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *description);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00078\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a25a3bd1406803fafb9840d311a9fc7f9}{DisplaySDFRootElement}}(std::unique\_ptr<CommandI>\ \&command,\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\_parser}},\ }
+\DoxyCodeLine{00079\ \ \ \ \ std::shared\_ptr<CommandFactoryI>\ command\_factory);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00083\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGUI_a70390acea16ec9de6dba4439cd2654fa}{SetupNewFrame}}();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00088\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a1b5b6b76c93d2f1505f08dd048a2ca9b}{DrawCoreFrame}}(std::unique\_ptr<CommandI>\&\ command,\ std::shared\_ptr<CommandFactoryI>\ command\_factory);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00095\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a9be3adfc148baac2e0e490d25f76a394}{CreateModifyAttributeDropdown}}(sdf::ParamPtr\ attribute,\ std::unique\_ptr<CommandI>\ \&command,\ }
+\DoxyCodeLine{00096\ \ \ \ \ std::shared\_ptr<CommandFactoryI>\ command\_factory,\ \textcolor{keywordtype}{int}\&\ unique\_id);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00103\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a70686f9bbcca8067e8929319a54f8760}{CreateModifyElementDropdown}}(sdf::ElementPtr\ element,\ std::unique\_ptr<CommandI>\ \&command,\ }
+\DoxyCodeLine{00104\ \ \ \ \ std::shared\_ptr<CommandFactoryI>\ command\_factory,\ \textcolor{keywordtype}{int}\&\ unique\_id);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00111\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a064adbb51d108a459e84c2c692fcfe44}{CreateAppendElementDropdown}}(sdf::ElementPtr\ element,\ std::unique\_ptr<CommandI>\ \&command,\ }
+\DoxyCodeLine{00112\ \ \ \ \ std::shared\_ptr<CommandFactoryI>\ command\_factory,\ \textcolor{keywordtype}{int}\&\ unique\_id);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00119\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGUI_a708822790238e79934e5bcceb5c6abe9}{CreateDropdown}}(\textcolor{keyword}{const}\ std::vector<std::string>\&\ items,\ \textcolor{keyword}{const}\ std::vector<std::string>\&\ item\_descriptions,\ \textcolor{keywordtype}{int}\&\ selected\_item,\ \textcolor{keywordtype}{int}\&\ unique\_id);}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00122\ \ \ \textcolor{keyword}{private}:\ std::unique\_lock<std::mutex>\ \mbox{\hyperlink{classGUI_a631a94dcf2eebb86e07151a1cc2bfe21}{LockMutex}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<CommandFactory>\ command\_factory;}
 \DoxyCodeLine{00125\ }
-\DoxyCodeLine{00126\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<CommandFactory>\ command\_factory;}
-\DoxyCodeLine{00127\ }
-\DoxyCodeLine{00129\ \ \ \textcolor{keyword}{private}:\ std::atomic<bool>\ \mbox{\hyperlink{classGUI_a0d3ed3d3ea1560ec4321e84f5dc7fca3}{prevent\_input\_flag}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00130\ \ \ }
-\DoxyCodeLine{00132\ \ \ \textcolor{keyword}{private}:\ GLFWwindow\ *\mbox{\hyperlink{classGUI_a2955f39e8b9690cf35a43a8b0768f64f}{window}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00133\ }
-\DoxyCodeLine{00135\ \ \ \textcolor{keyword}{private}:\ ImGuiIO\ *\mbox{\hyperlink{classGUI_ac6297526aeb809b472c7952fae1d07f7}{io}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00136\ }
-\DoxyCodeLine{00138\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\_parser}};}
-\DoxyCodeLine{00139\ }
-\DoxyCodeLine{00141\ \ \ \textcolor{keyword}{private}:\ sdf::ElementPtr\ \mbox{\hyperlink{classGUI_aab687077ea3c5e75f598d5892902fa18}{element\_to\_append\_to}};}
-\DoxyCodeLine{00142\ }
-\DoxyCodeLine{00144\ \ \ \textcolor{keyword}{private}:\ ImVec4\ \mbox{\hyperlink{classGUI_a34015969cf7c7eb56194a7a084778315}{background\_colour}};}
-\DoxyCodeLine{00145\ }
-\DoxyCodeLine{00147\ \ \ \textcolor{keyword}{private}:\ std::mutex\ \mbox{\hyperlink{classGUI_a317352348d111967600e09cea9d2c03c}{gui\_mutex}};}
-\DoxyCodeLine{00148\ }
-\DoxyCodeLine{00150\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGUI_a2adac3b3e277847d3672741229003fad}{use\_dropdown\_for\_editing\_attribute}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00151\ }
-\DoxyCodeLine{00153\ \ \ \textcolor{keyword}{private}:\ sdf::ParamPtr\ \mbox{\hyperlink{classGUI_a4ffd30c3c23bfd891d3e5d16ca91f6cb}{attribute\_to\_edit}};}
-\DoxyCodeLine{00154\ }
-\DoxyCodeLine{00156\ \ \ \textcolor{keyword}{private}:\ sdf::ElementPtr\ \mbox{\hyperlink{classGUI_aa92c0577c9a187ff69b2f4acdf99bd52}{element\_to\_edit}};}
-\DoxyCodeLine{00157\ }
-\DoxyCodeLine{00159\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGUI_a01b305d0aca06e8d457fe9cb5bae0517}{use\_dropdown\_for\_editing\_element}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00160\ }
-\DoxyCodeLine{00161\ \};}
-\DoxyCodeLine{00162\ }
-\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00127\ \ \ \textcolor{keyword}{private}:\ std::atomic<bool>\ \mbox{\hyperlink{classGUI_a0d3ed3d3ea1560ec4321e84f5dc7fca3}{prevent\_input\_flag}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00130\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGUI_a01d0bd5ccce6165b143664acc0374d21}{model\_viewer\_running}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00133\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGUI_ad2c29cf63206c16f2c2b287f98a2c133}{render\_collisions\_in\_model\_viewer}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00134\ \ \ }
+\DoxyCodeLine{00136\ \ \ \textcolor{keyword}{private}:\ GLFWwindow\ *\mbox{\hyperlink{classGUI_a2955f39e8b9690cf35a43a8b0768f64f}{window}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00139\ \ \ \textcolor{keyword}{private}:\ ImGuiIO\ *\mbox{\hyperlink{classGUI_ac6297526aeb809b472c7952fae1d07f7}{io}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00142\ \ \ \textcolor{keyword}{private}:\ std::shared\_ptr<SDFormatParserI>\ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\_parser}};}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00145\ \ \ \textcolor{keyword}{private}:\ sdf::ElementPtr\ \mbox{\hyperlink{classGUI_aab687077ea3c5e75f598d5892902fa18}{element\_to\_append\_to}};}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00148\ \ \ \textcolor{keyword}{private}:\ ImVec4\ \mbox{\hyperlink{classGUI_a34015969cf7c7eb56194a7a084778315}{background\_colour}};}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00151\ \ \ \textcolor{keyword}{private}:\ std::mutex\ \mbox{\hyperlink{classGUI_a317352348d111967600e09cea9d2c03c}{gui\_mutex}};}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00154\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGUI_a2adac3b3e277847d3672741229003fad}{use\_dropdown\_for\_editing\_attribute}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00157\ \ \ \textcolor{keyword}{private}:\ sdf::ParamPtr\ \mbox{\hyperlink{classGUI_a4ffd30c3c23bfd891d3e5d16ca91f6cb}{attribute\_to\_edit}};}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00160\ \ \ \textcolor{keyword}{private}:\ sdf::ElementPtr\ \mbox{\hyperlink{classGUI_aa92c0577c9a187ff69b2f4acdf99bd52}{element\_to\_edit}};}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00163\ \ \ \textcolor{keyword}{private}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGUI_a01b305d0aca06e8d457fe9cb5bae0517}{use\_dropdown\_for\_editing\_element}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \};}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

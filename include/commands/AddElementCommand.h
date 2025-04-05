@@ -40,7 +40,7 @@ class AddElementCommand : public CommandI
   public: AddElementCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, sdf::ElementPtr parent_element, sdf::ElementPtr new_element);
 
   /// \brief Implementation of interface method. 
-  /// \returns Always true. Adds a new element to specified parent
+  /// \returns True if a new element is added to the specified parent
   private: bool Execute() override;
 
   /// \brief Implementation of interface method. 
@@ -52,11 +52,11 @@ class AddElementCommand : public CommandI
   private: bool ExecuteRedo() override;
 
   /// \brief Implementation of interface method.
-  /// \returns Returns true if the command as been executed or redone
+  /// \returns Returns true if the command can be undone
   private: bool IsUndoable() override;
 
   /// \brief Implementation of interface method.
-  /// \returns Returns true if the command has been undone
+  /// \returns Returns true if the command can be redone
   private: bool IsRedoable() override;
 
   /// \brief Implementation of interface method.

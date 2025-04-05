@@ -87,9 +87,9 @@ Inheritance diagram for ModifyElementCommand&lt; T &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classModifyElementCommand__inherit__graph.png" border="0" usemap="#aModifyElementCommand_3_01T_01_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="aModifyElementCommand_3_01T_01_4_inherit__map" id="aModifyElementCommand_3_01T_01_4_inherit__map">
-<area shape="rect" title="Open model command implementation of CommandI." alt="" coords="5,253,279,760"/>
-<area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="31,5,253,205"/>
-<area shape="poly" title=" " alt="" coords="145,219,145,253,139,253,139,219"/>
+<area shape="rect" title="Modify Element command implementation of CommandI." alt="" coords="5,268,279,804"/>
+<area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="29,5,255,220"/>
+<area shape="poly" title=" " alt="" coords="145,234,145,268,139,268,139,234"/>
 </map>
 </div>
 <div class="dynheader">
@@ -97,9 +97,9 @@ Collaboration diagram for ModifyElementCommand&lt; T &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classModifyElementCommand__coll__graph.png" border="0" usemap="#aModifyElementCommand_3_01T_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="aModifyElementCommand_3_01T_01_4_coll__map" id="aModifyElementCommand_3_01T_01_4_coll__map">
-<area shape="rect" title="Open model command implementation of CommandI." alt="" coords="5,253,279,760"/>
-<area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="31,5,253,205"/>
-<area shape="poly" title=" " alt="" coords="145,219,145,253,139,253,139,219"/>
+<area shape="rect" title="Modify Element command implementation of CommandI." alt="" coords="5,268,279,804"/>
+<area shape="rect" href="classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="29,5,255,220"/>
+<area shape="poly" title=" " alt="" coords="145,234,145,268,139,268,139,234"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -126,9 +126,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:aa0923ab4789fa5640bada3aa931efea7" id="r_aa0923ab4789fa5640bada3aa931efea7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#aa0923ab4789fa5640bada3aa931efea7">IsRedoable</a> () override</td></tr>
 <tr class="memdesc:aa0923ab4789fa5640bada3aa931efea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
 <tr class="separator:aa0923ab4789fa5640bada3aa931efea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49d4b72b16e9436c01881f624e584bea" id="r_a49d4b72b16e9436c01881f624e584bea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#a49d4b72b16e9436c01881f624e584bea">IsThreaded</a> () override</td></tr>
-<tr class="memdesc:a49d4b72b16e9436c01881f624e584bea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
-<tr class="separator:a49d4b72b16e9436c01881f624e584bea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f8566561514b478c4dcd020a427a908" id="r_a4f8566561514b478c4dcd020a427a908"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#a4f8566561514b478c4dcd020a427a908">IsThreaded</a> (bool &amp;prevent_user_input) override</td></tr>
+<tr class="memdesc:a4f8566561514b478c4dcd020a427a908"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
+<tr class="separator:a4f8566561514b478c4dcd020a427a908"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2e39dcf67a8423834883037fc043157" id="r_ab2e39dcf67a8423834883037fc043157"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifyElementCommand.html#ab2e39dcf67a8423834883037fc043157">ChangesProgramStateIrreversibly</a> () override</td></tr>
 <tr class="memdesc:ab2e39dcf67a8423834883037fc043157"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of interface method.  <br /></td></tr>
 <tr class="separator:ab2e39dcf67a8423834883037fc043157"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -284,7 +284,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Implementation of interface method. </p>
-<dl class="section return"><dt>Returns</dt><dd>Always true. Removes the element to delete from it's parent </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if the element's value has been modified </dd></dl>
 
 <p>Implements <a class="el" href="classCommandI.html#ad0107a73ebccd619860597db7bad2cce">CommandI</a>.</p>
 
@@ -316,7 +316,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Implementation of interface method. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns true if the element to delete was removed from its parent again </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if the element's value has been one again set to the new value </dd></dl>
 
 <p>Implements <a class="el" href="classCommandI.html#a10b7094ad088998d95045e7db350eb0a">CommandI</a>.</p>
 
@@ -348,7 +348,8 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Implementation of interface method. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns true if the element to delete was already deleted and now restored to its parent </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if the element's value has been reset <br  />
+ </dd></dl>
 
 <p>Implements <a class="el" href="classCommandI.html#a38d5a489ac6de24f3b40035083c5ed9a">CommandI</a>.</p>
 
@@ -386,8 +387,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a49d4b72b16e9436c01881f624e584bea" name="a49d4b72b16e9436c01881f624e584bea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a49d4b72b16e9436c01881f624e584bea">&#9670;&#160;</a></span>IsThreaded()</h2>
+<a id="a4f8566561514b478c4dcd020a427a908" name="a4f8566561514b478c4dcd020a427a908"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f8566561514b478c4dcd020a427a908">&#9670;&#160;</a></span>IsThreaded()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -400,7 +401,8 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">bool <a class="el" href="classModifyElementCommand.html">ModifyElementCommand</a>&lt; T &gt;::IsThreaded </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">bool &amp;&#160;</td>
+          <td class="paramname"><em>prevent_user_input</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -412,9 +414,15 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Implementation of interface method. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">prevent_user_input</td><td>indicates if user input should be prevented if this happens to be a threaded command </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>Always false </dd></dl>
 
-<p>Implements <a class="el" href="classCommandI.html#a6b173d77055ac6a8c548b6737ca03caf">CommandI</a>.</p>
+<p>Implements <a class="el" href="classCommandI.html#a1c54206064c146ea9ff089fbe4d321b6">CommandI</a>.</p>
 
 </div>
 </div>
