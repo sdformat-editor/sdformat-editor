@@ -1,2 +1,5 @@
 exclude:
-  - libs/googletest # This will prevent Jekyll from looking into the google test directory
+  - libs/imgui
+  - libs/googletest
+  - libs/ogre
+  - libs/glm
