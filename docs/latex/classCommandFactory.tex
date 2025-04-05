@@ -32,12 +32,16 @@ Collaboration diagram for Command\+Factory\+:
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classCommandFactory_afa567fd27292229b3b7c6f91f52cfd5b}{Command\+Factory}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ \mbox{\hyperlink{classCommandFactory_a1c713712483797deff7521a6b424c2c8}{gui}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classCommandFactory_aaa8545298254030bfb5ca2ee60daecec}{sdformat\+Parser}})
-\begin{DoxyCompactList}\small\item\em Constructor that wraps the Initialize method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\hyperlink{classCommandFactory_ac511c5df0f0f5cb7c93a47bab0618310}{Command\+Factory}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ \mbox{\hyperlink{classCommandFactory_a1c713712483797deff7521a6b424c2c8}{gui}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classCommandFactory_aaa8545298254030bfb5ca2ee60daecec}{sdformat\+Parser}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classModelViewerI}{Model\+ViewerI}} $>$ \mbox{\hyperlink{classCommandFactory_a4c9ab78043976088c7ea6bb0f1aa0326}{model\+\_\+viewer}})
+\begin{DoxyCompactList}\small\item\em Constructor that wraps the Initialize method. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactory_a07b2b2097839bbde739d26c57ec6f184}{Make\+Open\+Model\+Viewer\+Command}} () override
+\begin{DoxyCompactList}\small\item\em Create a open model viewer model command. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactory_a4b8f02475d0688833d28cc9ea934c29f}{Make\+Close\+Model\+Viewer\+Command}} () override
+\begin{DoxyCompactList}\small\item\em Create a close model viewer model command. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classCommandFactory_aacc5fd8c5575d203451203c1209f2948}{Initialize}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ \mbox{\hyperlink{classCommandFactory_a1c713712483797deff7521a6b424c2c8}{gui}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classCommandFactory_aaa8545298254030bfb5ca2ee60daecec}{sdformat\+Parser}})
+void \mbox{\hyperlink{classCommandFactory_a7ec90a5b5ef3a522488b24c5ef3269f6}{Initialize}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ \mbox{\hyperlink{classCommandFactory_a1c713712483797deff7521a6b424c2c8}{gui}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classCommandFactory_aaa8545298254030bfb5ca2ee60daecec}{sdformat\+Parser}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classModelViewerI}{Model\+ViewerI}} $>$ \mbox{\hyperlink{classCommandFactory_a4c9ab78043976088c7ea6bb0f1aa0326}{model\+\_\+viewer}})
 \begin{DoxyCompactList}\small\item\em Implementation of interface method, wrapped by constructor. \end{DoxyCompactList}\item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactory_af9cd9b933a8b10c3c1bb5ce2d46d2452}{Make\+Open\+File\+Command}} (std\+::string file\+\_\+path) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
@@ -45,7 +49,11 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactory_ac85c323b84dca7565057f9d007286d36}{Make\+Add\+Element\+Command}} (sdf\+::\+Element\+Ptr parent\+\_\+element, sdf\+::\+Element\+Ptr new\+\_\+element) override
 \begin{DoxyCompactList}\small\item\em Create an add element command. \end{DoxyCompactList}\item 
-std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactory_a78d5a75442860ab72c8439772e1ea8e4}{Make\+Save\+File\+Command}} ()
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactory_a36118f42eee60f33e8e8f7aff8564439}{Make\+Save\+File\+Command}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactory_a6dd5c2bef9cb2b2b6c6d97d7bb9f7fbd}{Make\+Render\+Model\+Command}} (bool render\+\_\+collisions\+\_\+in\+\_\+model\+\_\+viewer) override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactory_ae6bf296d9804762623377ddf9ac0e682}{Make\+Create\+File\+Command}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactory_a3f3046aa9a06f6848c591e1223395f65}{Make\+Undo\+Command}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
@@ -54,12 +62,10 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactory_ac9008bbd79e920391da4b542128c32e1}{Make\+Modify\+Attribute\+Command}} (sdf\+::\+Param\+Ptr attribute\+\_\+to\+\_\+modify, std\+::string new\+\_\+value) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactory_a5d8cf719dc2f69ad18fbd731d7a0c283}{Make\+Modify\+Attribute\+Command}} (sdf\+::\+Param\+Ptr attribute\+\_\+to\+\_\+modify, bool new\+\_\+value) override
-\item 
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactory_a21e97bad47e283c966451340d4e2b570}{Make\+Modify\+Element\+Command}} (sdf\+::\+Element\+Ptr element\+\_\+to\+\_\+modify, std\+::string new\+\_\+value) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactory_a64d63851d3c07658e0c80aa227392416}{Make\+Modify\+Element\+Command}} (sdf\+::\+Element\+Ptr element\+\_\+to\+\_\+modify, bool new\+\_\+value) override
-\item 
-std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\hyperlink{classCommandFactory_aba997faf747212017a6dbc6dbaca7ad8}{Make\+Delete\+Attribute\+Command}} (sdf\+::\+Param\+Ptr attribute\+\_\+to\+\_\+delete) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 \Hypertarget{classCommandFactory_ae1d7df73f389adc3ad33002a5747f9a5}\label{classCommandFactory_ae1d7df73f389adc3ad33002a5747f9a5} 
 void {\bfseries Clear\+Stack} (std\+::stack$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ $>$ \&stack)
@@ -75,7 +81,7 @@ void {\bfseries Pop\+From\+Undo\+Commands\+Stack} ()
 \begin{DoxyCompactList}\small\item\em Pops from the undo commands stack and executes the popped command. \end{DoxyCompactList}\item 
 \Hypertarget{classCommandFactory_aa0b577939e44b3901ba59c5c3ea67fa3}\label{classCommandFactory_aa0b577939e44b3901ba59c5c3ea67fa3} 
 void {\bfseries Pop\+From\+Redo\+Commands\+Stack} ()
-\begin{DoxyCompactList}\small\item\em Pops from the undo commands stack and executes the popped command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Pops from the redo commands stack and executes the popped command. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -85,6 +91,9 @@ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ {\bfseries gui}
 \Hypertarget{classCommandFactory_aaa8545298254030bfb5ca2ee60daecec}\label{classCommandFactory_aaa8545298254030bfb5ca2ee60daecec} 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ {\bfseries sdformat\+Parser}
 \begin{DoxyCompactList}\small\item\em Pointer to the sdformat parser object. \end{DoxyCompactList}\item 
+\Hypertarget{classCommandFactory_a4c9ab78043976088c7ea6bb0f1aa0326}\label{classCommandFactory_a4c9ab78043976088c7ea6bb0f1aa0326} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classModelViewerI}{Model\+ViewerI}} $>$ {\bfseries model\+\_\+viewer}
+\begin{DoxyCompactList}\small\item\em Pointer to the model viewer object. \end{DoxyCompactList}\item 
 \Hypertarget{classCommandFactory_a6d830ca9ea12019b54f4031a4b065d61}\label{classCommandFactory_a6d830ca9ea12019b54f4031a4b065d61} 
 std\+::stack$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ $>$ {\bfseries undo\+\_\+commands\+\_\+stack}
 \begin{DoxyCompactList}\small\item\em Stack for undo functionality. \end{DoxyCompactList}\item 
@@ -97,11 +106,11 @@ std\+::stack$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{Comman
 Implementation of \doxylink{classCommandFactoryI}{Command\+FactoryI}. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classCommandFactory_afa567fd27292229b3b7c6f91f52cfd5b}\label{classCommandFactory_afa567fd27292229b3b7c6f91f52cfd5b} 
+\Hypertarget{classCommandFactory_ac511c5df0f0f5cb7c93a47bab0618310}\label{classCommandFactory_ac511c5df0f0f5cb7c93a47bab0618310} 
 \index{CommandFactory@{CommandFactory}!CommandFactory@{CommandFactory}}
 \index{CommandFactory@{CommandFactory}!CommandFactory@{CommandFactory}}
 \doxysubsubsection{\texorpdfstring{CommandFactory()}{CommandFactory()}}
-{\footnotesize\ttfamily Command\+Factory\+::\+Command\+Factory (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$}]{gui,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+Parser }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Command\+Factory\+::\+Command\+Factory (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$}]{gui,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+Parser,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classModelViewerI}{Model\+ViewerI}} $>$}]{model\+\_\+viewer }\end{DoxyParamCaption})}
 
 
 
@@ -112,6 +121,8 @@ Constructor that wraps the Initialize method.
 \mbox{\texttt{ in}}  & {\em gui} & A pointer to the \doxylink{classGUI}{GUI} object \\
 \hline
 \mbox{\texttt{ in}}  & {\em sdformat\+\_\+parser} & A pointer to the sdformat parser object \\
+\hline
+\mbox{\texttt{ in}}  & {\em model\+\_\+viewer} & A pointer to the model viewer object \\
 \hline
 \end{DoxyParams}
 
@@ -131,19 +142,28 @@ Implementation of interface method.
 
 Implements \mbox{\hyperlink{classCommandFactoryI_ac102d66b6e65f52cca9c01d3c732535a}{Command\+FactoryI}}.
 
-\Hypertarget{classCommandFactory_aacc5fd8c5575d203451203c1209f2948}\label{classCommandFactory_aacc5fd8c5575d203451203c1209f2948} 
+\Hypertarget{classCommandFactory_a7ec90a5b5ef3a522488b24c5ef3269f6}\label{classCommandFactory_a7ec90a5b5ef3a522488b24c5ef3269f6} 
 \index{CommandFactory@{CommandFactory}!Initialize@{Initialize}}
 \index{Initialize@{Initialize}!CommandFactory@{CommandFactory}}
 \doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
-{\footnotesize\ttfamily void Command\+Factory\+::\+Initialize (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$}]{gui,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+Parser }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Command\+Factory\+::\+Initialize (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$}]{gui,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+Parser,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classModelViewerI}{Model\+ViewerI}} $>$}]{model\+\_\+viewer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
 Implementation of interface method, wrapped by constructor. 
 
 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em gui} & A pointer to the \doxylink{classGUI}{GUI} object \\
+\hline
+\mbox{\texttt{ in}}  & {\em sdformat\+\_\+parser} & A pointer to the sdformat parser object \\
+\hline
+\mbox{\texttt{ in}}  & {\em model\+\_\+viewer} & A pointer to the model viewer object \\
+\hline
+\end{DoxyParams}
 
-Implements \mbox{\hyperlink{classCommandFactoryI_aa9795d9e3c14eaf8158acc9e850dfc59}{Command\+FactoryI}}.
+
+Implements \mbox{\hyperlink{classCommandFactoryI_a56729b6155827402747d30f96f305709}{Command\+FactoryI}}.
 
 \Hypertarget{classCommandFactory_ac85c323b84dca7565057f9d007286d36}\label{classCommandFactory_ac85c323b84dca7565057f9d007286d36} 
 \index{CommandFactory@{CommandFactory}!MakeAddElementCommand@{MakeAddElementCommand}}
@@ -157,9 +177,9 @@ Create an add element command.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em parent\+\_\+element} & The SDF element to delete \\
+\mbox{\texttt{ in}}  & {\em parent\+\_\+element} & The parent of the new SDF element \\
 \hline
-\mbox{\texttt{ in}}  & {\em new\+\_\+element} & The SDF element to delete \\
+\mbox{\texttt{ in}}  & {\em new\+\_\+element} & The new SDF element \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -169,11 +189,28 @@ Unique pointer to a command interface
 
 Implements \mbox{\hyperlink{classCommandFactoryI_a4e764eb31669356953e48ee262a55664}{Command\+FactoryI}}.
 
-\Hypertarget{classCommandFactory_aba997faf747212017a6dbc6dbaca7ad8}\label{classCommandFactory_aba997faf747212017a6dbc6dbaca7ad8} 
-\index{CommandFactory@{CommandFactory}!MakeDeleteAttributeCommand@{MakeDeleteAttributeCommand}}
-\index{MakeDeleteAttributeCommand@{MakeDeleteAttributeCommand}!CommandFactory@{CommandFactory}}
-\doxysubsubsection{\texorpdfstring{MakeDeleteAttributeCommand()}{MakeDeleteAttributeCommand()}}
-{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+::\+Make\+Delete\+Attribute\+Command (\begin{DoxyParamCaption}\item[{sdf\+::\+Param\+Ptr}]{attribute\+\_\+to\+\_\+delete }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+\Hypertarget{classCommandFactory_a4b8f02475d0688833d28cc9ea934c29f}\label{classCommandFactory_a4b8f02475d0688833d28cc9ea934c29f} 
+\index{CommandFactory@{CommandFactory}!MakeCloseModelViewerCommand@{MakeCloseModelViewerCommand}}
+\index{MakeCloseModelViewerCommand@{MakeCloseModelViewerCommand}!CommandFactory@{CommandFactory}}
+\doxysubsubsection{\texorpdfstring{MakeCloseModelViewerCommand()}{MakeCloseModelViewerCommand()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+::\+Make\+Close\+Model\+Viewer\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Create a close model viewer model command. 
+
+\begin{DoxyReturn}{Returns}
+Unique pointer to a command interface 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandFactoryI_a633a75bf2dfe5b74bbacd7561c58578b}{Command\+FactoryI}}.
+
+\Hypertarget{classCommandFactory_ae6bf296d9804762623377ddf9ac0e682}\label{classCommandFactory_ae6bf296d9804762623377ddf9ac0e682} 
+\index{CommandFactory@{CommandFactory}!MakeCreateFileCommand@{MakeCreateFileCommand}}
+\index{MakeCreateFileCommand@{MakeCreateFileCommand}!CommandFactory@{CommandFactory}}
+\doxysubsubsection{\texorpdfstring{MakeCreateFileCommand()}{MakeCreateFileCommand()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+::\+Make\+Create\+File\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
@@ -184,7 +221,7 @@ Unique pointer to a command interface
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{classCommandFactoryI_a1d49322544f498ceeb60cce21e44e7ca}{Command\+FactoryI}}.
+Implements \mbox{\hyperlink{classCommandFactoryI_acf266f04070b2d0e4a975263ab4f5c04}{Command\+FactoryI}}.
 
 \Hypertarget{classCommandFactory_a1508f65be6f325e2d6d3ef333c6b1816}\label{classCommandFactory_a1508f65be6f325e2d6d3ef333c6b1816} 
 \index{CommandFactory@{CommandFactory}!MakeDeleteElementCommand@{MakeDeleteElementCommand}}
@@ -216,7 +253,21 @@ Implements \mbox{\hyperlink{classCommandFactoryI_ac9688f96d9551acf9aa141a1a58731
 
 
 
-Implements \mbox{\hyperlink{classCommandFactoryI}{Command\+FactoryI}}.
+Implementation of interface method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em attribute\+\_\+to\+\_\+modify} & A pointer to the attribute that will be modified \\
+\hline
+\mbox{\texttt{ in}}  & {\em new\+\_\+value} & The new value as a bool \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Unique pointer to a command interface 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandFactoryI_ab949dc2d61fb6de940315d6a73772908}{Command\+FactoryI}}.
 
 \Hypertarget{classCommandFactory_ac9008bbd79e920391da4b542128c32e1}\label{classCommandFactory_ac9008bbd79e920391da4b542128c32e1} 
 \index{CommandFactory@{CommandFactory}!MakeModifyAttributeCommand@{MakeModifyAttributeCommand}}
@@ -228,6 +279,13 @@ Implements \mbox{\hyperlink{classCommandFactoryI}{Command\+FactoryI}}.
 
 Implementation of interface method. 
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em attribute\+\_\+to\+\_\+modify} & A pointer to the attribute that will be modified \\
+\hline
+\mbox{\texttt{ in}}  & {\em new\+\_\+value} & The new value as a string \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Unique pointer to a command interface 
 \end{DoxyReturn}
@@ -243,7 +301,21 @@ Implements \mbox{\hyperlink{classCommandFactoryI_ada9f96393de008687bcad0b8ce05dd
 
 
 
-Implements \mbox{\hyperlink{classCommandFactoryI}{Command\+FactoryI}}.
+Implementation of interface method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em element\+\_\+to\+\_\+modify} & A pointer to the element that will be modified \\
+\hline
+\mbox{\texttt{ in}}  & {\em new\+\_\+value} & The new value as a bool \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Unique pointer to a command interface 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandFactoryI_a97cd316cb0f482d0d56bfadfe358428c}{Command\+FactoryI}}.
 
 \Hypertarget{classCommandFactory_a21e97bad47e283c966451340d4e2b570}\label{classCommandFactory_a21e97bad47e283c966451340d4e2b570} 
 \index{CommandFactory@{CommandFactory}!MakeModifyElementCommand@{MakeModifyElementCommand}}
@@ -255,6 +327,13 @@ Implements \mbox{\hyperlink{classCommandFactoryI}{Command\+FactoryI}}.
 
 Implementation of interface method. 
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em element\+\_\+to\+\_\+modify} & A pointer to the element that will be modified \\
+\hline
+\mbox{\texttt{ in}}  & {\em new\+\_\+value} & The new value as a string \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Unique pointer to a command interface 
 \end{DoxyReturn}
@@ -272,6 +351,11 @@ Implements \mbox{\hyperlink{classCommandFactoryI_a74b52abcab9f75f6350f52ae189a53
 
 Implementation of interface method. 
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em file\+\_\+path} & Filepath of the model \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Unique pointer to a command interface ~\newline
  
@@ -279,6 +363,23 @@ Unique pointer to a command interface ~\newline
 
 
 Implements \mbox{\hyperlink{classCommandFactoryI_a820f138ee5ab2900eb97039143e6cea6}{Command\+FactoryI}}.
+
+\Hypertarget{classCommandFactory_a07b2b2097839bbde739d26c57ec6f184}\label{classCommandFactory_a07b2b2097839bbde739d26c57ec6f184} 
+\index{CommandFactory@{CommandFactory}!MakeOpenModelViewerCommand@{MakeOpenModelViewerCommand}}
+\index{MakeOpenModelViewerCommand@{MakeOpenModelViewerCommand}!CommandFactory@{CommandFactory}}
+\doxysubsubsection{\texorpdfstring{MakeOpenModelViewerCommand()}{MakeOpenModelViewerCommand()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+::\+Make\+Open\+Model\+Viewer\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Create a open model viewer model command. 
+
+\begin{DoxyReturn}{Returns}
+Unique pointer to a command interface 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandFactoryI_afa2e16d5fac7e021014dafe8f33d1caa}{Command\+FactoryI}}.
 
 \Hypertarget{classCommandFactory_a2fcf5cf1f66e884e14df68737d328814}\label{classCommandFactory_a2fcf5cf1f66e884e14df68737d328814} 
 \index{CommandFactory@{CommandFactory}!MakeRedoCommand@{MakeRedoCommand}}
@@ -297,11 +398,33 @@ Unique pointer to a command interface
 
 Implements \mbox{\hyperlink{classCommandFactoryI_a8fca05c4893b73f13f25a419ad0023fe}{Command\+FactoryI}}.
 
-\Hypertarget{classCommandFactory_a78d5a75442860ab72c8439772e1ea8e4}\label{classCommandFactory_a78d5a75442860ab72c8439772e1ea8e4} 
+\Hypertarget{classCommandFactory_a6dd5c2bef9cb2b2b6c6d97d7bb9f7fbd}\label{classCommandFactory_a6dd5c2bef9cb2b2b6c6d97d7bb9f7fbd} 
+\index{CommandFactory@{CommandFactory}!MakeRenderModelCommand@{MakeRenderModelCommand}}
+\index{MakeRenderModelCommand@{MakeRenderModelCommand}!CommandFactory@{CommandFactory}}
+\doxysubsubsection{\texorpdfstring{MakeRenderModelCommand()}{MakeRenderModelCommand()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+::\+Make\+Render\+Model\+Command (\begin{DoxyParamCaption}\item[{bool}]{render\+\_\+collisions\+\_\+in\+\_\+model\+\_\+viewer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em render\+\_\+collisions\+\_\+in\+\_\+model\+\_\+viewer} & indicates if collision boxes should be rendered in the model viewer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Unique pointer to a command interface 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandFactoryI_afc61e9a0c557e2ec8459adb3278536e9}{Command\+FactoryI}}.
+
+\Hypertarget{classCommandFactory_a36118f42eee60f33e8e8f7aff8564439}\label{classCommandFactory_a36118f42eee60f33e8e8f7aff8564439} 
 \index{CommandFactory@{CommandFactory}!MakeSaveFileCommand@{MakeSaveFileCommand}}
 \index{MakeSaveFileCommand@{MakeSaveFileCommand}!CommandFactory@{CommandFactory}}
 \doxysubsubsection{\texorpdfstring{MakeSaveFileCommand()}{MakeSaveFileCommand()}}
-{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+::\+Make\+Save\+File\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ Command\+Factory\+::\+Make\+Save\+File\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 

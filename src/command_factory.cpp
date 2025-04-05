@@ -1,26 +1,56 @@
-#include "command_factory.h"
-#include "commands/DeleteElementCommand.h"
-#include "commands/GenericCommand.h"
-#include "commands/OpenFileCommand.h"
-#include "commands/ModifyAttributeCommand.h"
-#include "commands/ModifyElementCommand.h"
-#include "commands/AddElementCommand.h"
-#include "commands/DeleteAttributeCommand.h"
+/*
+* sdformat-editor
+* Copyright 2025 sdformat-editor
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* Developer: Zaid Duraid, Ean Wheeler, Evan Vokey
+*/
 
-CommandFactory::CommandFactory(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser)
+#include "command_factory.h"
+
+CommandFactory::CommandFactory(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, 
+                                    std::shared_ptr<ModelViewerI> model_viewer)
 {
-    this->Initialize(gui, sdformatParser);
+    this->Initialize(gui, sdformatParser, model_viewer);
 }
 
-void CommandFactory::Initialize(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser)
+void CommandFactory::Initialize(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, 
+                            std::shared_ptr<ModelViewerI> model_viewer)
 {
     this->gui = gui;
     this->sdformatParser = sdformatParser;
+    this->model_viewer = model_viewer;
 }
 
 std::unique_ptr<CommandI> CommandFactory::MakeOpenFileCommand(std::string file_path)
 {
     return std::make_unique<OpenFileCommand>(this->gui, this->sdformatParser, file_path);
+}
+
+std::unique_ptr<CommandI> CommandFactory::MakeRenderModelCommand(bool render_collisions_in_model_viewer)
+{
+    return std::make_unique<RenderModelCommand>(this->model_viewer, this->sdformatParser, render_collisions_in_model_viewer);
+}
+
+std::unique_ptr<CommandI> CommandFactory::MakeOpenModelViewerCommand()
+{
+    return std::make_unique<OpenModelViewerCommand>(this->model_viewer);
+}
+
+std::unique_ptr<CommandI> CommandFactory::MakeCreateFileCommand()
+{
+    return std::make_unique<CreateFileCommand>(this->gui, this->sdformatParser);
 }
 
 std::unique_ptr<CommandI> CommandFactory::MakeUndoCommand()
@@ -59,8 +89,10 @@ std::unique_ptr<CommandI> CommandFactory::MakeAddElementCommand(sdf::ElementPtr 
     return std::make_unique<AddElementCommand>(this->gui, this->sdformatParser, parent_element, new_element);
 }
 
-std::unique_ptr<CommandI> CommandFactory::MakeDeleteAttributeCommand(sdf::ParamPtr attribute_to_delete) {
-    return std::make_unique<DeleteAttributeCommand>(this->gui, this->sdformatParser, attribute_to_delete);
+
+std::unique_ptr<CommandI> CommandFactory::MakeCloseModelViewerCommand()
+{
+    return std::make_unique<CloseModelViewerCommand>(this->model_viewer);
 }
 
 void CommandFactory::PushToUndoCommandsStack(std::unique_ptr<CommandI> command, const bool new_change)

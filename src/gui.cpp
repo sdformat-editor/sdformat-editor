@@ -104,11 +104,6 @@ void GUI::Initialize(const std::string &window_name, std::shared_ptr<SDFormatPar
   {
     return;
   }
-  // TODO figure out how to load image to create icon
-  // std::string directory = getenv("OLDPWD");
-  // std::string icon_file = directory + std::string("/data/icons/sdf_icon.png");
-  // GLFWimage *icon;
-  // glfwSetWindowIcon(window, 1, icon);
   
   glfwMakeContextCurrent(window);
   glfwSwapInterval(1); // Enable vsync
@@ -152,19 +147,51 @@ bool GUI::SetupNewFrame()
 
 void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<CommandFactoryI> command_factory)
 {  
-
+  ImGuiIO& io = ImGui::GetIO();
   // Check for keyboard shortcut inputs
-  if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl) && ImGui::IsKeyPressed(ImGuiKey_Z))
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_Z))
   {
     if (!(this->prevent_input_flag)) command = command_factory->MakeUndoCommand();
   }
-  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)) && ImGui::IsKeyPressed(ImGuiKey_Y))
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_Y))
   {
     if (!(this->prevent_input_flag)) command = command_factory->MakeRedoCommand();
   }
-  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)) && ImGui::IsKeyPressed(ImGuiKey_S))
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_O))
   {
-    if (!prevent_input_flag) command = command_factory->MakeSaveFileCommand();
+    if (!(this->prevent_input_flag)) command = command_factory->MakeOpenFileCommand("");
+  }
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_S))
+  {
+    if (!(this->prevent_input_flag)) command = command_factory->MakeSaveFileCommand();
+  }
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_Equal))
+  {
+    if (!(this->prevent_input_flag) && io.FontGlobalScale < 5.0f) io.FontGlobalScale += 0.5f;
+  }
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_Minus))
+  {
+    if (!(this->prevent_input_flag) && io.FontGlobalScale > 1.0f) io.FontGlobalScale -= 0.5f;
+  }
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_R))
+  {
+    if (!model_viewer_running)
+    {
+      this->model_viewer_running = true;
+      if (!prevent_input_flag) command = command_factory->MakeOpenModelViewerCommand();
+    }
+    else
+    {
+      if (!prevent_input_flag) command = command_factory->MakeRenderModelCommand(this->render_collisions_in_model_viewer);
+    }
+  }
+  if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl)||ImGui::IsKeyDown(ImGuiKey_RightCtrl)) && ImGui::IsKeyPressed(ImGuiKey_C))
+  {
+    if (model_viewer_running)
+    {
+      this->model_viewer_running = false;
+      if (!prevent_input_flag) command = command_factory->MakeCloseModelViewerCommand();
+    }
   }
 
   if (ImGui::BeginMainMenuBar())
@@ -173,6 +200,7 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
       {
           if (ImGui::MenuItem("Create"))
           {
+            if (!prevent_input_flag) command = command_factory->MakeCreateFileCommand();
           }
           if (ImGui::MenuItem("Open", "Ctrl+O"))
           {
@@ -199,6 +227,43 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
           }
           ImGui::EndMenu();
       }
+      if (ImGui::BeginMenu("Zoom"))
+      {
+          if (ImGui::MenuItem("Zoom in", "Ctrl + ="))
+          {
+            if (!prevent_input_flag && io.FontGlobalScale < 5.0f) io.FontGlobalScale += 0.5f;
+          }
+          if (ImGui::MenuItem("Zoom out", "Ctrl + -"))
+          {
+            if (!prevent_input_flag && io.FontGlobalScale > 1.0f) io.FontGlobalScale -= 0.5f;
+          }
+          ImGui::EndMenu();
+      }
+      if (ImGui::BeginMenu("Model Viewer"))
+      {
+        if (!model_viewer_running)
+        {
+          if (ImGui::MenuItem(("Open Model Viewer"), "Ctrl+R"))
+          {
+            this->model_viewer_running = true;
+            if (!prevent_input_flag) command = command_factory->MakeOpenModelViewerCommand();
+          }
+        }
+        else
+        {
+          if (ImGui::MenuItem(("Render Model"), "Ctrl+R"))
+          {
+            if (!prevent_input_flag) command = command_factory->MakeRenderModelCommand(this->render_collisions_in_model_viewer);
+          }
+          if (ImGui::MenuItem(("Close Model Viewer"), "Ctrl+C"))
+          {
+            this->model_viewer_running = false;
+            if (!prevent_input_flag) command = command_factory->MakeCloseModelViewerCommand();
+          }
+          ImGui::Checkbox("Render Collisions", &this->render_collisions_in_model_viewer);
+        }
+        ImGui::EndMenu();
+      }
       ImGui::EndMainMenuBar();
   }
 
@@ -206,16 +271,12 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
   int window_width, window_height;
   glfwGetWindowSize(this->window, &window_width, &window_height);
 
-  // Set the position and size of the "SDFormat Editor" window
-  // The window will be fixed to the right of the screen. It will take up 25% of 
-  // the total width and the entire height (minus top menu bar)
-  ImGui::SetNextWindowPos(ImVec2(window_width * 0.3f, 20)); // Position the window below the main menu bar
-  ImGui::SetNextWindowSize(ImVec2(window_width * 0.7f, window_height - 20.0f)); // Set the dynamic size of the window
+  // Set the position and size of the "SDFormat Editor" window to be fixed and 
+  // cover the full window
+  ImGui::SetNextWindowPos(ImVec2(0, 20 * io.FontGlobalScale)); // Position the window below the main menu bar
+  ImGui::SetNextWindowSize(ImVec2(window_width, window_height - (20.0f * io.FontGlobalScale))); // Set the dynamic size of the window
 
   ImGui::Begin("SDFormat Editor",  nullptr, ImGuiWindowFlags_NoMove); 
-
-  // TODO: (zaid) Save the current working directory and/or current file as an attribute to the GUI object or the file operations singleton
-  // ImGui::TextUnformatted("Active File is: %s", file_ops->getActiveFilePath().c_str()); // Display some text (you can use a format strings too)
 
   // If the user hasn't done anything so far, accept commands from the SDF element tree.
   // Otherwise, display the tree but do not take commands.
@@ -267,8 +328,8 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
   // The boolean indicates whether or not this tree node was visited
   std::stack<std::pair<sdf::ElementPtr,bool>> sdf_tree_stack;
 
-  // To ensure that there are no issue with repeat elements for ImGui,
-  // every button will be given a unique id.
+  // To ensure that there are no issue with repeat elements for ImGui, every
+  // button will be given a unique id along with every duplicate element name
   int unique_input_id = 0;
   std::map<std::string, int> unique_node_id_map = {};
 
@@ -336,7 +397,6 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
       // Delete and append buttons for this node
       if (ImGui::Button(("Delete element##" + std::to_string(unique_input_id++)).c_str()))
       {
-        // Create a DeleteElement command
         if (!prevent_input_flag) command = command_factory->MakeDeleteElementCommand(current_element_ptr);
       }
       ImGui::SameLine();
@@ -357,28 +417,30 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
         this->CreateAppendElementDropdown(this->element_to_append_to, command, command_factory, unique_input_id);
       }
 
-      // Get the current window size
       int window_width, _;
       glfwGetWindowSize(this->window, &window_width, &_);
 
       // Check if this element has as associated value (i.e. it is a type element)
       if (current_element_ptr->GetValue())
       {
-        bool x;
-        if (current_element_ptr->GetValue()->IsType<bool>() && current_element_ptr->GetValue()->Get(x)) {
-          // Render checkbox
-          bool original_value = x;
-          ImGui::Checkbox(("Value##" + std::to_string(unique_input_id++)).c_str(), &x);
 
-          if (original_value != x) 
+        if (bool checkbox_state; current_element_ptr->GetValue()->IsType<bool>() && current_element_ptr->GetValue()->Get(checkbox_state)) {
+          // Render checkbox
+          bool original_value = checkbox_state;
+          ImGui::Checkbox(("Value##" + std::to_string(unique_input_id++)).c_str(), &checkbox_state);
+
+          if (original_value != checkbox_state) 
           {
-            if (!prevent_input_flag) command = command_factory->MakeModifyElementCommand(current_element_ptr, x);
+            if (!prevent_input_flag) command = command_factory->MakeModifyElementCommand(current_element_ptr, checkbox_state);
           }
         } 
         else 
         {
           // Display the value and provide a textbox and button for modification
-          ImGui::TextUnformatted(current_element_ptr->GetValue()->GetAsString().c_str());
+
+          std::string value_field_description = current_element_ptr->GetName() + ": " + current_element_ptr->GetValue()->GetAsString() + + " ("  + current_element_ptr->GetValue()->GetTypeName()+ ")";
+
+          ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "%s", value_field_description.c_str());
           static char value_buffer[128] = "";
           
           if (element_to_edit == current_element_ptr) 
@@ -415,7 +477,10 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
             if (ImGui::Button(("Modify##" + std::to_string(unique_input_id++)).c_str())) 
             {
               this->element_to_edit = current_element_ptr;
+
+              // If we are currently editing an attribute, cancel that process since we are now editing an element
               this->attribute_to_edit.reset();
+
               strcpy(value_buffer, current_element_ptr->GetValue()->GetAsString().c_str());
             }
           }
@@ -436,7 +501,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
           bool original_value = attribute_value;
           ImGui::Checkbox(("##" + std::to_string(unique_input_id++)).c_str(), &attribute_value);
           ImGui::SameLine();
-          ImGui::TextUnformatted((attribute_info).c_str());
+          ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.0f, 1.0f), "%s", attribute_info.c_str());
           
           if (original_value != attribute_value) 
           {
@@ -445,7 +510,7 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
         } 
         else 
         {
-          ImGui::TextUnformatted((attribute_info).c_str());
+          ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.0f, 1.0f), "%s", attribute_info.c_str());
           static char value_buffer[1024] = "";
           if (attribute_to_edit == attribute_ptr) {
 
@@ -483,13 +548,6 @@ void GUI::DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_
               this->attribute_to_edit = attribute_ptr;
               this->element_to_edit.reset();
               strcpy(value_buffer, attribute_ptr->GetAsString().c_str());
-            }
-          }
-          if (attribute_ptr->GetKey() != "name") {
-            ImGui::SameLine();
-            if (ImGui::Button(("Delete##" + std::to_string(unique_input_id++)).c_str())) {
-              command = command_factory->MakeDeleteAttributeCommand(attribute_ptr);
-              attribute_to_edit.reset();
             }
           }
         }
@@ -605,7 +663,7 @@ void GUI::CreateAppendElementDropdown(sdf::ElementPtr element, std::unique_ptr<C
       element_descriptions.push_back(element->GetElementDescription(i)->GetDescription());
     }
   
-    // Add an option to create a custom element
+    // TODO: Add an option to create a custom element
     element_names.push_back("I want to create a custom element");
     element_descriptions.push_back("Open a dialog to create a custom element");
   

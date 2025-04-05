@@ -1,0 +1,5 @@
+<map id="CreateFileCommand" name="CreateFileCommand">
+<area shape="rect" id="Node000001" title="Create file command implementation of CommandI." alt="" coords="5,268,280,640"/>
+<area shape="rect" id="Node000002" href="$classCommandI.html" title="The command class encapsulates the interactions between the various interfaces of the SDFormat Editor..." alt="" coords="30,5,255,220"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,234,145,267,140,267,140,234"/>
+</map>

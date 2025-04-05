@@ -54,8 +54,10 @@ class CommandI
 
     /// \callgraph
     /// \brief Indicates if this command should be run in a thread
+    /// \param[out] prevent_user_input indicates if user input should be prevented 
+    /// if this happens to be a threaded command
     /// \returns True if this command should be run in a thread
-    public: virtual bool IsThreaded() = 0;
+    public: virtual bool IsThreaded(bool& prevent_user_input) = 0;
 
     /// \callgraph
     /// \brief Indicates if this command is an irreversible state-changing command.

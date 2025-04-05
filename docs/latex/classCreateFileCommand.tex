@@ -1,0 +1,218 @@
+\doxysection{Create\+File\+Command Class Reference}
+\hypertarget{classCreateFileCommand}{}\label{classCreateFileCommand}\index{CreateFileCommand@{CreateFileCommand}}
+
+
+Create file command implementation of \doxylink{classCommandI}{CommandI}.  
+
+
+
+
+{\ttfamily \#include $<$Create\+File\+Command.\+h$>$}
+
+
+
+Inheritance diagram for Create\+File\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classCreateFileCommand__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Create\+File\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classCreateFileCommand__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCreateFileCommand_aa752e1323b868139ccf867f46879f351}{Create\+File\+Command}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ \mbox{\hyperlink{classCreateFileCommand_aa3364d080018e46109ea3481f32b2b6f}{gui}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classCreateFileCommand_a8c2b982c79ab22b6d12385b3daa8d171}{sdformat\+Parser}})
+\begin{DoxyCompactList}\small\item\em Constructor for create fuke command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classCreateFileCommand_a1dd322a7c021f4ea2ffb990329123cd9}{Execute}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCreateFileCommand_a8e7ccebd749d9f276200d6daf23b1bd2}{Execute\+Undo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCreateFileCommand_a8d7a711583c4daef91ffed84fecf4dd1}{Execute\+Redo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCreateFileCommand_a90e7e56dfbda6686fd4db086a71a2afc}{Is\+Undoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCreateFileCommand_a2583921a270eff76dd807330f2b08468}{Is\+Redoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCreateFileCommand_a3d6fa72935a1130086ddbd7dc9270998}{Is\+Threaded}} (bool \&prevent\+\_\+user\+\_\+input) override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCreateFileCommand_aae5bd03e5dddc956aa33fd93eca8efc5}{Changes\+Program\+State\+Irreversibly}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classCreateFileCommand_aa3364d080018e46109ea3481f32b2b6f}\label{classCreateFileCommand_aa3364d080018e46109ea3481f32b2b6f} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$ {\bfseries gui}
+\begin{DoxyCompactList}\small\item\em Pointer to the gui interface. \end{DoxyCompactList}\item 
+\Hypertarget{classCreateFileCommand_a8c2b982c79ab22b6d12385b3daa8d171}\label{classCreateFileCommand_a8c2b982c79ab22b6d12385b3daa8d171} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ {\bfseries sdformat\+Parser}
+\begin{DoxyCompactList}\small\item\em Pointer to the sdformat parser interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Create file command implementation of \doxylink{classCommandI}{CommandI}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCreateFileCommand_aa752e1323b868139ccf867f46879f351}\label{classCreateFileCommand_aa752e1323b868139ccf867f46879f351} 
+\index{CreateFileCommand@{CreateFileCommand}!CreateFileCommand@{CreateFileCommand}}
+\index{CreateFileCommand@{CreateFileCommand}!CreateFileCommand@{CreateFileCommand}}
+\doxysubsubsection{\texorpdfstring{CreateFileCommand()}{CreateFileCommand()}}
+{\footnotesize\ttfamily Create\+File\+Command\+::\+Create\+File\+Command (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGUII}{GUII}} $>$}]{gui,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+Parser }\end{DoxyParamCaption})}
+
+
+
+Constructor for create fuke command objects. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em gui} & Pointer to the \doxylink{classGUII}{GUII} object \\
+\hline
+\mbox{\texttt{ in}}  & {\em sdformat\+Parser} & Pointer to the \doxylink{classSDFormatParserI}{SDFormat\+ParserI} object \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCreateFileCommand_aae5bd03e5dddc956aa33fd93eca8efc5}\label{classCreateFileCommand_aae5bd03e5dddc956aa33fd93eca8efc5} 
+\index{CreateFileCommand@{CreateFileCommand}!ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}}
+\index{ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}!CreateFileCommand@{CreateFileCommand}}
+\doxysubsubsection{\texorpdfstring{ChangesProgramStateIrreversibly()}{ChangesProgramStateIrreversibly()}}
+{\footnotesize\ttfamily bool Create\+File\+Command\+::\+Changes\+Program\+State\+Irreversibly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always true 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}{CommandI}}.
+
+\Hypertarget{classCreateFileCommand_a1dd322a7c021f4ea2ffb990329123cd9}\label{classCreateFileCommand_a1dd322a7c021f4ea2ffb990329123cd9} 
+\index{CreateFileCommand@{CreateFileCommand}!Execute@{Execute}}
+\index{Execute@{Execute}!CreateFileCommand@{CreateFileCommand}}
+\doxysubsubsection{\texorpdfstring{Execute()}{Execute()}}
+{\footnotesize\ttfamily bool Create\+File\+Command\+::\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+True if the file has been successfully created in the specified directory 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_ad0107a73ebccd619860597db7bad2cce}{CommandI}}.
+
+\Hypertarget{classCreateFileCommand_a8d7a711583c4daef91ffed84fecf4dd1}\label{classCreateFileCommand_a8d7a711583c4daef91ffed84fecf4dd1} 
+\index{CreateFileCommand@{CreateFileCommand}!ExecuteRedo@{ExecuteRedo}}
+\index{ExecuteRedo@{ExecuteRedo}!CreateFileCommand@{CreateFileCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteRedo()}{ExecuteRedo()}}
+{\footnotesize\ttfamily bool Create\+File\+Command\+::\+Execute\+Redo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a10b7094ad088998d95045e7db350eb0a}{CommandI}}.
+
+\Hypertarget{classCreateFileCommand_a8e7ccebd749d9f276200d6daf23b1bd2}\label{classCreateFileCommand_a8e7ccebd749d9f276200d6daf23b1bd2} 
+\index{CreateFileCommand@{CreateFileCommand}!ExecuteUndo@{ExecuteUndo}}
+\index{ExecuteUndo@{ExecuteUndo}!CreateFileCommand@{CreateFileCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteUndo()}{ExecuteUndo()}}
+{\footnotesize\ttfamily bool Create\+File\+Command\+::\+Execute\+Undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a38d5a489ac6de24f3b40035083c5ed9a}{CommandI}}.
+
+\Hypertarget{classCreateFileCommand_a2583921a270eff76dd807330f2b08468}\label{classCreateFileCommand_a2583921a270eff76dd807330f2b08468} 
+\index{CreateFileCommand@{CreateFileCommand}!IsRedoable@{IsRedoable}}
+\index{IsRedoable@{IsRedoable}!CreateFileCommand@{CreateFileCommand}}
+\doxysubsubsection{\texorpdfstring{IsRedoable()}{IsRedoable()}}
+{\footnotesize\ttfamily bool Create\+File\+Command\+::\+Is\+Redoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
+
+\Hypertarget{classCreateFileCommand_a3d6fa72935a1130086ddbd7dc9270998}\label{classCreateFileCommand_a3d6fa72935a1130086ddbd7dc9270998} 
+\index{CreateFileCommand@{CreateFileCommand}!IsThreaded@{IsThreaded}}
+\index{IsThreaded@{IsThreaded}!CreateFileCommand@{CreateFileCommand}}
+\doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
+{\footnotesize\ttfamily bool Create\+File\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}\item[{bool \&}]{prevent\+\_\+user\+\_\+input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em prevent\+\_\+user\+\_\+input} & indicates if user input should be prevented if this happens to be a threaded command \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Always true 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a1c54206064c146ea9ff089fbe4d321b6}{CommandI}}.
+
+\Hypertarget{classCreateFileCommand_a90e7e56dfbda6686fd4db086a71a2afc}\label{classCreateFileCommand_a90e7e56dfbda6686fd4db086a71a2afc} 
+\index{CreateFileCommand@{CreateFileCommand}!IsUndoable@{IsUndoable}}
+\index{IsUndoable@{IsUndoable}!CreateFileCommand@{CreateFileCommand}}
+\doxysubsubsection{\texorpdfstring{IsUndoable()}{IsUndoable()}}
+{\footnotesize\ttfamily bool Create\+File\+Command\+::\+Is\+Undoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always False 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a4722f602fdfa6387aa0fced8dfa0e9fd}{CommandI}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/commands/Create\+File\+Command.\+h\item 
+src/commands/Create\+File\+Command.\+cpp\end{DoxyCompactItemize}

@@ -23,7 +23,7 @@
 
 
 OpenFileCommand::OpenFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, std::string file_path) 
-  : gui(gui), sdformatParser(sdformatParser), file_path(file_path)
+  : file_path(file_path), gui(gui), sdformatParser(sdformatParser)
 {
   
 }
@@ -35,12 +35,16 @@ bool OpenFileCommand::Execute()
   if (file_path == "")
   {
     file_path = FileOperations::GetSoleInstance().OpenFileDialog();
-  } else {
+  } 
+  else 
+  {
     FILE *test_file = fopen(file_path.c_str(), "r");
-    if (test_file == NULL) {
+    if (test_file == NULL) 
+    {
       return false;
     }
     fclose(test_file);
+    FileOperations::GetSoleInstance().SetActiveFilePath(file_path);
   }
 
   // If the file path is still blank, then there was no file specified
@@ -54,18 +58,22 @@ bool OpenFileCommand::Execute()
   std::unique_lock<std::mutex> lock_var = gui->LockMutex();
   this->sdformatParser->Initialize(file_path, success);
 
+  //Save the file path to an external file
   if (success)
   {
     std::string data_dir = std::string(getenv("HOME")) + "/.local/share/sdformat_editor/";
     struct stat info;
     // Check if data directory exists
-    if (stat(data_dir.c_str(), &info) == 0) {
+    if (stat(data_dir.c_str(), &info) == 0)
+    {
       std::string data_file = data_dir + "last_file_opened.txt";
       FILE *cache_file = fopen(data_file.c_str(), "w");
       const char *c = file_path.c_str();
       fwrite(c, sizeof(char), strlen(c), cache_file);
       fclose(cache_file);
-    } else {
+    } 
+    else 
+    {
       std::cerr << "Failed to locate directory!" << std::endl;
     }
   }
@@ -84,8 +92,9 @@ bool OpenFileCommand::ExecuteRedo()
   return this->IsRedoable();
 }
 
-bool OpenFileCommand::IsThreaded() 
+bool OpenFileCommand::IsThreaded(bool& prevent_user_input) 
 {
+  prevent_user_input = true;
   return true;
 }
 

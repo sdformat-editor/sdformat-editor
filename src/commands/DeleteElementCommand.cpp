@@ -33,7 +33,7 @@ bool DeleteElementCommand::Execute()
 
     SDFormatParserI::Mentions mentions;
 
-    // Find mentions of the element to deleting, excluding the element itself 
+    // Find mentions of the element to delete, excluding the element itself 
     if (auto name_attribute = this->element_to_delete->GetAttribute("name"))
     {
         mentions = this->sdformatParser->FindMentions(name_attribute->GetAsString(), this->element_to_delete);
@@ -104,10 +104,7 @@ bool DeleteElementCommand::Execute()
         }
     } 
 
-    // Store the parent
     this->element_to_deletes_parent = element_to_delete->GetParent();
-    
-    // Remove the element to delete from it's parent
     element_to_delete->RemoveFromParent();
 
     // Flag the command as "undo-able"    
@@ -119,7 +116,8 @@ bool DeleteElementCommand::Execute()
 
 bool DeleteElementCommand::ElementRequired()
 {
-    if (!(this->element_to_delete->GetRequired() == "1" || this->element_to_delete->GetRequired() == "+" || this->element_to_delete->GetRequired() == "*"))
+    if (!(this->element_to_delete->GetRequired() == "1" || this->element_to_delete->GetRequired() == "+" || this->element_to_delete->GetRequired() == "*")
+        ||(this->element_to_delete->GetParent().get()==this->sdformatParser->GetSDFElement()->Root().get())) // Do not mark the top level model/actor/world/light as required
     {
         return false;
     }
@@ -175,9 +173,9 @@ bool DeleteElementCommand::IsRedoable()
     return this->is_currently_redoable;
 }
 
-bool DeleteElementCommand::IsThreaded()
+bool DeleteElementCommand::IsThreaded(bool& prevent_user_input)
 {
-    // Stub implementation
+    prevent_user_input = false;
     return false;
 }
 

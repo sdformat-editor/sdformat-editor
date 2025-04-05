@@ -1,0 +1,214 @@
+\doxysection{Close\+Model\+Viewer\+Command Class Reference}
+\hypertarget{classCloseModelViewerCommand}{}\label{classCloseModelViewerCommand}\index{CloseModelViewerCommand@{CloseModelViewerCommand}}
+
+
+Close model viewer command implementation of \doxylink{classCommandI}{CommandI}.  
+
+
+
+
+{\ttfamily \#include $<$Close\+Model\+Viewer\+Command.\+h$>$}
+
+
+
+Inheritance diagram for Close\+Model\+Viewer\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{classCloseModelViewerCommand__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Close\+Model\+Viewer\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{classCloseModelViewerCommand__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCloseModelViewerCommand_a03f0a7963da05ede84ea871c43cb423a}{Close\+Model\+Viewer\+Command}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classModelViewerI}{Model\+ViewerI}} $>$ \mbox{\hyperlink{classCloseModelViewerCommand_a52c1feef882a484e4e0f4c7f745a8e74}{model\+\_\+viewer}})
+\begin{DoxyCompactList}\small\item\em Constructor for close model viewer command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classCloseModelViewerCommand_ade2bc5671c933d85681945f32cc0d884}{Execute}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCloseModelViewerCommand_af3ea92b8dae720036f7ead78daaf69ac}{Execute\+Undo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCloseModelViewerCommand_aafd7250f004a95a06af1076920eee815}{Execute\+Redo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCloseModelViewerCommand_a6adaf2006e5ef1aab16db7c3342f93d9}{Is\+Undoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCloseModelViewerCommand_aa5b50e4ab89bbcf15ba0d38c5f624bd6}{Is\+Redoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCloseModelViewerCommand_a414faaeea927cff1f8e6643ec189fc1f}{Is\+Threaded}} (bool \&prevent\+\_\+user\+\_\+input) override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCloseModelViewerCommand_acd5a83d9098ff80583b172b9e662f6ad}{Changes\+Program\+State\+Irreversibly}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classCloseModelViewerCommand_a52c1feef882a484e4e0f4c7f745a8e74}\label{classCloseModelViewerCommand_a52c1feef882a484e4e0f4c7f745a8e74} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classModelViewerI}{Model\+ViewerI}} $>$ {\bfseries model\+\_\+viewer}
+\begin{DoxyCompactList}\small\item\em Pointer to the sdformat parser interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Close model viewer command implementation of \doxylink{classCommandI}{CommandI}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCloseModelViewerCommand_a03f0a7963da05ede84ea871c43cb423a}\label{classCloseModelViewerCommand_a03f0a7963da05ede84ea871c43cb423a} 
+\index{CloseModelViewerCommand@{CloseModelViewerCommand}!CloseModelViewerCommand@{CloseModelViewerCommand}}
+\index{CloseModelViewerCommand@{CloseModelViewerCommand}!CloseModelViewerCommand@{CloseModelViewerCommand}}
+\doxysubsubsection{\texorpdfstring{CloseModelViewerCommand()}{CloseModelViewerCommand()}}
+{\footnotesize\ttfamily Close\+Model\+Viewer\+Command\+::\+Close\+Model\+Viewer\+Command (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classModelViewerI}{Model\+ViewerI}} $>$}]{model\+\_\+viewer }\end{DoxyParamCaption})}
+
+
+
+Constructor for close model viewer command objects. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em model\+\_\+viewer} & Pointer to the \doxylink{classModelViewerI}{Model\+ViewerI} object \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCloseModelViewerCommand_acd5a83d9098ff80583b172b9e662f6ad}\label{classCloseModelViewerCommand_acd5a83d9098ff80583b172b9e662f6ad} 
+\index{CloseModelViewerCommand@{CloseModelViewerCommand}!ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}}
+\index{ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}!CloseModelViewerCommand@{CloseModelViewerCommand}}
+\doxysubsubsection{\texorpdfstring{ChangesProgramStateIrreversibly()}{ChangesProgramStateIrreversibly()}}
+{\footnotesize\ttfamily bool Close\+Model\+Viewer\+Command\+::\+Changes\+Program\+State\+Irreversibly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}{CommandI}}.
+
+\Hypertarget{classCloseModelViewerCommand_ade2bc5671c933d85681945f32cc0d884}\label{classCloseModelViewerCommand_ade2bc5671c933d85681945f32cc0d884} 
+\index{CloseModelViewerCommand@{CloseModelViewerCommand}!Execute@{Execute}}
+\index{Execute@{Execute}!CloseModelViewerCommand@{CloseModelViewerCommand}}
+\doxysubsubsection{\texorpdfstring{Execute()}{Execute()}}
+{\footnotesize\ttfamily bool Close\+Model\+Viewer\+Command\+::\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+True if the model viewer is no longer running. ~\newline
+ 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_ad0107a73ebccd619860597db7bad2cce}{CommandI}}.
+
+\Hypertarget{classCloseModelViewerCommand_aafd7250f004a95a06af1076920eee815}\label{classCloseModelViewerCommand_aafd7250f004a95a06af1076920eee815} 
+\index{CloseModelViewerCommand@{CloseModelViewerCommand}!ExecuteRedo@{ExecuteRedo}}
+\index{ExecuteRedo@{ExecuteRedo}!CloseModelViewerCommand@{CloseModelViewerCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteRedo()}{ExecuteRedo()}}
+{\footnotesize\ttfamily bool Close\+Model\+Viewer\+Command\+::\+Execute\+Redo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a10b7094ad088998d95045e7db350eb0a}{CommandI}}.
+
+\Hypertarget{classCloseModelViewerCommand_af3ea92b8dae720036f7ead78daaf69ac}\label{classCloseModelViewerCommand_af3ea92b8dae720036f7ead78daaf69ac} 
+\index{CloseModelViewerCommand@{CloseModelViewerCommand}!ExecuteUndo@{ExecuteUndo}}
+\index{ExecuteUndo@{ExecuteUndo}!CloseModelViewerCommand@{CloseModelViewerCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteUndo()}{ExecuteUndo()}}
+{\footnotesize\ttfamily bool Close\+Model\+Viewer\+Command\+::\+Execute\+Undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a38d5a489ac6de24f3b40035083c5ed9a}{CommandI}}.
+
+\Hypertarget{classCloseModelViewerCommand_aa5b50e4ab89bbcf15ba0d38c5f624bd6}\label{classCloseModelViewerCommand_aa5b50e4ab89bbcf15ba0d38c5f624bd6} 
+\index{CloseModelViewerCommand@{CloseModelViewerCommand}!IsRedoable@{IsRedoable}}
+\index{IsRedoable@{IsRedoable}!CloseModelViewerCommand@{CloseModelViewerCommand}}
+\doxysubsubsection{\texorpdfstring{IsRedoable()}{IsRedoable()}}
+{\footnotesize\ttfamily bool Close\+Model\+Viewer\+Command\+::\+Is\+Redoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
+
+\Hypertarget{classCloseModelViewerCommand_a414faaeea927cff1f8e6643ec189fc1f}\label{classCloseModelViewerCommand_a414faaeea927cff1f8e6643ec189fc1f} 
+\index{CloseModelViewerCommand@{CloseModelViewerCommand}!IsThreaded@{IsThreaded}}
+\index{IsThreaded@{IsThreaded}!CloseModelViewerCommand@{CloseModelViewerCommand}}
+\doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
+{\footnotesize\ttfamily bool Close\+Model\+Viewer\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}\item[{bool \&}]{prevent\+\_\+user\+\_\+input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em prevent\+\_\+user\+\_\+input} & indicates if user input should be prevented if this happens to be a threaded command \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a1c54206064c146ea9ff089fbe4d321b6}{CommandI}}.
+
+\Hypertarget{classCloseModelViewerCommand_a6adaf2006e5ef1aab16db7c3342f93d9}\label{classCloseModelViewerCommand_a6adaf2006e5ef1aab16db7c3342f93d9} 
+\index{CloseModelViewerCommand@{CloseModelViewerCommand}!IsUndoable@{IsUndoable}}
+\index{IsUndoable@{IsUndoable}!CloseModelViewerCommand@{CloseModelViewerCommand}}
+\doxysubsubsection{\texorpdfstring{IsUndoable()}{IsUndoable()}}
+{\footnotesize\ttfamily bool Close\+Model\+Viewer\+Command\+::\+Is\+Undoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always False 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a4722f602fdfa6387aa0fced8dfa0e9fd}{CommandI}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/commands/Close\+Model\+Viewer\+Command.\+h\item 
+src/commands/Close\+Model\+Viewer\+Command.\+cpp\end{DoxyCompactItemize}

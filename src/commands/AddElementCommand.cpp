@@ -98,9 +98,9 @@ bool AddElementCommand::IsRedoable()
     return this->is_currently_redoable;
 }
 
-bool AddElementCommand::IsThreaded()
+bool AddElementCommand::IsThreaded(bool& prevent_user_input)
 {
-    // Stub implementation
+    prevent_user_input = false;
     return false;
 }
 

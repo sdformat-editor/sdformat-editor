@@ -21,7 +21,9 @@
 #define FILE_OPERATIONS_HH_
 
 #include <string>
+#include <iostream>
 #include <array>
+#include <fstream>
 
 /// \brief Singleton class to handle file operations
 class FileOperations
@@ -40,6 +42,11 @@ class FileOperations
     public: std::string OpenFileDialog();
 
     /// \callgraph
+    /// \brief Opens a dialog for the user to open a directory on their filesystem 
+    /// \return An absolute directory path or an empty string
+    public: std::string OpenDirectoryDialog();
+
+    /// \callgraph
     /// \brief writes a string to a file
     /// \param[in] file_path the filepath of the file to write to
     /// \param[in] contents the contents to write to the given file
@@ -47,10 +54,15 @@ class FileOperations
     public: bool WriteFile(const std::string& file_path, const std::string& contents);
 
     /// \callgraph
-    /// \brief writes a string to a file
+    /// \brief writes a string to the currently opened file
     /// \param[in] contents the contents to write to the given file
     /// \returns true if successful 
     public: bool WriteFile(const std::string& contents);
+
+    /// \callgraph
+    /// \brief Sets the active file path
+    /// \param[in] file_path The file path to set as the active path
+    public: void SetActiveFilePath(const std::string& file_path);
 
     /// \callgraph
     /// \brief Prevent access to the constructor of this class
@@ -71,9 +83,6 @@ class FileOperations
     private: FileOperations(const FileOperations&) = delete;
 
     private: std::string active_file_path;
-
-
-
 };
 
 #endif

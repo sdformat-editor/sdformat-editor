@@ -25,35 +25,38 @@
 \DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ FILE\_OPERATIONS\_HH\_}}
 \DoxyCodeLine{00022\ }
 \DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <array>}}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classFileOperations}{FileOperations}}}
-\DoxyCodeLine{00028\ \{}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ NOTE:\ Singleton\ Implementation\ based\ on\ Mayers\ Singleton\ for\ C++11\ and\ beyond}}
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ See\ https://www.modernescpp.com/index.php/thread-\/safe-\/initialization-\/of-\/a-\/singleton/\ }}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{static}\ \mbox{\hyperlink{classFileOperations}{FileOperations}}\&\ \mbox{\hyperlink{classFileOperations_a666230d09e02f6cb71016c12b2c18548}{GetSoleInstance}}();}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{public}:\ std::string\ \mbox{\hyperlink{classFileOperations_a50b5908070cc9bdd8879aade4daa855f}{OpenFileDialog}}();}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classFileOperations_a90ff510d41a0f63c21338c58351f1991}{WriteFile}}(\textcolor{keyword}{const}\ std::string\&\ file\_path,\ \textcolor{keyword}{const}\ std::string\&\ contents);}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classFileOperations}{FileOperations}}}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ NOTE:\ Singleton\ Implementation\ based\ on\ Mayers\ Singleton\ for\ C++11\ and\ beyond}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ See\ https://www.modernescpp.com/index.php/thread-\/safe-\/initialization-\/of-\/a-\/singleton/\ }}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keyword}{static}\ \mbox{\hyperlink{classFileOperations}{FileOperations}}\&\ \mbox{\hyperlink{classFileOperations_a666230d09e02f6cb71016c12b2c18548}{GetSoleInstance}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{public}:\ std::string\ \mbox{\hyperlink{classFileOperations_a50b5908070cc9bdd8879aade4daa855f}{OpenFileDialog}}();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{public}:\ std::string\ \mbox{\hyperlink{classFileOperations_aa02ee948d9ea1f97124b9ad7baa51133}{OpenDirectoryDialog}}();}
 \DoxyCodeLine{00048\ }
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classFileOperations_a90ff510d41a0f63c21338c58351f1991}{WriteFile}}(\textcolor{keyword}{const}\ std::string\&\ contents);}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{private}:\ \mbox{\hyperlink{classFileOperations_a196fc0455c1e0d5c1b3d64230cab76e5}{FileOperations}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{private}:\ \mbox{\hyperlink{classFileOperations_aef626cf484c86fe0f875d3b550ce9857}{\string~FileOperations}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{private}:\ \mbox{\hyperlink{classFileOperations}{FileOperations}}\&\ \mbox{\hyperlink{classFileOperations_a5da1790781c8f79684955589d2381c83}{operator\ =\ }}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classFileOperations}{FileOperations}}\&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00067\ }
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{private}:\ \mbox{\hyperlink{classFileOperations_ae5f57497c9671a58cab18c61f54bbb8f}{FileOperations}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classFileOperations}{FileOperations}}\&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{private}:\ std::string\ active\_file\_path;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classFileOperations_a90ff510d41a0f63c21338c58351f1991}{WriteFile}}(\textcolor{keyword}{const}\ std::string\&\ file\_path,\ \textcolor{keyword}{const}\ std::string\&\ contents);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classFileOperations_a90ff510d41a0f63c21338c58351f1991}{WriteFile}}(\textcolor{keyword}{const}\ std::string\&\ contents);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{public}:\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classFileOperations_ae40d89ff68fc7b77e40d67734bb91d4c}{SetActiveFilePath}}(\textcolor{keyword}{const}\ std::string\&\ file\_path);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{private}:\ \mbox{\hyperlink{classFileOperations_a196fc0455c1e0d5c1b3d64230cab76e5}{FileOperations}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{private}:\ \mbox{\hyperlink{classFileOperations_aef626cf484c86fe0f875d3b550ce9857}{\string~FileOperations}}()\ =\ \textcolor{keywordflow}{default};}
 \DoxyCodeLine{00074\ }
-\DoxyCodeLine{00075\ }
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \};}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{private}:\ \mbox{\hyperlink{classFileOperations}{FileOperations}}\&\ \mbox{\hyperlink{classFileOperations_a5da1790781c8f79684955589d2381c83}{operator\ =\ }}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classFileOperations}{FileOperations}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{private}:\ \mbox{\hyperlink{classFileOperations_ae5f57497c9671a58cab18c61f54bbb8f}{FileOperations}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classFileOperations}{FileOperations}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{private}:\ std::string\ active\_file\_path;}
+\DoxyCodeLine{00086\ \};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

@@ -1,0 +1,223 @@
+\doxysection{Render\+Model\+Command Class Reference}
+\hypertarget{classRenderModelCommand}{}\label{classRenderModelCommand}\index{RenderModelCommand@{RenderModelCommand}}
+
+
+Render Model command implementation of \doxylink{classCommandI}{CommandI}.  
+
+
+
+
+{\ttfamily \#include $<$Render\+Model\+Command.\+h$>$}
+
+
+
+Inheritance diagram for Render\+Model\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classRenderModelCommand__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Render\+Model\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classRenderModelCommand__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRenderModelCommand_aa7b860779395fe7f0244d43ca113b2f0}{Render\+Model\+Command}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classModelViewerI}{Model\+ViewerI}} $>$ \mbox{\hyperlink{classRenderModelCommand_a6786d9847331e31bb3ee35929dcc544a}{model\+\_\+viewer}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classRenderModelCommand_a5a32b3e019458d2a65b1b151a46030a3}{sdformat\+\_\+parser}}, bool \mbox{\hyperlink{classRenderModelCommand_a822bfc61637dfc899bd797c5ff5f2dbb}{render\+\_\+collisions\+\_\+in\+\_\+model\+\_\+viewer}})
+\begin{DoxyCompactList}\small\item\em Constructor for render model command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classRenderModelCommand_afc1b4f396c18abb3d701cebddd3be583}{Execute}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRenderModelCommand_a979daa19d929956ef1d704e02b6d2721}{Execute\+Undo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRenderModelCommand_a30dc1c2ca35cabb1a5102f65e7808d39}{Execute\+Redo}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRenderModelCommand_ada371c21c40262238c2186a1b038c13b}{Is\+Undoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRenderModelCommand_ad1808e017c300f079d235a8b3c1ad40c}{Is\+Redoable}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRenderModelCommand_ae80ea62812a941cb95763d1864c37459}{Is\+Threaded}} (bool \&prevent\+\_\+user\+\_\+input) override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRenderModelCommand_accf3be91ac9894f956b87730ad174e14}{Changes\+Program\+State\+Irreversibly}} () override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRenderModelCommand_a6786d9847331e31bb3ee35929dcc544a}\label{classRenderModelCommand_a6786d9847331e31bb3ee35929dcc544a} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classModelViewerI}{Model\+ViewerI}} $>$ {\bfseries model\+\_\+viewer}
+\begin{DoxyCompactList}\small\item\em Pointer to the model viewer object. \end{DoxyCompactList}\item 
+\Hypertarget{classRenderModelCommand_a5a32b3e019458d2a65b1b151a46030a3}\label{classRenderModelCommand_a5a32b3e019458d2a65b1b151a46030a3} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ {\bfseries sdformat\+\_\+parser}
+\begin{DoxyCompactList}\small\item\em Pointer to the SDFormat parser object. \end{DoxyCompactList}\item 
+\Hypertarget{classRenderModelCommand_a822bfc61637dfc899bd797c5ff5f2dbb}\label{classRenderModelCommand_a822bfc61637dfc899bd797c5ff5f2dbb} 
+bool {\bfseries render\+\_\+collisions\+\_\+in\+\_\+model\+\_\+viewer}
+\begin{DoxyCompactList}\small\item\em Indicates if collisions should be rendered in the model viewer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Render Model command implementation of \doxylink{classCommandI}{CommandI}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classRenderModelCommand_aa7b860779395fe7f0244d43ca113b2f0}\label{classRenderModelCommand_aa7b860779395fe7f0244d43ca113b2f0} 
+\index{RenderModelCommand@{RenderModelCommand}!RenderModelCommand@{RenderModelCommand}}
+\index{RenderModelCommand@{RenderModelCommand}!RenderModelCommand@{RenderModelCommand}}
+\doxysubsubsection{\texorpdfstring{RenderModelCommand()}{RenderModelCommand()}}
+{\footnotesize\ttfamily Render\+Model\+Command\+::\+Render\+Model\+Command (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classModelViewerI}{Model\+ViewerI}} $>$}]{model\+\_\+viewer,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$}]{sdformat\+\_\+parser,  }\item[{bool}]{render\+\_\+collisions\+\_\+in\+\_\+model\+\_\+viewer }\end{DoxyParamCaption})}
+
+
+
+Constructor for render model command objects. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em model\+\_\+viewer} & A pointer to the model viewer object \\
+\hline
+\mbox{\texttt{ in}}  & {\em sdformat\+\_\+parser} & A pointer to the SDFormat parser object \\
+\hline
+\mbox{\texttt{ in}}  & {\em render\+\_\+collisions\+\_\+in\+\_\+model\+\_\+viewer} & A boolean to indicate wether or not to render collision objects \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRenderModelCommand_accf3be91ac9894f956b87730ad174e14}\label{classRenderModelCommand_accf3be91ac9894f956b87730ad174e14} 
+\index{RenderModelCommand@{RenderModelCommand}!ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}}
+\index{ChangesProgramStateIrreversibly@{ChangesProgramStateIrreversibly}!RenderModelCommand@{RenderModelCommand}}
+\doxysubsubsection{\texorpdfstring{ChangesProgramStateIrreversibly()}{ChangesProgramStateIrreversibly()}}
+{\footnotesize\ttfamily bool Render\+Model\+Command\+::\+Changes\+Program\+State\+Irreversibly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}{CommandI}}.
+
+\Hypertarget{classRenderModelCommand_afc1b4f396c18abb3d701cebddd3be583}\label{classRenderModelCommand_afc1b4f396c18abb3d701cebddd3be583} 
+\index{RenderModelCommand@{RenderModelCommand}!Execute@{Execute}}
+\index{Execute@{Execute}!RenderModelCommand@{RenderModelCommand}}
+\doxysubsubsection{\texorpdfstring{Execute()}{Execute()}}
+{\footnotesize\ttfamily bool Render\+Model\+Command\+::\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+This command calls a method from the SDFormat Parser to obtain information about all the models in the sdf tree and then adds each model to a render queue on the model viewer, which runs on a seperate thread 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_ad0107a73ebccd619860597db7bad2cce}{CommandI}}.
+
+\Hypertarget{classRenderModelCommand_a30dc1c2ca35cabb1a5102f65e7808d39}\label{classRenderModelCommand_a30dc1c2ca35cabb1a5102f65e7808d39} 
+\index{RenderModelCommand@{RenderModelCommand}!ExecuteRedo@{ExecuteRedo}}
+\index{ExecuteRedo@{ExecuteRedo}!RenderModelCommand@{RenderModelCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteRedo()}{ExecuteRedo()}}
+{\footnotesize\ttfamily bool Render\+Model\+Command\+::\+Execute\+Redo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a10b7094ad088998d95045e7db350eb0a}{CommandI}}.
+
+\Hypertarget{classRenderModelCommand_a979daa19d929956ef1d704e02b6d2721}\label{classRenderModelCommand_a979daa19d929956ef1d704e02b6d2721} 
+\index{RenderModelCommand@{RenderModelCommand}!ExecuteUndo@{ExecuteUndo}}
+\index{ExecuteUndo@{ExecuteUndo}!RenderModelCommand@{RenderModelCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteUndo()}{ExecuteUndo()}}
+{\footnotesize\ttfamily bool Render\+Model\+Command\+::\+Execute\+Undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a38d5a489ac6de24f3b40035083c5ed9a}{CommandI}}.
+
+\Hypertarget{classRenderModelCommand_ad1808e017c300f079d235a8b3c1ad40c}\label{classRenderModelCommand_ad1808e017c300f079d235a8b3c1ad40c} 
+\index{RenderModelCommand@{RenderModelCommand}!IsRedoable@{IsRedoable}}
+\index{IsRedoable@{IsRedoable}!RenderModelCommand@{RenderModelCommand}}
+\doxysubsubsection{\texorpdfstring{IsRedoable()}{IsRedoable()}}
+{\footnotesize\ttfamily bool Render\+Model\+Command\+::\+Is\+Redoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
+
+\Hypertarget{classRenderModelCommand_ae80ea62812a941cb95763d1864c37459}\label{classRenderModelCommand_ae80ea62812a941cb95763d1864c37459} 
+\index{RenderModelCommand@{RenderModelCommand}!IsThreaded@{IsThreaded}}
+\index{IsThreaded@{IsThreaded}!RenderModelCommand@{RenderModelCommand}}
+\doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
+{\footnotesize\ttfamily bool Render\+Model\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}\item[{bool \&}]{prevent\+\_\+user\+\_\+input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em prevent\+\_\+user\+\_\+input} & indicates if user input should be prevented if this happens to be a threaded command \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a1c54206064c146ea9ff089fbe4d321b6}{CommandI}}.
+
+\Hypertarget{classRenderModelCommand_ada371c21c40262238c2186a1b038c13b}\label{classRenderModelCommand_ada371c21c40262238c2186a1b038c13b} 
+\index{RenderModelCommand@{RenderModelCommand}!IsUndoable@{IsUndoable}}
+\index{IsUndoable@{IsUndoable}!RenderModelCommand@{RenderModelCommand}}
+\doxysubsubsection{\texorpdfstring{IsUndoable()}{IsUndoable()}}
+{\footnotesize\ttfamily bool Render\+Model\+Command\+::\+Is\+Undoable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implementation of interface method. 
+
+\begin{DoxyReturn}{Returns}
+Always false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommandI_a4722f602fdfa6387aa0fced8dfa0e9fd}{CommandI}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/commands/Render\+Model\+Command.\+h\item 
+src/commands/Render\+Model\+Command.\+cpp\end{DoxyCompactItemize}

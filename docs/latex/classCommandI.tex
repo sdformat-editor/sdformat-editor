@@ -21,11 +21,12 @@ Inheritance diagram for CommandI\+:
 \end{figure}
 
 
-Collaboration diagram for CommandI\+:\nopagebreak
+Collaboration diagram for CommandI\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=246pt]{classCommandI__coll__graph}
+\includegraphics[width=249pt]{classCommandI__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -41,7 +42,7 @@ virtual bool \mbox{\hyperlink{classCommandI_a4722f602fdfa6387aa0fced8dfa0e9fd}{I
 \begin{DoxyCompactList}\small\item\em Undo functionality of the command. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{Is\+Redoable}} ()=0
 \begin{DoxyCompactList}\small\item\em Redo functionality of the command. \end{DoxyCompactList}\item 
-virtual bool \mbox{\hyperlink{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}{Is\+Threaded}} ()=0
+virtual bool \mbox{\hyperlink{classCommandI_a1c54206064c146ea9ff089fbe4d321b6}{Is\+Threaded}} (bool \&prevent\+\_\+user\+\_\+input)=0
 \begin{DoxyCompactList}\small\item\em Indicates if this command should be run in a thread. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}{Changes\+Program\+State\+Irreversibly}} ()=0
 \begin{DoxyCompactList}\small\item\em Indicates if this command is an irreversible state-\/changing command. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -66,7 +67,7 @@ True if this command changes the state of the program irreversibly
 \end{DoxyReturn}
 
 
-Implemented in \mbox{\hyperlink{classAddElementCommand_a095686d88826409e62e82b4526b2b544}{Add\+Element\+Command}}, \mbox{\hyperlink{classDeleteAttributeCommand_ad5bed5a199ca3b6861fd0a47f6895f1b}{Delete\+Attribute\+Command}}, \mbox{\hyperlink{classDeleteElementCommand_acd07af54e3fcdfce7f7593dad933cc3e}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_a5169594e3d7ab0c2368237db5dced223}{Generic\+Command}}, \mbox{\hyperlink{classModifyAttributeCommand_a712d809325687e4d149146a40cfcb0fb}{Modify\+Attribute\+Command$<$ T $>$}}, \mbox{\hyperlink{classModifyElementCommand_ab2e39dcf67a8423834883037fc043157}{Modify\+Element\+Command$<$ T $>$}}, \mbox{\hyperlink{classOpenFileCommand_ae020a395fb497ac749d5ddb54d2ce7ef}{Open\+File\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_aca27d37ba37fadaab46b06ea13bec632}{Save\+File\+Command}}.
+Implemented in \mbox{\hyperlink{classAddElementCommand_a095686d88826409e62e82b4526b2b544}{Add\+Element\+Command}}, \mbox{\hyperlink{classCloseModelViewerCommand_acd5a83d9098ff80583b172b9e662f6ad}{Close\+Model\+Viewer\+Command}}, \mbox{\hyperlink{classCreateFileCommand_aae5bd03e5dddc956aa33fd93eca8efc5}{Create\+File\+Command}}, \mbox{\hyperlink{classDeleteElementCommand_acd07af54e3fcdfce7f7593dad933cc3e}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_a5169594e3d7ab0c2368237db5dced223}{Generic\+Command}}, \mbox{\hyperlink{classModifyAttributeCommand_a712d809325687e4d149146a40cfcb0fb}{Modify\+Attribute\+Command$<$ T $>$}}, \mbox{\hyperlink{classModifyElementCommand_ab2e39dcf67a8423834883037fc043157}{Modify\+Element\+Command$<$ T $>$}}, \mbox{\hyperlink{classOpenFileCommand_ae020a395fb497ac749d5ddb54d2ce7ef}{Open\+File\+Command}}, \mbox{\hyperlink{classOpenModelViewerCommand_a7146dcfd24c61013d8ddbb312904d092}{Open\+Model\+Viewer\+Command}}, \mbox{\hyperlink{classRenderModelCommand_accf3be91ac9894f956b87730ad174e14}{Render\+Model\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_aca27d37ba37fadaab46b06ea13bec632}{Save\+File\+Command}}.
 
 \Hypertarget{classCommandI_ad0107a73ebccd619860597db7bad2cce}\label{classCommandI_ad0107a73ebccd619860597db7bad2cce} 
 \index{CommandI@{CommandI}!Execute@{Execute}}
@@ -83,7 +84,7 @@ True if the command has been executed
 \end{DoxyReturn}
 
 
-Implemented in \mbox{\hyperlink{classSaveFileCommand_a4836ac21dbfd6aab0a487f30335bce73}{Save\+File\+Command}}, \mbox{\hyperlink{classAddElementCommand_a6e8c1cd748d556e3385df4a6f4ad676f}{Add\+Element\+Command}}, \mbox{\hyperlink{classDeleteAttributeCommand_ab10d771e56e230d6af1b7de44cef975f}{Delete\+Attribute\+Command}}, \mbox{\hyperlink{classDeleteElementCommand_ad606aae7b0d869bdaeccbe40c44c48a6}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_a663cc7cb4a3fd95196a1ff28785fc688}{Generic\+Command}}, \mbox{\hyperlink{classModifyAttributeCommand_a9047478e233fe031c878e123b644ac13}{Modify\+Attribute\+Command$<$ T $>$}}, \mbox{\hyperlink{classModifyElementCommand_a059211f2ebd1d3f0c977501c9255e5b4}{Modify\+Element\+Command$<$ T $>$}}, and \mbox{\hyperlink{classOpenFileCommand_aaaa8a9f550b1669d7a427a9c143c74b9}{Open\+File\+Command}}.
+Implemented in \mbox{\hyperlink{classSaveFileCommand_a4836ac21dbfd6aab0a487f30335bce73}{Save\+File\+Command}}, \mbox{\hyperlink{classAddElementCommand_a6e8c1cd748d556e3385df4a6f4ad676f}{Add\+Element\+Command}}, \mbox{\hyperlink{classCloseModelViewerCommand_ade2bc5671c933d85681945f32cc0d884}{Close\+Model\+Viewer\+Command}}, \mbox{\hyperlink{classCreateFileCommand_a1dd322a7c021f4ea2ffb990329123cd9}{Create\+File\+Command}}, \mbox{\hyperlink{classDeleteElementCommand_ad606aae7b0d869bdaeccbe40c44c48a6}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_a663cc7cb4a3fd95196a1ff28785fc688}{Generic\+Command}}, \mbox{\hyperlink{classModifyAttributeCommand_a9047478e233fe031c878e123b644ac13}{Modify\+Attribute\+Command$<$ T $>$}}, \mbox{\hyperlink{classModifyElementCommand_a059211f2ebd1d3f0c977501c9255e5b4}{Modify\+Element\+Command$<$ T $>$}}, \mbox{\hyperlink{classOpenFileCommand_aaaa8a9f550b1669d7a427a9c143c74b9}{Open\+File\+Command}}, \mbox{\hyperlink{classOpenModelViewerCommand_a221a248d1628fb83769f597619ae525b}{Open\+Model\+Viewer\+Command}}, and \mbox{\hyperlink{classRenderModelCommand_afc1b4f396c18abb3d701cebddd3be583}{Render\+Model\+Command}}.
 
 \Hypertarget{classCommandI_a10b7094ad088998d95045e7db350eb0a}\label{classCommandI_a10b7094ad088998d95045e7db350eb0a} 
 \index{CommandI@{CommandI}!ExecuteRedo@{ExecuteRedo}}
@@ -100,7 +101,7 @@ True if the command is redo-\/able and has been redone
 \end{DoxyReturn}
 
 
-Implemented in \mbox{\hyperlink{classAddElementCommand_aa0aaea9a74a5112c3e7e5e04bfe8bbab}{Add\+Element\+Command}}, \mbox{\hyperlink{classDeleteAttributeCommand_a133b826daa587df07544b199a52ef8d5}{Delete\+Attribute\+Command}}, \mbox{\hyperlink{classDeleteElementCommand_a25f8b7d96cc27cfdb55dbe5810c82835}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_ac0511e9b0bc5f8b33e1ceb0001fca69b}{Generic\+Command}}, \mbox{\hyperlink{classModifyAttributeCommand_af0a64a058bfff504d51b005890a71b98}{Modify\+Attribute\+Command$<$ T $>$}}, \mbox{\hyperlink{classModifyElementCommand_a9f3076ee2b46f8a3251e56263b2af183}{Modify\+Element\+Command$<$ T $>$}}, \mbox{\hyperlink{classOpenFileCommand_aec939dcbd7f334068effbee9c6adc201}{Open\+File\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_a70eea57dbc9c418267c5582fba6b05a8}{Save\+File\+Command}}.
+Implemented in \mbox{\hyperlink{classAddElementCommand_aa0aaea9a74a5112c3e7e5e04bfe8bbab}{Add\+Element\+Command}}, \mbox{\hyperlink{classCloseModelViewerCommand_aafd7250f004a95a06af1076920eee815}{Close\+Model\+Viewer\+Command}}, \mbox{\hyperlink{classCreateFileCommand_a8d7a711583c4daef91ffed84fecf4dd1}{Create\+File\+Command}}, \mbox{\hyperlink{classDeleteElementCommand_a25f8b7d96cc27cfdb55dbe5810c82835}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_ac0511e9b0bc5f8b33e1ceb0001fca69b}{Generic\+Command}}, \mbox{\hyperlink{classModifyAttributeCommand_af0a64a058bfff504d51b005890a71b98}{Modify\+Attribute\+Command$<$ T $>$}}, \mbox{\hyperlink{classModifyElementCommand_a9f3076ee2b46f8a3251e56263b2af183}{Modify\+Element\+Command$<$ T $>$}}, \mbox{\hyperlink{classOpenFileCommand_aec939dcbd7f334068effbee9c6adc201}{Open\+File\+Command}}, \mbox{\hyperlink{classOpenModelViewerCommand_ac287625f85b9da3ea019dbdb4a4ac18c}{Open\+Model\+Viewer\+Command}}, \mbox{\hyperlink{classRenderModelCommand_a30dc1c2ca35cabb1a5102f65e7808d39}{Render\+Model\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_a70eea57dbc9c418267c5582fba6b05a8}{Save\+File\+Command}}.
 
 \Hypertarget{classCommandI_a38d5a489ac6de24f3b40035083c5ed9a}\label{classCommandI_a38d5a489ac6de24f3b40035083c5ed9a} 
 \index{CommandI@{CommandI}!ExecuteUndo@{ExecuteUndo}}
@@ -117,7 +118,7 @@ True if the command undo-\/able and has been undone
 \end{DoxyReturn}
 
 
-Implemented in \mbox{\hyperlink{classAddElementCommand_ae67cee7111ea7d83a0d57bfc7f72d121}{Add\+Element\+Command}}, \mbox{\hyperlink{classDeleteAttributeCommand_a5eca68dc6d9993cef0be1ea9101a9d20}{Delete\+Attribute\+Command}}, \mbox{\hyperlink{classDeleteElementCommand_a81259f19e29ff98fe4282c67897457c9}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_a9850a1f2ca9eb74507ea0e8d5a4d1d3e}{Generic\+Command}}, \mbox{\hyperlink{classModifyAttributeCommand_ab84b33a5f56ed858d290519c9e204605}{Modify\+Attribute\+Command$<$ T $>$}}, \mbox{\hyperlink{classModifyElementCommand_ac9883f73cba92657e8c61d6d9d3fb954}{Modify\+Element\+Command$<$ T $>$}}, \mbox{\hyperlink{classOpenFileCommand_a6081ebc56ffd4c603609b548cea6c53c}{Open\+File\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_ab122ab89b7e2c525ae077de0040e1ee7}{Save\+File\+Command}}.
+Implemented in \mbox{\hyperlink{classAddElementCommand_ae67cee7111ea7d83a0d57bfc7f72d121}{Add\+Element\+Command}}, \mbox{\hyperlink{classCloseModelViewerCommand_af3ea92b8dae720036f7ead78daaf69ac}{Close\+Model\+Viewer\+Command}}, \mbox{\hyperlink{classCreateFileCommand_a8e7ccebd749d9f276200d6daf23b1bd2}{Create\+File\+Command}}, \mbox{\hyperlink{classDeleteElementCommand_a81259f19e29ff98fe4282c67897457c9}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_a9850a1f2ca9eb74507ea0e8d5a4d1d3e}{Generic\+Command}}, \mbox{\hyperlink{classModifyAttributeCommand_ab84b33a5f56ed858d290519c9e204605}{Modify\+Attribute\+Command$<$ T $>$}}, \mbox{\hyperlink{classModifyElementCommand_ac9883f73cba92657e8c61d6d9d3fb954}{Modify\+Element\+Command$<$ T $>$}}, \mbox{\hyperlink{classOpenFileCommand_a6081ebc56ffd4c603609b548cea6c53c}{Open\+File\+Command}}, \mbox{\hyperlink{classOpenModelViewerCommand_a6587a10624951458a19fef16bcd9efe4}{Open\+Model\+Viewer\+Command}}, \mbox{\hyperlink{classRenderModelCommand_a979daa19d929956ef1d704e02b6d2721}{Render\+Model\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_ab122ab89b7e2c525ae077de0040e1ee7}{Save\+File\+Command}}.
 
 \Hypertarget{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}\label{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6} 
 \index{CommandI@{CommandI}!IsRedoable@{IsRedoable}}
@@ -134,24 +135,29 @@ True if the command can be redone
 \end{DoxyReturn}
 
 
-Implemented in \mbox{\hyperlink{classAddElementCommand_ac71009f4a4858e664619c738966878ae}{Add\+Element\+Command}}, \mbox{\hyperlink{classDeleteAttributeCommand_a6c9739c404c65c2d1d356a9db0a8e756}{Delete\+Attribute\+Command}}, \mbox{\hyperlink{classDeleteElementCommand_a6c5f04219ace0f3808af89a68828702b}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_ab4f7eba842e2e7b19f55781499bd6b5a}{Generic\+Command}}, \mbox{\hyperlink{classModifyAttributeCommand_a0d6d063e15b58dde6b748ff6e939c269}{Modify\+Attribute\+Command$<$ T $>$}}, \mbox{\hyperlink{classModifyElementCommand_aa0923ab4789fa5640bada3aa931efea7}{Modify\+Element\+Command$<$ T $>$}}, \mbox{\hyperlink{classOpenFileCommand_afdf34480b36f0fa36f41fc546333a5dc}{Open\+File\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_a47cf7448aee11bb954fb40af4022e122}{Save\+File\+Command}}.
+Implemented in \mbox{\hyperlink{classAddElementCommand_ac71009f4a4858e664619c738966878ae}{Add\+Element\+Command}}, \mbox{\hyperlink{classCloseModelViewerCommand_aa5b50e4ab89bbcf15ba0d38c5f624bd6}{Close\+Model\+Viewer\+Command}}, \mbox{\hyperlink{classCreateFileCommand_a2583921a270eff76dd807330f2b08468}{Create\+File\+Command}}, \mbox{\hyperlink{classDeleteElementCommand_a6c5f04219ace0f3808af89a68828702b}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_ab4f7eba842e2e7b19f55781499bd6b5a}{Generic\+Command}}, \mbox{\hyperlink{classModifyAttributeCommand_a0d6d063e15b58dde6b748ff6e939c269}{Modify\+Attribute\+Command$<$ T $>$}}, \mbox{\hyperlink{classModifyElementCommand_aa0923ab4789fa5640bada3aa931efea7}{Modify\+Element\+Command$<$ T $>$}}, \mbox{\hyperlink{classOpenFileCommand_afdf34480b36f0fa36f41fc546333a5dc}{Open\+File\+Command}}, \mbox{\hyperlink{classOpenModelViewerCommand_a95006d5f977d67a784dc29ae3bac5e77}{Open\+Model\+Viewer\+Command}}, \mbox{\hyperlink{classRenderModelCommand_ad1808e017c300f079d235a8b3c1ad40c}{Render\+Model\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_a47cf7448aee11bb954fb40af4022e122}{Save\+File\+Command}}.
 
-\Hypertarget{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}\label{classCommandI_a6b173d77055ac6a8c548b6737ca03caf} 
+\Hypertarget{classCommandI_a1c54206064c146ea9ff089fbe4d321b6}\label{classCommandI_a1c54206064c146ea9ff089fbe4d321b6} 
 \index{CommandI@{CommandI}!IsThreaded@{IsThreaded}}
 \index{IsThreaded@{IsThreaded}!CommandI@{CommandI}}
 \doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
-{\footnotesize\ttfamily virtual bool Command\+I\+::\+Is\+Threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual bool Command\+I\+::\+Is\+Threaded (\begin{DoxyParamCaption}\item[{bool \&}]{prevent\+\_\+user\+\_\+input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
 Indicates if this command should be run in a thread. 
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em prevent\+\_\+user\+\_\+input} & indicates if user input should be prevented if this happens to be a threaded command \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True if this command should be run in a thread 
 \end{DoxyReturn}
 
 
-Implemented in \mbox{\hyperlink{classAddElementCommand_ad3a7cd0752dc92e57b4ee64b7f1e95df}{Add\+Element\+Command}}, \mbox{\hyperlink{classDeleteAttributeCommand_af1d19e75d8586e01a9e8564b5a7e14d9}{Delete\+Attribute\+Command}}, \mbox{\hyperlink{classDeleteElementCommand_a4561b97e2c51f2516e64d0ba816febe5}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_aaad69c127eaa595dad9b582421d78a7d}{Generic\+Command}}, \mbox{\hyperlink{classModifyAttributeCommand_a62494dadb8502d4a6438fd82719e804e}{Modify\+Attribute\+Command$<$ T $>$}}, \mbox{\hyperlink{classModifyElementCommand_a49d4b72b16e9436c01881f624e584bea}{Modify\+Element\+Command$<$ T $>$}}, \mbox{\hyperlink{classOpenFileCommand_a3fb7e479af973fb23f422c955e24fc77}{Open\+File\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_a0d77c2d15577db0fd124b2e453bba00a}{Save\+File\+Command}}.
+Implemented in \mbox{\hyperlink{classAddElementCommand_a945c0d3d8e14dd224e4c75c5bf12a7a7}{Add\+Element\+Command}}, \mbox{\hyperlink{classCloseModelViewerCommand_a414faaeea927cff1f8e6643ec189fc1f}{Close\+Model\+Viewer\+Command}}, \mbox{\hyperlink{classCreateFileCommand_a3d6fa72935a1130086ddbd7dc9270998}{Create\+File\+Command}}, \mbox{\hyperlink{classDeleteElementCommand_a8c76680ad67709fd31e57d874339face}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_a74a386005668d9bc588cd980ca478376}{Generic\+Command}}, \mbox{\hyperlink{classModifyAttributeCommand_a211a71d72c9e31f828a945e2da5e7694}{Modify\+Attribute\+Command$<$ T $>$}}, \mbox{\hyperlink{classModifyElementCommand_a4f8566561514b478c4dcd020a427a908}{Modify\+Element\+Command$<$ T $>$}}, \mbox{\hyperlink{classOpenFileCommand_a0afc31cf065ad9e890dec0704cd42308}{Open\+File\+Command}}, \mbox{\hyperlink{classOpenModelViewerCommand_ab94a614b682378f5b373fa8dbdd333ba}{Open\+Model\+Viewer\+Command}}, \mbox{\hyperlink{classRenderModelCommand_ae80ea62812a941cb95763d1864c37459}{Render\+Model\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_a2d9bfd9b7930ff9f7b98620fac7e4896}{Save\+File\+Command}}.
 
 \Hypertarget{classCommandI_a4722f602fdfa6387aa0fced8dfa0e9fd}\label{classCommandI_a4722f602fdfa6387aa0fced8dfa0e9fd} 
 \index{CommandI@{CommandI}!IsUndoable@{IsUndoable}}
@@ -168,7 +174,7 @@ True if the command can be undone
 \end{DoxyReturn}
 
 
-Implemented in \mbox{\hyperlink{classAddElementCommand_a43f52d3865e6c47250929b42b743ddc8}{Add\+Element\+Command}}, \mbox{\hyperlink{classDeleteAttributeCommand_a91d0daf21edaf67d72943ec47f245522}{Delete\+Attribute\+Command}}, \mbox{\hyperlink{classDeleteElementCommand_a4ad99f4f3c8ca4b266af9c545744fdb6}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_afa14aae0989db8983af2ac5c2a2e9722}{Generic\+Command}}, \mbox{\hyperlink{classModifyAttributeCommand_ae5f4a94d8c7913093be60ff5de2e7c9a}{Modify\+Attribute\+Command$<$ T $>$}}, \mbox{\hyperlink{classModifyElementCommand_a55ba581aa29dbf5a15b3b6f0ebf2da61}{Modify\+Element\+Command$<$ T $>$}}, \mbox{\hyperlink{classOpenFileCommand_afa163c258a28f6f7af8f43908e181605}{Open\+File\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_a85292d15bc3c13b7ad14a0b73d1dd154}{Save\+File\+Command}}.
+Implemented in \mbox{\hyperlink{classAddElementCommand_a43f52d3865e6c47250929b42b743ddc8}{Add\+Element\+Command}}, \mbox{\hyperlink{classCloseModelViewerCommand_a6adaf2006e5ef1aab16db7c3342f93d9}{Close\+Model\+Viewer\+Command}}, \mbox{\hyperlink{classCreateFileCommand_a90e7e56dfbda6686fd4db086a71a2afc}{Create\+File\+Command}}, \mbox{\hyperlink{classDeleteElementCommand_a4ad99f4f3c8ca4b266af9c545744fdb6}{Delete\+Element\+Command}}, \mbox{\hyperlink{classGenericCommand_afa14aae0989db8983af2ac5c2a2e9722}{Generic\+Command}}, \mbox{\hyperlink{classModifyAttributeCommand_ae5f4a94d8c7913093be60ff5de2e7c9a}{Modify\+Attribute\+Command$<$ T $>$}}, \mbox{\hyperlink{classModifyElementCommand_a55ba581aa29dbf5a15b3b6f0ebf2da61}{Modify\+Element\+Command$<$ T $>$}}, \mbox{\hyperlink{classOpenFileCommand_afa163c258a28f6f7af8f43908e181605}{Open\+File\+Command}}, \mbox{\hyperlink{classOpenModelViewerCommand_ad05f3071674aef354a5fd6da8267b552}{Open\+Model\+Viewer\+Command}}, \mbox{\hyperlink{classRenderModelCommand_ada371c21c40262238c2186a1b038c13b}{Render\+Model\+Command}}, and \mbox{\hyperlink{classSaveFileCommand_a85292d15bc3c13b7ad14a0b73d1dd154}{Save\+File\+Command}}.
 
 
 

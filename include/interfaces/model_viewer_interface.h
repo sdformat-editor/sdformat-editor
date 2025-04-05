@@ -22,23 +22,75 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
+#include <string>
+#include <mutex>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
 
 /// \brief Interface for the SDFormat Editor's 3D Model Vewer 
 class ModelViewerI
 {
+    /// \brief Struct representing information of a model's visual information
+    public: typedef struct {
+        std::string model_absolute_path;
+        glm::dvec3 position;
+        glm::dquat orientation;
+        glm::dvec3 scale = {1,1,1};
+        double opacity = 1.0f;
+    } ModelInfo;
+
+    /// @brief Preset shapes which do not require a mesh to be provided in the sdf
+    public: enum PresetType {
+        BOX,
+        CYLINDER,
+        SPHERE
+    };
+
+    /// \brief Struct representing information of a model's visual information for pre-defined shapes
+    public: typedef struct {
+        PresetType preset_type;
+        glm::dvec3 position;
+        glm::dquat orientation;
+        glm::dvec3 scale = {1,1,1};
+        double opacity = 1.0f;
+    } PresetModelInfo;
 
     /// \callgraph
     /// \brief Initialization of the Model Viewer. 
-    /// NOTE: (zaid) This initalize method is not wrapped by the constructor because we can reinitalize it 
-    //  multiple times (unlike the GUI), which should terminate the program if it closes.
-    /// \param[in] cad_files The name to be given to the SDFormatEditor Window
-    /// \param[out] success true if window initalization is successful
-    public: virtual void Initialize(const std::vector<std::string> &cad_files, bool &success) = 0;
+    public: virtual void Initialize() = 0;
 
     /// \callgraph
-    /// \brief Updating the Model Viewer
-    public: virtual void Update() = 0;
+    /// \brief Rander a single frame
+    public: virtual void RenderFrame() = 0;
 
+    /// \callgraph
+    /// \brief Tells the model viewer to quit on its next iteration
+    public: virtual void Quit() = 0;
+
+    /// \callgraph
+    /// \brief Add a model to the model viewer, the model will be rendered on the next frame.
+    /// \param[in] model_info The model information
+    public: virtual void AddModel(ModelInfo model_info) = 0;
+
+    /// \callgraph
+    /// \brief Add a model to the model viewer, the model will be rendered on the next frame.
+    /// \param[in] model_info The preset model information
+    public: virtual void AddModel(PresetModelInfo model_info) = 0;
+
+    /// \callgraph
+    /// \brief Sets a flag in the model viewer to remove the models in the scene
+    public: virtual void ResetModels() = 0;
+
+    /// \callgraph
+    /// \brief Indicates if the model viewer is running
+    /// \returns a boolean
+    public: virtual bool IsRunning() = 0;
+
+    /// \callgraph
+    /// \brief Method to get the model viewer's mutex
+    public: virtual std::mutex& GetMutex() = 0;
 };
 
 #endif

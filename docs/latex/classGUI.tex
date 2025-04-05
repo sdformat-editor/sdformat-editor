@@ -36,9 +36,7 @@ Collaboration diagram for GUI\+:
 \begin{DoxyCompactList}\small\item\em Constructor that wraps the Initialize method. \end{DoxyCompactList}\item 
 \Hypertarget{classGUI_ac9cae2328dcb5d83bdfaeca49a2eb695}\label{classGUI_ac9cae2328dcb5d83bdfaeca49a2eb695} 
 {\bfseries \texorpdfstring{$\sim$}{\string~}\+GUI} ()
-\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classGUI_a371c336213806742abe81172d845b0de}{Open\+Choice\+Dialog}} (\mbox{\hyperlink{structGUII_1_1DialogMessage}{Dialog\+Message}} dialog\+Message, std\+::vector$<$ std\+::pair$<$ std\+::string, bool $>$ $>$ \&choices) override
-\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -50,6 +48,8 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \mbox{\
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGUI_a487fb746f6310430c4a42a3f2e5015d1}{Set\+Prevent\+Input\+Flag}} (bool set) override
 \begin{DoxyCompactList}\small\item\em Implementation of flag setting method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGUI_a371c336213806742abe81172d845b0de}{Open\+Choice\+Dialog}} (\mbox{\hyperlink{structGUII_1_1DialogMessage}{Dialog\+Message}} dialog\+Message, std\+::vector$<$ std\+::pair$<$ std\+::string, bool $>$ $>$ \&choices) override
+\begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGUI_a25a3bd1406803fafb9840d311a9fc7f9}{Display\+SDFRoot\+Element}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCommandI}{CommandI}} $>$ \&command, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSDFormatParserI}{SDFormat\+ParserI}} $>$ \mbox{\hyperlink{classGUI_ac4c318d3b227ae03cea3447780465d90}{sdformat\+\_\+parser}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCommandFactoryI}{Command\+FactoryI}} $>$ command\+\_\+factory)
 \begin{DoxyCompactList}\small\item\em Function to display the SDF root element in the \doxylink{classGUI}{GUI} in a tree format. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classGUI_a70390acea16ec9de6dba4439cd2654fa}{Setup\+New\+Frame}} ()
@@ -70,7 +70,7 @@ std\+::unique\+\_\+lock$<$ std\+::mutex $>$ \mbox{\hyperlink{classGUI_a631a94dcf
 \begin{DoxyCompactItemize}
 \item 
 static void \mbox{\hyperlink{classGUI_ad0fd69fc7f512cacf6bfec7d67d6141a}{GLFWError\+Callback}} (int error, const char \texorpdfstring{$\ast$}{*}description)
-\begin{DoxyCompactList}\small\item\em Function for handling GLFW Error (required to be static by GLFW) NOTE\+: (zaid) It may be good to integrate this with an error handler class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Function for handling GLFW Error (required to be static by GLFW) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -80,6 +80,12 @@ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCommandFactory}{Command\+Factory
 \Hypertarget{classGUI_a0d3ed3d3ea1560ec4321e84f5dc7fca3}\label{classGUI_a0d3ed3d3ea1560ec4321e84f5dc7fca3} 
 std\+::atomic$<$ bool $>$ {\bfseries prevent\+\_\+input\+\_\+flag} = false
 \begin{DoxyCompactList}\small\item\em Flag which can be set to prevent the \doxylink{classGUI}{GUI} from taking user input. \end{DoxyCompactList}\item 
+\Hypertarget{classGUI_a01d0bd5ccce6165b143664acc0374d21}\label{classGUI_a01d0bd5ccce6165b143664acc0374d21} 
+bool {\bfseries model\+\_\+viewer\+\_\+running} = false
+\begin{DoxyCompactList}\small\item\em Flag to indicate if the model viewer is currently running. \end{DoxyCompactList}\item 
+\Hypertarget{classGUI_ad2c29cf63206c16f2c2b287f98a2c133}\label{classGUI_ad2c29cf63206c16f2c2b287f98a2c133} 
+bool {\bfseries render\+\_\+collisions\+\_\+in\+\_\+model\+\_\+viewer} = false
+\begin{DoxyCompactList}\small\item\em Flag to indicate if collisions should be loaded in the model viewer. \end{DoxyCompactList}\item 
 \Hypertarget{classGUI_a2955f39e8b9690cf35a43a8b0768f64f}\label{classGUI_a2955f39e8b9690cf35a43a8b0768f64f} 
 GLFWwindow \texorpdfstring{$\ast$}{*} {\bfseries window} = nullptr
 \begin{DoxyCompactList}\small\item\em Pointer to the GLFW window object, used to manage for rendering and handling window events. \end{DoxyCompactList}\item 
@@ -131,6 +137,8 @@ Constructor that wraps the Initialize method.
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em window\+\_\+name} & The name to be given to the SDFormat\+Editor Window \\
 \hline
+\mbox{\texttt{ in}}  & {\em sdformat\+\_\+parser} & A pointer to the sdformat parser object \\
+\hline
 \mbox{\texttt{ out}}  & {\em success} & true if window initalization is successful \\
 \hline
 \end{DoxyParams}
@@ -172,6 +180,8 @@ Create a dropdown list.
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em items} & A vector of strings to include in the dropdown \\
+\hline
+\mbox{\texttt{ in}}  & {\em item\+\_\+descriptions} & A vector of strings for the descriptions of each item \\
 \hline
 \mbox{\texttt{ out}}  & {\em selected\+\_\+item} & an integer representing the selected item \\
 \hline
@@ -239,6 +249,8 @@ Function to display the SDF root element in the \doxylink{classGUI}{GUI} in a tr
 \hline
 \mbox{\texttt{ in}}  & {\em sdformat\+\_\+parser} & an \doxylink{classSDFormatParserI}{SDFormat\+ParserI} instance containing an sdf element \\
 \hline
+\mbox{\texttt{ in}}  & {\em command\+\_\+factory} & used for creating command objects \\
+\hline
 \end{DoxyParams}
 \Hypertarget{classGUI_a1b5b6b76c93d2f1505f08dd048a2ca9b}\label{classGUI_a1b5b6b76c93d2f1505f08dd048a2ca9b} 
 \index{GUI@{GUI}!DrawCoreFrame@{DrawCoreFrame}}
@@ -257,9 +269,6 @@ Draw the core part of the Im\+GUI frame.
 \mbox{\texttt{ in}}  & {\em command\+\_\+factory} & used for creating command objects \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The a pointer to the command resulting from the user\textquotesingle{}s action during this frame 
-\end{DoxyReturn}
 \Hypertarget{classGUI_ad0fd69fc7f512cacf6bfec7d67d6141a}\label{classGUI_ad0fd69fc7f512cacf6bfec7d67d6141a} 
 \index{GUI@{GUI}!GLFWErrorCallback@{GLFWErrorCallback}}
 \index{GLFWErrorCallback@{GLFWErrorCallback}!GUI@{GUI}}
@@ -268,7 +277,7 @@ The a pointer to the command resulting from the user\textquotesingle{}s action d
 
 
 
-Function for handling GLFW Error (required to be static by GLFW) NOTE\+: (zaid) It may be good to integrate this with an error handler class. 
+Function for handling GLFW Error (required to be static by GLFW) 
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -288,6 +297,15 @@ Function for handling GLFW Error (required to be static by GLFW) NOTE\+: (zaid) 
 
 Implementation of interface method, wrapped by constructor. 
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em window\+\_\+name} & The name to be given to the SDFormat\+Editor Window \\
+\hline
+\mbox{\texttt{ in}}  & {\em sdformat\+\_\+parser} & A pointer to the sdformat parser object \\
+\hline
+\mbox{\texttt{ out}}  & {\em success} & true if window initalization is successful \\
+\hline
+\end{DoxyParams}
 
 
 Implements \mbox{\hyperlink{classGUII_a235dc88af7208ecae673c042103b10c9}{GUII}}.
@@ -310,7 +328,7 @@ Implements \mbox{\hyperlink{classGUII_a5a7b0b6b1c50a83a53c3cc1884b0795c}{GUII}}.
 \index{GUI@{GUI}!OpenChoiceDialog@{OpenChoiceDialog}}
 \index{OpenChoiceDialog@{OpenChoiceDialog}!GUI@{GUI}}
 \doxysubsubsection{\texorpdfstring{OpenChoiceDialog()}{OpenChoiceDialog()}}
-{\footnotesize\ttfamily void GUI\+::\+Open\+Choice\+Dialog (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGUII_1_1DialogMessage}{Dialog\+Message}}}]{dialog\+Message,  }\item[{std\+::vector$<$ std\+::pair$<$ std\+::string, bool $>$ $>$ \&}]{choices }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily void GUI\+::\+Open\+Choice\+Dialog (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGUII_1_1DialogMessage}{Dialog\+Message}}}]{dialog\+Message,  }\item[{std\+::vector$<$ std\+::pair$<$ std\+::string, bool $>$ $>$ \&}]{choices }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 

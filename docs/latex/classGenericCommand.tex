@@ -2,7 +2,7 @@
 \hypertarget{classGenericCommand}{}\label{classGenericCommand}\index{GenericCommand@{GenericCommand}}
 
 
-Executes and pops the top commandI object from a stack.  
+Executes a given function handle.  
 
 
 
@@ -11,27 +11,29 @@ Executes and pops the top commandI object from a stack.
 
 
 
-Inheritance diagram for Generic\+Command\+:\nopagebreak
+Inheritance diagram for Generic\+Command\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=246pt]{classGenericCommand__inherit__graph}
+\includegraphics[width=249pt]{classGenericCommand__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Generic\+Command\+:\nopagebreak
+Collaboration diagram for Generic\+Command\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=246pt]{classGenericCommand__coll__graph}
+\includegraphics[width=249pt]{classGenericCommand__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classGenericCommand_adb7b02bb053e2c29e0b3841d7ab81f03}{Generic\+Command}} (std\+::function$<$ void()$>$ \mbox{\hyperlink{classGenericCommand_a37df214926be94ef4ac4bc46fd4270fa}{function\+\_\+handle}})
-\begin{DoxyCompactList}\small\item\em Constructor for open model command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Constructor for generic function call command objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -45,7 +47,7 @@ bool \mbox{\hyperlink{classGenericCommand_afa14aae0989db8983af2ac5c2a2e9722}{Is\
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classGenericCommand_ab4f7eba842e2e7b19f55781499bd6b5a}{Is\+Redoable}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classGenericCommand_aaad69c127eaa595dad9b582421d78a7d}{Is\+Threaded}} () override
+bool \mbox{\hyperlink{classGenericCommand_a74a386005668d9bc588cd980ca478376}{Is\+Threaded}} (bool \&prevent\+\_\+user\+\_\+input) override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classGenericCommand_a5169594e3d7ab0c2368237db5dced223}{Changes\+Program\+State\+Irreversibly}} () override
 \begin{DoxyCompactList}\small\item\em Implementation of interface method. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -58,7 +60,7 @@ std\+::function$<$ void()$>$ {\bfseries function\+\_\+handle}
 
 
 \doxysubsection{Detailed Description}
-Executes and pops the top commandI object from a stack. 
+Executes a given function handle. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classGenericCommand_adb7b02bb053e2c29e0b3841d7ab81f03}\label{classGenericCommand_adb7b02bb053e2c29e0b3841d7ab81f03} 
@@ -69,11 +71,11 @@ Executes and pops the top commandI object from a stack.
 
 
 
-Constructor for open model command objects. 
+Constructor for generic function call command objects. 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em function\+\_\+pointer} & unction pointer to hold the command function \\
+\mbox{\texttt{ in}}  & {\em function\+\_\+pointer} & function pointer to hold the command function \\
 \hline
 \end{DoxyParams}
 
@@ -107,7 +109,7 @@ Implements \mbox{\hyperlink{classCommandI_a348eb5fb0fcad378b2cf2fc454f51444}{Com
 Implementation of interface method. 
 
 \begin{DoxyReturn}{Returns}
-Always true. RExecutes and pops the top commandI object from a stack 
+Always true. Executes the given function handle. 
 \end{DoxyReturn}
 
 
@@ -164,22 +166,27 @@ Always false
 
 Implements \mbox{\hyperlink{classCommandI_a3abee4f38d41e59b915e0dd94c4846b6}{CommandI}}.
 
-\Hypertarget{classGenericCommand_aaad69c127eaa595dad9b582421d78a7d}\label{classGenericCommand_aaad69c127eaa595dad9b582421d78a7d} 
+\Hypertarget{classGenericCommand_a74a386005668d9bc588cd980ca478376}\label{classGenericCommand_a74a386005668d9bc588cd980ca478376} 
 \index{GenericCommand@{GenericCommand}!IsThreaded@{IsThreaded}}
 \index{IsThreaded@{IsThreaded}!GenericCommand@{GenericCommand}}
 \doxysubsubsection{\texorpdfstring{IsThreaded()}{IsThreaded()}}
-{\footnotesize\ttfamily bool Generic\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily bool Generic\+Command\+::\+Is\+Threaded (\begin{DoxyParamCaption}\item[{bool \&}]{prevent\+\_\+user\+\_\+input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
 
 
 
 Implementation of interface method. 
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em prevent\+\_\+user\+\_\+input} & indicates if user input should be prevented if this happens to be a threaded command \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Always false 
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{classCommandI_a6b173d77055ac6a8c548b6737ca03caf}{CommandI}}.
+Implements \mbox{\hyperlink{classCommandI_a1c54206064c146ea9ff089fbe4d321b6}{CommandI}}.
 
 \Hypertarget{classGenericCommand_afa14aae0989db8983af2ac5c2a2e9722}\label{classGenericCommand_afa14aae0989db8983af2ac5c2a2e9722} 
 \index{GenericCommand@{GenericCommand}!IsUndoable@{IsUndoable}}

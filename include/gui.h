@@ -36,6 +36,7 @@ class GUI : public GUII
 
   /// \brief Constructor that wraps the Initialize method
   /// \param[in] window_name The name to be given to the SDFormatEditor Window
+  /// \param[in] sdformat_parser A pointer to the sdformat parser object
   /// \param[out] success true if window initalization is successful
   public: GUI(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success);
 
@@ -43,6 +44,9 @@ class GUI : public GUII
   public: ~GUI();
 
   /// \brief Implementation of interface method, wrapped by constructor
+  /// \param[in] window_name The name to be given to the SDFormatEditor Window
+  /// \param[in] sdformat_parser A pointer to the sdformat parser object
+  /// \param[out] success true if window initalization is successful
   private: void Initialize(const std::string &window_name, std::shared_ptr<SDFormatParserI> sdformat_parser, bool &success) override;
 
   /// \brief Implementation of interface method
@@ -60,10 +64,9 @@ class GUI : public GUII
   /// \brief Implementation of interface method 
   /// \param[in] dialogMessage struct containing the strings to display
   /// \param[out] choices a vector of string,bools pairs where one bool will be set true, corresponding to the user's choice
-  public: void OpenChoiceDialog(DialogMessage dialogMessage, std::vector<std::pair<std::string, bool>>& choices) override;
+  private: void OpenChoiceDialog(DialogMessage dialogMessage, std::vector<std::pair<std::string, bool>>& choices) override;
   
   /// \brief Function for handling GLFW Error (required to be static by GLFW)
-  ///         NOTE: (zaid) It may be good to integrate this with an error handler class
   /// \param[in] error Error code from GLFW 
   /// \param[in] description Description of the error from GLFW 
   private: static void GLFWErrorCallback(int error, const char *description);
@@ -71,6 +74,7 @@ class GUI : public GUII
   /// \brief Function to display the SDF root element in the GUI in a tree format 
   /// \param[out] command a pointer to the command resulting from the user's action during this frame
   /// \param[in] sdformat_parser an SDFormatParserI instance containing an sdf element
+  /// \param[in] command_factory used for creating command objects
   private: void DisplaySDFRootElement(std::unique_ptr<CommandI> &command, std::shared_ptr<SDFormatParserI> sdformat_parser, 
     std::shared_ptr<CommandFactoryI> command_factory);
 
@@ -81,7 +85,6 @@ class GUI : public GUII
   /// \brief Draw the core part of the ImGUI frame
   /// \param[out] command a pointer to the command resulting from the user's action during this frame
   /// \param[in] command_factory used for creating command objects
-  /// \returns The a pointer to the command resulting from the user's action during this frame
   private: void DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<CommandFactoryI> command_factory);
 
   /// @brief Create a dropdown list 
@@ -110,6 +113,7 @@ class GUI : public GUII
 
   /// @brief Create a dropdown list 
   /// @param[in] items A vector of strings to include in the dropdown
+  /// @param[in] item_descriptions A vector of strings for the descriptions of each item
   /// @param[out] selected_item an integer representing the selected item 
   /// \param[out] unique_id a unique id for the ImGUI dropdowm 
   private: void CreateDropdown(const std::vector<std::string>& items, const std::vector<std::string>& item_descriptions, int& selected_item, int& unique_id);
@@ -121,6 +125,12 @@ class GUI : public GUII
 
   /// \brief Flag which can be set to prevent the GUI from taking user input.
   private: std::atomic<bool> prevent_input_flag = false;
+
+  /// \brief Flag to indicate if the model viewer is currently running.
+  private: bool model_viewer_running = false;
+
+  /// \brief Flag to indicate if collisions should be loaded in the model viewer.
+  private: bool render_collisions_in_model_viewer = false;
   
   /// \brief Pointer to the GLFW window object, used to manage for rendering and handling window events
   private: GLFWwindow *window = nullptr;

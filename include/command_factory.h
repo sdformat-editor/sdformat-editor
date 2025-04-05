@@ -22,11 +22,22 @@
 
 // SDFormat dependencies
 #include <sdf/sdf.hh>
+#include "interfaces/command_factory_interface.h"
 
+// Commands
 #include "commands/DeleteElementCommand.h"
 #include "commands/OpenFileCommand.h"
 #include "commands/SaveFileCommand.h"
-#include "interfaces/command_factory_interface.h"
+#include "commands/DeleteElementCommand.h"
+#include "commands/GenericCommand.h"
+#include "commands/OpenFileCommand.h"
+#include "commands/CreateFileCommand.h"
+#include "commands/ModifyAttributeCommand.h"
+#include "commands/ModifyElementCommand.h"
+#include "commands/AddElementCommand.h"
+#include "commands/RenderModelCommand.h"
+#include "commands/OpenModelViewerCommand.h"
+#include "commands/CloseModelViewerCommand.h"
 
 /// \brief Implementation of CommandFactoryI
 class CommandFactory : public CommandFactoryI
@@ -35,12 +46,19 @@ class CommandFactory : public CommandFactoryI
     /// \brief Constructor that wraps the Initialize method
     /// \param[in] gui A pointer to the GUI object
     /// \param[in] sdformat_parser A pointer to the sdformat parser object
-    public: CommandFactory(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser);
+    /// \param[in] model_viewer A pointer to the model viewer object
+    public: CommandFactory(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, 
+                            std::shared_ptr<ModelViewerI> model_viewer);
 
     /// \brief Implementation of interface method, wrapped by constructor
-    private: void Initialize(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser);
+    /// \param[in] gui A pointer to the GUI object
+    /// \param[in] sdformat_parser A pointer to the sdformat parser object
+    /// \param[in] model_viewer A pointer to the model viewer object
+    private: void Initialize(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser, 
+                              std::shared_ptr<ModelViewerI> model_viewer);
 
     /// \brief Implementation of interface method
+    /// \param[in] file_path Filepath of the model
     /// \return Unique pointer to a command interface 
     private: std::unique_ptr<CommandI> MakeOpenFileCommand(std::string file_path) override;
 
@@ -58,7 +76,24 @@ class CommandFactory : public CommandFactoryI
 
     /// \brief Implementation of interface method
     /// \return Unique pointer to a command interface
-    private: std::unique_ptr<CommandI> MakeSaveFileCommand();
+    private: std::unique_ptr<CommandI> MakeSaveFileCommand() override;
+
+    /// \brief Implementation of interface method
+    /// \param[in] render_collisions_in_model_viewer indicates if collision boxes should be rendered in the model viewer
+    /// \return Unique pointer to a command interface
+    private: std::unique_ptr<CommandI> MakeRenderModelCommand(bool render_collisions_in_model_viewer) override;
+
+    /// \brief Create a open model viewer model command
+    /// \return Unique pointer to a command interface
+    public: std::unique_ptr<CommandI> MakeOpenModelViewerCommand() override;
+
+    /// \brief Create a close model viewer model command
+    /// \return Unique pointer to a command interface
+    public: std::unique_ptr<CommandI> MakeCloseModelViewerCommand() override;
+
+    /// \brief Implementation of interface method
+    /// \return Unique pointer to a command interface
+    private: std::unique_ptr<CommandI> MakeCreateFileCommand() override;
 
     /// \brief Implementation of interface method
     /// \return Unique pointer to a command interface
@@ -69,19 +104,29 @@ class CommandFactory : public CommandFactoryI
     private: std::unique_ptr<CommandI> MakeRedoCommand() override;
 
     /// \brief Implementation of interface method
+    /// \param[in] attribute_to_modify A pointer to the attribute that will be modified
+    /// \param[in] new_value The new value as a string
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, std::string new_value) override;
+    
+    /// \brief Implementation of interface method
+    /// \param[in] attribute_to_modify A pointer to the attribute that will be modified
+    /// \param[in] new_value The new value as a bool
+    /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeModifyAttributeCommand(sdf::ParamPtr attribute_to_modify, bool new_value) override;
 
     /// \brief Implementation of interface method
+    /// \param[in] element_to_modify A pointer to the element that will be modified
+    /// \param[in] new_value The new value as a string
     /// \return Unique pointer to a command interface
     private: std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, std::string new_value) override;
-    private: std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, bool new_value) override;
 
     /// \brief Implementation of interface method
+    /// \param[in] element_to_modify A pointer to the element that will be modified
+    /// \param[in] new_value The new value as a bool
     /// \return Unique pointer to a command interface
-    private: std::unique_ptr<CommandI> MakeDeleteAttributeCommand(sdf::ParamPtr attribute_to_delete) override;
-    
+    private: std::unique_ptr<CommandI> MakeModifyElementCommand(sdf::ElementPtr element_to_modify, bool new_value) override;
+
     /// \brief Clears the undo stack
     private: void ClearStack(std::stack<std::unique_ptr<CommandI>>& stack);
 
@@ -100,7 +145,7 @@ class CommandFactory : public CommandFactoryI
     /// \brief Pops from the undo commands stack and executes the popped command
     private: void PopFromUndoCommandsStack();
 
-    /// \brief Pops from the undo commands stack and executes the popped command
+    /// \brief Pops from the redo commands stack and executes the popped command
     private: void PopFromRedoCommandsStack();
 
     /// \brief Pointer to the GUI obejct
@@ -108,6 +153,9 @@ class CommandFactory : public CommandFactoryI
 
     /// @brief Pointer to the sdformat parser object
     private: std::shared_ptr<SDFormatParserI> sdformatParser;
+
+    /// @brief Pointer to the model viewer object
+    private: std::shared_ptr<ModelViewerI> model_viewer;
 
     /// @brief Stack for undo functionality
     std::stack<std::unique_ptr<CommandI>> undo_commands_stack;

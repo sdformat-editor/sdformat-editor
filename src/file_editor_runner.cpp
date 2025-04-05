@@ -18,16 +18,21 @@
 */
 
 #include "file_editor_runner.h"
-#include <thread>
 
 FileEditorRunner::FileEditorRunner(bool data_dir_created)
 {
     // The sdformatParser will be null until the user opens a file
     this->sdformatParser = std::make_shared<SDFormatParser>();
 
-    this->gui = std::make_shared<GUI>("SDFormat Editor", this->sdformatParser, this->gui_initalization_successful);
+    this->model_viewer = std::make_shared<ModelViewer>();
 
-    this->command_factory = std::make_shared<CommandFactory>(this->gui, this->sdformatParser);
+    this->gui = std::make_shared<GUI>("SDFormat Editor", this->sdformatParser, this->gui_initalization_successful);
+    
+    // Run the model viewer as a seperate thread (make this a threadded command!)
+    // std::thread model_viewer_thread(&FileEditorRunner::RunModelViewerThread, this);
+    // model_viewer_thread.detach();
+
+    this->command_factory = std::make_shared<CommandFactory>(this->gui, this->sdformatParser, this->model_viewer);
 
     // grab the previous file that was opened
     if (data_dir_created) {
@@ -52,7 +57,12 @@ FileEditorRunner::FileEditorRunner(bool data_dir_created)
             {
                 std::thread command_thread([command = std::move(command), this]() mutable {
                     
-                    this->gui->SetPreventInputFlag(true);   
+                    bool prevent_user_input = false;
+                    
+                    // Check if this command requires that user input be prevented
+                    (void)command->IsThreaded(prevent_user_input);
+
+                    this->gui->SetPreventInputFlag(prevent_user_input);   
 
                     command->Execute();
 
@@ -81,16 +91,14 @@ int FileEditorRunner::RunProgram()
 
         if (user_command)
         {
+            bool prevent_user_input = false;
             // Some commands require a different thread (ex. OpenFileCommand)
-            if (user_command->IsThreaded())
+            if (user_command->IsThreaded(prevent_user_input))
             {
                 // Make a thread for executing this command
-                std::thread command_thread([user_command = std::move(user_command), this]() mutable {
-                
-                    // (zaid) I don't forsee there being a time where we really need to take user input
-                    // while an external thread is doing some operation (ex. opening a file). To make things
-                    // simpler for now, the gui will not create any more commands while an external thread is running.
-                    this->gui->SetPreventInputFlag(true);   
+                std::thread command_thread([user_command = std::move(user_command), prevent_user_input, this]() mutable {
+                    
+                    this->gui->SetPreventInputFlag(prevent_user_input);   
 
                     if (user_command->Execute())
                     {
@@ -127,6 +135,18 @@ int FileEditorRunner::RunProgram()
             }
         }
     }
+
+    {
+        std::lock_guard<std::mutex> lock(this->model_viewer->GetMutex());
+        this->model_viewer->Quit();
+    }
+
+    auto isModelViewerRunning = [this]() -> bool {
+        std::lock_guard<std::mutex> lock(this->model_viewer->GetMutex());
+        return this->model_viewer->IsRunning();
+    };
+
+    while (isModelViewerRunning());
 
     return 0;
 }

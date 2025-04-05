@@ -1,5 +1,10 @@
 <map id="ModelViewer" name="ModelViewer">
-<area shape="rect" id="Node000001" title="Implementation of SDFormatParserI." alt="" coords="5,183,227,332"/>
-<area shape="rect" id="Node000002" href="$classModelViewerI.html" title="Interface for the SDFormat Editor&#39;s 3D Model Vewer." alt="" coords="18,5,214,135"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,148,119,182,113,182,113,148"/>
+<area shape="rect" id="Node000001" title="Implementation of SDFormatParserI." alt="" coords="201,319,461,921"/>
+<area shape="rect" id="Node000003" href="$classModelViewer_1_1ModelViewerKeyHandler.html" title="class for handling inputs to the model viewer" alt="" coords="162,984,393,1325"/>
+<area shape="poly" id="edge4_Node000003_Node000001" title=" " alt="" coords="278,922,276,945,276,960,276,967,271,967,271,960,271,945,273,921"/>
+<area shape="rect" id="Node000002" href="$classModelViewerI.html" title="Interface for the SDFormat Editor&#39;s 3D Model Vewer." alt="" coords="219,5,442,269"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="333,283,333,318,328,318,328,283"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="296,983,299,960,301,938,306,938,304,960,301,984"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,587,176,653"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="107,665,192,920,215,983,210,985,187,922,102,667"/>
 </map>
