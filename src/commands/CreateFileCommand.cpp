@@ -17,21 +17,20 @@
 * Developer: Zaid Duraid, Ean Wheeler, Evan Vokey
 */
 
-#include "commands/OpenDirectoryCommand.h"
+#include "commands/CreateFileCommand.h"
 #include "file_operations.h"
 #include <sys/stat.h>
 
 
-OpenDirectoryCommand::OpenDirectoryCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser) 
+CreateFileCommand::CreateFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser) 
   :gui(gui), sdformatParser(sdformatParser)
 {
   
 }
 
-bool OpenDirectoryCommand::Execute()
+bool CreateFileCommand::Execute()
 {
   // Prevent user input in the gui while they are opening a file
-  this->gui->SetPreventInputFlag(true);
 
   // If the parameter is blank, open the file dialog 
   std::string file_path = FileOperations::GetSoleInstance().OpenDirectoryDialog();
@@ -39,30 +38,23 @@ bool OpenDirectoryCommand::Execute()
   // If the file path is blank, then there was no directory specified
   if (file_path == "")
   {
-    this->gui->SetPreventInputFlag(false);
     return false;
   }
+
+  // Create a new .sdf within the specified directory
+  std::string sdf_file = file_path + "/model.sdf";
+
+  FileOperations::GetSoleInstance().SetActiveFilePath(sdf_file);
+
+  FILE *new_model = fopen(sdf_file.c_str(), "w");
+  
+  const char *sdf_contents = "<?xml version='1.0'?>\n<sdf version='1.11'>\n</sdf>\n";
+  fwrite(sdf_contents, sizeof(char), strlen(sdf_contents), new_model);
+
+  fclose(new_model);
   
   bool success;
 
-  //Create a new .sdf within the specified directory
-  std::unique_lock<std::mutex> lock_var = gui->LockMutex();
-  std::string sdf_file = file_path + "/NewModel.sdf";
-  FileOperations::GetSoleInstance().SetActiveFilePath(sdf_file);
-  FILE *new_model = fopen(sdf_file.c_str(), "w");
-  std::array<char, 256> buffer;
-  std::string result;
-  #ifdef SOURCE_PATH
-  std::string default_model_path = std::string(SOURCE_PATH) + "/example_models/DefaultModel.sdf";
-  FILE *default_model = fopen(default_model_path.c_str(), "r");
-  std::cout << default_model_path << std::endl;
-  #endif
-  while (fgets(buffer.data(), buffer.size(), default_model) != nullptr)
-  {
-    fwrite(buffer.data(), sizeof(char), strlen(buffer.data()), new_model);
-  }
-  fclose(default_model);
-  fclose(new_model);
   this->sdformatParser->Initialize(sdf_file, success);
 
   // Save the path to an external file
@@ -85,39 +77,38 @@ bool OpenDirectoryCommand::Execute()
     }
   }
 
-  this->gui->SetPreventInputFlag(false);
 
   return success;
 
 }
 
-bool OpenDirectoryCommand::ExecuteUndo()
+bool CreateFileCommand::ExecuteUndo()
 {
   return this->IsUndoable();
 }
 
-bool OpenDirectoryCommand::ExecuteRedo()
+bool CreateFileCommand::ExecuteRedo()
 {
   return this->IsRedoable();
 }
 
-bool OpenDirectoryCommand::IsThreaded(bool& prevent_user_input) 
+bool CreateFileCommand::IsThreaded(bool& prevent_user_input) 
 {
   prevent_user_input = true;
   return true;
 }
 
-bool OpenDirectoryCommand::IsUndoable()
+bool CreateFileCommand::IsUndoable()
 {
   return false;
 }
 
-bool OpenDirectoryCommand::IsRedoable()
+bool CreateFileCommand::IsRedoable()
 {
   return false;
 }
 
-bool OpenDirectoryCommand::ChangesProgramStateIrreversibly()
+bool CreateFileCommand::ChangesProgramStateIrreversibly()
 {
     // Stub implementation
     return true;

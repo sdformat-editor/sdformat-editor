@@ -65,7 +65,7 @@ class GUII : public std::enable_shared_from_this<GUII>
     };
 
     /// \callgraph
-    /// \brief Enables a choice dialog message in the GUI that will be override everything else displayed by the GUI
+    /// \brief Enables a choice dialog message in the GUI that will be override everything else 
     /// \param[in] dialogMessage struct containing the strings to display
     /// \param[out] choices a vector of string,bools pairs where one bool will be set true, corresponding to the user's choice
     public: virtual void OpenChoiceDialog(DialogMessage dialogMessage, std::vector<std::pair<std::string, bool>>& choices) = 0;

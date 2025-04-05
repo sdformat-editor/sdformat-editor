@@ -27,14 +27,14 @@
 
 
 /// \brief Open directory command implementation of CommandI
-class OpenDirectoryCommand : public CommandI
+class CreateFileCommand : public CommandI
 {
 
   /// \callgraph
   /// \brief Constructor for open directory command objects.
   /// \param[in] gui Pointer to the GUII object 
   /// \param[in] sdformatParser Pointer to the SDFormatParserI object
-  public: OpenDirectoryCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser);
+  public: CreateFileCommand(std::shared_ptr<GUII> gui, std::shared_ptr<SDFormatParserI> sdformatParser);
 
   /// \brief Implementation of interface method. 
   /// \returns True if the SDFormatParser has successfully parsed the newly created file and it has been displayed in the GUI

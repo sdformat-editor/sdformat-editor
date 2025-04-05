@@ -18,7 +18,6 @@
 */
 
 #include "gui.h"
-#include "stb_image.h"
 #include "commands/OpenFileCommand.h"
 #include <stack>
 
@@ -108,22 +107,6 @@ void GUI::Initialize(const std::string &window_name, std::shared_ptr<SDFormatPar
   
   glfwMakeContextCurrent(window);
   glfwSwapInterval(1); // Enable vsync
-
-  // Load image to create icon
-  int icon_width, icon_height, channels;
-  std::string directory = getenv("OLDPWD");
-  std::string icon_file = directory + std::string("/icons/sdf_icon.png");
-  stbi_uc *img = stbi_load(icon_file.c_str(), &icon_width, &icon_height, &channels, 0);
-  if(img != NULL) {
-    GLFWimage icon;
-    icon.pixels = img;
-    icon.height = icon_height;
-    icon.width = icon_width;
-    glfwSetWindowIcon(window, 1, &icon);
-    stbi_image_free(img);
-  } else {
-    printf("Error in loading the icon. Using default\n");
-  }
 
   // Setup Dear ImGui context
   IMGUI_CHECKVERSION();
@@ -217,7 +200,7 @@ void GUI::DrawCoreFrame(std::unique_ptr<CommandI>& command, std::shared_ptr<Comm
       {
           if (ImGui::MenuItem("Create"))
           {
-            if (!prevent_input_flag) command = command_factory->MakeOpenDirectoryCommand();
+            if (!prevent_input_flag) command = command_factory->MakeCreateFileCommand();
           }
           if (ImGui::MenuItem("Open", "Ctrl+O"))
           {

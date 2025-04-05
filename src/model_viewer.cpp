@@ -195,7 +195,7 @@ void ModelViewer::HandleAddModelQueue()
   
     Ogre::SkeletonPtr skeleton;
     Ogre::AssimpLoader assimpLoader;
-  
+
     // Load the mesh using AssimpLoader
     if (!assimpLoader.load(model_info.model_absolute_path, mesh.get(), skeleton, {})) {
       continue; // skip the model_info
@@ -203,7 +203,7 @@ void ModelViewer::HandleAddModelQueue()
   
     // create the entity 
     Ogre::Entity* entity = this->scnMgr->createEntity(file_path.filename().string() + std::to_string(unique_naming_counter++), mesh);
-  
+
     Ogre::SceneNode* scene_node = scnMgr->getRootSceneNode()->createChildSceneNode();
     scene_node->attachObject(entity);
   

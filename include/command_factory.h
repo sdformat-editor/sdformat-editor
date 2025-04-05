@@ -31,7 +31,7 @@
 #include "commands/DeleteElementCommand.h"
 #include "commands/GenericCommand.h"
 #include "commands/OpenFileCommand.h"
-#include "commands/OpenDirectoryCommand.h"
+#include "commands/CreateFileCommand.h"
 #include "commands/ModifyAttributeCommand.h"
 #include "commands/ModifyElementCommand.h"
 #include "commands/AddElementCommand.h"
@@ -93,7 +93,7 @@ class CommandFactory : public CommandFactoryI
 
     /// \brief Implementation of interface method
     /// \return Unique pointer to a command interface
-    private: std::unique_ptr<CommandI> MakeOpenDirectoryCommand() override;
+    private: std::unique_ptr<CommandI> MakeCreateFileCommand() override;
 
     /// \brief Implementation of interface method
     /// \return Unique pointer to a command interface

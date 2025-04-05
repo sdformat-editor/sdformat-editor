@@ -7,7 +7,6 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(imgui_SOURCE_DIR libs/imgui)
-set(stb_SOURCE_DIR libs/stb)
 
 # Find sdformat14
 find_package(sdformat14 REQUIRED)
@@ -52,7 +51,6 @@ add_executable(sdformat-editor
     ${_SOURCE_FILES}
     ${HEADER_FILES}
     ${IMGUI_FILES}
-    ${stb_SOURCE_DIR}/deprecated/stb_image.c
     ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
 )
 
@@ -60,7 +58,6 @@ add_executable(sdformat-editor
 target_include_directories(sdformat-editor PRIVATE
     ${imgui_SOURCE_DIR}
     ${imgui_SOURCE_DIR}/backends
-    ${stb_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${sdformat14_INCLUDE_DIRS}  
     ${CMAKE_CURRENT_SOURCE_DIR}/libs/glm
@@ -120,14 +117,12 @@ add_executable(sdformat-editor-tests
     ${_SOURCE_FILES}
     ${HEADER_FILES}
     ${IMGUI_FILES}
-    ${stb_SOURCE_DIR}/deprecated/stb_image.c
 )
 
 # Include directories for tests
 target_include_directories(sdformat-editor-tests PRIVATE
     ${imgui_SOURCE_DIR}
     ${imgui_SOURCE_DIR}/backends
-    ${stb_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${gtest_SOURCE_DIR}/googletest/include
     ${sdformat14_INCLUDE_DIRS} 

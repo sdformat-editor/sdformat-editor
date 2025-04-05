@@ -48,9 +48,9 @@ std::unique_ptr<CommandI> CommandFactory::MakeOpenModelViewerCommand()
     return std::make_unique<OpenModelViewerCommand>(this->model_viewer);
 }
 
-std::unique_ptr<CommandI> CommandFactory::MakeOpenDirectoryCommand()
+std::unique_ptr<CommandI> CommandFactory::MakeCreateFileCommand()
 {
-    return std::make_unique<OpenDirectoryCommand>(this->gui, this->sdformatParser);
+    return std::make_unique<CreateFileCommand>(this->gui, this->sdformatParser);
 }
 
 std::unique_ptr<CommandI> CommandFactory::MakeUndoCommand()
